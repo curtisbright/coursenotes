@@ -1,0 +1,165 @@
+\claim Let $R$ be a ufd.  Let $a_1,a_2,b_1,b_2\in R$ and $b_1b_2\mid a_1a_2$.  Then there exists $b_1'$, $b_2'$ such that $b_1b_2=b_1'b_2'$, and $b_1'\mid a_1$ and $b_2'\mid a_2$. \\
+\pf Fix $P_R$ for $R$.  Factorize.
+\begin{gather*}
+b_1 = up_1^{e_1}\dotsm p_l^{e_l} \qquad\text{and}\qquad b_2 = vp_1^{f_1}\dotsm p_l^{f_l} \\
+a_1 = wp_1^{g_1}\dotsm p_l^{g_l} \qquad\text{and}\qquad a_2 = xp_1^{h_1}\dotsm p_l^{h_l}
+\end{gather*}
+Then $b_1b_2\mid a_1a_2 \implies uvp_1^{e_1+f_1}\dotsm p_l^{e_l+f_l}\mid wxp_1^{g_1+h_1}\dotsm p_l^{g_l+h_l}$ \\
+So, $e_i+f_i\leq g_i+h_i$ \\
+So, let $e_i'$ and $f_i'$ be such that $e_i'+f_i'=e_i+f_i$ and $e_i'\leq g_i$ and $f_i'\leq h_i$ \\
+Then, let $b_1'=up_1^{e_1'}\dotsm p_l^{e_l'}$ and $b_2=vp_1^{f_1}\dotsm p_l^{f_l'}$ \\
+Then, it is clear that $b_1'\mid a_1$ and $b_2'\mid a_2$, and also that $b_1'b_2'=b_1b_2$ \\
+So, from theorem, $R$ ufd $\implies$ $R[x]$ ufd. \\
+\exs $\Z[x]$ is a ufd \\
+$F[x]$ is a ufd for any field $F$. \\
+But recall that $\Z[x]$ is not a pid, since $(2,x)$ has no principal ideal.  Thus, $\text{pids}\subsetneq\text{ufds}$
+
+\observe $R\text{ pid} \centernot\implies R[x]\text{ pid}$ \\
+$R\text{ Euclidean domain} \centernot\implies R[x]\text{ Euclidean domain}$
+
+\defin Let $R$ be a commutative ring.  The \emph{polynomial ring in variables $x_1$, $\dotsc$, $x_n$} denoted by $R[x_1,\dotsc,x_n]$ is the following ring: \\
+Elements are formal expressions of
+\[ \sum_{\alpha=(\alpha_1,\dotsc,\alpha_n)\in\N^n} a_\alpha x_1^{\alpha_1}\dotsm x_n^{\alpha_n} \]
+where $a_\alpha\in R$, and all but finitely many $a_\alpha$s are zero. \\
+If we relax the requirement that all but finitely many are zero, then we get $R[[x_1,\dotsc,x_n]]$, the power series in $n$ variables.
+
+\textbf{Multiindex Notation:}~$\overline x=(x_1,\dotsc,x_n)$, $\alpha=(\alpha_1,\dotsc,\alpha_n)\in\N^n$
+\begin{align*}
+\text{Then, }\overline{x}^\alpha &\coloneqq x_1^{\alpha_1}\dotsm x_n^{\alpha_n} \\
+\abs\alpha &\coloneqq \alpha_1 + \dotsb + \alpha_n \\
+\alpha+\beta &\coloneqq (\alpha_1+\beta_1,\dotsc,\alpha_n+\beta_n)
+\end{align*}
+Then, in this ring,
+\begin{align*}
+0 &= \sum_\alpha 0\overline{x}^\alpha \\
+1 &= 1x_1^0 \dotsm x_n^0 + \sum_{\alpha\neq(0,0,\dotsc,0)} 0\overline{x}^\alpha \\
+\paren[\Big]{\sum_\alpha\overline{x}^\alpha}+\paren[\Big]{\sum_\alpha b_\alpha\overline x^\alpha} &= \sum_\alpha(a_\alpha+b_\alpha)\overline x^\alpha \\
+\paren[\Big]{\sum_\alpha a_\alpha\overline x^\alpha}\paren[\Big]{\sum_\alpha b_\alpha\overline x^\alpha} &= \sum_\alpha\paren[\Bigg]{\sum_{\substack{\gamma,\delta\in\N^n\\\gamma+\delta=\alpha}} a_\gamma b_\delta}\overline x^\alpha
+\end{align*}
+\check $R[x_1,\dotsc,x_n]$ is a commutative ring and it is a subring of the commutative ring $R[[x_1,\dotsc,x_n]]$
+\ex
+\begin{enumerate}
+\item[a)] $R[x_1,\dotsc,x_n]$ is isomorhpic to $\underbrace{\underbrace{\underbrace{R[x_1]}[x_2]}\dotsm[x_n]}_{\text{These are all rings}}$
+\item[b)] $R$ embeds in $R[x_1,\dotsc,x_n]$
+\end{enumerate}
+\cor $R\text{ ufd}\implies R[x_1,\dotsc,x_n]\text{ is a ufd}$
+
+\thm $R$ ufd.  The irreducibles of $R[x]$ are
+\begin{enumerate}
+\item[i)] irreducibles of $R$
+\item[ii)] $f\in R[x]$, $\deg f>0$, $G(f)=1$ and $f$ is irreducible in $F[x]$, $F=Q(R)$
+\end{enumerate}
+\pf If $f\in R$ irreducible in $R$ $\implies$ $f$ irreducible in $R[x]$ \\
+If $f$ is of type 2, $f$ does not factor properly in $R[x]$ $\implies$ $f$ irreducible in $R[x]$ \\
+So, i) and ii) are both irreducible.  Now, we will show these are the \emph{only} irreducibles. \\
+Suppose $f\in R[x]$ is irreducible, and $f\notin R$ \\
+therefore $\deg f>0$.  So, $f=G(f)\hat f$, where $G(\hat f)=1$. \\
+Since $\deg\hat f=\deg f>0$, $\hat f$ is not a unit in $R[x]$ \\
+$\implies G(f)$ is a unit in $\hat f$, since $f$ is irreducible. \\
+But $G(f)=p_1^{e_1}\dotsm p_l^{e_l}$, $\implies e_1=e_2=\dotsb=e_l=0$.
+\[ \implies G(f)=1 \label{one}\tag{1} \]
+Also, since $f$ is irreducible, $f$ does not factor properly in $R[x]$.
+\[ \implies \text{$f$ is irreducible in $F[x]$} \label{two}\tag{2} \]
+By \eqref{one} and \eqref{two}, $f$ is in category ii)
+
+%\textbf{Theorem}~(Eisenstein Criterion): \\
+\thm (Eisenstein Criterion) \\
+Let $R$ be a ufd, $f\in R[x]$
+\[ f = a_0 + a_1x + \dotsb + a_nx^n, \qquad n = \deg f > 0 \]
+Suppose there exists an irreducible $p\in R$ such that
+\begin{enumerate}
+\item[i)] $p\nmid a_n$
+\item[ii)] $p\mid a_i$, $i=0,\dotsc,n-1$
+\item[iii)] $p^2\nmid a_0$
+\end{enumerate}
+Then, $f$ is irreducible in $F[x]$, $F=Q(R)$ \\
+Hence, if $G(f)=1$, then $f$ is irreducible in $R[x]$. \\
+\pf It suffices to prove that $f$ does not factor properly in $R[x]$. \\
+Suppose $f=gh$ with $\deg g,\deg h>0$ \\
+Then,
+\[ \begin{aligned}g&=b_0+\dotsb+b_mx^m&&0<m<n\\n&=c_0+\dotsb+c_lx^l&&0<l<n\end{aligned} \qquad\text{and $m+l=n$} \]
+Then, $a_n=b_mc_l$, so since $p\nmid a_n$, then $p\nmid b_m$ and $p\nmid c_l$. \\
+$p\mid a_0 \implies p\mid b_0c_0 \implies p\mid b_0 \text{ or } p\mid c_0$ \\
+And, since $p^2\nmid b_0c_0$, then $p$ does not divide both. \\
+Then, without loss of generality assume $p\mid b_0$ and $p\nmid c_0$. \\
+Let $k$ be least integer such that $p\nmid b_k$, $0<k\leq m$
+\begin{align*}
+\text{Consider } [x^k] f &= a_k \\
+&= b_kc_0 + b_{k-1}c_1 + \dotsb + b_1c_{k-1} + b_0c_k
+\end{align*}
+Since $k$ is minimal, $p\mid b_{k-1}c_1$, $\dotsc$, $p\mid b_0c_k$ \\
+And, we know $p\mid a_k$, since $k<n$ \\
+Therefore $p\mid b_kc_0$.  But $p\nmid b_k$ and $p\nmid c_0$, contradiction.
+
+%\exs $R$ is a ufd, working in $R[x]$
+%\begin{enumerate}
+%\item[a)] $a+x^n$, where $a$ is a product of distinct primes is irreducible in $R[x]$ \\
+%as long as the factors of $a$ are all distinct (because $8+x^3$ can be factored in $\Z[x]$)
+%\item[b)] Let $p$ be a prime number $\in\Z$ \\
+%Then $f=1+x+x^2+\dotsb+x^{p-1}$ is irreducible in $\Q[x]$ \\
+%\pf By Einsenstein, $g=p+\binom p2x+\binom p3x^2+\dotsb+\binom p{p-2}x^{p-3}+px^{p-2}+x^{p-1}$ is irreducible, since $p\mid\binom pi$, $p\nmid1$, and $p^2\nmid p$
+%\end{enumerate}
+%\begin{align*}
+%\text{Consider } \sigma\colon & \Q[x] \to \Q[x] \\
+%& h \mapsto h(x+1)
+%\end{align*}
+%[We showed this in an assignment.  We can use $R[x]$ to send any extension of $R$, called $S$, to $S$.  In this case, $S=R[x]$.] \\
+%So if $h=a_0+\dotsb+a_nx^n$, $a_n\neq0$, then
+%\[ \sigma(h) = a_0 + a_1(x+1) + \dotsb + a_n(x+1)^n \]
+%Note that the leading term is still $a_nx^n$ \\
+%Thus, $\ker\sigma=\brace0$\footnote{$\implies$ $\sigma$ is injective} and $\sigma$ perserves degree. \\
+%Also, $\sigma$ is surjective, since given $h$,
+%\[ \sigma(a_0+a_1(x-1)+a_2(x-1)^2+\dotsb+a_n(x-1)^n) = h \]
+%So, $\sigma$ is an automorphism that preserves degree.
+%
+%\exer Given any automorphism, if $h$ is irreducible, then $\sigma h$ is irreducible. \\
+%$\to$ This is true for all automorphisms on integral domains.
+%
+%\claim $\sigma(f)=g$ \\
+%$(-1+x)(1+x+\dotsb+x^{p-1})=(-1+x^p)$
+%\begin{align*}
+%\text{Thus, } \sigma((-1+x)(1+\dotsb+x^{p-1})) &= \sigma(-1+x^p) \\
+%\implies \sigma(-1+x)\sigma(1+\dotsb+x^{p-1}) &= \sigma(-1+x^p) \\
+%x\sigma(1+\dotsb+x^{p-1}) &= -1 + (x+1)^p \\
+%&= px + \tbinom p2x^2 + \tbinom p3x^3 + \dotsb + \tbinom p{p-2}x^{p-2} + px^{p-1} + x^p \\
+%\implies \sigma(1+\dotsb+x^{p-1}) &= p + \tbinom p2x+\dotsb+\tbinom p{p-2}x^{p-3}+px^{p-2}+x^{p-1} \\
+%\implies \sigma(f) &= g
+%\end{align*}
+%So $f$ is irreducible, since $g$ is.
+%
+%\textbf{Fields} \\
+%Let $R$ be an integral domain.  Then, there is a unique homomorphism
+%\begin{align*}
+%\phi\colon & \Z \to R \\
+%& n \mapsto \underbrace{1+\dotsb+1}_n \quad n\geq0 \\
+%%& \mathllap{-}n \mapsto -\phi(n)
+%& {-n} \mapsto -\phi(n)
+%\end{align*}
+%\recall $R$ integral domain $\implies$ $\ker\phi$ is a prime ideal. \\
+%$\implies \ker(\phi)=(0)$ or $\ker(\phi)=(p)$, $p$ is prime
+%
+%\defin If, as above, $\ker\phi=(0)$, then we say $R$ is at \emph{characteristic 0}. ($\iff\smash{\underbrace{1+1+\dotsb+1}_n}\neq0$ in $R$ for all $n\in\Z$) \\
+%If $\ker\phi=(p)$, we say \emph{characteristic of $R$ is $p$}. ($\iff\smash{\underbrace{1+1+\dotsb+1}_p}=0$ in $R$)
+%
+%\remark If $R=F$ is a field then,
+%\begin{enumerate}
+%\item[a)] $\Char F=0\implies\phi$ extends to an embedding of $\Q$ in $F$\marginpar{(by the universal property, or by showing directly)}
+%\begin{align*}
+%\hat\phi\colon &\Q \to F \\
+%& \tfrac nm \mapsto \phi(n)\phi(m)^{-1}
+%\end{align*}
+%\item[b)] $\Char F=p\implies$ we have an embedding\marginpar{(by 1st isomorphism theorem, oy by showing directly)}
+%\[ \text{also an embedding }\left\{ \begin{aligned}
+%\hat\phi\colon & \Z_p = \Z/(p) \to F \\
+%&n+(p) \mapsto \underbrace{1+\dotsc+1}_n
+%\end{aligned} \right. \]
+%\end{enumerate}
+%\defin A subfield of a field is a subring that is a field. \\
+%Therefore every field has a subfield isomorphic to $\Q$ ($\Char F=0$) or $\Z_p$ ($\Char F=p$)
+%
+%\convention Idenitify $\Q$ and $\Z_p$ with their images in $F$. \\
+%So $\Q=\set{\phi(n)\phi(m)^{-1}}{n,m\in\Z\c m\neq0}\subseteq F$ for $\Char F=0$ and $\Z_p=\brace{0,1,1+1,\dotsc,\smash{\underbrace{1+1+\dotsb+1}_{p-1}}}\subseteq F$ for $\Char F=p$
+%
+%\defin The set above is the \emph{prime subfield} of $F$. \\
+%\exer The prime subfield of $F$ is the unique smallest subfield of $F$. \\
+%\notation $\F$ is the prime subfield of $F$.

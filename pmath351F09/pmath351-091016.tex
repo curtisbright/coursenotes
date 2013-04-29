@@ -1,0 +1,70 @@
+Midterm: Friday October 23 here at 1:30. \\
+Up to end of compactness.\marginpar{Additional office hours Tuesday 2--3.}
+
+Not proof of 1) Schroeder--Bernstein, 2) Perfect set in $\R^k$ are uncountable.
+
+\textbf{Continuity:} $f\colon X\to Y$, $X$, $Y$ metric spaces
+
+\defin Say $f$ is \emph{continuous at\/ $x_0\in X$}, if for all $\epsilon>0$ there exist $\delta>0$ such that whenever $d_X(x_0,y)<\delta$\footnote{$y\in B(x_0,\delta)$} then $d_Y(f(x_0,f(y)))<\epsilon$\footnote{$f(y)\in B(f(x_0),\epsilon)$}.\marginpar{figure: $f$ takes a point in a ball in $X$ to one in $Y$}
+
+Say $f$ is \emph{continuous} if it is continuous at every point of its domain.
+
+\exs
+\begin{enumerate}
+\item Constant functions are always continuous.
+\item Identity map: $X\to X$.  Take $\delta=\epsilon$.
+\item Identity map: $(\R,\text{usual metric})\footnote{$X$}\to(\R,\text{discrete metric})\footnote{$Y$}$
+\begin{itemize}
+\item not continuous \\
+Take $\epsilon\leq1$, then $B_Y(\Id(x_0)\footnote{$x_0$},\epsilon)=\brace{x_0}$. \\
+So to have $\Id(y)=y\in B_Y(x_0,\epsilon)$ means $y=x_0$. \\
+But for all $\delta>0$, $B_X(x_0,\delta)$ contains infinitely many points. \\
+So it contains some $y\neq x_0$.  But then $\Id(y)\notin B_Y(\Id(x_0),\epsilon)$.
+\end{itemize}
+\item If $x_0$ is not an accumulation point of $X$ then any $f$ is continuous at $x_0$. \\
+\pf If $\delta>0$ is small enough as $B(x_0,\delta)=\brace{x_0}$, then clearly if $y\in B(x_0,\delta)$ then $f(y)\in B(f(x_0),\epsilon)$ for all $\epsilon>0$ \\
+\cor If $f\colon X\to Y$ where $X$ is the discrete metric space then $f$ is continuous.
+\item $(X,d)$ any metric space and $a\in X$. \\
+Then $f(x)=d(a,x)$ is continuous, where $f\colon X\to\R$. \\
+\pf
+\begin{gather*}
+f(x) - f(y) = d(a,x) - d(a,y) \\
+\leq d(a,y) + d(x,y) - d(a,y) = d(x_0,y) \\
+f(y) - f(x) \leq d(x,y) \\
+\implies \abs{d(a,x)\footnotemark-d(a,y)\footnotemark} \leq d(x,y)
+\end{gather*}\addtocounter{footnote}{-1}\footnotetext{$=f(x)$}\addtocounter{footnote}{1}\footnotetext{$=f(y)$}
+So take $\delta=\epsilon$.
+\end{enumerate}
+\prop $f$ is continuous at $x$ if and only if whenever $(x_n)$ is a sequence in $X$ converging to $x$; then the sequence $(f(x_n))$ converges to $f(x)$. \\
+\pf ($\implies$) Let $x_n\to x$. \\
+Take $\epsilon>0$.  Get $\delta$ by continuity so that $d(x,y)<\epsilon$ $\implies$ $d(f(x),f(y))<\epsilon$. \\
+Get $N$ such that $d(x_n,x)<\delta$ for all $n\geq N$. \\
+Take $n\geq N$, then $d(f(x_n),f(x))<\epsilon$ by definition of $N$ and $\delta$. \\
+($\Longleftarrow$) Suppose $f$ is not continuous at $x$.  Then there exists $\epsilon>0$ such that for every $\delta>0$ there exists $y=y(\delta)$ with $d(x,y)<\delta$ but $d(f(x),f(y))\geq\epsilon$.
+
+Take $\delta=\frac1n$ and put $x_n=y(\frac1n)$. \\
+Then $d(x,x_n)<\frac1n$, so $x_n\to x$. \\
+But $d(f(x),f(x_n))\geq\epsilon\implies f(x_n)\centernot\to f(x)$ \\
+Contradiction.
+
+\exer $f,g\colon X\to\R$ continuous then so are $f\pm g$, $fg$, $f/g$ if $g(x)\neq0$.
+
+Alternate way to look at continuity: \\
+$f$ continuous at $x_0$ if and only if for all $\epsilon>0$ there exists $\delta>0$ such that
+\[ f(B(x_0,\delta)) \subseteq B(f(x_0),\epsilon) \]
+if and only if $B(x_0,\delta)\subseteq f^{-1}\footnote{preimage}(B(f(x_0),\epsilon))$, where $f^{-1}(v)=\set{x}{f(x)\in V}$. \\
+$\implies$ $x_0\in\Int f^{-1}(B(f(x_0),\epsilon))$
+
+\thm The following are equivalent: for $f\colon X\to Y$
+\begin{enumerate}
+\item $f$ is continuous
+\item for all $V$ open in $Y$, $f^{-1}(V)$ is open in $X$.
+\item for all $F$ closed in $Y$, $f^{-1}(F)$ is closed in $X$.
+\end{enumerate}
+\pf (1 $\implies$ 2): Let $V$ be open in $Y$, and suppose $x_0\in f^{-1}(V)$, i.e., $f(x_0)\in V$. \\
+Hence there exists $\epsilon>0$ such that $f(B(x_0,\delta))\subseteq B(f(x_0,\epsilon))\subseteq V$. \\
+By continuity, there exists $\delta>0$ such that $f(B(x_0,\delta))\subseteq B(f(x_0),\epsilon)\subseteq V$.
+\begin{align*}
+\implies B(x_0,\delta) \subseteq f^{-1}(V) &\implies \text{$x_0$ is an interior point of $f^{-1}(V)$} \\
+&\implies \text{$f^{-1}(V)$ is open.}
+\end{align*}

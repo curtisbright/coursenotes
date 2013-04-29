@@ -1,0 +1,47 @@
+Corrections to Question 4 on the assignment.  Replace ``Let $d$ be the discriminant of $K$\dots'' by ``Let $d$ be the discriminant of $\theta$\dots''.  Also ``\dots of the form
+\[ \frac{1}{d}(a_0+a_1\theta+\dotsb+a_{i-1}\theta^{i-1}) \]
+with $a_0$, $a_1$, $\dotsc$, $a_{i-1}$ integers and $a_{i-1}$\dots''
+
+\textbf{Theorem 55:} Let $[K:\Q]<\infty$.  There exists a positive number $C_0$ which depends on $K$ such that if $A$ is a non-zero ideal of $\A\cap K$ then there exists a non-zero element $\alpha$ of $A$ for which
+\[ \abs{N_\Q^K(\alpha)} \leq C_0 NA . \]
+\pf Let $\omega_1$, $\dotsc$, $\omega_n$ be an integral basis for $K$.  Next put
+\[ t = [(NA)^{1/n}] \]
+and consider the elements $\beta$ in $\A\cap K$ of the form
+\[ a_1 \omega_1 + \dotsb + a_n \omega_n \tag{$*$} \]
+with $0\leq a_i\leq t$ for $i=1$, $\dotsc$, $n$.  There are $(t+1)^n$ such elements and since $(t+1)^n>NA$ there exist $\beta_1$, $\beta_2$ of the form $*$ which are equivalent modulo $A$.  In particular $\alpha=\beta_1-\beta_2=b_1\omega_1+\dotsb+b_n\omega_n$ where $0\leq\abs{b_i}\leq t$.
+
+Then let $\sigma_1$, $\dotsc$, $\sigma_n$ be the embeddings of $K$ in $\C$ which fix $\Q$.  Thus
+\begin{align*}
+\abs{N_\Q^K(\alpha)} &= \prod_{i=1}^n \abs{\sigma_i(b_1\omega_1+\dotsb+b_n\omega_n)} \\
+&\leq t^n \paren[\Big]{\prod_{i=1}^n n\paren[\big]{\max_{1\leq j\leq n}\abs{\sigma_i(\omega_j)}}} \\
+&\leq NA \cdot C_0\footnote{where $C_0$ is above quantity}
+\end{align*}
+\textbf{Theorem 56:} Let $[K:\Q]<\infty$.  The class number of $K$ is finite. \\
+\pf We'll show that every non-zero ideal of $\A\cap K$ is equivalent to an ideal of norm at most $C_0$, where $C_0$ is from Theorem~55.  Since there are only finitely many ideals of norm at most $C_0$ the result then follows.
+
+Let $I$ be a non-zero ideal of $\A\cap K$.  Then there exists an ideal $A$ such that $AI\sim(1)$.
+
+By Theorem~55 there exists a non-zero $\alpha$ in $A$ for which
+\[ \abs{N_\Q^K(\alpha)} \leq C_0 NA . \]
+Note that $\alpha\in A\implies(\alpha)\subseteq A$ so $A\mid(\alpha)$ hence there exists $B$ such that $AB=(\alpha)$.  But
+\[ NA\cdot NB = NAB = N(\alpha) = \abs{N_\Q^K(\alpha)} \leq C_0 NA . \]
+Thus $NB\leq C_0$.
+
+Further $AB\sim(1)$ and since $AI\sim(1)\implies B\sim I$.  Thus $I$ is equivalent to an ideal of norm at most $C_0$.
+
+If $h$ is the class number of $K$ then by Lagrange's Theorem for any non-zero ideal $A$ of $\A\cap K$ we have
+\[ [A]^h = [(1)] . \]
+Equivalently $A^h$ is principal for any ideal $A$.
+
+Suppose $q$ is a positive integer coprime with $h$ and $A^q\sim B^q$ then $A\sim B$.  To see this note that if $\gcd(q,h)=1$ then %$\exists r,s$ with
+there exists $r$, $s$ with $rq+sh=1$ and then
+\[ A^{rq}\sim B^{rq} \text{ so } A^{1-sh} \sim B^{1-sh} \implies A \sim B . \]
+It can be shown that we can take $C_0=\sqrt{\abs{d}}$ where $d$ is the discriminant of $K$.
+
+\eg Consider $K=\Q(\sqrt{-5})$.  We have $d=-20$ so $C_0=\sqrt{20}$.  Therefore we need only consider ideals of norm at most $\sqrt{20}$ hence at most $4$ we must check how $(2)$ and $(3)$ decompose into prime ideals in $\A\cap\Q(\sqrt{-5})$.
+\begin{align*}
+(2) &= (2,1+\sqrt{-5})(2,1-\sqrt{-5}) \\
+&= (4,2-2\sqrt{-5},2+2\sqrt{-5},6) \\
+&= (2,2(1+\sqrt{-5})) \\
+&= (2)
+\end{align*}

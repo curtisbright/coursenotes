@@ -1,0 +1,43 @@
+$h$: class number of $K$ \\
+$[K:\Q]<\infty$.  $h$ is \emph{finite} as we'll show.
+
+Another important invariant of $K$ is the regulator $R$.  It often arises together with $h$.
+
+Suppose that $[K:\Q]<n$ and there exist $r_1$ real embeddings of $K$ in $\C$ and $2r_2$ embeddings which are not into $\R$.  Let $\sigma_1$, $\dotsc$, $\sigma_{r_1}$ be the real embeddings and let $\sigma_{r_1+1}$, $\dotsc$, $\sigma_{r_1+2r_2}$ be the other embeddings where we arrange that
+\[ \sigma_{r_1+i} = \overline{\sigma_{r_1+r_2+i}} \text{ for $i=1$, $\dotsc$, $r_2$.} \]
+Thus $r_1+2r_2=n$.  Put
+\[ r = r_1 + r_2 - 1 . \]
+Let $U(K)$ be the group of units in $\A\cap K$.  Dirichlet proved that
+\[ U(K) \approx \text{Tor}\times\Z^r \]
+where $\text{Tor}$ is a finite group corresponding to the roots of unity in $K$.
+
+In particular there exist a system of fundamental units $\epsilon_1$, $\dotsc$, $\epsilon_r$ such that if $\epsilon$ is in $U(K)$ then there exists a root of unity $\zeta$ and integers $a_1$, $\dotsc$, $a_r$ such that
+\[ \epsilon = \zeta \epsilon_1^{a_1}\dotsm\epsilon_r^{a_r} . \]
+Note that if $(a_{ij})$ is an $r\times r$ matrix with integer entries which has an inverse with integer entries then
+\[ \brace{\epsilon_1^{a_{11}}\dotsm\epsilon_r^{a_{1r}},\dotsc,\epsilon_1^{a_{r1}},\dotsc,\epsilon_r^{a_{rr}}} \]
+is again a fundamental system of units.
+
+Let $L\colon K^*\to\R^{r_1+r_2}$ be the logarithmic embedding of $K^*$ in $\R^{r_1+r_2}$ given by
+\[ L(\alpha) = (\log\abs{\sigma_1(\alpha)},\dotsc,\log\abs{\sigma_{r_1}(\alpha)},2\log\abs{\sigma_{r_1+1}(\alpha)},\dotsc,2\log\abs{\sigma_{r_1+r_2}(\alpha)}) . \]
+The kernel of $L$ consists of the roots of unity of $K$.  Further if $\alpha\in K$ with $\alpha\neq0$ then
+\begin{align*}
+\log\abs{N_\Q^K(\alpha)} &= \log\abs{\sigma_1(\alpha)} + \dotsb + \log\abs{\sigma_{r_1+2r_2}(\alpha)} \\
+&= \log\abs{\sigma_1(\alpha)} + \dotsb + \log\abs{\sigma_{r_1}(\alpha)} + 2\log\abs{\sigma_{r_1+1}(\alpha)}+\dotsb+2\log\abs{\sigma_{r_1+r_2}(\alpha)}
+\end{align*}
+Notice that if $\alpha\in U(K)$ then $L(\alpha)$ lies in the subgroup of $\R^{r_1+r_2}$ given by $x_1+\dotsb+x_{r_1+r_2}=0$.  In fact they determine a lattice of rank $r_1+r_2-1$.  We can ask for the volume of a fundamental region of the lattice.  This is called the regulator $R$.  Equivalently
+\[ R = \abs*{\det\paren*{e_i\log\abs{\sigma_i(\epsilon_j)}}_{\substack{i=1,\dotsc,r\\j=1,\dotsc,r}}} \]
+where $e_i=1$ if $1\leq i\leq r_1$ and $e_i=2$ otherwise.
+
+For $[K:\Q]=2$ with $K$ real quadratic then $R=\log\epsilon$ where $\epsilon$ is the fundamental unit larger than $1$.  If $K$ is imaginary quadratic take
+\[ R = 1 . \]
+Let $M_K(x)$ be the number of ideals of $\A\cap K$ with norm at most $x$.  One can prove
+\[ \lim_{x\to\infty}\frac{M_K(x)}{x} = 2^{r_1}(2\pi)^{r_2}\frac{hR}{W\sqrt{\abs{d}}} \]
+where $W$ is the number of roots of unity in $K$.  The number of integers up to $x$ is $x+O(1)$.  The number of primes $\pi(x)$ up to $x$ satisfies
+\[ \lim_{x\to\infty}\frac{\pi(x)}{x/\log x} = 1 . \]
+Let $\pi_K(x)$ denote the number of prime ideals up to $x$.  Landau proved that
+\[ \lim_{x\to\infty}\frac{\pi_K(x)}{x/\log x} = 1 . \]
+%Aside
+\begin{align*}
+\zeta(s) &= \sum_{n=1}^\infty\frac{1}{n^s} \\
+&= \prod_p\paren[\Big]{\frac{1}{1-\frac{1}{p^s}}}
+\end{align*}

@@ -1,0 +1,35 @@
+\textbf{Theorem 5:} Let $K\subseteq L\subseteq\C$ and let $L$ be a finite extension of $K$.  Then $L=K(\theta)$ for some $\theta$ in $L$. \\
+\pf Note that
+\[ L = K(\gamma_1,\dotsc,\gamma_n) \]
+for some $\gamma_1$, $\dotsc$, $\gamma_n$ algebraic over $K$.  We'll now show our result by induction.  It suffices to show that if $L=K(\alpha,\beta)$ with $\alpha$, $\beta$ algebraic over $K$ then there exists $\theta\in L$ such that
+\[ L=K(\theta) . \]
+Let $\alpha=\alpha_1$, $\dotsc$, $\alpha_n$ be the conjugates of $\alpha$ over $K$.
+Let $\beta=\beta_1$, $\dotsc$, $\beta_m$ be the conjugates of $\beta$ over $K$.
+Consider for each $i$ and $k\neq1$ the equation
+\[ \alpha_i + x\beta_k = \alpha_1 + x \beta_1 . \]
+There is precisely one solution.  Now choose an element $c$ in $K\setminus\brace{0}$ which is not one of these solutions and put $\theta=\alpha+c\beta$.
+
+We claim $\theta$ works.  Notice that $K(\theta)\subseteq K(\alpha,\beta)$.  To show that $K(\alpha,\beta)\subseteq K(\theta)$ it suffices to show that $\alpha$ and $\beta$ are in $K(\theta)$.  Observe that it suffices to show that $\beta$ is in $K(\theta)$ since then automatically $\alpha$ is also in $K(\theta)$.
+
+Let $f$ be the minimal polynomial of $\alpha$ over $K$ and let $g$ be the minimal polynomial of $\beta$ over $K$.  Thus $\beta$ is a root of $g(x)$ and also of $f(\theta-cx)$.  Notice that $f(\theta-cx)\in K(\theta)[x]$.  Further observe that $\beta$ is the only common root of $g(x)$ and $f(\theta-cx)$, by our choice of $c$.
+
+Let $p$ be the minimal polynomial of $\beta$ over $K(\theta)$.  Then $p$ divides $g$ and $p$ divides $f(\theta-cx)$.  Therefore $p$ is linear, in particular $\gamma_1\beta+\gamma_2=0$ with $\gamma_1$, $\gamma_2\in K(\theta)$, $\gamma_1\neq0$ hence $\beta\in K(\theta)$.
+
+\defn Let $K\subseteq L\subseteq\C$ with $[L:K]<\infty$.  We say that $L$ is normal over $K$ if $L$ is closed under taking conjugates over $K$.
+
+\textbf{Theorem 6:} Let $K\subseteq L\subseteq\C$ with $[L:K]<\infty$.  $L$ is normal over $K$ $\iff$ Each embedding $\sigma$ of $L$ in $\C$ which fixes each element of $K$ is an automorphism. \\
+\pf $\Rightarrow$ By Theorem 5 there exists a $\alpha\in L$ with $L=K[\alpha]$.  Further let $\alpha=\alpha_1$, $\dotsc$, $\alpha_n$ be the conjugates of $\alpha$ over $K$.  Then there are precisely $n$ embeddings $\lambda_1$, $\dotsc$, $\lambda_n$ of $L$ in $\C$ which fix each element of $K$.  We have $\lambda_i(\alpha)=\alpha_i$ for $i=1$, $\dotsc$, $n$.
+
+Since $L$ is normal $\lambda_i\colon L\to L$ for $i=1$, $\dotsc$, $n$.  Next note $[K(\alpha_i):K]=n$ for $i=1$, $\dotsc$, $n$ hence $L=K(\alpha_i)$ for $i=1$, $\dotsc$, $n$ and thus $\lambda_i$ is an automorphism for $i=1$, $\dotsc$, $n$.
+
+$\Leftarrow$ Let $\alpha\in L$ and let $\beta_1$, $\dotsc$, $\beta_m$ be the conjugates of $\beta$ over $K$.
+
+Notice that each embedding of $K(\beta)$ in $\C$ which fixes elements of $K$ can be extended to an embedding of $L$ in $\C$ which fixes $K$.  Each such embedding is an automorphism and so $\beta_i\in L$ for $i=1$, $\dotsc$, $m$ as required.
+
+\remark Theorem 4 $\implies[L:K]$ embeddings of $L$ in $\C$ which fix $K$.
+Thus by Theorem 6 $L$ is normal over $K$ $\iff$ there are $[L:K]$ automorphisms of $L$ which fix $K$.
+
+\textbf{Theorem 7:} Let $K\subseteq\C$.  Let $\alpha_1$, $\dotsc$, $\alpha_n\in\C$ be algebraic over $K$.  Put $L=K(\alpha_1,\dotsc,\alpha_n)$.  If $L$ contains the conjugates of $\alpha_1$, $\dotsc$, $\alpha_n$ over $K$ then $L$ is normal over $K$. \\
+\pf We have $K(\alpha_1,\dotsc,\alpha_n)=K[\alpha_1,\dotsc,\alpha_n]$.  Next by Theorem 5 there exists $\theta\in L$ such that $L=K[\theta]$.  Then $\theta=f(\alpha_1,\dotsc,\alpha_n)$ for some $f\in K[x_1,\dotsc,x_n]$.
+
+Let $\sigma$ be an embedding of $L$ in $\C$ which fixes $K$.  Then $\sigma(\theta)=f(\sigma\alpha_1,\dotsc,\sigma\alpha_n)\in L$.  Therefore $L$ is normal over $K$.

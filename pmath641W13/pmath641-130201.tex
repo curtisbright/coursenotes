@@ -1,0 +1,59 @@
+Let
+\[ S = \set{\gamma}{\text{$\gamma$ a unit in $\Q(\sqrt{D})\cap A$ with $\gamma>0$}} . \]
+We showed there exists an element $\gamma_0$ in $S$ different from $1$.  By taking inverses if necessary we may suppose that $\gamma_0>1$.
+
+But the elements of $A\cap\Q(\sqrt{D})\cap\R^+$ are of the form $\frac{l+m\sqrt{D}}{2}$ with $l$, $m\in\Z$.  Thus there are only finitely many elements of $A\cap\Q(\sqrt{D})$ larger than $1$ and less than or equal to $\gamma_0$.  Let $\epsilon$ be the smallest elements of $S$ with $1<\epsilon\leq\gamma_0$.
+
+We claim $S=\set{\epsilon^n}{n\in\Z}$.
+
+Suppose that there is a unit $\lambda$ in $S$ which is not a power of $\epsilon$.  Then choose $n\in\Z$ such that
+\[ \epsilon^n < \lambda < \epsilon^{n+1} . \]
+Consider $\lambda/\epsilon^n=\lambda(\epsilon^{-1})^n\in S$ since
+\[ N(\lambda(\epsilon^{-1})^n) = N(\lambda)(N(\epsilon^{-1}))^n = \pm 1 . \]
+But $1<\lambda/\epsilon^n<\epsilon$ contradicting the minimality of $\epsilon$.  The result follows.
+
+\textbf{Theorem 24:} Let $K$, $L$, $M$ be finite extensions of $\Q$ with $K\subseteq L\subseteq M$.  Let $\alpha\in M$ then $\Tr_K^M(\alpha)=\Tr_K^L(\Tr_L^M(\alpha))$ and $N_K^M(\alpha)=N_K^L(N_L^M(\alpha))$.
+
+Let $\sigma_1$, $\dotsc$, $\sigma_n$ be the embeddings of $L$ in $\C$ which fix $K$.  Let $\tau_1$, $\dotsc$, $\tau_m$ be the embeddings of $M$ in $\C$ which fix $L$.
+
+If $\alpha\in M$ then
+\[ \Tr_K^L(\Tr_K^L(\alpha)) = \Tr_K^L(\tau_1(\alpha)+\dotsb+\tau_m(\alpha)) = \sum_{i=1}^n\sigma_i(\tau_1(\alpha)+\dotsb+\tau_m(\alpha)) . \tag{$*$} \]
+Let $N$ be a normal extension of $M$.  We can extend $\sigma_1$, $\dotsc$, $\sigma_n$ to embeddings of $N$ in $\C$ which fix $K$, let us choose $\sigma_1'$, $\dotsc$, $\sigma_n'$.  These are automorphisms of $N$ which fix $K$.  Let $\tau_1'$, $\dotsc$, $\tau_m'$ be embeddings of $N$ in $\C$ which fix $L$.
+
+We can compose $\sigma_i'$ and $\tau_j'$ and we put $\sigma_i'\circ\tau_j'|_M$ to be the restriction of $\sigma_i'\circ\tau_j'$ to $M$.  By $*$
+\begin{align*}
+\Tr_K^L(\Tr_L^M(\alpha)) &= \sum_{i=1}^n\sigma_i'(\tau_1(\alpha)+\dotsb+\tau_m'(\alpha)) \\
+&= \sum_{i,j}\sigma_i'\circ\tau_j'(\alpha) \\
+&= \sum_{i,j}\sigma_i'\circ\tau_j'|M(\alpha)
+\end{align*}
+Notice that $\sigma_i'\circ\tau_j'|_M$ is an embedding of $M$ in $\C$ which fixes $K$.  If we can show that $\sigma_i'\circ\tau_j'|_M$ are distinct as we sum over $i$ and $j$ then they are the $nm$ distinct embeddings of $M$ in $\C$ which fix $K$ and the result follows.
+
+Suppose that $\sigma_i'\circ\sigma_j'|_M=\sigma_r'\circ\tau_s'|_M$.  Next let $\gamma$ be such that $L=K[\gamma]$.
+\[\left.\begin{aligned}
+\text{Then } \sigma_i'\circ\tau_j'|_M(\gamma)\footnote{equal to below} &= \sigma_i'(\gamma) = \sigma_i(\gamma) \\
+\text{and } \sigma_r'\circ\tau_s|_M(\gamma) &= \sigma_r'(\gamma) = \sigma_r(\gamma)
+\end{aligned}\right\} i = r . \]
+Next choose $\theta$ such that $M=L(\theta)$
+\[\left.\begin{aligned}
+\sigma_i'\circ\tau_j'|_M(\theta)\footnote{equal to below} &= \tau_j'(\theta) = \tau_j(\theta) \\
+\sigma_i'\circ\tau_s'|_M(\theta) &= \tau_s'(\theta) = \tau_s(\theta)
+\end{aligned}\right\} j=s .
+\]
+Similarly for the norm.
+
+\defn Let $K$ be an extension of $\Q$ of degree $n$ and let $\sigma_1$, $\dotsc$, $\sigma_n$ be the embeddings of $K$ in $\C$ which fix $\Q$.  Let $\alpha_1$, $\dotsc$, $\alpha_n$ be elements of $K$.  We define the discriminant of the set $\brace{\alpha_1,\dotsc,\alpha_n}$, denoted by $\disc\brace{\alpha_1,\dotsc,\alpha_n}$, by
+\[ \disc\brace{\alpha_1,\dotsc,\alpha_n} = (\det(\sigma_i(\alpha_j)))^2 . \]
+Note by properties of the determinant that the order in which we take the $\alpha_i$s or in which we take the $\sigma_i$s does not matter.
+
+\textbf{Theorem 25:} Let $K$ be an extension of $\Q$ of degree $n$.  Let $\alpha_1$, $\dotsc$, $\alpha_n$ be elements of $K$.  Then
+\[ \disc\brace{\alpha_1,\dotsc,\alpha_n} = \det(\Tr_\Q^K(\alpha_i\alpha_j)) . \]
+\pf Let $\sigma_1$, $\dotsc$, $\sigma_n$ be the embeddings of $K$ in $\C$ which fix $\Q$.
+\[ (\sigma_j(\alpha_i))(\sigma_i(\alpha_j)) = (\Tr_{\Q}^K(\alpha_i\alpha_j)) . \tag{$*$} \]
+Thus
+\begin{align*}
+\disc\brace{\alpha_1,\dotsc,\alpha_n} &= (\det(\sigma_i(\alpha_j)))^2 \\
+&= \det(\sigma_j(\alpha_i))\cdot\det(\sigma_i(\alpha_j)) \\
+&= \det((\sigma_j(\alpha_i))\cdot(\sigma_i(\alpha_j))) \\
+&= \det(\Tr_{\Q}^K(\alpha_i\alpha_j)) \text{ by $*$} .
+\end{align*}
+\remark Since $\T_{\Q}^K(\alpha_i\alpha_j)\in\Q$ we see that $\brace{\alpha_1,\dotsc,\alpha_n}\in\Q$.  Further if $\alpha_1$, $\dotsc$, $\alpha_n$ are in $A\cap K$ then $\alpha_i\alpha_j\in A\cap K$ and so $\T_{\Q}^K(\alpha_i\alpha_j)\in\Z\implies\disc\brace{\alpha_1,\dotsc,\alpha_n}\in\Z$.

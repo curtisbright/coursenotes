@@ -1,0 +1,40 @@
+Cam Stewart MC 5051 \\
+Algebraic Number Theory \\
+Marks: Final exam 65\% \\
+\phantom{Marks: }Midterm 25\% \\
+\phantom{Marks: }Assignments 10\% \\
+Grad Students: essay \& talk \\
+No text. \\
+Notes on my webpage. \\
+Reference Texts: Number Fields: Marcus \\
+Algebraic Number Theory: Lang; Stewart \& Tall; Frohlich \& Taylor
+
+\defn An algebraic integer is the root of a monic polynomial in $\Z[x]$.  An algebraic number is the root of a nonzero polynomial in $\Z[x]$.
+
+A number field is a finite extension $K$ of $\Q$ and we shall suppose it is in $\C$.  Our object of study is the ring of algebraic integers in $K$.
+
+Basic: Suppose $L$ and $K$ are finite extensions of $\Q$.  $L$ is an extension of $K$ if $K\subset L$.  The dimension of $L$ over $K$ in this case is $[L:K]$.  Suppose next that $H$ is a field with $K\subseteq H\subseteq L$.  Then $H$ is said to be an intermediate field of $K$ and $L$.  We have $[L:K]=[L:H][H:K]$.
+
+A polynomial $f$ in $K[x]$ is said to be irreducible if whenever $f=gh$ with $g$, $h\in K[x]$ then either $g$ or $h$ is a constant.
+
+Recall: $K[x]$ is a Principal Ideal Domain.
+
+\defn Let $K\subset\C$.  Let $\theta\in\C$ be algebraic over $K$.  A minimal polynomial $f$ of $\theta$ over $K$ is a monic polynomial in $K[x]$ which has $\theta$ as a root and has minimal degree with this property.
+
+\textbf{Theorem 1:} Let $K\subseteq\C$.  If $\theta\in\C$ is algebraic over $K$ then $\theta$ has a unique minimal polynomial. \\
+\pf Suppose that $p_1(x)$ and $p_2(x)$ are minimal polynomials for $\theta$ over $K$.  By the Division Algorithm for $K[x]$, $\exists c\in K$ and $r(x)\in K[x]$ such that $p_1(x)=cp_2(x)+r(x)$ with $r(x)$ the zero polynomial or $\deg r<\deg p_1=\deg p_2$.  But $p_1(\theta)=cp_2(\theta)+r(\theta)$ hence $r(\theta)=0$.  By the minimality of the degree we see that $r$ is the zero polynomial.
+
+Since $p_1$ and $p_2$ are monic we see that $c=1$ hence $p_1=p_2$ as required.
+
+\defn Suppose that $\theta$ is algebraic over $K$.  Then the degree of $\theta$ over $K$ is the degree of the minimal polynomial of $\theta$ over $K$.
+
+\remark Let $\theta$ be algebraic over $K$ and let $p\in K[x]$ be the minimal polynomial of $\theta$ over $K$.  If $f\in K[x]$ is a polynomial for which $f(\theta)=0$ then $p\div f$ in $K[x]$.
+
+\textbf{Theorem 2:} Let $f\in K[x]$ with $K\subseteq\C$.  If $f$ is irreducible over $K$ of degree $n$ ($\geq1$) then $f$ has $n$ distinct roots. \\
+\pf Suppose that $f$ has a root $\alpha$ of multiplicity larger than $1$.  Then $f(x)=a_n(x-\alpha)^2f_1(x)$ with $f_1\in K(\alpha)[x]$.  Thus
+\[ f'(x) = 2a_n(x-\alpha)\cdot f_1(x) + a_n(x-\alpha)^2 f_1'(x) , \]
+hence $f'(\alpha)=0$ and note that $f'\in K[x]$.  Let $p(x)$ be the minimal polynomial for $\alpha$ over $K$.  Observe that $p(x)$ divides $f(x)$ and it divides $f'(x)$.  Observe that $p(x)$ divides $f(x)$ and it divides $f'(x)$.  Therefore $f$ is reducible which is a contradiction.
+
+Let $\theta$ be algebraic over $K$ and let $p\in K[x]$ be the minimal polynomial of $\theta$.  Suppose that the degree of $p$ is $n$.  Then $p$ has $n$ distinct roots $\theta_1$, $\dotsc$, $\theta_n$ and these are known as the conjugates of $\theta$ over $K$.
+
+\defn Let $K\subseteq\C$ and let $\theta$ be algebraic over $K$.  $K(\theta)$ is defined to be the smallest field containing $K$ and $\theta$.  $K(\theta)$ is said to be a simple algebraic extension of $K$.

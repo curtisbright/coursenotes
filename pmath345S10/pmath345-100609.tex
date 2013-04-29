@@ -1,0 +1,40 @@
+Office Hours \\
+Thursday 1:30--3:30
+
+\thm Let $R$ be Noetharian, $I\subset R$ any ideal.  Then $R/I$ is Noetharian. \\
+\pf Let $J$ be any ideal of $R/I$.  We want to show that $J=(r_1,\dotsc,r_n)$ for some elements $r_i\in R/I$.  Let $q\colon R\to R/I$ be the quotient homomorphism, and let $A=q^{-1}(J)=\set{r\in R}{r\in J\bmod I}$.  Then $A$ is an ideal of $R$, which is a Noetharian ring, so $A=(r_1,\dotsc,r_n)$ for some $r_1$, $\dotsc$, $r_n\in R$.
+
+\claim $J=(\overline{r_1},\dotsc,\overline{r_n})$, where $\overline{r_i}=r_i\bmod I$. \\
+\textbf{Proof of claim:} Say $a\in J$.  Then there is some $r\in A$ such that $q(r)=a$.  So we can write
+\[ r = \alpha_1 r_1 + \alpha_2 r_2 + \dotsb + \alpha_n r_n \]
+for some $\alpha_1$, $\dotsc$, $\alpha_n\in R$, so:
+\begin{align*}
+a &= \overline{\alpha_1}\overline{r_1} + \dotsb + \overline{\alpha_n}\overline{r_n} \bmod I \\
+&\in (\overline{r_1},\dotsc,\overline{r_n}) \qed
+\end{align*}
+%polynomials are awesome, but there's more to life then polynomials
+%\marginpar{Ideals, Varieties, and Algorithms: Cox, Little, O'Shea}
+\cor Let $R$ be any Noetharian ring (e.g., a field, or $\Z$).  Then for any ideal $I$ of $R$, the ring
+\[ R[x_1,\dotsc,x_n]/I \]
+is Noetharian.
+
+\marginpar{Ideals, Varieties, and Algorithms: Cox, Little, O'Shea}\defn A monomial ordering on the set of monomials $\set{x_1^{a_1}\dotsm x_n^{a_n}}{a_i\in\Z_{\geq0}}$ is a partial ordering $\leq$ satisfying:
+\begin{enumerate}[label=(\arabic*)]
+\item It must be a total order: for any two monomials $m_1$ and $m_2$, either $m_1\leq m_2$ or $m_1\geq m_2$.  If both hold, then $m_1=m_2$.
+\item It must be a well ordering: there are no infinite descending sequences of monomials.
+\item Given monomials $m_1$, $m_2$, $m_3$ with $m_1\leq m_2$, then $m_1m_3\leq m_2m_3$.
+\end{enumerate}
+\eg Lexicographic order:
+\[ x_1^{a_1}x_2^{a_2}\dotsm x_n^{a_n} > x_1^{b_1}x_2^{b_2}\dotsm x_n^{b_n} \]
+\emph{iff} $a_1>b_1$ \\
+or $a_1=b_1$ and $a_2>b_2$ \\
+or $a_1=b_1$, $a_2=b_2$, and $a_3>b_3$ \\
+\hbox{~}$\vdots$ \\
+or $a_i=b_i$ $\forall i<n$ and $a_n>b_n$
+\begin{gather*}
+x_1^2 x_2 > x_1 x_2^2 \qquad x_1^2 x_2\footnote{leading term} - x_2^2x_1 \\
+x_1^2 x_2 < x_1^2x_2^2 \\
+x_1x_2^{7917} < x_1^2x_2 \\
+a^2 > a
+\end{gather*}
+\defn Let $p(x_1,\dotsc,x_n)$ be a polynomial.  The leading monomial of $p$ is the ``biggest'' monomial with a nonzero coefficient.  The leading coefficient is the coefficient of the leading monomial.  The leading term is $(\text{leading coefficient})(\text{leading monomial})$.  The multidegree of a monomial $x_1^{a_1}\dotsm a_n^{a_n}$ is $(a_1,\dotsc,a_n)$.  The multidegree of $p$ is the multidegree of its leading monomial.

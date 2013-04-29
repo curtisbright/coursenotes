@@ -1,0 +1,67 @@
+Theorem 44 \dots \\
+$\brace{\alpha_1,\dotsc,\alpha_n}$ a basis for $I$
+\begin{align*}
+\disc\brace{\alpha_1,\dotsc,\alpha_n} &= \paren*{\begin{pmatrix}
+a_11 & & 0 \\
+\vdots & \ddots & \\
+a_{n1} & \cdots & a_{nn}
+\end{pmatrix}}^2 D \\
+&= (a_{11}\dotsm a_{nn})^2 D
+\end{align*}
+We showed that $NI\geq a_{11}\dotsm a_{nn}$.
+
+To conclude suppose $\gamma\in\A\cap K$.  Then $\gamma=b_1\omega_1+\dotsb+b_n\omega_n$ with $b_i\in\Z$; here $\brace{\omega_1,\dotsc,\omega_n}$ is an integral basis for $\A\cap K$.  Note that, by the Division Algorithm, $b_n=q_n a_{nn} + r_n$ with $0\leq r_n<a_{nn}$ and then $\gamma-q_n\alpha_n=d_1\omega_1+\dotsb+d_{n-1}\omega_{n-1}+r_n\omega_n$.
+
+Repeating this $n-1$ times we find that there exist integers $q_1$, $\dotsc$, $q_{n-1}$ so that
+\[ \gamma - q_n\alpha_n - q_{n-1}\alpha_{n-1} + \dotsb + q_1\alpha_1 = r_1\omega_1 + \dotsb + r_n\omega_n \]
+with $0\leq r_i<a_{ii}$.  Thus
+\[ NI \leq a_{11}\dotsm a_{nn} \implies NI = a_{11}\dotsm a_{nn} . \]
+\textbf{Corollary 50:} $[K:\Q]<\infty$.  Let $\alpha$ be a non-zero element of $\A\cap K$.  Then $N(\alpha)=\abs{N_\Q^K(\alpha)}$. \\
+\pf Let $\brace{\omega_1,\dotsc,\omega_n}$ be an integral basis for $\A\cap K$.  Then the principal ideal $(\alpha)$ has $\brace{\alpha\omega_1,\dotsc,\alpha\omega_n}$ as an integral basis.
+
+Let $\sigma_1$, $\dotsc$, $\sigma_n$ be the embeddings of $K$ in $\C$ which fix $\Q$.  Then
+\begin{align*}
+\disc\brace{\alpha\omega_1,\dotsc,\alpha\omega_n} &= \paren*{\det(\sigma_i(\alpha\omega_j))}^2 \\
+D = \disc\brace{\omega_1,\dotsc,\omega_n} &= \paren*{\det(\sigma_i(\omega_j))}^2
+\end{align*}
+But we have
+\begin{align*}
+\disc\brace{\alpha\omega_1,\dotsc,\alpha\omega_n} &= \paren*{\det\begin{pmatrix}
+\sigma_1(\alpha) & & 0 \\
+& \ddots & \\
+0 & & \sigma_n(\alpha)
+\end{pmatrix}}^2\cdot D \\
+&= (N_\Q^K(\alpha))^2 \cdot D .
+\end{align*}
+By Theorem~49 $\implies(N(\alpha))^2=(N_\Q^K(\alpha))^2$.  Thus $N(\alpha)=\abs{N_\Q^K(\alpha)}$ since $N(\alpha)$ is a non-negative integer.
+
+\textbf{Theorem 51:} (Fermat's Theorem) Let $[K:\Q]<\infty$ and let $P$ be a prime ideal of $\A\cap K$.  Let $\alpha$ be an element of $\A\cap K$ with $P\nmid(\alpha)$ then
+\[ \alpha^{NP-1} \equiv 1 \bmod P . \]
+\pf Let $\beta_1$, $\dotsc$, $\beta_{NP}$ be a complete set of representatives for the cosets $\A\cap K/P$ (in $\A\cap K$ modulo $P$).  We may suppose $\beta_{NP}$ is congruent to $0\bmod P$.  Then since $P\nmid(\alpha)$ we see that
+\[ \alpha\beta_1,\dotsc,\alpha\beta_{NP} \]
+is again a complete set of representatives mod $P$ with $\alpha\beta_{NP}$ congruent to $0$ modulo $P$.  Therefore
+\begin{align*}
+\alpha\beta_1\dotsm\alpha\beta_{NP-1} &\equiv \beta_1\dotsm\beta_{NP-1} \bmod{P} . \\
+\implies \alpha^{NP-1} &\equiv 1 \bmod{P}
+\end{align*}
+as required.
+
+\textbf{Proposition 52:} Let $[K:\Q]<\infty$.  Let $A$ be a non-zero ideal of $\A\cap K$.  Then $NA\in A$. \\
+\pf Let $\beta_1$, $\dotsc$, $\beta_{NA}$ be a complete set of representatives modulo $A$.  Then
+\[ 1+\beta_1,\dotsc,1+\beta_{NP} \]
+is also a complete set of representatives modulo $A$.
+\begin{align*}
+\implies \beta_1 + \dotsb + \beta_{NA} &\equiv (1+\beta_1) + \dotsb + (1+\beta_{NA}) \bmod{A} \\
+0 &\equiv NA \bmod A
+\end{align*}
+Notice that for any positive integer $t$ there are only finitely many ideals $A$ of $\A\cap K$ with $NA=t$.
+
+Still to show: The norm map on ideals is multiplicative, i.e., for $A$, $B$ ideals in $\A\cap K$
+\[ NAB = NA\cdot NB . \]
+If we have this and
+\[ NA = p \text{ with $p$ a prime} \]
+then $A$ is a prime ideal.  Further if $p$ is a prime in $\Z$ then 
+\[ N(p) = \abs{N_\Q^K p} = p^n \text{ where $n=[K:\Q]$} . \]
+Every prime ideal $P$ of $\A\cap K$ divides $(p)$ for exactly one prime.
+\[ \implies NP = p^f \]
+for some integer $f$ with $1\leq f\leq n$.

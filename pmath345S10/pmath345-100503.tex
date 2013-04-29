@@ -1,0 +1,32 @@
+PMath 345 \\
+David McKinnon \\
+\url{http://www.student.math.uwaterloo.ca/~pmat345}
+
+\textbf{Rings} \\
+A ring is a bunch of things you can add, subtract and multiply in a reasonable way.
+
+\eg $\Z$, $\R$, $\Q$, $\C$, $\R[x]={}$\{polynomials in $x$ with real coefficients\}, $\R[x_1,\dotsc,x_n]={}$\{polynomials in $x_1$, $\dotsc$, $x_n$ with real coefficients\}, $M_n(\Z)={}$\{$n\times n$ matrices with $\Z$ coefficients\}, $\Z/n\Z$, $\Z[i]=\set{a+bi}{a,b\in\Z}={}$``Gaussian integers''
+
+\defn A ring is a set $R$ with two functions ${+}\colon R\times R\to R$ and ${\cdot}\colon R\to R$ satisfying the following properties for all $a$, $b$, $c\in R$:
+\begin{enumerate}[label=(\arabic*)]
+\item $(a+b)+c=a+(b+c)$
+\item $a+b=b+a$
+\item There exists $0\in R$ such that $a+0=a$
+\item There exists $-a\in R$ such that $a+(-a)=0$
+\item $(a\cdot b)\cdot c=a\cdot(b\cdot c)$
+\item $a\cdot b=b\cdot a$\quad$\leftarrow$ Not really a ring axiom
+\item There exists a $1\in R$ such that $1\cdot a=a\cdot 1=a$.  Controversial!  rng
+\item $a\cdot(b+c)=a\cdot b+a\cdot c$ \\
+$(a+b)\cdot c=a\cdot c+b\cdot c$
+\end{enumerate}%
+\[ 0_\text{Paul} = 0_\text{Paul} + 0_\text{Ringo} = 0_\text{Ringo} \]
+\defn Let $R$ be a ring.  A subring of $R$ is a subset $S\subset R$ which is a ring using the $+$ and $\cdot$ of $R$. \\
+\eg $\Q$ is a subring of $\C$. \\
+$\Z[i]$ is a subring of $\C$.
+
+\thm (Subring Theorem) Let $R$ be a ring.  $S\subset R$ a subset.  Then $S$ is a subring of $R$ \emph{iff}
+\begin{enumerate}[label=(\arabic*)]
+\item $0$, $1\in S$
+\item If $a$, $b\in S$, then $a-b\in S$.
+\item If $a$, $b\in S$, then $a\cdot b\in S$.
+\end{enumerate}

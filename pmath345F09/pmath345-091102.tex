@@ -1,0 +1,74 @@
+(corrected exercise) \\
+\textbf{Claim: }$R$ ufd, $0\neq P\in R[x]$, $r\in R$, \\
+$G(rP)=urG(P)$ for some unit $u$ \\
+\pf $P=a_0+a_1x+\dotsb+a_nx^n$, $n=\deg P$ \\
+write $a_i=u_ip_1^{a_{i1}}p_2^{a_{i2}}\dotsc p_l^{a_{il}}$ \\
+$p_1,\dotsc,p_n$ distinct primes in $P_R$ \\
+$a_{i1},\dotsc,a_{il}$ non-negative integers \\
+$rR = ra_0+ra_1x+\dotsb+ra_nx^n$ \\
+write $r=wp_1^{r_1}\dotsm p_l^{r_l}$ \\
+\begin{align*}
+G(rP) &= \gcd\set{ra_i}{i=1,\dotsc,l,a_i\neq0} \\
+&= p_1^{\min\set{a_{i1}+r_1}{i=1,\dotsc,l,a_i\neq0}}\dotsm p_l^{\min\set{a_{li}+r_l}{i=1,\dotsc,l,a_i\neq0}} \\
+&= p_1^{e_1}\dotsm p_l^{e_l} \\
+e_j &= \min\set{a_{ij}+r_j}{i=1,\dotsc,l,a_i\neq0} \\
+&= r_j + \min\set{a_{ij}}{i=1,\dotsc,l,a_i\neq0} \\
+\implies G(rP) &= p_1^{r_1}\dotsm p_l^{r_l}\cdot\gcd\set{a_i}{i=1,\dotsc,l,a_i\neq0} \\
+&= \tfrac{1}{w} r \cdot G(P)
+\end{align*}
+
+\lem $R$ ufd, $f,g\in R[x]\setminus\brace0$.
+\[ G(f)=G(g)=1 \qquad\text{then}\qquad G(fg)=1 . \]
+\pf Suppose $G(fg)\neq1$, let $p\in P_R$ such that $p\mid G(fg)$ \\
+i.e., $p$ appears in the factorization of $G(fg)$ with a positive exponent.
+\begin{align*}
+f &= a_0 + \dotsb + a_nx^n \qquad n=\deg f \\
+g &= b_0 + \dotsb + b_nx^m \qquad m=\deg g
+\end{align*}
+$p\nmid G(f)$ $\implies$ there is a least $r\geq0$ such that $p\nmid a_r$. \\
+$p\nmid G(g)$ $\implies$ there is a least $s\geq0$ such that $p\nmid b_s$. \\
+Consider the coefficient of $x^{r+s}$ in $fg$:
+\[ \sum_{i=1}^{r+s} a_{r+s-i}b_i \]
+If $i<s$ $\implies p\mid b_i \implies p\mid a_{r+s-i}b_i$ \\
+If $i>s$ $\implies r+s-i<r \implies p\mid a_{r+s-i} \implies p\mid a_{r+s-i}b_i$ \\
+If $i=s$ $\implies p\nmid a_r, p\nmid a_s\underset{\text{prime}}{\implies}p\nmid a_ra_s$. \\
+Since
+\[ \sum_{i=1}^{r+s} a_{r+s-i}b_i - \underbrace{\paren[\Bigg]{\sum_{\substack{i=1\\i\neq s}}^{r+s}a_{r+s-i}b_i}}_\text{$p$ divides} = \underbrace{a_r b_s}_\text{$p$ does not divide} \]
+Therefore $p\nmid\text{coefficients of $x^{r+s}$ in $fg$}$.  Contradiction.
+
+\thm $R$ ufd, $f,g\in R[x]\setminus\brace0$. \\
+$G(fg)=G(f)G(g)$ \\
+\pf First, need to show (exercise):
+\begin{gather*}
+f = G(f)\cdot\hat f \qquad G(\hat f)=1 \\
+g = G(g)\cdot\hat g \qquad G(\hat g)=1
+\end{gather*}
+\begin{align*}
+fg &= G(f)G(g)\hat f\hat g \\
+G(fg) &= G(\underbrace{G(f)G(g)}_r\underbrace{\hat f\hat g}_p) \overset{\substack{\text{exercise}\\\text{correcting lemma}}}{\implies} G(fg) = ur G(\hat r\hat g) = ur = uG(f)G(g) \\
+G(fg) &= p_1^{e_1}\dotsm p_l^{e_l}
+\end{align*}
+$p_i$s in $P_R$, $e_i\geq0$ \\
+Similarly for $G(f)$ and $G(g)$. \\
+Hence for $G(f)G(g)$. \\
+Therefore $u=1$.
+
+$R$ ufd.
+\[ R[x] \overset{\text{subring}}{\subseteq} F[x] \qquad F=Q(R)\text{ factor field} \]
+\lem $R$ ufd, $F=Q(R)$, $f\in F[x]$.  There exist $a,b\in R$, $\gcd(a,b)=1$, and $\hat f\in R[x]$, $G(\hat f)=1$ such that $f=\frac{a}{b}\hat f$ \\
+\pf $c=\text{product of all denominators appearing in the nonzero coefficients of $f$}$ \\
+$f=a_0+\dotsb+a_nx^n$ \qquad $n=\deg f$, $a_i\in F=Q(R)$ \\
+write each $a_i=\frac{b_i}{c_i}$, $b_i,c_i\in R$ \\
+\[ \prod_{\substack{i=0\\b_i\neq0}}^n c_i \eqqcolon c \neq 0 \]
+In $R[x]$ \\
+$\implies cf\in R[x]$.  Write $cf=G(cf)\cdot\hat f$ where $\hat f\in R[x]$, $G(\hat f)=1$ \\
+In $F[x]$,
+\[ f = \frac{G(cf)}{c} \hat f \]
+Let $r=\gcd(G(cf),c)$. \\
+$G(cf)=r\cdot a$ for some $a\in R$ \\
+$c=r\cdot b$ for some $b\in R$ \\
+$\implies\gcd(a,b)=1$
+\[ \frac{G(cf)}{c} = \frac{a}{b} \]
+\ex
+\[ \tfrac56+\tfrac{25}4x+\tfrac58x^3 \in \Q[x] \]
+\[ = \tfrac5{24}(\underbrace{4+5x+3x^3}_{\text{in $\Z[x]$}}) \]

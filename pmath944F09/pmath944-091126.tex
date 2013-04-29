@@ -1,0 +1,35 @@
+\textbf{Sporadic simple groups}
+\\
+A group is said to be \emph{simple} if it has no proper normal subgroup.  Why are simple groups important?
+
+Every finite group has a composition series
+\[ G \lhd G_1 \lhd G_2 \lhd \dotsb \lhd G_n = \brace1 \]
+where $G_{i+1}$ is a normal subgroup of $G_i$ for $i=1\c \dotsc\c n-1$ and $G_i/G_{i+1}$ is simple.  Jordan and Holder proved that the set of groups $G_i/G_{i+1}$ for $i=1\c \dotsc\c n-1$ is uniquely determined or equivalently the sequence $(G_i/G_{i+1})_{i=1}^{n-1}$ is determined up to permutation.  Thus the simple groups are the building blocks or ``primes'' of the set of finite groups.
+
+If $G$ is an abelian finite simple group then $G$ is isomorphic to $\Z/p\Z$ for some prime $p$.
+
+The alternating groups $A_n$ are simple for $n\neq4$.  In fact there are several infinite families of simple groups which have been found.  In addition there are 26 finite simple groups which do not fit in these families and they are known as the sporadic simple groups.  The Classification Theorem tells us this is the complete list.
+
+12 of the 26 sporadic simple groups arise as subquotients of $.0$.  Further the largest of the sporadic simple groups $M$ is known as the \emph{Monster} or the Fischer--Griess group or the Friendly Giant.  $M$ can be constructed from the Leech lattice, it was first discovered by Fischer and Griess in 1973 and formally constructed in 1980 by Griess.  The order of $M$ is
+\[ 2^{46}\cdot3^{20}\cdot5^9\cdot7^6\cdot11^2\cdot13^3\cdot17\cdot19\cdot23\cdot29\cdot31\cdot41\cdot47\cdot59\cdot71 \]
+Monstrous Moonshine: Conway and Norton.  (Borcherds)
+
+A rich source of lattices is algebraic number theory.  Let $K=\Q(\theta)$ with $[K:\Q]=n$.  Let $\alpha\in K$ then the conjugates of $\alpha$ over $\Q$ are $\alpha=\alpha_1\c \alpha_2\c \dotsc\c \alpha_n$ where
+\[ \sigma_i(\alpha) = \alpha_i \qquad\text{for $i=1\c \dotsc\c n$} \]
+and $\sigma_i$ is one of the $n$ isomorphisms of $K$ into $\C$ which fix $\Q$.  We have the notion of the norm and trace of $\alpha$ given by
+\[ N_{K/\Q}(\alpha) = \alpha_1\dotsm\alpha_n \]
+and
+\[ \Tr_{K/\Q}(\alpha) = \alpha_1 + \dotsb + \alpha_n . \]
+The embeddings (isomorphic injection) of $K$ into $\C$ which fix $\Q$ can be split into $r$ embeddings into $\R$ and $2s$ embeddings into $\C$ which are not embeddings in $\R$.  We may denote them by $\sigma_1\c \dotsc\c \sigma_r$ and $\sigma_{r+1}\c \dotsc\c \sigma_{r+2s}$ where $\sigma_{r+i}=\overline{\sigma_{r+s+i}}$ for $i=1\c \dotsc\c s$.  We introduce the map $\nu\colon K\to\R^n$ by
+\[ \nu(\alpha) = \paren[\big]{\sigma_1(\alpha),\dotsc,\sigma_r(\alpha),\Re(\sigma_{r+1}(\alpha)),\Im(\sigma_{r+1}(\alpha)),\dotsc,\Re(\sigma_{r+s}(\alpha)),\Im(\sigma_{r+s}(\alpha))} . \]
+Let $\O_K$ be the ring of algebraic integers of $K$.  We can show that $\set{\nu(\alpha)}{\alpha\in\O_K}$ forms a lattice in $\R^n$ and if $A$ is a non-zero ideal of $\O_K$ then $\set{\nu(\alpha)}{\alpha\in A}$ is a sublattice of this lattice.
+
+Let us consider the totally real case where $r=n$.  Then
+\[ \nu(\alpha)\cdot\nu(\alpha) = \alpha_1^2 + \dotsb + \alpha_n^2 = \Tr_{K/\Q}(\alpha^2) . \]
+Further
+\[ \frac{\alpha_1^2+\dotsb+\alpha_n^2}{n} \geq (\alpha_1^2\dotsm\alpha_n^2)^{1/n} \]
+by the arithmetic--geometric mean inequality.  If $\alpha$ is a non-zero algebraic integer then so is $\alpha^2$ hence $\alpha_1^2\dotsm\alpha_n^2$, which is $N_{K/\Q}(\alpha^2)=(N_{K/\Q}(\alpha))^2$, is a positive integer.  Therefore if $\alpha$ is a non-zero algebraic integer
+\[ \nu(\alpha)\cdot\nu(\alpha) \geq n \]
+and this gives us a way to show that the minimal length of a non-zero vector in the lattice is large.
+
+It is possible to realize many lattices in this way.  For example the Leech lattice can be realized by considering $K=\Q(\zeta_{39})$.

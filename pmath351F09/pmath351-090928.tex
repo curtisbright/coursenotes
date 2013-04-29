@@ -1,0 +1,86 @@
+Ball $B(x_0,r)=\set{x\in X}{d(x,x_0)<r}$ ($r>0$, $x_0\in X$) \\
+$U\subseteq X$ is \emph{open} if $\forall u\in U~\exists B(u,r)\subseteq U$ for some $r>0$
+
+\prop Balls are open sets.
+
+\prop \begin{enumerate}
+\item If $U_1$, $U_2$ are open then $U_1\cap U_2$ is open.
+\item If $\brace{U_i}_{i\in I}$ are open then $\bigcup_{i\in I}$ is open.
+\end{enumerate}
+\pf \begin{enumerate}
+\item Let $x\in U_1\cap U_2$.  Since $x\in U_i$ and these are open, $\exists r_i>0$ such that $B(x,r_i)\subseteq U_i$.  Let $r=\min(r_1,r_2)>0$ and then $B(x,r)\subseteq B(x,r_1)\subseteq B(x,r_2)\subseteq U_1\cap U_2$ \\
+$U_1\cap U_2$ is open
+\item If $x\in\bigcup_{i\in I}U_i$ then $\exists i_0\in I$ such that $x\in U_{i_0}$.  That set is open so $\exists r$ such that $B(x,r)\subseteq U_{i_0}\subseteq\bigcup_{i\in I}U_i$ \\
+$\implies \bigcup U_i$ is open.
+\end{enumerate}
+
+\ex $B(0,\frac1n)$ in $\R^2$.  $\bigcap_{i=1}^\infty B(0,\frac1n)=\brace0$, not open. \\
+This shows an infinite intersection of open sets need not be open.
+
+\prop $U$ is open iff $U$ is a union of balls.
+
+\pf ($\Longleftarrow$) Any union of balls is a union of open sets, therefore is open. \\
+($\Longrightarrow$) Since $U$ is open, $\forall x\in U~\exists B(x,r_x)\subseteq U$. \\
+Claim $U=\bigcup_{x\in U}B(x,r_x)$ \\
+RHS $\subseteq U$ as each $B(x,r_x)\subseteq U$ \\
+But each $x\in U$ belongs to $B(x,r_x)$, therefore $U\subseteq\text{RHS}$
+
+\prop $\Int U=\bigcup_{\substack{V\subseteq U\\\text{open}}}$: says $\Int U$ is the largest open subset of $U$
+
+\pf Let $x\in\Int U$.  By definition $\exists r>0$ such that $B(x,r)\subseteq U$. \\
+$B(x,r)$ is an open set in $U$ therefore $x\in\bigcup_{\substack{V\subseteq U\\\text{$V$ open}}} V \longrightarrow \Int U\subseteq\bigcup_{\substack{V\subseteq U\\\text{$V$ open}}} V$ \\
+Pick $x\in\bigcup_{\substack{V\subseteq U\\\text{$V$ open}}} V$.  Then $x\in V$ some $V\subseteq U$, open. \\
+So $\exists B(x,r)\subseteq V\subseteq U \implies x\in\Int U\implies\bigcup_{\substack{V\subseteq U\\\text{$V$ open}}} V \subseteq \Int V$
+
+$\Int(A\cup B)\cancel{\overset{?}{=}}\Int A \cup \Int B$ \\
+No:\begin{enumerate}
+\item $\underbrace{(-1,0]}_A\cup\underbrace{[0,1)}_B$ \\
+$\Int(A\cup B) = (-1,1)$ \\
+$\Int A = (-1,0)$, $\Int B=(0,1)$
+\item $A=\Q$, $B=\R\setminus\Q$ \\
+$\Int A=\emptyset=\Int B$ \\
+$\Int(A\cup B)=\Int\R=\R$
+\end{enumerate}
+
+\defin $A\subseteq X$ is \emph{closed} if $A^\Co=X\setminus A$ is open \\
+\ex \begin{enumerate}
+\item $\R$: which intervals are closed sets?
+\[ [a,b], [a,\infty], (-\infty,a], (-\infty,\infty) \]%
+\marginpar{$[a,b)$ is not closed because $(-\infty,a)\cup[b,-\infty)$ is not open as $b$ is not an interior point.}%
+\item $X$, $\emptyset$ are both open and closed
+\item $\Q\subseteq\R$ is neither open nor closed
+\item $(X,d)$, $\brace{x_0}$ is closed \\
+\pf Let $z\notin\brace{x_0}$, i.e., $z\neq x_0$\marginpar{figure: line between $x_0$ and $z$} \\
+Consider $B(z,d(z,x_0))$.  Verify that $x_n\notin B(z,d(z,x_0))$ \\
+That's true since $B(z,d(z,x_0))=\set{y}{d(y,z)<d(z,x_0)}$ and $y=x_0$ does not have that property. \\
+Thus $B(z,d(z,x_0))\subseteq\brace{x_0}^\Co$.  Therefore $\brace{x_0}$ is closed.
+\item $\set{x}{d(x,x_0)=r_0}$ is closed
+\item Discrete space: Every set is closed (and open)
+\item $\Z$, $\abs\cdot$, \quad $B(n,r\footnote{$r\leq1$})=\brace n$ \marginpar{figure: $n-1$, $n$, $n+1$ on real line}%
+\\ Every set is open and closed.
+\end{enumerate}
+\prop \begin{enumerate}
+\item Any intersection of closed sets is closed.
+\item A finite union of closed sets is closed.
+\end{enumerate}
+\pf \begin{enumerate}
+\item Let $U=\bigcap U_i$, $U_i$ closed
+\[ U^\Co = \paren*{\bigcap U_i}^\Co = \underbrace{\bigcup \underbrace{U_i^\Co}_{\text{open}}}_{\text{open}} \qquad\text{therefore $U$ is closed} \]
+\end{enumerate}
+\defin A point $x\in X$ is an \emph{accumulation point\footnote{(cluster point, limit point)} of $U\subseteq X$} if $\forall r>0$, $B(x,r)\cap(U\setminus\brace{x})\neq\emptyset$ \\
+(i.e., every ball about $x$ contains a point of $U$ other than $x$) \\
+Equivalently: every open set $V$ containing $x$ satisfies \[ V\cap(U\setminus\brace{x})\neq\emptyset . \]
+Equivalently, $\forall r>0$, $B(x,r)\cap U$ is infinte.
+
+Take $B(x,r)$: Find $u_1\in B(x,r)\cap (U\setminus\brace{x})$.\marginpar{figure: radii around point $x$ with $u_1$, $u_2$, $u_3$ increasingly closer to $x$} \\
+Consider $B(x,d(x,u_1))\owns u_2$, where $u_2\in U\setminus\brace{x}$ \\
+($u_2\neq u_1$, since $u_1\notin B(x,d(x,u_1))$) \\
+Repeat to find a countably infinite set $\brace{u_i}\subseteq U$, with $u_i\in B(x,r)$.
+
+\ex \begin{enumerate}
+\item $U=[0,1)$ in $\R$\marginpar{figure: $[0,1)$ real line} \\
+$1$ is an accumulation point of $U$ [but $1$ is not in $U$.] \\
+Everything in $U$ is an accumulation point of $U$.  Nothing else.
+\item $U=[0,1)\cup\brace{2}$ in $\R$.\marginpar{figure: $[0,1)\cup\brace2$ real line} \\
+$2$ is \emph{not} an accumulation point: called \emph{isolated points}.
+\end{enumerate}

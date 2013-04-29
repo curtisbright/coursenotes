@@ -1,0 +1,77 @@
+\defin $A\subseteq X$ is \emph{compact} if every open cover of $A$ has a finite subcover.
+
+e.g., $\R$ not compact: $\set{(-n,n)}{n\in\N}$ is an open cover with no finite subcover.
+
+e.g., $(0,1)$ not compact: $\set{(1/n,1-1/n)}{n=2,3,\dotsc}$
+
+e.g., $X$ any metric space \\
+$A=\brace{a_1,\dotsc,a_N}$ any finite set is compact \\
+\pf Let $\brace{G_\alpha}$ be an open cover of $A$ \\
+For each $j=1,\dotsc,N$ there exists $G_{\alpha_j}$ from the collection such that $a_j\in G_{\alpha_j}$.  Then $G_{\alpha_1},\dotsc,G_{\alpha_N}$ are a finite subcover of $A$.
+
+e.g., $X$ discrete metric space.  Then $A\subseteq X$ is compact if and only if $A$ is finite.
+\begin{itemize}
+\item Saw on Friday that infinite sets in discrete metric space are not compact: just take $\set{B(a,1)}{a\in A}$
+\end{itemize}
+
+\textbf{Characterization of compactness in $\pmb\R^n$:} \\
+\thm For $A\subseteq\R^n$ the following are equivalent:
+\begin{enumerate}
+\item[(1)] $A$ is compact
+\item[(2)] $A$ is closed and bounded\footnote{(1) and (2): Heine--Borel}
+\item[(3)] Every sequence from $A$ has a convergent subsequence with the limit in $A$\footnote{(1) and (3): Bolzano--Weierstrass}
+\end{enumerate}
+Heine--Borel Theorem does not hold true in general metric spaces.
+
+\prop Compact sets in metric spaces are alwasys closed. \\
+\pf Let $K$ be a compact set.  Want to prove $K^\Co$ is open. \\
+Let $x\in K^\Co$. \\
+For all $y\in K$ there exists $r_y>0$ such that
+\[ B(x,r_y) \cap B(y,r_y) = \emptyset \]
+Consider $\set{B(y,r_y)}{y\in K}$: open cover of $K$ \\
+$K$ is compact so there exists a finite subcover, \\
+i.e., there exists $B(y_1,r_{y_1}),\dotsc,B(y_N,r_{y_N})$ such that
+\[ \bigcup_{j=1}^N B(y_j,r_{y_j}) \supseteq K . \]
+Let $r=\min(r_{y_1},\dotsc,r_{y_N})>0$. \\
+Claim $B(x,r)\cap K=\emptyset$. \\
+Say $z\in B(x,r)\cap K$.  Then there exists $j\in\brace{1,\dotsc,N}$ such that $z\in B(y_j,r_{y_j})$.  So $z\in B(x,r)\cap B(y_j,r_{y_j})$, but $B(x,r)\subseteq B(x,r_{y_j})$, i.e., $z\in B(x,r_{y_j})\cap B(y_j,r_{y_j})=\emptyset$ by construction. \\
+Contradiction.  Hence $B(x,r)\subseteq K^\Co$ $\implies$ $K^\Co$ is open $\iff$ $K$ is closed.
+
+\prop Closed subsets of compact sets are compact. \\
+\pf Let $F$ be a closed subset of compact set $X$. \\
+Take an open cover $\brace{G_\alpha}$ of $F$. \\
+Then the collection of sets $G_\alpha$ together with the open set $F^\Co$ is an open cover of $X$.\footnote{$\bigcup G_\alpha\cup F^\Co\supseteq F\cup F^\Co=X$} \\
+Let $G_{\alpha_1},\dotsc,G_{\alpha_N},(F^\Co)$\footnote{(because $X$ is compact)} be a finite subcover of $X$. \\
+Then $G_{\alpha_1},\dotsc,G_{\alpha_N}$ must cover $F$. \\
+So the open cover $\brace{G_\alpha}$ of $F$ has a finite subcover. \\
+Hence $F$ is compact.
+
+\prop Compact sets (in metric spaces) are bounded. \\
+\pf Let $K$ be compact set and let $x_0\in K$. \\
+Consider all balls $B(x_0,n)$, $n=1,2,3,\dotsc$ \\
+If $k\in K$ then $d(x_0,k)<n_0$ for some large enough integer $n_0$ \\
+i.e., $k\in B(x_0,n_0)$.  Therefore
+\[ k \in \bigcup_{n=1}^\infty B(x_0,n) \]
+\[ \implies K \subseteq \bigcup_{n=1}^\infty B(x_0,n) \]
+Hence $\set{B(x_0,n)}{n=1,2,\dotsc}$ is an open cover of $K$. \\
+Since $K$ is compact there must be a finite subcover, say $B(x_0,n_1),\dotsc,B(x_0,n_L)$. \\
+Say $n_L=\max(n_1,\dotsc,n_L)$ \\
+Then $B(x_0,n_L)\supseteq B(x_0,n_j)$ for $j=1,2,\dotsc,L$ \\
+$\implies K \subseteq B(x_0,n_L) = \bigcup_1^L B(x_0,n_j)$ \\
+Hence $K$ is bounded.
+
+\defin \emph{$\epsilon$-net}: for $A\subseteq$ metric space $X$ is a finite set $x_1,\dotsc,x_n\in X$ such that every element of $A$ has distance at most $\epsilon$ from at least one $x_j$. \\
+i.e., for all $a\in A$ there exists $j\in\brace{1,\dotsc,n}$ such that $d(a,x_j)\leq\epsilon$. \\
+If take $\epsilon'>\epsilon$ then $\bigcup_{j=1}^n B(x_j,\epsilon')\supseteq A$.
+
+\defin Say $A$ is \emph{totally bounded} if for all $\epsilon>0$ there exists $\epsilon$-net for $A$. \\
+e.g., $X$ discrete metric space. \\
+There is a $1$-net (consisting of one element) \\
+But no $1-\epsilon$ net if $X$ is infinite. \\
+So if $X$ is infinite it is not totally bounded.
+
+\prop Totally bounded $\implies$ bounded. \\
+\pf Take a $1$-net for the totally bounded set $A$, say $x_1,\dotsc,x_k$. \\
+$\implies \bigcup_{j=1}^k B(x_j,3/2) \supseteq A$ \\
+Take $B(x_1,\underbrace{\max_{j=1,\dotsc,k} d(x_1,x_j)+1+3/2}_r) \supseteq B(x_j,3/2)$ for all $j$. \\
+Then $A\subseteq B(x_1,r)$

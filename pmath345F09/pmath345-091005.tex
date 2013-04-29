@@ -1,0 +1,107 @@
+$R/I$\quad $0_{R/I}=0_R+I=I$ \\
+$a+I=b+I \iff a-b\in I$ \\
+$I=R$ \\
+$0_{R/R}=R$ \\
+elements in $R/R$ is $a+R$ some $a\in R$ \\
+$a\in R \implies a+R=0+R=R=0_{R/R}$
+
+$R$ commutative ring, $I$ an ideal
+
+\textbf{Quotient ring:} $R/I$. \\
+It's elements are called \emph{cosets of $I$}, $a+I=\set{a+b}{b\in I}$ \\
+Sometimes use $\overline a$ to denote $a+I$
+%
+\begin{align*}
+\text{\emph{Quotient map} is the function } \pi\colon & R \to R/I \\
+& a \mapsto a + I
+\end{align*}
+\textbf{Note:} $\pi$ is a surjective ring homomorphism. \\
+\pf $\alpha\in R/I$,
+\begin{align*}
+\alpha &= a + I \text{ for some $a\in R$} \\
+&= \pi(a) \text{ therefore $\pi$ is onto} \\
+\pi(a+b) = (a+b) + I &= (a+I) + (b+I) \\
+&= \pi(a) + \pi(b) \\
+\pi(ab) &= ab + I \\
+&= (a+I)(b+I) \\
+&= \pi(a)\pi(b) \\
+\pi(1_R) &= 1_R + I \\
+&= 1_{R/I} \\
+\ker(\pi) &= I \\
+\pi(a) = 0_{R/I} &= 0 + I \\
+&\eqUpdownarrow \\
+a + I &= 0 + I \\
+&\eqUpdownarrow \\
+a &\in I
+\end{align*}
+
+Suppose $\phi\colon R\to S$ ring homomorphism of commutative rings. \\
+Then there is a \emph{commutative diagram}\footnote{i.e., for $a\in R$
+\[ \phi(a) = \psi(\pi(a)) \]
+\pf $\psi(\pi(a)) = \phi(a+\ker\phi) = \phi(a)$}
+of homomorphism: \\
+%\[ \begin{matrix}
+%R & \overset{\phi}{\to} & S \\
+%\pi\downarrow & & \uparrow \psi \\
+%& R/\ker\phi & 
+%\end{matrix} \]
+\[ \xymatrix{
+R\ar[rr]^\phi\ar[rd]_\pi & & S \\
+ & R/\ker\phi \ar[ur]_\psi &
+} \]
+where $\pi$ is the quotient map \\
+and $\psi(a+\ker\phi)\coloneqq\phi(a)$ \\
+In the proof of the 1st Isomorphism Theorem we saw that $\psi$ \emph{is} well-defined and a homomorphism \emph{and} its image is $\phi(R)$. \\
+\textbf{Note:} $\psi$ is the \emph{unique} homomorphism from $R/\ker\phi$ to $S$ which makes the diagram commute. \\
+\textbf{Point:} Every ring homomorphism $\phi\colon R\to S$ of commutative rings factors canonically through $\pi\colon R\to R/\ker\phi$.
+
+1st Isomorphism Theorem tells us more: $\psi$ is an embedding whose image is $\phi(R)$.  \emph{In part}, if $\phi$ is surjective then $\psi$ is an isomorphism.
+
+\defin $R$ ring, $I$ an ideal.
+\begin{enumerate}
+\item $I$ is a \emph{prime ideal} if $I\neq R$ and for all
+\[ a,b \in R, \qquad \text{if $ab\in I$ then either $a\in I$ or $b\in I$} \]
+\item $I$ is a \emph{maximal} ideal if
+\begin{itemize}
+\item $I\neq R$
+\item If $J\subsetneq R$ is a proper ideal and $I\subseteq J$ then $I=J$. \\
+i.e., there is \emph{no} ideal properly in between $I\subseteq R$.
+\end{itemize}
+\end{enumerate}
+
+\textbf{Examples:}
+\begin{enumerate} %alpha
+\item[(a)] $R$ commutative ring
+\[ \text{$(0)$ is prime $\iff$ $R$ integral domain} \]
+\item[(b)] $R=\Z$. \\
+Ideals in $\Z$ are all of the form $(n)=n\Z$ where $n\geq0$. \\
+$(0)$ is prime by part (a) \\
+$(1)$ is neither prime nor maximal because $(1)=\Z$. \\
+$n\geq2$,
+\[ (n)\text{ is prime ideal}\iff n\text{ is prime number} \]
+\pf Suppose $(n)$ prime ideal.  Let $p$ be a prime number. \\
+Suppose $n=ab\in(n)$ \\
+$\implies$ $a\in(n)$ or $n\in(n)$ \\
+$n\mid a$ or $n\mid b$ \\
+$\implies$ $a=1$ or $b=1$ \\
+Consequently $n$ prime number.
+\begin{align*}
+ab\in(n) &\iff n \mid ab \\
+&\iff n\mid a \text{ or } n\mid b \text{ as $n$ is prime} \\
+&\iff a \in (n) \text{ or } b \in (n) \\
+(n) \text{ maximal} &\iff \text{$n$ is a prime number}
+\end{align*}
+\pf ($\Longrightarrow$) $(0)$ not maximal
+\[ (0) \subsetneq (2) \subsetneq \Z . \]
+($\Longleftarrow$) Suppose $p$ is a prime number
+\[ (p) \subseteq I\footnote{$=(n)$} \subseteq \Z\footnote{uses next theorem} \]
+$\Longrightarrow\;$ $p\in(n)\implies n\mid p\implies\text{$n=1$ or $n=p$}$ \\
+$\implies$ $I=(p)\text{ or }I=\Z$.
+\end{enumerate}
+\thm Let $I$ be an ideal in a commutative ring $R$. Then:
+\begin{enumerate}
+\item $I$ is prime $\iff$ $R/I$ is an integral domain
+\item $I$ is maximal $\iff$ $R/I$ is a field
+\end{enumerate}
+\textbf{In particular:} maximal ideals are prime \\
+(since ideals are integral domains)

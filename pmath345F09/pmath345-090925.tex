@@ -1,0 +1,93 @@
+$R$ commutative \\
+$R[x]$ ring of polynomials \\
+$P\in R[x]$, $P=\sum_{i=0}^\infty a_i x^i$ formal expression
+\begin{itemize}
+\item $a_i\in R$
+\item all but finitely many are $0$.
+\end{itemize}
+\begin{gather*}
+\paren[\bigg]{\sum_i a_i x^i} + \paren[\bigg]{\sum_i b_i x^i} = \sum_i \paren[\bigg]{a_i+b_i} x^i \in R[x] \tag{A}\label{eqA} \\
+\paren[\bigg]{\sum_i a_i x^i}\paren[\bigg]{\sum_i b_i x^i} = \sum_i \paren[\bigg]{\sum_{j=0}^i a_{i-j}b_j} x^i \in R[x] \tag{B}\label{eqB}
+\end{gather*}
+\textbf{note:} $x$ is the usual ``collecting terms'' rule. \\
+In $\Z[x]$,
+\begin{align*}
+PQ &= (x^2+2x^3-7x^6)(-x+x^2) \\
+&= -x^3 -2x^4 + 7x^7 + x^4 + 2x^5 - 7x^8 \\
+&= -x^3 - x^4 + 2x^5 + 7x^7 - 7x^8
+\end{align*}
+\textbf{Remark:} Given $P\in R[x]$ it induces a function
+\[ f_P\colon R \to R \]
+by ``substitution''.
+\begin{gather*}
+P = \sum_i a_i x^i = a_0 + a_1x + a_2x^2 + \dotsb \\
+f_P(r) = \sum_i a_i r^i = a_0 + a_1r + a_2r^2 + \dotsb\footnotemark \in R
+\end{gather*}\footnotetext{finite sum}%
+for any $r\in R$
+
+\textbf{Warning:} Then maybe $P\neq Q$ in $R[x]$ such that as \emph{functions}, $f_P\neq f_Q$. \\
+So you \emph{cannot} identify the polynomial with the function it induces. \\
+\textbf{Example:} $\Z_2[x]$ \\
+\begin{gather*}
+P = 0 = \sum_i 0x^i \in \Z_2[x] \\
+Q = x + x^2 = 0 + 1x + 1x^2 + 0x^3 + 0x^4 + \dotsb
+\end{gather*}
+$P\neq Q$ but $0\neq1$ in $\Z_2$ \\
+$f_P\colon\Z_2\to\Z_2$, $f_P(\overline0)=f_P(\overline1)=\overline0$ \\
+$\Z_2 = \brace{\overline0,\overline1}$ \\
+$f_Q(\overline0)=\overline0+\overline0^2=\overline0$ \\
+$f_Q(\overline1)=\overline1+\overline1^2=\overline1+\overline1=\overline2=\overline0$ \\
+As functions $f_P=f_Q$.
+
+\defin $R$ commutative ring. \\
+The \emph{power series} ring, $R[[x]]$ is the ring whose elements are formal expressions
+\[ \sum_{i=0}^\infty a_i x^i, \qquad\text{where $a_i\in R$} \]
+(maybe infinitely many nonzero $a_i$s) \\
+where $+$ and $\times$ are given by the rules \eqref{eqA} and \eqref{eqB} (same as in $R[x]$).
+
+\textbf{Exercise:} $R[x]$ is a \emph{subring} of $R[[x]]$.
+
+\defin $R$ commutative.  $P\in R[x]$, $P=\sum_{i=0}^\infty a_ix^i$
+\begin{enumerate}%alpha list
+\item[(a)] For any $m\geq0$, the \emph{coefficient of $x^m$ in $P$} is $a_m$.
+\item[(b)] If $P\neq0$ then the \emph{degree of $P$} is the highest power of $x$ that occurs with a nonzero coefficient.
+\[ \deg P = \max\set{m}{a_m\neq0} \]
+[the $0$ polynomial has no degree]
+\item[(c)] If $P\neq0$ then the \emph{leading coefficient of $P$} is $a_n$ where $n=\deg P$.
+\item[(d)] If $P\neq0$ then the \emph{leading term} of $P$ is $a_nx^n$ where $n=\deg P$.
+\item[(e)] Each summand $a_ix^i$ is called a \emph{monomial} of $P$.
+\item[(f)] A \emph{term of $P$} is a monomial $a_ix^i$ where $a_i\neq0$ (polynomials have only finitely many terms)\footnote{not completely standard}
+\end{enumerate}
+\textbf{Note:} $\deg P=0\implies P=r+0x+0x^2+\dotsb$ where $r\neq0$. \\
+So if $P\neq0$, $P\in R[x]$, and $n=\deg P$ then we can write
+\[ P = a_0 + a_1x + \dotsb + a_nx^n \]
+\textbf{Remark:} Every element of $R$ can be viewed as a polynomial on $R$.
+\[ r = r + 0x + 0x^2 + \dotsb \]
+Under this identification, $R$ becomes a subring of $R[x]$.
+\[ R = 0 \cup \brace{\text{degree $0$ polynomials of $R[x]$}} \]
+Call these \emph{constant polynomial}\footnote{a constant polynomial is the $0$ polynomial or a polynomial of degree $0$}
+
+\ex $Q=x+x^2\in\Z_2[x]$.  $\deg Q=2$, $Q$ is not a constant polynomial. \\
+But as a function $\Z_2\to\Z$ it is a constant function (it's th zero function).
+
+\prop $R$ commutative.  $P,Q\in R[x]$.  $P\neq0,Q\neq0$.
+\begin{enumerate}
+\item If $\deg P\neq\deg Q$ then $\deg(P+Q)=\max\brace{\deg P,\deg Q}$
+\item If $\deg P=\deg Q$ then $\deg(P+Q)\leq\deg P$
+\item If $PQ\neq0$, $\deg(PQ)\leq\deg P+\deg Q$
+\item If $R$ is an integral domain then so is $R[x]$ and $\deg(PQ)=\deg P + \deg Q$
+\end{enumerate}
+\pf 1, 2 exercises.
+\begin{enumerate}
+\item[(3)] $\deg P=n$, $\deg Q=m$
+\begin{align*}
+P &= a_0 + a_1x + \dotsb + a_nx^n \qquad a_n\neq0 \\
+Q &= b_0 + b_1x + \dotsb + b_mx^m \qquad b_m\neq0 \\
+PQ &= \dotsb + \dotsb + a_nb_mx^{m+n} \\
+&\implies \deg(PQ) \leq m+n
+\end{align*}
+But \emph{maybe $a_nb_m=0$} so you don't in general get equality. \\
+If $R$ is an integral domain then $a_nb_m\neq0$. \\
+So $PQ\neq0$.  Hence $R[x]$ is also integral domain. \\
+Moreover we have shown in this case that $\deg(PQ)=m+n$.
+\end{enumerate}

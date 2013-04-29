@@ -1,0 +1,150 @@
+\textbf{CRT} $\exists$ solution to
+\begin{align*}
+x = a_i \bmod n_i \qquad 1\leq i\leq m \\
+\iff \gcd(n_i,n_j)\div(a_i-a_j) \text{ for all $i\neq j$}
+\end{align*}
+and then if $x=x_0$ is one solution, the general solution is
+\[ x = x_0 \bmod \lcm(n_1,\dotsc,n_m) . \]
+We need to show that if the condition is satisfied then a solution exists. \\
+We suppose
+\[ \gcd(n_i,n_j)\div a_i-a_j \text{ for all $i\neq j$} . \]
+By the Inductive Hypothesis we can find a solution $x=a$ to the first $m-1$ congruences and then the full system is equivalent
+\begin{align*}
+x &= a \bmod \lcm(n_1,\dotsc,n_{m-1}) \\
+x &= a_m \bmod n_m
+\end{align*}
+We need to show that
+\[ \gcd(\lcm(n_1,\dotsc,n_{m-1}),n_m)\div(a-a_m) . \]
+exercise: show that
+\[ \gcd(\lcm(n_1,\dotsc,n_{m-1}),n_m) = \lcm(\gcd(n_1,n_m),\dotsc,\gcd(n_{m-1},n_m)) \]
+For $1\leq i\leq m-1$ we have
+\begin{align*}
+a &= a_i \bmod n_i \\
+a-a_m &= a_i-a_m \bmod n_i \\
+a-a_m &= a_i-a_m \bmod d \text{ for any divisor $d\mid n_i$} \\
+a-a_m &= a_i-a_m \bmod \gcd(n_i,n_m) \\
+a-a_m &= 0 \bmod \gcd(n_i,n_m)
+\end{align*}
+$\therefore x=a-a_m$ is a solution to the system $x=0\bmod\gcd(n_i,n_m)$ for $1\leq i\leq m-1$.  By the Induction Hypothesis
+\[ a - a_m = 0 \bmod \lcm(\gcd(n_1,n_m),\dotsc,\gcd(n_{m-1},n_m)) . \]
+\eg Solve
+\begin{align*}
+x &= 5 \bmod 12 \\
+x &= 8 \bmod 9 \\
+x &= 11 \bmod 30
+\end{align*}
+\soln First we solve the first 2 congruences.
+\begin{align*}
+x = 5 \bmod 12 &\iff x = \dotsc, -7, 5, 17, 29, \dotsc \\
+x = 8 \bmod 9 &\iff x = \dotsc, -1, 8, 17, \dotsc
+\end{align*}
+$\therefore x=17$ is one solution \\
+$\therefore$ the general solution (to the first 2) is
+\begin{align*}
+x &= 17 \bmod \lcm(12,9) \\
+&= 17 \bmod 36
+\end{align*}
+The system of 3 congruences is equivalent to
+\begin{align*}
+x &= 17 \bmod 36 \\
+x &= 11 \bmod 30
+\end{align*}
+$x$ is a solution when
+\[ x = 17 + 36k = 11 + 30l \text{ for some $k$, $l\in\Z$} \]
+\begin{align*}
+36k - 30l &= -6 \\
+6k - 5l &= -1
+\end{align*}
+A solution is given by
+\begin{gather*}
+(k_0,l_0) = (-1,-1) \\
+\begin{aligned}
+x_0 &= 17 + 36k_0 \quad (=11+30l_0) \\
+&= 17 - 36 \\
+&= -19
+\end{aligned}
+\end{gather*}
+By the CRT, the general solution is
+\begin{align*}
+x &= -19 \bmod \lcm(36,30) \\
+&= -19 \bmod \frac{36\cdot30}{6} \\
+&= -19 \bmod 180 \\
+&= 161 \bmod 180
+\end{align*}
+\textbf{Euler $\phi$ Function} (or Euler's totient function) \\
+For $n\in\Z^+$ we define
+\[ \phi(n) = \abs{U_n} = \abs{\set{a\in\Z_n}{\gcd(a,n)=1}} \]
+\eg Find a formula for $\phi(n)$ where $n=p_1^{k_1}\dotsm p_l^{k_l}$ where the $p_i$ are distinct primes and each $k_i\geq1$. \\
+\soln Note that for $a$, $b\in\Z^+$ with $\gcd(a,b)=1$ then the maps
+\begin{align*}
+f\colon &\Z_{ab} \to \Z_a \times \Z_b \text{ and} \\
+g\colon &\Z_a\times\Z_b \to \Z_{ab}
+\end{align*}
+given by
+$f(x)=(x,x)$ \\
+$g(k,l)={}$the unique solution $x$ modulo $ab$ to
+\begin{align*}
+x &= k \bmod a \\
+x &= l \bmod b
+\end{align*}
+are inverses of each other and $f\colon U_{ab}\to U_a\times U_b$ (since if $\gcd(x,ab)=1$ then $\gcd(x,a)=1=\gcd(x,b)$) and $g\colon U_a\times U_b\to U_{ab}$ (exercise). \\
+Thus
+\begin{align*}
+\abs{U_{ab}} &= \abs{U_a\times U_b} = \abs{U_a}\abs{U_b} \\
+\phi(ab) &= \phi(a) \phi(b) \\
+\therefore \phi(p_1^{k_1}\dotsm p_l^{k_l}) &= \phi(p_1^{k_1})\dotsm\phi(p_l^{k_l})
+\end{align*}
+Also for $p$ prime we have
+\[ \phi(p) = \abs{U_p} = \brace{1,2,\dotsc,p-1} = p-1 \]
+and more generally for $k\geq1$
+\begin{align*}
+\phi(p^k) &= \abs{U_{p^k}} \\
+&= \abs{\brace{1,2,3,\dotsc,p^k}\setminus\brace{1\cdot p,2p,\dotsc,p^{k-1}\cdot p}} \\
+&= p^k - p^{k-1} = p^{k-1}(p-1) \\
+\therefore\phi\paren[\Big]{\prod p_i^{k_i}} &= \prod \phi(p_i^{k_i}) \\
+&= \prod(p_i^{k_i}-p_i^{k_i-1}) = \prod p_i^{k_i-1}(p_i-1) \\
+&= \prod p_i^{k_i}\paren[\Big]{1-\frac1{p_i}} = n\prod\paren[\Big]{1-\frac1{p_i}}
+\end{align*}
+\thm (Euler Fermat Theorem) \\
+For $a\in U_n$, $a^{\phi(n)}=1\in U_n$ \\
+\pf Let $a\in U_n$ \\
+Say $U_n=\brace{a_1,a_2,\dotsc,a_{\phi(n)}}$ (where the $a_i$ are distinct). \\
+Note that $aa_i=aa_j$ \\
+$\iff a_i=a_j$ \\
+$\iff i=j$ \\
+So the elements $aa_i$ are also distinct.
+\[ \therefore\brace{aa_1,aa_2,\dotsc,aa_{\phi(n)}} = U_n = \brace{a_1,a_2,\dotsc,a_{\phi(n)}} \]
+Multiply the elements together to get
+\[ \prod(aa_i) = \prod a_i . \]
+Divide by $\prod a_i\in U_n$ to get $\prod_{i=1}^{\phi(n)}a=1$
+\[ a^{\phi(n)} = 1 . \]
+\cor (Fermat's Little Theorem) \\
+If $a\in U_p$ where $p$ is prime then $a^{p-1}=1\in U_p$ \\
+\pf $\phi(p)=p-1$.
+
+\textbf{Fermat Primes} \\
+\defn A \emph{Fermat prime} is a prime of the form $2^k+1$ for some $k\in\Z^+$.
+\[ \begin{array}{c|cccccccccc}
+k & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+2^k+1 & \ovalbox{3} & \ovalbox{5} & 9 & \ovalbox{17} & 33 & 65 & 129 & \ovalbox{257} & 513 & 1025
+\end{array} \]
+It appears that $2^k+1$ is prime $\iff$ $k$ is a power of $2$. \\
+\eg Show that if $2^k+1$ is prime then $k$ is a power of $2$. \\
+\soln Suppose that $k$ is \emph{not} a power of $2$, say $2^l\cdot q$ where $q$ is odd.
+\[ \text{Then } 2^k+1=2^{2^lq}+1=(2^l)^q+1=\paren[\big]{2^{2^l}+1}\paren[\big]{(2^{2^l})^{q-1}-(2^{2^l})^{q-2}+\dotsb+1} \]
+and $1<2^{2^l}-1<2^k+1$. \\
+So $2^k+1$ is not prime.
+
+\defn For $n\in\Z_+$, $2^{2^n}+1$ is called the $n$th Fermat number \\
+\eg Show that $F_5$ is not prime. \\
+\soln We guess that $641$ is a factor. \\
+Note that $641=625+16=5^4+2^4$ and $641=640+1=5\cdot2^7+1$ so we have
+\begin{align*}
+F_5 &= 2^{2^5}+1 \\
+&= 2^{32} + 1 \\
+&= (2^4 2^{28}+1) \\
+&= (641-5^4)\cdot2^{28} + 1 \\
+&= 641\cdot 2^{28} - (5\cdot2^7)^4 + 1 \\
+&= 641\cdot 2^{28} - (641-1)^4 + 1 \\
+&= 641\cdot 2^{28} - 641^4 + 4\cdot641^3 - 6\cdot641^2 + 4\cdot641
+\end{align*}

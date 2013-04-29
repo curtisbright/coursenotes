@@ -1,0 +1,28 @@
+Baire Category Theorem.  A complete metric space $X$ is of 2nd category, i.e., it is not the union of countably many nowhere dense sets.
+
+\pf Let $S_n$ be a sequence of nowhere dense sets, i.e., $\overline{S_n}$ has empty interior for each $n$.  Let $U_n=X\setminus\overline{S_n}\footnote{closure}$.  Then each $U_n$ is open and dense.  In particular, every non-empty open set in $X$ meets $U_n$.
+
+We shall show that $\bigcap_{n=1}^\infty U_n\neq\emptyset$.
+
+Let $x_1\in U_1$ be fixed.  Let $r_1$ be a positive radius so that
+\[ D_1 = D(x_1,r_1)\subset U_1 . \]
+Since $U_2$ is dense, there exists a point $x_2$ of $U_2$ which is in $D_1$.  Since $U_2$ is open, there exists a small enough radius $r_2$ so that $D_2=D(x_2,r_2)\subset U_2$.  We may assume that $r_2$ is small enough that $r_2<\frac12r_1$, and smaller than $r_1-d(x_1,x_2)$ [note: $x_2\in D_1$].
+
+Then $\overline{D_2}\subset D_1$.  By induction, we get a sequence of discs $D_n$ with centres $x_n$ and radii $r_n$ so that
+\[ \overline{D_n} \subset D_{n-1} \c D_n \subset U_n \c r_n < \tfrac12 r_{n-1} . \]
+In particular $r_n\to0$ as $n\to\infty$. \\
+Note: $n,m\geq N\implies x_n,x_m\in D_N\implies d(x_n,x_m)<2r_N$.  This sequence $x_n$ is Cauchy and therefore converges to an $x$ in the complete space $X$.
+
+$x_n\in D_N$ for all $n\geq N\implies x\in\overline{D_N}\subset D_{N-1}$. \\
+Thus $x\in D_k$ for every $k$. \\
+So $x\in\bigcap_{k=1}^\infty D_k$.  So $x\in\bigcap_{n=1}^\infty U_k$ as each $D_k\subset U_k$.
+
+Now $x\in\bigcap_{n=1}^\infty U_n\implies x\notin\brack[\Big]{X\setminus\bigcap_{n=1}^\infty U_n}\implies x\notin\bigcup_{n=1}^\infty(X\setminus U_n)$ \\
+$\implies x\notin\bigcup_{n=1}^\infty\overline{S_n}\implies x\notin\bigcup_{n=1}^\infty S_n$. \\
+Hence $\bigcup_{n=1}^\infty S_n\neq X$.
+
+\cor (The uniform boundedness principle). %\\
+Let $\B$ be a family of real valued continuous functions on a complete metric space $M$ (i.e., $\B\subset C(X,\R)$).
+
+Suppose that for $x\in M$, there is a bound $b_x$ such that $\abs{f(x)}\leq b_x$ \emph{for all\/ $f\in\B$}. [\emph{pointwise boundedness}\footnote{in $X$} of the family $\B$]  Then there exists an \emph{open set} $G\subset X$, \emph{$G\neq\emptyset$}, and a constant $b$ such that
+\[ \abs{f(x)} \leq b \text{ for all } f\in\B \text{ and all } x\in G . \]

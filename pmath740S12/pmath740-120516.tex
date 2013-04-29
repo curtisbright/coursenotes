@@ -1,0 +1,112 @@
+\thm For an odd prime $p$ and for $k\in\Z^+$, $U_{p^k}$ is cyclic.
+\begin{enumerate}
+\item[(1)] $U_p$ is cyclic
+\item[(2)] If $U_p=\chev{a}$ then either $U_{p^2}=\chev{a}$ or $U_{p^2}=\chev{a+p}$
+\item[(3)] If $U_{p^2}=\chev{b}$ then $U_{p^k}=\chev{b}$ for all $k\geq2$
+\end{enumerate}
+\pf\begin{enumerate}
+\item[(1)] We have
+\[ \phi(p) = \abs{U_p} = p - 1 \]
+We need to show that there is an element $a\in U_p$ with $\ord_p(a)=p-1$.  We show that for every $d\div(p-1)$ there exist $\phi(d)$ elements of order $d$ in $U_p$.
+
+For a divisor $d\div(p-1)$ let
+\[ A_d = \set{a\in U_p}{\ord_p(a)=d} \]
+Note that $U_p$ is the disjoint union
+\[ U_p = \bigcup_{d\div(p-1)}A_d \]
+so
+\[ p-1 = \abs{U_p} = \sum_{d\div(p-1)}\abs{A_d} \]
+But recall that
+\[ p-1 = \abs{U_p} = \sum_{d\div(p-1)\phi(d)} \]
+so it suffices to show that
+\[ \abs{A_d} \leq \phi(d) \text{ for all $d\div(p-1)$} \]
+We shall show that if $\abs{A_d}\neq0$ then $\abs{A_d}=\phi(d)$.
+Suppose $\abs{A_d}\neq0$ (so $A_d\neq\emptyset$).
+Choose $a\in U_p$ with $\ord_p(a)=d$.
+Then
+\[ \chev{a} = \brace{1,a,a^2,\dotsc,a^{d-1}} \]
+with the $a^i$ distinct for $0\leq i<d$.
+For each $i$, the element $x=a^i$ satisfies $x^d=a^{id}=(a^d)^i=1$.
+So the elements
+\[ 1\co a\co a^2\co\dotsc\co a^{d-1} \]
+are the roots of the polynomial $f(x)=x^d-1$ over the field $\Z_p$.
+For every $x\in A_d$ we have $x^d=1$
+so $x$ is a root of $f(x)=x^d-1$
+so $x=a^i$ for some $i$ with $0\leq i<d$.
+But $a^k$ has order $d$.
+\begin{align*}
+&\iff a^k \text{ generates } \chev{a} \\
+&\iff \gcd(k,d) = 1 \\
+&\iff k\in U_d \\
+\therefore\abs{A_d} &= \text{\# of $k\in U_d$} \\
+&= \phi(d)
+\end{align*}
+\item[(2)] Suppose $U_p=\chev{a}$, but $U_{p^2}\neq\chev{a}$ (We wish to show that $U_{p^2}=\chev{a+p}$.
+Let $n=\ord_{p^2}(a)$.
+Since $\ord_{p^2}(a)\div\abs{U_{p^2}}$ we have $n\div p(p-1)$.
+\begin{align*}
+\text{Also } a^n &= 1 \bmod p^2 \\
+\text{so } a^n &= 1 \bmod p
+\end{align*}
+$\therefore n$ is a multiple of $\ord_p(a)$ \\
+$\therefore (p-1)\div n$ (since $U_p=\chev{a}$ so $\ord_p a=p-1$) \\
+Since $(p-1)\div n$ and $n\div p(p-1)$ we have $n=p-1$ or $n=p(p-1)$.
+\begin{align*}
+\text{Since } U_{p^2} &\neq \chev{a} \\
+n &= p-1
+\end{align*}
+Now let $m=\ord_{p^2}(a+p)$.
+Note that $a=a+p\bmod p$ so $U_p=\chev{a}=\chev{a+p}$.
+As above,
+\[ m = p-1 \text{ or } m = p(p-1) \]
+We need to show that $m\neq p-1$.
+We shall show that $(a+p)^{p-1}\neq1\bmod p^2$.
+We have
+\begin{align*}
+(a+p)^{p-1} &= a^{p-1} + (p-1)a^{p-2}\cdot p + \text{terms involving $p^2$} \\
+(a+p)^{p-1} &= a^{p-1} - a^{p-2}p \bmod p^2 \\
+&= 1 - a^{p-2}p \bmod p^2 \\
+&\neq 1 \bmod p^2
+\end{align*}
+since $a\in U_p$ so $a^{p-2}\in U_p$ so $p\ndiv a^{p-2}$
+\item[(3)] Suppose $U_{p^2}=\chev{b}$.\footnote{Aside:\begin{align*}
+\phi(p^k) &= p^{k-1}(p-1) \\
+\phi(p^{k+1}) &= p^k(p-1)
+\end{align*}} \\
+Suppose, inductively, that $U_{p^k}=\chev{b}$.
+Let $n=\ord_{p^{k+1}}b$.
+Then $n\div\abs{U_{p^{k+1}}}$ so $n\div p^k(p-1)$. \\
+Also $b^n=1\bmod p^{k+1}$ so $b^n=1\bmod p^k$. \\
+$\therefore n$ is a multiple of $\ord_{p^k}(b)$ that is $p^{k-1}(p-1)\div n$. \\
+Since $p^{k-1}(p-1)\div n$ and $n\div p^k(p-1)$ we have $n=p^{k-1}(p-1)$ or $n=p^k(p-1)$. \\
+We need to show that $n\neq p^{k-1}(p-1)$. \\
+We shall show that
+\[ b^{p^{k-1}(p-1)} \neq 1 \bmod p^{k+1} . \]
+Consider $b^{p^{k-2}(p-1)}$. \\
+%Since $\ord_{p^k}(b)=\abs{U_{p^k}}=p^{k-1}(p-1)$
+%\begin{align*}
+%\text{we have } b^{p^{k-1}(p-1)} &= 1 \bmod p^k \\
+%b^{p^{k-2}(p-1)} &\neq 1 \bmod p^k
+%\end{align*}
+Since $U_{p^k}=\chev{b}$ we also have $U_{p^{k-1}}=\chev{b}$ \\
+$\therefore b^{\abs{U_{p^{k-1}}}}=1\bmod p^{k-1}$ that is $b^{p^{k-2}(p-1)}=1\bmod p^{k-1}$ (1). \\
+Also, since $\ord_{p^k}(b)=p^{k-1}(p-1)$ \\
+$\therefore b^{p^{k-2}(p-1)}\neq1\bmod p^k$ (2) \\
+From (1) and (2)
+\[ b^{p^{k-2}(p-1)} = 1 + tp^{k-1} \]
+for some $t$ with $p\ndiv t$. \\
+So we have
+\begin{align*}
+b^{p^{k-1}(p-1)} &= (1+tp^{k-1})^p \\
+&= 1 + tp^k + \binom{p}{2}t^2p^{2k-2} + \text{higher order terms in $p$} \\
+&= 1 + tp^k \bmod p^{k+1} \\
+&\neq 1 \bmod p^{k+1}
+\end{align*}
+\end{enumerate}
+Summary: for $n=p_1^{k_1}p_2^{k_2}\dotsm p_l^{k_l}$ where the $p_i$ are distinct primes and each $k_i\geq1$ we have
+\[ U_n = U_{p_1^{k_1}} \oplus U_{p_2^{k_2}} \oplus \dotsb \oplus U_{p_l^{k_l}} \]
+and $U_2=\brace1$, $U_4=\brace{1,3}=\chev{3}\cong\Z_2$, $U_{2^k}=\chev{-1,5}\cong\chev{-1}\oplus\chev{5}\cong\Z_2\oplus\Z_{2^{k-2}}$ for $k\geq3$ and $U_{p^k}=\Z_{p^{k-1}(p-1)}$ for an odd prime $p$ and $k\geq1$.
+
+\cor For $n\in\Z^+$, $U_n$ is cyclic
+\[ \iff n = 1\co2\co4\co p^k\co 2p^k \]
+where $p$ is an odd prime and $k\geq1$ \\
+(since $\phi(n)$ is even when $n\neq1,2$)

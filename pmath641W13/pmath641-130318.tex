@@ -1,0 +1,38 @@
+Let $[K:\Q]<\infty$.  Let $A$ and $B$ be ideals of $\A\cap K$.  We say that an ideal $C$ of $\A\cap K$ is a greatest common divisor of $A$ and $B$ if it is a common divisor of $A$ and $B$ and all other common divisors of $A$ and $B$ divide it.
+
+In fact there can be at most $1$ greatest common divisor of $A$ and $B$ since if $C$ and $D$ are greatest common divisors of $A$ and $B$ then $C\mid D$ and $D\mid C$ hence $C\supseteq D$ and $D\supseteq C$ so $D=C$.
+
+In fact there is one since if $A=(\alpha_1,\dotsc,\alpha_n)$ and $B=(\beta_1,\dotsc,\beta_s)$ then we may take $C=(\alpha_1,\dotsc,\alpha_n,\beta_1,\dotsc,\beta_n)$.  Certainly $A\subseteq C$ and $B\subseteq C$ hence $C\mid A$ and $C\mid B$.  Further if $D\mid A$ and $D\mid B$ then $D\supseteq A$ and $D\supseteq B$ hence $\alpha_1$, $\dotsc$, $\alpha_r$ and $\beta_1$, $\dotsc$, $\beta_s$ are in $D$ so $D\supseteq C=(\alpha_1,\dotsc,\alpha_r,\beta_1,\dotsc,\beta_s)$.  Thus $D\mid C$.  Therefore there is a unique greatest common divisor of $A$ and $B$ and we denote it by $\gcd(A,B)$.
+
+$\gcd(A,B)=(1)$ is equivalent to $A$ and $B$ being coprime.
+
+Since we have unique factorization into prime ideals in $\A\cap K$ if
+\[ A = p_1^{a_1}\dotsm p_r^{a_r} \]
+and
+\[ B = p_1^{b_1}\dotsm p_r^{b_r} \]
+with $p_1$, $\dotsc$, $p_r$ distinct prime ideals and $a_1$, $\dotsc$, $a_r$, $b_1$, $\dotsc$, $b_r$ non-negative integers then
+\[ \gcd(A,B) = p_1^{c_1} \dotsm p_r^{c_r} \]
+where
+\[ c_i = \min(a_i,b_i) \text{ for $i=1$, $\dotsc$, $r$} . \]
+\textbf{Lemma 53:} Let $[K:\Q]<\infty$.  Let $A$ and $B$ be non-zero ideals of $\A\cap K$.  Then there exists an element $\alpha\in A$ for which $\gcd(\frac{(\alpha)}{A},B)=(1)$. \\
+\pf If $B=(1)$ the result is immediate.  Suppose then that there are exactly $r$ distinct prime ideals $p_1$, $\dotsc$, $p_r$ which divide $B$.  We'll prove the result by induction on $r$.
+
+First suppose that $r=1$. \\
+Choose $\alpha$ so that $\alpha$ is in $A$ but not in $Ap_1$.  This is possible since $A\neq Ap_1$.  But then $\gcd((\alpha)/A,p_1)$ is a divisor of $p_1$.  Since $p_1$ is a prime ideal it is either $p_1$ or $(1)$.  If it is $p_1$ so $\gcd((\alpha)/A,p_1)=p_1$ then $\gcd((\alpha),Ap_1)=Ap_1$.  Thus $Ap_1\mid(\alpha)$ hence $(\alpha)\subseteq Ap_1$ and so $\alpha\in Ap_1$ which is a contradiction.
+
+Now suppose $r>1$.  Let
+\[ A_m = A\frac{P_1\dotsm P_r}{P_m}, \text{ for $m=1$, $\dotsc$, $r$} . \]
+Choose $\alpha_m$ in $A_m$, by the case $r=1$, so that
+\[ \gcd\paren[\Big]{\frac{(\alpha_m)}{A_m},P_m} = (1), \text{ for $m=1$, $\dotsc$, $r$} . \]
+We now put
+\[ \alpha = \alpha_1 + \dotsb + \alpha_r . \]
+Since $\alpha_1\in A_i$ and $A\mid A_i$ for $i=1$, $\dotsc$, $r$ we see that $\alpha_i\in A$ for $i=1$, $\dotsc$, $r$ we see that $\alpha_i\in A$ for $i=1$, $\dotsc$, $r$.  Thus $\alpha\in A$.
+
+Note that $\alpha\notin AP_m$ for $m=1$, $\dotsc$, $r$.  To see this observe first that $AP_m\mid A_i$ whenever $i\neq m$.  Therefore $\alpha_i$ is in $AP_m$ for $i\neq m$.  But $\alpha=\alpha_1+\dotsb+\alpha_r$ so if $\alpha$ is in $AP_m$ for some $m$ with $1\leq m\leq r$ then $\alpha_m$ is in $AP_m$.  But $\gcd((\alpha_m)/A_m,P_m)=(1)$.
+
+Since $P_1$, $\dotsc$, $P_r$ are distinct prime ideals
+\[ \gcd\paren[\Big]{\frac{(\alpha_m)}{A},P_m} = (1) . \tag{$*$} \]
+\[ \implies \gcd((\alpha_m),AP_m) = A . \]
+But $\alpha_m\in AP_m$ so $(\alpha_m)\subseteq AP_m$ hence $AP_m\mid(\alpha_m)$.  Thus $P_m\mid\frac{(\alpha_m)}{A}$ and this contradicts $*$.
+
+We now show that $\gcd((\alpha)/A,B)=1$.  Suppose otherwise.  Then $\gcd((\alpha)/A,B)$ is divisible by $P_m$ for some integer $m$ with $1\leq m\leq r$.  Then $P_m$ divides $(\alpha)/A$ so $AP_m$ divides $(\alpha)$.  In particular $\alpha\in AP_m$ which is a contradiction.

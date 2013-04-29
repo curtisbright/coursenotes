@@ -1,0 +1,92 @@
+\ex $X={\underbrace{\set{(x,\sin\tfrac1x)}{x>0}}_{\equiv E}}\cup\brace{(0,0)}$ \\
+Show $X$ is connected, but not path connected.\marginpar{graph of $\sin\frac1x$ for $x>0$} \\
+$X=\overline{E}$ \\
+\textbf{Proof outline:}\begin{enumerate}
+\item $E$ path connected $\implies$ $E$ connected $\implies$\footnote{exercise} $\overline E$ connected
+\item $X$ is not path connected
+\end{enumerate}
+\begin{enumerate}
+\item $E$ path connected \\
+Let $(x_1,\sin\frac1{x_1}),(x_2,\sin\frac1{x_2})\in E$ ($x_1,x_2>0$)
+%
+\begin{align*}
+\text{Define }f\colon &[0,1]\to E \\
+&t\mapsto\paren[\Big]{\underbrace{tx_1+(1-t)x_2}_{>0},\sin\frac{1}{tx_1+(1-t)x_2)}}\in E
+\end{align*}
+$f$ continuous on $[0,1]$ \\
+$f(1)=(x_1,\sin\frac{1}{x_1})$, $f(0)=(x_2,\sin\frac{1}{x_2})$ $\implies$ $E$ is path connected
+\item $X$ not path connected \\
+Prove no ``path'' joining $(0,0)$ to $(\frac{1}{\pi},0)$ \\
+Suppose $f\colon[a,b]\to X$ is a path with $f(a)=(0,0)$, $f(b)=(\frac{1}{\pi},0)$ \\
+Claim:
+\[ \paren*{\frac{1}{\frac{5\pi}{2}},1},\paren*{\frac{1}{\frac{9\pi}{2}},1},\dotsc,\paren*{\frac{1}{\frac{\pi}{2}+2\pi k},1}\in f[a,b] \]\marginpar{$k\in\N$} \\
+Note: $f[a,b]$ is connected as $f$ is continuous and $[a,b]$ is connected.
+
+Suppose without loss of generality $\paren*{\frac{1}{\frac{5\pi}{2}},1}\notin f[a,b]$. \\
+Then
+\[ f[a,b] = \paren[\Bigg]{\overbrace{f[a,b]\cap\set{(x,y)}{x>\frac{1}{\frac{5\pi}{2}}}}^{\owns(\frac1\pi,0)}} \cup \paren[\Bigg]{\overbrace{f[a,b]\cap\set{(x,y)}{x<\frac{1}{\frac{5\pi}{2}}}}^{\owns(0,0)}} \]
+because only $(x,y)\in X$ with $x=\frac{1}{\frac{5\pi}{2}}$ is the point $\paren*{\frac{1}{\frac{5\pi}{2}},1}\notin f[a,b]$
+\begin{itemize}
+\item this contradicts the fact $f[a,b]$ is connected
+\end{itemize}
+Also $f[a,b]$ is compact. \\
+The sequence $\brace*{\paren*{\frac{1}{\frac{\pi}{2}+2\pi k},1}}_{k=1}^\infty$ is Cauchy and therefore converges as $f[a,b]$ is complete. \\
+Hence $(0,1)\in f[a,b]\subseteq X$. \\
+But $(0,1)\notin X$ so contradiction.
+\end{enumerate}
+
+\textbf{Finite Dimensional Normed Vector Spaces over $\pmb\R$ (or $\pmb\C$)}
+
+\textbf{Norm on a vector space:}
+\begin{enumerate}
+\item $\norm{v}\geq0$ and $\norm{v}=0$ if and only if $v=0$
+\item $\norm{\alpha v}=\abs\alpha\norm{v}$ for all $\alpha$ scalars, $v\in V$
+\item $\norm{v_1+v_2}\leq\norm{v_1}+\norm{v_2}$ for all $v_1,v_2\in V$
+\end{enumerate}
+Norms always give metrics by $d(x,y)=\norm{x-y}$
+
+\ex Space of polynomials on $[0,1]$ of degree $\leq n$
+\begin{enumerate}
+\item $\inorm{p}=\max_{x\in[0,1]}\abs{p(x)}$
+\item $\norm{p}_1=\int_0^1\abs{p(x)}\d x$
+\end{enumerate}
+\thm Suppose $V$ is a finite dimensional normed vector space over $\R$ with basis $\brace{v_1,\dotsc,v_n}$.  Then there exists constants $A,B>0$ such that for all $(a_1,\dotsc,a_n)\in\R^n$.
+\[ A \norm{(a_1,\dotsc,a_n)}_{\R^n} \leq \norm[\Big]{\sum_{i=1}^n a_iv_i}_V \leq B\norm{(a_1,\dotsc,a_n)}_{\R^n} \]
+Given any $v\in V$ there exists exactly one $(a_1,\dotsc,a_n)$ such that $v=\sum_1^n a_iv_i$.  Theorem says $\norm{a_1,\dotsc,a_n}_{\R^n}\sim\norm{v}_V$ \\
+\pf \begin{align*}
+\norm[\Big]{\sum_{i=1}^n a_iv_i}_V &\leq \sum_{i=1}^n \norm{a_iv_i}_V \\
+&= \sum_{i=1}^n \abs{a_i}\norm{v_i}_V \\
+&\leq\footnote{Cauchy--Schwartz} \paren[\bigg]{\sum_{i=1}^n\abs{a_i}^2}^{1/2}\paren[\bigg]{\sum_{i=1}^n\norm{v_i}^2}^{1/2} \\
+&= \norm{(a_1,\dotsc,a_n)}_{\R^n} B \qquad \text{where }B=\paren[\bigg]{\sum_{i=1}^n\norm{v_i}^2}^{1/2}
+\end{align*}
+Define $F\colon\R^n\to\R$ by
+\[ F(a_1,\dotsc,a_n) = \norm[\Big]{\sum_{i=1}^n a_iv_i} \]
+Check $F$ is continuous:
+\begin{align*}
+F(\x) - F(\y) &= \norm[\Big]{\sum_{i=1}^n x_iv_i} - \norm[\Big]{\sum_{i=1}^n y_iv_i} \\
+&\leq \norm*{\sum x_iv_i-\sum y_iv_i} + \norm*{\sum y_iv_i} - \norm*{\sum y_iv_i} \\
+&= \norm*{\sum(x_i-y_i)v_i}
+\end{align*}
+Similarly $F(y)-F(x)\leq\norm*{\sum(x_i-y_i)v_i}$
+\begin{align*}
+\implies \abs{F(x)-F(y)} &\leq \norm*{\sum(x_i-y_i)v_i} \\
+&\leq \sum\abs{x_i-y_i}\norm{v_i} \\
+&\leq \paren*{\sum\abs{x_i-y_i}^2}^{1/2}\smash{\underbrace{\paren*{\sum\norm{v_i}^2}^{1/2}}_B} \\
+&= B\norm{\x-\y}_{\R^n} \\
+&= B d(x,y)
+\end{align*}
+$\Longrightarrow$ $F$ is continuous \\
+Restrict $F$ to $S=\set{x\in\R^n}{\norm\x=1}$
+\[ F(x) = 0 \iff x = 0 \]
+In particular, if $x\in S$ then $F(x)>0$. \\
+$S$ is compact.  By Extreme Value Theorem there exists $\delta>0$ such that $F(x)\geq\delta$ for all $x\in S$ \\
+Take any $a=(a_1,\dotsc,a_n)\in\R^n\setminus\brace0$ \\
+$\frac{a}{\norm{a}_{\R^n}}\in S$. \\
+$F\paren[\big]{\frac{a}{\norm{a}}}\geq\delta$.% \\
+\begin{align*}
+\norm*{\sum a_iv_i}_V &= \norm[\Big]{\norm{a}_{\R^n}\sum\frac{a_i}{\norm{a_i}_{\R^n}}v_i}_V \\
+&= \norm{a}_{\R^n} \norm[\Big]{\sum\frac{a_i}{\norm{a}}v_i}_V \\
+&= \norm{a}_{\R^n} F\paren[\bigg]{\frac{a}{\norm{a}}} \\
+&\geq \norm{a}_{\R^n}\delta
+\end{align*}
+Take $A=\delta$.

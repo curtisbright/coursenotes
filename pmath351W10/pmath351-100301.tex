@@ -1,0 +1,32 @@
+%9:00	10
+%10:00	13
+%11:00	14
+%12:00	10
+%1:00	12
+%2:00	8
+%3:00	11
+%4:00	15
+New Midterm: Tuesday, 16 March, 2010 at 4:00--5:30 PM
+
+Proof of the Bolzano--Weierstrass Theorem (page 165 text) \\
+Let $A$ be compact.  Assume, to the contrary that $A$ is not sequentially compact, that there exists a sequence $x_k\in A$ which has no convergent subsequence.
+
+In particular, the sequence has \emph{infinitely many distinct} points $y_1$, $y_2$, $\dotsc$, $y_n$, $\dotsc$.
+
+Claim: $\brace{y_1,y_2,\dotsc,y_n,\dotsc}$ is closed.
+
+\pf Let $a\in A$, $a\notin\brace{y_1,\dotsc,y_n,\dotsc}$.  If $a$ were a limit point of $\brace{y_1,\dotsc,y_n,\dotsc}$ then every neighbourhood of $a$ will meet this set.  Hence, by picking elements\marginpar{figure: $x_{n_1}$, $x_{n_2}$ in neighbourhood of $a$, $n_2>n_1$} %carefully
+in the intersection of $D(a,1/n)$ with the set $\brace{y_1,\dotsc,y_n,\dotsc}$, we get a convergent subsequence of $x_k$ which converges to $a$.  This would contradict that $x_k$ has no convergent subsequence. %\\
+
+Therefore $\brace{y_1,\dotsc,y_n,\dotsc}$ is compact. (``closed subsets of a compact space $A$ is compact'').
+
+Claim: Each element of $\brace{y_1,\dotsc,y_n,\dotsc}$ is an \emph{isolated point} of the set, i.e., to each $y_i$, there exists a positive $\delta$ such that $D(y_i,\delta)$ does not meet $\brace{y_1,\dotsc,y_n,\dotsc}$ at any point other than $y_i$.
+
+Consider the open cover of $\brace{y_1,\dotsc,y_n,\dotsc}$
+\[ \sC = \set{D(y_i,\delta_i)}{i=1,2,\dotsc} . \]
+This $\sC$ has no finite subcover.  It contradicts the compactness of $\brace{y_1,\dotsc,y_n,\dotsc}$.  The above proves that compact $A$ is sequentially compact.
+
+Next, assume that $A$ is sequentially compact.  Let $\sC$ be a given open cover of $A$.
+
+Claim: There exists $r>0$ such that for each $y\in A$, $D(y,r)\subset U$ for some $U\in\sC$. \\
+$\ldots$ Read the book.

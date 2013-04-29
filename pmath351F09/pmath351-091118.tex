@@ -1,0 +1,97 @@
+\textbf{Complex-Valued Continuous Functions} \\
+$\C$ metric space \\
+$d(z,w)=\abs{z-w}$ %\\
+\begin{align*}
+\abs{z} &= \abs{\Re z + i\Im z} = \sqrt{(\Re z)^2+(\Im z)^2} \\
+&= \norm{(\Re z,\Im z)}_{\R^2}
+\end{align*}
+$f\colon X\to\C$ \\
+$f$ is continuous at $x$ means whenever
+\[ \underbrace{x_n\to x}_\text{converges in $X$} \qquad\text{then}\qquad \underbrace{f(x_n) \to f(x)}_\text{converges in $\C$} \]
+$f=g+ih$ \\
+$f=\Re f+i\Im f$ \\
+$\Re f(x)=\Re(f(x))$ \\
+$g(x) = \Re(f(x))$ \\
+$f$ is continuous iff $\Re f$ and $\Im f$ are continuous where $\Re f,\Im f\colon X\to\R$. \\
+$\overline f\colon X\to\C$
+\begin{align*}
+\overline f(z) &= \overline{f(z)} \\
+&= \Re f(z) - i \Im f(z)
+\end{align*}
+$f$ is continuous iff $\overline f$ is continuous
+
+\thm (S--W for complex-valued continuous functions) \\
+Let $X$ be a compact metric space and let $\A$ be a subalgebra (scalars from $\C$) of
+\[ C(X,\C) = \set{f\colon X\to\C}{\text{$f$ continuous}} \]
+which contains all constants (from $\C$), separates points and is closed under conjugation (meaning $f\in\A\implies\overline f\in\A$). \\
+Then $\A$ is (uniformly) dense in $C(X,\C)$.
+
+\ex $X=\set{z\in\C}{\abs z=1}$
+\marginpar{$z=e^{i\theta}$, $\theta\in[0,2\pi]$ \\
+$f(z)=f(e^{i\theta})=g(\theta)$} \\
+$\A=\set{\sum_{n=-N}^N a_nz^n}{a_n\in\C\text{, }N\in\N}$ trigonometric polynomials \\
+For $z\in X$, $\overline z=z^{-1}=\frac{1}{z}$\marginpar{figure: unit circle in $\C$} \\
+If $f\footnote{$\in\A$}=\sum_{n=-N}^N a_nz^n$, $\overline f(z)=\sum\overline{a_n}\overline{z}^n=\sum_{n=-N}^N a_nz^{-n}\in\A$ \\
+So $\A$ is an algebra that contains the constants, separates points and is closed under conjugation. \\
+$C(X,\C)\approx C([0,2\pi],\C)$ and $2\pi$ periodic \\
+$\A=\brace*{\sum_{n=-N}^N a_n e^{in\theta}}$
+
+Let $B=\set{\sum_{n=0}^N a_n z^n}{a_n\in\C\text{, }n\in\N}$
+\begin{itemize}
+\item algebra, contains constants, separates points
+\item $B$ is not dense: $f(z)=\frac{1}{z}\notin\text{closure $B$}$ yet $\frac1z\in C(X,\C)$
+\end{itemize}
+Say $f=\lim f_n$, $f_n\in B$ \\
+$f(e^{i\theta})=\lim f_n(e^{i\theta})$ uniformly in $\theta$
+\begin{align*}
+\int_0^{2\pi} \overline f f_n \d\theta &= \int_0^{2\pi} e^{i\theta} \sum_{k=0}^{N_n} a_k^{(n)}e^{ik\theta} \d\theta \\ \intertext{$\overline f(z)=z$}
+&= \sum_{k=0}^{N_n} a_k^{(n)} \int_0^{2\pi} e^{i(k+1)\theta} \d\theta = 0
+\end{align*}
+\begin{align*}
+\abs*{\int_0^{2\pi} \overline f f_n - \int_0^{2\pi} \overline f f \d\theta} &= \int_0^{2\pi} \abs{\overline f (f_n-f)}\d\theta \\
+&\leq \int_0^{2\pi} \abs{\overline f}\abs{f_n-f}\d\theta \\
+&\leq M \int_0^{2\pi} \abs{f_n-f}\d\theta \\
+&< M\epsilon\cdot2\pi\text{ for $n$ sufficiently large}
+\end{align*}
+\begin{align*}
+\implies \footnotemark\int_0^{2\pi} \overline f f_n \d\theta &\to \int_0^{2\pi} \abs{f}^2\d\theta \\
+&= \int_0^{2\pi} 1 \d\theta \\
+&= 2\pi
+\end{align*}\footnotetext{$=0$}%
+$\bullet$ contradiction
+
+\textbf{Proof of S--W for complex-valued functions} %\\
+\begin{align*}
+\text{Let } \A_\R &= \brace{\text{real-valued functions in $\A$}} \\
+&\subseteq C(X)
+\end{align*}
+\begin{itemize}
+\item contains all real valued constant functions
+\end{itemize}
+$\A$-algebra over $\R$ \\
+If $f\in\A$ then $\overline f\in\A$ $\implies$ $f+\overline f=2\Re f\in\A$ \\
+$\implies \Re f\in\A$ $\implies$ $\Re f\in\A_\R$ \\
+%Similarly $\ln f\in\A\implies\ln f\in\A_\R$.
+Similarly $\Im f\in\A\implies\Im f\in\A_\R$.
+
+If $x\neq y$ then there exists $f\in\A$ such that $f(x)\neq f(y)$ \\
+$\implies$ At least one of $\Re f(x)\neq\Re f(y)$ or $\Im f(x)\neq\Im f(y)$ \\
+Therefore $\A_\R$ separates points.
+
+By S--W Theorem, $\A_\R$ is dense in $C(X)$ \\
+Let $f\in C(X,\C)$ and let $\epsilon>0$. \\
+Then $\Re f$, $\Im f\in C(X)$ so there exist $g$, $h\in\A_\R$ such that $\norm{\Re f-g}<\epsilon$ and $\norm{\Im f-h}<\epsilon$ \\
+Also $g+ih\in\A$: Calculate $\norm{f-(g+ih)}$
+\[ = \norm{\underbrace{\Re f+i\Im f}_{=f}-(g+ih)} \leq \norm{\Re f-g}+\norm{i(\Im f-h)} < 2\epsilon \]
+%
+\textbf{Applications}
+\begin{enumerate}
+\item Let $f\in C(X)$, $f$ 1--1 \\
+Then $\set{\sum_{n=0}^N a_n f^n(x)}{a_n\in\R\text{, }n\in\N}$ is dense in $C(X)$
+\item Suppose $f\in C[0,1]$ and $\int_0^1 f(x)x^n\d x=0$ for all $n=0,1,2,\dotsc$. \\
+Then $f=0$. \\
+\pf $\int_0^1 f(x)p(x)\d x=0$ for $p(x)=\text{polynomial}$ \\
+%Know there exists $P_N\to f$ uniformly for polynomials $P_N$ and so $\int_0^1 \underbrace{f\cdot P_N}_{=0}\d x \to \int_0^1 f\cdot f\d x = \int_0^1\norm{f}^2\d x$ \\
+Know there exists $p_N\to f$ uniformly for polynomials $p_N$ and so $\int_0^1 \underbrace{f\cdot p_N}_{=0}\d x \to \int_0^1 f\cdot f\d x = \int_0^1\norm{f}^2\d x$ \\
+$\implies f=0$.
+\end{enumerate}

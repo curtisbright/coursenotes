@@ -1,0 +1,48 @@
+\textbf{Finite Fields, $F$}
+
+\eg $\Z_p$ residues mod $p$, $p$ prime.
+
+Every field contains one of $\Q$ or $\Z_p$. \\
+Since $F$ is finite, $F\supseteq\Z_p$ for some prime $p$.
+
+$F$ is a vector space over $\Z_p$ with basis $v_1$, $\dotsc$, $v_n$. \\
+Every $v$ in $F$ looks like
+\[ v = a_1 v_1 + \dotsb + a_n v_n \text{ where } a_j\in\Z_p \]
+There are $p$ possibilities for each $a_j$ and a change in any $a_j$ makes a fresh $v$. \\
+So there are $p^n$ $v$s in all
+\[ \text{i.e., } \# F = p^n . \]
+\prop Let $A$ be a commutative ring and $G$ the set of units in $A$.  If $\#G={}$finite${}=m$, say%.  
+, then for any $u$ in $G$, $u^m=1$. \\
+\pf Let $v_1$, $v_2$, $\dotsc$, $v_m$ be the full list of $G$. \\
+Put $v=v_1v_2\dotsm v_m$. \\
+Take any $u$ in $G$.  Look at list
+\[ uv_1\co uv_2\co \dotsc, uv_m \text{ inside $G$.} \]
+This list has no duplicates.  Indeed if $uv_j=uv_i$, cancel $u$ and get $v_j=v_i$. \\
+So our list exhausts $G$.
+\begin{align*}
+\text{Hence } 1\cdot v&=(uv_1)(uv_2)\dotsm(uv_m) \\
+&= u^m (v_1 v_2 \dotsm v_m) \\
+&= u^m v
+\end{align*}
+Cancel $v$ and get $u^m=1$.
+
+When we apply this to the set of non-zero elements of our finite field $F$ (where $\#p^n$) we get $u^{p^n-1}=1$ for all $u$ in $F$ where $u\neq0$.
+
+\textbf{Refresh on splitting fields} \\
+Let $K$ be any field and $p(x)\footnote{$\neq0$}\in K[x]$ (monic, say, $\deg p(x)=n$).  A splitting field for $p(x)$ is a field $L$ such that
+\begin{enumerate}[label=(\arabic*)]
+\item $K\subseteq L$
+\item $p(x)=(x-a_1)(x-a_2)\dotsm(x-a_n)$ where $a_j\in L$.
+\item If $M$ is a field such that $K\subseteq M\subsetneq L$ then some $a_j\notin M$ \emph{OR} if $K\subseteq M\subseteq L$ and all $a_j\in M$ then $M=L$.
+\end{enumerate}
+Every $p(x)$ has a splitting field and if $L_1$, $L_2$ are splitting fields of $p(x)$ then there is an isomorphism $\phi\colon L_1\to L_2$ such that $\phi(a)=a$ for each $a$ in $K$.
+
+\prop If $F$ is finite field and $\#F=p^n$ then $F$ is \emph{the} splitting field of $x^{p^n}-x$ as a polynomial in $\Z_p[x]$. \\
+\pf\begin{enumerate}[label=\arabic*)]
+\item $\Z_p\subseteq F$
+\item $u^{p^n-1}=1$, for all $u\neq0$ in $F$ \\
+multiply by $u$, get $u^{p^n}-u=0$, also holds for $u=0$
+\item Since \emph{every} element of $F$ is a root of $x^{p^n}-x$, then any \emph{proper} subfield $M\subsetneq F$ would not have at least one of these roots.
+\end{enumerate}
+
+\prop If $p$ is any prime and $n$ a positive integer and $F=\text{the splitting of $x^{p^n}-x$ in $\Z_p[x]$, then $\#F=p^n$}$.

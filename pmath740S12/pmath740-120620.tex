@@ -1,0 +1,114 @@
+Midterm this Wednesday 4:30--6:00 \\
+A1, A2, A3 + $\sum\frac{\Lambda(n)}{n}$, $\sum\frac{\log p}{p}$, $\sum\frac1p$
+
+\eg (Motivation) \\
+Find an asymptotic formula for
+\[ \sum_{n=k\bmod l}\binom{m}{n} \]
+where $k$, $l\in\Z^+$. \\
+\soln Let $\alpha=e^{i2\pi/l}$
+\begin{align*}
+\sum_{i=0}^{l-1}\alpha^i &= 0 \\
+\sum_{i=0}^{l-1}\alpha^{in} &= \begin{cases}
+l & \text{if $n=0\bmod l$} \\
+0 & \text{if $n\neq0\bmod l$}
+\end{cases} \\
+\sum_{i=0}^{l-1}\alpha^{i(k-n)} &= \begin{cases}
+l & \text{if $n=k\bmod l$} \\
+0 & \text{otherwise}
+\end{cases} \\
+(1+\alpha^i) &= \sum_n \binom{m}{n}\alpha^{in} \\
+\alpha^{-ik}(1+\alpha^i) &= \sum_n \binom{m}{n}\alpha^{i(n-k)} \\
+\sum_{i=0}^{l-1}\alpha^{-ik}(1+\alpha^i) &= \sum_n \binom{m}{n} \sum_{i=0}^{l-1} \alpha^{i(n-k)} \\
+&= l \sum_{n=k\bmod l}\binom{m}{n} \\
+\therefore \sum_{n=l\bmod l}\binom{m}{n} &= \frac1l \sum_{i=0}^{l-1} \alpha^{-ik}(1+\alpha^i)^m \\
+&\sim \frac1l 2^m
+\end{align*}
+(the $\alpha^i$ are the characters of $\Z_l$)
+\[ \sum_{i=0}^{l-1}\sum_{p\leq x}\frac{\alpha^{-ik}\alpha^{ip}}{p} = l\sum_{p=k\bmod l}\frac1p \]
+An $n$-dimensional representation of a group $G$ is a homomorphism
+\[ \rho\colon G\to\GL(n,\C) . \]
+The \emph{character} of $\rho$ is the map $\chi\colon G\to\C$ given by
+\[ \chi(a) = \operatorname{trace} \rho(a) . \]
+\defn A (linear) \emph{character} of a group $G$ is a homomorphism
+\[ \chi\colon G \to \C^* . \]
+The set of characters
+\[ \hat G = \Hom(G,\C^*) \]
+is a group called the character group. \\
+(More generally, for any group $G$, $H$, $\Hom(G,H)$ is a group under
+\begin{align*}
+(fg)(x) &= f(x)g(x) \\
+\text{with } (f^{-1})(x) &= f(x)^{-1} \\
+1(x) &= 1 )
+\end{align*}
+\eg Let $G=\Z_{n_1}\oplus\dotsb\oplus\Z_{n_l}$ and let $H$ be an abelian group.  Find $\Hom(G,H)$. \\
+\soln A homomorphism $f\colon G\to H$ is determined by the values $f(e_i)$ where $e_i=(0,\dotsc,0,\underset{\text{$i$th}}{1},0,\dotsc,0)$.  Indeed if $f(e_i)=a_i\in H$ then
+\[ f(k_1,\dotsc,k_l) = f\paren[\Big]{\sum k_ie_i} = \prod f(e_i)^{k_i} = \prod a_i^{k_i} . \]
+Also note that if $f(e_i)=a_i$ then
+\[ a_i^{n_i} = f(n_i) = f(0) = 1 \]
+so $\ord(a_i)\div n_i$.
+Conversely, given $a_i\in H$ with $\ord(a_i)\div n_i$ we can define $f_{a_1,\dotsc,a_l}\colon G\to H$ b
+\[ f_{a_1,\dotsc,a_l}(k_1,\dotsc,k_l) = \prod_{i=1}^l a_i^{k_i} \]
+and then $f$ is a homomorphism
+\[ \therefore \Hom(G,H) = \set{f_{a_1,\dotsc,a_l}}{a_i\in H\co\ord(a_i)\div n_i} . \]
+In particular for $G=\Z_{n_1}\oplus\dotsb\oplus\Z_{n_l}$
+\begin{align*}
+\hat G &= \Hom(G,\C^*) \\
+&= \set{f_{a_1,\dotsc,a_l}}{a_i\in\C^*\co\ord(a_i)\div n_i} \\
+&= \set{f_{a_1,\dotsc,a_l}}{a_i\in C_{n_i}}
+\end{align*}
+where $C_n=\set{z\in\C^*}{z^n=1}$.
+\[ \text{so } \abs{\hat G} = \prod n_i = \abs{G} \]
+Moreover we have an isomorphism $\Phi\colon G\to\hat G$ given by $\Phi(e_j)=e^{i2\pi/n_j}$ so
+\[ \Phi(k_1,\dotsc,k_l) = (e^{i2\pi k_1/n_1},\dotsc,e^{i2\pi k_l/n_l}) \]
+More generally (using the Classification of Finite Abelian Groups) for every finite abelian group $G$,
+\[ G \cong \hat G . \]
+\eg The characters of $\Z_l$ are the homomorphisms
+\begin{gather*}
+\chi_k\colon \Z_l \to \C^* \\
+\chi_k(1) = e^{i2\pi k/l} \\
+\chi_k(a) = e^{i2\pi ka/l}
+\end{gather*}
+\thm (Orthogonality Relations) \\
+Let $G$ be a finite abelian group.  Then
+\begin{enumerate}
+\item[(1)] for $a\in G$, $\sum_{\chi\in\hat G}=\begin{cases}
+\abs{G} & \text{if $a=1$} \\
+0 & \text{otherwise}
+\end{cases}$
+\item[(2)] for $\chi\in\hat G$
+\[ \sum_{a\in G}\chi(a) = \begin{cases}
+\abs{G} & \text{if $\chi=\1$} \\
+0 & \text{otherwise}
+\end{cases} \]
+\item[(3)] for $a$, $b\in G$
+\[ \sum_{\chi\in\hat G}\chi(a)\overline{\chi}(b) = \begin{cases}
+\abs{a} & \text{if $a=b$} \\
+0 & \text{if $a\neq b$}
+\end{cases} \]
+\item[(4)] for $\chi$, $\psi\in\hat G$
+\[ \sum_{a\in G}\chi(a)\overline{\psi}(a) = \begin{cases}
+\abs{G} & \text{if $\chi=\psi$} \\
+0 & \text{otherwise}
+\end{cases} \]
+\end{enumerate}
+\pf\begin{enumerate}[label=(\arabic{*})]
+\item Let $a\in G$. \\
+If $a=1$ then $\chi(a)=1$ for all $\chi\in\hat G$ so $\sum_{\chi\in\hat G}\chi(a)=\abs{\hat G}=\abs{G}$.
+\item If $a\neq 1$ then verify that there exists $\psi\in\hat G$ with $\psi(a)\neq1$
+\begin{align*}
+1\cdot\sum_{\chi\in\hat G}\chi(a) &= \sum_{\chi\in\hat G}(\psi\chi)(a) \\ \intertext{(since multiplying by $\psi$ permutes the elements of $\hat G$)}
+&= \sum_{\chi\in\hat G}\psi(a)\chi(a) \\
+&= \psi(a)\sum_{\chi\in\hat G}\chi(a) \\
+(1-\psi(a)z)\sum_{\chi\in\hat G}\chi(a) &= 0 \\ % sum lies in $C^*$
+\therefore \sum_{\chi\in\hat G}\chi(a) &= 0
+\end{align*}
+since $\psi(a)\neq1$.
+\item is similar
+\item and (4) follow
+\end{enumerate}
+\defn Given a character $\chi\colon U_l\to\C^*$ we associate a map (also denoted by $\chi$) $\chi\colon\Z\to\C^*$ defined by
+\[ \chi(k\footnote{$\in\Z$}) = \begin{cases}
+\chi(k\footnote{$\in U_l$}) & \text{if $\gcd(k,l)=1$ so $k\in U_l$} \\
+0 & \text{if $\gcd(k,l)\neq1$}
+\end{cases} \]
+The map $\chi\colon\Z\to\C^*$ is called a \emph{Dirichlet character}.  Note that it is completely multiplicative and periodic.

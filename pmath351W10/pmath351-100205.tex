@@ -1,0 +1,38 @@
+\defn A mapping $f\colon X\to Y$ from topological space $X$ to topological space $Y$ is called a homeomorphism if it is bijective and both $f$ and $f^{-1}$ are continuous.
+
+It follows that, for a homeomorphism $f$, a set $A\subset X$ is open \emph{if and only if} $f(A)\subset Y$ is open:
+%\[ \text{(if) Suppose that $f(A)$ is open in $Y$.  Then $A=f^{-1}(f(A))$ [because $f$ is bijective]} . \]
+\begin{itemize}
+\item[(if)] Suppose that $f(A)$ is open in $Y$.  Then $A=f^{-1}(f(A))$ [because $f$ is bijective]\marginpar{$f^{-1}(f(A))\supset A$}
+\marginpar{$f\colon\R\to\ropen{0,\infty}$\\
+$f(x)=x^2$\\
+surjective\\
+$A=\ropen{0,\infty}\subset\R$\\
+$f(A)=\ropen{0,\infty}$\\
+$f^{-1}(f(A))=f^{-1}(\ropen{0,\infty})=\R$} is open in $X$ because $f$ is continuous.
+\item[(only if)] Suppose that $A$ is open in $X$, then $f(A)=(f^{-1})^{-1}(A)$ is open because $f^{-1}$ is continuous.\marginpar{figure: $A\mapsto f(A)$}%
+\end{itemize}
+In short, the bijective $f$ matches open sets of $X$ to open sets of $Y$.
+
+\defn Topological spaces $X$ and $Y$ are homeomorphic if there exists a homeomorphism $f$ from $X$ to $Y$.
+
+\eg Let $X=\brace{a,b,c}$, $\T=\brace{X,\emptyset,\brace{a}}$.  Let $Y=\brace{1,2,3}$ and $\tilde\T=\brace{Y,\emptyset,\brace{3}}$.  The spaces are homeomorphic.  The map $f\colon X\to Y$ given by $f(a)=3$, $f(b)=1$, $f(c)=2$ matches open sets.
+
+\eg $[0,1]$ and any closed interval $[a,b]$ ($a,b\in\R$, $a<b$), as metric spaces are homeomorphic.  The map $f\colon[0,1]\to[a,b]$, $f(t)=a+t(b-a)$, $t\in[0,1]$ is a homeomorphism.
+
+\defn (Subspaces) \\
+Let $X$ be a topological space under a topology $\T$.  Let $A\subset X$.  Then $\T_A=\set{G\cap A}{G\in\T}$ is a topology on $A$.  With this topology, we call $A$ a \emph{subspace} of $X$.
+
+Let $(X,d)$ be a metric space.  Let $A\subset X$.  Then $d_A$ defined by $d_A(a_1,a_2)=d(a_1,a_2)$ for all $a_1$,~$a_2\in A$ is also a metric.  We call $(A,d_A)$ a \emph{subspace} of $(X,d)$.
+
+Question: Let $(X,d)$ be a metric space.  Let $A\subset X$.  Then $A$ has two topologies.  First, $A$ is a metric space under $d_A$, and so $d_A$ induces a topology $\T_1$, say.  Second, from $d$, we get a topology $\T$ on $X$, and that we get a topology $\T_A$ ($\T_2$) in $A$.
+
+Are the two topologies the same?  Answer: Yes.
+
+\egs $\R^2$ with the usual metric is a metric space.  It is also a topological space.
+
+e.g., the figures
+\[ A, B, C, D, \dotsc, Z, \mathord{\makebox[-1.05pt][l]{$^\boxplus$}{}\mid{}}, \]%甲
+are all (metric) and topological spaces.
+
+Question: Are $8$ and $B$ homeomorphic? (Yes)

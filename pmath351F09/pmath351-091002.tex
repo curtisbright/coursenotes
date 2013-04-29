@@ -1,0 +1,81 @@
+\textbf{Bounded in $\pmb\R^n$:} \\
+$A\subseteq\R^n$: say $A$ is bounded if $\exists M$ such that $\norm{x}<M~\forall x\in A$ \\
+$\iff$ $A\subseteq B(0,M)$\marginpar{[figure]}
+
+\defin $A\subseteq X$ is \emph{bounded} if $\exists x_0\in X$ and $M$ such that $A\subseteq B(x_0,M)$ \\
+$\iff$ $\forall x\in X~\exists M_X$ such that $A\subseteq B(x,M_X)$ \\
+\[ \paren{ B(x_0,M) \subseteq B(x,M+d(x_0,x)) } \]
+%
+Discrete metric space $X$: \\
+$X\subseteq B(x_0,1+\epsilon)$ for any $\epsilon>0$ \\
+$X$ is bounded
+
+\textbf{Sequences in metric spaces:} \\
+Recall definition of convergence of $(x_n)$ in $\R^N$ \\
+$\exists x_0\in\R^N$ \\
+$\forall \epsilon>0~\exists M$ such that $\forall n\geq M$ \\
+$\norm{x_n-x_0}\footnote{$=d(x_n,x_0)$}<\epsilon$
+
+\defin Say $(x_n)$ in $X$ \emph{converges} if $\exists x_0\in X$ such that $\forall\epsilon>0$ \\
+$\exists N$ with $d(x_n,x_0)<\epsilon$ $\forall n\geq N$ \\
+i.e., $x_n\in B(x_0,\epsilon)$ $\forall n\geq N$ \\
+Equivalently, the sequence of real numbers $(d(x_n,x_0))_{n=1}^\infty$ converges to $0$ in $\R$.
+
+\prop $(x_n)\to x_0$ if and only if $\forall$ open set $U$ containing $x_0$, $\exists N$ such that $x_n\in U$ $\forall n\geq N$.
+
+\pf ($\Longrightarrow$) Let $U$ be an open set containing $x_0$ \\
+$\exists\epsilon>0$ such that $B(x_0,\epsilon)\subseteq U$ (because $U$ is open) \\
+Since $x_n\to x_0$ $\exists N$ such that $x_n\in B(x_0,\epsilon)$\footnote{$\subseteq U$} $\forall n\geq N$ 
+
+Thus $x_n\in U$ $\forall n\geq N$
+
+($\Longleftarrow$) $B(x_0,\epsilon)$ is an open set containing $x_0$.
+
+\textbf{Exercise:} Limits are unique. \\
+Convergent sequences are bounded, i.e., $\set{x_n}{n=1,2,\dotsc}$ is a bounded set.
+
+%Hausdaff spaces
+
+\ex What do convergent sequences in discrete metric spaces look like?  Must have $x_n=x_0$ $\forall n\geq N$ for some $N$
+
+\prop $x\in\overline{E}$ iff $x=\lim x_n$ where $x_n\in E$
+
+\pf $x\in\overline{E}$ iff $\forall n$ $B(x,1/n)\cap E\neq\emptyset$ \\
+($\Longrightarrow$) If $x\in\overline{E}$ pick $x_n\in B(x,1/n)\cap E$: Then $(x_n)$ is a sequence in $E$ converging to $x$. \\
+($\Longleftarrow$) If $x_n\to x$ then $\forall\epsilon>0$, $B(x,\epsilon)$ contains all $x_n$\footnote{$\in E$}, for $n\geq N$ \\
+$\implies$ $B(x,\epsilon)\cap E\neq\emptyset$, $\forall\epsilon>0$ \\
+$\implies$ $x\in\overline{E}$
+
+\textbf{Cauchy sequence:} $(x_n)$ is Cauchy if $\forall\epsilon>0$ $\exists N$ such that $d(x_n,x_m)<\epsilon$ $\forall n,m\geq N$
+
+\textbf{Exercise:} Every convergent sequence is Cauchy. \\
+If a Cauchy sequence has a convergent subsequence, then the (original) sequence converges to the limit of the subsequence.
+
+\ex $X=\Q$, $\abs\cdot$ \\ %1.1 \\
+Take $x_n\in\Q$, $x_n\to\sqrt2$ in $\R$. \\
+$(x_n)$ is a Cauchy sequence in $\Q$. \\
+But it does not converge (in metric space $\Q$).
+
+\defin We say $X$ is \emph{complete} if every Cauchy sequence in $X$ converges. \\
+e.g., $\R^n$ is complete \\
+$\Q$ is not complete. \\
+Discrete metric space is complete.
+
+\prop Any closed subset $E$ of a complete metric space is complete.
+
+\pf Let $(x_n)$ be a Cauchy sequence in $E$ \\
+It's also a Cauchy sequence in $X$.  Hence $\exists x_0\in X$ such that $\lim x_n=x_0$. \\
+By previous proposition $x_0\in\overline E=E$ as $E$ is closed. \\
+Therefore $(x_n)$ converges in $E$.
+
+\textbf{Compactness:}
+
+\defin An \emph{open cover} $\brace{G_\alpha}$ of a set $X$ is a collection of open sets whose union contains $X$.
+
+By a \emph{subcover} of an open cover, $\brace{G_\alpha}$, we mean a subfamily of the $G_\alpha$s whose union still contains $X$.
+
+\defin We say $X$ is \emph{compact} if every open cover of $X$ has a finite subcover.
+
+\ex $\R$: not compact \\
+$\set{(-n,n)}{n\in\N}$: open cover with no finite subcover \\
+$X$ infinite discrete metric space: not compact, the open cover by singletons has no finite subcover

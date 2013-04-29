@@ -1,0 +1,102 @@
+\prop The set of functions $E\subseteq C[0,1]$ which have a derivative at one point of $(0,1)$ is first category. \\
+\pf
+\[ \text{Put } E_n = \set{f\in C[0,1]}{\exists x\in[0,1-1/n]\text{ such that }\forall h\in(0,1/n]\text{, }{\frac{\abs{f(x+h)-f(x)}}{h}}\leq n} \]
+Show
+\begin{enumerate}
+\item[(1)] $E\subseteq\bigcup_{n=1}^\infty E_n$
+\item[(2)] $E_n$ closed
+\item[(3)] $E_n$ have empty intersection
+\end{enumerate}
+\begin{gather*}
+\text{Then } E\overset{(1)}{=}\bigcup_{n=1}^\infty(E_n\cap E) \\
+\overline{E_n\cap E} \subseteq \overline{E_n} \overset{(2)}{=} E_n \\
+\Int(\overline{E_n\cap E}) \subseteq \Int E_n \overset{(3)}{=} \emptyset
+\end{gather*}
+\negthickspace$\implies$ $E_n\cap E$ are nowhere dense \\
+$E$ is first category \\
+\textbf{Step 1:} Let $f\in E$, say $f'(x_0)$ exists for $x_0\in(0,1)$ \\
+Then there exists $n_1$ such that $x\in[0,1-1/n_1]$ \\
+There exists $n_2$ such that $\abs h<1/n_2$ then $\abs[\big]{\frac{f(x_0+h)-f(x_0)}{h}-f'(x_0)}\leq1$
+\begin{align*}
+\implies \frac{\abs{f(x_0+h)-f(x_0)}}{h} &\leq 1 + f'(x_0) \quad \forall\,0<h\leq1/n_2 \\
+&\leq n_3
+\end{align*}
+Put $n=\max(n_1,n_2,n_3)\implies f\in E_n$ \\
+$\implies E \subseteq \bigcup_{n=1}^\infty E_n$
+\begin{enumerate}
+\item[(3)] Let $f\in E_n$ and let $\epsilon>0$ \\
+Show there exists $g\in C[0,1]$ such that $g\in B(f,\epsilon)$, i.e., $\norm{g-f}<\epsilon$, but $g\notin E_n$. \\
+i.e., for all $x\in[0,1-1/n]$, there exists $h\in(0,1/n]$ such that
+\[ \abs*{\frac{g(x+h)-g(x)}{h}} > n \]
+Get polynomial $P$ such that $\norm{f-P}<\epsilon/2$ (by S--W) \\
+Let $M>\sup_{x\in[0,1]}\abs{P'(x)}$ (can do as $P'\in C[0,1]$) \\
+Let $Q$ be continuous piecewise linear with slope $\pm(M+n+1)$ and $0\leq Q\leq\epsilon/2$\marginpar{figure: periodic sawtooth between 0 and 1; peak of $\epsilon/2$} \\
+Put $g=P+Q\in C[0,1]$
+\begin{align*}
+\norm{g-f} = \norm{P+Q-f} &\leq \norm{P-f} + \norm{Q} \\
+&< \epsilon/2 + \epsilon/2 = \epsilon
+\end{align*}
+\begin{align*}
+\frac{\abs{g(x+h)-g(x)}}{h} &= \frac{\abs{P(x+h)-P(x)+Q(x+h)-Q(x)}}{h} \\
+&\geq \frac{\abs{Q(x+h)-Q(x)}}{h} - \frac{\abs{P(x+h)-P(x)}}{h} \\
+&\geq M + n + 1 - M \qquad\text{(for small $h$)} \\
+&= n+1 > n
+\end{align*}
+\negthickspace$\implies g\notin E_n$
+\item[(2)] Prove $E_n$ is closed. \\
+Suppose $f_m\in E_n$ and $f_m\to f$ (uniformly) \\
+Need to prove $f\in E_n$. \\
+For each $m$, there exists $x_m\in[0,1-1/n]$ such that for all $h\in(0,1/n]$
+\[ \frac{\abs{f_m(x_m+h)-f_m(x_m)}}{h} \leq n \tag{3} \]
+By B--W there exists $x_{m_j}\to x_0\in[0,1-1/n]$ \\
+By relabeling, if necessary, (and throwing away functions not in the subsequent $f_{m_j}$) we can assume $x_m\to x_0$. \\
+Fix $h\in(0,1/n]$.  Fix $\epsilon>0$. \\
+Pick $M_1$ such that $\norm{f_m-f}<\frac{\epsilon h}{4}$ for all $m\geq M_1$ (2) \\
+$f$ is uniformly continuous.  There exists $\delta>0$ such that $\abs{x-y}<\delta$ \\
+$\implies\abs{f(x)-f(y)}<\frac{\epsilon h}{4}$ (1) \\
+Pick $M_2$ such that $\abs{x_m-x_0}<\delta$ if $m\geq M_2$ and then let $M=\max(M_1,M_2)$
+%\begin{multline*}
+%\frac{\abs{f(x_0+h)-f(x_0)}}{h}
+%\leq
+%\frac{\abs{f(x_0+h)-f(x_M+h)}}{h}
+%+
+%\frac{\abs{f(x_M+h)-f_M(x_M+h)}}{h} \\
+%+
+%\frac{\abs{f_M(x_M+h)-f_M(x_M)}}{h}
+%+
+%\frac{\abs{f_M(x_M)-f(x_M)}}{h}
+%+
+%\frac{\abs{f(x_M)-f(x_0)}}{h}
+%\end{multline*}
+%\[ \abs{x_0+h-(x_M+h)} = \abs{x_0-x_M} < \delta \]
+%\begin{align*}
+%\frac{\abs{f(x_0+h)-f(x_0)}}{h} &<
+%\frac{\epsilon h/4}{h}\footnote{by (1)} + \frac{\norm{f-f_M}}{h}\footnote{(2)} + n\footnote{by (3)} + \norm{f_M-f}\footnote{(2)} + \frac{\epsilon \cancel{h}/4}{\cancel{h}}\footnote{by (1)} \\
+%&< \epsilon/4 + \frac{\epsilon \cancel{h}/4}{\cancel{h}} + n + \epsilon/4 + \epsilon/4 \\
+%&= n + \epsilon
+%\end{align*}
+\vspace{4.75\baselineskip}\marginpar{$\abs{x_0+h-(x_M+h)} = \abs{x_0-x_M} < \delta$}\vspace{-4.75\baselineskip}%
+\begin{align*}
+\frac{\abs{f(x_0+h)-f(x_0)}}{h}
+&\leq
+\frac{\abs{f(x_0+h)-f(x_M+h)}}{h}
++
+\frac{\abs{f(x_M+h)-f_M(x_M+h)}}{h} \\
+&\qquad+
+\frac{\abs{f_M(x_M+h)-f_M(x_M)}}{h}
++
+\frac{\abs{f_M(x_M)-f(x_M)}}{h}
++
+\frac{\abs{f(x_M)-f(x_0)}}{h} \\
+%\frac{\abs{f(x_0+h)-f(x_0)}}{h}
+&<
+\frac{\epsilon h/4}{h}\footnote{by (1)} + \frac{\norm{f-f_M}}{h}\footnote{(2)} + n\footnote{by (3)} + \norm{f_M-f}\footnote{(2)} + \frac{\epsilon \cancel{h}/4}{\cancel{h}}\footnote{by (1)} \\
+&< \epsilon/4 + \frac{\epsilon \cancel{h}/4}{\cancel{h}} + n + \epsilon/4 + \epsilon/4 \\
+&= n + \epsilon
+\end{align*}
+True for all $\epsilon>0$, therefore $\frac{\abs{f(x_0+h)-f(x_0)}}{h}\leq n$ for all $h\in(0,1/n]$ \\
+$\implies f\in E_n$.  Therefore $E_n$ is closed.
+\end{enumerate}
+\textbf{Banach Contraction Mapping Principle} \\
+Let $X$ be a complete metric space and let $T\colon X\to X$ be a contraction i.e., exists $r<1$ such that $d(T(x),T(y))\leq rd(x,y)$ for all $x,y\in X$ \\
+Then $T$ is continuous and has a unique fixed point i.e., point $x$ such that $T(x)=x$.

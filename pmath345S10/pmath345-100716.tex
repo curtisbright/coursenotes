@@ -1,0 +1,68 @@
+We had finite field $F$, $\#F=p^n$, $F^*=F\setminus\brace0$. \\
+$q=p^n-1$. \\
+If $a\in F^*$, $\ord(a)={}$least $k\geq1$ such that $a^k=1$.  (Recall $a^q=1$).
+
+\textbf{Proposition 1:} If $k=\ord(a)$ and $a^m=1$, then $k\mid m$.  So $\ord(a)\mid q$.
+
+\textbf{Proposition 2:} If $k=\ord(a)$, then the list $1$, $a$, $a^2$, $\dotsc$, $a^{k-1}$ does not repeat and includes \emph{all} $b$ in $F^*$ that satisfy $b^k=1$.
+
+\textbf{Proposition 3:} If $\ord(a)=k$ and $\ord(b)=l$, and $k$, $l$ are coprime, then $\ord(ab)=kl$. \\
+\pf Let $m=\ord(ab)$. \\
+Since $(ab)^{kl}=a^{kl}b^{kl}=(a^k)^l(b^l)^k=(1)^l(1)^k=1$. \\
+Thus $m\mid kl$. \\
+%Now check $kl\mid m$.  Since $k$, $l$ are coprime, it is enough to check $k\mid m$ and $l\mid m$.
+Now check $kl\mid m$.  Since $k$, $l$ are coprime, enough to check $k\mid m$ and $l\mid m$. \\
+\aside If $c\in F^*$ then $\ord(c)=\ord(c^{-1})$: $c^k=1\iff(c^{-1})^k=1$ \\
+Now we have $1=(ab)^m=a^m b^m$. \\
+Let $j=\ord(a^m)=\ord(b^m)$. \\
+Now $(a^m)^k=(a^k)^m=1^m=1$. \\
+$\implies j\mid k$ \\
+and likewise $j\mid l$. \\
+Since $k$, $l$ are coprime, we get $j=1$. \\
+So $a^m=1=b^m$ \\
+Then $k\mid m$ and $l\mid m$. \qed
+
+\thm In $F^*$ there is some $a$ such that $1$, $a$, $a^2$, $\dotsc$, $a^{q-1}$ picks up all of $F^*$. \\
+\pf Just check $F^*$ has an element of order $q$. \\
+Pick any $a$ in $F^*$ and put $k=\ord(a)$. \\
+If $k=q$, done. \\
+If $k<q$, the list $1$, $a$, $\dotsc$, $a^{k-1}$ does not cover all of $F^*$.  Pick $b$ not in list.  Let $l=\ord(b)$. \\
+\note $b^k\neq1$, by Proposition 2. \\
+Hence $l\nmid k$.  Indeed, if $k=lr$ we would get
+\[ b^k = (b^l)^r = 1^r = 1 . \]
+So some prime $p$ (not original ``$p$'') divides $l$ more often than it divides $k$.  Write $k=p^i k_1$ and $l=p^j l_1$ where $0\leq i<j$ and $k_1$, $l_1$ have no $p$ in them. \\
+Put $c=a^{p^i}$, $\ord c=k_1$ \\
+\phantom{Put }$d=b^{l_1}$, $\ord d=p^j$\footnote{$k_1$, $p^j$ coprime} \\
+Thus $\ord(cd)=p^j k_1>p^i k_1=k$. \\
+We found an element, namely $cd$, whose order is bigger than $\ord a$. \\
+Keep doing this until an element in $F^*$ of order $q$ is found. \qed
+
+\eg The polynomial $x^2-2$ is irreducible in $\Z_5[x]$. %\\
+%Hence $F=\Z_5[x]/\chev{p(x)}$ is a field and $\#F=25$, $\#F^*=24$.  Have $\begin{aligned}\phi\colon&\Z_5[x]\to F\\&f(x)\mapsto f(x)+\chev{p(x)}\end{aligned}$ and \emph{if} $\alpha=x+\chev{p(x)}$ we \emph{know} that $1$, $\alpha$, is basis for $F$ over $\Z_5$. \\
+Hence $F=\Z_5[x]/\chev{p(x)}$ is a field and $\#F=25$, $\#F^*=24$.  Have $\substack{\phi\colon\Z_5[x]\to F\\f(x)\mapsto f(x)+\chev{p(x)}}$ and \emph{if} $\alpha=x+\chev{p(x)}$ we \emph{know} that $1$, $\alpha$, is basis for $F$ over $\Z_5$. \\
+%Hence $F=\Z_5[x]/\chev{p(x)}$ is a field and $\#F=25$, $\#F^*=24$.  Have \shortstack{$\phi\colon\Z_5[x]\to F$\\$f(x)\mapsto f(x)+\chev{p(x)}$} and \emph{if} $\alpha=x+\chev{p(x)}$ we \emph{know} that $1$, $\alpha$, is basis for $F$ over $\Z_5$. \\
+Every element in $F$ looks like $a+b\alpha$ where $a$, $b\in\Z_5$. \\
+Know $\alpha^2-2=0$, $\alpha^2=2$. \\
+Find primitive generator of $F$. \\
+Start with $\alpha$. \\
+Take powers
+\[ 1\co\alpha\co\alpha^2=2\co\alpha^3=2\alpha\co\alpha^4=4\co\alpha^5=4\alpha\co\alpha^6=3\co\alpha^7=3\alpha\co\alpha^8=6=1 \]
+too short.  Pick $\beta$ not in list.  Say $\beta=\alpha+1$.
+
+Powers of $\beta$.
+\begin{align*}
+1 \\
+\beta \\
+\beta^2 &= (\alpha+1)^2 = \alpha^2 + 2\alpha + 1 = 2\alpha + 3 \\
+\beta^3 &= 2 \\
+\beta^4 &= 2\alpha + 2 \\
+\beta^5 &= 4\alpha + 1 \\
+\beta^6 &= 4 = -1 \\
+&\eqvdots \\
+\beta^{12} &= 1
+\end{align*}
+So $\ord\beta=12$. \\
+So $\ord\alpha=3^0\cdot2^3$, $\ord\beta=3^1 \cdot 2^2$ \\
+Put $\gamma=\alpha^{3^0}=\alpha$, $\ord\gamma=8$ \\
+\phantom{Put }$\delta = \beta^4 = 2\alpha+2$, $\ord\delta=3$\footnote{$\ord\delta$, $\ord\gamma$ coprime} \\
+So $\ord(\gamma\delta)=8\cdot3=24$

@@ -1,0 +1,68 @@
+\defn Let $D$ be a domain, $K=K(D)$ its field of fractions.  A fractional ideal (same as ``fractionary ideal'') of $D$ is a subset $I$ of $K$ satisfying:
+\begin{enumerate}[label=(\arabic*)]
+\item $0\in I$
+\item If $a$, $b\in I$, then $a-b\in I$
+\item If $a\in I$, $r\in D$, then $ra\in I$
+\item There is some $d\in D$, $d\neq0$, such that $dI\subset D$.
+\end{enumerate}
+\note The set $dI$ is an (integral) ideal of $D$, so $I=\frac1d(dI)$ is just some integral ideal of $D$ divided by a nonzero element of $D$.
+
+\eg The fractional ideals of $\Z$ are $\frac1m(n\Z)=\frac nm\Z$ for integers $n$, $m\in\Z$ with $m\neq0$.
+\[ \tfrac32\Z = \set{\tfrac{3n}{2}}{n\in\Z} = \brace{\dotsc,-3,-\tfrac32,0,\tfrac32,3,4\tfrac12,6,\dotsc} \]
+\eg $D=\Z[\sqrt{10}]$, $I=\sqrt{10}D+3D=(\sqrt{10},3)D$ or
+\begin{align*}
+I &= \tfrac{\sqrt{10}}{2}D + D \neq 0 \\
+&= \set{(a+b\sqrt{10})\tfrac{\sqrt{10}}{2}+(c+d\sqrt{10})}{a,b,c,d\in\Z}
+\end{align*}
+One can add and multiply fractional ideals simply:
+\begin{gather*}
+(a_1 D + \dotsb + a_n D) + (b_1 D + \dotsb + b_m D) = a_1 D + \dotsb + a_n D + b_1 D + \dotsb + b_m D \\
+(a_1 D + \dotsb + a_n D)(b_1 D + \dotsb + b_m D) = \sum_{i,j} a_i b_j D
+\end{gather*}%
+%\[ (a_1 D + \dotsb + a_n D)(b_1 D + \dotsb + b_m D) = \sum_{i,j}a_i b_j D \]
+\eg
+%\[ (aD+bD)(cD+dD) = acD + bcD + adD + bdD \]
+$(aD+bD)(cD+dD) = acD + bcD + adD + bdD$ \\
+\eg $D=\Z[\sqrt{10}]$:
+\[ \paren[\big]{\tfrac{\sqrt{10}}{2}D+D}\paren[\big]{\sqrt{10}D+\tfrac12D} = \cancel{5D+\sqrt{10}D} + \tfrac{\sqrt{10}}{4}D + \tfrac12D \]
+$5D\subset\tfrac12D$ and $\sqrt{10}D\subset\tfrac{\sqrt{10}}{4}D$ so product is $\tfrac{\sqrt{10}}{4}D+\tfrac12D$
+
+\defn A fractional ideal is invertible \emph{iff} there is a fractional ideal $J$ such that $IJ=D$.
+
+Say $I$, $J$ fractional ideals of $D$, $J\neq(0)$.  Then $I/J=\set{x\in K(D)}{xJ\subset I}$.  $I/J$ is a fractional ideal because
+\begin{enumerate}[label=(\arabic*)]
+\item $0\in I/J$
+\item If $xJ\subset I$ and $yJ\subset I$ then $(x-y)J\savenotes\mathrel{\mathord\subset\footnote{NOT the same!}}\spewnotes xJ-yJ\subset I$
+\item If $xJ\subset I$ and $r\in D$, then $rxJ\subset xJ\subset I$, so $rx\in I/J$.
+\item Need $b\in D$, $b\neq0$ such that $b(I/J)\subset D$.  Let $a\in D$, $a\neq0$ satisfy $aI\subset D$ and choose $x\in J\cap D$, $x\neq0$.  Then $b=ax$ works:
+
+If $y\in I/J$, then
+\[ axy = a(xy)\in aI\subset D \]
+so $ax(I/J)\subset D$.
+\end{enumerate}
+%\eg
+\begin{flalign*}
+\mathrlap{\eg} && (n\Z)/(m\Z) &= \set[\big]{\tfrac{a}{b}\in\Q}{\tfrac{a}{b}(mk)\in n\Z\text{ for all $k\in\Z$}} && \\
+&&&= \set[\big]{\tfrac{a}{b}\in\Q}{\tfrac{amk}{b}\in n\Z\text{ for all $k\in\Z$}} && \\
+&&&= \set[\big]{\tfrac{a}{b}\in\Q}{\tfrac{am}{b}\in n\Z} && \\
+&&&= \set[\big]{\tfrac{a}{b}\in\Q}{\tfrac{a}{b}\in\tfrac{n}{m}\Z} && \\
+&&&= \tfrac{n}{m}\Z . &&
+\end{flalign*}
+In general, if $a$, $b\in D$, then $aD/bD=\frac{a}{b}D$ if $b\neq0$.  In particular, every principal fractional ideal (nonzero) is invertible: $aD/aD=D$. \\
+\eg Compute $a$, $b$ such that $D/(\sqrt{10}D+5D)=aD+bD$ for $D=\Z[\sqrt{10}]$.
+
+Let $I=D/(\sqrt{10}D+5D)$.  Then:
+\begin{gather*}
+\begin{aligned}
+I &= \set[\Big]{\underset{a,b\in\Q}{a+b\sqrt{10}}}{(a+b\sqrt{10})x\in\Z[\sqrt{10}]\text{ for all $x\in\sqrt{10}D+5D$}} \\
+%I &= \set{a+b\sqrt{10}\footnote{$a,b\in\Q$}}{(a+b\sqrt{10})x\in\Z[\sqrt{10}]\text{ for all $x\in\sqrt{10}D+5D$}} \\
+&= \set[\Big]{\underset{a,b\in\Q}{a+b\sqrt{10}}}{(a+b\sqrt{10})\in\Z[\sqrt{10}]\text{ and }(a+b\sqrt{10})5\in\Z[\sqrt{10}]} \\
+%&= \set{a+b\sqrt{10}\footnote{$a,b\in\Q$}}{(a+b\sqrt{10})\in\Z[\sqrt{10}]\text{ and }(a+b\sqrt{10})5\in\Z[\sqrt{10}]} \\
+\end{aligned} \\
+%10b+\sqrt{10}a \in \Z[\sqrt{10}] \implies \begin{gathered} a\in\Z \\ b\in\tfrac1{10}\Z \end{gathered} \\
+10b+\sqrt{10}a \in \Z[\sqrt{10}] \implies a\in\Z \co b\in\tfrac1{10}\Z \\
+(5\sqrt{10})b + 5a \in \Z[\sqrt{10}] \implies b\in\tfrac15\Z
+\end{gather*}
+Therefore guess: $I=\frac{\sqrt{10}}{5}D+D$ \\
+($a+b\sqrt{10}=(\text{integer})+(\text{integer})\frac{\sqrt{10}}{5}$) \\
+\textbf{Check:} $(\frac{\sqrt{10}}{5}D+D)(\sqrt{10}D+5D)=2D+\sqrt{10}D+\sqrt{10}D+5D=D$

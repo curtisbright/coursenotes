@@ -1,0 +1,47 @@
+\textbf{Assignment \#1:} Due next Wednesday in class
+\[ \text{Corollary 14} \implies \text{The set $A$ of algebraic integers forms a subring of $\C$.} \]
+Also if $[K:\Q]<\infty$ then $A\cap K$ is also a subring of $\C$.  $A\cap K$ is the ring of algebraic integers of $K$.
+
+Corollary 12 gives a description of $A\cap K$ when $[K:\Q]=2$.
+
+Next we'll consider the cyclotomic extensions of $\Q$.  Let $n\in\Z^+$ and put $\zeta_n=e^{2\pi i/n}$.  The fields $\Q(\zeta_n)$ for $n=1$, $2$, $\dotsc$ are significant.  For instance they are normal extensions of $\Q$ with abelian Galois group.  Further it can be shown that if $L$ is a normal extension of $\Q$ with an abelian Galois group (over $\Q$) then $L$ is a subfield of $\Q(\zeta_n)$.
+
+Let $h(x)=a_nx^n+a_{n-1}x^{n-1}+\dotsb+a_0\in\Z[x]$ and $p$ be a prime.  The map that sends $h$ to $\overline{h}\in\Z/p\Z[x]$ where
+\begin{align*}
+\hbar &= \overline{a_n}x^n + \overline{a_{n-1}}x^{n-1} + \dotsb + \overline{a_0} \\
+\text{with } \overline{a_i} &= a_i+p\Z
+\end{align*}
+is a ring homomorphism.  Further
+\[ \hbar(x^p) = (\hbar(x))^p \qquad\text{in}\qquad \Z/p\Z[x] \tag{$*$} \]
+since
+\begin{align*}
+\hbar(x^p) &= \overline{a_n}x^{np} + \dotsb + \overline{a_1}x^p + \overline{a_0} \\
+&= \overline{a_n}^px^{np} + \dotsb + \overline{a_1}^p x^p + \overline{a_0}^p \\
+&= (\overline{a_n}x^n+\dotsb+\overline{a_0})^p \\
+&= (\hbar(x))^p
+\end{align*}
+We now introduce $\Phi_n(x)$, the $n$th cyclotomic polynomial for $n=1$, $2$, $\dotsc$.  We put
+\[ \Phi_n(x) = \prod_{\substack{j=1\\(j,n)=1}}^n (x-\zeta_n^j) . \]
+\textbf{Theorem 16:} $\Phi_n(x)$ is irreducible in $\Q[x]$ for $n=1$, $2$, $\dotsc$. \\
+\pf We'll show that $\zeta_n^j$ for $1\leq j\leq n$ with $(j,n)=1$ are the conjugates of $\zeta_n$ and so $\Phi_n(x)$ is then the minimal polynomial of $\zeta_n$.  It is irreducible in $\Q[x]$.
+
+Let $r(x)$ be the minimal polynomial of $\zeta_n$.  Since $\zeta_n$ is a root of $x^n-1$, $\zeta_n$ is an algebraic integer.  Note that then $r(x)\mid x^n-1$ in $\Q(x)$ so $x^n-1=r(x)g(x)$ with $g(x)\in\Q[x]$.  By Gauss' Lemma, $g\in\Z[x]$.
+
+Since $r(x)$ divides $x^n-1$ in $\Q[x]$ we see that the conjugates of $\zeta_n$ lie in
+\[ \set{\zeta_n^j}{j=1,\dotsc,n} . \]
+Observe though that if $(j,n)>1$ then $(\zeta_n^j)^{n/(j,n)}=1$ whereas $(\zeta_n)^{n/(j,n)}\neq1$ and so $\zeta_n^j$ is not a conjugate of $\zeta_n$.  In particular the conjugates of $\zeta_n$ lie in
+\[ \set{\zeta_n^j}{j=1,\dotsc,n\co(j,n)=1} . \]
+This is in fact the complete set of conjugates.  To prove this it is enough to prove that if $p$ is a prime which does not divide $n$ and $\theta$ is a root of $r(x)$ then $\theta^p$ is also a root of $r(x)$.  Note that $\zeta_n$ is a root of $r(x)$ and the result follows by repeated application of the above fact.
+
+Recall that $x^n-1=r(x)g(x)$.  Let $\theta$ be a root of $r(x)$.  If $\theta^p$ is not a root of $r(x)$ then, since $\theta^p$ is a root of $x^n-1$, we see that $\theta^p$ is a root of $g(x)$.  Thus $\theta$ is a root of $g(x^p)$.  Thus $r(x)$, the minimal polynomial of $\theta$, divides $g(x^p)$ in $\Q[x]$ and so
+\[ g(x^p) = r(x)s(x) \qquad\text{with}\qquad s\in\Q[x] . \]
+By Gauss' Lemma $s(x)\in\Z[x]$.
+
+Since $g(x^p)=r(x)s(x)$ we see that $\bar r(x)\div\bar g(x^p)$ in $\Z/p\Z[x]$.  Let $t$ be an irreducible polynomial in $\Z/p\Z[x]$ which divides $\bar r$.  Now by ($*$) $t$ divides $\overline{g}(x)$ in $\Z/p\Z[x]$. 
+\begin{align*}
+\text{Recall that } x^n-1 &= r(x)g(x) \\
+\text{so } x^n-\overline{1} &= \overline{r}(x)\overline{g}(x)
+\end{align*}
+Therefore $t^2\div x^n-\bar1$ in $\Z/p\Z[x]$, and so $t\div \bar nx^{n-1}$.  Since $p\ndiv n$, $\bar n$ is not $\overline{0}$ hence $t=\overline{c}x^g$ with $1\leq g\leq n-1$.  But $t\div x^n-\bar1$ which gives a contradiction.
+
+The result follows.

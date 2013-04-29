@@ -1,0 +1,31 @@
+\textbf{Chapter 2}
+
+\prop (2.1.2) Every $\epsilon$-disc $D(x,\epsilon)$ is open. \\
+\pf Let $a\in D(x,\epsilon)$ be given.  Let $a\in D(x,\epsilon)$ be given.  Let $r=\epsilon-d(x,a)$.  Then $r>0$, because $a\in D(x,\epsilon)$, so $d(a,x)<\epsilon$. \\
+Claim: $D(a,r)\subset D(x,\epsilon)$.\marginpar{figure: $a$,~$y\in D(x,r)$} \\
+\pf Let $y\in D(a,r)$ be given. \\
+Then $d(y,a)<r$.  Hence
+$d(y,x)\leq d(y,a)+d(a,x)$ (by the triangle inequality) \\
+$<r+d(a,x)=\epsilon$.  So $d(y,x)<\epsilon$.  This shows that $y\in D(x,\epsilon)$.  As $a\in D(x,\epsilon)$ is arbitrarily given, this proves that $D(x,\epsilon)$ is open.
+
+\defn Let $(X,\T)$ be a topological space.  Let $A\subset X$.  $a\in A$ is called an \emph{interior} point of $A$ if there exists $G\in\T$ so that $a\in G\subset A$.
+
+The set of all interior points of $A$ is denoted $\Int(A)$.\marginpar{figure: $a\in G\subset A$}
+
+A subset of $X$ is called \emph{open} if it is a member of the topology.  Thus, $a\in\Int(A)$ if there exists open $G$ so that $a\in G\subset A$.
+
+Note: The finite intersection of open sets is open, and the (arbitrary) union of open sets is open.  Also, $X$ and $\emptyset$ are open.
+
+\prop Let $X$ be a topological space.  (Implicitly there is a topology $\S$.)  Let $A\subset X$.  Then $\Int(A)$ is open. \\
+\pf Let $b\in\Int(A)$. \marginpar{figure: $b\in G_b\subset A$}%
+Choose an open set $G_b$ so that $b\in G_b\subset A$.  Then $G_b\subset\Int(A)$. [\pf Let $c\in G_b$.  Then as $c\in G_b\subset A$, $c\in\Int(A)$.]  Now $\Int(A)=\bigcup_{b\in\Int(A)}G_b$.
+
+Being the union of open sets, $\Int(A)$ is open.
+
+\prop If $G$ is open and $G\subset A$, then $G\subset\Int(A)$. (seen from above)  Thus $\Int(A)$ is the \emph{largest} open subset of $A$. \\
+\eg $X=\brace{a,b,c}$, $\T=\brace{\emptyset,X,\brace{a}}$ \\
+$\Int(\brace{a,b})=\brace{a}$.  $\Int(\brace{a,b,c})=X$.  $\Int(\emptyset)=\emptyset$, $\Int(\brace{b})=\emptyset$.
+
+In a \emph{discrete} topological space, $\Int(A)=A$, all $A$. \\
+In an \emph{indiscrete} topology space, $\Int(A)=\begin{cases}\emptyset & \text{if $A\neq\text{full $X$}$} \\
+X & \text{if $A=X$}\end{cases}$

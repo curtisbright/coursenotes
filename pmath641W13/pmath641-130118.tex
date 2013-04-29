@@ -1,0 +1,43 @@
+Let $K\subseteq L\subseteq\C$ with $[L:K]<\infty$.  $L$ normal over $K$.  $G=\Gal(L/K)$ the Galois group of $L$ over $K$.  Recall the maps $\lambda$ and $\mu$, $\lambda\colon S_1\to S_2$ by $\lambda(F)=\Gal(L/F)$, $\mu\colon S_2\to S_1$ by $\mu(H)=F_H$, fixed field of $H$.
+
+\textbf{Theorem 10:} (Fundamental Theorem of Galois Theory) \\
+$\mu$ and $\lambda$ are inverses of each other.  Suppose that $\lambda(F)=H$.  $F$ is normal over $K$ if and only if $H$ is a normal subgroup of $G=\Gal(L/K)$.  Further if $F$ is normal over $K$ there is an isomorphism $\delta$ of $G/H$ to $\Gal(F/K)$ given by $\delta(\sigma+H)=\sigma|_F$; where $\sigma|_F$ is the automorphism of $F$ which fixes each element of $K$ given by the restriction of $\sigma$ to $F$. \\
+\pf Note that
+\[ \mu\circ\lambda(F) = \mu(\Gal(L/F)) = F_{\Gal(L/F)} \]
+By Theorem 9 the fixed field of $\Gal(L/F)$ is $F$ and so $\mu\circ\lambda(F)=F$.
+
+Further
+\[ \lambda\circ\mu(H) = \lambda(F_H) = \Gal(L/F_H) . \]
+Put $H'=\Gal(L/F_H)$.  By Theorem 9, $F_H$ is the fixed field of $H'$ and of no proper subgroup of $H'$.  Thus $H'\subseteq H$.  But if $\sigma\in H$ then $\sigma\in\Gal(L/F_H)$ so $H\subseteq H'$.  Thus $H=H'$ so $\lambda\circ\mu(H)=H$.
+
+Suppose now $H=\Gal(L/F)$, $\gamma\in H$ and $\sigma\in G$.  Then
+\[ \sigma\circ\gamma\circ\sigma^{-1} \text{ is in } \Gal(L/\sigma F) \]
+Similarly if $\theta\in\Gal(L/\sigma F)$ then $\sigma^{-1}\theta\sigma$ is in $\Gal(L/F)$.
+\[ \implies \Gal(L/\sigma F) = \sigma H \sigma^{-1} . \]
+Now if $F$ is normal over $K$ then $\sigma F=F$ for all $\sigma$ in $G$.
+
+$F$ is normal over $K$ and only every embedding of $F$ in $\C$ which fixes $K$ is an automorphism.  Further every embedding of $F$ in $\C$ which fixes $K$ can be extended to an element of $G$.
+\begin{align*}
+F\text{ normal over $K$} &\iff \sigma F=F\,\forall\sigma\in G \\
+&\iff \sigma H\sigma^{-1}=H\,\forall\sigma\in G \\
+&\iff \text{$H$ is a normal subgroup of $G$}
+\end{align*}
+Next suppose $F$ is normal over $K$.  We introduce the group homomorphism in $\psi$ from $G=\Gal(L/K)$ to $\Gal(F/K)$ given by
+\[ \psi(\sigma) = \sigma|_F , \]
+where $\sigma$ is the restriction of $\sigma$ to $F$.
+
+We first observe that the map is surjective since every element of $\Gal(F/K)$ can be extended to an element of $G$.
+
+The kernel of $\psi$ is $\Gal(L/F)$ so by the First Isomorphism Theorem
+\[ \Gal(L/K)/\Gal(L/F) \approx \Gal(F/K) . \]
+\textbf{Theorem 11:} Let $\alpha$ be an algebraic integer.  The minimal polynomial of $\alpha$ over $\Q$ is in $\Z[x]$. \\
+\pf Let $f$ be the minimal polynomial of $\alpha$ over $\Q$, $f\in\Q[x]$.  Let $h$ be a monic polynomial in $\Z[x]$ with $\alpha$ as a root.  Since $f$ is the minimal polynomial over $\Q$, $f\div h$ is in $\Q[x]$.  In particular there exist $g\in\Q[x]$ with $h=gf$.
+
+Since $h$ and $f$ are monic we see that $g$ is monic.  By Gauss' Lemma there exist $c_1$, $c_2\in\Q$ with
+\[ h = (c_1g)\cdot(c_2 f) , \]
+where $c_1$ and $c_2$ are in $\Q$ and $c_1g$ and $c_2f$ are in $\Z[x]$.  Note $c_1=c_2=1$ since $f$ and $g$ are monic.
+
+\textbf{Corollary 12:} Let $d$ be a squarefree integer.  The ring of algebraic integers in $\Q(\sqrt d)$ is
+\[ \set{a+b\sqrt{d}}{a,b\in\Z} \text{ if $d\equiv2,3\pmod 4$} \]
+and
+\[ \set[\Big]{\frac{a+b\sqrt{d}}{2}}{a,b\in\Z\co a\equiv b\pmod 2} \text{ if $d\equiv1\pmod 4$} . \]

@@ -1,0 +1,83 @@
+\textbf{Theorem 36:} Let $n\in\Z^+$.  Then
+\[ \A \cap \Q(\zeta_n) = \Z[\zeta_n] . \]
+\pf By induction on the number of prime factors of $n$.  Result true for $n=1$.  If $n$ has one prime factor the result follows from Theorem 33.  Suppose now that
+\[ n = p_1^{l_1}\dotsm p_k^{l_k} \]
+with $l_i\in\Z^+$ and $p_1$, $\dotsc$, $p_k$ distinct primes.  By the inductive hypothesis
+\[ \A \cap \Q(\zeta_{p_1^{l_1}\dotsm p_{k-1}^{l_{k-1}}}) = \Z[\zeta_{p_1^{l_1}\dotsm p_{k-1}^{l_{k-1}}}] \]
+and
+\[ \A \cap \Q(\zeta_{p_k^{l_k}}) = \Z[\zeta_{p_k^{l_k}}] . \]
+Note that the compositum of $\Q(\zeta_{p_1^{l_1}\dotsm p_{k-1}^{l_{k-1}}})$ and $\Q(\zeta_{p_k^{l_k}})$ is $\Q(\zeta_n)$ since we can find integers $g$ and $h$ for which
+\[ \zeta_{p_1^{l_1}\dotsm p_{k-1}^{l_{k-1}}}^g\cdot\zeta_{p_k^{l_k}}^h = \zeta_n . \]
+By Theorem 23
+\[ \gcd(\disc(\Q(\zeta_{p_1^{l_1}\dotsm p_{k-1}^{l_{k-1}}})),\disc(\Q(\zeta_{p_k^{l_k}}))) = 1 . \]
+We now apply Theorem 35 to conclude that
+\[ \A \cap \Q(\zeta_n) \subseteq \A \cap \Q(\zeta_{p_1^{l_1}\dotsm p_{k-1}^{l_{k-1}}})\cdot\A\cap\Q(\zeta_{p_k^{l_k}}) . \]
+But by~(1) and~(2)
+\[ \A\cap\Q(\zeta_{p_1^{l_1}\dotsm p_{k-1}^{l_{k-1}}})\cdot\A\cap\Q(\zeta_{p_k^{l_k}}) = \Z[\zeta_{p_1^{l_1}\dotsm p_{k-1}^{l_{k-1}}}]\cdot\Z[\zeta_{p_k^{l_k}}] \]
+which is
+\[ = \Z[\zeta_n] \implies \A \cap \Q(\zeta_n) = \Z[\zeta_n] . \]
+General problem: Given a finite extension $K$ of $\Q$ how does one compute the discriminant of $K$?  Find a $\theta$ which is an algebraic integer so that $K=\Q(\theta)$.  Determine the discriminant of $\theta$.  If it is squarefree then it is the discriminant of $K$.  We have seen that if $[K:\Q]=n$ then
+\[ \disc(\theta) = (-1)^{n(n-1)/2}N_\Q^K(f'(\theta)) \]
+where $f$ is the minimal polynomial of $\theta$ over $\Q$.  Suppose that $f$, $g\in\C[x]$ with
+\[ f(x) = a_n x^n + a_{n-1} x^{n-1} + \dotsb + a_0 \]
+and
+\[ g(x) = b_m x^m + \dotsb + b_1 x + b_0 . \]
+We define the resultant $R(f,g)$ by
+\[ \det\begin{pmatrix}
+a_n & a_{n-1} & \cdots & a_0 & 0 & \cdots & 0 \\
+& a_n & a_{n-1} & \cdots & a_0 \\
+& & \ddots & & & \ddots \\
+0 & & & a_n & a_{n-1} & \cdots & a_0 \\
+b_m & \hdotsfor{3} & b_0 & & 0 \\
+& \ddots & & & & \ddots \\
+0 & & b_m & \hdotsfor{3} & b_0
+\end{pmatrix}\begin{array}{@{}l@{}}\left.\vphantom{\begin{matrix}0\\
+\cdots\\
+\ddots\\
+0\\
+\end{matrix}}\right\}\text{$m$ rows}\\
+\left.\vphantom{\begin{matrix}0\\
+\ddots\\
+0\\\end{matrix}}\right\}\text{$n$ rows}
+\end{array} \]
+Fact
+\begin{enumerate}
+\item $R(f,g)=0\iff f$ and $g$ have a common root.
+\item $\disc(\theta)=(-1)^{n(n-1)/2}R(f,f')$.
+\end{enumerate}
+\eg Let $f(x)=x^3-5x+1$.  By Rational Roots Theorem since $f(1)\neq1$, $f(-1)\neq1$, we see that $f$ is irreducible over $\Q$.  Let $\theta$ be a root of $f$ and put $K=\Q(\theta)$.  What is $\disc(K)$?
+
+First, what is $\disc(\theta)$?  Thus
+\begin{align*}
+R(f,f') &= \det\begin{pmatrix}
+1 & 0 & -5 & 1 & 0 \\
+0 & 1 & 0 & -5 & 1 \\
+3 & 0 & -5 & 0 & 0 \\
+0 & 3 & 0 & -5 & 0 \\
+0 & 0 & 3 & 0 & -5
+\end{pmatrix} \\ 
+&= \det\begin{pmatrix}
+1 & 0 & -5 & 1 & 0 \\
+0 & 1 & 0 & -5 & 1 \\
+0 & 0 & 10 & -3 & 0 \\
+0 & 3 & 0 & -5 & 0 \\
+0 & 0 & 3 & 0 & -5
+\end{pmatrix} \\
+&= \det\begin{pmatrix}
+1 & 0 & -5 & 1 \\
+0 & 10 & -3 & 0 \\
+0 & 0 & 10 & -3 \\
+0 & 3 & 0 & -5
+\end{pmatrix} \\
+&= \det\begin{pmatrix}
+10 & -3 & 0 \\
+0 & 10 & -3 \\
+3 & 0 & -5
+\end{pmatrix} \\
+&= 10(-50) + 27 = -473 = -11\cdot43
+\end{align*}
+By~(2) we see that $\disc(\theta)=473$.  Since $473$ is squarefree we see that
+\[ \disc(K) = 473 . \]
+\eg2 Let $f(x)=x^3+x^2-2x+8$.  Again $f$ is irreducible over $\Q$ by Rational Roots Theorem.  Let $\theta$ be a root of $f$ and put $K=\Q(\theta)$.  Further
+\[ R(f,f') = \det(~) = -4 \cdot 503 . \]
+We now try to modify the basis $1$, $\theta$, $\theta^2$ in the hope of getting an integral basis.  We can check that $(\theta+\theta^2)/2$ is an algebraic integer.

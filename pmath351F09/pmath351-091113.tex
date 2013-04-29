@@ -1,0 +1,69 @@
+\thm Trigonometric polynomials are uniformly dense in $2\pi$-periodic, continuous functions.
+
+Given $f$ continuous and $2\pi$ periodic define
+\[ f_n(t) = \sum_{j=-n}^n \hat f(j)\footnote{$\chev{f,e^{ijx}}$} \paren*{1-\frac{\abs j}{n+1}} e^{ijt} \]
+Then $f_n\to f$ uniformly.
+%
+\begin{gather*}
+\text{Also } f_n(x) = \frac{1}{2\pi}\int_0^{2\pi} f(x-t) K_n(t) \d t \\
+\text{where } K_n\footnote{Feijer kernel}(t) = \sum_{j=-n}^n \paren*{1-\frac{\abs j}{n+1}} e^{ijt}
+\end{gather*}
+%
+\textbf{Sketch of Proof}% \\
+\begin{enumerate}
+\item[(1)] $\frac{1}{2\pi} \int_0^{2\pi} K_n(t) \d t = \frac{1}{2\pi}\sum_{j=-n}^n \paren*{1-\frac{\abs j}{n+1}} \int_0^{2\pi} e^{ijt} \d t = 1$
+\item[(2)] $K_n(t) = \frac{1}{n+1} \frac{\sin^2(\frac{n+1}{2})t}{\sin^2\frac{t}{2}} \geq 0$\marginpar{figure: functions approximation Dirac's delta}%
+\item[(3)] If fix $\delta>0$ and let $\delta<t<2\pi-\delta$ then $K_n(t)\leq\frac{1}{n+1}c(\delta)\to0$ as $n\to\infty$.  Fix $\delta$.
+\begin{align*}
+\frac{1}{2\pi} \int_\delta^{2\pi-\delta} K_n(t) \d t &\leq \frac{1}{2\pi} \int_\delta^{2\pi-\delta} \frac{c(\delta)}{n+1} \d t \\
+&\leq \frac{c(\delta)}{n+1} \to 0 \text{ as } n\to\infty
+\end{align*}
+\begin{align*}
+\abs{f_n(x)-f(x)} &= \abs*{\frac{1}{2\pi}\int_0^{2\pi} f(x-t) K_n(t)\d t-f(x)} \\
+&\leq \abs*{\frac{1}{2\pi} \int_0^{2\pi} (f(x-t)-f(x)) K_n(t)\d t}\qquad\text{(by (1))} \\
+&\leq \frac{1}{2\pi} \int_0^{2\pi} \abs*{(f(x-t)-f(x))} K_n(t)\d t
+\end{align*}
+Fix $\epsilon>0$.  Pick $\delta>0$ by uniform continuity so $\abs{t}<\delta\implies\abs{f(x-t)-f(x)}<\epsilon$. \\
+Get $M$ such that $\abs{f(x)}<M$ $\forall x$.
+\[ \frac{1}{2\pi}\paren*{\int_0^\delta (1) + \int_{2\pi-\delta}^{2\pi} (2) + \int_\delta^{2\pi-\delta} (3) } \leq \epsilon + \epsilon + \epsilon = 3\epsilon \qquad \forall n\geq N \]
+%\item[(3)]
+%\[ \leq \int_\delta^{2\pi-\delta} 2M K_n(t)\d t \leq 2M\frac{c(\delta)}{n+1} < \epsilon \]
+\begin{flalign*}(3) && \leq \int_\delta^{2\pi-\delta} 2M K_n(t)\d t \leq 2M\frac{c(\delta)}{n+1} < \epsilon &&\end{flalign*}
+if $n\geq N$ where $\frac{2Mc(\delta)}{N}<\epsilon$
+%\item[(1)]
+%\[ \leq \frac{1}{2\pi} \int_0^\delta \epsilon K_n(t) \d t \leq \frac{1}{2\pi} \int_0^{2\pi} \epsilon K_n(t) \d t = \epsilon \]
+\begin{flalign*}(1) && \leq \frac{1}{2\pi} \int_0^\delta \epsilon K_n(t) \d t \leq \frac{1}{2\pi} \int_0^{2\pi} \epsilon K_n(t) \d t = \epsilon &&\end{flalign*}
+%\item[(2)]
+(2) $t=2\pi-u$ where $u\in[0,\delta]$ when $t\in[2\pi-\delta,2\pi]$
+\[ \frac{1}{2\pi} \int_0^\delta \abs{f(x-2\pi+u)\footnote{$=f(x-(-u))$}-f(x)} K_n(2\pi-u)\d u \leq \frac{1}{2\pi} \int_0^\delta \epsilon K_n(2\pi-u)\d u \leq \epsilon \]
+$\abs{-u}\leq\delta$ \\
+Thus $f_n\to f$ uniformly.
+\end{enumerate}
+
+\textbf{Stone--Weierstrass Theorem} \\
+Terminology: A family $\A$ of functions (on $X$) is called an \emph{algebra} if $f,g\in\A\implies f+g\in\A$, $fg\in\A$, $cf\in\A$ for all scalars $c$ \\
+\textbf{Examples: }Polynomials, $C(X)$, Differentiable functions on $\R$. \\
+Say $\A$ \emph{separates points} if $\forall x\neq y\in X$ then $\exists f\in\A$ such that $f(x)\neq f(y)$. \\
+\ex polynomials on $[0,1]$ \\
+$C(X)$ separates points: $f(z)=d(x,z)$, continuous function, $f(x)=0$, but $f(y)=d(x,y)\neq0$ if $x\neq y$.
+
+\textbf{Stone--Weierstrass Theorem:} Let $X$ be compact and let $\A\subseteq C(X)$ be an algebra that separates points.  Assume constant functions belong to $\A$.  Then $\A$ is dense in $C(X)$.
+\[ \text{i.e., }\forall\epsilon>0 \And \forall f\in C(X) \text{ } \exists g\in\A \text{ such that } \norm{g-f}<\epsilon . \]
+\cor Polynomials are dense in $C[0,1]$.
+
+\textbf{Separation of points is necessary for $\A$ to be dense} \\
+If $\exists x\neq y$ such that $f(x)=f(y)$ $\forall f\in\A$ then if $f_n\in\A$ and $f_n\to g$ uniformly, we must have $g(x)=g(y)$.  But $\exists g\in C(X)$ such that $g(x)\neq g(y)$
+
+\textbf{Lemma 1: }Suppose $B$ is any algebra $\subseteq C(X)$ containing all constant functions.  If $f\in B$, then $\abs f\in\overline B$. \\
+\pf Let $c=\norm{f}>0$.  We know there exists polynomials $p_n$ such that $p_n\to\sqrt x$ uniformly on $[0,1]$. \\
+Suppose $g\in B$, $0\leq g(x)\leq 1$ $\forall x\in X$. \\
+Then $p_n\circ g(x)$\footnote{$=p_n(g(x))$} is defined $\forall x\in X$. \\
+If $p_n(t)=a_k^{(n)}t^k + \dotsb + a_1^{(n)}t + a_0^{(n)}$ then $p_n\circ g(x) = a_k^{(n)}g(x)^k + \dotsb + a_1^{(n)}g(x) + a_0^{(n)}$ \\
+Also $f\in B$ so $\frac{f^2}{c^2}\in B$ and $0\leq\frac{f^2}{c^2}\leq 1$. \\
+Therefore $p_n\circ\paren*{\frac{f^2}{c^2}}\in B$. \\
+Know $\forall\epsilon>0$ $\exists N$ such that $\abs{p_n(t)-\sqrt t}<\epsilon$ $\forall t\in[0,1]$ and $\forall n\geq N$ \\
+So $\forall x\in X$
+\[ \savenotes\abs[\bigg]{\smash{\underbrace{p_n\paren*{\frac{f^2(x)}{c^2}}}_{=f_n(x)}}-\sqrt{\frac{f^2(x)}{c^2}}\footnote{$=\frac{\abs{f(x)}}{c}$}}\spewnotes < \epsilon \]
+\negthickspace$\implies\norm{f_n-\frac{\abs f}{c}}\leq\epsilon$ $\forall n\geq N$ \\
+$f_n\in B$ and $f_n\to\frac{\abs{f}}{c}$ uniformly \\
+\textbf{Exercise: }$\underbrace{cf_n}_{\in B}\to\abs f$ uniformly $\implies \abs f\in\overline B$

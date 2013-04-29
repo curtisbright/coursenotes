@@ -1,0 +1,91 @@
+\textbf{Continuity} \\
+$f\colon X\to Y$ is \emph{continuous} at $x$ if $\forall\epsilon>0$ $\exists\delta>0$ such that $f(B(x,\delta))\subseteq B(f(x),\epsilon)$ $\iff$ $B(x,\delta)\subseteq f^{-1}(B(f(x),\epsilon))$
+
+\thm $f\colon X\to Y$.  The following are equivalent:
+\begin{enumerate}
+\item $f$ is continuous
+\item $\forall V$ open in $Y$, $f^{-1}(V)$ is open in $X$.
+\item $\forall F$ closed in $Y$, $f^{-1}(F)$ is closed in $X$.
+\end{enumerate}
+\pf (1 $\implies$ 2): $\checkmark$ \\
+(2 $\implies$ 1): For each $x\in X$, check that $f$ is constant at $x$. \\
+Put $V=B(f(x),\epsilon)$: open in $Y$ \\
+By (2), $f^{-1}(B(f(x),\epsilon))$ is open in $X$.
+
+$x\in f^{-1}(B(f(x),\epsilon))$ so since the set is open there exists $\delta>0$ such that $B(x,\delta)\subseteq f^{-1}(B(f(x),\epsilon))$, \\
+i.e., $f$ is continuous at $x\in X$.
+
+(2 $\implies$ 3): Let $F$ be a closed set in $Y$. \\
+$F^\Co$ is open set in $Y$.  By (2), $f^{-1}(F^\Co)$ is open in $X$.
+
+$f^{-1}(F^\Co)=\set{x\in X}{f(x)\in F^\Co}=\set{x}{f(x)\notin F}=\set{x}{x\notin f^{-1}(F)}=X\setminus f^{-1}(F)=\underbrace{(f^{-1}(F))^\Co}_{\text{open}}$ \\
+$\implies$ $f^{-1}(F)$ is closed
+
+\cor If $f\colon X\to Y$, $g\colon Y\to Z$, continuous then $g\circ f\colon X\to Z$ is continuous. \\
+\pf Let $V\subseteq Z$ be open. $(g\circ f)^{-1}(V)=\set{x}{g(f(x))\in V}$ \\
+${} \iff f(x)\in g^{-1}(C) \iff x\in f^{-1}(\underbrace{g^{-1}(V)}_{\text{open}})$ \\
+$\to$ open as $f,g$ are continuous\marginpar{figure: $X\overset{f}{\to}Y\overset{g}{\to}Z\subseteq V$ and $g^{-1}(v)$ takes $V$ to $Y$ and $f^{-1}(g^{-1}(v))$ takes $Y$ to $X$}
+
+\textbf{Examples: }\begin{enumerate}
+\item $f\colon (0,1)\to\R$\marginpar{open does not necessarily go to open} \\
+$x\mapsto 1$
+\item $f\colon \underset{\text{closed}}{\R}\to\underset{\text{onto open set}}{(-\frac\pi2,\frac\pi2)}$\marginpar{closed does not have to go to closed} \\
+$f(x)=\arctan(x)$
+\item $f\colon (-\frac\pi2,\frac\pi2)\to\underset{\text{onto}}{\R}$\marginpar{bounded $\centernot\implies$ bounded} \\
+$f(x)=\tan x$
+\end{enumerate}
+\thm Let $f\colon K\to X$ be continuous and $K$ compact.  Then $f(K)$ is compact. \\
+\pf Let $\brace{U_\alpha}$ be an open cover of $f(K)$. \\
+Then $f^{-1}(U_\alpha)$ are open because $f$ is continuous. \\
+If $x\in K$, then $f(x)\in f(K)$ so $f(x)\in U_\alpha$ for some $\alpha$ $\implies$ $x\in f^{-1}(U_\alpha)$.  Hence $\brace{f^{-1}(U_\alpha)}$ form an open cover of $K$. \\
+Since $K$ is compact there is a finite subcover, say $f^{-1}(U_{\alpha_1}),\dotsc,f^{-1}(U_{\alpha_n})$. \\
+Then $U_{\alpha_1},\dotsc,U_{\alpha_n}$ are a finite subcover of $f(K)$ because if $f(x)\in f(K)$ for some $x\in K$ then $x\in f^{-1}(U_{\alpha_i})$ (since these cover $K$), i.e., $f(x)\in U_{\alpha_i}$. \\
+Hence $f(K)$ is compact.
+
+\cor (E.V.T.) If $K$ is compact and $f\colon F\to\R$ is continuous then $f$ attains minimum and maximum values.
+
+\pf $f(K)$ is compact in $\R$, i.e., closed and bounded. \\
+Let $a=\sup f(K)$ and $b=\inf f(K)$\marginpar{(exist as $f(K)$ is bounded)} \\
+$a,b\in f(K)$ since it is closed, \\
+i.e., $\exists x_1,x_2\in K$ such that $a\in f(x_1)$, $b=f(x_2)$
+
+\cor If $f\colon K\to\R$ is continuous, $K$ compact and $f>0$ on $K$ then $\exists\delta>0$ such that $f(x)>\delta$ $\forall x\in K$.
+
+\pf Take $\delta=f(x_1)$ where $f(x_1)=\text{minimum value of $f$ on $K$}$.
+
+\cor If $f\colon X\to Y$ continuous bijection, $X$ compact, then $f$ is a homeomorphism, i.e., $f^{-1}$ is also continuous.
+
+\pf $(f^{-1})^{-1}(F\footnote{closed})=f(F)$ \marginpar{$f^{-1}\colon Y\to X\subseteq F\underset{(f^{-1})(F)}{\to}Y$}
+
+Let $F\subseteq X$ be closed.  But $X$ is compact, therefore $F$ is compact. \\
+Here $f(F)$ is compact and hence closed.  Thus $(f^{-1})^{-1}(F)$ is closed, so $f^{-1}$ is continuous.
+
+\ex \begin{gather*}
+f\colon [0,2\pi) \to \text{boundary unit ball in $\R^2$} \\
+t \mapsto (\cos t, \sin t)
+\end{gather*}\vspace{-2\baselineskip}\marginpar{figure: unit circle}%
+\begin{itemize}
+\item bijection
+\item continuous
+\end{itemize}
+But $f^{-1}$ is not continuous \\
+$f^{-1}(1,0)=0$, \\
+but $f^{-1}(\cos(2\pi-\epsilon),\sin(2\pi-\epsilon))=2\pi-\epsilon$.
+
+\textbf{Uniform Continuity} \\
+\textbf{Definition:} $f$ is \emph{uniformly continuous} if $\forall\epsilon>0$, $\exists\delta>0$ such that if $d(x,y)<\delta$, then $d(f(x),f(y))<\epsilon$.\marginpar{[i.e., $\delta$ is \emph{independent of\/ $x$}]}
+
+\note Uniform continuity $\implies$ continuity; but not conversely.
+
+\ex\begin{enumerate}
+\item $f(x)=\frac1x$ on $(0,1)$ is continuous, but not uniformly continuous.
+\item $f(x)=x^2$ on $\R$ is continuous, but not uniformly continuous.
+\end{enumerate}
+\textbf{Example 1:} Prove it is not uniformly continuous. \\
+Take $\epsilon=1$.  Suppose $\delta<1$ worked. \\
+Take $x=\frac\delta2$, $y=\frac\delta4$.  Then $d(x,y)<\delta$. \\
+But $\abs{f(x)-f(y)}=\abs{\frac2\delta-\frac4\delta}=\frac2\delta>1=\epsilon$, \\
+\textbf{Example 3:} $f\colon[a,1]\to\R$ ($a>0$) \\
+$f(x)=\frac1x$: Is uniformly continuous.
+\[ \abs{f(x)-f(y)} = \abs*{\frac1x-\frac1y} = \abs*{\frac{y-x}{xy}} \leq \frac{\abs{y-x}}{a^2} \leq \frac{\delta}{a^2} \leq \epsilon . \]
+Take $\delta=\epsilon a^2$.

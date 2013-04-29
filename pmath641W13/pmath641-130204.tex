@@ -1,0 +1,92 @@
+Let $[K:\Q]=n$.  Let $\alpha_1$, $\dotsc$, $\alpha_n$ and $\beta_1$, $\dotsc$, $\beta_n$ be bases for $K$ (as a vector space over $\Q$).  Write
+\[ \beta_k = \sum_{j=1}^n c_{kj}\alpha_j . \]
+Then
+%missing
+\[ (c_{kj})\begin{pmatrix}
+\alpha_1 \\
+\vdots \\
+\alpha_n
+\end{pmatrix} = \begin{pmatrix}
+\beta_1 \\
+\vdots \\
+\beta_n
+\end{pmatrix} . \]
+Since $\alpha_1$, $\dotsc$, $\alpha_n$ and $\beta_1$, $\dotsc$, $\beta_n$ are bases we see that the matrix $(c_{kj})$ is invertible hence that $\det(c_{kj})\neq0$.
+
+Let $\sigma_1$, $\dotsc$, $\sigma_n$ be the embeddings of $K$ in $\C$ which fix $\Q$.
+\[ (c_{kj})\begin{pmatrix}
+\sigma_t(\alpha_1) \\
+\vdots \\
+\sigma_t(\alpha_n)
+\end{pmatrix} = \begin{pmatrix}
+\sigma_t(\beta_1) \\
+\vdots \\
+\sigma_t(\beta_n)
+\end{pmatrix} \qquad\text{for $t=1$, $\dotsc$, $n$.} \]
+\[ (c_{kj})\begin{pmatrix}
+\sigma_1(\alpha_1) & \cdots & \sigma_n(\alpha_1) \\
+\vdots & & \\
+\sigma_1(\alpha_n) & \cdots & \sigma_n(\alpha_n)
+\end{pmatrix} = \begin{pmatrix}
+\sigma_1(\beta_1) & \cdots & \sigma_n(\beta_1) \\
+\vdots & & \\
+\sigma_1(\beta_n) & \cdots & \sigma_n(\beta_n)
+\end{pmatrix} \]
+\[ (\det(c_{kj}))^2\disc\brace{\alpha_1,\dotsc,\alpha_n} = \disc\brace{\beta_1,\dotsc,\beta_n} . \tag{1} \]
+Suppose that $K=\Q[\theta]$.  Then $1$, $\theta$, $\dotsc$, $\theta^{n-1}$ is a basis for $K$ over $\Q$.  Then
+\begin{align*}
+\disc\brace{1,\theta,\dotsc,\theta^{n-1}} &= \paren*{\det
+\begin{pmatrix}
+1 & \sigma_1(\theta) & \cdots & \sigma_1(\theta^{n-1}) \\
+\vdots \\
+1 & \sigma_n(\theta) & \cdots & \sigma_n(\theta^{n-1})
+\end{pmatrix}}^2 \\
+&= \paren*{\det\begin{pmatrix}
+1 & \sigma_1(\theta) & \cdots & (\sigma_1(\theta))^{n-1} \\
+\vdots \\
+1 & \sigma_n(\theta) & \cdots & (\sigma_n(\theta))^{n-1}
+\end{pmatrix}}^2 \\
+&= \paren*{\prod_{1\leq i<j\leq n}(\sigma_i(\theta)-\sigma_j(\theta))}^2
+\end{align*}
+But note that $\sigma_i(\theta)\neq\sigma_j(\theta)$ for $i\neq j$ hence $\disc\brace{1,\theta,\dotsc,\theta^{n-1}}\neq0$.
+
+Thus by~(1) whenever $\alpha_1$, $\dotsc$, $\alpha_n$ is a basis for $K$ over $\Q$, $\disc\brace{\alpha_1,\dotsc,\alpha_n}\neq0$.
+
+\remark If $K\subseteq\R$ and $K$ is normal over $\Q$ then by~(1) whenever $\alpha_1$, $\dotsc$, $\alpha_n$ is a basis for $K$ over $\Q$ we see that
+\[ \disc\brace{\alpha_1,\dotsc,\alpha_n} \in \R^+ . \]
+\textbf{Theorem 27:} Let $[K:\Q]=n$ and let $\alpha_1$, $\dotsc$, $\alpha_n$ be in $K$.
+\[ \disc\brace{\alpha_1,\dotsc,\alpha_n} = 0 \iff \text{$\alpha_1$, $\dotsc$, $\alpha_n$ are linearly independent over $\Q$.} \]
+\pf $\Leftarrow$ Immediate from the definition of discriminant. \\
+$\Rightarrow$ $\alpha_1$, $\dotsc$, $\alpha_n$ is not a basis $\implies$ $\alpha_1$, $\dotsc$, $\alpha_n$ are linearly dependent over $\Q$.
+
+\note The following is useful for computing the discriminant of $\brace{1,\theta,\dotsc,\theta^{n-1}}$ when $K=\Q(\theta)$.  Let $f$ be the minimal polynomial of $\theta$ over $\Q$.  Then
+\[ \disc\brace{1,\theta,\dotsc,\theta^{n-1}} = (-1)^{n(n-1)/2}\N_{\Q}^K(f'(\theta)) . \]
+To see this let $\theta=\theta_1$, $\dotsc$, $\theta_n$ be the conjugates of $\theta$.  Then 
+\[ f(x) = (x-\theta_1)\dotsm(x-\theta_n) \]
+and
+\[ f'(x) = \sum_{j=1}^n(x-\theta_1)\dotsm\widehat{(x-\theta_j)}\dotsm(x-\theta_n) \]
+where $\widehat{(x-\theta_j)}$ means this term is removed from the product.  Thus
+\[ f'(\theta_i) = (\theta_i-\theta_1)\dotsm(\theta_i-\theta_n) \qquad\text{where $(\theta_i-\theta_i)$ is removed} \]
+Further
+\[ \N_\Q^K(f'(\theta)) = \prod_{i=1}^n\sigma_i(f'(\theta)) = \prod_{i=1}^n f'(\theta_i) = \prod_{i\neq j}(\theta_i-\theta_j) \]
+Note that for $i\neq j$
+\[ (\theta_i-\theta_j)\cdot(\theta_j-\theta_i) = (-1)\cdot(\theta_i-\theta_j)^2 \]
+so
+\[ \N_\Q^K(f'(\theta)) = (-1)^{n(n-1)/2}\paren*{\prod_{1\leq i<j\leq n}(\theta_i-\theta_j)}^2 \]
+and our result follows.
+
+Suppose $K=\Q[\theta]$, $[K:\Q]=n$.  Then we abbreviate $\disc\brace{1,\theta,\dotsc,\theta^{n-1}}$ to $\disc(\theta)$.
+
+\textbf{Theorem 28:} Let $n$ be a positive integer.  In $\Q(\zeta_n)$ we have that $\disc(\zeta_n)$ divides $n^{\phi(n)}$.  Further if $n$ is a prime we have
+\[ \disc(\zeta_n) = (-1)^{(p-1)/2}p^{p-2} . \]
+\pf We know that $\Phi_n(x)$ is the minimal polynomial for $\zeta_n$.  We have
+\begin{align*}
+x^n - 1 &= \Phi_n(x) \cdot g(x) \text{ with } g\in\Z[x] . \\
+\implies nx^{n-1} &= \Phi_n'(x)\cdot g(x) + \Phi_n(x)\cdot g'(x) . \\
+\implies n\zeta_n^{n-1} &= \Phi_n'(\zeta_n)\cdot g(\zeta_n) .
+\end{align*}
+Thus
+\begin{align*}
+\N_\Q^{\Q(\zeta_n)}(n)\N_\Q^{\Q(\zeta_n)} &= \N_\Q^{\Q(\zeta_n)}(\Phi_n'(\zeta_n))\cdot\N_\Q^{\Q(\zeta_n)}(g(\zeta_n)) \\
+n^{\phi(n)} &= ((-1)^{n(n-1)/2}\disc(\zeta_n))\cdot\N_\Q^{\Q(\zeta_n)}(g(\zeta_n)) \in \Z\setminus\brace{0} .
+\end{align*}

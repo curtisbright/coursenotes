@@ -1,0 +1,108 @@
+\textbf{Typos on A1} \\
+2(b) $a^{l(n)+m(n)}=a\bmod n$ should be $a^{l+m}=a^m\bmod n$ \\
+4(b) Let $p$ be a prime should be \\
+let $p\neq2$ be a prime.
+
+\eg Show that $U_{50}$ is cyclic and find every generator in every subgroup of $U_{50}$. \\
+\soln $\phi(50)=\phi(2\cdot25)=\phi(2)\phi(25)=1\cdot20=20$. \\
+$U_{50}=\brace{1,3,7,9,11,13,17,19,\dotsc,49}$
+\[ \begin{array}{c|cccccccccccc}
+k & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 \\ \hline
+3^k & 1 & 3 & 9 & 27 & 31 & 43 & 29 & 37 & 11 & 33 & 49 & -3
+\end{array} \]
+$\therefore\ord_{50}(3)=20=\abs{U_{50}}$, $U_{50}=\chev{3}$ \\
+The divisors of 20 are $1$, $2$, $4$, $5$, $10$, $20$. \\
+The subgroups of $U_{50}$ are
+\begin{align*}
+\chev{3^1} &= U_{50} \\
+\chev{3^2} &= \brace{3^0,3^2,3^4,3^6,3^8,3^{10},3^{12},3^{14},3^{18}} \\
+\chev{3^4} &= \brace{3^0,3^4,3^8,3^{12},3^{16}} \\
+\chev{3^5} &= \brace{3^0,3^5,3^{10},3^{15}} \\
+\chev{3^{10}} &= \brace{3^0,3^{10}} \\
+\chev{3^{20}} &= \brace{3^0}
+\end{align*}
+\eg Show that for $n\in\Z^+$
+\[ \sum_{d\div n}\phi(n) = n . \]
+\soln For all $n\in\Z_n$ the order of $a$ is a divisor $d\div n$. \\
+For each $d\div p$, let
+\[ A_d = \set{a\in\Z_n}{\ord_n(a)=d} . \]
+Then $\Z_n$ is the disjoint union
+\begin{gather*}
+\Z_n = \bigcup_{d\div n}A_d \\
+n = \abs{\Z_n} = \sum_{d\div n}\abs{A_d}
+\end{gather*}
+But the elements in $A_d$ are the generators of the cyclic subgroup of $Z_n$ of order $d$. \\
+The \# of generators of this cyclic group is $\phi(d)$ \\
+$\therefore A_d = \phi(d)$.
+
+$H\subset G$, $a\in G$ \\
+\textbf{cosets}
+\[ aH = \set{ax}{x\in H} \]
+For $a$, $b\in G$ either $aH=bH$ or $aH\cap bH\neq\emptyset$ and $\abs{aH}=\abs{H}$. \\
+$\abs{G}=\underbrace{\abs{G/H}}_{\text{\# of cosets}}\abs{H}$ \\
+$\therefore\abs{H}\div\abs{G}$ \\
+For $a\in G$, $\ord(a)=\abs{\chev{a}}$, $\ord(a)\div\abs{G}$ \\
+$a^{\abs{G}}=1$ \\
+EFT and F$\ell$T are special cases.
+
+$\Z_n$, $U_n$, $C_n=\brace{\text{$n$th roots of $1$}}\subset\S^1=\set{z\in\C^*}{\abs{z}=1}\subset\C^*$
+
+$G\cong\Z_{n_1}\oplus\Z_{n_2}\oplus\dotsb\oplus\Z_{n_l}$ \\
+$n_1\div n_2$, $n_2\div n_3$, $\dotsc$, $n_{l-1}\div n_l$ \\
+$G\cong\Z_{p_1^{k_1}}\oplus\Z_{p_2^{k_2}}\oplus\dotsb\oplus\Z_{p_m^{k_m}}$ \\
+$p_1\leq p_2\leq \dotsb \leq p_m$ \\
+if $p_i=p_{i+1}$ then $k_i\leq k_{i+1}$ \\
+If $\gcd(a,b)=1$ then $\Z_{ab}\cong\Z_a\times\Z_b$
+\[ \phi(ab)=\phi(a)\phi(b) \]
+$\Z_{20}=\Z_{4\cdot5}\cong\Z_4\oplus\Z_5$
+
+\textbf{Ch.~10 Primitive Roots} \\
+\textbf{The Group of Units} \\
+\prob determine the structure (up to isomorphism) of $U_n$ \\
+\eg $U_{50}\cong\Z_{20}$ %\\
+
+\defn If $U_n$ is cyclic then a generator of $U_n$ is called a \emph{primitive root} mod $n$. \\
+\thm For $a$, $b\in\Z^+$ if $\gcd(a,b)=1$ then $U_{ab}\cong U_a\oplus U_b$. \\
+\pf We saw that the map $f\colon U_{ab}\to U_a\times U_b$ given by $f(x)=(x,x)$ is bijective.  Also, $f$ is a homomorphism. \\
+\cor When $n=\prod_{i=1}^l p_i^{k_i}$ where the $p_i$ are distinct primes and each $k_i\geq1$,
+\[ U_n = \bigoplus_{i=1}^l U_{p_i^{k_i}} \]
+\thm $U_2=\brace1$, $U_4=\brace{1,3}=\chev3\cong\Z_2$. \\
+For $n\geq3$, $U_{2^n}=\set{\pm5^k}{0\leq k<2^{n-2}}\cong\chev{-1}\oplus\chev{5}$ with $\chev{-1}=\brace{1,-1}\cong\Z_2$ and $\chev5\cong\Z_{2^{n-2}}$. \\
+\pf For $n\geq3$, $U_{2^n}$ is \emph{not} cyclic because the elements $-1$, $2^{n-1}\pm1$ have order $2$, but a cyclic group can only have $\phi(2)=1$ element of order $2$.
+\begin{align*}
+U_8 &= \brace{1,3,5,7} \\
+U_{16} &= \brace{1,3,5,7,11,13,17,19}
+\end{align*}
+We wish to show that
+\[ \ord_{2^n}(5) = 2^{n-2} . \]
+We know $\ord(5)\div\abs{U_{2^n}}=\phi(2^n)=2^{n-1}$ \\
+$\therefore\ord(5)=2^k$ for some $k\leq n-1$. \\
+We cannot have $\ord(5)=2^{n-1}$ since $U_{2^n}$ is not cyclic, so $\ord(5)=2^k$ for some $k\leq n-2$ (so $5^{2^{n-3}}\neq1$, $5^{2^{n-2}}=1\bmod2^n$) \\
+We find $e_2(5^{2^k}-1)$ for all $k$.
+
+We have
+\begin{align*}
+5^{2^0}-1 &= 5^1-1 = 4 \qquad e_2(4)=2 \\
+5^{2^1}-1 &= 5^2-1 = 24 \qquad e_2(24)=3 \\
+5^{2^2}-1 &= 5^4-1 = 624 \qquad e_2(624)=4
+\end{align*}
+Suppose $e_2(5^{2^k}-1)=k+2$ where $k\geq1$ \\
+say $5^{2^k}-1=2^{k+2}q$ with $q$ odd
+\begin{align*}
+\text{Then }5^{2^{k+1}}-1 &= (5^{2^k})^2-1 = (2^{k+2}q+1)^2 -1 \\
+&= 2^{2k+4}q^2 + 2^{k+3}q \\
+&= 2^{k+3}(\underbrace{q+2^{k+1}q^2}_{\text{odd}}) 
+\end{align*}
+By induction $e_2(5^{2^k}-1)=k+2$ for all $k\geq0$. \\
+$\therefore\ord_{2^n}5=2^{n-2}$
+\begin{align*}
+\therefore\chev5 &= \set{5^k}{0\leq k<2^{n-2}} \\
+&\cong \Z_{2^{n-2}}
+\end{align*}
+and we have
+\[ U_{2^n} = \set{\pm5^n}{0\leq k<2^{n-2}} \]
+since the elements $5^{k}$, $0\leq k<2^{n-2}$ are distinct, and the elements $-5^k$ for $0\leq k<2^{n-2}$ are distinct \emph{and}
+\[ 5^k \neq -5^l \text{ for } 0\leq k,l<2^{n-2} \]
+since $5^k=1\bmod4$, $-5^l=-1\bmod4$
+
+The map $f\colon\chev{-1}\oplus\chev{5}\to U_{2^n}$ given by $f(e,5^k)=e5^k$ is an isomorphism.

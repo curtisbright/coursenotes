@@ -1,0 +1,65 @@
+\textbf{The Stone Weierstrass Theorem} (generalisation of Weierstrass approximation theorem)
+
+Let $A$ be a compact metric space, $\B\subset C(A,\R)$ \\
+Assuming that $\B$ satisfies:
+\begin{enumerate}
+\item[i)] $\B$ is an algebra, i.e., $f$, $g\in\B\implies f+g\in\B$, $fg\footnote{pointwise}\in\B$ \\
+\phantom{$\B$ is an algebra, i.e., $f$, }$\phantom{g\in\B}\implies \lambda f\in\B\footnote{with $f+g\in\B$, vector space + linear algebra $fg\in\B$}$, $\lambda\in\R$, multiplicative
+\item[ii)] constant function $1\in\B$
+\item[iii)] $\B$ separates points of $A$
+\end{enumerate}
+then the closure of $\B$, denoted $\overline\B$, equals $C(A,\R)$
+
+\eg $A=[a,b]$, $\B=\set{p(x)}{\text{$p$ is a polynomial on $[a,b]$}}$ \\
+i, ii, iii) obvious, (iii) take the identity. \\
+Every continuous function in $[a,b]$ can be approximated by a polynomial \\
+\pf By the Weierstrass approximation theorem, for every $n$, exists $p_n$ such that
+\[ \abs{\abs{t}-p_n(t)} < 1/n \text{ for } -n \leq t \leq n \]
+Thus $\abs{\abs{f(x)}-p_n(f(x))}<1/n$ for $-n\leq f(x)\leq n$ ($n$ be large enough since $A$ is compact).
+
+This shows that $\overline\B$ is closed under taking absolute value, i.e., $f\in\overline\B$ implies $\abs{f}\in\overline\B$. \\
+First $\B$ is an algebra, is $\overline\B$ also an algebra?  Yes, since
+\[ \left. \begin{aligned}
+f\in\overline\B &\implies \exists\text{ an approx} \implies \abs{f-f_n}<\epsilon \\
+g\in\overline\B &\implies \exists\text{ an approx} \implies \abs{g-g_n}<\epsilon
+\end{aligned} \right\} f+g\in\overline\B \]
+%xx
+Check $+$ is a continuous function on $C(A,\R)\times C(A,\R)$ to $C(A,\R)$
+
+Similarly, $x$ is also continuous, $f\in\overline\B$, $g\in\overline\B\implies fg\in\overline\B$ \\
+$\leadsto\overline\B$ is an algebra %\\
+
+If $f\in\overline\B$, so is $p_n(f)$ (because $\overline\B$ is an algebra) \\
+%
+Also, $p_n(f)(x)=p_n(f(x))$ and $\abs[\big]{\abs{f(x)}-\underbrace{p_n(f(x))}_{\in\overline\B}}<1/n$ means that $\abs{f(x)}$ can be approximated by an element of $\overline\B$, then $\abs{f(x)}\in\overline\B$ since $\overline\B$ is closed and $\abs{f(x)}$ is a limit point of $\overline\B$.
+
+Aside: $A$ is compact, $f$ is bounded on $A$, there exists large enough $n$ such that $-n\leq f(x)\leq n$
+\begin{gather*}
+\begin{aligned}
+\text{Define } f\vee g &= \max(f,g) \text{ pointwise} \\
+f\wedge g &= \min(f,g) \text{ pointwise}
+\end{aligned}\\
+\begin{aligned}
+\text{and observe that } f\vee g &= \frac{f+g}{2} + \frac{\abs{f-g}}{2} \\
+f\wedge g &= \frac{f+g}{2} - \frac{\abs{f-g}}{2}
+\end{aligned}\end{gather*}\marginpar{figure: distance between $\frac{a+b}{2}$ and $b$ on real line}%
+We see that $\overline\B$ is closed under maximum and minimum.
+
+Let $h\in C(A,\R)$ and $x_1\neq x_2\in A$, then by (iii), there exists $g\in\B$ such that $g(x_1)\neq g(x_2)$.  By choosing $\alpha$, $\beta\in\R$ correctly, we can have
+\begin{align*}
+\alpha g + \beta \text{ achieving } (\alpha g+\beta)(x_1) &= h(x_1) \\
+                                    (\alpha g+\beta)(x_2) &= h(x_2)
+\end{align*}
+Call such $\alpha g+\beta$ by the name: $f_{x_1x_2}$ --- That is $f_{x_1x_2}\in\B$ and
+\begin{align*}
+f_{x_1x_2} &= h(x_1) \\
+f_{x_1x_2} &= h(x_2)
+\end{align*}
+--- textbook 5.8.2
+\begin{align*}
+f_{yx}(y) = h(y) &\implies f_{yx}(y) > h(y) - \epsilon \\
+\text{for } z\in U\subset\U(y) &\implies f_{yx}(z) > h(z) - \epsilon \text{ by continuity of $h$}
+\end{align*}\vspace{-2\baselineskip}\marginpar{should be also by continuity of $f_{yx}$}\vspace{2\baselineskip}
+%
+%xx
+Is the metric used?

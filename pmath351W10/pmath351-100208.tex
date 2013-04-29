@@ -1,0 +1,33 @@
+\defn A topological space $X$ is called Hausdorff if for each pair of \emph{distinct} points $x$ and $y$, there exist open neighbourhoods $U$ and $V$ of $x$ and $y$, respectively such that $U\cap V=\emptyset$.
+
+\prop Every metric space is Hausdorff.\marginpar{figure: distinct disks with $x$,~$y\in X$} \\
+\pf Let $(X,d)$ be a metric space, and $x\neq y$ in $X$ be given.  Then $d(x,y)>0$ and so $r=\tfrac12 d(x,y)>0$.  The discs $D(x,r)$ and $D(y,r)$ are open and disjoint.  If they were not disjoint, say that $z\in D(x,r)\cap D(y,r)$ exists, we would have $d(x,z)<r$, $d(z,y)<r$, resulting in $d(x,y)\leq d(x,z)+d(z,y)\savenotes\mathrel{\mathord<\footnote{strict}}\spewnotes r+r=2r=d(x,y)$, a contradiction.
+
+A topological space $X$ is said to be \emph{metrizable} if there exists a metric $d$ on $X$ such that the topology induced by $d$ agree with the topology on $X$.
+
+A non-Hausdorff space is \emph{not} metrizable, e.g., $X=\brace{a,b}$, $\T=\brace{X,\emptyset,\brace{a}}$.  Then $(X,\T)$ is not metrizable.
+
+\defn A topological space $X$ is \emph{connected} if there exists no subset $A\subset X$ which is both open and closed, except $A=\emptyset$, and $A=X$.
+
+\eg $[0,1]$ is connected.  (Try to prove it on your own.) \\
+(Assuming that every non-empty subset of $\R$ which is bounded from above has a least upper bound in $\R$.  Similarly, every non-empty subset of $\R$ which is bounded from below has a greatest lower bound in $\R$.)
+
+\defn A subset $I\subset\R$ is called an \emph{interval} if whenever $a$, $b\in I$, so are all numbers $a\leq c\leq b$.  e.g., $I=\closed{0,1}$, $\open{0,1}$, $\lopen{0,1}$, $\R$, $\brace1$, etc.
+
+\eg A subset of $\R$ is connected if and only if it is an interval. \\
+(Partial proof) If $A\subset\R$ and $A$ is not an interval, we show that it is not connected:
+
+There exist $a$, $b\in A$ and $a\leq c\leq b$ with $c\notin A$.  Then $G_a=\set{x}{x\in A\c x<c}$ and $G_b=\set{x}{x\in A\c c<x}$.  They are non-empty, and they are both open, partitioning $A$. \\
+Notice that $G_a=\underbrace{A\cap\underbrace{\open{-\infty,c}}_\text{\clap{open in $\R$}}}_\text{\clap{open in the subspace $A$}}$\marginpar{figure: hole at $c$} \\
+Similarly $G_b=A\cap\open{c,\infty}$ is open in space $A$
+\[ G_a \cup G_b = A . \]
+Hence $G_a$ is both open and closed, and $G_a\neq A$, $\emptyset$.  So $A$ is not connected.
+
+\prop The statements below are equivalent for a topological space $X$.
+\begin{enumerate}[label=(\arabic*)]
+\item The only subsets of $X$ which are both open and closed are $X$ and $\emptyset$.
+\item There is no (interesting) \emph{partition} of $X$ into two (disjoint) non-empty open sets.
+\end{enumerate}
+\textbf{Examples in $\pmb\R^2$} \\
+$A=\set{(\frac1n,y)}{0\leq y\leq1}\cup\lopen{0,1}\cup\brace{(0,1)}$\marginpar{figure: $A$} \\
+Then $A$ is connected.

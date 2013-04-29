@@ -1,0 +1,63 @@
+Theorem 10 is close to the truth since Minkowski constructed for each $n\in\Zp$ a lattice $\Lambda$ in $\R^n$ for which
+\[ \min_{\x\in\Lambda\setminus\brace\0}\x\cdot\x \geq (\omega^{-1}_n d(\Lambda))^{2/n} . \]
+In particular Theorem 10 can't be improved by more than a factor of $4$.  Rogers was able to improve on Theorem 10 somewhat.  He replaced $4\omega^{-2/n}$ in Theorem 10 by $4(\tfrac{\sigma_n}{\omega_n})^{2/n}$ where $\sigma_n$ is the quotient of two geometrical figures with the property that $\sigma_n\sim\frac{n}{e2^{n/2}}$ as $n\to\infty$.  We have
+\[ \omega_n^{-2/n} \sim \frac{n}{2\pi e}, \qquad 4\paren*{\frac{\sigma_n}{\omega_n}}^{2/n} \sim \frac{n}{\pi e}, \qquad 4\omega_n^{-2/n}\sim\frac{2n}{\pi e} \]
+
+How about other convex bodies of interest?  For each $\lambda\in\R$ with $\lambda>0$ define \[A^{(n)}_\lambda=A_\lambda=\set{(x_1,\dotsc,x_n)\in\R^n}{\abs{x_1}+\dotsb+\abs{x_n}\leq\lambda}.\]  Thus in $\R^2$,%\marginpar{figure: $A_\lambda$ diamond centred at $(0,0)$}%
+\[ \setlength{\unitlength}{0.75cm}\begin{picture}(7,7)(-3.5,-3.5)
+\put(-3.5,0){\vector(1,0){7}}
+\put(0,-3.5){\vector(0,1){7}}
+\put(-2.5,0){\line(1,1){2.5}}
+\put(0,-2.5){\line(1,1){2.5}}
+\put(0,2.5){\line(1,-1){2.5}}
+\put(-2.5,0){\line(1,-1){2.5}}
+\put(0,2.5){\makebox(0,0)[bl]{ $(0,\lambda)$}}
+\put(2.5,0){\makebox(0,0)[bl]{$(\lambda,0)$}}
+\put(0,-2.5){\makebox(0,0)[tl]{ $(0,-\lambda)$}}
+\put(-2.5,0){\makebox(0,0)[br]{$(-\lambda,0)$}}
+\put(-3,2){$A_\lambda$:}
+\end{picture} \]
+Define for $n\in\Zp$
+\[ {A^{(n)}_\lambda}^+ = A^+_\lambda = \set{(x_1,\dotsc,x_n)\in\R^n}{\lambda\geq x_i\geq0\text{ for $i=1\c \dotsc\c n$}\footnotemark} \]\footnotetext{Also require $x_1+\dotsb+x_n\leq\lambda$ (correction from next class).}%
+The volume of $A_\lambda$ is $2^n \lambda^n$ times the volume of $A^+_1$.
+\begin{align*}
+\mu(A^+_1) &= \int_0^1 \int_0^{1-x_1} \dotsm \int_0^{1-x_1-x_2-\dotsb-x_{n-1}} \d x_n\dotsm\d x_1 \\
+&= \int_0^1 \int_0^{1-x_1} \dotsm \int_0^{1-x_1-\dotsb-x_{n-2}}(1-x_1-x_2-\dotsb-x_{n-1})\d x_{n-1}\dotsm\d x_1 \\
+&= \int_0^1 \int_0^{1-x_1} \dotsm \int_0^{1-x_1-\dotsb-x_{n-3}} \frac{(1-x_1-x_2-\dotsb-x_{n-2})^2}{2} \d x_{n-2}\dotsm\d x_1
+\end{align*}
+Notice that
+\[ \int_0^u \frac{(u-x)^n}{n!} \d x = \left[ \vphantom{-\frac{(u-x)^{n+1}}{(n+1)!}} \right._0^u {-\frac{(u-x)^{n+1}}{(n+1)!}} = \frac{u^{n+1}}{(n+1)!} . \]
+Therefore
+\[ \mu(A^+_1) = \frac{1}{n!} \]
+so
+\[ \mu(A^{(n)}_\lambda) = \frac{2^n\lambda^n}{n!} . \]
+Further observe that $A^{(n)}_\lambda$ is symmetric about the origin.  Furthermore it is convex since if $\gamma$ is a real number with $0\leq\gamma\leq1$ and $\x=(x_1,\dotsc,x_n)$, $\y=(y_1,\dotsc,y_n)\in A_\lambda$ then
+\[ \gamma\x+(1-\gamma)\y = (\gamma x_1+(1-\gamma)y_1,\dotsc,\gamma x_n+(1-\gamma)y_n) \in A_\lambda \]
+since
+\begin{align*}
+\abs{\gamma x_1+(1-\gamma)y_1} + \dotsb + \abs{\gamma x_n+(1-\gamma)y_n} &\leq \gamma(\abs{x_1}+\dotsb+\abs{x_n}) + (1-\gamma)(\abs{y_1}+\dotsb+\abs{y_n}) \\
+&\leq \gamma\lambda + (1-\gamma)\lambda = \lambda .
+\end{align*}
+\textbf{Theorem 11:} Let $\Lambda$ be a lattice in $\R^n$.  Then there is a non-zero point $\x=(x_1,\dotsc,x_n)$ in $\Lambda$ with
+\[ \abs{x_1} + \dotsb + \abs{x_n} \leq (n!\, d(\Lambda))^{1/n} . \]
+\pf We apply Theorem 8 to the set $A^{(n)}_\lambda$ where $\lambda=(n!\,d(\Lambda))^{1/n}$.  Then the volume of $A^{(n)}_\lambda$ is $2^n d(\Lambda)$.  The set is convex, symmetric about $\0$ and compact and so the result follows.
+
+We may apply Theorem 8 to sets which contain sets which are convex, symmetric, and of large enough volume.  In this connection we introduce for each $n\in\Zp$ and $\lambda\in\R$, $\lambda\geq0$,
+\[ B^{(n)}_\lambda = \set{(x_1,\dotsc,x_n)\in\R^n}{\abs{x_1\dotsm x_n}\leq\lambda^n} . \]
+$B^{(n)}_\lambda$ is not convex.  However we can appeal to the arithmetic--geometric mean inequality: Given non-negative real numbers $x_1\c \dotsc\c x_n$ we have
+\[ (x_1\dotsm x_n)^{1/n} \leq \frac{x_1+\dotsb+x_n}{n} . \]
+Thus $B^{(n)}_\lambda$ contains $A^{(n)}_{n\lambda}$ and $A^{(n)}_{n\lambda}$ is convex.
+
+\textbf{Theorem 12:} Let $C=(c_{ij})$ be a non-singular $n\times n$ matrix with entries from $\R$ and put
+\[ L_i(\x) = c_{i1}x_1 + \dotsb + c_{in}x_n \qquad\text{for $i=1\c \dotsc\c n$} . \]
+Then there exists an integer point $\x$ different from $\0$ for which
+\[ \abs{L_1(\x)\dotsm L_n(\x)} \leq \frac{n!}{n^n} \abs{\det(C)} . \]
+\pf We apply Theorem 11 with the lattice $\Lambda$ determined by the row vectors of $C$ and the region $B^{(n)}_\lambda$ where $\lambda=\frac{(n!\det(C))^{1/n}}{n}$.  Since $B^{(n)}_\lambda$ contains $A^{(n)}_{n\lambda}$ the result follows.
+
+Let $\Lambda_1$ be a sublattice of a lattice $\Lambda$ in $\R^n$.  We can put an equivalence relation $\sim$ ($\sim_{\Lambda_1}$) on $\Lambda$ by the rule $\x_1\sim\x_2$ if and only if $\x_1-\x_2\in\Lambda_1$.  $\sim$ is an equivalence relation on $\Lambda$ and it partitions $\Lambda$ into a finite set of equivalence classes.
+
+\textbf{Proposition 13:} Let $\Lambda_1$ be a sublattice of a lattice $\Lambda$ in $\R^n$.  The index of $\Lambda_1$ in $\Lambda$ is the number of equivalence classes of $\Lambda$ under $\sim_{\Lambda_1}$.
+
+\pf By Theorem 1 we can find bases $v_1\c \dotsc\c v_n$ for $\Lambda$ and $w_1\c \dotsc\c w_n$ for $\Lambda_1$ of the form given in Theorem 1.  Then the index is $\prod_{i=1}^n a_{ii}$.  We claim that every vector $\u$ in $\Lambda$ is equivalent to precisely one of $q_1\v_1+\dotsb+q_n\v_n$ with $0\leq q_i<a_{ii}$ for $i=1\c \dotsc\c n$.  This will prove the result.
+
+Let $\u=u_1\v_1+\dotsb+u_n\v_n\in\Lambda$.  First we shift $\u$ by a multiple $\w_n$ to find an equivalent vector with $n$th coordinate in the range $0\leq q_n<a_{n,n}$.  Next we subtract a multiple $\w_{n-1}$ from this vector to get $q_{n-1}$ in the range $0\leq q_{n-1}<a_{n-1,n-1}$.  Continuing in this way we see that $\u$ is equivalent to a vector of the form $q_1\v_1+\dotsb+q_n\v_n$ with $0\leq q_i<a_{ii}$ for $i=1\c \dotsc\c n$.  It remains to show that no two vectors of the form $q_1\v_1+\dotsb+q_n\v_n$ with $0\leq q_i<a_{ii}$ for $i=1\c \dotsc\c n$ are equivalent under $\sim$.

@@ -1,0 +1,72 @@
+$F \subseteq L$ \emph{field extension}: $F$ is a subfield of $L$.  Call $F$ the \emph{base field}. \\
+We can view $L$ as an $F$-vector space. \\
+zero vector: $0\in L$ \\
+vector sum: $+$ \\
+$r\in F$, scalar multiplication by $r$: given $a\in L$, $r\cdot a=ra$.
+
+Linear Algebra $\implies$ $L$ has an $F$-basis: $B\subseteq L$ such that every $a\in L$ is of the form
+\[ a = r_1b_1 + r_2b_2 + \dotsb + r_lb_l \]
+where $r_1,\dotsc,r_l\in F$, $b_1,\dotsc,b_l\in B$. \\
+Moreover this is a unique representation of $a$.
+
+Also \textbf{Fact:} $B\subseteq L$ is a basis $\iff$ $B$ is a maximal $F$-linearly independent set $\iff$ $B$ is $F$-linearly independent and
+\[ L = \Span_F(B) = \set{r_1b_1+\dotsb+r_lb_l}{b_1,\dotsc,b_l\in B\c r_1,\dotsc,r_l\in F} \]
+\textbf{Fact 2:} Any two bases for $L$ over $F$ are of the same \emph{cardinality}, called the \emph{dimension}.  That is, there exists a bijection between any two bases.
+
+\defin $F\subseteq L$ field extension. \\
+The \emph{degree of $L$ over $F$} is the dimension of $L$ as an $F$-vector space, denoted $[L:F]$ \\
+When $[L:F]\in\N$ we say that $L$ is a \emph{finite extension}. \\
+\ex $\R\subseteq\C$ finite extension, $[\C:\R]=2$
+
+\textbf{Remark: }$[L:F]=1\iff L=F$
+
+\lem $n,m\in\N$, field extensions $[L:K]=n$, $[K:F]=m$
+\[ \underbrace{L \overset{\deg n}{\supseteq} K \overset{\deg m}{\supseteq} F}_{\deg nm} \]
+Then $[L:F]=nm$. \\
+\pf Let $\brace{u_1,\dotsc,u_m}\subseteq K$ be an $F$-basis for $K$ \\
+Let $\brace{v_1,\dotsc,v_n}\subseteq L$ be an $K$-basis for $L$ \\
+Let $B=\set{u_iv_j}{i=1,\dotsc,m,j=1,\dotsc,n}$ \\
+$\abs B=nm$.  We claim $B$ is an $F$-basis for $L$. \\
+\emph{$\Span_F(B)=L$} $\checkmark$ \\
+Let $a\in L$ we can write
+\[ a = \lambda_1v_1+\dotsb+\lambda_nv_n \]
+where $\lambda_1,\dotsc,\lambda_n\in K$. \\
+Write each
+\[ \lambda_i = \alpha_{i,1}u_1 + \alpha_{i,2}u_2 + \dotsb + \alpha_{i,m}u_m \]
+where $\alpha_{i,j}\in F$
+\begin{align*}
+a &= \sum_{i=1}^n \lambda_i v_i \\
+&= \sum_{i=1}^n \paren[\bigg]{\sum_{j=1}^m \alpha_{i,j}u_j} v_i \\
+a &= \sum_{i=1}^n \sum_{j=1}^m \alpha_{i,j} u_j v_i \in \Span_F(B)
+\end{align*}
+\emph{$B$ is linearly independent} over $F$ \\
+Suppose $\sum_{i=1}^n\sum_{j=1}^m\alpha_{i,j}u_jv_i=0$ where $\alpha_{i,j}\in F$ \\
+\[ \implies \sum_{i=1}^n \underbrace{\paren[\bigg]{\sum_{j=1}^m \alpha_{i,j}u_j}} v_i = 0 \]
+since $u_j\in K$, $\alpha_{i,j}\in F$, the underbrace $\implies$ $\sum_{j=1}^m \alpha_{i,j}u_j\in K$ \\
+Since $\brace{v_1,\dotsc,v_n}$ are $K$-linearly independent \\
+$\implies$ $\sum_{j=1}^m \alpha_{i,j}u_j=0$ for all $i=1,\dotsc,n$.
+
+\defin $F\subseteq L$ field extension, $a\in L$. \\
+$a$ is \emph{algebraic over $F$} if there exists a polynomial $f\in F[x]$ which is \emph{nonzero} and such that $f(a)=0$.  If every $a\in L$ is algebraic over $F$ then we say that $F\subseteq L$ is an \emph{algebraic extension}. \\
+If $a\in L$ is not algebraic over $F$ then we say it is \emph{transcendental over $F$}.
+
+\ex\begin{itemize}
+\item[(a)] If $a\in F$ then $a$ is $F$-algebraic, take $f=-a+x\in F[x]$
+\item[(b)] $\Q\subseteq\C$, $i$ is algebraic over $\Q$ since $f=1+x^2\in\Q[x]$ vanishes at $i$
+\item[(c)] In fact $\R\subseteq\C$ is an algebraic extension.
+\begin{itemize}
+\item[$\to$] $a+bi$, $a,b\in\R$, is a root of
+\[ f = (x-a)^2 + b^2 \in \R[x] \]
+\end{itemize}
+\item[(d)] Let $F$ be any field. \\
+Let $L=F(x)=\text{fraction field of $F[x]$}$
+\[ \underbrace{F \subseteq F[x] \subseteq F(x) = L}_{\text{field extension}} \]
+$a=x\in L$ is transcendental over $F$
+\begin{itemize}
+\item[$\to$] Suppose $f\in F[x]$, such that $f(a)=0$\footnotemark \\
+$f(a)=f(x)$, i.e., $f=a_0+a_1x+\dotsb+a_nx^n$ \\
+$f(a)=a_0+a_1x+\dotsb+a_nx^n=0$ in $F[x]$ \\
+So $f$ is the zero polynomial.
+\end{itemize}
+\end{itemize}\footnotetext{in $L$}
+\thm Every finite extension of fields is an algebraic extension.

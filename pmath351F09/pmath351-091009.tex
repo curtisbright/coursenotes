@@ -1,0 +1,68 @@
+\thm The following are equivalent for a metric space $X$:
+\begin{enumerate}
+\item[(1)] $X$ is compact
+\item[(2)] Every collection of closed subsets of $X$ with the F.I.P. has non-empty intersection.
+\item[(3)] Every sequence in $X$ has a convergent subsequence (limit in $X$)
+\item[(4)] $X$ is complete and totally bounded
+\end{enumerate}
+1 $\iff$ 4: Analogue of the Heine--Borel \\
+1 $\iff$ 3: Bolzano--Weierstrass Theorem
+
+\textbf{Cantor's Intersection Theorem} \\
+If $A_1\supseteq A_2\supseteq A_3\supseteq\dotsb$ are non-empty, closed subseteq of a complete metric space $X$ and
+\[ \diam A_n \equiv \sup_n \set{d(x,y)}{x,y\in A_n} \to 0 \]
+then $\bigcap_{n=1}^\infty A_n$ is one point.
+
+\pf (4 $\implies$ 1): Suppose $X$ is not compact.  Say $\brace{U_\alpha}$ is an open cover of $X$ that has no finite subcover. \\
+Notation: $D(x_0,r)=\set{x\in X}{d(x,x_0)\leq r}$ \\
+Exercise: closed set \\
+$X$ is totally bounded so there is a $\frac12$-net for $X$, say $\brace{x_1^{(1)},\dotsc,x_{n_1}^{(1)}}$
+\[ \text{so } \bigcup_{j=1}^{n_1} D\paren[\big]{x_j^{(1)},\tfrac12} = X . \]
+Since there are only finitely many closed balls $D(x_j^{(1)},\frac12)$, $j=1,\dotsc,n$, needed to cover $X$, at least one of these balls cannot be covered by only finitely many $U_\alpha$. \\
+Say $D(x_1^{(1)},\frac12)\equiv X_0$: closed set. \\
+Notice $\diam X_0=1=\frac{1}{2^0}$. \\
+$X_0\subseteq X$ so $X_0$ is totally bounded. \\
+Let $\brace{x_1^{(2)},\dotsc,x_{n_2}^{(2)}}$ be a $\frac14$-net for $X_0$. \\
+Hence $\bigcup_{j=1}^{n_2} D(x_j^{(2)},\frac14)\cap X_0 = X_0$. \\
+At least one of the sets $D(x_j^{(2)},\frac14)\cap X_0$ is not covered by only finitely many $U_\alpha$s, \\
+say $D(x_1^{(2)},\frac14)\cap X_0\equiv X_1$. \\
+$X_1\footnote{closed}\subseteq X_0$, $\diam X_1 \leq \frac12 = \frac{1}{2^1}$ \\
+Repeat to get closed sets $X_0 \supseteq X_1 \supseteq X_2 \supseteq \dotsb$ \\
+$\diam X_j \leq \frac{1}{2^j}$ \emph{and} each set $X_j$ cannot be covered by only finitely many $U_\alpha$. \\
+Each $X_j$ is non-empty (else could cover with finitely many $U_\alpha$s). \\
+By Cantor's intersection theorem,
+\[ \bigcap_{n=1}^\infty X_n = \brace{x_0} \qquad\text{(singleton)} \]
+Since $\bigcup U_\alpha=X$, there exists $\alpha_0$ such that $x_0\in U_{\alpha_0}$. \\
+As $U_{\alpha_0}$ is open there exists $\epsilon>0$ such that $B(x_0,\epsilon)\subseteq U_{\alpha_0}$. \\
+Take $n$ such that $\frac{1}{2^n}<\epsilon$ and consider $X_n$, $\diam X_n\leq\frac{1}{2^n}$.  If $y\in X_n$ then because $x_0\in X$ we have $d(x_0,y)\leq\diam X_n\leq\frac{1}{2^n}<\epsilon$ $\implies$ $y\in B(x_0,\epsilon)$. \\
+So $X_n\subseteq B(x_0,\epsilon)\subseteq U_{\alpha_0}$. \\
+Hence $X_n$ is covered by only one set $U_{\alpha_0}$: contradiction to choice of $X_n$. \\
+Thus $X$ must be compact.
+
+(1 $\implies$ 2): Recall the sets $\brace{U_\alpha}$ have the FIP if any finite intersection of these sets is non-empty.
+
+Let $\brace{A_\alpha}$ be closed subsets of $X$ and suppose $\bigcap_\alpha A_\alpha=\emptyset$.  We will prove some finite intersection is empty.
+\begin{gather*}
+A_\alpha^\Co\text{: open sets} \\
+\paren*{\bigcup A_\alpha^\Co}^\Co = \bigcap A_\alpha = \emptyset \\
+\implies \bigcup A_\alpha^\Co = X
+\end{gather*}
+hence the sets $\brace{A_\alpha^\Co}$ are an open cover of $X$. \\
+By compactness (1) there exist infinitely many sets
+\[ A_{\alpha_1}^\Co, \dotsc, A_{\alpha_n}^\Co \text{ such that } \bigcup_{i=1}^n A_{\alpha_i}^\Co = X \]
+\[ \implies \bigcap_{i=1}^n A_{\alpha_i} = \paren[\bigg]{\bigcup_{i=1}^n A_{\alpha_i}^\Co}^\Co = \emptyset \]
+
+(2 $\implies$ 3): Let $(x_n)$ be a sequence in $X$. \\
+Define $S_n = \set{x_k}{k\geq n}$ \\
+$\overline{S_n}$: non-empty, closed, $\overline{S_n}\subseteq\overline{S_{n-1}}$ \\
+Exercise: $A \subseteq B \implies \overline{A} \subseteq \overline{B}$ \\
+$\bigcap_1^N \overline{S_k} = \overline{S_N}$, hence any finite intersection is non-empty.  Therefore $\brace{S_n}$ has FIP. \\
+By assumption (2), $\bigcap_{n=1}^\infty \overline{S_n}\neq\emptyset$.  Say $x\in\bigcap_1^\infty\overline{S_n}\implies x\in\overline{S_n}$ for all $n$.  So given any $\epsilon>0$ and any $n$, there exists $y_n\in S_n$ such that $d(x,y_n)<\epsilon$.  Note $y_n=x_k$ for some $k\geq n$. \\
+Start with $n=1$, $\epsilon=1$.  Get $y_1\in S_1$ such that $d(x,y_1)<1$, say $y_1=x_{k_1}$. \\
+Take $n=k_1+1$, $\epsilon=\frac12$. \\
+Find $y_n\in S_n$ such that $d(x,y_n)<\frac12$ \\
+$y_n=x_{k_2}$ with $k_2\geq n > k_1$ \\
+Repeat with $n=k_2+1$, $\epsilon=\frac14$ and get $x_{k_3}$ such that $d(x_{k_3},x)<\frac14$ and $k_3>k_2$. \\
+This produces $k_1<k_2<\dotsb$, and terms $x_{k_j}$ such that $d(x_{k_j},x)<\frac{1}{2^{j-1}}$. \\
+$\brace{x_{k_j}}_{j=1}^\infty$ is a subsequence of $\brace{x_n}$, and clearly $x_{k_j}\to x$. \\
+Hence the sequence $(x_n)$ has a convergent subsequence.

@@ -1,0 +1,47 @@
+Midterm: Friday in class.
+
+\textbf{Theorem 38:} Let $[K:\Q]<\infty$ and let $\brace{\omega_1,\dotsc,\omega_n}$ be an integral basis for $\A\cap K$.  Let $I$ be a non-zero ideal in $\A\cap K$.  Then there exists an integral basis $\brace{\alpha_1,\dotsc,\alpha_n}$ for $I$ of the form
+\begin{align*}
+\alpha_1 &= a_{11}\omega_1 \\
+\alpha_2 &= a_{21}\omega_1 + a_{22}\omega_2 \\
+&\vdots \\
+\alpha_n &= a_{n1}\omega_1 + \dotsb + a_{nn}\omega_n
+\end{align*}
+where the $a_{ij}\in\Z$ and $a_{ii}\in\Z^+$ for $i=1$, $\dotsc$, $n$. \\
+\pf By Proposition~37 there exists a positive integer $a$ in $I$.  Thus $a\omega_i\in I$ for $i=1$, $\dotsc$, $n$.  We choose $\alpha_1$ to be the smallest positive multiple of $\omega_1$ which is in $I$ and denote it by $a_{11}\omega_1$.  We then pick $\alpha_2$, $\alpha_3$, $\dotsc$ by choosing $\alpha_i$ to be $a_{i1}\omega_1+\dotsb+a_{ii}\omega_i$ where $\alpha_i$ is the integer linear combination of $\omega_1$, $\dotsc$, $\omega_i$ for which $a_{ii}\omega_i$ is such that $a_{ii}$ is positive and minimal.
+
+It remains to show that $\alpha_1$, $\dotsc$, $\alpha_n$ is an integral basis for $I$.  Since $\omega_1$, $\dotsc$, $\omega_n$ are linearly independent over $\Q$ and $\det\paren*{\begin{smallmatrix}a_{11}&&0\\\vdots&\ddots\\a_{n1}&&a_{nn}\end{smallmatrix}}\neq0$ we see that $\alpha_1$, $\dotsc$, $\alpha_n$ are linearly independent over $\Q$.
+
+It remains to show that if $\beta\in I$ then $\beta$ is an integral linear combination of $\alpha_1$, $\dotsc$, $\alpha_n$.  Since $\brace{\omega_1,\dotsc,\omega_n}$ is an integral basis for $\A\cap K$
+\[ \beta = b_1\omega_1 + \dotsb + b_n\omega_n \text{ with } b_i\in\Z . \]
+Notice that $a_{nn}\div b_n$ since otherwise, by the Division Algorithm, we would contradict the minimality of $a_{nn}$.  Thus $a_{nn}\cdot q_n=b_n$ for some integer $q_n$.  But then $\beta-q_n\alpha_n$ is an integral linear combination of $\omega_1$, $\dotsc$, $\omega_{n-1}$.  We repeat the argument to find integers $q_1$, $\dotsc$, $q_{n-1}$ so that
+\[ \beta = q_1 \alpha_1 + \dotsb + q_n \alpha_n \]
+as required.
+
+\textbf{Theorem 39:} Let $[K:\Q]<\infty$.  Then $\A\cap K$ is a Dedekind Domain. \\
+\pf By Theorem~38 every ideal in $\A\cap K$ is finitely generated.
+
+Let $P$ be a non-zero prime ideal in $\A\cap K$.  We'll show that $P$ is maximal.
+
+First note that there is a positive integer $a$ in $P$.  Next note that since $P$ is a prime ideal $\A\cap K/P$ is an integral domain.
+
+Let $\brace{\omega_1,\dotsc,\omega_n}$ be an integral basis for $\A\cap K$.  Then $\A\cap K/P$ is made up of cosets of the form
+\[ a_1\omega_1 + \dotsb + a_n\omega_n + P \]
+where the $a_i$s are integers of size at most $a$ in absolute value. $\implies\A\cap K/p$ is finite.
+
+But a finite integral domain is a field and so $P$ is maximal.
+
+Finally, let $\gamma=\frac\alpha\beta$ with $\alpha$, $\beta\in\A\cap K$, $\beta\neq0$.  Suppose that $\gamma$ is integral over $\A\cap K$.  Thus $\gamma$ is the root of a polynomial $x^m+\alpha_{m-1}x^{m-1}+\dotsb+\alpha_0$ with $\alpha_{m-1}$, $\dotsc$, $\alpha_0$ in $\A\cap K$ ($*$).  It remains to show that $\gamma\in\A\cap K$.  Plainly $\gamma\in K$.  It remains to show that $\gamma\in\A$.
+
+We do so by considering the ring
+\[ S = \Z[\alpha_0,\dotsc,\alpha_{n-1},\gamma] . \]
+Plainly $\gamma\in S$.  By Theorem~13 it suffices to show that $S$ %has a
+is finitely generated as an additive group.  Let $\theta\in S$ then it is enough to show that $\theta$ is an integral linear combination of terms of the form
+\[ \alpha_0^{b_0}\dotsm\alpha_{m-1}^{b_{m-1}}\gamma^{b_m} \]
+where $b_m<m$ and the $b_i$s for $i=0$, $\dotsc$, $m-1$ are less than $n$.
+
+It is enough to show that if $\theta$ is of the form $\alpha_0^{c_0}\dotsm\alpha_{m-1}^{c_{m-1}}\gamma^{c_m}$ with $c_0$, $\dotsc$, $c_m\in\Z_{\geq0}$ then this is true.
+
+Start by using $*$, in other words
+\[ \gamma^m = -\alpha_{m-1}\gamma^{m-1} \dotsb - \alpha_0 , \]
+to reduce $c_m$ to an integer of size at most $m-1$.

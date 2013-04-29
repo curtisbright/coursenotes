@@ -1,0 +1,21 @@
+Exercise 1.  Let $T_1$ and $T_2\colon\R^n\to\R^n$ be two contractions.  Let $a_1$ and $a_2$ be the unique fixed points of $T_1$ and $T_2$ respectively.  Show that there exists $c<1$ such that
+\[ \norm{a_1-a_2}\leq \tfrac{1}{1-c} \paren*{\sup_{x\in\R^n}\norm{T_1(x)-T_2(x)}} . \]
+Exercise 2.  Let $(M,d)$ be a metric space with a countable dense set.  (We call $M$ \emph{separable}.)  Show that for every subset $A\subset M$, there exists a countable (at most countable) subset of $A$ which is dense in $A$.
+
+\savenotes\marginpar{$C(X\footnote{compact},\R)$}\spewnotes
+
+\marginpar{$\overline{\overline A}=\overline{A}$}
+
+A sequence of functions $f_n\colon X\to(M,d)$ \\
+is \emph{pointwise} Cauchy if for each $x\in X$, $f_n(x)$ (a sequence in $X$) is Cauchy, i.e., $\forall\epsilon>0$, $\exists N$ such that $d(f_n(x),f_m(x))<\epsilon$\footnote{not $\abs{f_n(x)-f_m(x)}<\epsilon$} for $n$, $m\geq N$. \\
+It is \emph{uniformly} Cauchy if for for all $\epsilon>0$, $\exists N$ such that $d(f_n(x),f_m(x))<\epsilon$ \emph{for all\/ $x\in X$}.
+
+\eg Let $f\colon\R\to\R$ and $g\colon\R\to\R$ be continuous.  Show $(f\vee g)(x)=\max(f(x),g(x))$ is a continuous function. \\
+\pf Use $f\vee g=\frac12(f+g)+\frac12\abs{f-g}$ \\
+\emph{or} \prop a function $\phi\colon\R\to\R$ is continuous if and only if
+\[ \phi^{-1}(\open{-\infty,a}) \text{ and } \phi^{-1}(\open{a,\infty}) \]
+are open for each $a\in\R$. \\
+$(f\vee g)^{-1}(\open{-\infty,a})$ \\
+$=\set{x\in\R}{(f\vee g)(x)<a}=\set{x\in\R}{f(x)<a\text{ \emph{and} }g(x)<x}$ \\
+$=\set{x\in\R}{f(x)<a}\cap\set{x\in\R}{g(x)<a}$ \\
+$=f^{-1}(\open{-\infty,a})\footnote{open by continuity of $f$}\cap g^{-1}(\open{-\infty,a})\footnote{open by continuity of $g$}$

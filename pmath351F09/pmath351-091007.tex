@@ -1,0 +1,74 @@
+\textbf{Totally bounded} \\
+\emph{$\epsilon$-net}: for a set $A\subseteq X$ is a finite set $\brace{x_1,\dotsc,x_n}\subseteq X$ such that for all $x\in A$ there exists $j$ such that $d(x_j,a)\leq\epsilon$.
+
+Totally bounded means $A$ has an $\epsilon$-net for all $\epsilon>0$.
+
+Totally bounded $\implies$ bounded.
+
+Bounded $\centernot\implies$ Totally bounded: as discrete metric space is bounded, but not totally bounded.
+
+\textbf{Example:} $A=\textbf{Ball in $\pmb\R^2$}$\marginpar{figure: circle with $\epsilon$-grid}
+
+Take the set of bottom left corner points from the squares of the $\epsilon$-grid that intersect the ball $A$.  Call this finite set $\brace{x_1,\dotsc,x_N}$.
+
+\[ \overline{B(x_j,\sqrt2\epsilon)} \supseteq \text{square that $x_j$ is a corner of} \]
+
+So $\bigcup_{j=1}^N \overline{B(x_j,\sqrt2\epsilon)} \supseteq A$ \\
+hence $\brace{x_1,\dotsc,x_N}$ are an $\sqrt2\epsilon$-net for $A$. $\to$ $A$ totally bounded. \\
+Same idea works for a ball in $\R^n$.
+
+\textbf{Fact:} If $U\subseteq V$ and $V$ is totally bounded, then $U$ is totally bounded. \\
+\pf Take same $\epsilon$-net for $U$ as for $V$.
+
+%\prop In $\R^n$, bounded $=$ totally bounded. \\
+\prop In $\R^n$, bounded $\implies$ totally bounded. \\
+\pf A bounded set is a subset of a ball, and balls in $\R^n$ are totally bounded.
+
+\prop Compact $\implies$ totally bounded \\
+\pf Let $A$ be compact.  Consider $\set{B(x,\epsilon)}{x\in A}$.  This is an open cover for $A$, so there is a finite subcover, say $B(x_1,\epsilon),\dotsc,B(x_n,\epsilon)$, i.e., $\bigcup_{1}^n B(x_j,\epsilon)\supseteq A$ \\
+$\implies$ $\brace{x_1,\dotsc,x_n}$ are an $\epsilon$-net for $A$.
+
+\textbf{Exercise:} $A$ bounded $\implies$ $\overline A$ bounded.
+
+\prop $A$ totally bounded, then $\overline A$ is totally bounded. \\
+\pf Let $\brace{x_1,\dotsc,x_n}$ be an $\epsilon$-net for $A$. \\
+Given $x\in\overline A$, there exists $a\in A$ such that $d(x,a)<\epsilon$. \\
+$\exists j$ such that $d(x_j,a)\leq\epsilon$ \\
+Therefore $d(x,x_j)\leq d(x,a)+d(a,x_j)<2\epsilon$ \\
+So $\brace{x_1,\dotsc,x_n}$ are an $2\epsilon$-net for $\overline A$.
+
+\textbf{Goal} is to prove metric spaces are compact if and only if it is complete and totally bounded.
+
+\textbf{Note:} For $A\subseteq\R^n$, $A$ is complete if and only if $A$ is closed \\
+\pf \begin{enumerate}
+\item In any metric space complete implies closed because of the following argument.  Let $x$ be an accumulation point of the complete space $A$.  Get $\brace{a_n}\subseteq A$ such that $a_n\mapsto x$.  Then $(a_n)$ is a Cauchy sequence in the complete space $A$.  By definition of completeness there exists $a\in A$ such that $a_n\to a$.  By uniqueness of limits, $x=a\in A$. \\
+Therefore $A$ is closed.
+\item Any closed subset of a complete metric space is complete.  In particular, any closed subset of $\R^n$ is complete.
+\end{enumerate}
+
+\textbf{Theorem (Cantor's):} If $A_1\supseteq A_2\supseteq \dotsb$ are non-empty, closed sets in a complete metric space $X$ and
+\[ \diam A_n = \sup\set{d(x,y)}{x,y\in A_n} \to 0 , \]
+then $\bigcap_{n=1}^\infty A_n$ is exactly one element.
+
+e.g., To see ``closed'' is necessary, take $A_n=(0,1/n)$.  Here $\bigcap_{n=1}^\infty A_n = \emptyset$.\marginpar{figure: open sets on real line}%
+
+\pf Pick $x_n\in A_n$.  If $k\geq N$, then $x_k\in A_k\subseteq A_N$.  So $\set{x_k}{k\geq N}\subseteq A_N$ $\implies$ $d(x_j,x_k)\leq\diam A_N$ if $j,k\geq N$. \\
+i.e., $\brace{x_n}$ is Cauchy and therefore converges\footnote{$\to0$ as $N\to\infty$} to some $x_0\in X$.  Consider the subsequence $(x_n)_{n=N}^\infty\subseteq A_N$ and has the same limit $x_0$.  But $A_N$ is closed, therefore $x_0\in A_N$.  This is true for all $N$, therefore $x_0\in\bigcap_{N=1}^\infty A_N$. \\
+Now suppose $x_0,y_0\in\bigcap_{n=1}^\infty A_n$. \\
+Then $x_0,y_0\in A_n$ for all $n$, so $d(x_0,y_0)\leq\diam A_n\footnote{$\to0$}$ for all $n$. \\
+$\implies d(x_0,y_0)=0 \implies x_0=y_0$.
+
+\defin A collection of sets has the F.I.P. (\emph{finite intersection property}) if every finite intersection is non-empty. \\
+e.g., nested family of sets.
+
+$\mathbold*$ \thm The following are equivalent for a metric space $X$:
+\begin{enumerate}
+\item[(1)] $X$ is compact.
+\item[(2)] Every collection of closed subsets of $X$ with the F.I.P. has non-empty intersection.
+\item[(3)] Every sequence in $X$ has a convergent subsequence (limit in $X$)\footnotemark
+\item[(4)] $X$ is complete and totally bounded.
+\end{enumerate}\footnotetext{(1) and (3): Bolzano--Weierstrass Theorem}%
+\cor (Heine--Borel): In $\R^n$, compact $\iff$ closed and bounded.
+
+\cor compact $\implies$ closed and bounded. \\
+(since complete $\implies$ closed, and totally bounded $\implies$ bounded).

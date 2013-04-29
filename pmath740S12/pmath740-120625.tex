@@ -1,0 +1,84 @@
+%midterm: A1, A2, A3, asymptotic (log p)/p, 1/p
+
+\thm (Dirichlet's Theorem) \\
+Let $k$, $l\in\Z^+$ with $\gcd(k,l)=1$. \\
+Then there exist infinitely many primes $p$ with $p=k\bmod l$. \\
+Indeed,
+\[ \sum_{\substack{p\leq x\\p=k\bmod l}}\frac{\log p}{p} = \frac{1}{\phi(l)}\log x + O(1) \]
+\pf \textbf{Step 1.} (Use Dirichlet characters) \\
+Recall that
+\[ \sum_{\chi\in\hat U_l}\chi(p)\overline{\chi(k)} = \begin{cases}
+\phi(l) & \text{if $p=k\bmod l$} \\
+0 & \text{otherwise}
+\end{cases} \]
+So we have
+\begin{align*}
+\phi(l) \sum_{\substack{p\leq x\\p=k\bmod l}}\frac{\log p}{p} &= \sum_{p\leq x}\sum_{\chi\in\hat U_l}\frac{\chi(p)\overline{\chi(k)}\log p}{p} \\
+&= \sum_{p\leq x}\paren[\Big]{\frac{\1(p)\footnote{$\1(P)=\begin{cases}
+1 & \text{if $\gcd(p,l)=1$} \\
+0 & \text{otherwise}
+\end{cases}$}\overline{\1(k)}\log p}{p}+\sum_{\chi\neq\1}\frac{\chi(p)\overline{\chi(k)}\log p}{p}} \\
+&= \sum_{\substack{p\leq x\\\gcd(p,l)=1}}\frac{\log p}{p}+\sum_{p\leq x}\sum_{\chi\neq\1}\frac{\chi(p)\overline{\chi(k)}\log p}{p} \\
+&= \sum_{p\leq x}\frac{\log p}{p} - \underbrace{\sum_{p\leq x}\frac{\log p}{p}}_{O(1)} + \sum_{\chi\neq\1}\sum_{p\leq x}\frac{\chi(p)\overline{\chi(k)}\log p}{p} \\
+&= \log x + O(1) + \sum_{\chi\neq\1}\overline{\chi(k)}\sum_{p\leq x}\frac{\chi(p)\log p}{p} \\
+\therefore \sum_{\substack{p\leq x\\p=k\bmod l}}\frac{\log p}{p} &= \frac{1}{\phi(l)}\log x + \frac{1}{\phi(l)}\sum_{\chi\neq\1}\overline{\chi(k)}\sum_{p\leq x}\frac{\chi(p)\log p}{p} + O(1) \label{1}
+\end{align*}
+If suffices to show that $\sum_{p\leq x}\frac{\chi(p)\log p}{p}=O(1)$ for each $\1\neq\chi\in\hat U_l$.
+
+\textbf{Step 2.} (Write this in terms of $\sum_{n\leq x}\frac{\chi(n)\Lambda(n)}{n}$)
+\begin{align*}
+\sum_{n\leq x}\frac{\chi(n)\Lambda(n)}{n} &= \sum_{p^k\leq x}\frac{\chi(p^k)\log p}{p^k} \\
+&= \sum_{p\leq x}\sum_{\substack{k\geq1\\p^k\leq x}}\frac{\chi(p^k)\log p}{p^k} \\
+&= \sum_{p\leq x}\frac{\chi(p)\log p}{p} + \sum_{p\leq x}\sum_{\substack{k\geq2\\p^k\leq x}}\frac{\chi(p^k)\log p}{p^k} \\
+&= \sum_{p\leq x}\frac{\chi(p)\log p}{p} + O(1)\footnote{because
+\[ \abs[\bigg]{\sum_{p\leq x}\sum_{\substack{k\geq2\\p^k\leq x}}\frac{\chi(p^k)\log p}{p^k}} \leq \sum_{p\leq x}\sum_{\substack{k\geq2\\p^k\leq x}}\frac{\log p}{p^k} \]} \\
+&\leq \sum_{p\leq x}\sum_{k\geq2}\frac{\log p}{p^k} = \sum_{p\leq x}\log p\paren[\Big]{\underbrace{\frac1{p^2}+\frac1{p^3}+\frac{1}{p^4}+\dotsb}_{\frac{1/p^2}{1-1/p}=\frac{1}{p(p-1)}}} \\
+&= \sum_{p\leq x}\frac{\log p}{p(p-1)} \\
+&\leq \sum_{n=1}^\infty \frac{\log n}{n(n-1)} \text{ which converges} \\
+\therefore \sum_{p\leq x}\frac{\chi(p)\log p}{p} &= \sum_{n\leq x}\frac{\chi(n)\Lambda(n)}{n} + O(1)
+\end{align*}
+It suffices to show that $\sum_{n\leq x}\frac{\chi(n)\Lambda(n)}{n}=O(1)$.
+
+\textbf{Step 3.} (use the fact that $\sum_{d\div n}\Lambda(d)=\log n$) \\
+Recall that
+\[ \sum_{d\div n}\Lambda(d) = \sum_{p^k\div n}\log p = \sum_{p\div n}e_p(n)\log p \]
+\begin{align*}
+\exp\paren[\Big]{\sum_{d\div n}\Lambda(d)} &= \exp\paren[\Big]{\sum_{p\div n}e_p(n)\log p} \\
+&= \prod_{p\div n}\exp(e_p(n)\log p) \\
+&= \prod_{p\div n}p^{e_p(n)} = n \\
+\therefore \sum_{d\div n}\Lambda(d) &= \log n
+\end{align*}
+By M\"obius inversion
+\[ \Lambda(n) = \sum_{d\div n}\mu(d)\log\frac{n}{d} \]
+We have
+\begin{align*}
+\sum_{n\leq x}\frac{\chi(n)\Lambda(n)}{n} &= \sum_{n\leq x}\sum_{d\div n}\frac{\chi(n)\mu(d)\log(\frac nd)}{n} \\
+&= \sum_{\substack{c,d\\cd\leq x}}\frac{\chi(cd)\mu(d)\log c}{cd} \\
+&= \sum_{\substack{c,d\\cd\leq x}}\frac{\chi(c)\log c}{c}\cdot\frac{\chi(d)\mu(d)}{d} \\
+&= \sum_{d\leq x}\paren[\Big]{\frac{\chi(d)\mu(d)}{d}\sum_{c\leq x/d}\frac{\chi(c)\log c}{c}}\footnote{Recall that $K=\sum_{n=1}^\infty\frac{\chi(n)\log n}{n}$ converges.
+\[ \sum_{n\leq x}\frac{\chi(n)\log n}{n} = K + g(x) \qquad \abs{g(x)} \leq \phi(l)\frac{\log x}{x} \]} \\
+&= \sum_{d\leq x}\frac{\chi(d)\mu(d)}{d}(K+y(\tfrac xd)) \\ \intertext{where $K=K_x=\sum_{n=1}^\infty\frac{\chi(n)\log n}{n}$ and $\abs{g(\frac xd)}\leq\phi(l)\frac{\log(x/d)}{x/d}$}
+&= K\sum_{d\leq x}\frac{\chi(d)\mu(d)}{d} + \sum_{d\leq x}\frac{\chi(d)\mu(d)g(\frac xd)}{d} \\
+&= K\sum_{d\leq x}\frac{\chi(d)\mu(d)}{d} + O(1) \\ \intertext{because $\abs*{\sum_{d\leq x}\frac{\chi(d)\mu(d)g(\frac xd)}{d}}$}
+&\leq \sum_{d\leq x}\frac{\phi(l)\log(x/d)}{x} \qquad = O(1) \\
+&= \frac{\phi(l)}{x} \sum_{d\leq x}(\log x - \log d) \\
+&= \frac{\phi(l)}{x} \paren[\Big]{\log x\sum_{d\leq x}1 - \sum_{d\leq x}\log d} \\
+&= \frac{\phi(l)}{x} \paren[\Big]{\log x(x+O(1))-(x\log x+O(x))} \\
+\therefore \sum_{n\leq x}\frac{\chi(n)\Lambda(n)}{n} &= K\cdot\sum_{n\leq x}\frac{\chi(n)\mu(n)}{n}+O(1) \\ \intertext{where $K=K_x=\sum_{n=1}^\infty\frac{\chi(n)\log n}{n}$ (3)}
+\end{align*}
+It suffices to show that $\sum_{n\leq x}\frac{\chi(n)\mu(n)}{n}=O(1)$
+
+\textbf{Step 4.} (Notice that $\sum\frac{\chi(n)\mu(n)}{n}$ and $\sum\frac{\chi(n)}{n}$ are almost inverses.) \\
+Note
+\begin{align*}
+\sum_{\substack{c,d\\cd\leq x}}\frac{\chi(c)\mu(c)}{c}\cdot\frac{\chi(d)}{d} &= \sum_{n\leq x}\sum_{c\div n}\frac{\chi(n)}{n}\mu(c) \\
+&= \sum_{n\leq x}\frac{\chi(n)}{n}\underbrace{\sum_{c\div n}\mu(c)}_{\text{$=1$ only when $n=1$}} \\
+&= \frac{\chi(1)}{1} = 1
+\end{align*}
+We have
+\begin{align*}
+1 &= \sum_{\substack{c,d\\cd\leq x}\frac{\chi(c)\mu(c)}{c}\frac{\chi(d)}{d}} \\
+&= \sum_{c\leq x}\paren[\Big]{\frac{\chi(c)\mu(c)}{c}\sum_{d\leq x/c}\frac{\chi(d)}{d}} \\
+&= \sum_{c\leq x}\paren[\Big]{\frac{\chi(c)\mu(c)}{c}(L+h(\tfrac xc))} \\ \intertext{where $L=L_x=\sum_{n=1}^\infty\frac{\chi(n)}{n}$ and $\abs{h(\tfrac xc)}\leq\phi(l)\tfrac cx$}
+&= L\cdot\sum_{c\leq x}\frac{\chi(c)\mu(c)}{c} + \underbrace{\sum_{c\leq x}\frac{\chi(c)\mu(c)h(\frac xc)}{c}}_{O(1)}
+\end{align*}

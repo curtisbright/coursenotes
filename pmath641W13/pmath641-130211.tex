@@ -1,0 +1,96 @@
+\defn Let $K$ be a finite extension of $\Q$.  The discriminant of $K$ is the discriminant of an integral basis for $K$ over $\Q$.
+
+How about quadratic extensions?
+
+Let $D$ be a squarefree non-zero integer.  If $D\nequiv1\pmod4$ then $1$, $\sqrt{D}$ is an integral basis for $\A\cap\Q(\sqrt{D})$.
+\[ \implies \disc\Q(\sqrt{D}) = \paren*{\det\begin{pmatrix}
+1 & \sqrt{D} \\
+1 & -\sqrt{D}
+\end{pmatrix}}^2 = 4D . \]
+If $D\equiv1\pmod4$ then $1$, $(1+\sqrt{D})/2$ is an integral basis so
+\[ \disc(\Q(\sqrt{D})) = \paren*{\det\begin{pmatrix}
+1 & \frac{1+\sqrt{D}}{2} \\
+1 & \frac{1-\sqrt{D}}{2}
+\end{pmatrix}}^2 = D . \]
+Next we'll show that if $p$ is a prime then $\disc(\Q(\zeta_p))=(-1)^{(p-1)/2}p^{p-2}$.  This will follow provided we show that $1$, $\zeta_p$, $\dotsc$, $\zeta_p^{p-1}$ is an integral basis for $\Q(\zeta_p)$, i.e.,
+\[ A\cap\Q(\zeta_p)=\Z[\zeta_p] . \]
+More generally we'll show that if $n>1$ that $A\cap\Q(\zeta_n)=\Z[\zeta_n]$, hence that $1$, $\zeta_n$, $\dotsc$, $\zeta_n^{\phi(n)-1}$ is an integral basis for $\Q(\zeta_n)$.
+
+\textbf{Theorem 31:} Let $K$ be a finite extension of $\Q$.  Let $\alpha_1$, $\dotsc$, $\alpha_n$ be a basis for $K$ over $\Q$ consisting of algebraic integers.  Let $d$ be the discriminant of $\brace{\alpha_1,\dotsc,\alpha_n}$.  Then if $\alpha\in\A\cap K$ there exist integers $m_1$, $\dotsc$, $m_n$ with $d\div m_i^2$ for $i=1$, $\dotsc$, $n$ such that
+\[ \alpha = \frac{m_1\alpha_1+\dotsb+m_n\alpha_n}{d} . \]
+\pf Since $\alpha_1$, $\dotsc$, $\alpha_n$ is a basis for $K$ over $\Q$ there exist rationals $a_1$, $\dotsc$, $a_n$ such that
+\[ \alpha = a_1 \alpha_1 + \dotsb + a_n\alpha_n . \]
+Let $\sigma_1$, $\dotsc$, $\sigma_n$ be the embeddings of $K$ in $\C$ which fix $\Q$.  Then
+\[ \sigma_j(\alpha) = a_1\sigma_j(\alpha_1) + \dotsb + a_n\sigma_j(\alpha_n) \qquad\text{for $j=1$, $\dotsc$, $n$.} \]
+Thus
+\[ \begin{pmatrix}
+\sigma_1(\alpha_1) & \cdots & \sigma_1(\alpha_n) \\
+\vdots \\
+\sigma_n(\alpha_1) & \cdots & \sigma_n(\alpha_n)
+\end{pmatrix}\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix} = \begin{pmatrix}
+\sigma_1(\alpha) \\
+\vdots \\
+\sigma_n(\alpha)
+\end{pmatrix} \]
+By Cramer's rule
+\[ a_j = \frac{\det\begin{pmatrix}
+\sigma_1(\alpha) & \cdots & \sigma_1(\alpha)\footnote{$j$th column} & \cdots & \sigma_1(\alpha_n) \\
+\vdots & & \vdots & & \vdots \\
+\sigma_n(\alpha) & \cdots & \sigma_n(\alpha) & \cdots & \sigma_n(\alpha_n)
+\end{pmatrix}}{\det\begin{pmatrix}
+\sigma_1(\alpha_1) & \cdots & \sigma(\alpha_1) \\
+&\vdots \\
+\sigma_n(\alpha_1) & \cdots & \sigma_n(\alpha_n)
+\end{pmatrix}} . \]
+Since $\alpha$ and $\alpha_1$, $\dotsc$, $\alpha_n$ are in $\A\cap K$ and $d=\disc(\alpha_1,\dotsc,\alpha_n)$ we see that
+\[ a_j = \frac{\gamma_j}{\delta} \qquad \text{where $\gamma_j\in\A\cap K$} \]
+and where $\delta^2=d$, for $j=1$, $\dotsc$, $n$.
+
+Then
+\[ da_j = \delta\gamma_j\in\A\cap K\text{ for $j=1$, $\dotsc$, $n$.} \]
+But $da_j\in\Q$ so $da_j$ is an integer say $m_j$.  It remains to show that $d\div m_j^2$ for $j=1$, $\dotsc$, $n$.  But
+\[ \frac{m_j^2}{d} = \frac{\delta^2\gamma_j^2}{d} = \gamma_j^2 \in \A\cap K \implies \frac{m_j^2}{d} \in \Z \implies d \div m_j^2 . \]
+Let $[K:\Q]=n$ and let $K=\Q[\theta]$.  Then for each embedding $\sigma$ of $K$ in $\C$ which fixes $\Q$ either $\sigma(\theta)\in\R$ or it is not.  In the latter case there is another embedding $\overline{\sigma(\theta)}$ since $\Q\subseteq\R$.  Therefore $n=r_1+2r_2$ where $r_1$ is the number of embeddings of $K$ in $\C$ which fix $\Q$ which embed $K$ in $\R$ and $2r_2$ is the number of other embeddings.
+
+\textbf{Proposition 32:} Let $K$ be a finite extension of $\Q$ with $r_1$ real embeddings and $2r_2$ complex and not real embeddings.  Then the sign of the dimension of $K$ over $\Q$ is $(-1)^{r_2}$. \\
+\pf Let $\alpha_1$, $\dotsc$, $\alpha_n$ be an integral basis for $K$ over $\Q$ and let $\sigma_1$, $\dotsc$, $\sigma_n$ be the embeddings of $K$ in $\C$ which fix $\Q$.
+
+Then
+\[ \disc(K) = \paren*{\det\begin{pmatrix}
+\sigma_1(\alpha_1) & \cdots & \sigma_1(\alpha_n) \\
+\vdots \\
+\sigma_n(\alpha_1) & \cdots & \sigma_n(\alpha_n)
+\end{pmatrix}}^2 . \tag{$*$} \]
+Note that
+\[ \det\overline{\begin{pmatrix}
+\sigma_1(\alpha_1) & \cdots & \sigma_1(\alpha_n) \\
+\vdots \\
+\sigma_n(\alpha_1) & \cdots & \sigma_n(\alpha_n)
+\end{pmatrix}} = (-1)^{r_2}\det\begin{pmatrix}
+\sigma_1(\alpha_1) & \cdots & \sigma_1(\alpha_n) \\
+\vdots \\
+\sigma_n(\alpha_1) & \cdots & \sigma_n(\alpha_n)
+\end{pmatrix} \]
+since we are interchanging $r_2$ rows under complex conjugation.  If $r_2$ is even then $\det\paren*{\begin{smallmatrix}
+\sigma_1(\alpha_1) & \cdots & \sigma_1(\alpha_n) \\
+\vdots \\
+\sigma_n(\alpha_1) & \cdots & \sigma_n(\alpha_n)
+\end{smallmatrix}}\in\R$ while if $r_2$ is odd then $\det\paren*{\begin{smallmatrix}
+\sigma_1(\alpha_1) & \cdots & \sigma_1(\alpha_n) \\
+\vdots \\
+\sigma_n(\alpha_1) & \cdots & \sigma_n(\alpha_n)
+\end{smallmatrix}}$ is purely imaginary.  The result follows from $*$.
+
+We'll first prove that if $p$ is a prime and $r\in\Z^+$ then $\A\cap\Q(\zeta_{p^r})=\Z[\zeta_{p^r}]$.
+
+Note that
+\[ \Phi_{p^r}(x) = \prod_{\substack{j=1\\(j,p)=1}}^{p^r}(x-\zeta^j_{p^r}) . \]
+We have
+\begin{align*}
+\Phi_{p^r}(x) &= \frac{x^{p^r}-1}{x^{p^{r-1}}-1} = (x^{p^{r-1}})^{p-1} + \dotsb + x^{p^{r-1}} + 1 \\
+\implies \Phi_{p^r}(1) &= p \text{ hence } \prod_{j=1}^{p^r}(1-\zeta_{p^r}^j) = p .
+\end{align*}

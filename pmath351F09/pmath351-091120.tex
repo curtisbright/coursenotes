@@ -1,0 +1,68 @@
+\textbf{Applications of S--W Theorem}
+\begin{flalign*}
+(1) && \int_0^1 f(x) x^n \d x = 0 \qquad \forall n=0,1,2,\dotsc &&
+\end{flalign*}
+%\[ \int_0^1 f(x) x^n \d x = 0 \qquad \forall n=0,1,2,\dotsc \]
+\[ \implies f=0 \]
+Uniqueness Theorem
+\begin{enumerate}
+\item[(2)] If $f$ $2\pi$-periodic, continuous function and $\hat f(j)=0=\frac{1}{2\pi}\int_0^{2\pi}f(x)e^{-ijx}\d x$ $\forall j\in\Z$ then $f\equiv0$. \\
+\pf Let $p(x)=\sum_{n=-N}^N a_k e^{ikx}$ for any trigonometric polynomials \\
+Then $\frac{1}{2\pi}\int_0^{2\pi}f(x)p(x)\d x=0$ \\
+Take $p_N\to\overline f$ uniformly.
+\[ \frac{1}{2\pi}\int_0^{2\pi} f\cdot p_N\footnote{$=0$} \to \frac{1}{2\pi}\int_0^{2\pi}f\cdot\overline f = \frac{1}{2\pi}\int_0^{2\pi}\abs{f}^2 \implies f=0 \]
+\item[(3)] $C([0,1]\times[0,1])$
+\[ \text{Take } \A = \set{\mathop{\smash{\sum_{i=1}^N}}f_i(x)g_i(y)}{f_i,g_i\colon[0,1]\to\R\text{, continuous}\vphantom{\int}} \]
+\begin{itemize}
+\item algebra
+\item contains constants
+\item separates points
+\end{itemize}
+By S--W, $\A$ is dense in $C([0,1]\times[0,1])$ %figure: x_0\in[0,1] ?
+\end{enumerate}
+\begin{enumerate}
+\item[HW (4)] $C[a,b]$ is separable, i.e., countable dense set
+\item[(5)]\prop Let $X$ be compact and suppose $\A\subseteq C(X)$ is a subalgebra that separates points, but $\overline\A\neq C(X)$. \\
+Then there exists $x_0\in X$ such that $f(x_0)=0$ $\forall f\in\A$. \\
+\pf Suppose not.  Then $\forall x\in X$ $\exists f_x\in\A$ such that $f_x(x)\neq0$.  By multiplying by a suitable scalar, without loss of generality $f_x(x)=2$.  By continuity there exists $\delta_x>0$ such that if $y\in B(x,\delta_x)$ then $f_x(y)\geq1$. \\
+$X$ is compact so take a finite subcover, say
+\[ B(x_1,\delta_{x_1}),\dotsc,B(x_\kappa,\delta_{x_\kappa}) \]
+\[ \text{Put } f(y) = \sum_{i=1}^\kappa f_{x_i}^2(y) \in \A \]
+If $y\in X$, then there exists $i$ such that $y\in B(x_i,\delta_{x_i})$ \\
+$\implies f_{x_i}^2(y)\geq1$ \\
+$\implies f(y) \geq f_{x_i}^2(y) \geq 1 \implies \frac{1}{f}\in C(X)$
+\[ \text{Consider } \A+\R \equiv \set{g+\lambda}{g\in\A\text{, }\lambda\in\R} \subseteq C(X) \]
+$\A+\R$ is an algebra: Take $g_1+\lambda_1$, $g_2+\lambda_2$
+%\[ (g_1+\lambda_1)(g_2+\lambda_2) = g_1g_2 + \underbrace{\lambda_2g_1 + \lambda_1g_2}_{\in\A} + \lambda_1\lambda_2 \in \R \]
+\[ (g_1+\lambda_1)(g_2+\lambda_2) = \underbrace{g_1g_2 + \lambda_2g_1 + \lambda_1g_2}_{\in\A} + \underbrace{\lambda_1\lambda_2}_{\in \R} \]
+Contains constants because $g=0\in\A$ \\
+$\A+\R$ separates points since $\A$ separates points \\
+By S--W Theorem $\A+\R$ is dense in $C(X)$. \\
+So there exists $g_n+\lambda_n\to\frac{1}{f}$ uniformly where $g_n\in\A$, $\lambda_n\in\R$
+\begin{align*}
+\abs{f(y)\cdot g_n(y) + f(y)\lambda_n - 1} &= \abs{f(y)}\abs[\Big]{g_n(y)+\lambda_n-\frac{1}{f(y)}} \\
+&\leq \inorm{f} \abs[\Big]{g_n(y)+\lambda_n-\frac{1}{f(y)}} \\
+&\to0\text{ uniformly}
+\end{align*}
+Hence $\underbrace{fg_n+\lambda_nf}_{\in\A}\to1$ uniformly \\
+$\implies 1 \in \overline\A$ \\
+So $\overline\A$ is a subalgebra of $C(X)$ that contains constants and separates points. \\
+By S--W: $\overline\A$ is dense in $C(X)$.  But $\overline\A$ is closed, therefore $\overline\A=C(X)$: contradiction.
+\end{enumerate}
+%Don't need to take these notes
+\remark\marginpar{[optional]}Evaluation map $\phi_{x_0}\colon C(X)\to\R$, $f\mapsto f(x_0)$ \\
+$\phi_{x_0}$ linear, multiplicative, continuous onto $\R$
+\[ \ker\phi_{x_0} = \set{f}{f(x_0)=0} = \phi^{-1}_{x_0}\brace{0} \]
+\begin{itemize}
+\item closed set
+\item ideal
+%\item people
+\item proper ideal
+\end{itemize}
+\[ C(X)/\ker\phi_{x_0} \cong \R \implies \text{maximal ideal} \]
+\thm $\set{\ker\phi_{x_0}}{x_0\in X}$: all the maximal ideals in $C(X)$ \\
+Previous proposition says $\A\subseteq\ker\phi_{x_0}$ \\
+Suppose $B$ algebra with no $x_0\in X$ such that $f(x_0)=0$ $\forall f\in B$ \\
+Apply previous argument to $B$ we see there exists $f\in B$ such that $f(y)\geq1$ $\forall y$ \\
+$\implies\frac{1}{f}\in C(X)\implies B$ is not contained in any proper ideal
+\begin{enumerate}[label=$\bullet$]\item Banach algebra.\end{enumerate}

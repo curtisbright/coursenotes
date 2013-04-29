@@ -1,0 +1,131 @@
+\prop $R$ ring, $a\in R$, $a\neq0$
+\emph{$a$ is not a zero divisor} if and only if whenever
+\[
+\begin{gathered}
+\text{if $ab=ac$ for some $b,c\in R$ then $b=c$,} \\
+\text{\emph{and} if $ba=ca$ for some $b,c\in R$ then $b=c$}
+\end{gathered}
+\tag{$*$}\label{star}
+\]
+\pf Suppose $a$ is \emph{not a zero divisor}. \\
+Suppose $ab=ac$.
+\begin{align*}
+\implies ab-ac &= 0 \\
+\implies a(b-c) &= 0 \\
+\shortintertext{Since $a$ is not a zero divisor and $a\neq0$,}
+b-c &= 0 \\
+\implies b &= c \\
+\shortintertext{Similarly if $ba=ca$ then}
+ba - ca &= 0 \\
+\implies (b-c)a &= 0 \\
+\implies b-c &= 0 \\
+\implies b &= c
+\end{align*}
+Conversely suppose \eqref{star} is true of $a$. \\
+If $ab=0=a0$ then by \eqref{star} $b=0$. \\
+If $ba=0=0a$ by \eqref{star} $b=0$. \\
+So $a$ is \emph{not} a zero divisor.
+
+\cor Units are never zero divisors. \\
+\pf Suppose $u$ is a unit in $R$. \\
+If $ub=uc$ then multiply both sides by $u^{-1}$.
+\begin{align*}
+u^{-1}ub &= u^{-1}uc \\
+\implies 1b &= 1c \\
+\implies b &= c
+\end{align*}
+Similarly $bu=cu$, $\implies$ $b=c$. \\
+So by proposition, $u$ is \emph{not} a zero divisor.
+
+\ex In the direct product $\Z\times\Z$, $(1,2)$ is not a unit.
+\begin{align*}
+(1,2)(a,b) &= (1,1) \\
+\implies (a,2b) &= (1,1) \\
+\implies a &= 1 \\
+2b &= 1\footnotemark
+\end{align*}\footnotetext{contradiction}%
+Also \emph{not} a zero divisor.
+\begin{align*}
+(1,2)(a,b) &= (0,0) \\
+(a,2b) &= (0,0) \\
+\implies a &= 0 \\
+2b &= 0 \\
+\implies b &= 0
+\end{align*}
+So $(a,b)=(0,0)$. \\
+\cor Every field is an integral domain\footnote{$0\neq1$, commutative}.
+
+\ex $\Z$ is an integral domain but \emph{not} a field.
+
+\thm If $R$ is finite then every nonzero element is either a unit or a zero divisor.
+
+\pf Suppose $a\in R$, $a\neq0$, is not a zero divisor.  Consider the function
+\begin{align*}
+f_a\colon & R\to R \\
+& b \mapsto ab
+\end{align*}
+By the proposition since $a$ is not a zero divisor if $f_a(b)=f_a(c)$ then $ab=ac$ then $b=c$. \\
+So $f_a$ is injective. \\
+$R$ finite $\implies$ $f_a$ is also surjective. \\
+So there is a $c\in R$ such that $f_a(c)=1$, i.e., $ac=1$. \\
+Repeating the argument with
+\begin{align*}
+g_a\colon & R\to R \\
+& b \mapsto ba
+\end{align*}
+we get a $c'\in R$ such that $c'a=1$.
+\begin{align*}
+c' = c'1 &= c'(ac) \\
+&= (c'a)c \\
+&= 1c \\
+&= c
+\end{align*}
+So $c=a^{-1}$ is the inverse, i.e., $a$ is a unit.
+
+$\Z_n$ is a finite commutative ring (fixed $n\geq2$). \\
+Every residue by the theorem is either $0$, or zero divisor or a unit. \\
+Which are which? \\
+\textbf{Recall:} $a,b\in\Z$, $a\neq0$, $b\neq0$, are called \emph{coprime} if $\gcd(a,b)=1$. \\
+\textbf{FACT:} $\gcd(a,b)=1\iff\text{there are $x,y$ such that $ax+by=1$}$, $a,b\in\Z$
+
+\prop Suppose $a\in\Z$, $a\neq0$. \\
+$\overline a$ is a unit in $\Z_n$ iff $\gcd(a,n)=1$. \\
+(So by the theorem the zero divisors are the $\overline b$ where $\gcd(b,n)\neq1$.)
+
+\pf Suppose $\gcd(a,n)=1$, so $ax+ny=1$ for some $x,y\in\Z$.
+\begin{gather*}
+\overline{ax\mathrel{{+}\footnotemark} ny} = \overline{1} \\
+\overline{ax}\mathrel{{+}\footnotemark}\overline{ny} = \overline{1} \\
+\overline a \overline x + \overline{ny} = \overline 1 \\
+ny \equiv 0 \pmod n \implies \overline{ny} = \overline 0 \\
+\implies \overline a \overline x = \overline 1
+\end{gather*}\addtocounter{footnote}{-1}\footnotetext{in $\Z$}\addtocounter{footnote}{1}\footnotetext{in $\Z_n$}%
+So $\overline x = \overline a ^{-1}$ and $\overline a$ is a unit. \\
+Conversely, suppose $\overline a\in\Z_n$ is a unit. \\
+\textbf{Want:} $\gcd(a,n)=1$. \\
+Let $\overline a ^{-1}\in\Z_n$, $\overline a^{-1}=\overline x$ for some $x\in\Z$.
+\begin{gather*}
+\overline a \overline a ^{-1} = \overline 1 \\
+\overline a \overline x = \overline 1 \\
+\overline{ax} = \overline 1 \\
+ax \equiv 1 \pmod n \\
+\intertext{there there is a $y\in\Z$ such that}
+1-ax=ny \\
+1=ax+ny \\
+\footnotemark \gcd(a,d)=1
+\end{gather*}\footnotetext{fact}%
+\cor $\Z_n$ is a field iff $n$ is prime.
+
+\pf $\Z_n$ is a field iff every nonzero $\overline a$ is a unit iff \emph{every nonzero $a$, $\gcd(a,n)=1$} iff $n$ is prime
+
+\ex $\Z_9=\brace{\overline0,\overline1,\overline2,\dotsc,\overline8}$ \\
+units: $\overline1,\overline2,\overline4,\overline5,\overline7,\overline8$ \\
+zero divisors: $\overline3,\overline6$
+
+Let $\phi(n)=\text{\# of units in $\Z_n$}$, $\phi(9)=6$. \\
+When $n$ is a prime, $\phi(n)\footnote{Euler's function}=n-1$ By proposition
+\[ \phi(n) = \text{\# of nonzero integers $2n$ which are coprime to $n$} \]
+
+\textbf{Application:}
+\thm If $a\neq0$, $a\in\Z$, $n\geq2$, $\gcd(a,n)=1$ then $a^{\phi(n)}\equiv1\pmod n$. \\
+So: $5^6\equiv 1\pmod n$, $8^6\equiv1\pmod n$, $n=9$

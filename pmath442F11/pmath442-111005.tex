@@ -1,0 +1,54 @@
+\thm (FTGT) \\
+Let $K/F$ be a Galois extension, $G=\Gal(K/F)$.  Then there is a bijection
+\begin{align*}
+\brace*{\substack{\text{$F$-subfields}\\\text{$E$ of $K$}}} &\longleftrightarrow \brace*{\substack{\text{Subgroups}\\\text{$H$ of $G$}}} \\
+E &\longmapsto \brace*{\substack{\text{$\sigma\in G$ such that}\\\sigma(\alpha)=\alpha\quad\forall\alpha\in E}} \\
+\brace*{\substack{\text{$\alpha\in K$ such that}\\\text{$\sigma(\alpha)=\alpha$ for}\\\text{all $\sigma\in H$}}} &\longmapsfrom H
+\end{align*}
+\[ \begin{array}{ccc}
+\text{$F$-fields} && \text{Subgroups} \\ \hline
+E_1 \subset E_2 & \longleftrightarrow & H_2 \subset H_1 \\{}
+[K:E] & = & \# H \\{}
+[E:F] & = & \# G / H = \abs{G:H} \\
+\Gal(K/E) = \Aut_E(K) & = & H \\
+\Hom_F(E,K) & \cong & G/H \\
+\text{$E/F$ Galois} & \longleftrightarrow & \text{$H$ is normal} \\
+\text{(in the case $\Gal(E/F)$} & \cong & \text{$G/H$)} \\
+E_1 \cap E_2 & \longleftrightarrow & H_1 H_2 \\
+E_1 E_2 & \longleftrightarrow & H_1 \cap H_2
+\end{array} \]
+\pf We will show that if $H_1$ and $H_2$ are subgroups of $G$ with the same fixed field $E$, then $H_1=H_2$.  Then $E$ is also the fixed field of $H_1H_2$, so
+\[ [K:E] = \# H_1 = \# H_2 = \# H_1 H_2 \]
+so $H_1=H_2$.
+
+Now let $E\subset K$ be any $F$-subfield.  Then $[K:E]=\#\Gal(K/E)$ because $K/E$ is Galois. \\
+But $\Gal(K/E)$ is a subgroup of $G$, so:
+\begin{enumerate}
+\item[(1)] $E\subset\text{fixed field of $\Gal(K/E)$}$
+\item[\emph{and} (2)] $[K:\text{fixed field}]=[K:E]$
+\end{enumerate}
+so $E$ is the fixed field of $\Gal(K/E)$.
+
+So the given correspondence is a bijection, as desired.
+
+The inclusion-reversing property is clear.
+
+We already proved $[K:E]=\#H$.  KLM and $\#H(\#G/H)=\#G$ suffice to show $[E:F]=\#G/H$.  We already showed $\Gal(K/E)$ is equal to $H$.
+
+We will now show that $\Hom_F(E,K)\cong G/H$ as pointed sets. %\\
+
+\defn A pointed set is an ordered pair $(\S,x)$ where $x\in\S$.
+
+\defn Let $F$ be a field, $A_1$, $A_2$ $F$-algebras.  Then
+\[ \Hom_F(A_1,A_2) = \brace*{\substack{\text{$F$-algebra homomorphism}\\\phi\colon A_1\to A_2}} \]
+\remarks $\Hom_F(A_1,A_2)$ is, in general, just a set.  If $A_1\subset A_2$, then $\Hom_F(A_1,A_2)$ is a pointed set, with distinguished element $i\colon A_1\hookrightarrow A_2$ the inclusion.
+
+Define $\phi\colon G\to\Hom_F(E,K)$ by $\phi(\sigma)=\sigma|_E\footnote{the restriction of $\sigma$ to $E$}$ \\
+This maps the distinguished element of $G$ (namely $\id$) to that of $\Hom_F(E,K)$ (namely inclusion $E\hookrightarrow K$).
+
+We know $\phi$ is onto because we proved that if $K/E$ is Galois, then homomorphisms from $E\to K$ always extend to all of $K$. \\
+If $\phi(\sigma_1)=\phi(\sigma_2)$, then $\sigma_1|_E=\sigma_2|_E$, so $\sigma_1\sigma_2^{-1}|_E=\id_E$.  This implies that $\sigma_1\sigma_2^{-1}\in H=\Gal(K/E)$, so for any $f\in\Hom_F(E,K)$ the set
+\[ \set{\sigma\in G}{\phi(\alpha)=f} \]
+is a left coset of $H$.  So we've shown that $G/H\cong\Hom_F(E,K)$ as pointed sets. \\
+We have the following lemma: \\
+\lem Say $K/F$ is normal, $F\subset E\subset K$ fields.  Then $E/F$ is normal \emph{iff} $\im\phi=E$ for all homomorphisms $\phi\colon E\to K$.

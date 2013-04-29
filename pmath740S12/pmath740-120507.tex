@@ -1,0 +1,130 @@
+\vspace{-\baselineskip}
+\begin{align*}
+\tau(n) &= \text{\# of divisors of $n=\prod p_i^{k_i}$} \\
+&= \prod_i(k_i+1) \\
+\sigma(n) &= \sum_{d\div n}d
+\end{align*}
+\eg Show
+\[ \sum_{\text{$p$ prime}}\frac{1}{p} = \sum_{i=1}^\infty \frac{1}{p_i} = \infty \]
+where $p_i$ is the $i$th prime. \\
+\soln Suppose, for a contradiction that $\sum_{i=1}^\infty\frac1{p_i}$ converges. \\
+Choose $n\in\Z^+$ so that
+\[ \sum_{i>n}\frac1{p_i} < \frac12 \]
+Let $a=p_1p_2\dotsm p_n$. \\
+Consider the arithmetic progression
+\[ 1+a, 1+2a, 1+3a, \dotsc . \]
+Note that none of the primes $p_1$, $p_2$, $\dotsc$, $p_n$ are factors of any of these numbers $1+ka$, $k\in\Z^+$. \\
+Notice that the sum
+\[ \paren[\Big]{\sum_{i>n}\frac{1}{p_i}}^m \]
+is a sum of terms of the form
+\[ \frac{1}{p_{i_1}p_{i_2}\dotsm p_{i_m}} \text{ with each $i_j>n$} . \]
+Each of the numbers $1+ka$, $k\in\Z^+$ is one of the terms in $(\sum_{i>n}\frac{1}{p_i})^m$ for some $m$.
+\begin{align*}
+\therefore \sum_{i=1}^\infty \frac{1}{1+ka} &\leq \sum_{m=1}^\infty\paren[\Big]{\sum_{i>n}\frac{1}{p_i}}^m \\
+&\leq \sum_{m=1}^\infty\paren[\Big]{\frac12}^m = 1
+\end{align*}
+But this is not possible since $\sum_{k=1}^\infty\frac{1}{1+ka}$ diverges by the integral test since
+\[ \int_2^\infty\frac{1}{1+xa}\d x = \frac{1}{a}\ln(1+xa)\bigl|_2^\infty = \infty . \]
+\textbf{Ch.~5 Congruences} \\
+\defn $a=b\bmod n$ when $a=b+kn$ for some $k\in\Z$
+
+\basicfacts
+\begin{gather*}
+a=b\bmod n \\
+\iff a-b = 0\bmod n \\
+\iff n\div(a-b)
+\end{gather*}
+equivalence mod $n$ is an equivalence relation
+$a = a \bmod n$ \\
+$a=b\bmod n\implies b=a\bmod n$ \\
+($a=b\bmod n$ and $b=c\bmod n\implies a=c\bmod n$) \\
+addition and multiplication mod $n$ are well-defined. \\
+If $a_1=a_2\bmod n$ and $b_1=b_2\bmod n$ then $a_1+b_1=a_2+b_2\bmod n$ and $a_1b_1=a_2b_2\bmod n$.
+
+Care is needed for division
+\begin{gather*}
+ab=ac\bmod n \centernot\implies b=c\bmod n \\
+ab=ac\bmod an \iff b=c\bmod n
+\end{gather*}
+\defn $\Z_n$ is the ring of integers modulo $n$: \\
+for $a\in\Z$ write $[a]=\set{x\in\Z}{x=a\bmod n}$ \\
+Then $\Z_n=\set{[a]}{a\in\Z}=\brace{[0],[1],\dotsc,[n-1]}$ \\
+We shall write $[a]$ as $a$.
+
+\thm (Linear Congruence Theorem) \\
+For $n\in\Z^+$, $a$, $b\in\Z$ consider the congruence
+\[ ax = b \bmod n . \]
+It has a solution $x\iff d\div b$ where $d=\gcd(a,n)$ and if $x=x_0$ is one solution the general solution is
+\[ x = x_0 \bmod \frac{n}{d} . \]
+Equivalently, $ax=b$ has a solution $x\in\Z_n\iff d\div b$ and if $x=x_0$ is one solution in $\Z_n$ then there are exactly $d$ solutions
+\[ x = x_0 + t\frac nd \text{ with $t=0$, $1$, $\dotsc$, $d-1$} . \]
+\pf This is a rewording of the Linear Diophantine Equation Theorem.
+
+\cor For $a\in\Z_n$, $a$ has a multiplicative inverse $a^{-1}$ \\
+$\iff$ we can solve $ax=1\bmod n$ \\
+$\iff\gcd(a,n)=1$ \\
+When $\gcd(a,n)=1$ we have $ab=ac\bmod n$ \\
+$\iff b=c\bmod n$
+
+\defn $U_n$ is the \emph{group} of units modulo $n$
+\[ U_n = \set{a\in\Z_n}{\gcd(a,n)=1} . \]
+note that for $a$, $b\in\Z$ (or $a$, $b\in\Z_n$) if $a$, $b\in U_n$ then $ab\in U_n$
+
+\thm (The Chinese Remainder Theorem) \\
+Let $n_1$, $\dotsc$, $n_m\in\Z^+$, $a_1$, $\dotsc$, $a_m\in\Z$. \\
+Consider $x=a_i\bmod n_i$ for $1\leq i\leq m$. \\
+This system of congruences has a solution $\iff\gcd(n_i,n_j)\mid(a_i-a_j)$ for all $i\neq j$ and if $x=x_0$ is one solution then the general solution is
+\[ x = x_0 \bmod \lcm(n_1,\dotsc,n_m) \]
+\pf Consider the case $n=2$
+\[
+\begin{aligned}
+x &= a_1 \bmod n_1 \\
+x &= a_2 \bmod n_2
+\end{aligned} \tag{1}
+\]
+We have a solution when
+\[ x = a_1 + k n_1 = a_2 + l n_2 \tag{2} \]
+has a solution $(k,l)$ \\
+equivalently, when
+\[ \gcd(n_1,n_2)\div(a_1-a_2) \]
+(from the LDET).  In this case, if $(k_0,l_0)$ is a solution to~(2)
+\[ \text{(so $x_0=a_1+k_0n_1=a_2+l_0n_2$ is a solution to~(1))} \]
+then the general solution to~(2) is
+\[ (k,l) = (k_0,l_0) + t\paren[\Big]{\frac{n_2}{d},\frac{n_1}{d}} \]
+and then
+\begin{align*}
+x &= a_1 + kn_1 = a_1 + \paren[\Big]{k_0+\frac{tn_2}{d}}n_1 \\
+&= (a_1+k_0n_1) + \frac{tn_1n_2}{d} \\
+&= x_0 \bmod \lcm(n_1,n_2)
+\end{align*}
+Suppose, inductively, that our theorem holds for any system of $m-1$ congruences.
+
+Consider $m$ congruences
+\[ x = a_i \bmod n_i \qquad 1\leq i\leq m \]
+If $x=x_0$ is a solution to all $m$ congruences, then it is also a solution to each pair
+\begin{align*}
+x &= a_i \bmod n_i \\
+x &= a_j \bmod n_j
+\end{align*}
+So (as above) $\gcd(n_i,n_j)\div(a_i-a_j)$ for all $i\neq j$. \\
+Also, $x_0$ is a solution to the first $m-1$ congruences so by the Inductive Hypothesis the general solution to the first $n-1$ congruences is
+\[ x = x_0 \bmod \lcm(n_1,\dotsc,n_{l-1}) . \]
+So the system of $m$ congruences is equivalent to the pair
+\begin{align*}
+x &= x_0 \bmod \lcm(n_1,\dotsc,n_{m-1}) \\
+x &= a_m \bmod n_m
+\end{align*}
+The general solution is
+\[ x = x_0 \bmod \lcm(\lcm(n_1,\dotsc,n_{m-1}),n_m) \]
+\ex show that
+\[ \lcm(\lcm(n_1,\dotsc,n_{m-1}),n_m) = \lcm(n_1,\dotsc,n_m) . \]
+It remains to show that if $\gcd(n_i,n_j)\div(a_i-a_j)$ for all $i\neq j$ then a solution $x=x_0$ exists.
+
+Suppose $\gcd(n_i,n_j)\div(a_i-a_j)$ for all $i\neq j$. \\
+By the induction hypothesis there is a solution $x=a$ to the first $m-1$ congruences and the system of all $m$ congruences is equivalent to
+\begin{align*}
+x &= a\lcm(n_1,\dotsc,n_{m-1}) \\
+x &= a_m \bmod n_m
+\end{align*}
+We need to show that a solution to this pair of congruences exists, that is we must show
+\[ \gcd(\lcm(n_1,\dotsc,n_{m-1}),n_m)\div(a-a_m) \]

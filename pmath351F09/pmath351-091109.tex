@@ -1,0 +1,83 @@
+\textbf{Taylor Series} \\
+$\exists f\in C^\infty$ where Taylor polynomials do not converge to $f$.
+\[ f(x) = \begin{cases}
+e^{-1/x^2}, & x \neq 0 \\
+0, & x = 0
+\end{cases} \]
+$f^{(k)}(0)=0$ $\forall k$.  All Taylor polynomials (centred at 0) are identically 0.  So they don't converge to $f$ except at 0.
+
+\textbf{Inner Product Spaces} \\
+$C[0,1]$: Define inner product $\chev{f,g}=\int_0^1fg$.
+\[ \left. \begin{gathered}
+\tnorm{f} = \sqrt{\chev{f,f}} = \paren*{\int_0^1 f^2}^{1/2} \\
+d_2(f,g) = \paren*{\int_0^1(f-g)}^{1/2}
+\end{gathered} \right\} L_2 \]
+\begin{itemize}
+\item metric on $C[0,1]$
+\item not complete
+\end{itemize}
+Apply Gram Schmidt process to $\brace{1,x,x^2,\dotsc}$, to get the Legendre polynomials $\brace{p_n}$. \\
+Given $f\in C[0,1]$, let $f_N = \sum_{n=1}^N \chev{f,p_n}p_n$.  Then $f_N\to f$ in $\tnorm\cdot$. (PMATH 354!)
+
+\ex $f(x)=\sqrt x$ on $[0,1]$.  Put $p_1(t)=0$, $p_{n+1}(t)=p_n(t)+\frac12(t-p_n^2(t))$ \\
+\textbf{Claim: }$p_n\to f$ uniformly.
+\begin{align*}
+p_2(t) &= 0 + \tfrac12(t-0) = \tfrac12t \\
+p_3(t) &= \tfrac12t + \tfrac12(t-\tfrac14t^2)
+\end{align*}
+Show $p_n\to f$ pointwise
+\[ p_n(t) \leq p_{n+1}(t) \qquad \forall n,t \]
+Show $p_n$, $f$ are continuous.  Dini's theorem implies $p_n\to f$ uniformly. \\
+Proceed by induction.  Assume $0\leq p_1(t)\leq p_2(t)\leq \dotsb \leq p_n(t)\leq\sqrt t$. \\
+$n=1$: Free.
+\begin{align*}
+\sqrt t - p_{n+1}(t) &= \sqrt t - (p_n(t)+\tfrac12(t-p_n^2(t))) \\
+&= \sqrt t - p_n(t) - \tfrac12(\sqrt t-p_n(t))(\sqrt t+p_n(t)) \\
+&= (\sqrt t-p_n(t))(1-\tfrac12(\sqrt t + p_n(t)))
+\end{align*}
+But $p_n(t)\leq\sqrt t$, so $\geq(\sqrt t-p_n(t))(1-\sqrt t)\geq0$. \\
+$\implies p_{n+1}(t)\leq\sqrt t$, $p_{n+1}(t)=p_n(t)+\tfrac12(t-p_n^2(t))$\footnote{$\geq0$ by induction assumption} \\
+so $p_{n+1}(t)\geq p_n(t)$.
+
+So $\brace{p_n(t)}$ is increasing and bounded above for fixed $t\in[0,1]$, hence it converges by Bolzano--Weierstrass, say $\brace{p_n(t)}\to f(t)$ (pointwise convergence)
+\begin{align*}
+p_{n+1}(t) &= p_n(t) + \tfrac12(t-p_n^2(t)) \\
+f(t) &= f(t) + \tfrac12(t-f^2(t)) \implies t = f^2(t)\text{, so }\sqrt t=f(t)
+\end{align*}
+By Dini's theorem convergence is uniform.
+
+\textbf{Weierstrass Theorem: }Let $f\colon[0,1]\to\R$ be continuous and let $\epsilon>0$.  Then there exists a polynomial $p$ such that $\norm{f-p}<\epsilon$. \\
+In fact, the Bernstein polynomials
+\[ p_n(f) = \sum_{k=0}^n \binom{n}{k} f\paren*{\frac{k}{n}} x^k (1-x)^{n-k} \]
+converge uniformly to $f$.
+
+\textbf{Intuitive Identity: }Toss a coin $n$ times; probability of heads $x$, probability of tails $1-x$.  Probability of $k$ heads in $n$ tosses:
+\[ \binom{n}{k} x^k (1-x)^{n-k} \]
+
+Suppose pay $f(\frac kn)$ dollars for $k$ heads in $n$ tosses.  Expected pay off over $n$ tosses: $\sum_{k=0}^n\binom nkf(\frac kn)x^k(1-x)^{n-k}=p_n(x)$.
+
+In long run we expect $xn$ heads in $n$ tosses, so expect pay off of $f(\frac{xn}{n})=f(x)$.  So intuitively $p_n(x)\to f(x)$.
+
+\textbf{Proof of Theorem: Technical Calculations:}
+\begin{enumerate}[label=(\arabic*)]
+\item $(x+y)^n=\sum_{k=0}^n\binom nkx^ky^{n-k}$.  Differentiate with respect to $x$, leave $y$ fixed.\marginpar{\begin{align*}
+f(x,y) &= (x+y)^n \\
+\tfrac{\partial f}{\partial x}(x,y) &= n(x+y)^{n-1}
+\end{align*}}
+\item $n(x+y)^{n-1}=\sum_{k=0}^n\binom nkkx^{k-1}y^{n-k}$
+\item $n(n-1)(x+y)^{n-2}=\sum_{k=0}^n\binom nk k(k-1)x^{k-2}y^{n-k}$
+\item[(2$'$)] $x\cdot\text{(2)}$: $nx(x+y)^{n-1}=\sum_{k=0}^n\binom nkkx^ky^{n-k}$
+\item[(3$'$)] $x^2\cdot\text{(3)}$: $n(n-1)x^2(x+y)^{n-2}=\sum_{k=0}^n\binom nk k(k-1)x^ky^{n-k}$
+\end{enumerate}
+Put $r_k(x)=\binom nkx^k(1-x)^{n-k}$ \\
+$p_n(x)=\sum_{k=0}^n f(\frac kn)r_k(x)$ \\
+Take $y=1-x$
+\begin{enumerate}[label=(\arabic*)]
+\item $1=\sum_{k=0}^n r_k(x)$
+\item[(2$'$)] $nx=\sum_{k=0}^n kr_k(x)$
+\item[(3$'$)] $n(n-1)x^2=\sum_{k=0}^n k(k-1)r_k(x)=\sum k^2r_k(x)-\sum k r_k(x)=\sum_{k=0}^n k^2 r_k(x)-nx$
+\end{enumerate}
+\begin{align*}
+\sum (k-nx)^2 r_k(x) &= \sum k^2 r_k(x) - 2\sum nkxr_k(x) + \sum (nx)^2 r_k(x) \\
+&= n(n-1)^2x^2 + nx - 2nxnx + (nx)^2
+\end{align*}

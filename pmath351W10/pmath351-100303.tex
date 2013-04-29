@@ -1,0 +1,22 @@
+\thm (4.2.2) Let $f\colon X\to Y$ be continuous where $X$ and $Y$ are topological spaces.  If $X$ is compact, then $f(X)$ is compact. \\
+\pf Let $\set{G_i}{i\in I}$ be an open cover of $f(X)$.  Then $\set{f^{-1}(G_i)}{i\in I}$ is an open cover of $X$.  Each $f^{-1}(G_i)$ is open because $f$ is continuous and $G_i$ is open.
+\[ \bigcup_{i\in I} f^{-1}(G_i) = f^{-1}\paren[\Big]{\bigcup_{i\in I}G_i} \supset f^{-1}(f(X)) \supset X . \]
+As $X$ is compact, there exists $i_1$, $i_2$, $\dotsc$, $i_N\in I$ such that $\brace{f^{-1}(G_{i_1}),f^{-1}(G_{i_2}),\dotsc,f^{-1}(G_{i_N})}$ covers $X$.  Then $\brace{G_{i_1},G_{i_2},\dotsc,G_{i_N}}$ covers $f(X)$.  This proves that $f(X)$ is compact.
+
+\comment In calculus, we have the theorem: a continuous function (into $\R$) on $[a,b]$ attains maximum and minimum. \\
+\pf $[a,b]$ is compact.  Therefore $f[a,b]$ is compact ($\subset\R$).  So $f[a,b]$ is closed and bounded (clearly non-empty, as $a\leq b$ is understood).  It contains a maximum and minimum.  ($\sup$ and $\inf$ exist for bounded non-empty sets in $\R$, and they are limit points).
+
+\eg The continuous map $f\colon\R\to\R$, $f(x)=x$, attains no max/min \emph{on\/ $\R$} which is \emph{not} compact.  The continuous map $f\colon\open{0,1}\to\R$, $f(x)=\tfrac{1}{x}$ attains no maximum and minimum $\open{0,1}$.  Note $f(\open{0,1})=\open{1,\infty}$.
+
+\eg Show that the figures (in $\R^2$)
+\begin{center}\textsf{0} and \textsf{8} are not homeomorphic\end{center}
+\pf If any point is removed from the first figure, what is left is a connected space.  However, the removal of the point $A$ gives \textsf{8}\llap{\raisebox{0.25pt}{\bf\tiny$^\circ$}}\marginpar{figure: 8 with centre point missing} which is not connected.  Hence they are not homeomorphic.
+
+\thm A bijective $f$ from a compact space $X$ to a Hausdorff space which is continuous is a homeomorphism.  (That is, the inverse map is continuous). \\
+\pf  Let $f\colon X\to Y$ be continuous, bijective, $X$ is compact, $Y$ is Hausdorff. \\
+To show that $f^{-1}\colon Y\to X$ is continuous, let $F\subset X$ be a given closed set.\marginpar{figure: $f\colon X\to Y$ and its inverse} \\
+Consider $(f^{-1})^{-1}(F)=f(F)$.  Because $X$ is compact, $F$ closed, $F$ is compact.  As $f$ is continuous, $f(F)$ is compact.  Being in a Hausdorff space $Y$, $f(F)$ is closed in $Y$.  Thus $(f^{-1})^{-1}(F)$ is closed in $Y$.
+
+This proves that $f^{-1}$ is \emph{continuous}.
+
+\cor Continuous and \emph{injective} images of the circle $\set{(x,y)}{x^2+y^2=1}$ in $\R^2$ are homeomorphic.\marginpar{figures: homeomorphic to a circle}

@@ -1,0 +1,68 @@
+\thm A homomorphism $f\colon R\to S$ is an isomorphism \emph{iff} it's 1--1 and onto. \\
+\pf Forwards is trivial. \\
+Backwards: Assume $f$ is 1--1 and onto.  We want to show that $f^{-1}\colon S\to R$ is a homomorphism.
+
+First, $f^{-1}(1)=1$ because $f(1)=1$.  Next, let $a$, $b\in S$ be any elements.  We want to show that
+\[ f^{-1}(a+b) = f^{-1}(a) + f^{-1}(b) . \]
+Since $f$ is 1--1 and onto, we can find $A$, $B$, $C\in R$ such that $f(A)=a$, $f(B)=b$, and $f(C)=a+b$.  Then:
+$f(A)+f(B)=f(A+B)=a+b$
+\begin{align*}
+&\implies A + B = f^{-1}(a+b) \\
+\intertext{But $C=f^{-1}(a+b)$ by definition of $C$}
+&\implies A + B = C \\
+&\implies f^{-1}(a) + f^{-1}(b) = f^{-1}(a+b)
+\end{align*}
+as desired. \\
+Proving $f^{-1}(a)f^{-1}(b)=f^{-1}(ab)$ is exactly similar. \qed
+
+We've got: a ring $R$, an ideal $I\subset R$ \\
+We want: a ring $R/I=\text{``$R\bmod I$''}$ an onto homomorphism $q\colon R\to R/I$ with $\ker q=I$.
+\begin{align*}
+R/I &= \brace{\text{equivalence classes of elements of $R$}} \\
+\intertext{where $r_1\equiv r_2\bmod I$ \emph{iff} $r_1-r_2\in I$}
+&= \set{{r+I}\footnote{``coset of $I$''\\$r+I=\set{r+a}{a\in I}$}}{r\in R}
+\end{align*}
+Addition: $(r_1+I)+(r_2+I)=(r_1+r_2)+I$ \\
+Multiplication: $(r_1+I)(r_2+I)=(r_1r_2+I)$ \\
+One: $1+I$ \\
+We need to check that these definitions are well defined.
+
+If $r_1\equiv r_1'\bmod I$ and $r_2\equiv r_2'\bmod I$, we must check that $r_1+r_2\equiv r_1'+r_2'\bmod I$ and $r_1'r_2'\equiv r_1r_2\bmod I$.
+
+If $a_1=r_1-r_1'\in I$, $a_2=r_2-r_2'\in I$, then
+\[ (r_1+r_2)-(r_1'+r_2') = (r_1-r_1')+(r_2-r_2') \in I \]
+\begin{align*}
+\text{and } r_1 r_2 - r_1' r_2' &= r_1 r_2 - (r_1-a_1)(r_2-a_2) \\
+&= \cancel{r_1r_2 - r_1r_2} + a_1r_2 + a_2r_1 - a_1a_2 \\
+&\in I
+\end{align*}
+Checking that $R/I$ is a ring is tedious but straight forward.
+
+It's clear from the construction that the map
+\begin{gather*}
+q \colon R \to R/I \\
+\begin{aligned}
+\text{given by } q(r) &= r \bmod I \\
+&= r + I
+\end{aligned}
+\end{gather*}
+is a surjective homomorphism.  The map $q$ is called the ``reduction mod $I$'' homomorphism.
+
+%\marginpar{Show: $\R[x]/(x^2-1)\cong\R\oplus\R$}%\\
+\eg $R=\Z$, $I=(n)$ \\
+Then $R/I=\Z/n\Z=\Z_n$. \\
+\eg $\C[x]/(x)$ should be isomorphic to $\C$. \\
+\eg $\R[x]/(x^2+1)$ should be isomorphic to $\C$.%
+\marginpar{Show: $\R[x]/(x^2-1)\cong\R\oplus\R$}%
+%\\\begin{small}Show: $\R[x]/(x^2-1)\cong\R\oplus\R$\end{small}
+\[ \C[x,y,z]/(x^2-x+3yz,x^3z+4y) \]
+%
+\thm (Universal Property of Quotients) \\
+Let $R$, $S$ be rings, $I\subset R$ an ideal, $f\colon R\to S$ a homomorphism, $q\colon R\to R/I$ the ``reduce mod $I$'' homomorphism.
+\[ \xymatrix{
+R \ar[rr]^f\ar[rd]_q &   & S \\
+ & R/I \ar@{.>}[ru]_{\tilde f} &
+} \]
+There exists a homomorphism $\tilde f\colon R/I\to S$ with $\tilde f\circ q=f$ \emph{iff} $I\subset\ker f$.
+
+\remark This theorem says that if you can find a homomorphism $f\colon R\to S$ with $I\subset\ker f$, then $f$ ``makes sense mod $I$''.

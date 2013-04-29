@@ -1,0 +1,50 @@
+Assume that $2\neq0$.
+\[ \xymatrix{
+F(a_1,\dotsc,a_n)\ar@{-}[d]^{\Gal=G\cong S_n} \\
+F(s_1,\dotsc,s_n)
+} \]
+$s_i=i$th elementary symmetric polynomial in $a_i$s. \\
+This is the splitting field for
+\[ (x-a_1)\dotsm(x-a_n) = f(x) . \]
+If $E/F$ is Galois, then $\Gal(E/F)$ embeds in $\Gal(F(a_1,\dotsc,a_n)/F(s_1,\dotsc,s_n))\cong S_n$ by numbering the roots $\alpha_1$, $\dotsc$, $\alpha_n$ of $p(x)$ over $F$.
+\begin{align*}
+\text{Define } D(f(x)) &= \prod_{i<j}(a_i-a_j)^2 \\
+&\in F(s_1,\dotsc,s_n)
+\end{align*}
+$F(s_1,\dotsc,s_n,\sqrt{D})$ is the fixed field of $A_n$.
+
+\defn Let $p(x)\in F[x]$ be any polynomial $p(x)=t_n\prod_{i=1}^n(x-\alpha_i)$.  The discriminant of $p(x)$ is
+\[ \Disc(p(x)) = t_n^{2n-2} \prod_{i<j}(\alpha_i-\alpha_j)^2 \]
+Notice that this corresponds to $D(f(x))$ if $p(x)$ is monic.
+
+So $F(\sqrt D)$ is the fixed field of $\Gal(E/F)\cap A_n$, where we view $\Gal(E/F)$ as a subgroup of $S_n$ using the correspondence described earlier (permutation action on the roots of $p(x)$).
+
+Say $p(x)$ has degree $3$, $E/F$ a splitting field.  Assume $3\neq0$.  Then $\Gal(E/F)$ is either isomorphic to $A_3$ or to $S_3$.  So $\Gal(E/F)\cong A_3$ \emph{iff} $F=F(\sqrt D)$ \emph{iff} $D$ is a square in $F$.
+
+How can we compute $D$ without knowing the roots of $p(x)$?
+
+\defn Let $f(x)$, $g(x)$ be polynomials in $F[x]$ for some field $F$, with $f(x)=t_nx^n+\dotsb+t_0$, $g(x)=u_mx^m+\dotsb+u_0$.  The resultant of $f$ and $g$ is:
+\[ \Res(f,g) = \det\begin{pmatrix}
+t_n & t_{n-1} & \cdots & t_0 \\
+& t_n & t_{n-1} & \cdots & t_0 \\
+& & \ddots & & & \ddots \\
+& & & t_n & t_{n-1} & \cdots & t_0 \\
+u_m & \hdotsfor{3} & u_0 \\
+& \ddots & &&& \ddots \\
+& & u_m & \hdotsfor{3} & u_0
+\end{pmatrix}\footnote{$m$ rows on top, $n$ rows on bottom, main diagonal pointed out} \]
+\[ \Res(x^2+x+1,x^3-2x+2) = \det\begin{pmatrix}
+1 & 1 & 1 \\
+& 1 & 1 & 1 \\
+& & 1 & 1 & 1 \\
+1 & 0 & -2 & 2 \\
+& 1 & 0 & -2 & 2
+\end{pmatrix} \]
+\claim $\Disc(p(x))=\frac{\Res(p,p')}{t_n}$
+
+\thm Let $f(x)=t_n\prod_{i=1}^n(x-\alpha_i)$, $g(x)=u_m\prod_{i=1}^m(x-\beta_i)$ be polynomials in $F[x]$.  Then:
+\[ \Res(f,g) = t_n^m u_m^n \prod_{i,j}(\alpha_i-\beta_j) \]
+\pf Write $\phi(x)=T_n\prod_i(x-a_i)$, $\psi(x)=U_m\prod_i(x-b_i)$, where all these $a_i$s, $b_i$s, $T_n$, $U_m$ are indeterminants over $F$.  It suffices to prove the theorem for $\phi$ \& $\psi$.
+
+Note that $t_n$ divides all the coefficients of $\phi(x)$, and $u_m$ divides all the coefficients $u_i$ of $\psi(x)$, so
+\[ \Res(\phi,\psi) = t_n^m u_m^n (\text{sym poly in $a_i$s \& $b_i$s}) \]

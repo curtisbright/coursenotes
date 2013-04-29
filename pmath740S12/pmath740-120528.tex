@@ -1,0 +1,147 @@
+Is $136\in Q_{421}$? \\
+Is $468\in Q_{697}$?
+
+\textbf{Is $136\in Q_{421}$?} \\
+\soln $\floor{\sqrt{421}}=20$ try $p=2,3,5,7,11,13,17,19$
+\[ 
+\begin{array}[t]{@{}c@{}c@{}c@{}c@{}c@{}c@{}}
+&&&&3&2\\\cline{3-6}
+1&3&)&4&2&1\\
+&&&3&9&\\
+&&&&3&1\\
+&&&&2&6\\
+&&&&&5
+\end{array}
+\qquad
+\begin{array}[t]{@{}c@{}c@{}c@{}c@{}c@{}c@{}}
+&&&&2&4\\\cline{3-6}
+1&7&)&4&2&1\\
+&&&3&4&\\
+&&&&8&1\\
+&&&&6&8\\
+&&&&1&3\\
+\end{array}
+\qquad
+\begin{array}[t]{@{}c@{}c@{}c@{}c@{}c@{}c@{}}
+&&&&2&2\\\cline{3-6}
+1&9&)&4&2&1\\
+&&&3&8&\\
+&&&&4&1\\
+&&&&3&8\\
+&&&&&3\\
+\end{array}
+\]
+%
+%     3	    24		22
+%13)421	17)421	19)421
+%   39      34      38
+%    31      81      41
+%            68      38
+%            13       3
+$\therefore421$ is prime
+\[ \tikz{\node{136}child{node{8}}child{node{17}};} \]
+$2\in Q_p\iff p=\pm1\bmod8$
+\begin{align*}
+\leg{136}{421} &= \leg{8}{421}\leg{17}{421} \\
+&= \leg{2}{421}^3 \leg{17}{421} \\
+&= \leg{2}{421} \leg{17}{421} \\
+&= -\leg{17}{421} \\
+&= -\leg{421}{17} = -\leg{13}{17} \\
+&= -\leg{17}{13} = -\leg{4}{13} = -\leg{2}{13}^2 = -1
+\end{align*}
+$\therefore136\notin Q_{421}$
+
+Is $468\in Q_{697}$?
+\soln %[division]
+$\floor{\sqrt{697}}=26$ \\
+we try $p=2,3,5,7,11,13,17,19,23$
+\[
+\begin{array}[t]{@{}c@{}c@{}c@{}c@{}c@{}c@{}}
+&&&&4&1\\\cline{4-6}
+6&9&7&)&1&7\\
+\end{array}
+\]
+%[divisions]
+\textbf{mod 17} %[division]
+\[ \leg{468}{17} = \leg{9}{17} = \leg{3}{17}^2 = 1 \]
+$\therefore468\in Q_{17}$ \\
+%[division]
+\textbf{mod 41}
+\begin{align*}
+\leg{468}{41} &= \leg{17}{41} = \leg{41}{17} \\
+&= \leg{7}{17} = \leg{17}{7} \\
+&= \leg{3}{7} = -\leg{7}{3} \\
+&= -\leg{1}{3} = -1
+\end{align*}
+$\therefore468\notin Q_{41}$ \\
+$\therefore468\notin Q_{697}$
+
+\remark we can extend the Legendre symbol to the Jacobi symbol $\leg{a}{b}$ defined for $a$, $b\in\Z^+$ with $b$ odd by defining
+\[ \leg{a}{\prod p_i^{k_i}} = \prod\leg{a}{p_i}^{k_i} \]
+Verify that the Jacobi symbol satisfies
+\begin{gather*}
+\leg{ab}{c} = \leg{a}{c}\leg{b}{c} \\
+\leg{a}{bc} = \leg{a}{b}\leg{a}{c} \\
+\leg{a}{c} = \leg{b}{c} \text{ when $a=b\bmod c$} \\
+\leg{a}{b}\leg{b}{a} = (-1)^{(a-1)(b-1)/4} \\
+\leg{-1}{a} = \begin{cases}
+1 & a=1\bmod4 \\
+-1 & a=3\bmod4
+\end{cases} \\
+\leg{2}{a} = \begin{cases}
+1 & a=1,7\bmod8 \\
+-1 & a=3,5\bmod8
+\end{cases}
+\end{gather*}
+\eg Find $f\in\Z[x]$ which has a root mod $n$ for every $n\in\Z^+$ but no root in $\Z$. \\
+\soln try $f(x)=(x^2-p)(x^2-q)(x^2-pq)$ with $p\in Q_q$, $q\in Q_p$ and one of $p$, $q=1\bmod8$ \\
+\eg let $f(x)=(x^2-13)(x^2-17)(x^2-221)$ \\
+Then $f$ has real roots $\pm\sqrt{13}$, $\pm\sqrt{17}$, $\pm\sqrt{221}$ \\
+Let $p$ be prime. \\
+If $p=2$ we have $17=1\bmod8$ so $17\in Q_{2^k}$ for all $k\geq1$ \\
+so we can solve $f(x)=0\bmod2^k$ \\
+if $p=13$ then
+\[ \leg{17}{13} = \leg{4}{13} = \leg{2}{13}^2 = 1 \]
+so $17\in Q_{13}$ so $17\in Q_{13^k}$ for all $k\in\Z^+$ \\
+if $p=17$ then
+\[ \leg{13}{17} = \leg{17}{13} = 1 \text{ so $13\in Q_p$} \]
+so $13\in Q_{p^k}$ for all $k\in\Z^+$ \\
+if $p\neq2,13,17$
+\[ \leg{13}{p}\leg{17}{p} = \leg{221}{p} \]
+so one of $\leg{13}{p}$, $\leg{17}{p}$, $\leg{221}{p}$ is $1$, so either $13\in Q_p$, $17\in Q_p$, $221\in Q_p$ %\\
+so again we can solve
+\[ f(x) = 0 \bmod p^k . \]
+For $n=\prod p_i^{k_i}$ we can find $a_i$ with $f(a_i)=0\bmod p_i^{k_i}$ then solve $x=a_i\bmod p_i^{k_i}$ for all $i$ and then $f(x)=f(a_i)=0\bmod p_i^{k_i}$ for all $i$, so $f(x)=0\bmod n$
+
+\eg Let $p$ be an odd prime. \\
+Show that $p=x^2+y^2$ for some $x$, $y\in\Z\iff p=1\bmod 4$ \\
+\soln Suppose $p=x^2+y^2$.  Note that $p\ndiv x$ (since $p\div x\implies p\div x^2\implies p\div p-x^2=y\implies p\div y\implies p^2\div x^2+y^2=p$ \#)
+and $p\ndiv y$ so $x$, $y\in U_p$.
+\begin{gather*}
+\text{Then } x^2 + y^2 = 0 \\
+x^2 = - y^2 \\
+(xy^{-1})^2 = -1 \\
+\therefore -1 \in Q_p \\
+\therefore p = 1 \bmod 4
+\end{gather*}
+Suppose $p=1\bmod4$. \\
+Then $-1\in Q_p$,
+say $x^2=-1\bmod p$ \\
+say $x^2+1=kp$, $k\in\Z$
+
+We work in the ring
+\[ \Z[i] = \set{a+ib}{a,b\in\Z} \]
+where we have $kp=(x+i)(x-i)$.
+
+In $\Z[i]$ we have a division algorithm (given $a$, $b\in\Z[i]$ with $b\neq0$, choose $q\in\Z[i]$ nearest to $\frac ab\in\C$ then let $r=a-qb$ to get $a=qb+r$ with $0\leq\abs{r}<\abs{b}$) so there is a Euclidean algorithm in $\Z[i]$ and we can use it to prove that in $\Z[i]$
+\[ \text{$p$ is irreducible}\iff\text{$p$ is prime}\footnote{$p\div ab\implies p\div a$ or $p\div b$} \]
+$p\div ab\implies a$ or $b$ is a unit, i.e., $a$ or $b\in\brace{\pm1,\pm i}$
+
+We have $kp=x^2+1=(x+i)(x-i)$.  If $p$ was irreducible (or prime) then $p\div x+i$ or $p\div x-i$ (since the multiples of $p$ in $\Z[i]$ are of the form $p(a+ib)=pa+ipb$) \\
+$\therefore p$ is irreducible in $\Z[i]$ \\
+say $p=zw$, $\abs{z},\abs{w}\neq1$ then $p^2=\abs{7}^2\abs{w}^2$ \\
+$\therefore\abs{z}^2=\abs{w}^2=p$ \\
+For $z=a+ib$, $p=\abs{z}^2=a^2+b^2$
+
+\textbf{Dirichlet's Theorem} \\
+For any $k$, $l\in\Z^+$ with $\gcd(k,l)=1$ there exist infinitely many primes $p$ with $p=k\bmod l$.

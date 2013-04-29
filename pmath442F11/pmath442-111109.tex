@@ -1,0 +1,44 @@
+\thm Let $G$ be a group, $N$ a normal subgroup.  If $N$ is solvable and $G/N$ is solvable, then so is $G$. \\
+\pf $G$ is solvable \emph{iff} its commutator series $G^{(i)}$ satisfies $G^{(n)}=\brace1$ for some $n$.  Since $G^{(i)}\bmod N=(G/N)^{(i)}$, we see that $G^{(n)}\subset N$ for some $M$ ($G/N$ is solvable).  Since $N$ is solvable, its subgroup $G^{(i)}$ is also solvable, so the groups $G^{(i)}$ satisfy $G^{(n)}=\brace1$ for some $n$, as desired. \qed \\
+\thm Let $F$ be a field of characteristic $0$, $f(x)\in F[x]$ a non-constant polynomial.  Then $f(x)$ is solvable in radicals \emph{iff} $\Gal(f)$ over $F$ is solvable. \\
+\pf Forwards: If $f(x)$ is solvable in radicals, then its splitting field admits subfields satisfying
+\[ F = K_0 \subset K_1 \subset \dotsb \subset K_n = \text{splitting field} \]
+and $K_i=K_{i-1}(\sqrt[n_i]{a_i})$.  Moreover, we can insist that $K_i/K_{i-1}$ is Galois for each $i$, by adjoining all relevant roots of unity first.  This may make $K_n$ larger than a splitting field for $f(x)$; this is OK \& we'll consider it later.
+
+So $\Gal(K_i/K_{i-1})$ is abelian for all $i$, making $\Gal(K_n/F)$ solvable.  Since a splitting field $K$ is contained in $K_n$, its Galois group over $F$ is a quotient of $\Gal(K_n/F)$, and so is solvable.
+
+Backwards: Let $K/F$ be a splitting field for $f(x)$.  Then since $\Gal(K/F)$ is solvable, we get a chain of subgroups $\brace1=G_0\subset G_1\subset\dotsb\subset G_n=\Gal(K/F)$ such that $G_i/G_{i-1}$ is abelian.  By refining this chain, we may assume that $G_i/G_{i-1}$ is cyclic for all $i$.  But if $K_i$ corresponds to $G_i$, then $G_i/G_{i-1}$ cyclic $\implies K_{i-1}=K_i(\sqrt[n_{i-1}]{a_{i-1})})$ for some $a_{i-1}\in K_{i-1}$, provided that $K_i$ contains all $(n_{i-1})$th roots of unity.  So if we adjoin a large finite number of roots of unity to $F$, then we can construct a chain of subfields of a suitable form to prove that $f(x)$ is solvable in radicals. \qed
+
+Question: Is every finite group solvable? \\
+Answer: No.  If $n\geq5$, $A_n$ has no nontrivial normal subgroups and is not abelian, and so is not solvable.
+
+Furthermore, the only normal subgroups of $S_n$ for $n\geq5$ are $\brace1$, $A_n$, and $S_n$.  So if $n\geq5$, then $S_n$ isn't solvable. \\
+I'd like to thank my parents, God and L.~Ron Hubbard.
+\begin{align*}
+S_3\colon & \brace1 \subset \underset{\mathclap{\text{cyclic}}}{A_3} \subset S_3 \text{ solvable } \checkmark \\
+S_4\colon & \brace1 \subset \underset{\mathclap{\substack{\text{double}\\\text{flips}}}}{V_4} \subset A_4 \subset S_4
+\end{align*}
+So $S_4$ is solvable too.  But $S_5$ is \emph{not} solvable. \\
+\eg The Galois group of $x^5-15x+5$ over $\Q$ is $S_5$. \\
+\pf The polynomial is irreducible by Eisenstein's Criterion using $p=5$.
+
+Since $x^5-15x+5$ is irreducible of degree $5$, its Galois group acts transitively on a $5$-element set, so by orbit--stabilizer, the Galois group's order is divisible by $5$.  Let $G=\Gal(f(x))=\Gal(x^5-15x+5)$.  By Cauchy's Theorem, $G$ contains an element of order $5$.  So $G$ must contain a $5$-cycle. \\
+$f'(x)=5x^4-15$ \\
+Roots $x=\pm\sqrt[4]{3}$ \\
+\begin{center}
+\begin{tikzpicture}[domain=-2.5:2.5,xscale=1,yscale=0.025]
+\draw[->] (-2.5,0) -- (2.5,0) node[right] {$x$};
+\draw[->] (0,-60) -- (0,60) node[above] {$y$};
+%\draw[smooth,color=red] plot[id=f] function{x**5-15*x+5} node[right] {$f(x) = x^3-15x+5$};
+\draw[smooth,color=red] plot[id=f] function{x**5-15*x+5};
+\draw (1.31607401,2) -- (1.31607401,-2);
+\draw (-1.31607401,2) -- (-1.31607401,-2);
+\draw (2.5,60) node[above] {$+$ve};
+\draw (-2.5,-60) node {$-$ve};
+\draw (1.31607401,-10) node[below] {$-$ve};
+\draw (-1.31607401,20) node[above] {$+$ve};
+\end{tikzpicture}
+\end{center}
+We see that $f(x)$ has exactly $3$ real roots.  Therefore, the action of complex conjugation on the roots of $f(x)$ is as a transposition.  So $G$ contains a transposition.
+
+A simple bubble sort shows that $G$ must be all of $S_5$.

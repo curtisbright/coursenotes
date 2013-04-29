@@ -1,0 +1,54 @@
+\textbf{Global Picard Theorem} \\
+$\Phi\colon[a,b]\times\R\to\R$, continuous and Lipschitz in $y$ variable.  Then the differential equation %Differentiable Equation
+\[ F'(x) = \Phi(x,F(x)), \qquad F(a)=c \]
+has a unique solution. \\
+%[Also for $\Phi\colon[a,b]\times\R^n\to\R^n$, cont.\ \& Lip. in $n$ variables]
+\ex $y''+y+\sqrt{y^2+(y')^2}=0$, $y(0)=a_0$, $y'(0)=a_1$ \\
+Let $Y=(y_0,y_1)$, and
+\[ \Phi(x,Y)=(y_1,-y_0-\norm Y) \label{star091202}\tag{$*$} \]
+$Y(0)=(a_0,a_1)$ \\
+$Y'=(y'_0,y'_1)$%$Y(1)=(y'_0,y'_1)$
+\begin{itemize}
+\item Saw if $Y=(y_0,y_1)$ solves \eqref{star091202}, then $y_0$ solves the initial differential equation, and $y_1=y_0'$.
+\end{itemize}
+Check if $\Phi$ is Lipschitz in $Y$-variable.
+\begin{align*}
+\norm{\Phi(x,Y)-\Phi(x,Z)} &= \norm[\big]{(y_1,-y_0-\norm Y)-(z_1,-z_0-\norm Z)} \\
+&= \norm[\big]{(y_1-z_1,-y_0+z_0-\norm Y+\norm Z)} \\
+&= \norm[\big]{(y_1-z_1,-y_0+z_0)+(0,-\norm Y+\norm Z)} \\
+&\leq \norm[\big]{(y_1-z_1,-y_0+z_0)} + \norm[\big]{(0,-\norm Y+\norm Z)} \\
+&= \norm[\big]{(y_1-z_1,y_0-z_0)} + \abs[\big]{\norm Z-\norm Y} \\
+&\leq \norm{Y-Z} + \norm{Z-Y} \\
+&= 2\norm{Y-Z}
+\end{align*}
+So $\Phi$ is Lipschitz in $Y$-variable. \\
+By Global Picard Theorem, there exists a unique solution to the differential equation.
+
+\textbf{Reminder:} In proof of Picard Theorem, Lipschitz condition was used here:
+\[ \norm{F_{k+1}(x)-F_k(x)} = \norm*{\int_a^x\Phi(t,F_k(t))-\Phi(t,F_{k-1}(t))\d t} \]
+%
+\textbf{Local Picard Theorem} \\
+Suppose $\Phi\colon[a,b]\times[c-\epsilon,c+\epsilon]\to\R$ is continuous, and satisfies a Lipschitz condition in $y\in[c-\epsilon,c+\epsilon]$.  Then the differential equation
+\[ F'(x) = \Phi(x,F(x)), \qquad F(a) = c \]
+has a unique solution for $x\in[a,a+h]$, where $a+h=\min(b,a+\frac{\epsilon}{\norm\Phi})$. \\
+\pf Just check that the iterates $F_k(x)$ stay in $[c-\epsilon,c+\epsilon]$, for all $x\in[a,a+h]$, so we can use the Lipschitz property in exactly the same way as in the proof of the global theorem. \\
+\textbf{Check:}~$F_0(x)=c\in[c-\epsilon,c+\epsilon]$
+\begin{gather*}
+\begin{aligned}
+\abs{F_{k+1}(x)-c} &= \abs*{c+\int_a^x\Phi(t,F_k(t))\d t-c} \\
+&\leq \int_u^x \abs{\Phi(t,F_k(t))} \d t \\
+&\leq \norm\Phi \int_a^x\d t \\
+&= \norm\Phi(x-a) \\
+&\leq h\norm\Phi \\
+&\leq \frac{\epsilon}{\norm\Phi}\norm\Phi
+\end{aligned} \\
+\implies F_{k+1}(x)\in[c-\epsilon,c+\epsilon], \qquad\forall x\in[a,a+h] .
+\end{gather*}
+%
+\textbf{Continuation Theorem} \\
+Suppose $\Phi\colon[a,b]\times\R\to\R$ is Lipschitz in $y$-variable on each compact set $[a,b]\times[-N,N]$, for all $N$, then the differential equation $F'(x)=\Phi(x,F(x))$, $F(a)=c$ \\
+\emph{either} has a unique solution on $[a,b]$ \\
+\emph{or} there exists $z\in(a,b)$ such that the differential equation has a unique solution on $[a,z)$, and $\lim_{x\to z^-}\abs{F(x)}=+\infty$. \\
+\ex $y'=y^2$, $y(0)=1$, for $x\in[0,2]$ \\
+$\Phi(x,y)=y^2$: have Lipschitz condition on every compact set \\
+Solution (by separation of variables) is $y=\frac{1}{1-x}$: get blow up at $1$.

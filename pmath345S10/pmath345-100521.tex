@@ -1,0 +1,45 @@
+Let $R$ be a ring, $\phi\colon\Z\to R$ the characteristic homomorphism $\Char R=n$, where $\ker\phi=(n)$.  Every ring of characteristic $n>0$ has a subring isomorphic to $\Z/n\Z$, namely, $\im\phi$.
+
+Every ring of characteristic $0$ has a subring isomorphic to $\Z$, namely $\im\phi$.
+
+\thm Let $D$ be a domain.  Then $\Char D=0$ or $\Char D$ is prime. \\
+\pf Say $\Char D>0$ and $\Char D=ab$ for integers $a$, $b$.  We want to show $a=1$ or $b=1$.
+
+Well, $ab=0$ in $D$.  Since $D$ is a domain, this means $a=0$ or $b=0$; without loss of generality, say $a=0$.  Then by definition of $\Char D$, $a\geq ab$, so $b\leq1$.  Since $b\in\Z$, $b>0$, we get $b=1$. \qed
+
+\textbf{Fraction fields} \\
+Let $D$ be a domain.  We will construct a field that contains $D$.
+
+\defn Let $D$ be a domain.  Define the fraction field $K(D)$ by:
+\[ K(D) = \set[\Big]{\frac{a}{b}}{a,b\in D\co b\neq0} \Big/ \mathord\sim \]
+where $\frac{a}{b}\sim\frac{c}{d}$ \emph{iff} $ad=bc$, and:
+\begin{gather*}
+\frac{a}{b} + \frac{c}{d} = \frac{ad+bc}{bd} \\
+\mathllap{\text{and}\qquad} \frac{a}{b} \cdot \frac{c}{d} = \frac{ac}{bd}
+\end{gather*}
+Need to show:
+\begin{enumerate}[label=(\arabic*)]
+\item If $\frac{a}{b}\sim\frac{a'}{b'}$, then $\frac{a}{b}+\frac{c}{d}\sim\frac{a'}{b'}+\frac{c}{d}$ \emph{and} $\frac{a'}{b'}\cdot\frac{c}{d}=\frac{a}{b}\cdot\frac{c}{d}$
+\item $K(D)$ with all these operations is a field.
+\end{enumerate}
+I do not deign to do so.
+
+Note that there is a natural homomorphism $\phi\colon D\hookrightarrow K(D)$, $\phi(d)=\frac{d}{1}$.  Typically, we identify $D$ with $\phi(D)$, and say that $D\subset K(D)$.
+
+\eg $K(\Z)=\Q$. \\
+\eg $K(F[x])=F(x)$ if $F$ is a field
+\[ F(x) = \set[\Big]{\frac{f(x)}{q(x)}}{p,q\in F[x]\co q\neq0} \]
+\eg $\Z[i]=\set{a+bi}{a,b\in\Z}$
+\[ K(\Z[i]) = \set[\Big]{\frac{a+bi}{c+di}}{a,b,c,d\in\Z\co c+di\neq0} \]
+\begin{align*}
+\mathllap{\text{But}\qquad} \frac{a+bi}{c+di} &= \frac{(a+bi)(c-di)}{c^2+d^2} \\
+&= \paren[\Big]{\frac{ac+bd}{c^2+d^2}}+\paren[\Big]{\frac{bc-ad}{c^2+d^2}} i \\
+&\in \Q(i) = \set{a+bi}{a,b\in\Q}
+\end{align*}%\marginpar{$\Q[i]=\set{a+bi}{a,b\in\Q}$}
+So $K(\Z[i])=\Q(i)$\marginpar{$\Q[i]=\set{a+bi}{a,b\in\Q}$}
+
+\thm (Universal Property of Fraction Fields) Let $F$ be a field, and $D$ a domain, $\phi\colon D\hookrightarrow F$ an injective homomorphism.  Then $\phi$ extends to an injective homomorphism $\tilde\phi\colon K(D)\hookrightarrow F$. \\
+\pf Define $\tilde\phi(\frac ab)=\frac{\phi(a)}{\phi(b)}$.  This is well defined because $\phi(b)\neq0$ (since $b\neq0$ and $\phi$ is 1--1).  Checking that this is an injective homomorphism is straightforward. \qed
+
+\thm Let $\phi\colon F\to E$ be a homomorphism of fields $E$ and $F$.  Then $\phi$ is 1--1. \\
+\pf Consider $\ker\phi$.  It's an ideal of $F$, so $\ker\phi=(0)$ or $(1)$.  Since $\phi(1)=1$, we get $\ker\phi=(0)$, and so $\phi$ is 1--1. \qed

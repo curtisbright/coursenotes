@@ -1,0 +1,60 @@
+\textbf{Baire Category Theory} \\
+\defin $A\subseteq X$ is called \emph{nowhere dense} if $\Int\overline A=\emptyset$. \\
+e.g., $\Z$ in $\R$: nowhere dense \\
+$\Q$ in $\R$: fails to be nowhere dense \\
+$A$ is nowhere dense if and only if $\overline A$ is nowhere dense \\
+$A$ is called \emph{first category} if $A=\bigcup_{n=1}^\infty A_n$ where each $A_n$ is nowhere dense. \\
+e.g., $\Q=\bigcup_{n=1}^\infty\brace{r_n}$: first category \\
+$A$ is called \emph{second category} otherwise. \\
+If $A$ is nowhere dense then $A^\Co$ is dense. \\
+Why? A set is dense if and only if it intersects every non-empty open set. \\
+Suppose $A^\Co$ is not dense.  Then there exists $U$ open, $\neq\emptyset$ such that $U\cap A^\Co=\emptyset$ \\
+$\implies U \subseteq A \implies \Int\overline A\neq\emptyset$: contradiction. \\
+\prop $A$ closed and nowhere dense $\iff$ $A^\Co$ is open and dense \\
+\pf $\Longrightarrow$: $\checkmark$ \\
+$\Longleftarrow$: Suppose $\Int\overline A\footnote{$=A$}=\emptyset$.  Hence $\Int A\cap A^\Co=\emptyset$: contradicts $A^\Co$ dense. \\
+\prop $X$ is second category if and only if the intersection of every countable family of dense open sets in $X$ is non-empty. \\
+\pf ($\Longrightarrow$) Let $G_j$, $j=1,2,\dotsc$ be open and dense. \\
+Then $G_j^\Co$ are closed and nowhere dense. \\
+Since $X$ is 2nd category $X\neq\bigcup_1^\infty G_j^\Co \implies \underbrace{\paren[\bigg]{\bigcup_1^\infty G_j^\Co}^\Co}_{=\bigcap_{j=1}^\infty G_j}\neq\emptyset$. \\
+($\Longleftarrow$) Suppose $X$ is not 2nd category. \\
+Then $X=\bigcup_1^\infty\overline{F_j}$ where $F_j$ are closed and nowhere dense.
+\[ \paren[\bigg]{\bigcup_1^\infty F_j}^\Co = \emptyset = \bigcap_{j=1}^\infty \underbrace{F_j^\Co}_{\text{open \& dense}} \]
+
+\textbf{Baire Category Theorem} \\
+A complete metric space is second category. \\
+\pf Let $\brace{A_n}_{n=1}^\infty$ be open and dense \\
+Show $\bigcap_{n=1}^\infty A_n\neq\emptyset$ \\
+Let $x_1\in A_1$ and let $U_1$ be an open ball\footnote{$=B(x_1,r_1)$} containing $x_1$, $U_1\subseteq A_1$. \\
+$A_2$ is dense so there exists $x_2\in \underbrace{A_2\cap U_1}_\text{open}$. \\
+Since $A_2\cap U_1$ is open there exists an open set $U_2\ni x_2$, $U_2\subseteq A_2\cap U_1$\footnote{$\subseteq A_2\cap A_1$} and $\diam U_2\leq\frac12\diam U_1$ and $\overline U_2 \subseteq U_1$
+\[ ( B(x_2,r) \subseteq B(x_1,r_1) \implies \overline{B(x_2,\tfrac{r}{2})} \subseteq B(x_2,r) \subseteq B(x_1,r_1) ) \]
+Proceed inductively to get open sets $U_n\ni x_n$, $U_n\subseteq\bigcap_1^n A_j$, $\overline{U_n}\subseteq U_{n-1}$, $\diam U_n\leq\frac12\diam U_{n-1}$ (so $\diam U_n\to0$) \\
+Claim $\brace{x_n}_1^\infty$ is a Cauchy sequence. \\
+Let $\epsilon>0$.  Pick $N$ such that $\diam U_N<\epsilon$. \\
+If $n,m\geq N$ then $x_n,x_m\in U_N$ (as $U_j$s are nested) \\
+$\implies d(x_n,x_m)\leq\diam U_N<\epsilon$. \\
+Since the space is complete, $x_n\to x$. \\
+Notice $x_n\in\overline U_N$ for all $n\geq N$ $\implies$ $x\in\overline U_N \subseteq U_{N-1} \subseteq \bigcap_1^{N-1} A_j$ \\
+This is true for all $N$ $\implies$ $x\in\bigcap_1^\infty A_j$ $\implies$ $\bigcap_1^\infty A_j \neq \emptyset \implies \text{$X$ is second category}$. \\
+\cor $\R$ is uncountable \\
+\pf $\R$ is second category. \\
+\cor A non-empty perfect set $E$ in a complete metric space is uncountable. \\
+\pf Say $E=\bigcup_{n=1}^\infty\brace{r_n}$.  $E$ being a closed subset of a complete metric space is complete.  Therefore $E$ is second category.  This implies $\brace{r_n}$ is open for some $n$. \\
+So there exists $\epsilon>0$ such that $B(r_n,\epsilon)=\brace{r_n}$ \\
+But $r_n$ is an accumulation point of $E$ $\implies$ $B(r_n,\epsilon)\cap B(E\setminus\brace{r_n})\neq\emptyset$
+\begin{itemize}
+\item contradiction
+\end{itemize}
+\prop The set $E$ of functions in $C[0,1]$ which have a derivative at (even) one point of $(0,1)$ is first category. \\
+\cor The set of nowhere differentiable continuous functions is second category. \\
+\pf (exercise) Union of two first category sets is first category. \\
+\textbf{Proof of proposition: }
+\[ \text{Put } E_n=\set{f\in C[0,1]}{\exists x\in[0,1-\tfrac1n]\text{ such that }\forall h\in(0,\tfrac1n]\text{, }\frac{\abs{f(x+h)-f(x)}}{h}\leq n} . \]
+If $f$ is differentiable at $x_0\in(0,1)$ then there exists $n_1$ such that $x_0\in[0,1-\frac{1}{n_1}]$ and there exists $n_2$ such that if $0<h\leq\frac{1}{n_2}$ then
+\begin{align*}
+\abs[\bigg]{\frac{f(x+h)-f(x)}{h}} &\leq \abs{f'(x_0)}+1 \\
+&\leq n_3
+\end{align*}
+Take $n=\max(n_1,n_2,n_3)\implies f\in E_n$ \\
+Shown $E\subseteq\bigcup_{n=1}^\infty E_n$

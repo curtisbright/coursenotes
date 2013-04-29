@@ -1,0 +1,220 @@
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{url}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{cancel}
+\usepackage{microtype}
+\usepackage{parskip}
+%\usepackage[all,matrix,arrow,cmtip,curve]{xy}
+\usepackage[all,cmtip]{xy}
+\newcommand{\arl}{\ar@{-}}
+\usepackage{mathdots}
+\usepackage{footnote}
+\usepackage{fancybox}
+\usepackage{centernot}
+\makesavenoteenv{align*}
+\makesavenoteenv{flalign*}
+\makesavenoteenv{alignat*}
+\makesavenoteenv{gather*}
+\makesavenoteenv{enumerate}
+\makesavenoteenv{itemize}
+\makesavenoteenv{array}
+\usepackage{enumitem}
+\usepackage{xparse}
+\usepackage{mathtools}
+\usepackage{isomath}
+\usepackage{multirow}
+\usepackage{stmaryrd}
+\usepackage{graphicx}
+
+%\setlength{\unitlength}{1mm}
+
+\setlength{\marginparwidth}{2.5cm}
+\let\oldmarginpar\marginpar
+\renewcommand\marginpar[1]{\footnote{Aside: #1}}
+
+\let\a\undef
+\let\b\undef
+\let\c\undef
+\let\d\undef
+\let\i\undef
+\let\j\undef
+\let\k\undef
+\let\l\undef
+\let\o\undef
+\let\r\undef
+\let\t\undef
+\let\u\undef
+\let\v\undef
+\let\H\undef
+\let\L\undef
+\let\O\undef
+\let\P\undef
+\let\S\undef
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\LT}{LT}
+\DeclareMathOperator{\LM}{LM}
+\DeclareMathOperator{\LCM}{LCM}
+\DeclareMathOperator{\LC}{LC}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\multideg}{multideg}
+\DeclareMathOperator{\GF}{GF}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\fix}{fix}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Disc}{Disc}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\stab}{stab}
+
+\let\brack\undef\let\brace\undef
+\DeclarePairedDelimiter\paren\lparen\rparen
+\DeclarePairedDelimiter\brack\lbrack\rbrack
+\DeclarePairedDelimiter\brace\lbrace\rbrace
+\DeclarePairedDelimiter\chev\langle\rangle
+\DeclarePairedDelimiter\abs\lvert\rvert
+\DeclarePairedDelimiter\pabs\lvert{\rvert_p}
+\DeclarePairedDelimiter\vabs\lvert{\rvert_v}
+\DeclarePairedDelimiter\norm\lVert\rVert
+\DeclarePairedDelimiter\floor\lfloor\rfloor
+\DeclarePairedDelimiter\ceil\lceil\rceil
+\DeclarePairedDelimiter\round\lfloor\rceil
+\NewDocumentCommand\set{somm}{\IfBooleanTF#1{\brace*{\,#3{}:{}#4\,}}{\brace[#2]{\,#3{}:{}#4\,}}}
+
+\newcommand{\eqvdots}{\mathrel{\makebox[\widthof{$=$}]{$\vdots$}}}
+
+\newcommand{\co}{\mathpunct{{,}~\!}}
+\newcommand{\tpm}{\overset{{\mbox{$\ldotp$}}}{\pm}}
+\newcommand{\pmt}{\overset{\mbox{$\pm$}}{\mathbin\ldotp}}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\P}{\mathcal{P}}
+\newcommand{\p}{$p$\nobreakdash}
+\newcommand{\c}{{,}~}
+\newcommand{\S}{S}
+\newcommand{\L}{\mathcal{L}}
+\newcommand{\m}{\mathcal{M}}
+\newcommand{\u}{\vectorsym{u}}
+\newcommand{\v}{\vectorsym{v}}
+\newcommand{\x}{\vectorsym{x}}
+\newcommand{\d}{\mathrm{d}}
+\newcommand{\divides}{\mathrel|}
+\newcommand{\ndivides}{\mathrel\nmid}
+\newcommand{\nequiv}{\not\equiv}
+
+\newcommand{\pf}{\textbf{Proof:} }
+\newcommand{\cor}{\textbf{Corollary:} }
+\newcommand{\defn}{\textbf{Definition:} }
+\newcommand{\eg}{\textbf{Example:} }
+\newcommand{\ex}{\textbf{Exercise:} }
+\newcommand{\exs}{\textbf{Exercises:} }
+\newcommand{\thm}{\textbf{Theorem:} }
+\newcommand{\prop}{\textbf{Proposition:} }
+\newcommand{\lem}{\textbf{Lemma:} }
+\newcommand{\lemma}{\textbf{Lemma:} }
+\newcommand{\lemmas}{\textbf{Lemmas:} }
+\newcommand{\note}{\textbf{Note:} }
+\newcommand{\recall}{\textbf{Recall:} }
+\newcommand{\remark}{\textbf{Remark:} }
+\newcommand{\remarks}{\textbf{Remarks:} }
+\newcommand{\claim}{\textbf{Claim:} }
+\newcommand{\soln}{\textbf{Solution:} }
+\newcommand{\fact}{\textbf{Fact:} }
+\newcommand{\facts}{\textbf{Facts:} }
+\newcommand{\ans}{\textbf{Answer:} }
+\newcommand{\aside}{\textbf{Aside:} }
+\newcommand{\0}{\mathbf{0}}
+\newcommand{\o}{\overline}
+\newcommand{\ur}{\text{ur}}
+
+\let\oldbfseries\bfseries
+\renewcommand{\bfseries}{\oldbfseries\boldmath}
+
+\newcounter{lectureno}
+\makeatletter
+\renewcommand{\maketitle}{\addtocounter{lectureno}{1}\begin{center}{\LARGE\@title: \@date}\end{center}\par}
+\renewcommand{\@makefnmark}{\hbox{$^{\@thefnmark)}\m@th$}}
+%\makeatother
+\title{PMATH 442 Lecture \arabic{lectureno}}
+
+\usetikzlibrary{shapes}
+%\usepgfmodule{shapes}
+
+\pgfdeclareshape{hdash}
+{ \inheritsavedanchors[from={circle}]%
+  \inheritanchor[from={circle}]{center}%
+  \inheritanchor[from={circle}]{mid}%
+  \inheritanchor[from={circle}]{base}%
+  \inheritanchor[from={circle}]{north}%
+  \inheritanchor[from={circle}]{south}%
+  \inheritanchor[from={circle}]{west}%
+  \inheritanchor[from={circle}]{east}%
+  \inheritanchor[from={circle}]{mid west}%
+  \inheritanchor[from={circle}]{mid east}%
+  \inheritanchor[from={circle}]{base west}%
+  \inheritanchor[from={circle}]{base east}%
+  \inheritanchor[from={circle}]{north west}%
+  \inheritanchor[from={circle}]{south west}%
+  \inheritanchor[from={circle}]{north east}%
+  \inheritanchor[from={circle}]{south east}%
+  \inheritanchorborder[from={circle}]%
+  \backgroundpath{
+    %  \pgfutil@tempdima=\radius%
+    %\pgfmathsetlength{\pgf@xb}{\pgfkeysvalueof{/pgf/outer xsep}}%
+    %\pgfmathsetlength{\pgf@yb}{\pgfkeysvalueof{/pgf/outer ysep}}%
+    %\ifdim\pgf@xb<\pgf@yb%
+    %  \advance\pgfutil@tempdima by-\pgf@yb%
+    %\else%
+    %  \advance\pgfutil@tempdima by-\pgf@xb%
+    %\fi%
+    \pgfmoveto{\pgfpointadd{\centerpoint}{\pgfpoint{\pgfutil@tempdima}{0pt}}}%
+    \pgflineto{\pgfpointadd{\centerpoint}{\pgfpoint{-\pgfutil@tempdima}{0pt}}}%
+  }%
+}
+
+\pgfdeclareshape{vdash}
+{ \inheritsavedanchors[from={circle}]%
+  \inheritanchor[from={circle}]{center}%
+  \inheritanchor[from={circle}]{mid}%
+  \inheritanchor[from={circle}]{base}%
+  \inheritanchor[from={circle}]{north}%
+  \inheritanchor[from={circle}]{south}%
+  \inheritanchor[from={circle}]{west}%
+  \inheritanchor[from={circle}]{east}%
+  \inheritanchor[from={circle}]{mid west}%
+  \inheritanchor[from={circle}]{mid east}%
+  \inheritanchor[from={circle}]{base west}%
+  \inheritanchor[from={circle}]{base east}%
+  \inheritanchor[from={circle}]{north west}%
+  \inheritanchor[from={circle}]{south west}%
+  \inheritanchor[from={circle}]{north east}%
+  \inheritanchor[from={circle}]{south east}%
+  \inheritanchorborder[from={circle}]%
+  \backgroundpath{
+    %  \pgfutil@tempdima=\radius%
+    %\pgfmathsetlength{\pgf@xb}{\pgfkeysvalueof{/pgf/outer xsep}}%
+    %\pgfmathsetlength{\pgf@yb}{\pgfkeysvalueof{/pgf/outer ysep}}%
+    %\ifdim\pgf@xb<\pgf@yb%
+    %  \advance\pgfutil@tempdima by-\pgf@yb%
+    %\else%
+    %  \advance\pgfutil@tempdima by-\pgf@xb%
+    %\fi%
+    \pgfmoveto{\pgfpointadd{\centerpoint}{\pgfpoint{0pt}{\pgfutil@tempdima}}}%
+    \pgflineto{\pgfpointadd{\centerpoint}{\pgfpoint{0pt}{-\pgfutil@tempdima}}}%
+  }%
+}
+
+\makeatother

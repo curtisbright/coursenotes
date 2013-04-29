@@ -1,0 +1,91 @@
+\textbf{Banach Contraction Mapping Principle} \\
+$T\colon X\to X$ is a contraction if there exists $r<1$ such that $d(T(x),T(y))\leq rd(x,y)$ for all $x,y\in X$
+
+\textbf{Theorem: }If $X$ is a complete metric space and $T\colon X\to X$ is a contraction, then $T$ is a continuous map and has a unique fixed point, i.e., there exists $x\in X$ such that $T(x)=x$. \\
+\pf In fact a contraction is uniformly continuous. \\
+Given $\epsilon>0$ take $\delta=\epsilon/r$ and then $d(x,y)<\delta$ \\
+$\implies d(T(x),T(y))\leq r\cdot d=\epsilon$
+
+Take $x_0\in X$.  Look at $T(x_0)$, $T(T(x_0))=T^2(x_0)$ \\
+\ldots \\
+Let $x_1=T(x_0)$, $x_{n+1}=T(x_n)=T^2(x_{n-1})=\dotsb=T^{n+1}(x_0)$ \\
+First check $\brace{x_n}_{1}^{\infty}$ is a Cauchy sequence. \\
+Start by looking at $d(x_n,x_{n+1})=d(T(x_{n-1}),T(x_n))$
+\[ \leq rd(x_{n-1},x_n) = rd(T(x_{n-2}),T(x_{n-1})) \leq r^2 d(x_{n-2},x_{n-1}) = \dotsb = r^n d(x_0,x_1) \]
+Assume $m>n$.  Say $m=n+k$. %\\
+\begin{align*}
+d(x_n,x_m) &\leq d(x_n,x_{n+1}) + d(x_{n+1},x_{n+2}) + \dotsb + d(x_{n+k-1},x_{n+k}) \\
+&\leq r^n d(x_0,x_1) + r^{n+1} d(x_0,x_1) + \dotsb + r^{n+k-1} d(x_0,x_1) \\
+&= d(x_0,x_1)(r^n+r^{n+1}+\dotsb+r^{n+k-1}) \\
+&\leq d(x_0,x_1)\sum_n^\infty r^j \to 0 \text{ as }n\to\infty
+\end{align*}
+Hence $\brace{x_n}$ is Cauchy \\
+As $X$ is complete there exists $y\in X$ such that $x_n\to y$ %\\
+\begin{align*}
+\text{By continuity } & T(x_n) \to T(y) \\
+& \quad\rotatebox{90}{=} \\
+& x_{n+1} \to y
+\end{align*}
+Therefore $T(y)=y$.  So $y$ is a fixed point of $T$. \\
+Suppose $z$ was also a fixed point of $T$
+\[ d(z,y) = d(T(z),T(y)) \leq r d(z,y) \]
+Since $r<1$ $\implies$ $d(z,y)=0$, i.e., $z=y$
+
+\textbf{Application to Solving an Integral Equation} \\
+Suppose $k(x,y)\colon[0,1]\times[0,1]\to\R$, continuous \\
+Consider the equation
+\[ f(x) = A + \int_0^x k(x,y)f(y)\d y . \tag{$*$}\label{star091127} \]
+Find continuous $f$ which satisfies this. \\
+e.g., $k=1$, $A=1$, $f(x)=1+\int_0^x f(y)\d y$
+\[ g(x)=\int_0^xf(y)\d y\text{ is differentiable} \implies \text{$f$ is differentiable} \]
+$g'(x)=f(x)$ by Fundamental Theorem of Calculus \\
+$\implies f'(x)=0+f(x) \implies f(x)=ce^x$ \\
+Furthermore $f(0)=1+\int_0^0f(y)=1\implies c=1$, $f(x)=e^x$
+
+\thm If $\sup_{x\in[0,1]}\int_0^1\abs{k(x,y)}\d y=\lambda<1$ then \eqref{star091127} has a unique solution. \\
+\pf Define $T\colon C[0,1]\to C[0,1]$ by $T(f)(x)=A+\int_0^x k(x,y)f(y)\d y$. \\
+We want a fixed point for $T$. \\
+Verify $T(f)(x)\in C[0,1]$.\marginpar{figure: $0<z<x$} \\
+Without loss of generality $x>z$
+\begin{align*}
+\abs{Tf(x)-Tf(z)} &= \abs*{\int_0^x k(x,y)f(y)\d y-\int_0^z k(z,y)f(y)\d y} \\
+&\leq \abs*{\int_0^z\paren{k(x,y)-k(z,y)}f(y)\d y} + \abs*{\int_z^x k(x,y)f(y)\d y} \\
+&\leq \int_0^z\underbrace{\abs{k(x,y)-k(z,y)}}_{(1)}\abs{f(y)}\d y + \int_z^x \underbrace{\abs{k(x,y)}}_{(2)}\abs{f(y)}\d y
+\end{align*}
+$k$ is uniformly continuous.  Given $\epsilon>0$ get $\delta$, i.e., $\norm{(x,y)-(z,y)}<\delta\implies\abs{k(x,y)-k(z,y)}<\epsilon$. \\
+$f$ is bounded, say $\norm f<M$. \\
+Let $\abs{x-z}<\cancelto{\delta}{\min(\delta,\epsilon)}$. \\
+Then $\norm{(x,y)-(z,y)}=\abs{x-z}<\delta$ \\
+$\implies\abs{k(x,y)-k(z,y)}<\epsilon$. \\
+$\implies (1) \leq \int_0^z\epsilon\cdot M\d y = z\epsilon M\leq\epsilon M$ \\
+(2): Also $\norm k\leq M'\implies (2)\leq\int_z^x M'M\d y=\abs{x-z}M'M<\delta M'M\leq\epsilon M'M$.
+\[ \abs{Tf(x)-Tf(z)} \leq (1) + (2) \leq \epsilon M + \epsilon M'M = \epsilon \text{(constant)} \]
+\negthickspace$\implies Tf(x)$ is continuous \\
+$C[0,1]$ is a complete metric space. \\
+Verify $T$ is a contraction.
+%\begin{align*}
+%d(Tf,Tg) &= \norm{Tf-Tg} \\
+%&= \sup_{x\in[0,1]} \abs{Tf(x)-Tg(x)}
+%\end{align*}
+%\begin{align*}
+%\abs{Tf(x)-Tg(x)} &= \abs*{\int_0^x k(x,y)f(y)\d y - \int_0^x k(x,y)g(y)\d y} \\
+%&\leq \abs*{\int_0^x k(x,y)\paren{f(y)-g(y)}\d y} \\
+%&\leq \int_0^x \abs{k(x,y)}\abs{f(y)-g(y)}\d y \\
+%&\leq \norm{f-g} \int_0^1 \abs{k(x,y)}\d y \\
+%&\leq \lambda\footnotemark \norm{f-g} = \lambda d(f,g)
+%\end{align*}\footnotetext{contraction factor}%
+\begin{gather*}
+\begin{aligned}
+d(Tf,Tg) &= \norm{Tf-Tg} \\
+&= \sup_{x\in[0,1]} \abs{Tf(x)-Tg(x)}
+\end{aligned} \\
+\begin{aligned}
+\abs{Tf(x)-Tg(x)} &= \abs*{\int_0^x k(x,y)f(y)\d y - \int_0^x k(x,y)g(y)\d y} \\
+&\leq \abs*{\int_0^x k(x,y)\paren{f(y)-g(y)}\d y} \\
+&\leq \int_0^x \abs{k(x,y)}\abs{f(y)-g(y)}\d y \\
+&\leq \norm{f-g} \int_0^1 \abs{k(x,y)}\d y \\
+&\leq \lambda\footnote{contraction factor} \norm{f-g} = \lambda d(f,g)
+\end{aligned}
+\end{gather*}
+Therefore $\norm{Tf-Tg}\leq\lambda\norm{f-g}$ \\
+Thus $T$ is a contraction and therefore the integral equation has a unique solution in $C[0,1]$ by Banach Contraction Mapping Principle.

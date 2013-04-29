@@ -1,0 +1,27 @@
+\thm Let $E/F$ be a field extension of degree $n$, and assume that $E$ is the spitting field of a polynomial $p(x)\in F[x]$.  Let $L$ be a field, $\phi\colon F\to L$ a homomorphism, and assume that $\phi(p(x))$ splits into linear factors in $L[x]$.  Then there is a homomorphism $\psi\colon E\to L$ extending $\phi$, and there are at most $n$ such extensions $\psi$, with equality \emph{iff} $p(x)$ is separable.
+\[ \addtocounter{footnote}{-2}\xymatrix@C=10em{
+E\ar[r]^{\psi_1}\ar[dr]^{\psi_2} & E'=F'\footnotemark(\overbrace{\alpha'_1,\dotsc,\alpha'_d}^{\mathclap{\text{roots of $\phi(p(x))$}}})\ar[r] & L \\
+& E'=f\ar[ur]\ar[u]_{\psi_1\circ\psi_2^{-1}} &
+}\footnotetext{$\phi(F)$} \]
+\[ E' = \psi_1(E) = \psi_2(E) \]
+\pf The existence of $\psi$ follows from the existence \& uniqueness of splitting fields up to isomorphism.
+
+Induce on $n$.  Base case $n=1$ is trivial, so assume the theorem for extensions of degree $\leq n-1$.  Let $q(x)$ be an irreducible factor of $p(x)$ of degree at least $2$.  Let $\alpha\in E$ be a root of $q(x)$.  Then:
+\[ \vcenter{\xymatrix@C=5em{
+E\ar[r]^{\psi}\ar@{-}[d] & L\ar@{-}[d] \\
+f(\alpha)\ar[r]^{\Xi}\ar@{-}[d] & K(\phi(\alpha))\ar@{-}[d]^{\mathrlap{\biggr\}\substack{\text{There are $m$ choices of $\Xi$, where}\\\text{$m={}$\# of distinct roots of $q(x)$}}}} \\
+F\ar[r]^{\phi} & K=\psi(F)
+}}%\footnote{There are $m$ choices of $\Xi$, where $m={}$\# of distinct roots of $q(x)$}
+\]
+$E$ is the splitting field for $p(x)$ over $f(\alpha)$.  By induction, there are at most $[E:F(\alpha)]$ choices of $\psi$ for any given $\Xi$, with equality \emph{iff} $p(x)$ has distinct roots.  The number of choices of $\Xi$ is at most $\deg(p(x))$, with equality \emph{iff} $q(x)$ has distinct roots.  So the number of choices of $\psi$ in total is:
+\[ [E:F(\alpha)][F(\alpha):F] = [E:F] = n , \]
+with equality \emph{iff} $p(x)$ is separable. \qed
+
+\cor If $E$ is a splitting field of some polynomial over $F$, then $\#\Aut_F(E)\leq[E:F]$, with equality \emph{iff} $p(x)$ is separable.
+
+\defn A finite extension $E/F$ is Galois \emph{iff} $\#\Aut_F(E)=[E:F]$. \\
+\cor Splitting fields of separable polynomials are Galois. \\
+\defn If $E/F$ is Galois, then $\Gal(E/F)=\Aut_F(E)$ is the Galois group of $E/F$. \\
+\eg $\Gal(K/K)=\brace1$. \\
+\eg $\Gal(\C/\R)=\brace{1,\sigma}$, $\sigma=\text{complex conjugation}$ \\
+\eg $\Q(\sqrt[3]{2})/\Q$ is not Galois!  Because $[\Q(\sqrt[3]{2}):\Q]=3$, but $\Aut_\Q(\Q(\sqrt[3]{2}))=\brace1$.

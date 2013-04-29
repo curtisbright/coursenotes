@@ -1,0 +1,114 @@
+\begin{tabular}{ccc}
+median & 18.5 & 74\% \\
+mean & 17.5 & 70\% \\
+% & 1/3 & \\
+% & 82\% & \\
+% & 1/3 & \\
+% & 62\% & \\
+% & 1/3 & 
+\end{tabular}
+%
+\[ \text{fields} \subseteq \text{euclidean domains} \subseteq \text{pids} \subseteq \text{ufds} \subsetneq \text{integral domains} \]
+\defin $a,b\in R$ integral domain.  $a,b$ irreducibles.  We say $a$ and $b$ are \emph{associate} if $a=bu$ for some unit $u$.
+
+\textbf{Exercises:}
+\begin{enumerate}
+\item Being associate is an equivalence relation among the irreducibles.
+\item If $a$ is irreducible/prime then $au$ is irreducible/prime if $u$ is a unit.
+\item $a$ is \emph{irreducible} iff whenever $a=bc$ either $b$ or $c$ is a unit.
+\item $a,b$ irreducibles.  $a$ and $b$ are associate $\iff$ $a\mid b$
+\end{enumerate}
+\lem In a unique factorization domain, $\text{irreducible}=\text{prime}$. \\
+\pf Recall $R$ unique factorization domain means $a$ is nonzero nonunit then $a$ is a finite product of primes.
+\[ \text{prime}\implies\text{irreducible}\quad \checkmark \]
+Conversely let $a$ be an irreducible.  $a=p_1\dotsm p_n$ where $p_i$ are prime. \\
+Each $p_i\mid a\implies p_i=au_i$ for some $u_i$. \\
+\textbf{Exercise:}~If a product of elements is a unit then so is each factor.
+
+$a=p_iv$, $v$ is a unit
+\begin{align*}
+\text{cancellation} &\implies v=p_1\dotsm\cancel{p_i}\footnotemark\dotsm p_n \\
+&\mathrel{\;{\Longrightarrow}\footnotemark\;} n=1 \\
+&\implies\text{$a$ is prime}
+\end{align*}\addtocounter{footnote}{-1}\footnotetext{remove $p_i$}\addtocounter{footnote}{1}\footnotetext{by previous exercise}%
+\cor There are integral domains that are \emph{not} unique factorization domains. \\
+%\pf We have seen an example of an integral domain where $\text{irreducible}\hspace{1.5ex}\not\hspace{-1.5ex}\implies\text{prime}$. \\
+\pf We have seen an example of an integral domain where $\text{irreducible}\centernot\implies\text{prime}$. \\
+\thm (Unique factorization theorem): \\
+$R$ unique factorization domain.  $a$ nonzero nonunit.
+\begin{equation*}
+\begin{aligned}
+a &= p_1 \dotsm p_n \\
+a &= q_1 \dotsm q_l
+\end{aligned} \qquad \text{where the $p_i$s and $q_j$s are prime}
+\end{equation*}
+Then $n=l$ and after re-indexing each $p_i$ is associate to $q_i$. \\
+\pf By induction on $n$. \\
+$n=1$:
+\[ p_1 = a = q_1\dotsm q_l \]
+$\Longrightarrow$ $l=1$ and $p_1=q_1$ as before \\
+$p_1\mid q_1$ $\implies$ $p_1=q_1u$ \\
+\[ q_1u = q_1q_2\dotsm q_l \]
+$\Longrightarrow$ $u=q_2\dotsm q_l$\footnote{contradiction} $\implies$ $l=1$ $\checkmark$
+
+$n>1$:
+\[ p_1\dotsm p_n = a = q_1\dotsm q_l \]
+%$p_1\mid\text{LHS}$ $\implies$ $p_1\mid q_i$ or $p_1\mid(q_2\dotsm q_l)$\footnote{$\implies$ $p_1\mid q_2$ or $p_1\mid(q_3\dotsm q_l)$\footnotemark}\footnotetext{$\implies\dotsb$} \\
+\[ p_1\mid\text{LHS} \implies
+\begin{gathered}
+p_1\mid q_1 \\
+\text{or} \\
+p_1\mid(q_2\dotsm q_l)
+\end{gathered} \overset{p_1\nmid q_1}\implies
+\begin{gathered}
+p_1\mid q_2 \\
+\text{or} \\
+p_1\mid(q_3\dotsm q_l)
+\end{gathered} \overset{p_1\nmid q_2}\implies \dotsb \]
+$\implies$ $p_1\mid q_i$ for some $i=1,\dotsc,l$. \\
+After re-indexing without loss of generality let $i=1$. \\
+$\implies$ $p_1\mid q_1$ $\implies$ $q_1=p_1u$, $u$ unit.
+\begin{gather*}
+\cancel{p_1} \dotsm p_n = u \cancel{p_1} q_2 \dotsm q_l \\
+p_2 \dotsm p_n = u q_2 \dotsm q_l
+\end{gather*}
+Replacing $q_2$ by an associate (namely $uq_2$) we may assume without loss of generality
+\[ p_2\dotsm p_n = q_2\dotsm q_l \]
+$\overset{\text{IH}}\Longrightarrow$ $n=l$ and after re-indexing \emph{$p_j$ is associate to $q_j$} $j=2,\dotsc,n=l$.
+
+\ex (non-ufd) \\
+$\Z[2i]$ subring of Gaussian integers
+\[ \Z[2i] = \set{a+2bi}{a,b\in\Z} \]
+$i=\sqrt{-1}$ \\
+Fails unique factorization:
+\begin{align*}
+4 &= 2\cdot 2v \\
+4 &= (-2i)\cdot(2i)
+\end{align*}
+$2,2i\in\Z[i]$ \\
+\textbf{Need:}
+\begin{enumerate}
+\item $2,2i$ are irreducibles
+\item $2$ and $2i$ are \emph{not} associate
+\end{enumerate}
+This leads to two non-associate factorizations of $4$ into irreducibles \\
+$\implies$ $\Z[2i]$ \emph{not} unique factorization domain \\
+\claim $2$ is irreducible \\
+\pf
+\begin{align*}
+2 &= (a+2bi)(c+2di) \qquad a,b,c,d\in\Z \\
+  &= (ac-4bd) + 2(ad+bc)i
+\end{align*}
+$\implies$ (1) $ad=-bc$ and \\
+(2) $ac-4bd=2$ \\
+Assume $bd\neq0$.  Then $ac\neq0$. \\
+$\implies$ $\sgn(ac)=\text{positive}$ $\implies$ $\sgn(bd)=\text{negative}$ by (1) $\implies$ contradiction (2) \\
+$\implies$ $\sgn(bd)=\text{positive}$ $\implies$ $\sgn(ac)=\text{negative}$ by (1) $\implies$ contradiction (2)
+
+\thm (Unique factorization theorem) \\
+$R$ ufd.  $a$ nonzero nonunit. \\
+$\implies$ $2$ is irreducible $\checkmark$ \\
+Similarly $2i$ is irreducible $\checkmark$ \\
+Only units in $\Z[i]$ are $1,-1,-i\footnote{not in $R$},i\footnote{not in $R$}$ \\
+Only units in $\Z[2i]$ are $1,-1$ \\
+$\implies$ $2,2i$ are non-associates.

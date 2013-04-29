@@ -1,0 +1,105 @@
+In class midterm Monday Oct.\ 16.
+
+\textbf{Localizations and Function Fields}
+
+$R$ commutative ring \\
+$S\subseteq R$ subset such that
+\begin{enumerate}
+\item $1\in S$
+\item $a,b\in S\implies ab\in S$ ($S$ is multiplicatively closed)
+\item $S$ contains \emph{no} zero divisors, or zero
+\end{enumerate}
+Consider the Cartesian product $R\times S$ and define on it a relation as follows: \\
+\defin $(a,s)\sim(b,t)$ if $at=bs$
+
+\lem $\sim$ is an equivalence relation on $R\times S$ \\
+\pf
+\begin{enumerate}
+\item Reflexive: $a\in R$, $s\in S$,
+\[ (a,s)\sim(a,s) \]
+\item Symmetric: $a,b\in R$, $s,t\in S$ \\
+If $(a,s)\sim(b,t)$ then $(b,t)\sim(a,s)$
+\item Transitivity: $a,b,c\in R$, $s,t,u\in S$ \\
+\textbf{Need:} If $(a,s)\sim(b,t)$ and $(b,t)\sim(c,u)$ then $(a,s)\sim(c,u)$ \\
+\[ \begin{gathered}
+at = bs \\
+bu = ct
+\end{gathered}
+\implies atu = bsu = bus = cts \]
+$\Longrightarrow\; aut=cst$, $t$ is not a zero divisor and $t\neq0$ \\
+$\implies au = cs$, i.e., $(a,s)\sim(c,u)$
+\end{enumerate}
+So we can form the equivalence classes $a\in R, s\in S$.
+\[ [(a,s)] \coloneqq \set{(b,t)}{b\in R, t\in S, (b,t)\sim(a,s)} \]
+\note $[(a,s)]=[(b,t)]\iff(a,s)\sim(b,t)$
+
+\defin The \emph{localization of $R$ at $S$} is
+\[ R_S \coloneqq R\times S/\sim = \set{[(a,s)]}{(a,s)\in R\times S} . \]
+\textbf{Notation:} We often write an element $[(a,s)]$ as $\frac{a}{s}$. \\
+\note In $R_S$, $\frac{a}{t}=\frac{b}{s} \iff as=bt$ ($*$)
+
+\prop The following operations make $R_S$ into a commutative ring:
+\[ 0_{R_S} = \tfrac{0}{1} \qquad 1_{R_S} = \tfrac{1}{1} \]
+\[ \paren*{\begin{aligned}
+\tfrac{0}{1} = [(0,1)] &= \set{(b,t)}{(b,t)\sim(0,1)} \\
+&= \set{(0,t)}{t\in S}
+\end{aligned}}
+\qquad
+\paren*{\begin{aligned}
+\tfrac{1}{1} = [(1,1)] &= \set{(b,t)}{(b,t)\sim(1,1)} \\
+&= \set{(t,t)}{t\in S}
+\end{aligned}} \]
+\[ \frac{a}{s} + \frac{b}{t} \coloneqq \frac{at+bs}{st} \qquad \frac{a}{s}\cdot\frac{b}{t} \coloneqq \frac{ab}{st} \]
+(note $st\in S$) \\
+\pf Well-defined. \\
+Suppose $\frac{a}{s}=\frac{a'}{s'}\implies as'=a's$ \\
+$a',b'\in R$, $s',t'\in S$, $\frac{b}{t}=\frac{b'}{t'}\implies bt'=b't$
+\begin{align*}
+(a't'+b's')st &= a't'st + b's'st \\
+&= as't't + bt's's \\
+&= (at+bs)s't' \\
+\frac{a't'+b's'}{s't'} &= \frac{at+bs}{st} \qquad\text{by ($*$)}
+\end{align*}
+Therefore $\frac{a'}{s'}+\frac{b'}{t'}=\frac{a}{s}+\frac{b}{t}$, so $+$ is well defined. \\
+$(a'b')(st)=as'bt'=(ab)(s't')$ \\
+$\implies \frac{a'b'}{s't'} = \frac{ab}{st}$ \\
+$\implies \paren*{\frac{a'}{s'}}\paren*{\frac{b'}{t'}} = \paren*{\frac{a}{s}}\paren*{\frac{b}{t}}$ \\
+therefore $\cdot$ is well-defined. \\
+Check that this makes $R_S$ into a commutative ring. \\
+\ex Existence of additive inverse:
+\[ -\paren*{\frac{a}{s}} = \frac{-a}{s} \]
+\pf
+\[ \paren*{\frac{a}{s}} + \paren*{\frac{-a}{s}} = \frac{as+(-a)s}{s^2} = \frac{as-as}{s^2} = \frac{0}{s^2} = \frac{0}{1} = 0_{R_S} \]
+
+\textbf{Point:} $R_S$ is the ``smallest'' extension of $R$ in which every element of $S$ is a unit. \\
+\prop The function
+\begin{align*}
+R &\overset{\rho}{\to} R_S \\
+a &\mapsto \tfrac{a}{1}
+\end{align*}
+is an embedding with the property that $\rho(s)$ is a unit in $R_S$ for all $s\in S$. \\
+If $\rho\colon R \to T$ is an embedding with the property that for all $s\in S$, $\rho(s)$ is a unit in $T$ then there exists a unique embedding $\psi\colon R_S\to T$ such that
+%\[ R \overset{\phi}{\to} T \]
+%\[ \rho \downarrow \qquad \uparrow \psi  \]
+%\[ R_S \]
+\[ \xymatrix{
+R \ar[rr]^\phi_{\text{\raisebox{-5ex}{\begin{large}$\circlearrowleft$\end{large}}}}\ar[dr]_\rho & & T \\
+ & R_S \ar[ur]_\psi &
+} \]
+\pf $\rho(1)=\tfrac11=1_{R_S}$
+\[ \rho(a+b) = \tfrac{a+b}{1} = \tfrac{a}{1} + \tfrac{b}{1} = \rho(a) + \rho(b) \]
+\[ \rho(ab) = \tfrac{ab}{1} = \paren*{\tfrac{a}{1}}\paren*{\tfrac{b}{1}} = \rho(a)\rho(b) \]
+$a\in\ker\rho \implies \rho(a) = 0_{R_S} \implies \tfrac{a}{1}=\tfrac{0}{1}$ \\
+$\implies a=0$, therefore $\rho$ is an embedding.
+
+Given $s\in S$,
+\[ \tfrac1s \cdot \tfrac s1 = \tfrac ss = \tfrac11 = 1_{R_S} \]
+therefore $\tfrac1s$ is the inverse of $\rho(s)$ in $R_S$ \\
+$\implies$ $\rho(s)$ is a unit in $R_S$
+
+Given $\phi\colon R\to T$ with these properties then define
+\[ \psi\colon R_S \to T \]
+by
+\[ \tfrac as \mapsto \phi(a)\cdot\phi(s)^{-1} \]
+for $a\in R$, $s\in S$. \\
+%This is an embedding; intuitively says that $R_S$ is the smallest extension that makes elements of $S$ into units.

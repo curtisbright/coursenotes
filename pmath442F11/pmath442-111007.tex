@@ -1,0 +1,38 @@
+Office hours Tuesday Oct.~11 moved to 3:30--4:30.
+
+\lem Let $K/F$ be a finite normal field extension.  %$F\subset E\subset K$
+$E$ an $F$-subfield of $K$.  Then $E/F$ is normal \emph{iff} $\im\phi=E$ for all $F$-homomorphisms $\phi\colon E\to K$. \\
+\textbf{Proof of lemma: }Write $E=F(\alpha_1,\dotsc,\alpha_n)$. \\
+Forwards: Assume $E/F$ normal.  Then we can choose the $\alpha_i$s so that $p(x)=(x-\alpha_1)\dotsm(x-\alpha_n)$ is in $F[x]$.  For each $i$, $\phi(\alpha_i)$ is a root of $p(x)$, so since $\phi$ is injective, it permutes the roots of $p(x)$, so:
+\begin{align*}
+\im\phi = \phi(E) &= F(\phi(\alpha_1),\dotsc,\phi(\alpha_n)) \\
+&= F(\alpha_1,\dotsc,\alpha_n) \\
+&= E
+\end{align*}
+Backwards: Assume that $E/F$ is not normal.  Then there is an irreducible $p(x)\in F[x]$ such that $p(x)$ has a root $\alpha\in E$, but $p(x)$ does not split in $E$.  Since $p(x)$ splits in $K$, there is a root $\beta$ of $p(x)$ with $\beta\in K$.  Since $K/F$ is normal, and since $p(x)$ splits in $K$, we can extend the isomorphism $F(\alpha)\cong F(\beta)$ to a homomorphism $\psi\colon K\to K$.  Let $\phi=\psi|_E$.  Then $\phi(\alpha)=\beta\notin E$, so $\im\phi\not\supset E$. \qed
+
+We now return to our quest to show that $E/F$ is Galois \emph{iff} $H$ is a normal subgroup of $G$.
+
+The lemma implies that $E/F$ is Galois \emph{iff} $\Hom_F(E,K)\cong\Aut_F(E)$ as pointed sets.
+
+Let $\sigma\in\Aut_F(E)$.  The subgroup of $G$ fixing $\sigma(E)$ is $\sigma H\sigma^{-1}$.  So $\sigma(E)=E$ for all $\sigma\in G$ \emph{iff} $\sigma H\sigma^{-1}=H$ for all $\sigma\in G$.  So $E/F$ is Galois \emph{iff} $H$ is normal in $G$.
+
+In that case, the map $\psi\colon G\to\Gal(E/F)$, $\psi(\sigma)=\sigma|_E$, is an onto homomorphism $\ker\psi=H$, so induces an isomorphism $G/H\to\Gal(E/F)$.
+
+We just need to show $E_1\cap E_2$ corresponds to $H_1H_2$, and that $E_1E_2$ corresponds to $H_1\cap H_2$.
+
+If $\sigma\in H_1H_2$, then certainly $\sigma$ fixes $E_1\cap E_2$.  Conversely, let $E$ be the fixed field of $H_1H_2$.  Then $E_1\cap E_2\subset E$, and since $H_1H_2$ is the smallest subgroup of $G$ containing $H_1$ \& $H_2$, it follows that $E$ is the largest $F$-subfield of $K$ contained in $E_1$ and $E_2$.  But $E_1\cap E_2$ is the largest $F$-subfield of $K$ contained in $E_1$ \& $E_2$, so $E=E_1\cap E_2$.
+
+Similarly, $E_1E_2$ is the smallest $F$-subfield of $K$ containing $E_1$ \& $E_2$ so it corresponds to the largest subgroup of $G$ contained in $H_1$ \& $H_2$, namely $H_1\cap H_2$. \qed
+
+\eg $\Q(\sqrt[3]{2},\gamma)=K$, $\gamma=e^{2\pi i/3}$.  What is $\Gal(K/\Q)$, and what are the $\Q$-subfields of $K$?
+\[\begin{array}{r|c|c}
+\text{$\Gal(K/\Q)$: $\phi$} & \phi(\sqrt[3]{2}) & \phi(\gamma) \\ \hline
+\id & \sqrt[3]{2} & \gamma \\
+& \gamma\sqrt[3]{2} & \gamma \\
+& \gamma^2\sqrt[3]{2} & \gamma \\
+& \sqrt[3]{2} & \gamma^2 \\
+& \gamma\sqrt[3]{2} & \gamma^2 \\
+& \gamma^2\sqrt[3]{2} & \gamma^2
+\end{array}\]
+Since $\phi$ is determined by $\phi(\sqrt[3]{2})$ and $\phi(\gamma)$, and since $[K:\Q]=6$, we know these six rows are all represented by elements of $\Gal(K/\Q)$.

@@ -1,0 +1,69 @@
+\thm If $V$ an $n$ dimensional normed vector space over $\R$ with basis $\brace{v_1,\dotsc,v_n}$ then there exists $A,B$ such that
+\[ A \norm{(a_1,\dotsc,a_n)}_{\R^n} \leq \norm[\Big]{\sum_{i=1}^n a_iv_i}_V \leq B\norm{(a_1,\dotsc,a_n)}_{\R^n} \]
+
+If $T\colon\R^n\to V$ \\
+$T(a_1,\dotsc,a_n)=\sum_{i=1}^n a_iv_i$\footnote{linear, bijection} \\
+then $A\norm{\a}\leq\norm{T(\a)}_V\leq B\norm{\a}_{\R^n}$
+%
+\[ A\norm{a-b}_{\R^n} \leq \norm{T(\a-\b)}_V = \norm{T(a)-T(b)}_V \leq B\norm{a-b}_{\R^n} \]
+\[ A d(a,b) \leq d(T(a),T(b)) \leq B d(\a,\b) \]
+See that $x_k\to x_0$ if and only if $T(x_k)\to T(x_0)$ \\
+So topologies are the same. \\
+Boundedness if the same. \\
+Both $T$ and $T^{-1}$ are continuous so $V$ is homeomorphic to $\R^n$
+
+\cor Subset of a finite dimensional vector space is compact if and only if it is closed and bounded. \\
+\cor Any finite dimensional subspace of a normed vector space is complete. \\
+\pf Let $V$ be normed vector space and $W$ finite dimensional subspace.  Let $T\colon\R^n\to W$ be a homeomorphism as above. \\
+Let $\brace{w_k}$ be a Cauchy sequence in $W$. \\
+Then $\brace{x_k=T^{-1}(w_k)}$ is a Cauchy sequence in $\R^n$. \\
+So there exists $x_0$ such that $x_k\to x_0$.  But then $T(x_k)\to T(x_0)\in W$. \\
+Hence $W$ is complete.
+
+\textbf{Function Spaces} \\
+Convergence: $f_n,f\colon X\to Y$.  $X$, $Y$ metric spaces. \\
+Say $f_n\to f$ \emph{pointwise} if for all $\epsilon>0$ and for all $x\in X$ there exists $N$ such that $d_Y(f_n(x),f(x))<\epsilon$ for all $n\geq N$. \\
+i.e., $(f_n(x))\to f(x)$ for each $x\in X$ (as sequences in $Y$) \\
+Say $f_n\to f$ \emph{uniformly} if for all $\epsilon>0$ there exists $N$ such that $d_Y(f_n(x),f(x))<\epsilon$ for all $x\in X$ and for all $n\geq N$.
+
+\ex $f_n\colon[0,1]\to\R$ \\
+$f_n(x)=x^n$\marginpar{graph of $f_n(x)$ for $n$ increasing}
+\[ f_n \to f = \begin{cases}
+0 & \text{if $x\neq1$} \\
+1 & \text{if $x=1$}
+\end{cases} \]
+\begin{itemize}
+\item convergence is pointwise, but not uniform
+\end{itemize}
+Note: each $f_n$ is continuous, but $f$ is not
+
+\thm If $f_n$ are continuous, and $f_n\to f$ uniformly, then $f$ is continuous. \\
+\pf Fix $\epsilon>0$ and $x\in X$.  Need to find $\delta$ such that $d_X(x,y)<\delta\implies d_Y(f(x),f(y))<\epsilon$ \\
+Pick $N$ such that $d(f_n(y),f(y))<\epsilon/3$ for all $n\geq N$ and for all $y\in X$. \\
+Get $\delta>0$ such that $d(x,y)<\delta \implies d(f_N(x),f_N(y))<\epsilon/3$. \\
+Check if this $\delta$ works. \\
+Suppose $d(x,y)<\delta$ and look at $d(f(x),f(y))\leq d(f(x),f_N(x))+d(f_N(x),f_N(y))+d(f_N(y),f(y))<\epsilon/3+\epsilon/3+\epsilon/3=\epsilon$
+
+\cor If $g_k$ are continuous and $\sum g_k$ converges uniformly to $g$, then $g$ is continuous. \\
+\pf $S_N=\sum_1^N g_k$ is continuous and $S_N\to g$ uniformly by assumption. \\
+\defin A sequence $f_n\colon X\to Y$ is \emph{uniformly Cauchy} if for all $\epsilon>0$ there exists $N$ such that $d(f_n(x),f_m(x))<\epsilon$ for all $n,m\geq N$ and for all $x\in X$.
+
+\thm Suppose $X,Y$ are metric spaces and $Y$ is complete.  Then the sequence $f_n\colon X\to Y$ is uniformly Cauchy if and only if $(f_n)$ is uniformly convergent. \\
+\pf ($\Longleftarrow$) Say $f_n\to f$ uniformly and pick $N$ such that $d(f_n(x),f(x))<\epsilon/2$ for all $n\geq N$ and for all $x\in X$. \\
+Then
+\begin{align*}
+d(f_n(x),f_m(x)) &\leq d(f_n(x),f(x)) + d(f(x),f_m(x)) \\
+&< \epsilon/2 + \epsilon/2 \qquad\text{if $n,m\geq N$}
+\end{align*}
+($\Longrightarrow$) Since $(f_n)$ is uniformly Cauchy, then $(f_n(x))$ is Cauchy in $Y$ for each $x\in X$. \\
+$Y$ is complete so there exists $a_x\in Y$ such that $f_n(x)\to a_x$. \\
+Put $f(x)=a_x$ so $f\colon X\to Y$. \\
+Show $f_n\to f$ uniformly. \\
+For $\epsilon>0$, get $N$ such that $d(f_n(x),f_m(x))<\epsilon/2$ for all $x\in X$, $\forall n,m\geq N$ (by uniform Cauchy) \\
+Let $n\geq N$ and look at $d(f_n(x),f(x))$ (for arbitrary $x$) \\
+Get $m>N$ such that $d(f_m(x),f(x))<\epsilon/2$\footnote{depends on $x$ temporarily looking at} \\
+So
+\begin{align*}
+d(f_n(x),f(x)) &\leq d(f_n(x),f_m(x)) + d(f_m(x),f(x)) \\
+&< \epsilon/2 + \epsilon/2 = \epsilon \qquad\text{(as $n,m\geq N$)}
+\end{align*}

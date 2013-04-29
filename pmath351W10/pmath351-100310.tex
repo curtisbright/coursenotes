@@ -1,0 +1,43 @@
+The Banach Fix Point Theorem (or the Contraction mapping theorem):  Let $(X,d)$ be a metric space.  A mapping $T\colon X\to X$ is \emph{contractive} if there exists a constant \emph{$k<1$} such that $d(T(x),T(y))\leq k d(x,y)$ for \emph{all} $x$,~$y\in X$.  (Clearly, contractive maps are uniformly continuous.)  If $(X,d)$ is complete.  Then every contractive map $T$ has a unique fixed point $x_0\in X$ (i.e., $T(x_0)=x_0$).
+
+\pf Uniqueness first.  Suppose $x_0$ and $\tilde x_0$ are both fixed points of $T$.  Consider $d(T(x_0),T(\tilde x_0))\leq k d(x_0,\tilde x_0)$ we get $d(x_0,\tilde x_0)\leq k d(x_0,\tilde x_0)$. \\
+With $k<1$, we get $d(x_0,\tilde x_0)=0$.  Hence $x_0=\tilde x_0$.
+
+(Existence). \\
+Let $x_1\in X$ be a fixed element in $X$ and consider $x_2=T(x_1)$, $x_3=T(x_2)$, $\dotsc$, $x_k=T(x_{k-1})=T^{(k-1)}(x_1)$, $\dotsc$ \\
+Claim:  The sequence $x_k$ converges to a fixed point of $T$.\marginpar{figure: $x_1\to x_2\to x_3\to\dotsb$}
+\begin{flalign*}
+\mathrlap\pf&& d(x_2,x_3) &= d(T(x_1),T(x_2)) \leq k d(x_1,x_2)&& \\
+&&d(x_3,x_4) &= d(T(x_2),T(x_3)) \leq k d(x_2,x_3) \leq k^2 d(x_1,x_2)&& \\
+&&&\eqvdots&& \\
+&&d(x_n,x_{n+1}) &\leq k^{n-1} d(x_1,x_2)&& \\
+&&d(x_n,x_{n+j}) &\leq d(x_n,x_{n+1}) + d(x_{n+1},x_{n+2}) + \dotsb + d(x_{n+j-1},x_{n+j})&& \\
+&&&\leq \brack*{k^{n-1}+k^n+\dotsb+k^{n+j-2}} d(x_1,x_2)&& \\
+&&&\leq \brack*{k^{n-1}+k^n+\dotsb} d(x_1,x_2) = \frac{k^{n-1}}{1-k}d(x_1,x_2)&&
+\end{flalign*}\vspace{-2\baselineskip}\marginpar{by $0\leq k<1$\\$\sum_{n=0}^\infty k^m=\frac{1}{1-k}$}\vspace{2\baselineskip}%
+The RHS tends to $0$ as $n\to\infty$.  So the sequence is Cauchy.  The space $X$ is complete, so there exists $x_0\in X$ such that $x_n\to x_0$.
+
+Since $T$ is continuous,
+\[ T(x_0) = T\paren[\Big]{\lim_{n\to\infty} x_n} \savenotes\mathrel{\mathord=\footnote{continuity}}\spewnotes \lim_{n\to\infty} T(x_n) = \lim_{n\to\infty} x_{n+1} = x_0 \]
+\marginpar{$T(\cl(A))\subseteq\cl(T(A))$}%
+\textbf{Application} \\
+Show that there exists a \emph{continuous} function $f_0\colon[0,1]\to\R$ satisfying the integral equation
+\[ f_0(x) = e^x + \int_0^x \frac{(\sin t)^3}{2} f_0(t)\d t \qquad\text{for all $x\in[0,1]$} . \]
+Such a $f_0$ is unique. \\
+\pf Background: Consider $C([0,1],\R)=\set{f\colon[0,1]\to\R}{\text{$f$ \underbar{c}ontinuous}}$.  It is a vector space over $\R$.  Equip the space with a norm:
+\[ \norm{f}_\infty = \sup_{x\in[0,1]}\abs{f(x)} = \max_{x\in[0,1]}\abs{f(x)} \]
+The norm induces a metric
+\[ d(f,g) = \norm{f-g}_\infty \]
+Fact: $(C[0,1],d)$ is complete. \\
+Consider $T\colon C[0,1]\to C[0,1]$ defined by
+\[ T(f) = e^x + \int_0^x \frac{(\sin t)^3}{2} f(t) \d t \qquad x\in[0,1]. \]
+Then the $f_0$ we are looking for is a fixed point of $T$.  $T$ is contractive: %\\
+%\pf 
+\begin{flalign*}
+\mathrlap\pf&&\abs*{T(f)(x)-T(g)(x)} &= \abs*{\cancel{e^x}+\int_0^x\frac{(\sin t)^3}{2}f(t)\d t-\paren*{\cancel{e^x}+\int_0^x\frac{(\sin t)^3}{2}g(t)\d t}}&& \\
+&&&= \abs*{\int_0^x \frac{(\sin t)^3}{2}\paren*{f(t)-g(t)}\d t}&& \\
+&&&\leq \int_0^x\abs*{\frac{\sin(t)^3}{2}\abs*{f(t)-g(t)}}\d t&& \\
+&&&\leq \tfrac12 \int_0^x \abs*{f(t)-g(t)} \d t \leq \tfrac12 \int_0^1 \abs*{f(t)-g(t)} \d t \leq \tfrac12 \norm{f-g}_\infty&& \\
+&&\sup_{x\in[0,1]}\abs*{T(f)(x)-T(g)(x)} &\leq \tfrac12\norm{f-g}_\infty&& \\
+&&\norm{T(f)-T(g)}_\infty &\leq \tfrac12\footnote{$k=\frac12$} \norm{f-g}_\infty&&
+\end{flalign*}

@@ -1,0 +1,54 @@
+Recall our map $\sigma\colon K\to\R^n$ given by
+\[ \sigma(x) = \paren[\big]{\sigma_1(x),\dotsc,\sigma_{r_1}(x),\Re(\sigma_{r_1+1}(x)),\Im(\sigma_{r_1+1}(x)),\dotsc,\Re(\sigma_{r_1+r_2}(x)),\Im(\sigma_{r_1+r_2}(x))} . \]
+\textbf{Lemma 59:} Let $A$ be a non-zero ideal in $\A\cap K$.  Then $\sigma(A)$ is a lattice $\Lambda$ in $\R^n$ with
+\[ d(\Lambda) = 2^{-r_2}\abs{D}^{1/2} NA , \]
+where $D$ is the discriminant of $K$. \\
+\pf Let $\alpha_1$, $\dotsc$, $\alpha_n$ be an integral basis for $A$.  The coordinates of $\sigma(\alpha_i)$ in $\R^n$ are
+\[ \paren[\big]{\sigma_1(\alpha_i),\dotsc,\sigma_{r_1}(\alpha_i),\dotsc,\Im(\sigma_{r_1+r_2}(\alpha_i))} . \tag{$*$} \]
+Note that for $z\in\C$, $\Re(z)=\frac{z+\overline{z}}{2}$ and $\Im(z)=-\frac{z-\overline{z}}{2}=-\frac{1}{i}\paren[\big]{\overline{z}-\paren[\big]{\frac{z+\overline{z}}{2}}}$.  Thus
+\[ D = \det(\sigma_i(\alpha_j)) = \paren[\Big]{\frac{1}{-2i}}^{r_2} d(\Lambda) \]
+where $d(\Lambda)$ is the determinant of the matrix whose $i$th row is $*$.  Since $D\neq0$ we see that $d(\Lambda)$ is not $0$ and so $\sigma(A)=\Lambda$ is a lattice in $\R^n$.  Now by Theorem~49 our result follows.
+
+\textbf{Theorem 60:} Suppose $[K:\Q]=n$ with $n=r_1+2r_2$ where $r_1$ is the number of real embeddings of $K$ in $\C$ and $2r_2$ is the number of other embeddings.  Let $A$ be a non-zero ideal in $\A\cap K$.  Then there exists a non-zero $\alpha$ in $A$ for which
+\[ \abs{N_\Q^K(\alpha)} \leq \paren[\Big]{\frac{2}{\pi}}^{r_2} \sqrt{\abs{D}} NA . \]
+\pf Let $t\in\R^+$ and let $S_t$ be the set of $(x_1,\dotsc,x_n)$ in $\R^n$ for which $\abs{x_i}\leq t$ for $i=1$, $\dotsc$, $r_1$ and for which $x_{r_1+j}^2+x_{r_1+1+j}^2\leq t^2$ for $j=1$, $3$, $5$, $\dotsc$, $2r_2-1$.
+
+Note that $S_t$ is compact, convex and symmetric about the origin $\0$.  Further
+\[ \mu(S_t) = (2t)^{r_1}(\pi t^2)^{r_2} = 2^{r_1} \pi^{r_2} t^n . \]
+We now take
+\[ t = \paren[\Big]{\frac{2^n}{2^{r_1+r_2}\pi^{r_2}}\abs{D}^{1/2}NA}^{1/n} . \]
+Then
+\[ \mu(S_t) = 2^n\paren[\Big]{\frac{\abs{D}^{1/2}NA}{2^{r_2}}} = 2^n d(\Lambda) , \]
+where $\Lambda$ is the lattice associated with the ideal $A$.  By Minkowski's Theorem there is a non-zero lattice point of $\Lambda$ in $S_t$.  Let $\alpha$ be the associated element of $A$.  Then, let $\sigma_1$, $\dotsc$, $\sigma_n$ be the embeddings of $K$ in $\C$ which fix $\Q$,
+\begin{align*}
+\abs{N_\Q^K(\alpha)} &= \prod_{i=1}^n \abs{\sigma_i(\alpha)} = \prod_{i=1}^{r_1} \abs{\sigma_i(\alpha)} \prod_{i=r_1+1}^{r_1+r_2}\abs{\sigma_i(\alpha)\overline{\sigma_i}(\alpha)} \\
+&= \prod_{i=1}^{r_1}\abs{\sigma_i(\alpha)}\prod_{i=r_1+1}^{r_1+r_2}\paren[\big]{\Re(\sigma_i(\alpha))^2+\Im(\sigma_i(\alpha))^2} \\
+&\leq t^{r_1}\cdot t^{2r_2} = t^n = \frac{2^n}{2^{r_1+r_2}\pi^{r_2}}\abs{D}^{1/2}NA \\
+&= \paren[\Big]{\frac{2}{\pi}}^{r_2} \abs{D}^{1/2} NA .
+\end{align*}
+Suppose $[K:\Q]=n$.  Let $\theta$ be in $\A\cap K$ and such that $K=\Q(\theta)$.  Let $f$ be the minimal polynomial of $\theta$.  Let $t$ be the index of $\Z[\theta]$ in $\A\cap K$.  Let $p$ be a prime in $\Z$.
+
+\textbf{?} How does $(p)$ decompose in $\A\cap K$?  Consider $f$ in $\F_p[x]$ where $\F_p$ is the finite field of $p$ elements.  Identify $\F_p$ with $\Z/p\Z$.  Suppose $p\nmid t$.  In $\F_p[x]$,
+\[ f(x) = f_1(x)^{e_1}\dotsm f_g(x)^{e_g} \]
+where $f_i$ is irreducible in $\F_p[x]$ of degree $d_i$.  We have
+\[ (p) = P_1^{e_1} \dotsm P_g^{e_g} \]
+where $P_i$ is a prime ideal in $\A\cap K$.  In fact
+\[ P_i = (p,f_i(\theta)) . \]
+If also $p\nmid D$ then $e_1=\dotsb=e_g=1$.  Thus
+\[ n = d_1 + \dotsb + d_g \tag{$*$} \]
+and so is a partition of $n$.
+
+Let $\theta=\theta_1$, $\dotsc$, $\theta_n$ be the conjugates of $\theta$ over $\Q$ and put $L=\Q(\theta_1,\dotsc,\theta_n)$.  Let $G=\Gal(L/\Q)$ be the Galois group of $L$ over $\Q$.  If $\sigma$ is in $\Gal(L/\Q)$ then $\sigma$ induces a permutation of $\theta_1$, $\dotsc$, $\theta_n$ and so an element $\tilde\sigma$ of $S_n$.  We can decompose $\tilde\sigma$ as a product of cycles say $\tilde\sigma=c_1\dotsm c_l$ and then
+\[ n = \abs{c_1} + \dotsb + \abs{c_l} \tag{$**$} \]
+where $\abs{c_i}$ is the length of the cycle $c_i$.  $**$ is another partition of $n$.
+
+1880 Frobenius
+\[ \frac{\text{\# of primes up to $x$ with a given partition $*$}}{\text{\# of primes up to $x$}} \to \text{tends to a limit} . \]
+and the limit is the proportion of elements $\sigma$ of $G$ with the same partition of $n$ in $**$.
+
+Office Hours \\
+Mon Apr 8 2:40--3:40 \\
+Wed Apr 10 2:00--3:00 \\
+Thurs Apr 11 2:00--3:00
+
+%Exam Apr 12 RCH 4:00--6:30

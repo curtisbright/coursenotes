@@ -1,0 +1,98 @@
+\textbf{Metric Spaces}
+
+\defin A \emph{metric space} is a set $X$ with a metric (or distance function) $d$ with $d\colon X\times X\to[0,\infty)$ satisfying
+\begin{enumerate}
+\item $d(x,y)=0$ iff $x=y$
+\item $d(x,y)=d(y,x)$ $\forall x,y\in X$
+\item $d(x,y)\leq d(x,z)+d(z,y)$ $\forall x,y,z\in X$, triangle inequality
+\end{enumerate}
+\textbf{Examples:}
+\begin{enumerate}
+\item $\R$, $d(x,y)=\abs{x-y}$
+\item $\R^n$, $d(x,y) = d_2((x_1,\dotsc,x_n),(y_1,\dotsc,y_n)) = \paren*{\sum_{i=1}^n (x_i-y_i)^2}^{1/2} = \norm{x-y}$, \emph{Euclidean metric}
+\item $\R^2$, $d_1(x,y)=\abs{x_1-y_1}+\abs{x_2-y_2}$, $d_1((1,0),(0,1))=2$
+\item $\R^2$, $d_\infty(x,y)=\max(\abs{x_1-y_1},\abs{x_2-y_2})$ \\
+triangle inequality:
+\begin{align*}
+\abs{x_1-y_1} &\leq \abs{x_1-z_1} + \abs{z_1-y_1} \\
+&\leq d_\infty(x,z) + d_\infty(z,y)
+\end{align*}
+Similarly, $\abs{x_2-y_2}\leq d_\infty(x,z)+d_\infty(z,y)$ \\
+$\implies d_\infty(x,y) \leq d_\infty(x,z) + d_\infty(z,y)$ \\
+Think about what $\set{x}{d_{\_}(x,0)<1}$ looks like.
+\marginpar{figure: $\infty$-norm square, $2$-norm circle, $1$-norm diamond}%
+\item $X$ any set, $d=\text{discrete metric}$
+\[ d(x,y) = \begin{cases}
+0 & \text{if $x=y$} \\
+1 & \text{else}
+\end{cases} \]
+\item $X=\set{x=(x_1,\dotsc,x_n)}{x_i=0,1}$
+\begin{itemize}
+\item 2 element set \\
+$d(x,y)=\text{\# indices $i$ where $x_i\neq y_i$}$
+\item exercise, e.g., $d((0,1,0),(1,1,0))=1$
+\end{itemize}
+\item $X=\brace{\text{bounded sequence $(x_n)$}}=l^\infty$ \\
+vector space \\
+$d_\infty(x,y)=\sup_n\abs{x_n-y_n}$ \\
+\ex $x=(x_n)=(1-1/n)$, $y=(y_n)$, $y_n=1/n$ \\
+$d_\infty(x,y)=\sup_n\abs{(1-1/n)-1/n}=1$ \\
+$c_0=\brace{\text{$(x_n)$ which converge to $0$}}\subseteq l^\infty$
+\item $l^2 = \set{(x_n)_{n=1}^\infty}{\vphantom{\bigm|}\smash{\sum\abs{x_n}^2<\infty}}$ \\
+\[ d(x,y) = \paren[\bigg]{\sum_{i=1}^\infty(x_i-y_i)^2}^{1/2} \qquad \chev{x,y}=\sum x_iy_i \]
+Define $l^p$, $1\leq p\leq \infty$
+\[ l^p = \set{(x_n)}{\sum\abs{x_n}^p<\infty} \]
+\textbf{Problem:} $l^1\subsetneq l^p\subsetneq c_0\subsetneq l^\infty$, $1<p<\infty$
+\item $X=\text{inner product space}$
+\[ d(x,y) = \sqrt{\chev{x-y,x-y}} \]
+\end{enumerate}
+
+\textbf{Topology:} $(X,d)$ metric space \\
+Ball (centred at $x_0$ with radius $r$) in $(\R^2,d_2)$ $=$ $\set{x\in\R^2}{d(x,x_0)<r}$ \\
+\defin Given metric space $(X,d)$ we let
+\[ B(x_0,r) = \set{x\in X}{d(x,x_0)<r}, \qquad r>0 \]
+ball centred at $x_0$, radius $r$
+
+\ex
+\begin{enumerate}
+\item In $\R$, $\abs{\cdot}$, \quad $B(x_0,r)=(x_0-r,x_0+r)$
+\item In $\R^2$, $d_1$, \quad balls are diamonds
+\item $X$, discrete metric, \quad $B(x_0,r)=\brace{x_0}$ for $r\leq1$, $B(x_0,r)=X$ for $r>1$
+\end{enumerate}
+
+\defin Let $U\subseteq X$.  Say $x_0\in U$ is an \emph{interior point of $U$} if $\exists r>0$ such that $B(x_0,r)\subseteq U$. \\
+Write \emph{$\Int U$} for set of interior points of $U$.  Say $U$ is \emph{open} if every point of $U$ is an interior point of $U$.
+
+\ex
+\begin{enumerate}
+\item $\R$\marginpar{figure: real line $[0,1)$}%
+\begin{align*}
+U &= [0,1) \\
+\Int U &= (0,1)
+\end{align*}
+Which nonempty intervals are open sets?  Open intervals $(a,b)$
+\item $\emptyset$ is always open in any metric space \\
+$X$ is always open
+\item $\R^2$ \marginpar{figure: open strip in $\R^2$}% \\
+open in all $d_1,d_2,d_\infty$ \\
+\textbf{Problem:} Show that the same open sets are produced by $d_1$, $d_2$ or $d_\infty$.
+\item $X$, discrete metric \\
+$U\subseteq X$, $\Int U=U$, since if $x_0\in U$ then $B(x_0,1)=\brace{x_0}\subseteq U$. \\
+Hence every set is open.
+\end{enumerate}
+
+\prop Balls are open sets.
+
+\pf Consider the ball $B(x_0,r)$ and let $z\in B(x_0,r)$ \\
+Put $\rho=r-d(x_0,z)>0$ \\
+Reqired to prove: $B(z,p)\subseteq B(x_0,r)$ \\
+Fix $w\in B(z,p)$ \\
+Calculate
+\begin{align*}
+d(w,x_0) &\leq d(w,z) + d(z,x_0) \\
+&< \rho + d(z,x_0) \\
+&= r - d(x_0,z) + d(z,x_0) = r
+\end{align*}
+$\implies d(w,x_0)<r \implies w\in B(x_0,r)$
+
+Hence $B(z,\rho)\subseteq B(x_0,r)$, so $z$ is an interior point of $B(x_0,r)$, and since $z$ was an arbitrary point of $B(x_0,r)$, this proves $B(x_0,r)$ is open.

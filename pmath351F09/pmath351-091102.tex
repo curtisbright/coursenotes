@@ -1,0 +1,71 @@
+$C(X)$, $C_b(X)$ \\
+$\norm f=\sup_{x\in X}\abs{f(x)}$ for any $f\in C_b(X)$ \\
+$d(f,g)=\norm{f-g}$ \\
+$(C_b(X),d)$ is a complete metric space\marginpar{figure: $\epsilon$-tube around $f$}
+
+\begin{enumerate}
+\item \textbf{Example of an open set in $C[0,1]$}
+\[ B = \set{f\in C[0,1]}{f(x)>0\quad\forall x\in[0,1]} \]
+Take $\epsilon=\inf_{x\in[0,1]}f(x)$, $>0$ by E.V.T. \\
+If $g\in B(f,\epsilon)\iff\abs{g(x)-f(x)}<\epsilon\quad\forall x\in[0,1]$ %\\
+\begin{align*}
+\implies g(x) &> f(x)-\epsilon \qquad \forall x\in[0,1] \\
+&\geq \inf f - \epsilon \implies g\in B
+\end{align*}
+\item
+\begin{align*}\\[-2.25\baselineskip]
+C = \set{f\in C_b(\R)}{f(x)>0\quad\forall x}
+\end{align*}
+Claim: If $f\in C$ and $\inf_{x\in\R} f=0$ then $f$ is not an interior point of $C$.  (e.g., $f(x)=\frac{1}{\abs x+1}$) \\
+Take any $\epsilon>0$.  Take $g=f-\frac{\epsilon}{2}\in B(f,\epsilon)$ \\
+Choose any $x$ such that $f(x)<\frac\epsilon2$ and then $g(x)<0$ so $g\notin C$.
+\item 
+\begin{align*}\\[-2.25\baselineskip]
+D=\set{f\in C_b(\R)}{f(x)\leq0\quad\forall x}
+\end{align*}
+Claim: $D$ is closed. \\
+Let $f_n\in D$ and suppose $f_n\to f$, i.e., $f_n\to f$ uniformly. \\
+But then $f_n\to f$ pointwise.  So if $f_n\leq0$ at every $x$ then $f(x)\leq0\quad\forall x$ so $f\in D$.
+\end{enumerate}
+
+\textbf{Compactness in $C_b(X)$} \\
+Compact $\implies$ closed and bounded \\
+$E\subset C_b(X)$ is bounded means $\exists f\in C_b(X)$ and $M$ constant such that $E\subseteq B(f,M)$ \\
+Then $E\subseteq B(0,M+\norm f)$ because if $g\in B(f, M)$ then $\norm g\leq\norm{g-f}+\norm f<M+\norm f\implies B(f,M)\subseteq B(0,\norm f+M)$
+\begin{itemize}
+\item call this \emph{uniformly bounded}
+\end{itemize}
+Restate: $E$ is bounded iff $\exists M_0$ such that $\norm f\leq M_0\quad\forall f\in E$ \\
+\ex In $C[0,1]$ closed and bounded $\centernot\implies$ compact.
+\[ E = \set{f_n(x)=\frac{x^2}{x^2+(1-nx)^2}}{n=1,2,3,\dotsc} \]
+If $f\in E$, then $0\leq f(x)\leq 1$ $\forall x$ so $E\subseteq B(0,1+\epsilon)$. \\
+So $E$ is bounded. \\
+Closed?  Say $g$ is an accumulation point of $E$. \\
+Get $f_{n_k}\to g$ with $f_{n_k}\in E$, $n_1<n_2<\dotsb$ \\
+$f_{n_k}=\frac{x^2}{x^2+(1-n_kx)^2}\to0$ pointwise. \\
+Look at $f_{n_k}(\frac{1}{n_k})=1$ so $\sup_x\abs{f_{n_k}-0}\footnote{$=\norm{f_{n_k}}=1$}=1$ $\forall n_k$ \\
+Thus $f_{n_k}\not\to0$ uniformly. \\
+Hence there is no accumulation point $g$. \\
+In fact, no subsequence of $(f_n)$ converges uniformly. \\
+Hence $E$ is closed as it has no accumulation points and $E$ is not compact because fails B--W characterization of compactness.
+
+\textbf{Equicontinuity} \\
+\defin Let $E\subseteq C(X)$.  We say $E$ is \emph{equicontinuous} if $\forall\epsilon>0$ $\exists\delta>0$ such that $\forall f\in E$ and $\forall x,y\in X$ such that $d(x,y)<\delta$, we have $\abs{f(x)-f(y)}<\epsilon$. \\
+If $E=\brace{f}$ then equicontinuity is uniform continuity. \\
+If $E=\brace{f_1,\dotsc,f_n}$ then $E$ is equicontinuous if and only if each $f_i$ is uniformly continuous (just take minimum $\delta$ that works for $f_1,\dotsc,f_n$) \\
+$E$ equiconinuous $\implies$ each $f\in E$ is uniformly continuous. \\
+Not equicontinuous means $\exists\epsilon>0$ such that $\forall\delta>0$ $\exists f\in E$ and $x,y\in X$ such that $d(x,y)<\delta$ but $\abs{f(x)-f(y)}\geq\epsilon$.
+
+\ex\begin{enumerate}
+\item $E=\set{x^n}{n=1,2,3,\dotsc}\subseteq C[0,1]$: not equicontinuous \\
+Take $\epsilon=\frac12$ and take any $\delta$.  Take $x=1$, $y=1-\frac\delta2$. \\
+Pick $n$ so $(1-\frac\delta2)^n<\frac12$. \\
+Then $\abs{f_n(y\footnotemark)-f_n(x\footnotemark)}>1-\frac12=\epsilon$.\marginpar{graph of $x^n$ for $n$ large}
+\item $E=\set{f_n(x)=\frac{x^2}{x^2+(1-nx)^2}}{n=1,2,\dotsc}$ \\
+$\abs{f_n(\frac1n)-f_n(0)}=1$ $\forall n$ \\
+So $E$ is not equicontinuous.
+\item $C[0,1]$ is not equicontinuous, since it contains subsets that are not equicontinuous.
+\item Fix $M$.  $E=\set{f\in C[0,1]}{\abs{f(x)-f(y)}\leq M\abs{x-y}\quad\forall x,y\in[0,1]}$ is equicontinuous. \\
+Take $\delta=\frac\epsilon M$.
+\item $E_0=\set{f\in C[0,1]}{\abs{f'(x)}\leq M\quad\forall x\in[0,1]}\subseteq E$ (above, in 4.), so it is equicontinuous.
+\end{enumerate}\addtocounter{footnote}{-1}\footnotetext{$=1-\frac\delta2$}\addtocounter{footnote}{1}\footnotetext{$=1$}

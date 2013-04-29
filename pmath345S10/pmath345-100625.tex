@@ -1,0 +1,48 @@
+Say $R$ is a ring, contained in another ring $T$.  Let $\alpha\in T$.  Then:
+\[ R[\alpha] = \set{f(\alpha)}{f(x)\in R[x]}\footnote{ring} \]
+\begin{flalign*}
+\mathrlap{\eg}&& \Z[\sqrt2] &= \set{f(\sqrt2)}{f(x)\in\Z[x]} && \\
+&& &= \set{a+b\sqrt2}{a,b\in\Z} &&
+\end{flalign*}
+Say $F$ is a field, contained in some other field $E$.  Let $\alpha\in E$.  Then:
+\[ F(\alpha) = \set[\bigg]{\frac{f(\alpha)}{g(\alpha)}}{f,g\in F[x]\co g(\alpha)\neq0} \]
+\begin{flalign*}
+\mathrlap{\eg}&& \Q(\sqrt2) &= \set[\bigg]{\frac{f(\sqrt2)}{g(\sqrt2)}}{f,g\in\Q[x]\co g(\sqrt2)\neq0} && \\
+&& &= \set[\bigg]{\frac{a+b\sqrt2}{c+d\sqrt2}}{c+d\sqrt2\neq0\co a,b,c,d\in\Q} && \\
+&& &= \set[\bigg]{\frac{(a+b\sqrt2)(c-d\sqrt2)}{c^2-2d^2}}{a,b,c,d\in\Q\co c+d\sqrt2\neq0} \\
+%&& &= \brace*{(\text{Messy rational number})+(\text{Other messy rational number})\sqrt2} &&
+&& &= \brace*{\paren*{\substack{\text{Messy}\\\text{rational\vphantom{y}}\\\text{number}}}+\paren*{\substack{\text{Other messy}\\\text{rational\vphantom{y}}\\\text{number}}}\sqrt2} && %\\
+%&& &= \brace*{\paren*{\text{\parbox{1cm}{\scriptsize Messy rational number}}}+\paren*{\text{\parbox{1cm}{\scriptsize Other messy rational number}}}\sqrt2} &&
+\end{flalign*}
+so $\Q(\sqrt2)\subset\set{A+B\sqrt2}{A,B\in\Q}$.  It's clear that $A+B\sqrt2\in\Q(\sqrt2)$ for all $A$, $B\in\Q$, so:
+\begin{gather*}
+\begin{aligned}
+\Q(\sqrt2) &= \set{A+B\sqrt2}{A,B\in\Q} \\
+&= \Span_\Q\brace{1,\sqrt2}
+\end{aligned} \\
+\begin{aligned}
+\Q[\sqrt2] &= \set{f(\sqrt2)}{f(x)\in\Q[x]} \\
+&= \set{A+B\sqrt2}{A,B\in\Q} \\
+&= \Q(\sqrt2)
+\end{aligned}
+\end{gather*}
+\defn A field extension $E/F$ is a pair of fields $E$, $F$ with $F\subset E$.  If $\alpha\in E$, then $\alpha$ is algebraic over $F$ \emph{iff} there is some nonzero $p(x)\in F[x]$ such that $p(\alpha)=0$.  Otherwise, $\alpha$ is called transcendental over $F$.
+
+An extension $E/F$ is called algebraic \emph{iff} every element $\alpha\in E$ is algebraic over $F$.  Otherwise, $E/F$ is called transcendental.
+
+If $E/F$ is an extension of fields, then $E$ is an $F$-vector space.  The dimension of $E$ over $F$ is called the \emph{degree} of $E/F$.
+\[ [E:F] = \dim_F E = \text{dimension of $E$ as an $F$-vector space} \]
+\eg $[\Q(\sqrt2):\Q]=2$, basis $\brace{1,\sqrt2}$ \\
+$[\C:\R]=2$ \\
+$[\R:\Q]=\infty$ \\
+The degree of $\alpha$ over $F$ is the degree of $F(\alpha)$ over $F$.
+
+\thm Let $E/F$ be a field extension, $\alpha\in E$ algebraic over $F$.  Then there is a unique monic irreducible polynomial $p(x)\in F[x]$ such that
+\[ F(\alpha) \cong F[x] / (p(x)) \]
+where the isomorphism is given by
+\[ (f(x)\bmod p(x)) \mapsto f(\alpha) \]
+\pf Define $\phi\colon F[x]\to E$ by $\phi(f(x))=f(\alpha)$.  The kernel of $\phi$ is an ideal of $F[x]$, which is a PID, so we can write $\ker\phi=(p(x))$ for some polynomial $p(x)\in F[x]$.  Since $\alpha$ is algebraic over $F$, $\ker\phi\neq(0)$, so $p(x)\neq0$.  There is a unique monic $p(x)$ that generates $\ker\phi$; choose that one.
+
+Now, $E$ is a domain, so $\im\phi$ is a domain, so $F[x]/\ker\phi\cong\im\phi$ is a domain, so $\ker\phi=(p(x))$ is a prime ideal.  Since $\ker\phi\neq(0)$ and $F[x]$ is a PID, we know that $(p(x))$ is a maximal ideal, so $p(x)$ is irreducible in $F[x]$.
+
+It remains only to show that $F(\alpha)=\im\phi$.  First, note that $\im\phi$ is a field that contains $\alpha$, so $F(\alpha)\subset\im\phi$, because $\im\phi$ is closed under $+$, $-$, $\cdot$, and $\div$.  The definitions of $F(\alpha)$ and $\phi$ immediately imply that $\im\phi\subset F(\alpha)$, so $\im\phi=F(\alpha)$, as desired. \qed

@@ -1,0 +1,111 @@
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{url}
+\usepackage{fullpage}
+\usepackage{cancel}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{graphicx}
+\usepackage{xparse}
+\usepackage{mathtools}
+\usepackage{isomath}
+\usepackage{centernot}
+\usepackage{fancybox}
+\usepackage{mathdots}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\colorlet{lightgray}{black!25}
+\usepackage[normalem]{ulem}
+%\usetikzlibrary{arrows,backgrounds,snakes}
+\usetikzlibrary{decorations} 
+\usetikzlibrary{decorations.markings}
+\usepackage{footnote}
+\usepackage{enumitem}
+%\usepackage{bbold}
+\makesavenoteenv{align*}
+\makesavenoteenv{gather*}
+\makesavenoteenv{cases}
+\renewcommand{\labelenumi}{(\arabic{enumi})}
+\setcounter{MaxMatrixCols}{13}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\T}{T}
+\DeclareMathOperator{\disc}{disc}
+\let\brack\undef\let\brace\undef
+\DeclarePairedDelimiter\paren\lparen\rparen
+\DeclarePairedDelimiter\brack\lbrack\rbrack
+\DeclarePairedDelimiter\brace\lbrace\rbrace
+\DeclarePairedDelimiter\chev\langle\rangle
+\DeclarePairedDelimiter\abs\lvert\rvert
+\DeclarePairedDelimiter\norm\lVert\rVert
+\DeclarePairedDelimiter\floor\lfloor\rfloor
+\DeclarePairedDelimiter\ceil\lceil\rceil
+\DeclarePairedDelimiter\round\lfloor\rceil
+\DeclarePairedDelimiter\eval{}{\Bigr\rvert}
+\newcommand{\parenBig}{\paren[\Big]}
+\newcommand{\absBig}{\abs[\Big]}
+\newcommand{\brackBig}{\brack[\Big]}
+\NewDocumentCommand\set{somm}{\IfBooleanTF#1{\brace*{\,#3{}:{}#4\,}}{\brace[#2]{\,#3{}:{}#4\,}}}
+\newcommand{\eqvdots}{\mathrel{\makebox[\widthof{$=$}]{$\vdots$}}}
+\newcommand{\co}{\mathpunct{{,}~\!}}
+\newcommand{\0}{\mathbf{0}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{N}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\CC}{\mathcal{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\1}{\mathbf{1}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\q}{\mathcal{Q}}
+\newcommand{\nequiv}{\not\equiv}
+\renewcommand{\hbar}{\overline{h}}
+\renewcommand{\S}{\mathbb{S}}
+\renewcommand{\d}{\,\mathrm{d}}
+\newcommand{\divides}{\mid}
+\renewcommand{\div}{\divides}
+\newcommand{\ndiv}{\nmid}
+\newcommand{\pf}{\textbf{Proof:} }
+\newcommand{\cor}{\textbf{Corollary:} }
+\newcommand{\defn}{\textbf{Definition:} }
+\newcommand{\eg}{\textbf{Example:} }
+\newcommand{\egs}{\textbf{Examples:} }
+\newcommand{\ex}{\textbf{Exercise:} }
+\newcommand{\exs}{\textbf{Exercises:} }
+\newcommand{\thm}{\textbf{Theorem:} }
+\newcommand{\prop}{\textbf{Proposition:} }
+\newcommand{\prob}{\textbf{Problem:} }
+\newcommand{\lem}{\textbf{Lemma:} }
+\newcommand{\note}{\textbf{Note:} }
+\newcommand{\recall}{\textbf{Recall:} }
+\newcommand{\remark}{\textbf{Remark:} }
+\newcommand{\remarks}{\textbf{Remarks:} }
+\newcommand{\claim}{\textbf{Claim:} }
+\newcommand{\soln}{\textbf{Solution:} }
+\newcommand{\fact}{\textbf{Fact:} }
+\newcommand{\facts}{\textbf{Facts:} }
+\newcommand{\ans}{\textbf{Answer:} }
+\newcommand{\aside}{\textbf{Aside:} }
+\newcommand{\problem}{\textbf{Problem:} }
+\newcommand{\lemma}{\textbf{Lemma:} }
+\newcommand{\basicfacts}{\textbf{basic facts:} }
+\newcommand{\conj}{\textbf{Conjecture:} }
+\newcommand{\question}{\textbf{Question:} }
+\newcommand{\notes}{\textbf{Notes:} }
+\newcommand{\leg}[2]{\genfrac{(}{)}{}{}{#1}{#2}}
+\let\oldbfseries\bfseries
+\renewcommand{\bfseries}{\oldbfseries\boldmath}
+\newcommand{\myvcenter}[1]{\ensuremath{\vcenter{\hbox{#1}}}}
+\newcounter{lectureno}
+\makeatletter
+\renewcommand{\maketitle}{\addtocounter{lectureno}{1}\begin{center}{\LARGE\@title: \@date}\end{center}\par}
+\renewcommand{\@makefnmark}{\hbox{$^{\@thefnmark)}\m@th$}}
+\makeatother
+\title{PMATH 641 Lecture \arabic{lectureno}}

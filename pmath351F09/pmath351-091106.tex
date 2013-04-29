@@ -1,0 +1,61 @@
+\thm $X$ compact.  $\brace{f_n}\subseteq C(X)$ be a pointwise bounded and equicontinuous set.  Then
+\begin{enumerate}
+\item[(a)] $\brace{f_n}$ uniformly bounded
+\item[(b)] there exists a subsequence of $\brace{f_n}$ which converges uniformly
+\end{enumerate}
+\cor (Arzela--Ascoli Theorem):  For $X$ compact, $E\subseteq C(X)$ is compact if and only if $E$ is pointwise bounded, closed and equicontinuous. \\
+\pf ($\Longleftarrow$)  Let $\brace{f_n}$ be a sequence in $E$. \\
+Since $E$ is pointwise bounded and equicontinuous, the same is true for $\brace{f_n}$.  By theorem there exists a uniformly convergent subsequence and the limit must belong to $E$ since $E$ is closed.  By Bolzano--Weierstrass characterization of compactness this implies $E$ is compact.
+
+\textbf{Lemma 1: }Let $K$ be a countable set.  Let $f_n\colon K\to\R$, $n=1,2,\dotsc$ be a pointwise bounded family.  There there exists subsequence $(g_n)$ of $(f_n)$ which converges pointwise. \\
+\pf Let $K=\brace{x_1,x_2,x_3,\dotsc}$. \\
+Start by looking at $\brace{f_n(x_1)}_{n=1}^\infty$. \\
+Since $\brace{f_n}$ are pointwise bounded, the sequence $\brace{f_n(x_1)}$ is a bounded sequence of real numbers and so by Bolzano--Weierstrass there exists a convergent subsequence, say $f_{1,1}(x_1),f_{1,2}(x_1),\dotsc$. \\
+Thus $\brace{f_{1,n}}_{n=1}^\infty$ is a subsequence of $\brace{f_n}$ converging at $x_1$. \\
+Look at $\brace{f_{1,n}(x_2)}_{n=1}^\infty$: bounded sequence of real numbers therefore convergent subsequence, say $f_{2,1}(x_2), f_{2,2}(x_2),\dotsc$.
+\[ \begin{array}{ccccccl}
+f_1 & f_2 & f_3 & f_4 & \cdots & f_k & \\
+\ovalbox{$f_{11}$} & f_{12} & f_{13} & f_{14} & \cdots & f_{1k} & \text{converges at $x_1$} \\
+f_{21} & \ovalbox{$f_{22}$} & f_{23} & f_{24} & \cdots & f_{2k} & \text{converges at $x_1,x_2$} \\
+f_{31} & f_{32} & \ovalbox{$f_{33}$} & f_{34} & \cdots & f_{3k} & \text{converges at $x_1,x_2,x_3$} \\
+\vdots \\
+f_{k1} & f_{k2} & f_{k3} & f_{k4} & \cdots & \ovalbox{$f_{kk}$} & \text{converges at $x_1,x_2,\dotsc,x_k$}
+\end{array} \]
+In general, given $(f_{k,n})$ a subsequence of $(f_n)$ which converges at $x_1,x_2,\dotsc,x_k$, consider $(f_{k,n}(x_{k+1}))$: Get a convergent subsequence $(f_{k+1,n}(x_{k+1}))$.  So $(f_{k+1,n})$ converges at $x_1,x_2,\dotsc,x_{k+1}$. \\
+Put $g_n=f_{n,n}$.  $(g_n)$ is a subsequence of $(f_n)$. \\
+Furthermore $(g_n)_{n=k}^\infty$ is a subsequence of $(f_{k,n})$ and hence converges at $x_k$. \\
+So $(g_n)$ converges pointwise on $K$.
+
+\textbf{Lemma 2: }Any compact metric space $X$ is separable (i.e., countable dense set) \\
+\pf For each $n$, the balls $B(x,\frac1n)$, $x\in X$ cover $X$.  Get a finite subcover $B(x_{n,1},\frac1n),\dotsc,B(x_{n,k_n},\frac1n)$. \\
+Put $K_n=\brace{x_{n,1},\dotsc,x_{n,k_n}}$ and $K=\bigcup_{n=1}^\infty K_n$: $K$ is countable. \\
+Given $y\in X$ and $\epsilon>0$.  Take $n$ such that $\frac1n<\epsilon$.  Have $y\in B(x_{n,j},\frac1n)$ for some $j$. \\
+Therefore $x_{n,j}\in B(y,\frac1n)\subset B(y,\epsilon)$, so $y\in\overline K$, therefore $K$ is dense. \\
+\textbf{Proof of Theorem (b):} Let $K$ be a countable dense set on $X$. \\
+Think about $f_n\colon K\to\R$: Pointwise bounded. \\
+By Lemma 1 there exists a pointwise convergent (on $K$) subsequence $(g_n)$. \\
+We'll prove $(g_n)$ converges uniformly on all of $X$. \\
+Suffices to prove $(g_n)$ is uniformly Cauchy. \\
+Take $\epsilon>0$.  Find $N$ such that $\forall n,m\geq N$,
+\[ \abs{g_n(x)-g_m(x)}<\epsilon \qquad \forall x\in X . \]
+By equicontinuity $\exists\delta>0$ such that
+\[ d(x,y)<\delta \implies \abs{g_n(x)-g_n(y)}<\epsilon \qquad \forall n . \]
+Notice balls $B(x,\delta)$, $x\in K$ cover $X$ because $K$ is dense.  By compactness of $X$, $\exists x_1,\dotsc,x_M$ such that $\bigcup_1^M B(x_i,\delta)$ covers $X$. \\
+If $y\in X$ then $y\in B(x_i,\delta)$ for some $x_i$. \\
+By choice of $\delta$, $\abs{g_n(y)-g_n(x_i)}<\epsilon$ $\forall n$. \\
+$\brace{g_n(x_i)}$ converges for each $i$ and so is Cauchy. \\
+Hence $\exists N_i$ such that if $n,m\geq N$, then $\abs{g_n(x_i)-g_m(x_i)}<\epsilon$ (2). \\
+Let $N=\max(N_1,\dotsc,N_M)$. \\
+Let $y\in X$ and $n,m\geq N$.  Get $i$ such that $y\in B(x_i,\delta)$ so
+%\begin{equation}\abs{g_k(y)-g_k(x_i)}<\epsilon\qquad \forall k\label{one}.\end{equation}
+%\begin{align*}
+%\abs{g_n(y)-g_m(y)} &\leq \abs{g_n(y)-g_n(x_i)} + \abs{g_n(x_i)-g_m(x_i)} + \abs{g_m(x_i)-g_m(y)} \\
+%&< \epsilon\footnote{(1)} + \epsilon\footnote{(2)} + \epsilon\footnote{(1)} = 3\epsilon
+%\end{align*}
+\begin{gather*}\abs{g_k(y)-g_k(x_i)}<\epsilon\qquad \forall k\tag{1}. \\
+\begin{aligned}
+\abs{g_n(y)-g_m(y)} &\leq \abs{g_n(y)-g_n(x_i)} + \abs{g_n(x_i)-g_m(x_i)} + \abs{g_m(x_i)-g_m(y)} \\
+&< \epsilon\footnote{(1)} + \epsilon\footnote{(2)} + \epsilon\footnote{(1)} = 3\epsilon
+\end{aligned}\notag
+\end{gather*}
+Therefore $(g_n)$ is uniformly Cauchy.

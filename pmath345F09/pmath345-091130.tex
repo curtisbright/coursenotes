@@ -1,0 +1,116 @@
+\textbf{Addendum to \S9: Fields} \\
+\textbf{Notation: }$\alpha\colon R\to R'$ isomorphism of rings induces an isomorphism
+\begin{align*}
+\alpha\colon &R[x] \to R'[x] \\
+&a_0+\dotsb+a_nx^n\mapsto\alpha(a_0)+\alpha(a_1)x+\dotsb+\alpha(a_n)x^n
+\end{align*}
+\lem $\alpha\colon F\to F'$ isomorphism of fields, \\
+two simple algebraic extensions
+\[ \xymatrix{
+F(a) \ar@{-}[d]\ar@{.>}[r]^\beta & F'(b) \ar@{-}[d] \\ %dotted arrow
+F \ar[r]^\alpha_\cong & F'
+} \]
+with $f=\text{minimal polynomial of $a$ over $F$}\in F[x]$, such that \\ $\alpha(f)=\text{minimal polynomial of $b$ over $F'$}\in F'[x]$. \\
+(i.e., $\alpha$ takes minimal polynomial of $a/F$ to minimal polynomial of $b/F'$) \\
+\emph{Then}, $\alpha$ extends to an isomorphism
+\[ \beta\colon F(a) \to F'(b) \]
+with $\beta(a)=b$. \\
+That is:
+\begin{itemize}
+\item $\beta|_F = \alpha$
+\item $\beta(a) = b$
+\end{itemize}
+\ex converse is also true \\
+\pf Let $f'=\alpha(f)=\text{minimal polynomial of $b$ over $F'$}$
+%\[ \xymatrix{
+%F[x] \ar@{-}[d]\ar[r]^\alpha_\cong F'[x] \ar@{-}[d] \ar@{>>}[r]^\pi F'[x]/(f') %\ar[r]^\cong_\rho F'(b) \\
+%F \ar[r]^\alpha_\cong & F'
+%} \]
+%\[ \left. \begin{aligned}
+%\rho \circ \pi \circ \alpha(h) &= 0 \\
+%\iff \pi\circ\alpha(h) &= 0 \\
+%\iff \alpha(h) &\in (f')
+%\end{aligned} \right\} \ker(\alpha\circ\pi\circ\rho) = \alpha^{-1}(f'\cdot F'[x]) %=\footnote{the $\alpha(f)=f'$} f\cdot F[x] = (f) \]
+\[ \xymatrix{
+F[x] \ar@{-}[d]\ar[r]^\alpha_\cong & F'[x] \ar@{-}[d] \\
+F \ar[r]^\alpha_\cong & F'
+} \]
+$\alpha$ is an isomorphism
+\[ \alpha^{-1}(f'\cdot F'[x]) = f\cdot F[x] \]
+Then $\alpha$ induces
+\begin{align*}
+\overline\alpha\colon &f[x]/(f) \overset{\cong}{\to} F'[x]/(f') \\
+&h+(f) \mapsto \alpha(h)+(f')
+\end{align*}
+check that $\overline\alpha$ is indeed an isomorphism.
+\[ \xymatrix{
+F(a) \ar@{<}`u[r]`[rrr]^\beta[rrr] & \ar[l]^\phi_\cong F[x]/(f) \ar[r]^\cong_{\overline\alpha} & F'[x]/(f') \ar[r]_{\phi'}^\cong & F'(b) \\
+h(a) & \ar@{|->}[l] h + (f) & h'+(f') \ar@{|->}[r] & h'(b)
+} \]% line from F(a) to F'(b) overset \beta
+\[ \beta \coloneqq \phi'\circ\overline\alpha\circ\phi^{-1}\colon F(a)\to F'(b) \]
+is an isomorphism. \\
+Given $c\in F$,
+\begin{align*}
+\beta(c) &= \phi'\circ\overline\alpha\circ\phi^{-1}(c) \\
+&= \phi'\circ\overline\alpha(c+(f)) \\
+&= \phi'(\alpha(c)+(f')) \qquad \alpha(c)\in F' \\
+&= \alpha(c)
+\end{align*}
+Therefore $\beta|_F = \alpha$.
+\begin{align*}
+\beta(a) &= \phi'\circ\overline\alpha\circ\phi^{-1}(a) \\
+&=\phi'\circ\overline\alpha(x+(f)) \\
+&=\phi'(x+(f')) \\
+&=b
+\end{align*}
+\prop $\alpha\colon F\to F'$ isomorphism \\
+$f\in F[x]$, $\deg f>0$. \\
+Let $K$ be a splitting field of $f$ over $F$ \\
+Let $K'$ be a splitting filed of $\alpha(f)$ over $F'$
+\[ \xymatrix{
+K \ar@{-}[d]\ar@{.>}[r]^\beta & K' \ar@{-}[d] \\ %dotted arrow
+F \ar[r]^\alpha_\cong & F'
+} \qquad f'=\alpha(f) \]
+Then $\alpha$ extends to an isomorphism $\beta\colon K\to K'$. \\
+So $\beta|_F=\alpha$. \\
+\remark When $F=F'$ and $\alpha=\id$ this proposition says that any two splitting fields of $f$ over $F$ are \emph{isomorphic over $F$}. \\
+That is, $\beta|_F=\id$.
+\[ \xymatrix{
+K \ar@{.>}[rr] & & K' \\ %dotted
+ & \ar@{-}[ul] F \ar@{-}[ur] &
+} \]
+(\defin $S$ and $S'$ extensions of a ring $R$, are \emph{isomorphic over $R$} if there is an isomorphism $\beta\colon S\to S'$ such that $\beta|_R=\id$.) \\
+\pf Induction on $[K:F]=n$. \\
+$n=1$: $K=F$ $\implies$ $f$ factors completely into linear factors in $F[x]$ \\
+$\implies$ $\alpha(f)$ factors into linear factors in $F'[x]$ \\
+$\implies$ $K'=F'$ \\
+So $\beta=\alpha$ works. $\checkmark$ \\
+$n>1$: $f$ must have an irreducible factor $g\in F[x]$ which is \emph{not} linear. $\implies\deg g>1$ \\
+Let $a\in K$ be a root of $g$. \\
+(exists since $g\mid f$ and $K=\text{splitting field of $f$ over $F$}$) \\
+Let $g'=\alpha(g)\in F'[x]$. \\
+So $g'\mid\alpha(f)$ $\implies$ $g'$ has a root $b\in K'$.
+\[ \xymatrix{
+K \ar@{-}[d] \ar@{.>}[r]^\beta & K' \ar@{-}[d] \\ %dotted
+F(a) \ar[r]^\beta\ar@{-}[d]^{\mathllap{\text{minimal polynomial is $g$}\quad}} & F'(b) \ar@{-}[d]_{\mathrlap{\quad\text{minimal polynomial $g'=\alpha(g)$}}} \\
+F \ar[r]^\alpha_\cong & F'
+} \]
+Lemma $\implies$ Can extend $\alpha$ to an isomorphism $\beta\colon F(a)\to F'(b)$ which extends $\alpha$ \\
+But $K$ is still the splitting field of $f$ over $F(a)$ \\
+And $K'$ is a splitting field of $\alpha(f)$ over $F'(b)$.  Note $\beta(f)=\alpha(f)$
+\[ [K:F(a)] = \frac{n}{\deg g} < n \]
+By Induction Hypothesis $\beta$ extends to a $\hat\beta\colon K\to K'$.
+\[ \hat\beta|_F = \beta|_F = \alpha \]
+So $\hat\beta$ works.
+
+\textbf{\S10:} \\
+\cor $K,L$ finite fields, $\abs K=\abs L=p^n$. \\
+Suppose $K,L$ are both extensions of a finite field $F$.
+\[ \xymatrix{
+K \ar@{.>}[rr]^\cong \ar@{-}[dr] & & \ar@{-}[dl] L \\ %dotted
+ & F \ar@{-}[d] & \\
+ & \Z_p &
+} \]
+Then $K$ and $L$ are isomorphic over $F$. \\
+\pf $K$ and $L$ are both splitting fields of $x^{p^n}-x$ over $\Z_p$, hence also over $F$. \\
+Apply proposition (in fact the Remark).

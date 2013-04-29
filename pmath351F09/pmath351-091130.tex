@@ -1,0 +1,100 @@
+\ex $T\colon[1,\infty)\to[1,\infty)$
+\begin{gather*}
+T(x) = x + 1/x \\
+\begin{aligned}
+\abs{T(x)-T(y)} &= \abs{x-y-\tfrac1y+\tfrac1x} \\
+&= \abs{x-y-\tfrac{x-y}{xy}} \\
+&= \abs{x-y}\abs{1-\tfrac{1}{xy}} \\
+&< \abs{x-y}
+\end{aligned}
+\end{gather*}
+But $T(x)\neq x$ so no fixed point.
+
+\textbf{Picard's Theorem} \\
+\textbf{Terminology: }Say $\Phi\colon[a,b]\times\R\to\R$ is \emph{Lipschitz in\/ $y$-variable} if there exists a constant $L$ such that
+\[ \abs{\Phi(x,y)-\Phi(x,z)} \leq L\abs{y-z} \qquad\forall x\in[a,b] \And \forall y,z\in\R \]
+%
+\textbf{Global Picard Theorem} \\
+Suppose $\Phi\colon[a,b]\times\R\to\R$ is continuous and Lipschitz in $y$-variable.  Then the differential equation %Differentiable Equation
+\[ F'(x) = \Phi(x,F(x)), \quad F(a)=c \]
+has a unique solution. \\
+\pf Define $T\colon C[a,b]\to C[a,b]$
+\[ \text{by } TF(x) = c + \int_a^x \Phi(t,F(t))\d t . \]
+If $F\in C[a,b]$ then $G(t)=\Phi(t,F(t))$ is continuous. \\
+By the Fundamental Theorem of Calculus $TF(x)$ is differentiable, so $TF\in C[a,b]$ as claimed.
+$(TF)'(x)=\Phi(x,F(x))$ by Fundamental Theorem of Calculus. \\
+Suppose $F$ is a fixed point of $T$.
+\begin{align*}
+TF(x) &= F(x) \\
+F'(x) &= (TF)'(x) = \Phi(x,F(x)) \text{ and } TF(a)\footnotemark = F(a)
+\end{align*}\footnotetext{$=c$}%
+Thus $F$ satisfies the initial value differential equation. \\%Differentiable Equation. \\
+Conversely, if $F'(x)=\Phi(x,F(x))$ and $F(a)=c$ then $(TF)'(x)=F'(x)$ $\forall x\in[a,b]$ %\\
+\begin{align*}
+\implies TF(x) &= F(x) + \text{constant} \\
+\implies TF(a)\addtocounter{footnote}{-1}\footnotemark &= F(a)\addtocounter{footnote}{-1}\footnotemark + \text{constant}
+\end{align*}%\footnotetext{$=c$}%
+so $\text{constant}=0\implies TF(x)=F(x)$ so $F$ is a fixed point of $T$. \\
+Can't call on BCMP directly, because $T$ might not be a contraction.  But we use same method of proof. \\
+Start with $F_0(x)=c$.  Put $F_{k+1}(x)=TF_k(x)$. \\
+Let $L$ be the Lipschitz factor of $\Phi$ \\
+Let $M=\max_{a\leq x\leq b}\abs{\Phi(x,c)}$
+\begin{align*}
+\abs{F_1(x)-F_0(x)} &= \abs{Tc(x)-c} \\
+&= \abs*{c+\int_a^x\Phi(t,c)\d t-c} \\
+&\leq \int_a^x \abs{\Phi(t,c)}\d t \leq M (x-a)
+\end{align*}
+Inductively, we assume $\abs{F_k(x)-F_{k-1}(x)}\leq\frac{L^{k-1}M(x-a)^k}{k!}$ $\forall x\in[a,b]$
+\begin{align*}
+\text{Then } \abs{F_{k+1}(x)-F_k(x)} &= \abs{T(F_k)(x)-T(F_{k-1})(x)} \\
+&= \abs*{c+\int_a^x\Phi(t,F_k(t))\d t - \paren[\Big]{c+\int_a^x\Phi(t,F_{k-1}(t))\d t}} \\
+&\leq \int_a^x \abs{\Phi(t,F_k(t))-\Phi(t,F_{k-1}(t))} \d t \\
+&\leq \int_a^x L \abs{F_k(t)-F_{k-1}(t)} \d t \qquad\text{by Lipschitz property} \\
+&\leq \int_a^x L\,\frac{L^{k-1} M(t-a)^k}{k!} \d t \qquad\text{(by inductive assumption)} \\
+&= \left.\frac{L^kM}{k!}\cdot\frac{(t-a)^{k+1}}{k+1}\right\rvert_a^x = \frac{L^kM(x-a)^{k+1}}{(k+1)!}
+\end{align*}
+That completes the inductive step. \\
+Next, verify $\brace{F_n}$ is uniformly Cauchy. \\
+Fix $x\in[a,b]$ temporarily.
+\begin{align*}
+\abs{F_n(x)-F_m(x)} &\leq \abs{F_n(x)-F_{n+1}(x)} + \abs{F_{n+1}(x)-F_{n+2}(x)} + \dotsb + \abs{F_{m-1}(x)-F_m(x)} \\
+&\leq \frac{L^nM}{(n+1)!}(x-a)^{n+1} + \dotsb + \frac{L^{m-1}M}{m!}(x-a)^m \\
+&\leq \frac{M}{L} \sum_{j=n+1}^\infty\frac{(L(x-a))^j}{j!} \leq \underbrace{\frac{M}{L}\sum_{j=n+1}^\infty \frac{(L(b-a))^j}{j!}}_{\text{\clap{Tail of convergent series\footnotemark\ so $<\epsilon$ if $n\geq N$}}}\footnotetext{$\paren[\big]{\exp(L(b-a))=\sum_0^\infty\frac{(L(b-a))^j}{j!}}$}
+\end{align*}
+%\[ \paren*{\exp(L(b-a))=\sum_0^\infty\frac{(L(b-a))^j}{j!}} \qquad \text{Tail of convergent series [above underbrace] so $<\epsilon$ if $n\geq N$} \]
+Therefore $\brace{F_n}$ is a Cauchy sequence in $C[a,b]$ so $F_n\to F$ uniformly. \\
+Need to prove $T$ is a continuous function
+\begin{align*}
+\abs{TF(x)-TG(x)} &\leq \abs*{\int_a^x\abs{\Phi(t,F(t))-\Phi(t,G(t))}\d t} \\
+&\leq \int_a^x L \abs{F(t)-G(t)} \d t \\
+&\leq L \norm{F-G} \int_a^x \d t \\
+&\leq L(b-a)\norm{F-G}
+\end{align*}
+So $\norm{TF-TG}\leq L(b-a)\norm{F-G}$ \\
+$\implies$ $T$ is continuous. \\
+$T(F_n)\footnote{$F_{n+1}\to F$}\to T(F)$ by continuity of $T$ \\
+Therefore $TF=F$. \\
+So $F$ solves the initial-value differential equation. \\
+Suppose $G$ is another solution to differential equation. \\
+Then also $TG=G$.
+\begin{gather*}
+\begin{aligned}
+\norm{F-G} &= \norm{TF-TG} = \norm{T^kF-T^kG} \\
+&\leq \norm{F-G} \underbrace{\frac{(L(b-a))^k}{k!}}_{\to0\text{ as }k\to\infty} \qquad \text{(by similar arguments)}
+\end{aligned}\\
+\implies \norm{F-G} = 0 \implies F=G
+\end{gather*}
+Actually valid for $\Phi\colon[a,b]\times\R^n\to\R^n$. \\
+\ex \begin{gather*}
+y'' + y + \sqrt{y^2+(y')^2} = 0 \\
+y(0) = a_0,\quad y'(0) = a_1
+\end{gather*}
+Let $Y=(y_0,y_1)$ \\
+Define $\Phi(x,y_0,y_1)\footnote{$=\Phi(x,Y)$, $\Phi\colon[0,1]\times\R^2\to\R^2$}=(y_1,-y_0-\sqrt{y_0^2+y_1^2})=(y_1,-y_0-\norm{Y})$ %\\
+%$\Phi(x,Y)$
+\[ Y'\footnote{$=(y_0',y_1')$} = \Phi(x,Y) = \paren[\Big]{y_1,-y_0-\sqrt{y_0^2+y_1^2}} \]
+$\implies y_0'=y_1$
+\begin{gather*}
+y_0'' = y_1'' = -y_0 - \sqrt{y_0^2+y_1^2} = -y_0 - \sqrt{y_0^2+(y_0')^2} \\
+y_0'' + y_0 + \sqrt{y_0^2+(y_0')^2} = 0
+\end{gather*}

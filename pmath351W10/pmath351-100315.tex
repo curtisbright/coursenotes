@@ -1,0 +1,43 @@
+The Arzela--Ascoli Theorem (Page 299, \SS5.6)
+
+Let $A\subset M\footnote{metric space}$ be compact and $\B\subset C\footnote{all continuous maps from $A$ to $N$}(A,N\footnote{metric space})$
+
+\defn $\B$ is called \emph{equicontinuous} on $A$ if for all $\epsilon>0$ there exists $\delta>0$ such that
+\[ d(x,y) < \delta \implies \rho(f(x),f(y))<\epsilon , \text{ all $f\in\B$} . \]
+Note: $\delta$ does not depend on $f\in\B$. \\
+$\B$ is bounded means that $\set{\norm{f}_\infty}{f\in\B}$ is bounded set, i.e., $\sup_{x\in A}\abs{f(x)}<b$, finite $b$, for all $f\in\B$. \\
+$\B$ is \emph{pointwise compact} if $\set{f(x)}{f\in\B}$ is compact for each fixed $x\in A$.
+
+\thm $\B$ is compact if and only if $\B$ is closed, equicontinuous and pointwise compact. \\
+\pf Suppose that $\B$ is closed, equicontinuous and pointwise compact. We wish to show that $\B$ is compact.
+
+Since $A$ is compact, for each $\delta>0$, there exists a finite set $C_\delta=\brace{y_1,\dotsc,y_k}$ such that each $x\in A$ is within $\delta$ of some $y_i\in C_\delta$. [total boundedness of compact $A$]
+
+Thus $C_{1/n}$ is a finite set for each $n\in\N$ and $C=\bigcup_{n\in\N}C_{1/n}$ is a countable set (and is dense in $A$).
+
+Let $f_n$ be a given sequence of functions in $\B$.  Let $C=\brace{x_1,x_2,\dotsc}$ be a listing of elements of the countable $C$.
+
+The sequence $\set{f_n(x_1)}{n\in\N}$ is a sequence in $\set{f(x_1)}{f\in\B}$ which is compact by \emph{pointwise} compactness of $\B$.  By the Bolzano--Weierstrass theorem, $f_n(x_1)$ has a convergent subsequence, say $f_{11}(x_1)$, $f_{12}(x_1)$, $f_{13}(x_1)$, $\dotsc$ \\
+Repeat this idea to the sequence $f_{1k}$ ($k=1,2,\dotsc$) \\
+at $x_2$, we get a (second) subsequence of $f_{1k}$ ($k=1,\dotsc$)
+\[ f_{21}(x_2) \c f_{22}(x_2) \c f_{23}(x_2) \c \dotsc \]
+which is convergent.  Note: $f_{21}(x_1)$, $f_{22}(x_1)$, $\dotsc$, is also convergent. \\
+Repeating the above, \\
+we set
+\[ f_{31}(x_3) \c f_{32}(x_3) \c f_{33}(x_3) \c f_{34}(x_3) \c \dotsc \qquad\text{convergent}. \]
+\mbox{\qquad}$\vdots$ \\
+Consider the diagonal sequence $f_{nn}$ which is a subsequence of all previous ones, and will therefore have the property that
+\[ f_{nn}(x_j) \qquad \text{($n=1,\dotsc$) is convergent for each $j$} \]
+%
+Let $g_n=f_{nn}$, a subsequence of $f_n$.  It converges at each $x_j\in C$.  Let $\epsilon>0$ be given, and let $\delta>0$ be found, according to equicontinuity of $\B$.  Let $C_\delta=\brace{y_1,y_2,\dotsc,y_k}$ be the finite set consisting of points of $C$. [use $n$ with $\frac1n<\delta$]
+
+There exists $N_0$ such that $m$, $n\geq N_0$
+\[ \rho(g_m(y_i),g_n(y_i))<\epsilon \text{ for each $1\leq i\leq k$} . \]
+Therefore
+\begin{align*}
+\rho(g_n(x),g_m(x)) &\leq \rho(g_n(x),g_n(y_j)) + \rho(g_n(y_j),g_m(y_j)) + \rho(g_m(y_j),g_m(x)) \\
+&\leq \epsilon + \epsilon + \epsilon = 3c
+\end{align*}
+for all $n$, $m\geq N_0$.
+
+This shows that $g_n$ is uniformly Cauchy, i.e., Cauchy in norm $\norm{\cdot}_\infty$.  The space $C(A,N)$ is complete, so $g_n$ is convergent in $C(A,N)$.  $\B$ is closed, it converges in $\B$.

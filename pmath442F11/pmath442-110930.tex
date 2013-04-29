@@ -1,0 +1,62 @@
+Shuntaro Yamagishi \\
+\url{shuntaroy@hotmail.com}
+
+\defn $G$ a group, $K$ a field, $V$ a $K$-vector space.  A representation of $G$ in $V$ is a homomorphism $\rho\colon G\to\GL\footnote{invertible $K$-linear transformation $V\to V$}(V)$
+\[ \dim \rho = \dim V \]
+
+We'll work with $1$-dimensional representations, called characters: \\
+\eg Dirichlet characters:
+\begin{gather*}
+\rho\colon\Z/n\Z\to\C \\
+\rho(m) = e^{2\pi i m/n}
+\end{gather*}
+\eg $K$, $L$ fields, $\phi\colon K\to L$ a homomorphism.  Then $\phi|_{K^*}$ is a $1$-dim representation of $K^*$ in $L$.
+
+\thm Let $G$ be a group, $L$ a field, $\chi_1$, $\dotsc$, $\chi_r$ a set of distinct characters of $G$ over $L$.  Then $\brace{\chi_1,\dotsc,\chi_r}$ are linearly independent over $L$. \\
+\pf Assume not, and let (after possibly renumbering) $\brace{\chi_1,\dotsc,\chi_t}$ be an $L$-linear dependent subset of minimal size.  Then there are $a_1$, $\dotsc$, $a_t\in L$ such that
+\[ a_1 \chi_1(g) + \dotsb + a_t \chi_t(g) = 0 \]
+for all $g\in G$.  Note $t\geq2$, and choose $\gamma\in G$ such that $\chi_1(\gamma)\neq\chi_t(\gamma)$.  Then
+\begin{gather*}
+a_1 \chi_1(\gamma) \chi_1(g) + \dotsb + a_t \chi_t(\gamma)\chi_t(g) = 0 \\
+\mathllap{\text{\emph{and}}\qquad} a_1\chi_t(\gamma)\chi_1(g) + \dotsb + a_t\chi_t(\gamma)\chi_1(g) = 0 \\
+\implies (\text{nonzero})\chi_1(g) + \dotsb + (\text{something})\chi_{t-1}(g) = 0
+\end{gather*}
+so $\brace{\chi_1,\dotsc,\chi_{t-1}}$ is linearly dependent, which is a contradiction. \qed
+
+\thm Let $K/E$ be a field extension, $F$ and $E$-subfield of $K$.  Let $G=\brace{\sigma_1=1,\sigma_2,\dotsc,\sigma_n}$ be $E$-automorphisms of $K$ whose fixed field is $F$.  If $G$ is a group, then
+\[ \# G = [ K : F ] . \]
+\pf Let $m=[K:F]$, $\brace{w_1,\dotsc,w_n}$ an $F$-basis of $K$.  Define
+\[ \v_i = \begin{pmatrix}
+\sigma_i(w_1) \\
+\vdots \\
+\sigma_i(w_m)
+\end{pmatrix} \in K^m \]
+There are $n$ vectors in $\v_i$.  If we show that the $\v_i$s are $K$-linear independent it will follow that $n\leq m$.  Thus, say $a_1$, $\dotsc$, $a_n\in K$ satisfy:
+\[ a_1\v_1 + \dotsb + a_n\v_n = \0 . \]
+We want to show $a_i=0$ for all $i$.  Well:
+\[ a_1\sigma_1(w_j) + \dotsb + a_n\sigma_n(w_j) = 0 \]
+for all $j$.  Since $\brace{w_1,\dotsc,w_m}$ is a basis for $K/F$, and since the $\sigma_i$ are all $F$-linear transformations, we get
+\[ a_1\sigma_1(\alpha) + \dotsb + a_n\sigma_n(\alpha) = 0 \]
+for any $\sigma\in K$.  Since the $\sigma_i$s are characters of $K^*$ in $K$, they're $K$-linearly independent so $a_i=0$ for all $i$.  So $\# G\leq[K:F]$.
+Let $\alpha_1$, $\dotsc$, $\alpha_{n+1}\in K$ be any elements.  If we show it's linearly independent over $F$, then $\dim_F{K}\leq n$.  Define
+\[ \u_i = \begin{pmatrix}
+\sigma_1(\alpha_i) \\
+\vdots \\
+\sigma_n(\alpha_i)
+\end{pmatrix} \in K^n . \]
+There are $n+1$ of the $\u_i$s, so they are linearly dependent over $K$. \\
+Choose $\beta_1$, $\dotsc$, $\beta_{n+1}\in K$ such that
+\begin{enumerate}
+\item[(1)] $\beta_1\u_1+\dotsb+\beta_{n+1}\u_{n+1}=\0$
+\item[(2)] A minimal \# of $\beta_i$ are $0$.
+\item[\emph{and} (3)] $\beta_1$, $\dotsc$, $\beta_t$ are nonzero, $\beta_{t+1}$, $\dotsc$, $\beta_{n+1}=0$, $\beta_t=1$.
+\end{enumerate}
+If all $\beta_i$ are in $F$, then $\brace{\alpha_1,\dotsc,\alpha_{n+1}}$ is linearly dependent over $F$, by looking at first coordinate of (1).
+
+If not, assume without loss of generality that $\beta_1\notin F$.  Choose $\sigma$ (in $G$) such that $\sigma(\beta_1)\neq\beta_1$.  Then:
+\[ \sigma(\beta_1)\sigma(\u_1) + \dotsb + \sigma(\beta_t)\sigma(\u_t) = \0 \]
+But $\sigma$ acts on each $\u_i$ by permuting the coordinates in the same way.  So:
+\[ \sigma(\beta_1)\u_1 + \dotsb + \sigma(\beta_t)\u_t = \0 \]
+Subtraction with (1) gives:
+\[ [\beta_1-\sigma(\beta_1)]\u_1 + \dotsb + [\beta_t-\sigma(\beta_t)]\footnote{zero!}\u_t = \0 \]
+So this relation has fewer nonzero terms, which is a contradiction.  So $\beta_i\in F$ for all $i$, and we're done.

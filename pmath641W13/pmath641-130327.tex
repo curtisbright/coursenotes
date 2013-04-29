@@ -1,0 +1,47 @@
+Class number of $\Q(\sqrt{-5})$.  It suffices to consider ideals of norm at most $4$.  Note that
+\[ (2,1+\sqrt{-5})\cdot(2,1-\sqrt{-5})=(4,2(1+\sqrt{-5}),2(1-\sqrt{-5}),6) = (2) . \]
+Also observe that
+\[ 2 - (1+\sqrt{-5}) = 1 - \sqrt{-5} \]
+and so
+\[ (2,1+\sqrt{-5}) = (2,1-\sqrt{-5}) . \]
+Put $\mathcal{P}=(2,1+\sqrt{-5})$.  Thus $(2)=\mathcal{P}^2$.  Also note that
+\[ (3,1+\sqrt{-5})(3,1-\sqrt{-5}) = (9,3(1+\sqrt{5}),3(1-\sqrt{5}),6) = (3) . \]
+Put $\mathcal{Q}=(3,1+\sqrt{-5})$ and $\q'=(3,1-\sqrt{-5})$.  We have $N\mathcal{Q}N\mathcal{Q}'=9$.
+
+Could we have $N\mathcal{Q}=1$?  Then $\mathcal{Q}=(1)$.  In particular $1\in\mathcal{Q}$ hence there exist $a$, $b$, $c$, $d\in\Z$ with
+\[ 3(a+b\sqrt{-5})+(1+\sqrt{-5})(c+d\sqrt{-5}) = 1 . \]
+\begin{align*}
+\implies 3a + c - 5d &= 1 \\
+3b + c + d &= 0 \\ \hline
+3a - 3b - 6d &= 1
+\end{align*}
+and since $3\nmid1$. \#
+
+Similarly $N\mathcal{Q}'\neq1$ hence $N\mathcal{Q}=N\mathcal{Q}'=3$ and $\mathcal{Q}$ and $\mathcal{Q}'$ are prime ideals.  Thus $(1)$, $\mathcal{P}$, $\mathcal{P}^2$, $\mathcal{Q}$, and $\mathcal{Q}'$ are the ideals of norm at most $4$.  Since $\mathcal{P}^2$ is principal
+\[ \mathcal{P}^2 \sim (1) \]
+and so we need to consider only the ideal classes of $(1)$, $\P$, $\q$, and $\q'$.
+
+We have
+\[ (3,1+\sqrt{-5})(2,1+\sqrt{-5}) = (6,2(1+\sqrt{-5}),3(1+\sqrt{-5}),(1+\sqrt{-5})^2) = (1+\sqrt{-5}) . \]
+\[ \q\P \sim (1) . \]
+\begin{align*}
+(3,1-\sqrt{-5})(2,1+\sqrt{-5}) = (1-\sqrt{-5}) \\
+\left.\begin{gathered}
+\q'\P \sim (1) \\
+\q\P \sim (1)
+\end{gathered}\right\} \implies \q \sim \q' \\
+\left.\begin{gathered}
+\q\q' \sim (1) \\
+\q\P \sim (1)
+\end{gathered}\right\} \implies \q' \sim \P
+\end{align*}
+Thus \[\mathcal{C}=\brace{[(1)],[\P]} . \]
+Could we have $\P\sim(1)$, so $\P$ principal?  Then $\P=(a+b\sqrt{-5})$ and since $N\P=2$
+\[ a^2 - 5 b^2 = 2 \implies a^2 \equiv 2 \pmod 5 \qquad \# . \]
+Therefore $h=2$.
+
+Suppose $[K:\Q]<\infty$.
+
+There is an extension $E$ of $K$ which is Galois over $K$ and has the property that the Galois group of $E$ over $K$ is isomorphic to the ideal class group of $K$.  Also every ideal of $\A\cap K$ becomes principal in $E$.
+
+$E$ is the Hilbert class field of $K$.

@@ -1,0 +1,32 @@
+\textbf{Computing Galois Groups} \\
+Given a polynomial $f(x)\in F[x]$, find the Galois group of a splitting field for $f(x)$ over $F[x]$.  Assume $f(x)$ is separable.
+
+If $F=\F_q$ and $f(x)$ is irreducible, then splitting field is $\F_{q^d}$, where $d=\deg(f)$, so $\Gal(\F_{q^d}/\F_q)\cong\Z/d\Z$.
+
+If $F=\Q$, the problem is much, much harder, in general. \\
+Say $\deg(f(x))=2$, $f(x)$ irreducible.  Then a splitting field has degree $\leq2!$, so it has degree $2$.  Therefore its Galois group is $\Z/2\Z$. \\
+Now say $\deg(f(x))=3$, $f$ irreducible.  Let $K$ be the splitting field for $f(x)$ over $\Q$.  Then $\Gal(K/\Q)$ acts transitively on the three roots of $f(x)$, giving a homomorphism $\psi\colon\Gal(K/\Q)\to S_3$.  Moreover, $\psi$ is 1--1 because $\psi$ is completely determined by its values on the roots of $f(x)$.  The transitive subgroups of $S_3$ are:
+\[ \begin{array}{c}
+A_3\mathrlap{\text{ (cyclic of order 3)}} \\
+S_3
+\end{array} \]
+Let $F$ be a field, and let $K=F(a_1,\dotsc,a_n)$ for indeterminates $a_i$.  $S_n$ acts on $K$ by permuting the $a_i$. \\
+Let $M={}$fixed field of $S_n$.  Then $[K:M]=n!=\#S_n$. \\
+Consider $f(x)=(x-a_1)\dotsm(x-a_n)$.  The coefficients of $f(x)$ all lie in $M$.  They are:
+\[ s_i=\text{sum of all products of $i$ dinstinct $a_i$s,} \]
+up to multiplication by $\pm1$.  The polynomial $s_i$ is called the $i$th elementary symmetric polynomial.
+
+Now, $K$ is a splitting field for $f(x)$ over $M$, and also $K$ is a splitting field for $f(x)$ over $F(s_1,\dotsc,s_n)\subset M$.  By comparing degrees, we see that $M=F(s_1,\dotsc,s_n)$.
+
+This action of $S_n$ descends to $F[a_1,\dotsc,a_n]$.  If $E/F$ is a splitting field for a separable polynomial $p(x)\in F[x]$, then we get a homomorphism
+\begin{align*}
+\psi\colon &\Gal(E/F) \to \Gal(K/M) \\
+&\sigma \mapsto \text{permutation corresponding to action of $\sigma$ on roots of $p(x)$, ordered.}
+\end{align*}
+$\psi$ is injective because $\sigma$ is determined by its values on the roots of $p(x)$, so we can pretend $\Gal(E/F)$ is a subgroup of $\Gal(K/M)$.
+
+$A_n$ is a normal subgroup of $S_n$, of index $2$.  Its fixed field is therefore a quadratic extension of $M$.  What is this fixed field?
+
+\defn Let $R$ be a ring, $r_1$, $\dotsc$, $r_n$ elements of $R$.  The discriminant of $r_1$, $\dotsc$, $r_n$ is:
+\[ \Disc(r_1,\dotsc,r_n) = \prod_{i<j}(r_i-r_j)^2 \]
+This is symmetric in $r_1$, $\dotsc$, $r_n$.  The fixed field of $A_n$ in $K$ is $M(\sqrt{\Disc(a_1,\dotsc,a_n)})$.  So $\Gal(E/F)$ fixes $F(\sqrt{\Disc(\alpha_1,\dotsc,\alpha_n)})$ \emph{iff} $\psi(\Gal(E/F))\subset A_n$.  This happens \emph{iff} $\sqrt{\Disc(\alpha_1,\dotsc,\alpha_n)}\in F$.

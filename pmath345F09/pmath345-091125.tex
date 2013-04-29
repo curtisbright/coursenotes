@@ -1,0 +1,121 @@
+\thm $\abs F=p^n=q$ field
+\begin{enumerate}
+\item[(a)] There exists: $a\in F\setminus\brace0$, $o(a)=q-1$
+\begin{itemize}
+\item[$\hookrightarrow$] $a$ is called a \emph{primitive element}
+\end{itemize}
+\item[(b)] Every element of $F$ is a root of $x^q-x$
+\end{enumerate}
+\remark If $F=\Z_p$ then (b) is Fermat's little theorem \\
+\pf Since every element of $F\setminus\brace0$ has finite order $\leq q-1$ there exists $m>0$ such that $u^m=1$ for all $u\in F\setminus\brace0$
+\[ \hookrightarrow \qquad m = \prod_{a\in F\setminus\brace0}o(a) \]
+Let $N$ be \emph{least} such $N\leq\prod_{a\in F\setminus\brace0}o(a)$ \\
+But $x^N-1$ has at most $N$ roots in $F$, $0$ is not such a root \\
+$\implies$ $q-1\leq N$ \\
+Suppose $N=1$ \\
+$\implies$ $F=\Z_2$
+\begin{enumerate}
+\item[$\Longrightarrow$ (a)] is true with $a=1$
+\item[(b)] is true as $F=\brace{0,1}$
+\end{enumerate}
+We may assume $N>1$ \\
+$N=p_1^{k_1}\dotsm p_l^{k_l}$ prime factorization
+
+\textbf{Claim: }For any $j=1,\dotsc,l$, there is an element $a_j\in F\setminus\brace0$, $o(a_j)=p_j^{k_j}$ \\
+\pf Fix $j$.  $0<\frac{N}{p_j}<N$ \\
+$\implies$ there is $b_j\in F\setminus\brace0$
+\[ b_j^{N/p_j} \neq 1 \]
+let $a_j=b_j$
+\begin{gather*}
+a_j^{p_j^{k_j}} = b_j^{(N/p_j^{k_j})p_j^{k_j}} = b_j^N = 1 \xRightarrow{\text{prev.~prop}} o(a_j)\mid p_j^{k_j} \\
+a_j^{p_j^{k_j-1}} = b_j^{(N/p_j^{k_j})p_j^{k_j-1}} = b_j^{N/p_j} \neq 1 \implies o(a_j) \nmid p_j^{k_j-1}
+\end{gather*}
+Therefore $o(a_j)=p_j^{k_j}$: claim.
+
+Since $o(a_i)$ is coprime with $o(a_j)$ for all $i\neq j$
+\begin{align*}
+\xRightarrow{\text{prev.~prop (c)}} o(a_1\dotsm a_l) &= o(a_1)\dotsm o(a_l) \\
+&= p_1^{k_1}\dotsm p_l^{k_l} = N
+\end{align*}
+Let $a=a_1\dotsm a_l$.  $N=o(a)\leq q-1$ \\
+Therefore $N=q-1$ and $a$ is a prime element. \\
+By choice, $u^N=1$ for all $u\in F\setminus\brace0$. \\
+$\implies$ $u$ is a root of $x^N-1=x^{q-1}-1$ for all $u\in F\setminus\brace0$. \\
+$\implies$ $u$ is a root of $x^q-x$ for all $u\in F$.
+
+\cor $f\in\Z_p[x]$ irreducible $\deg f=n$ \\
+$\implies$ $f\mid x^{p^n}-x$ \\
+\pf Consider
+\begin{gather*}
+F \mathrlap{{}\coloneqq\Z_p[x]/(f)} \\
+| \\
+\Z_p
+\end{gather*}
+We know that $F=\Z_p(a)$ where $a\coloneqq x+(f)$ and $a$ is algebraic over $\Z_p$ and $f=$ minimal polynomial of $a$ over $\Z_p$. \\
+$\implies$ $[F:\Z_p]=n$ \\
+$\implies$ $\abs F=p^n$ \\
+By Theorem (b) every element of $F$ is a root of $x^{p^n}-x$. \\
+$\implies$ $a^{p^n}-a=0$ \\
+$\implies$ $f\mid x^{p^n}-x$
+
+\prop $\abs F=q=p^n$ field. \\
+There are $\phi(q-1)$ primitive elements in $F$.
+\begin{enumerate}
+\item[$\hookrightarrow$] $\phi$ Euler-phi function
+\end{enumerate}
+\pf Choose $a$ primitive.
+\[ F\setminus\brace0 = \brace{1,a,a^2,\dotsc,a^{q-2}} \]
+We want to know how many of the $a^k$s are primitive.  $a^k$ primitive if and only if
+\begin{gather*}
+o(a^k) = q-1 \iff \\
+\frac{o(a)}{\gcd(k,o(k))} = q-1 \iff \frac{q-1}{\gcd(k,q-1)} = q-1 \\
+\iff \gcd(k,q-1) = 1
+\end{gather*}
+By definition there are $\phi(q-1)$ many such $k<q-1$.
+
+\prop Every finite field is a simple algebraic extension of its prime subfield.  That is, $F=\Z_p(a)$ where $a\in F$ is algebraic. \\
+\pf Let $a\in F$ be primitive.
+\begin{gather*}
+F = \brace{\overset{0}{0},\overset{1}{1},\overset{x}{a},\overset{x^2}{a^2},\dotsc,\overset{x^{q-2}}{a^{q-2}}} \qquad q=\abs F \\
+\implies F \subseteq \Z_p(a) \implies F = \Z_p(a)
+\end{gather*}
+\thm Let $p$ be a prime, $n>0$.
+\begin{enumerate}
+\item[(a)] There exists a field of size $p^n$.
+\item[(b)] Any two fields of size $p^n$ are isomorphic
+\end{enumerate}
+\pf $f=x^{p^n}-x\in\Z_p[x]$. \\
+Let $\begin{gathered}L\\|\\\Z_p\end{gathered}$ be a splitting field of $f$ over $\Z_p$. \\
+Let $F\subseteq L$ be the \emph{set of roots} of $f$ in $L$. \\
+Since $f'=p^nx^{p^n-1}=-1$ \\
+$\gcd(f,f')=1$ \\
+$\implies$ $f$ has no repeated roots in $L$ \\
+$\implies$ $\abs F=p^n$
+
+We show $F$ is a subfield of $L$
+\begin{itemize}
+\item $0^{p^n}-0=0\implies0\in F$
+\item $1^{p^n}-1=0\implies1\in F$
+\item
+\begin{align*}
+(-1)^{p^n} &= \begin{cases}
+1 & \text{if $p=2$} \\
+-1 & \text{otherwise} \end{cases} \\
+&= -1 \implies -1 \in F
+\end{align*}
+\item $a,b\in F \implies (ab)^{p^n} = a^{p^n}b^{p^n} = ab \implies ab\in F$
+\item $a\in F \implies -a=(-1)a\in F$
+\item $a,b\in F\implies (a+b)^{p^n} = a^{p^n} + b^{p^n} + \binom{p^n}{1}a^{p^n-1}b + \dotsb$ \\
+since $\Char(L)=p$ \\
+all the other binomial coefficients being divisible by $p$ are equal to $0$. \\
+$\implies$ $(a+b)^{p^n}=a^{p^n}+b^{p^n}=a+b$ \\
+$\implies$ $a+b\in F$ \\
+\item $a\in F\setminus\brace0\implies\exists b\in L, b=a^{-1}$
+\begin{align*}
+ab &= 1 \\
+(ab)^{p^n} &= 1 \\
+a^{p^n}b^{p^n} &= 1
+\end{align*}
+$\implies$ $b^{p^n} = (a^{p^n})^{-1} = a^{-1} = b \implies b\in F$.
+\end{itemize}
+This proves part (a).

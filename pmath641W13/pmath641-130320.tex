@@ -1,0 +1,55 @@
+\textbf{Theorem 54:} $[K:\Q]<\infty$.  Let $A$ and $B$ be non-zero ideals of $\A\cap K$.  Then
+\[ NAB = NA\cdot NB . \]
+\pf Let $\alpha_1$, $\dotsc$, $\alpha_{NA}$ be a complete set of representatives modulo $A$.  Similarly let $\beta_1$, $\dotsc$, $\beta_{NB}$ be a complete set of representatives modulo $B$.
+
+By Lemma 53 there exists $\gamma$ in $A$ for which $\gcd((\gamma)/A,B)=(1)\implies\gcd((\gamma),AB)=A$.
+
+Consider the terms $\alpha_i+\gamma\beta_j$ with $1\leq i\leq NA$ and $1\leq j\leq NB$.  These terms are all distinct mod $AB$ since otherwise there exists %\exists
+$i$, $j$, $k$, $l$ with $1\leq i\leq NA$, $1\leq j\leq NB$, $1\leq k\leq NA$, $1\leq l\leq NB$ for which
+\[ \alpha_i + \gamma\beta_j \equiv \alpha_k + \gamma\beta_l \pmod{AB} . \]
+Then
+\[ \alpha_i - \alpha_k \equiv \gamma(\beta_j-\beta_l) \pmod{AB} . \]
+Since $\gamma$ is in $A$ we see that $\alpha_i-\alpha_k\equiv0\pmod{A}$ hence $i=k$.  But then
+\[ \gamma(\beta_j-\beta_l) \equiv 0 \pmod{AB} . \]
+Thus $AB\mid(\gamma)(\beta_j-\beta_l)$
+\begin{align*}
+&\implies B \mid \frac{(\gamma)}{A}(\beta_j-\beta_l) \\
+&\implies B \mid (\beta_j-\beta_l) \\
+&\implies \beta_j \equiv \beta_l \pmod{B} \implies j=l
+\end{align*}
+Thus
+\[ NAB \geq NANB . \]
+Suppose $\alpha\in\A\cap K$.  Then $\alpha\equiv\alpha_i\pmod{A}$ for some $i$ with $1\leq i\leq NA$.  Recall by $*$ $\gcd((\gamma),AB)=A$.  Thus
+\[ \alpha - \alpha_i = \gamma \cdot \lambda + \delta \]
+with $\lambda\in\A\cap K$ and $\delta\in AB$.  Then $\lambda\equiv\beta_j\pmod{B}$ for some $j$ with $1\leq j\leq NB$.  Therefore $\alpha=\alpha_i+\gamma\beta_j+\gamma(\lambda-\beta_j)+\delta$.  Now since $\gamma\in A$ and $\lambda-\beta_j$ is in $B$ we see that
+\[ \alpha \equiv \alpha_i + \gamma \beta_j \bmod{AB} . \]
+Thus $NAB\leq NA\cdot NB$ and so $NAB=NANB$.
+
+Let $[K:\Q]<\infty$.  We define a notation $\sim$ on the non-zero ideals of $\A\cap K$ by $A\sim B$ if and only if there exist $\alpha$, $\beta\in\A\cap K$ with $\alpha\beta\neq0$ so that
+\[ (\alpha)A = (\beta)B . \]
+This is an equivalence relation
+\begin{enumerate}
+\item $A\sim A$ \quad $\alpha=\beta=1$ $\checkmark$
+\item $A\sim B\iff B\sim A$ $\checkmark$
+\item If $A\sim B$ and $B\sim C$ then there exist %\exists
+$\alpha$, $\beta$, $\gamma$, $\delta$ in $\A\cap K\setminus\brace{0}$ such that $(\alpha)A=(\beta)B$ and $(\gamma)B=(\delta)C$ so then
+\[ (\alpha\gamma)A = (\alpha)(\gamma)A = (\gamma)(\beta)B = (\delta)(\beta)C = (\delta\beta)C . \]
+Thus $A\sim C$.
+\end{enumerate}
+The equivalence classes under the relation $\sim$ are known as the ideal classes of $\A\cap K$.  Note that if we have just one equivalence class then all of the ideals are principal.  The number of ideal classes is known as the class number of $K$ and it is denoted by $h$ or $h_K$.
+
+Let $\mathcal{C}=\set{[A]}{\text{$A$ is an ideal of $\A\cap K$}}$; here $[A]$ denotes the ideal class of which $A$ is a representative.
+
+We define a multiplication on $\CC$ by
+\[ [A]\cdot[B] = [AB] . \]
+Note that this definition does not depend on the representatives chosen since if $A\sim C$ and $B\sim D$ then $AB\sim CD$.
+
+Observe that $\CC$ is an abelian group under multiplication.  To see this note that multiplication is associative since
+\[ [A]\cdot([B]\cdot[C])=[A]\cdot[BC]=[A(BC)]=[(AB)C]=[AB]\cdot[C]=([A]\cdot[B])\cdot[C] . \]
+The principal ideal class is the identity element of the group since $[(1)]\cdot[B]=[B]=[B]\cdot[(1)]$.  Plainly also $[A]\cdot[B]=[B]\cdot[A]$.
+
+Further $[A]$ has an inverse.  To see this note that there is a positive integer $a$ in $A$ (take $\alpha\in A$\dots) since $A$ is not $(0)$.
+
+Thus $(a)\subseteq A$ hence $A\mid(a)$.  Therefore there exists an ideal $B$ with $AB=(a)$.  Thus $[A]\cdot[B]=[(a)]=[(1)]$ and so
+\[ [B] = [A]^{-1} . \]
+Therefore $\CC$ is an abelian group under $\cdot$.

@@ -1,0 +1,35 @@
+Information Session on Grad Studies for 3rd and 4th year undergrads in the Faculty of Mathematics \\
+Thursday, January 21, 4:00 pm DC 1302 \\
+Refreshments will be served.
+
+Topological Spaces
+
+Let $X$ be a set, $X\neq\emptyset$.  A subset of $\P(X)$, $\T$, is called a \emph{topology} on $X$ if it is closed under taking finite intersection and arbitrary union.  To be precise, we mean for any finite $\A\subset\T$, $\bigcap\A\in\T$ and for any $\A\subset\T$, $\bigcup\A\in\T$.
+
+The pair $(X,\T)$ is called a topological space.
+
+\eg
+\begin{enumerate}[label=(\arabic*)]
+\item $\T=\P(X)$ is a topology on $X$.  This is called \emph{the discrete topology} on $X$.
+\item $\T=\brace{\emptyset,X}$\marginpar{Q: $\T=\emptyset$?  No.}
+is called the \emph{indiscrete topology} on $X$.
+\item Let $X$ be an infinite set.  Let
+\[ \T = \set{\emptyset,X,A}{\text{$X\setminus A$\footnotemark\ is finite}\footnotetext{complement of $A$ in $X$}} \]
+Then $\T$ is a topology on $X$.
+\marginpar{venn diagram of $A\cap B$ in $X$}%
+\marginpar{$X\setminus(A\cap B)=(X\setminus A)\cup(X\setminus B)$}%
+This is called the co-finite topology \emph{or} the topology of finite complements.
+\end{enumerate}
+\prop In a topological space $(X,\T)$, $\emptyset\in\T$ and $X\in\T$. \\
+\pf Let $\A=\emptyset$ ($\A\subset\T$), a finite set.
+\begin{align*}
+\bigcap\A &= \set{x\in X}{\text{$x\in A$ for \emph{all} $A\in\A$}} \\
+&= X \\
+\bigcup\A &= \set{x\in X}{\text{$x\in A$ for \emph{some} $A\in\A$}} \\
+&=\emptyset
+\end{align*}%
+{\footnotesize\vspace{-2\baselineskip}}\marginpar{$\A=\brace{A_1,A_2}$\\$\bigcap\A=A_1\cap A_2$}%
+\begin{enumerate}
+\item[(4)] $X=\brace{a,b,c}$, $\T=\brace{\emptyset,X,\brace{a,b}}$ and $\T=\brace{\emptyset,X,\brace{a},\brace{b},\brace{a,b}}$
+\end{enumerate}
+\prop Let $X\neq\emptyset$ and let $\set{\T_i}{i\in I}$ be a family of topologies on $X$, say that $I\neq\emptyset$.  Then $\bigcap_{i\in I}\T_i$ is a topology on $X$.

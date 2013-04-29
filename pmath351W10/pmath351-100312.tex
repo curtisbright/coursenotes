@@ -1,0 +1,43 @@
+\SS5.5 \\
+A (real) vector space $X$ is \emph{normed} if there is a map $\norm{\cdot}\colon X\to\R$ (called norm) satisfying
+\begin{enumerate}
+\item[(1)] $\norm{x+y}\leq\norm{x}+\norm{y}$ for all $x$, $y\in X$
+\item[(2)] $\norm{\lambda x}=\abs{\lambda}\norm{x}$ for all $x\in X$ and $\lambda\in\R$
+\item[(3)] $\norm{x}\geq0$ and $\norm{x}=0$ if and only if $x=0$.
+\end{enumerate}
+The norm induces a metric on $X$ by
+\[ d(x,y) = \norm{x-y} \]
+and is therefore a metric space as well as a topological space.  If $X$ is \emph{complete}, we call $X$ a Banach space.
+
+\egs $(\R^n,\norm{\cdot}_p)$ where $\norm{x}_p=\sqrt[\leftroot{-2}\uproot{2}p]{\sum_{i=1}^n\abs{x_i}^p}$
+
+The usual Euclidean norm is using $p=2$.
+\begin{center}$(\R^n,\norm{\cdot}_2)$, $(\R^n,\norm{\cdot}_1)$, $(\R^n,\norm{\cdot}_\infty)$ \\
+where $\norm{x}_\infty\overset{\text{def}}{=}\sup_{i\leq n}\abs{x_i}$
+\end{center}
+are examples of Banach spaces.
+
+\defn Let $X$ be a topological space.  A sequence $f_n\colon X\to\R$ is said to converge \emph{pointwise} (on $X$) if for each fixed $x\in X$, the sequence $f_n(x)$ in $\R$ is convergent.
+
+When $f_n$ is pointwise convergent, \\%$f(x)=\lim_{n\to\infty}f_n(x)$, \\
+$f(x)=\lim_{n\to\infty}f_n(x)$, $f\colon X\to\R$, is called \emph{the pointwise} limit of $f_n$.  We write ``$f_n\to f$ pointwise''.
+
+Thus it means that for each $x\in X$ and $\epsilon>0$, there exists $N$ such that for all $n\geq N$, $\abs{f_n(x)-f(x)}<\epsilon$.
+
+If $N$ exists and is independent of $x$, we say that $f_n\to f$ \emph{uniformly} on $X$.
+
+In fact, the above can be formulated for any set $X$.  Consider $C(X,\R)$ the vector space of all \emph{continuous} functions on $X$, and confine ourself further, to $C_b(X,\R)$, the space of \emph{bounded} continuous functions.
+
+\thm Let $X$ be a topological space.  Let $f_n$ be a sequence in $C(X,\R)$.  If $f_n$ tends to $f\colon X\to\R$ \emph{uniformly} on $X$, then $f\in C(X,\R)$.  (Proof: Exercise)
+
+\defn On $C_b(X,\R)$, we define $\norm{\cdot}_\infty$ by
+\[ \norm{f}_\infty = \sup_{x\in X}\abs{f(x)} \qquad \text{(a finite number because $f$ is bounded)} \]
+\emph{Claim} that $\norm{\cdot}_\infty$ is a \emph{norm} on $C_b(X,\R)$ under which the space $C_b(X,\R)$ is a Banach space.  Observe that, if $X$ is compact, then
+\[ C(X,\R) = C_b(X,\R) . \]
+We can observe that
+\begin{center}$f_n\to f$ uniformly on $X$ \\
+if and only if $(f_n-f)\to0$ uniformly on $X$ \\
+and $g_n\to0$ uniformly on $X$ \\
+if and only if $\norm{g_n}_\infty\to0$ (in $\R$)
+\end{center}
+Note: When $X$ is finite with $n$ elements, using the discrete topology, $C(X,\R)$ is essentially the same as $\R^n$.

@@ -1,0 +1,76 @@
+For $2\leq n\in\Z$, $n$ is a \emph{Carmichael number} when $n$ is composite and $b^n=b\bmod n$ for all $b\in\Z$.
+
+\eg Show that $2\leq n\in\Z$ is a Carmichael number if and only if
+\[ n = \prod_{i=1}^l p_i \]
+for some distinct primes $p_1$, $\dotsc$, $p_l$ with $l\geq2$ such that $(p_i-1)\div(n-1)$ for all $i$. \\
+\soln Suppose $n=p_1p_2\dotsm p_l$ where the $p_i$ are distinct primes with $l\geq2$ and $(p_i-1)\div(n-1)$ for all $i$. \\
+Then $n$ is composite since $l\geq2$ and for $b\in\Z$, \\
+for each $i$, if $p_i\div b$ then $b^n=0=b\bmod p_i$ \\
+and if $p_i\ndiv b$ then $b^{p_i-1}=1\bmod p_i$ \\
+so $b^m=1\bmod p_i$ for any multiple $m$ of $p_i-1$ \\
+$\therefore b^{n-1}=1\bmod p_i$ \\
+$\therefore b^n=b\mod p_i$ \\
+Since $b^n=b\bmod p_i$ for all $i$ we have $b^n=b\bmod n$ by the CRT.
+
+Conversely, suppose that $n$ is a Carmichael number.  Say $n=\prod_{i=1}^l p_i^{k_i}$ where $p_1$, $p_2$, $\dotsc$, $p_l$ are distinct primes with $l\geq2$ (since $n$ is composite) and each $k_i\geq1$. \\
+Since $n$ is a Carmichael number \\
+$b^n=b\bmod n$ for all $b\in\Z$ \\
+$\therefore b^n=b$ for all $b\in U_n$ \\
+$b^{n-1}=1\bmod n$ for all $b\in U_n$ \\
+$\therefore n-1$ is a multiple of $\ord_n(b)$ for all $b\in U_n$ in particular, $n-1$ is a multiple of $\kappa(n)=\lcm(\kappa(p_i^{k_i}))$. \\
+If we had $k_i=2$ for some $i$ then we would have $p_i\div\kappa(p_i^{k_i})$
+
+Aside: for $p$ odd
+\[ \kappa(p^k) = \phi(p^k) = p^{k-1}(p-1) \]
+and
+\[ \kappa(2) = 1\co\kappa(4)=2\co\kappa(2^n)=\tfrac12\phi(2^k)=2^{k-2} \]
+
+but then since $\kappa(p_i^{k_i})\div n-1$ we would have $p_i\div(n-1)$ \\
+but $p_i\div n$ so this is not possible. \\
+So we have $k_i=1$ for all $i$, and $n=p_1p_2\dotsm p_l$ and $(n-1)$ is a multiple of $\kappa(n)=\lcm(\kappa(p_i))=\lcm(p_i-1)$ so $(p_i)\div(n-1)$ for all $i$
+
+\ex If $n=p_1p_2\dotsm p_l$ is a Carmichael number then no $p_i=2$ and $l\geq3$.
+
+\eg Note that $3\cdot11\cdot17=561$ is a Carmichael number since $2\div560$, $10\div560$, $16\div560$
+
+\remark There are infinitely many Carmichael number.
+
+\textbf{Miller's Test:} Let $n\geq3$ be odd.  Write $n-1=2^kq$ with $q$ odd.  If $n$ is prime
+\begin{align*}
+b^{n-1} &= 1 \bmod n \text{ for $1\leq b<n$} \\
+b^{q2^k}-1 &= 0 \bmod n \\
+0 = (b^q)^{2^k} &= ((b^q)^{2^{k-1}})(b^{q2^{k-1}}-1) \\
+&= (b^{q2^{k-1}}+1)(b^{q2^{k-2}}+1)(b^{q2^{k-2}}-1) \\
+0 &= (b^{q2^{k-1}}+1)(b^{q2^{k-2}}+1)\dotsm(b^{q2}+1)(b^q+1)(b^q-1) \bmod n
+\end{align*}
+(and $\Z_n$ is a field) and so either $b^q=1\bmod n$ or $b^{q2^i}=-1$ for some $i=0$, $1$, $\dotsc$, $k-1$
+
+PRIMES is in P: $(x+b)^n=x^n+b\bmod\Z_n[x]/(x^r-1)$
+
+\textbf{Chapter 9 Quadratic Residues} \\
+Problem: given $a\in\Z_n$ or $U_n$ determine whether $a=x^2$ for some $x\in U_n$ \\
+\defn $Q_n=\set{a\in U_n}{\text{$a=x^2$ for some $x\in U_n$}}$ is called the group of \emph{quadratic residues} modulo $n$
+
+Note $Q_n$ is a group (since $1\in Q_n$, if $a=x^2$ and $b=y^2$ then $ab=(xy)^2$, and if $a=x^2$ then $a^{-1}=(x^{-1})^2$)
+
+\note The bijection
+\[ f\colon \Z_{ab} \to \Z_a \oplus \Z_b \]
+given by $f(x)=(x,x)$ in the case that $\gcd(a,b)=1$ gives an isomorphism
+\[ f\colon Q_{ab} \to Q_a \oplus Q_b \]
+since if $u=x^2\in U_{ab}$ then $u=x^2\in U_a$ and $u=x^2\in U_b$ \\
+and if $u=z^2\in U_a$ and $v\in y^2\in U_b$ \\
+and if we solve $w=x\bmod a$ and $w=y\bmod b$ \\
+then $w^2\in Q_{ab}$
+\begin{align*}
+\text{with } w^2 &= x^2 = u \in Q_a \\
+w^2 &= y^2 = v \in Q_b
+\end{align*}
+\note $U_2=\brace1$, $Q_2=\brace1$ \\
+$U_4=\brace{1,3}$, $Q_4=\brace{1}$ \\
+$U_{2^k}=\brace{\pm5^i}$, $\abs{U_{2^k}}=2^{k-1}$ \\
+$Q_{2^k}=\brace{+5^{2i}}$, $\abs{Q_{2^k}}=2^{k-3}$
+
+for $p$ an odd prime $U_{p^k}=\chev{u}$ for some $u\in U_{p^k}$ and $Q_{p^k}=\chev{u^2}$ and $\phi(p^k)=p^{k-1}(p-1)$ is even so $\chev{Q_{p^k}}=\frac12\chev{U_{p^k}}=\frac12 p^{k-1}(p-1)$
+
+Given $a\in U_{p^k}=\chev{u}$ \\
+$a=u^k$ for some $k$

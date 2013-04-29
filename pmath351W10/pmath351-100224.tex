@@ -1,0 +1,34 @@
+\textbf{Compactness} \\
+Let $X$ be a topological space.  A family $\sC$ of open sets is said to be an open \emph{cover} of $X$ if $\bigcup\sC=X$.
+
+If $\tilde\sC\subset\sC$ and $\bigcup\tilde\sC=X$, we call $\tilde\sC$ a \emph{subcover} of $\sC$.
+
+The space $X$ is called compact (cpct) is \emph{every} open cover $\sC$ of $X$ has a \emph{finite} subcover $\tilde\sC$.
+
+\eg $\R$ is \emph{not} compact.  The family $\set{\open{-n,n}}{n\in\N}$ is an open cover of $\R$.  Clearly it has no finite subcover.
+
+A finite topological space $X$ is compact.  Here is the trivial argument: Let $X=\brace{x_1,x_2,\dotsc,x_n}$.  Let $\sC$ be any given open cover.  Then $\bigcup\sC=X$.  So, for each $1\leq i\leq n$, $x_i\in\bigcup\sC$ and so there exists $G_i\in\sC$ so that $x_i\in G_i$.  Now $\tilde\sC=\set{G_i}{1\leq i\leq n}\subset\sC$.  $\tilde\sC$ is clearly a subcover of $\sC$.
+
+Let $X$ be \emph{any} set and consider the topology of finite complements.  Then the space $X$ is compact.  Without loss of generality, $X$ is infinite.
+
+\pf Let $\sC$ be an open cover of $X$.  Let $x_0\in X$ be fixed.  Then, as $\sC$ covers $X$, there exists $G_0\in\sC$ so that $x_0\in G_0$.  Now, $G_0$ is open, therefore $X\setminus G_0$ is finite, say $X\setminus G_0=\brace{x_1,x_2,\dotsc,x_n}$.  To each $x_i$, there exists $G_i\in\sC$ so that $x_i\in G_i$.
+
+Now $\brace{G_0,G_1,G_2,\dotsc,G_n}$ is a finite subcover of $\sC$.
+
+\thm A subspace $X$ of $\R^n$ is \emph{compact} if and only if it is closed (in $\R^n$) and bounded.
+
+\defn $X\subset\R^n$ is bounded if there exists a (finite) radius $r$ so that $X\subset D(0,r)$.
+
+\defn \textbf{Sequential compactness.} Let $X$ be a topological space.  If every sequence $x_n$ in $X$ has a convergent subsequence in $X$, we say $X$ is \emph{sequentially} compact.
+
+\eg In $[0,1]$, the sequence $0$, $1$, $0$, $1$, $0$, $1$, $\dotsc$, is not convergent, but the sequence formed by the odd terms $0$, $0$, $0$, $\dotsc$, is convergent (illustrating the notion of convergent subsequence).
+
+The full space $\R$ is \emph{not} sequential compact. \\
+\pf The sequence $x_n=n$ is a sequence in $\R$ which has no convergent subsequence.
+
+\textbf{Theorem 3.1.3:}~(Bolzano--Weierstrass Theorem). \\
+A (subset of a) metric space is \emph{compact} if and only if it is \emph{sequentially compact}.  (Proof page 165).
+
+Question on exam.  Can we put a topology on $P_2$ so that $P_2$ is homeomorphic to $\R$?
+
+Yes.  $P_2$ can be matched with $\R^3$ by a bijective map.  Also $\abs{\R^3}=\abs{\R}$.  So $\abs{P_2}=\abs{\R}$.  There is a bijection $f\colon P_2\to\R$.

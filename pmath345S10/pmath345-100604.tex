@@ -1,0 +1,51 @@
+\thm Let $D$ be a UFD, $p(x)=a_0+a_1x+\dotsb+a_nx^n\in D[x]$ any nonzero polynomial, $a_i\in D$.  If $p(\frac ml)=0$ for $l$, $m\in D$, then $l\mid a_n$ and $m\mid a_0$.
+
+\eg Does $3x^3+1$ have any roots in $\Q$? \\
+\ans No.  Any rational root $\frac ab$ satisfies $b\mid3$ and $a\mid1$, so $b\in\brace{\pm1,\pm3}$ and $a\in\brace{\pm1}$.  Without loss of generality, $b>0$, so $b\in\brace{1,3}$.  Now we check these roots:
+\begin{gather*}
+3(1)^3 + 1 = 4 \neq 0 \\
+3(-1)^3 + 1 = -2 \neq 0 \\
+3(\tfrac13)^3 + 1 \neq 0 \\
+3(\tfrac13)^3 + 1 \neq 0
+\end{gather*}
+Therefore $3x^3+1$ has no roots in $\Q$.  Since its degree is $\leq3$, this means it's irreducible over $\Q$. \\
+\pf Say $(\tfrac ml)=0$.  Then in $K(D)[x]$, we have $(x-\tfrac ml)\mid p(x)$, so $lx-m\mid p(x)$.  By Gauss's Lemma, $p(x)=(lx-m)q(x)$ for some $q(x)$ in $D[x]$.  If $q(x)=b_0+b_1x+\dotsb+b_{n-1}x^{n-1}$, then $a_0=-b_0m$ and $a_n=lb_{n-1}$. \qed
+
+\thm (Eisenstein's Criterion) \\
+Let $D$ be a domain, $P\subset D$ a prime ideal, $f(x)=a_0+a_1x+\dotsb+a_n x^n\in D[x]$ a nonzero polynomial satisfying:
+\begin{enumerate}[label=(\arabic*)]
+\item $a_i\in D$
+\item $a_i\in P$ if $i<n$
+\item $a_n\notin P$
+\item $a_0\notin P^2$
+\end{enumerate}\marginpar{$P=(x_1,\dotsc,x_n)\implies P^2=(x_ix_j)_{i,j\in\brace{1,\dotsc,n}}$ In particular $(x)^2=(x^2)$}%
+%Then $f(x)$ is irreducible in $D[x]$.
+Then $f(x)$ has only constant factors in $D[x]$.
+
+\eg Is $x^4+10x+6$ irreducible over $\Q$? \\
+Yes: Apply Eisenstein with $P=(2)$:
+\begin{enumerate}%[label=(\arabic*)]
+\item[(2)] $0$, $0$, $10$, $6$ all in $(2)$
+\item[(3)] $1\notin(2)$
+\item[(4)] $6\notin(4)$ \checkmark
+\end{enumerate}
+\pf Say $f(x)=a(x)b(x)$ in $D[x]$.  Then $f(x)\equiv a(x)b(x)$ in $(D/P)[x]$.
+\[ \implies a(x)b(x) \equiv a_n x^n \bmod P \]
+Since $(D/P)$ is a domain, it has a fraction field $K$, and $K[x]$ is a UFD.  So both $a(x)$ and $b(x)$ are both constant multiples of a power of $x\bmod P$.
+
+If $a(x)$ and $b(x)$ are both not constant, then their constant coefficients are both $0\bmod P$.  This would mean that both coefficients lie in $P$, so
+\[ a_0 = (\text{constant coefficient of $a(x)$})\cdot(\text{constant coefficient of $b(x)$}) \]
+would lie in $P^2$.  This is a contradiction, and so $f(x)$ has only constant factors, as desired. \qed
+
+\cor If $f(x)$ satisfies the hypothesis of Eisenstein's Criterion and $D$ is a UFD, then $f(x)$ is irreducible in $K(D)[x]$. \\
+\pf Gauss's Lemma. \qed
+
+\cor If $f(x)$ is monic (leading coefficient is one) and satisfies the hypotheses of Eisenstein's Criterion, then $f(x)$ is irreducible in $D[x]$. \\
+\pf Immediate. \qed
+
+\eg Is $x^3y+xy^3-x+y-1$ irreducible in $\C[x,y]$? \\
+Yes: Apply Eisenstein's Criterion to $D=\C[y]$ and $P=(y-1)$. \\
+Write $x^3y+xy^3-x+y-1$ \\
+$=y\footnote{not in $(y-1)$}x^3+(y^3-1)\footnote{in $(y-1)$}x+(y-1)\footnote{in $(y-1)$ but not $(y-1)^2$}$
+
+So, by Eisenstein's Criterion, $x^3y+xy^3-x+y-1$ has only constant factors; namely, factors lying in $D=\C[y]$.  But $y$ and $y-1$ are both coefficients are relatively prime, so there are no nontrivial constant factors either.

@@ -1,0 +1,75 @@
+Office Hours Today: 11:30--12, 1:15--2:25, 3:30--4:30
+
+\defin A commutative ring $R$ is \emph{Noetherian} if there \emph{does not exist} an infinite increasing sequence of ideals
+\[ I_0 \subsetneq I_1 \subsetneq I_2 \subsetneq I_3 \subsetneq \dotsb . \]
+\lem $\text{pid}\implies\text{Noetherian}$ \\
+\pf Suppose we have a sequence
+\[ (a_0) \subseteq (a_1) \subseteq (a_2) \subseteq \dotsb . \]
+Let $I=\bigcup_i(a_i)$. \\
+\textbf{Exercise: }$I$ is an ideal. \\
+(\textbf{Note: }unions of ideals are \emph{not} generally ideals.)
+\begin{align*}
+\text{$R$ pid} &\implies I=(b) \\
+&\implies \text{for some $i$, $b\in(a_i)$} \\
+&\implies I \subseteq (a_i) \\
+&\implies (a_j) \subseteq (a_i) \text{ for all $j\geq i$} \\
+&\implies (a_j) = (a_i) \text{ for all $j\geq i$}
+\end{align*}
+Therefore $R$ is Noetharianity.
+
+\prop $R$ Noetharian integral domain. \\
+Every nonzero nonunit is a finite product of irreducibles. \\
+\pf $a\in R$, $a\neq0$, $a$ \emph{not} a unit. \\
+We build tree starting with $a=a_\emptyset$ \\
+(We will index this tree by finite sequences of $0$s and $1$s, i.e., by elements of $2^{<\omega}$.) \\
+If $a$ is irreducible then $\checkmark$. \\
+If not then $a=a_0\cdot a_1$ such that $a\nmid a_0$ \emph{and} $a\nmid a_1$.%\marginpar{figure: tree with root $a_\emptyset$} \\
+\[ \xymatrix{
+& a_\emptyset \ar@{-}[dl] \ar@{-}[dr] & \\
+a_0 & & a_1
+} \]
+If \emph{$a$ is irreducible}, \emph{stop} that branch.  Otherwise write $a_0=a_{00}\cdot a_{01}$ where
+\[ a_0\nmid a_{00} \qquad\text{and}\qquad a_0\nmid a_{01} . \]
+Continue in this way. \\
+If the tree is \emph{finite}, then $a$ is the product of all the ``leaves'' of the tree and these elements are irreducible. \\
+So we are done.
+
+If the tree is infinite there must exist an infinite branch (K\"onig's Lemma).  So we have $\alpha\in2^\omega$, an infinite sequence of $0$s and $1$s and for each $i$,
+\[ a_{\alpha\upharpoonright_{i+1}} \mid a_{\alpha\upharpoonright_i} \qquad\text{but}\qquad a_{\alpha\upharpoonright_i}\nmid a_{\alpha\upharpoonright_{i+1}} \]
+\[ (a_{\alpha\upharpoonright_i}) \subsetneq (a_{\alpha\upharpoonright_{i+1}}) \]
+\[ (a_\emptyset) \subsetneq (a_{\alpha\upharpoonright_1}) \subsetneq (a_{\alpha\upharpoonright_2}) \subsetneq \dotsb \]
+Contradiction to Noetheranity. \\
+Hence the tree \emph{is} finite and $a$ is a product of finitely many irreducibles.
+
+\textbf{Recall: }An integral domain $R$ is a \emph{Unique factorization domain} if every nonzero nonunit is a product of primes. \\
+\cor $\text{pid}\implies\text{ufd}$ \\
+\pf By the lemma pid is Noetharian.  By a proposition last time
+in a pid $\text{irreducible}=\text{prime}$.  Hence $\text{pid}\implies\text{ufd}$ by
+the previous proposition.
+\[ \text{fields} \mathrel{{\subsetneq}\footnotemark}\footnotetext{$\Z$} \text{Euclidean domains} \mathrel{{\subsetneq}\footnotemark}\footnotetext{example?} \text{pids} \mathrel{{\subsetneq}\footnotemark}\footnotetext{example: $\Z[x]$, why?} \text{ufds} \mathrel{{\subsetneq}\footnotemark}\footnotetext{?} \text{integral domains} \]
+\lem $R$ integral domain.  $a,b\in R$, $u\in R$ a unit. \\
+Then $a\mid b\iff a\mid bu$. \\
+\pf \vspace{-\baselineskip} \begin{align*}
+a \mid b &\iff b=ax \text{ for some $x\in R$} \\
+&\iff bu = ay \text{ for some $y\in R$}
+\end{align*}
+for $\Longrightarrow$ let $y=xu$ \\
+for $\Longleftarrow$ let $x=yu^{-1}$
+
+\lem $R$ integral domain, $a$ irreducible in $R$ and $u$ a unit in $R$.  Then $au$ is irreducible. \\
+\pf Suppose $au=bc$ \\
+$\implies a=bcu^{-1}=(b)(cu^{-1})$ \\
+$\implies$ $a\mid b$ or $a\mid cu^{-1}$ \\
+$\overset{\text{Ex.}}{\Longrightarrow}$ $au\mid b$ or $a\mid c$ ($\implies au\mid c$). \\
+Lemma+
+
+\lem $R$ integral domain, $a\in R$ irreducible, $b\mid a$ \emph{then} either $b$ is a unit or $b=au$ for some unit $u$. \\
+(in particular in the second case, $b$ is also irreducible by the previous lemma.) \\
+\pf $b\mid a\implies a=bx$ for some $x\in R$. \\
+\textbf{Exercise: }$a$ irreducible $\implies$ either $b$ is a unit of $x$ is a unit.
+
+\defin $R$ integral domain, $a,b\in R$ irreducibles.  We say $a$ and $b$ are \emph{associate} if $a=bu$ for some unit $u\in R$.
+
+\thm $R$ a unique factorization domain, $a\in R$ nonzero.  Then up to associates and rearrangement there is a unique factorization of $a$,
+\[ a = p_1^{e_1}p_2^{e_2}\dotsm p_l^{e_l} \]
+where $p_1,\dotsc,p_l$ are distinct irreducibles and $e_1,\dotsc,e_l$ are positive integers.

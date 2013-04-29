@@ -1,0 +1,97 @@
+We deduce Theorem 20 from the Subspace Theorem by induction on $n$.  $n=1$~$\checkmark$.  Assume we have integers $q_1\c \dotsc\c q_n$, not all zero, for which
+\[ \norm{\alpha_1q_1+\dotsb+\alpha_nq_n}\abs{q_1\dotsm q_n}^{1+\delta} < 1 . \]
+Choose $p$ to be the closest integer to $\alpha_1q_1+\dotsb+\alpha_nq_n$ so that $\alpha_1q_1+\dotsb+\alpha_nq_n-p<1$.  Write
+\begin{gather*}
+\x = (q_1,\dotsc,q_n,p) \text{ and put} \\
+L_i(\X) = \X_i \text{ for $i=1\c \dotsc\c n$} \\
+\shortintertext{and}
+L_{n+1}(\X) = \alpha_1X_1+\dotsb+\alpha_nX_n-X_{n+1} .
+\end{gather*}
+We have $n+1$ linearly independent forms with algebraic coefficients. \\
+Note that
+\[ \abs{L_1(\x)\dotsm L_{n+1}(\x)} = \abs{q_1\dotsm q_n}\norm{\alpha_1q_1+\dotsb+\alpha_nq_n} . \]
+We have $\house{\x}<K_1q$ where $q=\max_i\abs{q_i}$ and $K_1\c K_2\c \dotsc$ denote positive numbers which depend on $\alpha_1\c \dotsc\c \alpha_n$ and $n$. %\\
+Observe that
+\[ \abs{L_1(\x)\dotsm L_{n+1}(\x)} < \frac{1}{\abs{q_1\dotsm q_n}^\delta} < \frac{1}{\house{\x}^{\delta/2}} , \]
+for $q$ sufficiently large, as we may assume.  Then by the Subspace Theorem $\x$ lies in one of a finite collection of proper rational subspaces of $\R^{n+1}$.  Let $T$ be such a subspace.  Then $T$ can be expressed as the set of rational points $(y_1,\dotsc,y_{n+1})\in\R^{n+1}$ for which $c_1y_1+\dotsb+c_{n+1}y_{n+1}=0$\footnote{\,$*$\;\,defining equation of subspace} with $c_1\c \dotsc\c c_{n+1}\in\Q$ and not all the $c_i$s are zero.
+
+Suppose first that $c_i\neq0$ for some $i$ with $1\leq i\leq n$.  Without loss of generality we may suppose $c_n\neq0$.  Then
+\[ c_1q_1+\dotsb c_nq_n + c_{n+1}p = 0 \]
+so
+\[ c_n\alpha_nq_n = -c_1\alpha_nq_1 - \dotsb -c_{n-1}\alpha_nq_{n-1} - c_{n+1}\alpha_np \]
+Thus
+\begin{align*}
+\abs{c_n}\abs{\alpha_1q_1+\dotsb+\alpha_nq_n-p}
+&= \abs{(c_n\alpha_1-c_1\alpha_n)q_1+\dotsb+(c_n\alpha_{n-1}-c_{n-1}\alpha_n)q_{n-1}-(c_n+c_{n+1})p} \\
+&= \abs{c_n+c_{n+1}\alpha_n}\abs*{\paren*{\frac{c_n\alpha_1-c_1\alpha_n}{c_n+c_{n+1}\alpha_n}}q_1+\dotsb+\frac{(c_n\alpha_{n-1}+c_{n-1}\alpha_n)}{(c_n+c_{n+1}\alpha_n)}q_{n-1}-p}
+\end{align*}
+Note that $c_n+c_{n+1}\alpha_n\neq0$ since $1\c \alpha_1\c \dotsc\c \alpha_n$ are linearly independent over $\Q$.  Put
+\[ \alpha'_i = \frac{c_n\alpha_i-c_i\alpha_n}{c_n+c_{n+1}\alpha_n} \qquad\text{for $i=1\c \dotsc\c n-1$} . \]
+Then
+\[ \abs{c_n}\abs{\alpha_1q_1+\dotsb+\alpha_nq_n-p} = \abs{c_n+c_{n+1}\alpha_n}\abs{\alpha'_1q_1+\dotsb+\alpha'_{n-1}q_{n-1}-p} . \]
+Therefore
+\[ \norm{\alpha'_1q_1+\dotsb+\alpha'_{n-1}q_{n-1}} < \frac{K_2}{\abs{q_1\dotsm q_n}^{1+\delta}} < \frac{1}{\abs{q_1\dotsm q_{n-1}}^{1+\delta/2}} \]
+for $q$ sufficiently large.
+
+We remark that $1\c \alpha'_1\c \dotsc\c \alpha'_{n-1}$ are linearly independent over $\Q$.  To see this suppose that
+\[ \lambda_1\alpha'_1 + \dotsb + \lambda_{n-1}\alpha'_{n-1} + \lambda_n = 0 \]
+with $\lambda_1\c \dotsc\c \lambda_n$ in $\Q$.  Then
+\begin{gather*}
+\lambda_1(c_n\alpha_1-c_1\alpha_n) + \dotsb + \lambda_{n-1}(c_n\alpha_{n-1}-c_{n-1}\alpha_n) + \lambda_n(c_n+c_{n+1}\alpha_n) = 0 \\
+\lambda_1c_n\alpha_1+\dotsb+\lambda_{n-1}c_n\alpha_{n-1}-(\lambda_1c_1+\dotsb+\lambda_{n-1}c_{n-1}+\lambda_nc_{n+1})\alpha_n+\lambda_nc_n = 0
+\end{gather*}
+But $1\c \alpha_1\c \dotsc\c \alpha_n$ are linearly independent over $\Q$ and so, since $c_n\neq0$, $\lambda_1=\dotsb=\lambda_n=0$.  Then by induction $\abs{q_1}\c \dotsc\c \abs{q_n}$ are bounded.
+
+It remains to consider the case when $c_1=\dotsb=c_n=0$ and $c_{n+1}\neq0$.  Then
+\[ c_{n+1}p=0 \qquad\text{so}\qquad p=0 . \]
+In this case
+\[ \abs{q_1\dotsm q_n}^{1+\delta}\abs{\alpha_1q_1+\dotsb+\alpha_nq_n}<1 \]
+so
+\[ \abs{q_1\dotsm q_n}^{1+\delta}\abs{\alpha_n}\abs*{\paren*{\frac{\alpha_1}{\alpha_n}}q_1 + \paren*{\frac{\alpha_{n-1}}{\alpha_n}}q_{n-1} + q_n}<1 . \]
+Put $\alpha'_i = \frac{\alpha_i}{\alpha_n}$ for $i=1\c \dotsc\c n-1$. \\
+Then $1\c \alpha'_1\c \dotsc\c \alpha'_{n-1}$ are linearly independent over $\Q$ and so
+\[ \abs{q_1\dotsm q_{n-1}}^{1+\delta/2} \norm{q_1\alpha'_1+\dotsb+q_{n-1}\alpha'_{n-1}} < 1 . \]
+Therefore $\max_i\abs{q_i}$ is bounded by induction.  The result follows.
+
+In a similar way we can deduce the following consequences of the Subspace Theorem. \\
+\textbf{Theorem 23:} Let $\alpha_{ij}$ ($1\leq i\leq n$, $1\leq j\leq m$) be real algebraic numbers and suppose that $1\c \alpha_{i1}\c \dotsc\c \alpha_{im}$ are linearly independent over $\Q$, for $i=1\c \dotsc\c n$.  Let $\delta>0$.  Then there are only finitely many $m$-tuples of non-zero integers $(q_1,\dotsc,q_m)$ for which
+\[ \abs{q_1\dotsm q_m}^{1+\delta} \prod_{i=1}^n \norm{\alpha_{i1}q_1+\dotsb+\alpha_{im}q_m} < 1 . \]
+Results of this sort have application to the study of Diophantine equations such as Norm form equations.
+
+For each dimension $n$ let us consider those lattices with $d(\Lambda)=1$.  In this collection let us look for lattices $\Lambda$ for which the minimal non-zero distance between lattice points $\mu(\Lambda)$ is large.
+
+We define $\mu_n$ for $n=1\c 2\c \dotsc$ by
+\begin{align*}
+\mu_n &= \sup_{\substack{\text{lattices $\Lambda$ in $\R^n$}\\\text{with $d(\Lambda)=1$}}}\paren[\Bigg]{\min_{\substack{\x,\y\in\Lambda\\\x\neq\y}}\lvert\x-\y\rvert} \\
+&= \sup_{\substack{\text{$\Lambda$ in $\R^n$}\\d(\Lambda)=1}}\paren*{\mu(\Lambda)} 
+\end{align*}
+It follows from Mahler's Compactness Theorem that the supremum is actually a maximum.  Lattices for which the maximum is attained are known as extremal lattices.  The values of $\mu_n$ have been determined for $n=1\c \dotsc\c 8$ and they are
+\[ \mu_1 = 1\c  \mu_2 = \sqrt[4]{4/3}\c  \mu_3 = \sqrt[6]{2}\c  \mu_4 = \sqrt[8]{4}\c  \mu_5 = \sqrt[10]{8}\c  \mu_6 = \sqrt[12]{64/3}\c  \mu_7 = \sqrt[14]{64}\c  \mu_8 = \sqrt{2} . \]
+\[ \begin{picture}(7,7.75)(-3.5,-3.5)
+\put(-3.5,0){\vector(1,0){7}}
+\put(0,-3.5){\vector(0,1){7}}
+\multiput(-3,3)(1,0){7}{\circle*{0.1}}
+\multiput(-3,2)(1,0){7}{\circle*{0.1}}
+\multiput(-3,1)(1,0){7}{\circle*{0.1}}
+\multiput(-3,0)(1,0){7}{\circle*{0.1}}
+\multiput(-3,-1)(1,0){7}{\circle*{0.1}}
+\multiput(-3,-2)(1,0){7}{\circle*{0.1}}
+\multiput(-3,-3)(1,0){7}{\circle*{0.1}}
+\put(0,4){\makebox(0,0){Not extremal}}
+\end{picture}
+\qquad
+\begin{picture}(7,7.75)(-3.5,-3.5)
+\put(-3.5,0){\vector(1,0){7}}
+\put(0,-3.5){\vector(0,1){7}}
+\put(0,0){\circle*{0.1}}
+\multiput(-3.224,0)(1.075,0){7}{\circle*{0.1}}
+\multiput(-3.224,1.861)(1.075,0){7}{\circle*{0.1}}
+\multiput(-3.224,-1.861)(1.075,0){7}{\circle*{0.1}}
+\multiput(-2.686,0.931)(1.075,0){6}{\circle*{0.1}}
+\multiput(-2.686,-0.931)(1.075,0){6}{\circle*{0.1}}
+\multiput(-2.686,2.792)(1.075,0){6}{\circle*{0.1}}
+\multiput(-2.686,-2.792)(1.075,0){6}{\circle*{0.1}}
+\put(0,4){\makebox(0,0){Extremal}}
+\end{picture} \]
+%\marginpar{figures: integer points in $\R^2$ and Eisenstein integers}%
+\vspace{-\baselineskip}

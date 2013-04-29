@@ -1,0 +1,38 @@
+Midterm on March 16, Tuesday, 4:00--5:30, MC 4042
+
+\textbf{\SS4.6} Uniform Continuity \\
+Let $X$ and $Y$ be metric spaces under metrics $d$ and $\rho$, respectively.  A map $f\colon X\to Y$ is said to be \emph{uniformly} continuous on $X$ if $\forall\epsilon>0$, $\exists\delta>0$ such that ($d(x_1,x_2)<\delta\implies\rho(f(x_1),f(x_2))<\epsilon$).  Clearly, uniform continuity of $f$ on $X$ implies continuity on $X$.
+
+\eg Let $X=\open{0,1}$, $Y=\R$.  Let $f(x)=\frac{1}{x}$.  Then $f$ is continuous on $X$, but \emph{not} uniformly continuous.
+
+\prop\emph{If\/ $X$ is compact}, then continuous $f\colon X\to Y$ is uniformly continuous. \\
+\pf Assume that $f\colon X\to Y$ is continuous, and that $X$ is compact.  Let $\epsilon>0$ be given.
+
+To each $x\in X$, there exists a $\delta_x>0$ such that $\rho(f(x),f(x_2))<\epsilon/2$ for all $d(x,x_2)<\delta_x$. [continuity of $f$ at $x$] \\
+Now the family $\set{D(x,\delta_x/2)}{x\in X}$ is an open cover of $X$.  By compactness of $X$, there exists $a_1$,~$a_2$, $\dotsc$, $a_n\in X$ so that $\set{D(a_i,\delta_{a_i}/2)}{i=1,\dotsc,n}$ covers $X$.  Let $\delta=\min_{i=1,\dotsc,n}(\delta_{a_i}/2)$.  Then $\delta>0$.
+
+Let $x_1$, $x_2\in X$ be given with $d(x_1,x_2)<\delta$.
+
+Because the discs $D(a_i,\delta_{a_i}/2)$ cover $X$, there exists $i$ so that $x_1\in D(a_i,\delta_{a_i}/2)$.  So, $d(x_1,a_i)<\delta_{a_i}/2$.
+\[ d(x_2,a_i) \leq d(x_1,a_i) + d(x_1,x_2) < \delta_{a_i}/2 + \delta < \delta_{a_i}/2 + \delta_{a_i}/2 = \delta_{a_i} \]
+So $\rho(f(x_2),f(a_i))<\epsilon/2$.  Also, $\rho(f(x_1),f(a_i))<\epsilon/2$.  Hence
+\[ \rho(f(x_1),f(x_2)) \leq \rho(f(x_2),f(a_i)) + \rho(f(x_1),f(a_i)) < \epsilon/2 + \epsilon/2 = \epsilon . \]
+This proves the uniform continuity of $f$.
+%Compactness \approx\ Finiteness
+%Unform spaces: More general.
+
+\textbf{Complete metric spaces} \\
+\defn Let $X$ be a metric space with metric $d$. \\
+A sequence $x_k$ in $X$ is called \emph{Cauchy} if
+\[ \lim_{k,l\to\infty}d(x_k,x_l)=0 \text{, i.e., } \forall\epsilon>0\c\exists N\text{ such that }(k,l\geq N \implies d(x_k,x_l)<\epsilon) . \]
+Clearly, if $x_k$ is a convergent sequence in $X$, then it is Cauchy.
+
+The converse is not true in general. \\
+\eg Consider $\lopen{0,1}$($=X$).  The sequence $\frac1k$ ($k\in\N$) is Cauchy.  It does not converge to a point in $\lopen{0,1}$. \\
+\defn A metric space $(X,d)$ is \emph{complete} if every Cauchy sequence converges (to a point of $X$). \\
+\prop $\R^n$, $\C^n$ are complete metric spaces. \\
+\prop A subspace $A$ of a complete metric space $X$ is complete if and only if $A$ is closed in $X$. \\
+\prop Compact metric spaces are complete.
+%If a Cauchy sequence has a convergent subsequence, it must converge to its limit
+
+\textbf{Read Theorem 3.1.5}

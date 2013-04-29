@@ -1,0 +1,66 @@
+Theorem 43
+\begin{gather*}
+\vdots \\
+\gamma J \subset J
+\end{gather*}
+$J$ is a finitely generated ideal in $R$ so $J=(a_1,\dotsc,a_n)$.
+
+Then there exist $m_{ij}$ in $R$ so that
+\[ \gamma a_i = m_{i1}a_1 + \dotsb + m_{in}a_n \]
+for $i=1$, $\dotsc$, $n$.  Then
+\[ (\gamma I_n - M)\begin{pmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{pmatrix} = \begin{pmatrix}0 \\
+\vdots \\
+0
+\end{pmatrix} \]
+where $M=(m_{ij})$.  $J\neq(0)$ so $\paren*{\begin{smallmatrix}
+a_1 \\
+\vdots \\
+a_n
+\end{smallmatrix}} = \paren*{\begin{smallmatrix}0 \\
+\vdots \\
+0
+\end{smallmatrix}}\implies\det(\gamma I_n-M)=0$.  Thus $\gamma$ is the root of a monic polynomial with entries in $R$.  But $R$ is a Dedekind domain so $R$ is integrally closed in its field of fractions $K$.  Since $\gamma\in K$ we see that $\gamma\in R$.  This is a contradiction.
+
+\textbf{Corollary 44:} Let $A$, $B$ and $C$ be non-zero ideals in a Dedekind domain $R$ with $AC=BC$ then $A=B$. \\
+\pf There exists an ideal $J$ in $R$ so that $CJ$ is principal.  Say $CJ=(\alpha)$ with $\alpha\in R$.  Note that
+\[ ACJ = BCJ \]
+so $A(\alpha)=B(\alpha)$.
+\[ \implies A\alpha = B\alpha \]
+$\implies A=B$ since $\alpha\neq0$.
+
+\textbf{Corollary 45:} Let $A$ and $B$ be non-zero ideal in a Dedekind domain $R$.
+\[ A \mid B \iff B \subseteq A . \]
+\pf $\Rightarrow$ Since $A\mid B$ there exists an ideal $C$ in $R$ with $AC=B$.  Then immediately $B\subseteq A$. \\
+$\Leftarrow$ By Theorem~43 there exists a non-zero element $\alpha$ in $R$ and an ideal $J$ of $R$ such that $AJ=(\alpha)$.  Consider $\frac{1}{\alpha}BJ$.  Note that $\frac{1}{\alpha}BJ$ is an ideal of $R$ since $B\subseteq A$.  Further $A(\frac{1}{\alpha}BJ)=B(\frac{1}{\alpha}AJ)=B(\frac{1}{\alpha}(\alpha))=B$.
+
+\textbf{Theorem 46:} Every non-zero proper ideal in a Dedekind domain $R$ can be written as a product of prime ideals of $R$ and this representation as a product is unique up to ordering. \\
+\pf We first prove existence.
+
+Let $S$ be the set of non-zero proper ideals which cannot be written as a product of prime ideals.  Since $R$ is a Dedekind domain $S$ has a maximal element $M$.  Note that $M$ is contained in a maximal ideal of $R$ which, since $R$ is a Dedekind domain, is a prime ideal of $R$, say $P$.
+
+Thus $M\subseteq P$.  Note $M\neq P$ since $M$ is in $S$.  Thus $M\subsetneq P$.  Therefore by Corollary~45 there exists an ideal $A$ such that
+\[ M = PA . \]
+Further $M\subsetneq A$.  But $A$ is not a product of prime ideals since otherwise by $*$ $M$ is a product of prime ideals.  But then $A\in S$ and $M$ is not maximal in $S$ which is a contradiction.  Therefore $S$ is empty as required.
+
+``Uniqueness'' \\
+Suppose that $p_1$, $\dotsc$, $p_r$ and $q_1$, $\dotsc$, $q_s$ are prime ideals with
+\[ p_1\dotsm _r = q_1\dotsm q_s . \]
+Note that $p_1\mid q_1\dotsm q_s$.  Thus by Corollary~45, $p_1\supseteq q_1\dotsm q_s$.  Since $p_1$ is a prime ideal $p_1\supseteq q_i$ for some $i$.  Without loss of generality we may suppose $p_1\supseteq q_1$.  Prime ideals are maximal ideals in $R$ so $p_1=q_1$.  By Corollary~44, $p_2\dotsm p_r=q_2\dotsm q_s$.  Repeating this argument the result follows.
+
+\remark Let $[K:\Q]<\infty$.  Then $\A\cap K$ is a Dedekind domain and so we have unique factorization into prime ideals, up to ordering, in $\A\cap K$.
+
+\defn Let $R$ be a commutative ring with identity.  An element $c$ of $R$ is said to be irreducible of $R$ if
+\begin{enumerate}
+\item $c\neq0$ and $c$ is not a unit of $R$.
+\item If $c=ab$ with $a$, $b$ in $R$ then $a$ is a unit or $b$ is a unit.
+\end{enumerate}
+An element $c$ of $R$ is said to be a prime of $R$ if
+\begin{enumerate}
+\item $c\neq0$ and $c$ is not a unit of $R$
+\item If $c\mid ab$ with $a$, $b$ in $R$ then $c\mid a$ or $c\mid b$.
+\end{enumerate}
+Note in UFDs the concepts are the same.

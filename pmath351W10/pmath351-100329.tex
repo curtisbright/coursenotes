@@ -1,0 +1,30 @@
+The uniform boundedness principle.
+
+Let $\B$ be a family of continuous functions on a complete metric space $M$, and suppose that for each $x\in M$, there exists a constant $b_x$ such that $\abs{f(x)}\leq b_x$ for all $f\in\B$ [pointwise boundedness].  Then there is a non-empty open set (say a disc) $G$ such and a constant $b$ such that
+\[ \abs{f(x)}\leq b \text{ for all $x\in G$ and $f\in\B$} \]
+[uniform boundedness of $\B$ on $G$.] \\
+\pf For each $n\in\N$, let
+\[ F_n = \set{x\in M}{\abs{f(x)}\leq n\text{ for all $f\in\B$}} \]
+Then each $F_n$ is a closed set in $M$, because
+\[ F_n = \bigcap_{f\in\B} \set{x\in M}{f(x)\in[-n,n]} = \bigcap_{f\in\B} f^{-1}([-n,n]) \]
+For each $x\in M$, there exists $n\in\N$ such that
+\[ x\in F_n \qquad\text{(by pointwise boundedness and take $n\geq b_x$)} \]
+Therefore $\bigcup_{n=1}^\infty F_n = M$. \\
+Baire's Theorem asserts that $M$ is \emph{not} of 1st category as $M$ is complete.  So, at least some $F_{n_0}$ which is \emph{not} nowhere dense.  So $(\overline{F_{n_0}})^\circ\neq\emptyset$\marginpar{$^\circ$: interior}.  As $F_{n_0}$ is closed, $\overline{F_{n_0}}=F_{n_0}$.  So ${F_{n_0}}^\circ\neq\emptyset$.  Take $G={F_{n_0}}^\circ$.  Thus $x\in G\implies x\in F_{n_0}\implies\abs{f(x)}\leq n_0$ for all $f\in\B$.  So $\abs{f(x)}\leq n_0$ for all $f\in\B$ and $x\in G$.  Take $b=n_0$.
+
+Space-filling curves (paths).\marginpar{figure: Hilbert curve}
+
+\prop There exists a continuous (path) $f\colon[0,1]\to[0,1]\times[0,1]$ which is surjective.
+\begin{align*}
+\abs{f_1(t)-f_2(t)} &\leq \sqrt2 \delta \text{ for all $t$} \\
+\inorm{f_1-f_2} &\leq \sqrt2 \delta \text{, $f_1$, $f_2\in C([0,1],\R^2)$} \\
+\inorm{f_3-f_2} &\leq \sqrt2 \paren{\tfrac{\delta}{2}} \\
+\text{etc } \inorm{f_{n+1}-f_n} &\leq \sqrt2 \paren{\tfrac{\delta}{2^{n-1}}} \text{ inductively}
+\end{align*}
+We get from the above that $f_n$ is a Cauchy sequence in the complete space $C([0,1],\R^2)$.  It converges to an $f\in C([0,1],\R^2)$.
+
+Question: Is $f$ injective?  No.
+
+%Is $\set{x\in\R}{\underbrace{\sin(x)+\cos(e^x)+\sqrt2x^7}_{f(x)}<10}$ open? \\
+Is $\brace[\big]{\,x\in\R{}:{}\underbrace{\sin(x)+\cos(e^x)+\sqrt2x^7}_{f(x)}<10\,}$ open? \\
+$=f^{-1}(\open{-\infty,10})$

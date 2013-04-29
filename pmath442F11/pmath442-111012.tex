@@ -1,0 +1,44 @@
+$\Q(\sqrt[3]{2},\gamma)/\Q$, $\gamma=e^{2\pi i/3}$ \\
+$S=\brace{\underset{a}{\sqrt[3]{2}},\underset{b}{\gamma\sqrt[3]{2}},\underset{c}{\gamma^2\sqrt[3]{2}}}$ \\
+$G=\Gal(\Q(\sqrt[3]{2},\gamma)/\Q)$ \\
+$G$ acts on $S$ by permutations, and this action is an isomorphism of $G$ with $S_3$.
+\[ \begin{array}{cc}
+\text{Subgroups of $G$} & \text{$\Q$-subfield} \\ \hline
+\brace1 & \Q(\sqrt[3]{2},\gamma) \\
+\brace{1,(ab)} & \Q(\gamma^2\sqrt[3]{2}) \\
+\brace{1,(ac)} & \Q(\gamma\sqrt[3]{2}) \\
+\brace{1,(bc)} & \Q(\sqrt[3]{2}) \\
+\brace{1,(abc),(acb)} & \Q(\gamma) \\
+G & \Q
+\end{array} \]
+\eg Compute the Galois group of $x^4-2$. \\
+\soln The splitting field is $\Q(\sqrt[4]{2},i)$ which has degree $8$ over $\Q$.
+
+Any $\Q$-automorphism of $\Q(\sqrt[4]{2},i)$ takes $i\mapsto\pm i$ and $\sqrt[4]{2}$ to $\pm\sqrt[4]{2}$ or $\pm i\sqrt[4]{2}$, and any $\Q$-automorphism is completely determined by its action on $\sqrt[4]{2}$ and $i$.  This gives at most $8$ automorphisms, so since $\Q(\sqrt[4]{2},i)/\Q$ is Galois of degree $8$, they are \emph{all} realised by actual automorphisms.
+
+Let $G=\Gal(\Q(\sqrt[4]{2},i)/\Q)$.  Then $G$ acts on $S=\brace{\underset{a}{\sqrt[4]{2}},\underset{b}{i\sqrt[4]{2}},\underset{c}{-\sqrt[4]{2}},\underset{d}{-i\sqrt[4]{2}}}$ by permutations.  So there is a homomorphism $\psi\colon G\to S_4$ which is injective because if $\sigma\in\ker\psi$ then $\sigma(i)=i$ \& $\sigma(\sqrt[4]{2})=\sqrt[4]{2}$.  The homomorphism $\psi$ is given by:
+\[ \begin{array}{cc}
+\text{$\Q$-Automorphism} & \text{Permutation of $S$} \\ \hline
+(i,\sqrt[4]{2}) & 1 \\
+(-i,\sqrt[4]{2}) & (bd) \\
+(i,i\sqrt[4]{2}) & (abcd) \\
+(-i,i\sqrt[4]{2}) & (ab)(cd) \\
+(i,-\sqrt[4]{2}) & (ac)(bd) \\
+(-i,-\sqrt[4]{2}) & (ac) \\
+(i,-i\sqrt[4]{2}) & (adcb) \\
+(-i,-i\sqrt[4]{2}) & (ad)(bc)
+\end{array} \]
+\[ \xymatrix{
+& i\sqrt[4]{2}\quad(b)\ar@{-}[dl]\ar@{-}[dr] & \\
+-\sqrt[4]{2}\quad(c)\ar@{-}[dr] & & \sqrt[4]{2}\quad(a)\ar@{-}[dl] \\
+& -i\sqrt[4]{2}\quad(d) &
+} \]
+Note that every permutation in $\psi(G)$ preserves this square, so $G\stackrel{\psi}{\hookrightarrow}D_4$.  But $\#G=\#D_4=8$, so in fact $\psi$ induces an isomorphism of $G$ with $D_4$.
+
+One can, as in the previous case, use this to find all the $\Q$-subfields of $\Q(\sqrt[4]{2},i)$.
+
+\thm Let $K$ be the splitting field of a separable polynomial $f(x)$ over a field $F$.  Then $\Gal(K/F)$ acts transitively on the roots of $f(x)$ if $f(x)$ is irreducible. \\
+\pf Let $\alpha\in K$ be a root of $f(x)$.  Define:
+\[ p(x) = \prod_{\substack{\sigma\in G\\\text{distinct $\sigma(x)$}}}(x-\sigma(x)) \]
+Then the coefficients of $p(x)$ lie in the fixed field of $G$ since $p(x)$ is fixed by $G$.  So $p(x)\in F[x]$.  But $p(x)=0$, so $f(x)\divides p(x)$.  However, since $p(x)$ is separable and every root of $p(x)$ is a root of $f(x)$, we get $p(x)\divides f(x)$.  So $p(x)=cf(x)$ for some $c\in F$.  Since $G$ acts transitively on the roots of $p(x)$, it acts transitively on the roots of $f(x)$. \qed
+%Say

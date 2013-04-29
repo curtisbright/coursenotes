@@ -1,0 +1,101 @@
+\textbf{Cardinality} \\
+$\abs A = \abs B$ means there exists a bijection from $A$ to $B$ \\
+$\abs A \leq \abs B$ means there exists an injection from $A$ to $B$
+
+\textbf{Countable} \\
+either finite or cardinality $=\abs\N$ \\
+e.g., $\N,\Z,\Q$
+
+\prop If $A$ is infinite and $\abs A\leq\abs\N$ then $\abs A=\abs\N$.
+
+\lem Every infinite subset $B$ of $\N$ is countably infinite.
+
+\pf Claim: Every non-empty subset $X$ of $\N$ has a least element. \\
+Why?  Pick $n\in X$ and look at $\set{k\in X}{k\leq n}$.  This is a finite set of positive integers and has a least element $k_1$.  $k_1$ is the least element of $X$.
+
+$B$ is non-empty so it has a least element, call it $b_1$. \\
+$B\setminus\brace{b_1}$ is non-empty so it has a least element, call it $b_2$. \\
+$B\setminus\brace{b_1,b_2}$ is non-empty so it has a least element, call it $b_3$. \\
+Repeat.  Produces $b_1<b_2<b_3<\dotsb$. \\
+Claim: $B=\brace{b_n}_{n=1}^\infty$ \\
+Why?  Take $b\in B$.  Look at $\set{n\in B}{n\leq b}\footnote{say $k$ elements}=\brace{b_1,b_2,\dotsc,b_k}$ \\
+$\implies b_k=b$ \\
+%Define $f\colon B\to\N$, $b_n\mapsto n$; bijection.  Hence $\abs B=\abs\N$.
+\[ \left. \begin{aligned}
+\text{Define } f\colon & B \to \N \\
+& b_n \mapsto n
+\end{aligned}
+\right \} \text{ bijection.  Hence $\abs B=\abs\N$.} \]
+
+\textbf{Proof of Proposition:} Have an injection $F\colon A\to\N$. \\
+Let $B=F(A)\subseteq\N$. \\
+Note that $F\colon A\to B$ bijection. \\
+Hence $\abs A=\abs B$.  Since $A$ is infinite, so is $B$. \\
+By the lemma $\abs B=\abs\N$.  By transitivity $\abs A=\abs\N$.
+
+\ex $[0,1)=\set{x}{0\leq x<1}$ is uncountable.
+
+\cor $\R$ is uncountable.
+
+\pf Assume false.
+\[ \underbrace{[0,1) \underset{\text{injection}}{\subseteq} \R \overset{\text{bijection}}{\to} \N}_{\text{injection}} \]
+\[ \implies \abs{[0,1)} \leq \abs\N \implies \abs{[0,1)} = \abs\N\footnote{countable} \]
+
+\textbf{Proof of Example:} Suppose $[0,1)$ is countable, say $=\brace{r_i}_{i=1}^\infty$.
+\[ r_i = .r_{i1}r_{i2}r_{i3}\cdots \qquad r_{ij}\in\brace{0,1,\dotsc,9} \]
+Let's write a real number not on this list.
+\[ a = .a_1a_2a_3\cdots \]
+\[ a_1 = \begin{cases}
+8 & \text{if $r_{11}\in\brace{0,1,\cdots,4}$} \\
+1 & \text{if $r_{11}\in\brace{5,6,\cdots,9}$}
+\end{cases} \quad
+a_2 = \begin{cases}
+8 & \text{if $r_{22}\in\brace{0,1,\cdots,4}$} \\
+1 & \text{if $r_{22}\in\brace{5,6,\cdots,9}$}
+\end{cases} \quad\cdots\quad
+a_k = \begin{cases}
+8 & \text{if $r_{kk}\in\brace{0,1,\cdots,4}$} \\
+1 & \text{if $r_{kk}\in\brace{5,6,\cdots,9}$}
+\end{cases} \]
+Say $a=r_k$ for some $k$. \\
+But $k$th digit of $a_k$ does not agree with $k$th digit of $r_k$ so $a\neq r_k$. \\
+Thus $\R$ is a different level of infinity.
+\[ \abs\N = \aleph_0 \qquad \abs\R = \aleph_1 \]
+
+\begin{enumerate}
+\item[(1)] Is $\R$ the ``next level'' of infinity?
+\item[(2)] If $A\subseteq\R$, and $A$ is uncountable, is $\abs A=\abs\R$?
+\item[(3)] Does there exist a $B$ such that $\abs\N<\abs B<\abs\R$?
+\end{enumerate}
+Continuum Hypothesis says (2) is yes (and (3) is no). \\
+Answer is independent of set theory axioms.
+
+Given set $A$, we can define $\P(A)=\brace{\text{all subsets of $A$}}$ \\
+e.g., $A=\brace{0,1}$, $\P(A)=\brace{\emptyset,\brace{0},\brace{1},\brace{0,1}}$ \\
+If $A$ has $n$ elements then $\abs{\P(A)}=2^n$
+
+\textbf{Cantor's Theorem:} For any set $A$, $\abs A\leq\abs{\P(A)}$ and $\abs A\neq\abs{\P(A)}$. \\
+($\abs{\P(A)}=1$)
+
+\pf %Injection: $A\to\P(A)$, $a\mapsto\brace{a}$
+\vspace{-\baselineskip}
+\begin{align*}
+\text{Injection: } & A \to \P(A) \\
+& a \mapsto \brace{a}
+\end{align*}
+Suppose there is a bijection $g\colon A\to\P(A)$: show this leads to a contradiction. \\
+Let $B=\set{a\in A}{a\notin g(a)}$.  $g(a)\in\P(A)$, therefore $g(a)$ is a subset of $A$. \\
+$B\subseteq A\implies B\in\P(A)$ so there exists $x\in A$ such that $g(x)=B$ because $g$ is onto. \\
+Is $x\in B$? \\
+Try yes: say $x\notin g(x)=B$: contradiction. \\
+So the answer must be no: Means $x\in g(x)=B$: contradiction. \\
+Either way we get contradiction.  So there can be no bijection: $A\to\P(A)$. \\
+Therefore $\abs A\neq\abs{\P(A)}$.
+
+Start with infinite set $A$
+\[ \abs A < \abs{\P(A)} < \abs{\P(\P(A))} < \dotsb \]
+
+\textbf{Notation:} Given set $A$, write $2^A=\set{f}{A\to\brace{0,1}}$ \\
+e.g., $\abs A=n$, $\abs{2^A}=2^n=2^{\abs{A}}$
+
+\thm $\abs{\P(A)}=\abs{2^A}$

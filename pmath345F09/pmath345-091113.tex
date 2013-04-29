@@ -1,0 +1,106 @@
+\prop Every finite field extension is algebraic. \\
+\pf $F\subseteq L$, $[L:F]=n$ \\
+Let $a\in L$. \\
+Consider $\brace{a^0=1,a,a^2,\dotsc,a^n}=X\subseteq L$
+
+\textbf{case 1:} some $a^i=a^j$, $i\neq j$, $0\leq i<j\leq n$ \\
+$\implies 1=a^{j-1}$ \\
+$\implies -1+a^{j-i}=0$ \\
+$\implies f(a)=0$ where $f\footnote{$\neq0$}=-1+x^{j-i}\in F[x]$ \\
+Therefore $a$ is algebraic over $F$. $\checkmark$ \\
+(in fact $a$ is algebraic over $\F$.)
+
+\textbf{case 2:} otherwise $X$ has $n+1$ many elements in it $\implies$ $X$ is $F$-linearly dependent \\
+Therefore there exist $a_0,\dotsc,a_{n+1}\in F$ not \emph{all} zero such that
+\[ a_0\cdot1+a_1\cdot a+a_2\cdot a^2+\dotsb+a_n\cdot a^n = 0 \]
+Let $g=a_0+a_1x+\dotsb+a_nx^n\in F[x]$ \\
+Then $g\neq0$ but $g(a)=0$. \\
+Therefore $a$ is algebraic over $F$.
+
+\defin A \emph{monic polynomial} is a polynomial with leading coefficient $=1$.
+
+\textbf{Proposition/Definition:} $F\subseteq L$ field extension, $a\in L$ algebraic over $F$.  There exists a \emph{unique} monic polynomial $h\in F[x]$ of minimal degree such that $h(a)=0$.  This $h$ is called the \emph{minimal polynomial of $a$ over $F$}. \\
+\pf Note since $a$ is algebraic over $F$, there exists $g\neq0$, $g(a)=0$, $g\in F[x]$. \\
+Let $c=\text{leading coefficient of $g\neq0$}$, $c\in F$ and let $g'=\frac1cg$. \\
+Then $g'$ is monic, and $g'\neq0$, and $g'(a)=\frac1cg(a)=0$. \\
+Hence there exists a monic polynomial $h\in F[x]$ of minimal degree, say $n$, such that $h(a)=0$. \\
+\textbf{Uniqueness:} Suppose $f\in F[x]$ monic also of degree $n$, also $f(a)=0$. \\
+By the division algorithm (i.e., $F[x]$ is a Euclidean domain) we can write
+\[ f = hq + r \qquad q,r\in F[x] \]
+and either $r=0$ or $\deg r < \deg h = n$\footnote{By minimality of $n$ this can't happen}.
+\begin{align*}
+\text{But } r(a) &= f(a)-hq(a) \\
+&= f(a)\footnotemark - h(a)\footnotemark q(a) = 0
+\end{align*}\addtocounter{footnote}{-1}\footnotetext{$=0$}\addtocounter{footnote}{1}\footnotetext{$=0$}%
+Therefore $r=0$. So $f=hq$
+\begin{align*}
+n = \deg f &= \deg h + \deg q \\
+&= n + \deg q \\
+\implies \deg q &= 0 \\
+\implies q &\in F\setminus\brace0
+\end{align*}
+$\operatorname{leading~coefficient}(h)\footnote{$=1$}=\operatorname{leading~coefficient}(f)\footnote{$=1$}\cdot q$ \\
+Therefore $q=1$, therefore $f=h$.
+
+\prop $F\subseteq L$ field extension, $a\in L$ algebraic over $F$, $h=\text{minimal polynomial of $a$ over $F$}\in F[x]$.  Then:
+\alphalist\begin{enumerate}
+\item $h$ is irreducible
+\item If $g\in F[x]$ and $g(a)=0$ then $h\mid g$. (Hence a polynomial vanishes at $a$ $\iff$ $h$ divides it.)
+\item If $g\in F[x]$, monic and irreducible and $g(a)=0$ then $g=h$.
+\end{enumerate}
+\pf
+\begin{enumerate}
+\item Suppose $h=fg$.  $h(a)=0\implies f(a)g(a)=0$
+\[ \implies f(a)=0\footnote{or $g(a)=0$} \implies \deg f = \deg h \text{ by minimality}\footnote{or $\deg g=\deg h$ by minimality} \implies \deg g=0\footnote{or $\deg f=0$} \implies g\text{ is a unit}\footnote{or $f$ is a unit} \]
+But $\deg f\leq\deg h$, $\deg g\leq\deg h$. \\
+Therefore $h$ is irreducible.
+\item Suppose $g(a)=0$, $g\neq0$
+\[ g = hq + r \qquad q,r\in F[x] \]
+either $r=0$ or $\deg r<\deg h$. \\
+Again by minimality of $\deg h$, and as $r(a)=0$
+\begin{align*}
+&\implies r=0 \\
+&\implies g-hq \implies h\mid g\quad \checkmark
+\end{align*}
+\item $g\in F[x]$, monic, irreducible, $g(a)=0$. \\
+By (b), $h\mid g\implies g=hf$ for some $f\in F[x]$. \\
+$g$ irreducible $\implies$ $h$ or $f$ is a unit \\
+Since $h(a)=0$, $h$ is not a nonzero constant polynomial \\
+$\implies$ $h$ is \emph{not} a unit \\
+$\implies$ $f$ is a unit, $\deg f=0$, $f\in F$.
+Since
+\begin{align*}
+1 &= \text{leading coefficient of }g \\
+  &= \text{leading coefficient of }h \\
+\implies f &= 1
+\end{align*}
+Therefore $g=h$.
+\end{enumerate}\numlist
+\textbf{Remark: }$a\in L\supseteq F$, $F$-algebraic
+\[ I = \set{f\in F[x]}{f(a)\footnotemark=0} \text{ ideal in $F[x]$}\footnotetext{$I(a/F)$} \]
+(b) says $I=(h)$ \\
+where $h=\text{minimal polynomial of $a$ over $F$}$.
+
+\ex $\Q\subseteq\R$, $\sqrt2$ \\
+$x^2-2$ vanishes at $\sqrt2$ and monic, is irreducible in $\Q[x]$ by Eisenstein \\
+$\implies$ $x^2-2$ is the minimal polynomial of $\sqrt2$.
+
+\defin $L\supseteq F$, $a\in L$ algebraic over $F$.
+\[ \deg(a/F)\footnote{\emph{degree of $a$ over $F$}} = \text{degree of the minimal polynomial} \]
+\cor $F\subseteq K\subseteq L$, $a\in L$ algebraic over $F$.
+\[ \deg(a/F)\geq\deg(a/K) \]
+\pf %figure: L-K-F (horiz)
+\vspace{-\baselineskip}
+\begin{gather*}
+L \\
+| \\
+K \\
+| \\
+F
+\end{gather*}
+\begin{align*}
+h_1 &= \text{minimal polynomial of $a$ over $F$}\in F[x] \\
+h_2 &= \text{minimal polynomial of $a$ over $K$}\in K[x]
+\end{align*}
+\[ h_1\in K[x], h_1(a)=0 \overset{\text{(b)}}{\implies} h_2\mid h_1 \]
+\[ \implies \deg h_2\footnote{$=\deg(a/K)$} \leq \deg h_1\footnote{$=\deg(a/F)$} \]

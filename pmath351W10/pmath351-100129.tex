@@ -1,0 +1,23 @@
+\prop In a topological space $X$, a point $b$ is a contact (limit) point of a set $A$ if and only if there exists a net $\x\colon\Delta\to X$ with all terms in $A$ which converges to $b$. \\
+\pf If $b$ is a contact point of $A$, we constructed a net $\x\colon\U(b)\to A$ which converges to $b$.  (Done)
+
+Conversely, suppose that we have a net $\x\colon\Delta\to A$ which converges to $b$.  We intend to show that $b$ is a contact point of $A$.
+
+Let $U\in\U(b)$ be given.  Then, as $\x$ converges to $b$, there exists $\alpha\in\Delta$ such that $\x_\beta\in U$ for every $\alpha\leq\beta$.  In particular, $\x_\alpha\in U$.  As all terms of $\x$ are in $A$, we set $\x_\alpha\in A$.  So $\x_\alpha\in A\cap U$.  Thus $U\cap A\neq\emptyset$.
+
+This proves that $b\in\cl(A)$.
+
+\eg Seen from the above is that if there exists a sequence $\x\colon\N\to A$ converging to $b$, then $b\in\cl(A)$.  Don't expect that the converse holds.  Consider an uncountable infinite set $X$.  On $X$ we consider the co-countable topology
+\[ \T = \set{A\subset X}{\text{$A^c$ (i.e., $X\setminus A$) is at most countable, or $A=\emptyset$}} \]
+Let $A=X\setminus\brace{x_0}$, where $x_0\in X$ is fixed.  Is $x_0$ a limit (contact) point of $A$?  Let $U\in\U(x_0)$ be given.  There exists an open $G$ such that $x_0\in G\subset U$. %[sic]
+Thus $G\in\T$.
+
+Clearly $G\neq\emptyset$, so $G^c$ is at most countable.\marginpar{figure: $x_0\in G\subset U\subset X$}
+If $G$ does not meet $A$, then $G\subset A^c$, i.e., $G^c\supset A$.  As $G^c$ is at most countable, $A$ is at most countable.  This implies that $X=A\cup\brace{x_0}$ is at most countable.  This contradicts that $X$ is more than countable.  Then $G$ must meet $A$.  So will the larger $U$.  This proves that $x_0$ is indeed a contact point of $A$.  Does there exist a \emph{sequence} $\x\colon\N\to A$ which converges to $x_0$?
+
+Let $\x\colon\N\to A$ be arbitrarily given.\marginpar{figure: $\x_i$s}
+Consider the neighbourhood $U=X\setminus\range\x$ of $x_0$.  Notice that all %all
+terms of $\x$ are %are
+in $A$, no terms equal $x_0$.  So $x_0\in U$.  Notice that $U$ is open, because the range of $\x$ is at most countable.
+
+As no term of $\x$ falls in the neighbourhood of $x_0$, $\x$ does not converge to $x_0$.

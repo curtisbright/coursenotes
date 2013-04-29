@@ -1,0 +1,65 @@
+$E_8(\sqrt2)$:
+\setlength{\unitlength}{0.75cm}
+\[\begin{picture}(6,1)(0,0)
+\multiput(0,0)(1,0){7}{\circle*{0.2}}
+\put(2,1){\circle*{0.2}}
+\put(0,0){\line(1,0){6}}
+\put(2,0){\line(0,1){1}}
+%\put(0,-0.25){\makebox(0,0){$(1,-1,0,0,0,0,0,0)$}}
+%\put(1,-0.50){\makebox(0,0){$(0,-1,1,0,0,0,0,0)$}}
+%\put(2,-0.25){\makebox(0,0){$(0,0,1,-1,0,0,0,0)$}}
+%\put(3,-0.25){\makebox(0,0){$(0,0,0,-1,1,0,0,0)$}}
+%\put(4,-0.50){\makebox(0,0){$(0,0,0,0,1,-1,0,0)$}}
+%\put(5,-0.25){\makebox(0,0){$(0,0,0,0,0,-1,1,0)$}}
+%\put(6,-0.25){\makebox(0,0){$(0,0,0,0,0,0,1,-1)$}}
+%\put(2,1){\makebox(0,0){$(1/2,1/2,1/2,-1/2,-1/2,-1/2,-1/2,-1/2)$}}
+\end{picture}\]
+$\det(B(E_8(\sqrt2)))=1$ \\
+All of the generating vectors have length $\sqrt2$.  Further $\sqrt2$ is the minimal distance between distinct points in $E_8(\sqrt2)$.  Thus we may put a sphere of radius $\frac{\sqrt2}{2}=\frac{1}{\sqrt2}$ around each vector in the lattice.  This will give us a sphere packing of $\R^8$ which is a lattice packing.  Also the number of vectors in $E_8(\sqrt2)$ of length $\sqrt2$ will be the kissing number of the lattice.
+
+Notice that $2\cdot(\frac12,\frac12,\frac12,-\frac12,-\frac12,-\frac12,-\frac12,-\frac12)=(1,1,1,-1,-1,-1,-1,-1)$ is in the lattice.  To fix ideas, how would we realize $(1,1,0,0,0,0,0,0)$ in the lattice?  Note that it suffices to realize $(1,1,1,-1,-1,-1,-1,-1)-(1,1,0,0,0,0,0,0)-(0,0,1,-1,0,0,0,0)=(0,0,0,0,-1,-1,-1,-1)$ or equivalently $(0,0,0,0,1,1,1,1)$.  But note\footnote{This bit caused some trouble; see the following remark instead.}
+%\[ (0,0,0,0,1,1,1,1) = (0,0,0,0,1,-1,0,0) + (0,0,0,0,0,2,1,1) \]
+%and
+%\[ (0,0,0,0,0,2,1,1)-2(0,0,0,0,0,1,-1,0)=(0,0,0,0,0,0,3,1) . \]
+\begin{gather*}
+(0,0,0,0,1,1,1,1)+(1,1,1,-1,-1,-1,-1,-1)=(1,1,1,-1,0,0,0,0) \\
+\begin{multlined}
+(-1,-1,-1,1,1,1,1,1)+2(1,-1,0,\dotsc,0)-4(0,-1,1,0,\dotsc,0)=(1,1,-5,1,1,1,1,1)\\
+=(1,1,0,0,0,0,0)+(0,0,-1,1,0,\dotsc,0)+(0,0,-1,0,1,0,0,0)+\dotsb+(0,0,-1,0,\dotsc,0,1)
+\end{multlined}
+\end{gather*}
+Remark: Note that the integral span of the basis vectors on the bottom row consists of all integer vectors whose sum of coordinates is zero.  The sum of the coordinates of the vector $(1,1,1,-1,-1,-1,-1,-1)$ is $-2$ hence we can realize all vectors whose sum is congruent to $0\pmod2$.
+
+Next note that $(\pm1,\pm1,0,\dotsc,0)$ is in the lattice and in fact so is any vector which has two coordinates from $\brace{1,-1}$ and the others $0$.  This gives us $4\cdot\binom82=112$ vectors of length $\sqrt2$.  These vectors together with $(\frac12,\frac12,\frac12,-\frac12,-\frac12,-\frac12,-\frac12,-\frac12)$ allow us to show that the vectors $(\epsilon_1\frac12,\epsilon_2\frac12,\dotsc,\epsilon_8\frac12)$ are in the lattice where $\epsilon_i$ is in $\brace{1,-1}$ and $\prod_{i=1}^8\epsilon_i=-1$.  There are $2^7=128$ of these vectors of length $\sqrt2$.  Thus we have found $112+128=240$ such vectors.
+
+Notice that there are no other vectors of length $\sqrt2$ in the lattice, since if one coordinate is $\frac32$ or larger in absolute value, the vector is of length greater than $\sqrt2$, and if there are more than $2$ coordinates of absolute value at least one, then again the length exceeds $\sqrt2$.
+
+Therefore $\tau_8(E_8(\sqrt2))=240$ and since $\tau_8\leq240$ we conclude that $\tau_8=240$.
+
+The packing density associated to $E_8(\sqrt2)$ is
+\[ \frac{\frac{\pi^4}{\Gamma(5)}\paren*{\frac{1}{\sqrt2}}^8}{1} = \frac{\pi^4}{24\cdot16} = \frac{\pi^4}{384} = 0.2537\ldots . \]
+
+This is the largest lattice packing density in $\R^8$ and it is the largest packing density in $\R^8$ known.
+
+There are 240 vectors $\x$ in $E_8(\sqrt2)$ for which $\x\cdot\x=2$.  The next smallest norm in the lattice is~$4$ and there are $2{,}160$ vectors $\x$ in $E_8(\sqrt2)$ for which $\x\cdot\x=4$. \\
+These are of the form
+\[ (\pm2,0,0,\dotsc,0)\c  (0,\pm2,0,\dotsc,0)\c  \dotsc\c  (0,\dotsc,0,\pm2) . \]
+Also $(\pm1,\pm1,\pm1,\pm1,0,0,0,0)$ where $\pm1\c \pm1\c \pm1\c \pm1$ is put in any~4 coordinates and
+\[ (\epsilon_1\tfrac32,\epsilon_2\tfrac12,\dotsc,\epsilon_8\tfrac12)\text{ where }\epsilon_i\text{ is in }\brace{1,-1}\text{ and }\prod_{i=1}^8\epsilon_i=1 \]
+and all permutations of the coordinates are allowed.  There are $6{,}720$ elements of norm~$6$, $17{,}520$ of norm~$8$, and $30{,}240$ of norm~$10$.  In fact for each positive integer $m$ the number $N(m)$ of $\x$ in $E_8(\sqrt2)$ for which $\x\cdot\x=2m$ is given by
+\[ 240\sigma_3(m), \qquad\text{and}\qquad \sigma_3(m)=\sum_{\substack{d\mid m\\d>0}}d^3 . \]
+How do we get such a result?
+
+Let $\Lambda$ be a lattice in $\R^n$ with $\x\cdot\y\in\Z$ for any $\x$, $\y$ in $\Lambda$.  Suppose $\b_1\c \dotsc\c \b_n$ is a basis for $\Lambda$ and, as before, put $B=(\inn{\b_i,\b_j})_{\substack{i=1,\dotsc,n\\j=1,\dotsc,n}}$.  Then for any $\x\in\Lambda$ there exist integers $k_1\c \dotsc\c k_n$ such that
+\[ \x = k_1\b_1 + \dotsb + k_n\b_n . \]
+Then
+\begin{align*}
+\x\cdot\x &= k_1^2\inn{\b_1,\b_1} + \dotsb + k_n^2 \inn{\b_n,\b_n} \\
+&= 2 \sum_{\substack{i,j\\i<j}} k_ik_j \inn{\b_i,\b_j}
+\end{align*}
+and so this is a quadratic form in $(k_1,\dotsc,k_n)$.  We have
+\[ \paren*{k_1,\dotsc,k_n} B \begin{pmatrix}k_1\\\vdots\\k_n\end{pmatrix} . \]
+
+Let $q=e^{2\pi i z}$ for $z\in\C$.  We now define the theta function of the lattice $\Lambda$, denoted $\theta_\Lambda(z)$ by
+\[ \theta_\Lambda(z) = \sum_{\x\in\Lambda} q^{(\x\cdot\x)/2} = \sum_{\x\in\Lambda} e^{(\x\cdot\x)\pi iz} . \]
+If $B$ has integer entries and determinant $1$ and $\x\cdot\x\equiv0\pmod2$ for all $\x\in\Lambda$ then it can be proved that $\theta_\Lambda(z)$ is a modular form of weight $\frac n2$.  What is the significance of this claim?

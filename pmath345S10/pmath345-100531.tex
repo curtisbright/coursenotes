@@ -1,0 +1,33 @@
+\defn Let $D$ be a UFD, $p(x)\in D[x]$ any nonzero polynomial.  The content of $p(x)$ is the greatest common factor of the coefficients of $p(x)$.  A polynomial $p(x)$ is primitive \emph{iff} its content is $1$.
+
+\thm (Gauss's Lemma) \\
+The product of primitive polynomials is primitive.  More precisely, let $D$ be a UFD, $p(x)$, $q(x)\in D[x]$ primitive polynomials.  Then $p(x)q(x)$ is primitive. \\
+\pf Assume $p(x)q(x)$ is not primitive.  Then there is some prime $l$ which divides all the coefficients of $pq$.  Reducing mod $l$ gives $p(x)q(x)\equiv0\bmod l$, so since $l$ is prime, $D/l$ is a domain, so $(D/l)[x]$ is a domain, so either $p(x)\equiv0\bmod l$ or $q(x)\equiv0\bmod l$.  In other words, either $l$ divides the content of $p$ or $l$ divides the content of $q$.  Both are impossible by primitivity of $p(x)$ and $q(x)$. \qed
+
+\thm (Gauss's Lemma) \\
+Let $D$ be a UFD, $p(x)\in D[x]$ a nonzero polynomial.  Then $p(x)=a(x)b(x)$ in $K(D)[x]$ \emph{iff} $p(x)=A(x)B(x)$ in $D[x]$, where $A(x)=\alpha a(x)$ and $B(x)=\beta b(x)$ for some $\alpha$, $\beta\in K(D)$.  In particular, $p(x)$ is irreducible in $K(D)[x]$ \emph{iff} it's irreducible in $D[x]$ (except possibly for constant factors). \\
+\pf Backwards is trivial. \\
+Forwards: Say $p(x)=a(x)b(x)$ with $a$, $b\in K(D)[x]$.  Write
+\[ \alpha \beta p(x) = [\alpha a(x)] [\beta b(x)] \]
+where $\alpha a$, $\beta b$ lie in $D[x]$.  Factoring out the contents of $\alpha a$ and $\beta b$ gives
+\[ c_3 \alpha \beta p'(x) = c_1 (\underbrace{\alpha' a'(x)}_{\text{primitive}}) c_2 (\underbrace{\beta' b'(x)}_{\text{primitive}}) \]
+Cancelling gives:
+\[ d p'(x) = [\alpha' a'(x)] [\beta' b'(x)] \]
+where $d\in D$ and $p'$, $\alpha' a'$, and $\beta' b'$ are all primitive.  By Gauss's Lemma, $dp'(x)$ is primitive, so $d\in D^*$ and so $p'(x)=[\alpha'd^{-1}a'(x)][\beta'b'(x)]$.  Since $p(x)=c_3p'(x)$, we get:
+\begin{align*}
+p(x) &= [c_3\alpha'd^{-1}a'(x)][\beta' b'(x)] \\
+&= A(x) B(x)
+\end{align*}
+as desired. \qed
+
+\eg Consider $2x^2-5\in(\Z[\sqrt{10}])[x]$.  The polynomial is irreducible.  However:
+\begin{align*}
+2x^2-5 &= 2\paren[\big]{x^2-\tfrac52} \\
+&= 2\paren[\Big]{x-\sqrt{\tfrac52}}\paren[\Big]{x+\sqrt{\tfrac52}} \\
+&= 2\paren[\big]{x-\tfrac{\sqrt{10}}{2}}\paren[\big]{x+\tfrac{\sqrt{10}}{2}}
+\end{align*}
+So Gauss's Lemma does \emph{not} apply to $(\Z\sqrt{10})[x]$.
+
+\eg Prove that $x^2+x+1$ is irreducible in $\Q[x]$. \\
+\soln Reducing mod $2$ gives $x^2+x+1$, which has no roots: $0^2+0+1\neq0$, $1^2+1+1\neq0$ \\
+So $x^2+x+1$ can't factor in $\Z_2[x]$.  If $x^2+x+1$ factored in $\Z[x]$, then the factorization could be reduced mod $2$.  So $x^2+x+1$ is irreducible in $\Z[x]$.  By Gauss's Lemma, $x^2+x+1$ is irreducible in $\Q[x]$.

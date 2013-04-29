@@ -1,0 +1,111 @@
+$f\colon\Z^+\to\C$ \\
+$\sum_{n=1}^\infty\frac{f(n)}{n^z}$
+\[ \tikz{
+\path[fill=lightgray](-1,-1)rectangle(1.5,1);
+\path[fill=lightgray](3.5,-1)rectangle(6,1);
+\draw(-1,0)--(6,0);
+\draw(1.5,1)--(1.5,-1)node[below]{$\sigma_c$};
+\draw(3.5,1)--(3.5,-1)node[below]{$\sigma_a$};
+\node at (0,0.5){divergence};
+\node at (2.5,0.5){cond.};
+\node at (5,0.5){absolute};
+} \]
+\thm (Uniform Convergence) \\
+For a Dirichlet series $\sum_{n=1}^\infty\frac{f(n)}{n^z}$ with $\sigma_c<\infty$, the series converges uniformly in compact subsets $K\subseteq\set{z}{\Re(z)>\sigma_c}$. \\
+\pf It suffices to prove the theorem when $K$ is a rectangle. \\
+Let $K=[p,q]\times[r,s]$ where $p>\sigma_c$.
+\[ \tikz{
+\draw(-1,0)--(6,0);
+\draw(0,-1)node[below]{$\sigma_c$}--(0,4);
+%\node[fill,circle,inner sep=1,label=below:{$a$}] at (1,0){};
+%\node[fill,circle,inner sep=1,label=right:{$z$}] at (3,2){};
+\draw(1,0)node[fill,circle,inner sep=1,label=below:{$a$}]{}--(3,2.5)node[fill,circle,inner sep=1,label=right:{$z$}]{};
+\node[below] at (2,0){$p$};
+\node[left] at (0,1){$r$};
+\node[left] at (0,3){$s$};
+\node[below] at (5,0){$q$};
+\draw[gray](2,0)--(2,1);
+\draw[gray](5,0)--(5,1);
+\draw[gray](0,1)--(2,1);
+\draw[gray](0,3)--(2,3);
+\draw[thick](2,1)rectangle(5,3);
+\draw(1.25,0)arc(0:51.3:0.25);
+\node at (1.5,0.25){$\theta_z$};
+} \]
+Choose $a\in\R$ with $\sigma_c<a<p$.  Let $z\in K$. \\
+Recall that if we write $S_l=\sum_{n=1}^\infty\frac{f(n)}{n^z}$ and we use Abel's Formula with $a(n)=\frac{f(n)}{n^a}$, $A(x)=\sum_{n\leq x}a(n)$, $f(t)=\frac{t^a}{t^z}=t^{a-z}$, then for $k<l$
+\begin{align*}
+\abs{S_l-S_k} &= \abs[\Big]{A(l)f(l)-A(k)f(k)-\int_k^lA(t)f'(t)\d t} \\
+&= \abs[\Big]{\frac{A(l)}{l^{z-a}} - \frac{A(k)}{k^{z-a}} - \int_k^l A(t)(a-z)t^{a-z-1}\d t } \\
+&\leq M\paren[\Big]{\frac1{x^{x-a}}+\frac1{k^{x-a}}+\abs{z-a}\int_k^l t^{a-x-1}\d t\footnote{\[ \int_k^l t^{a-x-1}\d t = \brack*{\frac{1}{a-x}t^{a-x}}_k^l = \frac{1}{x-a}\paren[\Big]{\frac1{k^{x-a}}-\frac1{l^{x-a}}} \]}} \\
+&\leq M\paren[\Big]{\frac2{k^{x-a}}+\frac{\abs{z-a}}{x-a}\paren[\Big]{\frac1{k^{x-a}}-\frac1{k^{x-a}}}} \\
+&\leq M\paren[\Big]{2+\frac{\abs{z-a}}{x-a}}\cdot\frac1{k^{x-a}} \\ \intertext{where $\abs{A(x)}\leq M$ for all $x$, and $z=x+iy$}
+&= M(2+\sec\theta_z)\cdot\frac1{k^{x-a}} \\ \intertext{where $\theta_z$ is as shown}
+&\leq M(2+\sec\theta_m)\frac1{k^{x-a}} \\ \intertext{where $\sec\theta_m=\frac{\sqrt{(p-a)^2+\max(r^2,s^2)}}{p-a}$}
+&\to 0 \text{ as } k\to\infty
+\end{align*}
+independent of $z$ \\
+\cor If we define
+\[ F(z) = \sum_{n=1}^\infty \frac{f(n)}{n^z} \]
+for all $z$ with $\Re(z)>\sigma_c$ then $F$ is holomorphic. \\
+\pf This follows from the fact that
+\begin{itemize}
+\item[] if $U\subseteq\C$ is open
+\item[] if $f_n\colon U\to\C$ are holomorphic in $U$
+\item[] if $f_n\to f$ uniformly compact sets $K\subseteq U$
+\end{itemize}
+then $f$ is holomorphic in $U$ and $f_n'\to f'$ \\
+\pf Let $a\in U$. \\
+Choose $r>0$ so $\bar D(a,r)\subseteq U$
+\[ \tikz{
+\draw[decoration={markings,mark=at position 0.125 with {\arrow{>}}},postaction=decorate](0,0)circle(0.5);
+\draw(0.15,0.25)--(-0.25,0)--(0.15,-0.25)--cycle;
+\node at(0.75,0){$\sigma$};
+\draw(1,0)ellipse(2.5 and 1.5);
+} \]
+Let $\alpha$ be any triangle in $D(a,r)$. \\
+Then $f$ is continuous and
+\[ \int_\alpha f = \int_\alpha \lim f_n = \lim\int_\alpha f_n = 0 \]
+$\therefore f$ is holomorphic in $D(a,r)$ by Morera, hence at $a$.
+
+Now let $\sigma=a+re^{it}$, $0\leq t\leq 2\pi$ \\
+By Cauchy's Integral Formula
+\begin{align*}
+f^{(n)}(a) &= \frac{n!}{2\pi i} \int_\sigma \frac{f(z)}{(z-a)^{n+1}} \d z \\
+&= \frac{n!}{2\pi i}\int_\sigma \frac{\lim_{k\to\infty} f_k(z)}{(z-a)^{n+1}} \d z \\
+&= \lim_{k\to\infty} \frac{n!}{2\pi i} \int_\sigma \frac{f_k(z)}{(z-a)^{n+1}} \d z \\
+&= \lim_{k\to\infty}f_k(a)
+\end{align*}
+\thm (Behaviour as $\Re(z)\to\infty$) \\
+Let $F(z)=\sum_{n=1}^\infty\frac{f(n)}{n^z}$ for $\Re(z)>\sigma_c$ \\
+If $\brace{z_k}$ is a sequence with $\Re(z_k)\to\infty$ then $F(z_k)\to f(1)$ as $k\to\infty$. \\
+\pf Say $z_k=x_k+iy_k$ with $x_k\to\infty$. \\
+Fix $a\in\R$ with $a>\sigma_a$ (so $\sum\frac{\abs{f(n)}}{n^a}$ converges) \\
+Choose $N$ so $k\geq N\implies x_k\geq a$. \\
+For all such $k$,
+\begin{align*}
+F(z_k) &= \sum_{n=1}^\infty \frac{f(n)}{n^{z_k}} \\
+&= f(1) + \sum_{n=2}^\infty \frac{f(n)}{n^{z_k}} \\ \intertext{and $\abs[\big]{\sum_{n=2}^\infty\frac{f(n)}{n^{z_k}}}\leq\sum_{n=2}^\infty\frac{\abs{f(n)}}{n^{x_k}}$}
+&= \sum_{n=2}^\infty \frac{\abs{f(n)}}{n^a} \frac{1}{n^{x_k-a}} \\
+&\leq \frac{1}{2^{x_k-a}} \underbrace{\sum_{n=2}^\infty \frac{\abs{f(n)}}{n^a}}_{\text{finite}} \\
+&\leq \frac{1}{2^{x_k-a}} \sum_{n=1}^\infty \frac{\abs{f(n)}}{n^a} \\
+&\to 0 \text{ as } k\to\infty
+\end{align*}
+\thm (Uniqueness of Coefficients) \\
+Let $F(z)=\sum_{n=1}^\infty\frac{f(n)}{n^z}$, $G(z)=\sum_{n=1}^\infty\frac{g(n)}{n^z}$ for $\Re(z)>c$. \\
+Suppose $F(z_k)=G(z_k)$ where $\brace{z_k}$ is some sequence with $\Re(z_k)\to\infty$. \\
+Then $f(n)=g(n)$ for all $n$. \\
+\pf Let
+\[ H(z) = F(z) - G(z) = \sum_{n=1}^\infty \frac{h(n)}{n^z} \text{ where $h(n)=f(n)-g(n)$} \]
+Let $z_k=x_k+iy_k$ with $x_k\to\infty$. \\
+Suppose $F(z_k)=G(z_k)$ so $H(z_k)=0$.  We need to show that $h(n)=0$ for all $n$.  Suppose not, and let $m$ be the smallest index with $h(m)\neq0$.  For all $z$ with $\Re(z)>c$,
+\[ H(z) = \sum_{n=m}^\infty \frac{h(n)}{n^z} = \frac{h(m)}{m^z} + \sum_{n>m}\frac{h(n)}{n^z} \]
+Choose $a>c+1$ (so all series converge absolutely when $\Re(z)=a$) \\
+Choose $N$ so $k\geq N\implies x_k>a$.  For such $k$, $H(z_k)=0$ so
+\begin{align*}
+0 &= \frac{h(m)}{m^{z_k}} + \sum_{n>m}\frac{h(n)}{n^{z_k}} \\
+h(m) &= -m^{z_k}\sum_{n>m}\frac{h(n)}{n^{z_k}} \\
+&= -m^{z_k}\sum_{n>m}\frac{h(n)}{n^a}\cdot\frac1{n^{z_k-a}} \\
+\therefore\footnote{problem here?} \abs{h(n)} &\leq m^{x_k}\sum_{n=m+1}^\infty \frac{\abs{h(n)}}{n^{x_k}} \\
+&\leq \frac{m^{x_k}}{m+1}
+\end{align*}

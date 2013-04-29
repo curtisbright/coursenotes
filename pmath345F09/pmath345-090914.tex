@@ -1,0 +1,75 @@
+\url{~pmat345}
+
+\begin{itemize}
+\item $\Z$ Integers $\brace{\dotsc,-2,-1,0,1,2,\dotsc}$
+\item $C[0,1]$ all continuous functions $f\colon[0,1]\to\R$
+\end{itemize}
+In both cases: \\
+can ``add'': $(f+g)\colon[0,1]\to\R$, $x\mapsto f(x)+g(x)$ \\
+can ``multiply'': $(fg)\colon[0,1]\to\R$, $x\mapsto f(x)g(x)$ \\
+both $0$ and $1$\marginpar{figure: $0$ function and $1$ function}%
+
+\defin A \emph{ring} $R$ is a set with two distinguished elements, $0$ and $1$, and two binary functions
+\begin{align*}
+\mathord{+}\colon R^2 \to R \\
+\mathord{\times}\colon R^2 \to R
+\end{align*}
+i.e., given two elements $x,y$ we can add them $x+y\in R$, we can multiply them $xy\in R$\footnote{Note: drop the $\times$ sometimes.} \\
+such that: for all $x,y,z\in R$,
+\begin{enumerate}
+\item Associativity of addition:
+\[ (x+y)+z = x+(y+z)\footnote{Note: so we just write $x+y+z$} \]
+\item Commutativity of addition:
+\[ x+y = y+x \]
+\item Neutrality of zero:
+\[ x+0 = x\footnote{zero is also called ``additive identity''} \]
+\item Existence of additive inverse: \\
+For all $x\in R$ there is some $y\in R$ such that
+\[ x+y=0\footnote{Note: We write $-x$ for $y$ here and call it the negative of $x$} \]
+\item Associativity of multiplication:
+\[ (xy)z = x(yz)\footnote{we just write $xyz$} \]
+\item Neutrality of one:
+\[ x1 = x = 1x \]
+%\item Existence of multiplicative inverses: \\
+%For all $x\neq0$ there is a $y\in R$ such that
+%\[ xy=1 \]
+\item Distributivity:
+\begin{align*}
+(x+y)z &= xz+yz \\
+z(x+y) &= zx+zy
+\end{align*}
+\end{enumerate}
+\textbf{Remarks:}
+%alpha list
+\begin{enumerate}
+\item \textbf{WARNING:} What we call a ring here is a ``ring with identity'' for some people. \\
+For us rings always have $1$. \\
+\textbf{Example:} $2\Z$ set of even integers \\
+For Dummit and Foote this is a ring, for us it is \emph{not}.
+\item \textbf{Notation:} $x-y$ means $x+(-y)$
+\item We don't ask $\times$ to be commutative.  Why? \\
+\textbf{Example:} $M_2(\R)=\set{\paren{\begin{smallmatrix}a&b\\c&d\end{smallmatrix}}}{a,b,c,d\in\R}$
+\begin{itemize}
+\item $0=\paren{\begin{smallmatrix}0&0\\0&0\end{smallmatrix}}$
+\item $1=\paren{\begin{smallmatrix}1&0\\0&1\end{smallmatrix}}$
+\item $+$ matrix addition
+\item $\times$ matrix multiplication
+\end{itemize}
+\textbf{Check:} This is a \emph{ring}.  $\times$ is not commutative.
+
+Why should $+$ be commutative? \\
+Because it is \emph{forced} by the other axioms.
+\begin{align*}
+(\overset{x}{1}+\overset{y}{1})(\overset{z}{a+b}) &= 1(a+b) + 1(a+b) \\
+&= (a+b) + (a+b) \\
+(\overset{z}{1+1})(\overset{x}{a}+\overset{y}{b}) &= (1+1)a + (1+1)b \\
+&= (1a+1a) + (1b+1b) \\
+&= (a+a) + (b+b) \\
+(a+b) + (a+b) &= (a+a) + (b+b) \\
+a+b+a+b &= a+a+b+b \\
+\intertext{add $(-a)$ to both sides on the left}
+b+a+b &= a+b+b \\
+\intertext{add $(-b)$ to both sides on the right}
+b+a &= a+b %boxed
+\end{align*}
+\end{enumerate}

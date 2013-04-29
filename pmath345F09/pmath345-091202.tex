@@ -1,0 +1,143 @@
+\textbf{\S11 Algebraically Closed Fields} \\
+\defin $F$ field is \emph{algebraically closed} if every polynomial $f\in F[x]$ of $\deg f>0$ has a root in $F$. \\
+If $F\subseteq L$, $L$ is an \emph{algebraic closure of $F$} 
+if $L$ is an \emph{algebraic extension of $F$} and $L$ is \emph{algebraically closed}.
+
+\prop The following are equivalent: $F$ field
+\begin{enumerate}
+\item[(i)] $F$ is closed.
+\item[(ii)] In $F[x]$ every irreducible polynomial is of degree $1$.
+\item[(iii)] $F$ has no proper algebraic extensions.
+\end{enumerate}
+\textbf{Proof $\text{(i)}\implies\text{(ii)}$:} \\
+$f\in F[x]$ irreducible \\
+$a\in F$, $f(a)=0$ \\
+$\implies (x-a)\mid f$ \\
+$f$ irreducible $\implies$ $f=c(x-a)$, since $c\in F$ \\
+\textbf{$\text{(ii)}\implies\text{(iii)}$:} \\
+Suppose $L\supseteq F$ is an algebraic extension, $a\in L$.  $f=\text{minimal polynomial of $a/F$}\in F[x]$ \\
+$\overset{\text{(ii)}}{\Longrightarrow}\;\deg f=1$ But $[F(a):F]=\deg f$ \\
+$\implies a\in F \implies L=F$ \\
+\textbf{$\text{(iii)}\implies\text{(i)}$:} \\
+To show $F$ is algebraically closed it suffices to show that every irreducible polynomial over $F$ has a root in $F$. \\
+$f\in F[x]$ irreducible
+\[ \begin{gathered}
+L \mathrlap{{}=F[x]/(f)} \\
+| \\
+F
+\end{gathered} \mathrlap{\qquad \text{algebraic extension, $[L:F]=\deg f$}} \]
+(iii) $\implies$ $L=F\implies\deg f=1$ \\
+$f=a\footnote{$a\neq0$}x+b$ so $b/a\in F$ is a root of $f$.
+
+\textbf{Examples:}
+\begin{enumerate}
+\item[(a)] $\C$ is algebraically closed by the Fundamental Theorem of Algebra \\
+Since $[\C:\R]=2$ \\
+$\implies$ $\C$ is an algebraic closure of $\R$.
+\item[(b)] Let $\overline\Q=\set{a\in\C}{\text{$a$ is $\Q$-algebraic}}$
+\end{enumerate}
+\textbf{Exercise:} $\overline\Q$ is a subfield of $\C$. \\
+\textbf{point:} $a$, $b\in\overline\Q$,
+\[ \xymatrix{
+ & \ar@{-}[dl] \Q(a,b) \ar@{-}[dr] & \\
+ \Q \ar@{-}[rr]^{\text{alg.}} & & \Q(a)
+} \]
+\textbf{Claim:} $\overline\Q$ algebraically closed \\
+\pf $f\in\overline\Q[x]\subseteq\C[x]$, $\deg f>0$. \\
+$\implies a\in\C$, $f(a)=0$. \\
+$\implies$ $a$ is $\overline\Q$-algebraic
+\[ \left.\begin{gathered}
+\overline\Q(a) \\
+| \mathrlap{\text{\scriptsize\ alg}} \\
+\overline\Q \\
+\phantom{\text{\scriptsize\ alg}} | {\text{\scriptsize\ alg}} \\
+\Q
+\end{gathered}\right\}{\text{\scriptsize alg}} \qquad
+\begin{gathered}
+\implies\text{$a$ is $\Q$-algebraic} \\
+\implies a\in\overline\Q
+\end{gathered} \]
+$\overline\Q$ is an algebraic extension of $\Q$.
+\begin{enumerate}
+\item[(c)]
+%Consider (?)
+\[ \F_p \subseteq \F_{p^2} \mathrel{\mathord{\subseteq}\footnotemark}\footnotetext{$2\mid6$} \F_{p^6} \subseteq \dotsb \subseteq \F_{p^{n!}} \mathrel{\mathord{\subseteq}\footnotemark}\footnotetext{$n!\mid(n+1)!$} \F_{p^{(n+1)!}} \subseteq \dotsb \subseteq L \]
+\[ L = \bigcup_n \F_{p^{n!}} \]
+\end{enumerate}
+\ex $L$ is a field as $n\mid n!$, every $\F_{p^n}\subseteq\F_{p^{n!}}\subseteq L$ \\
+Therefore every finite field of characteristic $p$ is a subfield of $L$. \\
+\claim \emph{$L$ is algebraically closed} and an algebraic closure of $\Z_p$ \\
+\pf $f\in L[x]$, $\deg f>0$, irreducible \\
+For some $n>0$, $f\in\F_{p^{n!}}[x]$ irreducible \\
+Hence $K=\F_{p^{n!}}[x]/(f)$ is a finite field, extending $\F_{p^{n!}}$, say $\abs K=p^N$ with $n!\mid N$
+\[ \xymatrix{
+\F_{p^{n!}}[x]/(f) = K \ar@{-}[rr]^\alpha_\cong & & \F_{p^N} \\
+ & \ar@{-}[ul]^{\deg f} \F_{p^{n!}} \ar@{-}[ur] &
+} \qquad \alpha|_{\F_{p^{n!}}} = \id \]
+$f$ has a root in $K$, namely $a=x+(f)$ \\
+$\implies$ $\alpha(f)$\footnote{$=f$} has a root in $\F_{p^N}\subseteq L$.
+
+\thm $F$ field
+\begin{enumerate}
+\item[(a)] $F$ has an algebraic closure
+\item[(b)] Any two algebraic closures of $F$ are isomorphic over $F$.
+\end{enumerate}
+\pf
+\begin{enumerate}
+\item[(a)] Let $\P$ be the set of all algebraic extensions of $F$.  Given $K$, $L\in\P$,
+\[ K \leq L \overset{\text{def}}\iff \text{$K$ is a subfield of $L$} \]
+Then $(\P,\leq)$ is a partially ordered set \\
+\claim Every chain in $(\P,\leq)$ is bounded. \\
+\pf $K_0\subseteq K_1\subseteq K_2\subseteq\dotsb$ \\
+all algebraic extensions of $F$. \\
+Let $L=\bigcup_i K_i$ a field extending $F$. \\
+Given $a\in L\implies a\in K_i$ for some $i$ \\
+$\implies$ $a$ is $F$-algebraic. \\
+$\implies$ $L\in\P$ and each $K_i\subseteq L$ $\dashv$ claim. \\
+By Zorn's Lemma, $\P$ has a maximal element, $L\in\P$. \\
+By maximality, $L$ has no proper algebraic extension, since any such would be in $\P$. \\
+Therefore $L$ is algebraically closed and algebraic over $F$.
+\item[(b)]
+\[ \xymatrix{
+L & & L' \\
+& \ar@{-}[ul] F \ar@{-}[ur] &
+} \qquad \text{algebraic closures of $f$} \]
+\[ \P = \set{(K,K',\alpha)}{\begin{gathered}
+F \subseteq K \subseteq L \text{ intermediate field extension} \\
+F \subseteq K' \subseteq L' \text{ intermediate field extension} \\
+\alpha\colon K\to K' \text{ is an isomorphism over $F$}
+\end{gathered}} \]
+$\P\neq\emptyset$ since $(F,F,\id)\in\P$ \\
+$(K,K',\alpha)\leq(M,M',\beta)$ in $\P$ \\
+if $K\subseteq M$, $K'\subseteq M'$
+\[ \text{such that}\qquad \xymatrix{
+M \ar@{-}[d] \ar@{-}[rr]^\beta & & M' \ar@{-}[d] \\
+K \ar@{-}[rr]^\alpha & & K' \\
+& \ar@{-}[ul] F \ar@{-}[ur] &
+} \qquad \beta_K = \alpha \]
+\end{enumerate}
+\ex Check $(\P,\leq)$ is a partially ordered set. \\
+\textbf{Claim 1:} Every chain is bounded in $\P$. \\
+\pf Take ``unions''.  Exercise.  $\dashv$ Claim 1. \\
+Apply Zorn's Lemma $\implies$ There exists $(k,k',\alpha)\in\P$ which is maximal. \\
+\textbf{Claim 2:} $K=L$. \\
+\textbf{Proof sketch:} $a\in L$
+\[ f = \text{minimal polynomial of $a/K$}\in K[x] \]
+
+\[ \xymatrix{
+L \ar@{-}[d] & & L' \ar@{-}[d] \\
+K(a) \ar@{-}[d]\ar@{-}[rr]^\cong_\beta & & K(b) \ar@{-}[d] \\
+K \ar@{-}[rd]\ar@{-}[rr]^\cong_\alpha & & K' \ar@{-}[ld] \\
+& F &
+} \]
+
+Let $f'=\alpha(f)\in K'[x]\subseteq L'[x]$ \\
+As $L'$ is algebraically closed, there is $b\in L'$, $f'(b)=0$. \\
+$f'=\text{minimal polynomial at $b$ over $K'$}$ \\
+since $f'$ is monic and irreducible \\
+By Lemma last time there is $\beta\colon K(a)\to K(b)$ extending $\alpha$.
+\[ (K,K',\alpha) \leq (K(a),K'(b),\beta) \text{ in $\P$} \]
+$\implies K(a)=K \implies a\in K$. $\dashv$ Claim. \\
+\ex $K'=L'$ \\
+point:
+\[ K \subseteq \alpha(L)\footnote{$a$ is algebraically closed}\footnote{$=K'$} \subseteq L' \]

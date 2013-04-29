@@ -1,0 +1,63 @@
+\textbf{Definition of $\pmb\R$:} \\
+ordered field, $\supseteq\Q$ and which satisfies the \emph{completeness axiom}: Every increasing sequence that is bounded above converges.
+
+Given sequence $(x_n)$ \emph{bounded above} means exists $r\in\R$ such that $x_n\leq r$ for all $n$.
+
+\emph{Converges} means there exists $x_0\in\R$ such that for all $\epsilon>0$ there exists $N$ such that $\abs{x_n-x_0}<\epsilon$ for all $n\geq N$.
+
+Consequence: \emph{Archimedian Property}: Given any $x\in\R$ there exists $n\in\Z$ such that $x<n$.
+
+\pf Suppose not.  Then there exists a real number $r$ such that $r\geq n$, for all $n\in\Z$.  Consider the sequence $\brace{1\footnote{$x_1$},2\footnote{$x_2$},3,\dotsc}$.  This is a bounded above increasing sequence so by completeness axiom it converges, to say $x_0$. \\
+Then $\abs{x_n-x_{n-1}}\footnote{$\abs{n-(n+1)}=1$}\leq\abs{x_n-x_0}+\abs{x_0-x_{n+1}}\leq\frac14+\frac14$ for $n$ large enough.  $1\leq\frac12$, contradiction.
+
+\ex Use Archimedian property to prove that for real numbers $x<y$,
+\[ \exists p/q\in\Q \quad\text{such that}\quad x\leq p/q < y . \]
+
+\defin Given $S\subseteq\R$, by an \emph{upper bound} for $S$ we mean $r\in\R$ such that if $x\in S$ then $x\leq r$.
+
+If a set has an upper bound we say it is \emph{bounded above}.
+
+\ex $\Z$ has no upper bound.
+
+\ex $S=\set{1-\frac1n}{n=1,2,3,\dotsc}$, bounded above by $1$ (or $2$, or, \ldots), $1=\sup(S)$
+
+If a set has an upper bound, then there are infinitely many.
+
+\defin A \emph{least upper bound} for $S\subseteq\R$ is an upper bound for $S$, call it $B$, with the property that whenever $A<B$ then $A$ is not an upper bound for $S$.  Notation: $\operatorname{LUB}(S)$ or $\sup(S)$.
+
+Similarly define greatest lower bound of $S$, $\operatorname{GLB}(S)$ or $\inf(S)$.
+
+\textbf{(Exercise) Facts:}
+\begin{enumerate}
+\item $\sup(S)$ is unique (if it exists)
+\item If $B$ is an upper bound for $S$ and $B\in S$, then $B=\sup S$.
+\item If $(x_n)^\infty_{n=1}$ is increasing and bounded above, and if $S=\brace{x_1,x_2,x_3,\dotsc}$ then $\sup(S)=\lim_{n\to\infty}x_n$
+\item $B=\sup(S)$ iff $B$ is an upper bound for $S$ and $\forall\epsilon>0\,\exists x\in S$ such that $x>B-\epsilon$\marginpar{figure: real line}%
+\end{enumerate}
+
+\textbf{Completeness Theorem:} If $S\subseteq\R$ is non-empty and bounded above then the $\sup(S)$ exists. \\
+``no holes'' property of $\R$.
+
+\pf For this proof use notation $z\footnote{$\in\R$}\geq S\footnote{set}$ to mean $z\geq x\,\forall x\in S$.  Since $S\neq\emptyset$ so $\exists y\in S$.  Put $x_0=y-1$.  Proceed inductively to construct a sequence. \\
+By the Archimedian property and the fact that $S$ is bounded above, there exists $N_0\in\Z$ such that $x_0+N_0\geq S$.  In fact, let's make $N_0$ the least integer that does this.  $N_0\geq1$ since $x_0+0=y-1$ and $y\in S$. \\
+Put $x_1=x_0+N_0-1\geq x_0$. \\
+By definition of $N_0$, $x_0+N_0-1$ fails to be $\geq S$.  Hence there exists $s_1\in S$ such that $s_1>x_0+N_0-1=x_1$. \\
+Futhermore $x_1+1=x_0+N_0\geq S$.\marginpar{figure: $(x_i)$ on real line}%
+\\ Choose smallest integer $N_1$ such that $x_1+N_1/2\geq S$ ($N_1=1$ or $2$) \\
+Put $x_2=x_1+(N_1-1)/2$, fails $\geq S$. \\
+i.e., $\exists s_2\in S$ with $s_2>x_2$.  Also $x_2+1/2=x_1+N_1/2\geq S$. \\
+Inductively define $x_n=x_{n-1}+(N_{n-1}-1)/n$ where $N_{n-1}=\text{least integer such that $x_{n-1}+N_{n-1}/n\geq S$}$ \\
+By construction $\exists s_n\in S$ such that $x_n<s_n$, but $x_n+1/n\geq S$.
+\[ \implies N_{n-1}\geq 1 \implies x_{n+1}\geq x_n \]
+Produces a sequence $(x_n)$ that is increasing. \\
+If $B$ is an upper bound for $S$ then $x_n\leq B$ hence the sequence is bounded above. \\
+By completeness axiom $(x_n)$ converges to say $x_0$. \\
+\textbf{Claim:} $x_0=\sup(S)$
+\begin{enumerate}
+%\item $(x_n)\uparrow$, $x_n\leq x_0$, $\forall n$.  Say $\exists s\in S$, $s>x_0$.  Then $s-x_0>1/N$ for some $N\in\N$ $\implies$ $S>1/N+x_0\geq1/N+x_n$.  Therefore $x_0$ is an upper bound for $S$, contradiction.
+\item $(x_n)$ increasing, therefore $x_n\leq x_0$, $\forall n$.  Say $\exists s\in S$, $s>x_0$.  Then $s-x_0>1/N$ for some $N\in\N$ $\implies$ $s>1/N+x_0\geq1/N+x_n$, contradiction.  Therefore $x_0$ is an upper bound for $S$.
+\item Show $\forall\epsilon>0\,\exists x\in S$ such that $x>x_0-\epsilon$. \\
+Get $x_n$ such that $x_n>x_0-\epsilon$ (since $(x_n)\to x_0$). \\
+Know $\exists s_n\in S$ with $s_n>x_n>x_0-\epsilon$. \\
+By our characterization of $\sup$, $x_0=\sup(S)$.
+\end{enumerate}

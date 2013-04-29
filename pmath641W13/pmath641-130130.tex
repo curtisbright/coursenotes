@@ -1,0 +1,28 @@
+Given $\alpha\in\R$ how well can we approximate it with rationals $p/q$?  How well can we approximate it in terms of $q$? \\
+\textbf{Dirichlet's Theorem:} If $\alpha\notin\Q$ then
+\[ \text{there exists infinitely many $\frac{p}{q}\in\Q$ with $\abs[\Big]{\alpha-\frac{p}{q}}<\frac{1}{q^2}$} . \tag{$*$} \]
+%missing...
+\textbf{Lemma 23:} Let $\alpha$ be a real \emph{irrational} and let $Q$ be an integer larger than $1$.  There exist integers $p$ and $q$ with $0<p\leq Q$ such that $\abs{p\alpha-q}<1/Q$.  Also we have $*$. \\
+\pf Note that $*$ follows from our first claim since
+\[ \abs{q\alpha-p}<\frac1Q \implies \abs[\Big]{\alpha-\frac{p}{q}}<\frac{1}{pQ} \]
+Thus if we pick a $Q$, we find $\abs{\alpha-\frac{p_1}{q_1}}<\frac1{q_1Q_1}\leq\frac{1}{q_1^2}$ with $q_1\leq Q_1$.  But then since $\alpha$ is irrational $\exists Q_2$ such that $\frac{1}{Q_2}<\abs{q_1\alpha-p_1}$ and so $\exists\frac{p_2}{q_2}\neq\frac{p_1}{q_1}$ with $\abs{\alpha-\frac{p_2}{q_2}}<\frac{1}{q_2^2}$.  Continuing in this way we get our claim.
+
+For any $x\in\R$ we define $\brace{x}$, the fractional part of $x$ to be $x-[x]$.  We consider the $Q+1$ number $0$, $1$, $\brace{\alpha}$, $\brace{2\alpha}$, $\dotsc$, $\brace{(Q-1)\alpha}$.  Thus there exists an integer $j$ with $1\leq j\leq Q$ such that two of the numbers are in $\brace{\frac{j-1}{Q},\frac{j}{Q}}$ by the pigeonhole principle.
+
+Note $0$ and $1$ are not both in the interval since $Q>1$.  Thus either there exist $i_1$ and $i_2$ with $\brace{i_1\alpha}$, $\brace{i_2\alpha}$ in $\brack*{\frac{j-1}{Q},\frac{j}{Q}}$ with $1\leq i_1<i_2\leq Q$ or there exist $t\in\brace{0,1}$ and $i_1$ with $1\leq i_1\leq Q$ with $t$ and $\brace{i_1\alpha}$ in $\brack*{\frac{j-1}{Q},\frac{j}{Q}}$.
+
+Then $\abs*{\brace{i_1\alpha}-\brace{i_2\alpha}}\leq1/Q$ in the first case and $\abs{t-\brace{i_1\alpha}}\leq1/Q$ in the second case.  But $\brace{i_j\alpha}=i_j\alpha-[i_j\alpha]$ for $j=1$, $2$.  Thus in the first case $\abs{\brace{i_1\alpha}-\brace{i_2\alpha}}=\abs{(i_1-i_2)\alpha-([i_1\alpha]-[i_2\alpha])}$ and we take $q=i_1-i_2$ and $p=[i_1\alpha]-[i_2\alpha]$.  Since $\alpha\notin\Q$ we see that $\abs{q\alpha-p}<1/Q$ as required.  The second case follows in a similar fashion. \\
+\textbf{Proof of Theorem 22:} We'll first find a unit $\gamma$ in $A\cap\Q(\sqrt{D})$ which is positive and different from $1$.  To show this we'll prove there exist a positive integer $m$ and $\infty$-ly many $\beta\in A\cap\Q(\sqrt{D})$ for which $N_{\Q}^{\Q(\sqrt{D})}(\beta)=N\beta=m$.  Let $\beta=p+q\sqrt{D}$ with $p$, $q\in\Z$, $q\neq0$.  Then $N\beta=(p+q\sqrt{D})(p-q\sqrt{D})=p^2-Dq^2$.  Then
+\[ \abs{N\beta} = \abs[\Big]{\frac{p}{q}-\sqrt{D}} q^2 \abs[\Big]{\frac{p}{q}+\sqrt{D}} \]
+We can find, by Dirichlet's Theorem, $p$, $q$ with $\abs{\frac{p}{q}-\sqrt{D}}<1/q^2$ and then this implies $\abs{\frac{p}{q}+\sqrt{D}}<2\sqrt{D}+1$ hence $\abs{N\beta}<2\sqrt{D}+1$ for $\infty$-ly many pairs $p$, $q$ with $(p,q)=1$.
+
+But $N\beta$ is an integer and so there is an integer $m$ with $1\leq \abs{m}\leq2\sqrt{D}+1$ and $\infty$-ly many $\beta\in A\cap\Q(\sqrt{D})$ for which $N\beta=m$.  We now choose an infinite subset of the $\beta$s so that if $\beta_1=p_1+q_1\sqrt{D}$ and $\beta_2=p_2+q_2\sqrt{D}$ are in the set then
+\begin{align*}
+p_1 &\equiv p_2 \bmod{m} \text{ and} \\
+q_1 &\equiv q_2 \bmod{m} .
+\end{align*}
+We now take from this subset $\beta_1$ and $\beta_2$ for which $\beta_1/\beta_2\neq-1$ and consider $\beta_1/\beta_2$.
+\[ \frac{\beta_1}{\beta_2} = 1 + \frac{\beta_1-\beta_2}{\beta_2} = 1 + \frac{(\beta_1-\beta_2)\tilde\beta_2}{N\beta_2} \]
+where $\tilde\beta_2$ is the conjugate of $\beta_2$.  Thus
+\[ \frac{\beta_1}{\beta_2} = 1 + \paren[\Big]{\frac{\beta_1-\beta_2}{m}}\tilde\beta_2 \in A \cap K . \]
+Similarly $\beta_2/\beta_1\in A\cap K$.  Therefore $\beta_1/\beta_2$ is a unit in $A\cap\Q(\sqrt{D})$.  It is not $-1$ by construction and so it is not a root of unity.  Thus one of $\pm\beta_1/\beta_2$ is a positive unit different from $1$.  Thus there is a unit $\gamma$ larger than $1$.

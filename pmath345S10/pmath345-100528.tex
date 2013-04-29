@@ -1,0 +1,29 @@
+\thm Every PID is a UFD. \\
+\pf Recall from last time: \\
+\thm Every irreducible element of a PID is prime. \\
+\thm Let $I_1\subset I_2\subset\dotsb$ be a chain of ideals in a PID.  Then for some $n$, $I_m=I_n$ for all $m\geq n$.
+
+\textbf{Digression:}~Every irreducible element of a UFD is prime. \\
+\pf Say $x$ is irreducible in a UFD $D$.  We will show that $(x)$ is a prime ideal, so $x$ is prime.
+
+So, assume $ab\in(x)$.  Then $ab=xc$ for some $c\in D$.  Factoring both sides into irreducibles gives:
+\[ \underbrace{(p_1\dotsm p_n)}_a\underbrace{(q_1\dotsm q_m)}_b=x\underbrace{(r_1\dotsm r_l)}_c \]
+By uniqueness of factorization, we get $x=up_i$ or $x=uq_i$ for some $u\in D^*$ and index $i$.
+
+So either $a\in(x)$ (if $x=up_i$) or $b\in(x)$ (if $x=uq_i$).  Hence $(x)$ is a prime ideal and $x$ is prime, as desired. \qed
+
+We will now show that if $D$ is a PID, then $D$ is a UFD.  To do this, we will show that any element $a\in D$, $a\neq0$, $a\notin D^*$, can be factored uniquely into a product of irreducibles.
+
+Thus, choose any $a\in D$, $a\neq0$, $a\notin D^*$.  We want to find some irreducible element $p\in D$ such that $p\mid a$.  Well, if $a$ is irreducible, then we may choose $p=a$.  If $a$ is not irreducible, then we may write $a=bc$ for $b$,~$c\in D$, $b$,~$c\notin D^*$.  If $b$ or $c$ are irreducible, we win.  Otherwise, we get $(a)\subset(b)$ with $(b)\neq(1)$.  Write $a_1=b$.
+
+Write $a_1=a_2b_2$ for $a_2$,~$b_2\notin D^*$.  Write $a_2=a_3b_3$ for $a_3\notin D^*$, and continue writing $a_n=a_{n+1}b_{n+1}$ with $a_{n+1}\notin D^*$, and $b_{n+1}\notin D^*$ whenever $a_n$ is reducible.  We have an ascending chain of ideals: $(a)\subset(a_1)\subset(a_2)\subset\dotsb$.  By ACC for PIDs, there is an $n$ such that $(a_n)=(a_m)$ for all $m\geq n$.  In particular, $(a_n)=(a_{n+1})$, where $a_n=a_{n+1}b_{n+1}$.  This means $b_{n+1}\in D^*$, so $a_n$ is irreducible, with $a_n\mid a$.
+
+Now we'll show that $a$ can be factored completely into irreducibles.  Write $a=p_1a_1$ for irreducible $p_1\in D$.  Write $a=p_1p_2a_2$ for irreducible $p_2\in D$ (unless $a_1\in D^*$).  Keep going until $a_n\in D^*$, at which point:
+\[ a = \underbrace{p_1 p_2 p_3 \dotsm (a_n p_n)}_{\text{all irreducible}} \]
+To show that $a_n\in D^*$ for some $n$, note that $(a)\subset(a_1)\subset(a_2)\subset\dotsb$ is an ascending chain of ideals.  By ACC, this means $(a_n)=(a_{n+1})$ for some $n$, with $a_n=p_{n+1}a_{n+1}$; this is impossible!  So $a_n$ must have been a unit, and so $a$ has been factored completely into irreducibles.
+
+Finally, we show that this factorization is unique.  Say
+\[ a = p_1\dotsm p_n = q_1\dotsm q_m \tag{$*$}\label{star} \]
+for irreducibles $p_1$, $\dotsc$, $p_n$, $q_1$, $\dotsc$, $q_m\in D$.  First, note that $p_1$, $\dotsc$, $p_n$, $q_1$, $\dotsc$, $q_m$ are all prime, so $p_1\mid q_1\dotsm q_m\implies p_1\mid q_i$ for some $i$.  Then $q_i=p_1x$ for some $x\in D$ and $x\in D^*$ because $p_1\notin D^*$ and $q_i$ is irreducible.  So we cancel $p_1$ from both sides of \eqref{star}:
+\[ p_2\dotsm p_n = q_1 \dotsm \hat{q_i} \dotsm q_m x \]
+where the hat means $q_i$ is not present.  Keep doing this for each $p_j$ in turn until either the $p_i$s run out or the $q_i$s do.  If the two sets don't run out at the same step, then a nonempty product of primes would be a unit, which is impossible.  So $n=m$, and so the two factorizations are the same up to permutation and multiplication by units. \qed

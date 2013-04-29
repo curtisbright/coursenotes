@@ -1,0 +1,62 @@
+\eg $K=\Q_3(\sqrt2)$ \\
+Note that $[K:\Q_3]=2$, because $\abs{\sqrt2}_3=\sqrt{\abs{2}_3}=1$.  Since $\sqrt2\notin\F_3$, $\sqrt2\notin\Z_3$, so $\sqrt2\notin\Q_3$.
+Now,
+\begin{align*}
+\abs{a+b\sqrt2}_3 &\leq \max\brace{\abs{a}_3,\abs{b}_3} \\
+=\sqrt{\abs{N(a+b\sqrt2)}_3} &= \sqrt{\abs{a^2-2b^2}_3}
+\end{align*}
+If $\abs{a}_3\neq\abs{b}_3$, then $\abs{a+b\sqrt2}_3=\max\brace{\abs{a}_3,\abs{b}_3}$. \\
+If $\abs{a}_3=\abs{b}_3$, then $a+b\sqrt2=3^r(a'+b'\sqrt2)$, where $a'$, $b'\in\Z_3^*$.  In that case, $a'=\pm b'=\pm1\bmod3$, so $(a')^2-2(b')^2=-1\bmod3$, so $\abs{a+b\sqrt2}_3=\abs{a}_3=\abs{b}_3$.  So in general,
+\[ \abs{a+b\sqrt2}_3 = \max\brace{\abs{a}_3,\abs{b}_3} . \]
+%
+$K/\Q_p$ is a finite extension. \\
+Then $\sqrt[n]{\abs{N_{K/\Q_p}(\alpha)}_p}$ is an extension of $\abs{\cdot}_p$ to $K$.  It's the \emph{only} such extension, and $K$ is complete with respect to this extension.
+\begin{align*}
+O &= \text{valuation ring of $K$} \\
+&= \set{\alpha\in K}{\abs{\alpha}_p\leq1} \\
+&= \set{\alpha\in K}{\text{monic minimal polynomial lies in $\Z_p[x]$}}
+\end{align*}
+Note that $O$ is Galois stable, \emph{i.e.}, if $\alpha\in O$, $\sigma\in\Aut_{\Q_p}(K)$, then $\sigma(\alpha)\in O$.
+
+Assume $K/\Q_p$ is Galois. \\
+Recall that the residue field of $K$ is $\overbrace{O/M}^{=k}$, where $M={}$maximal ideal of $O$.  It's an extension of $\F_p$, and a finite one since $[K:\Q_p]<\infty$. \\
+Define:
+\[ \psi\colon\Gal(K/\Q_p) \to \Gal(k/\F_p) \]
+as follows:
+
+Say $\sigma\in\Gal(K/\Q_p)$.  Then $\sigma|_O\colon O\to O$ is also an automorphism.  Since $\abs{\cdot}_p$ is also Galois invariant, $\sigma$ maps $M$ to $M$.  Thus, $\sigma$ induces a homomorphism
+\[ \psi(\sigma)\colon \underset{=k}{O/M}\to\underset{=k}{O/M} . \]
+$\psi(\sigma)$ is an automorphism because $k$ is a finite field. \\
+It is easy to check that $\psi$ is a homomorphism of groups
+\[ \psi\colon\Gal(K/\Q_p)\to\Gal(k/\Q_p). \]
+Say $k=\F_p(\o\alpha)$, $\o m(x)$ a minimal polynomial for $\o\alpha$ over $\F_p$.  Then by Hensel's Lemma, any polynomial $m(x)\in\Z_p[x]$ with $m\equiv\o m\bmod M$ and $\deg(m)=\deg(\o m)$ will also be irreducible and split completely in $K$. \\
+($\alpha$ a root of $m(x)$, $\alpha\equiv\o\alpha\bmod M$) \\
+If $\o\sigma\in\Gal(k/\F_p)$ and $\o\sigma(\o\alpha)=\o\beta$, then if $\beta\in K$ is a root of $m(x)$ with $\beta\equiv\o\beta\bmod M$, then any $\sigma\in\Gal(K/\Q_p)$ with $\sigma(\alpha)=\beta$ satisfies $\psi(\sigma)=\o\sigma$.
+
+The kernel of $\psi$ is called the inertia (sub)group of $\Gal(K/\Q_p)$.
+
+\defn $K/\Q_p$ finite is unramified \emph{iff} $\psi$ is an isomorphism.  Equivalently, if $[k:\F_p]=[K:\Q_p]$.
+
+\defn The inertia subfield of $K$ is the fixed field of the inertia group.
+\begin{flalign*}
+%\[
+%\xymatrix{
+%K\ar@{-}[d]^{[K:K^{\ur}]=\#I(K)} \\
+%K^{\ur}\ar@{-}[d]^{[K^{\ur}:\Q_p]=[k:\F_p]} \\
+%\Q_p}
+&&\mathclap{\begin{tikzpicture}
+	\node(K){$K$};
+	\node(Kur)[below=of K]{$K^{\ur}$};
+	\node(Qp)[below=of Kur]{$\Q_p$};
+	\draw[-](K) to node[right] {$[K:K^{\ur}]=\#I(K)$} (Kur);
+	\draw[-](Kur) to node[right] {$[K^{\ur}:\Q_p]=[k:\F_p]$} (Qp);
+\end{tikzpicture}}&&\\
+%\]
+%\begin{flalign*}
+	\eg&&
+	\mathclap{\xymatrix{
+	\Q_3(\sqrt2,\sqrt3)\arl[d]^{\text{ramified}} \\
+	\Q_3(\sqrt2)\arl[d]^{\text{ramified}} \\
+	\Q_3}}
+	&&
+\end{flalign*}

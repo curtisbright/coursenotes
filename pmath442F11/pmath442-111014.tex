@@ -1,0 +1,46 @@
+Galois Theory of Finite Fields \\
+Say $F$ is a finite field.  Then $F$ has $p^n$ elements for some prime $p$ and integer $n\geq1$.  We write $F=\F_{p^n}$.  A finite extension of $F$ is also a finite field, with $p^{kn}$ elements for some integer $k\geq1$.  Let $E=\F_{p^{kn}}$.  Then
+\[ [E:F] = [\F_{p^{kn}}:\F_{p^n}] = k \]
+Consider $\Frob_p\colon\begin{aligned}\F_{p^{kn}}&\to\F_{p^{kn}}\\E&\to E\end{aligned}$. \\
+It's an isomorphism, with fixed field $\F_p$.  In general, $\Frob_p$ only fixes $\F_{p^n}$ is $n=1$, so $\Frob_p$ is \emph{not} in $\Aut_F(E)$.  However, $\alpha^{p^n}=\alpha$ \emph{iff} $\alpha\in F=\F_{p^n}$, so $\F_{p^n}$ is the fixed field of $(\Frob_p)^n$, the $n$-fold composition of $\Frob_p$ with itself.
+
+So let $\pi=(\Frob_p)^n$.  Then for each $a\in\brace{1,\dotsc,k}$, the $a$-fold composition $\pi^a$ is an automorphism of $\F_{p^{kn}}=E$ whose fixed field is $\F_{p^{an}}\cap E=\F_{p^{gn}}$ where $g=\gcd(a,k)$.  So $\pi$ is an $F$-automorphism of $E$ of order $k$.  So $E/F$ is Galois with $\Gal(E/F)=\brace{1,\pi,\dotsc,\pi^{k-1}}\cong\Z/k\Z$.
+
+\thm Say $K/F$ is a finite Galois extension, $E/F$ any finite extension.
+\[ \xymatrix{
+& KE\ar@{-}[dl]\ar@{-}[dr] & \\
+K\ar@{-}[dr] & & E\ar@{-}[dl] \\
+& K\cap E\ar@{-}[d] & \\
+& F &
+} \]
+Then $KE/E$ is Galois, and
+\[ \Gal(KE/E)\cong\Gal(K/K\cap E) \text{ and } [KE:F] = \frac{[K:F][E:F]}{K\cap E:F} . \]
+\pf First, note that the formula follows formally from the isomorphism of Galois groups:
+\begin{align*}
+[KE:F] &= [E:F][KE:E] \\
+&= [E:F][K:K\cap E] \\
+&= [E:F]\frac{[K:F]}{[K\cap E:F]}
+\end{align*}
+It therefore suffices to prove the theorem for $F=K\cap E$.
+\[ \xymatrix{
+& KE\ar@{-}[dl]\ar@{-}[dr] & \\
+K\ar@{-}[dr] & & E\ar@{-}[dl] \\
+& F &
+} \]
+$K$ is the splitting field for some separable polynomial $p(x)\in F[x]$.  So $KE$ is the splitting field for $p(x)\in E[x]$ over $E$, and therefore $KE/E$ is Galois.
+
+Define $\psi\colon\Gal(KE/E)\to\Gal(K/F)$ by $\psi(\sigma)=\sigma|_K$, which is well defined because $K/F$ is Galois, so $\im(\sigma|_K)=K$.  $\psi$ is a homomorphism.  If $\sigma\in\ker\psi$, then $\sigma|_K=\id$.  Since $\sigma\in\Gal(KE/E)$, $\sigma|_E=\id$ too, so $\sigma_{KE}=\id$.  So $\psi$ is injective.
+
+Consider $\im\psi$.  Its fixed field is, say, $L$.  Then $L\subset K$, and every element of $\Gal(KE/E)$ fixes $L$, so $L\subset E$.  But $F\subset L$, so $L=K\cap E=F$.  Therefore $\im\psi=\Gal(K/F)$, and $\psi$ is onto. \qed
+
+\thm Say $K_1K_2$ are Galois extensions of $F$.  Then $K_1\cap K_2$ and $K_1K_2$ are Galois over $F$, and $\Gal(K_1K_2/F)$ is isomorphic to the fibre product of $\Gal(K_1/F)$ and $\Gal(K_2/F)$ over $\Gal(K_1\cap K_2/F)$.
+\[ \xymatrix{
+& K_1 K_2\ar@{-}[dl]\ar@{-}[dr] & \\
+K_1\ar@{-}[dr] & & K_2\ar@{-}[dl] \\
+& K_1\cap K_2\ar@{-}[d] & \\
+& F &
+} \]
+\defn Let $S$, $T$, $U$ be sets, with functions
+\[ \xymatrix{T\ar[dr]_f & & U\ar[dl]^g \\ & S & } \]
+The fibre product of $T$ and $U$ over $S$ is:
+\[ T \times_S U = \set{(t,u)\in T\times U}{f(t)=g(u)} \]

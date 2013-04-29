@@ -1,0 +1,24 @@
+If $K\subseteq\C$, $\theta$ is algebraic over $K$.
+\[ K(\theta) \coloneqq \text{smallest field containing $\theta\in K$} = \set{f(\theta)/g(\theta)}{\text{$f$, $g\in K[x]$ with $g(\theta)\neq0$}} . \]
+\textbf{Theorem 3:} Let $K\subset\C$, $\theta$ be algebraic over $K$. $\deg_k(\theta)=n$. Then every element $\alpha\in K(\theta)$ has a unique representation of the form:
+\[ \alpha = a_0 + a_1 \theta + \dotsb + a_{n-1}\theta^{n-1} \]
+for $a_0$, $\dotsc$, $a_{n-1}\in K$. \\
+\pf Since $\alpha\in K(\theta)$, $\alpha=f(\theta)/g(\theta)$.  Let $p$ be minimal polynomial of $\theta$ over $K$.  Now $p(x)$ and $g(x)$ are coprime polynomials.  There exists $s$, $t\in K[x]$ by Euclidean algorithm such that
+\[ p(x)t(x) + g(x)s(x) = 1 \]
+or $g(\theta)s(\theta)=1\implies\alpha=f(\theta)s(\theta)$.  Now $f(x)s(x)=q(x)p(x)+r(x)$ by division so $f(\theta)s(\theta)=r(\theta)$, $\deg r(\theta)\leq n-1$. \\
+Proof of uniqueness: \\
+$\alpha=r_1(\theta)=r_2(\theta)$; $r_1$, $r_2\in K[x]$. \\
+$r_1(x)-r_2(x)$ is polynomial of degree $<n$ having $\theta$ as root.  This is not possible otherwise $\deg_k(\theta)\neq n$
+\[ K(\theta) = K[\theta] . \]
+\defn Let $R$ and $S$ be rings.  An injective homomorphism $\phi\colon R\to S$ is an embedding of $R$ in $S$.
+
+\textbf{Theorem 4:} Let $K\subset\C$ and $L$ be finite extensions of $K$.  Each embedding of $K$ in $\C$ extends to exactly $\deg_k(L)$ ($[L:K]$) embeddings of $L$ in $\C$. \\
+\pf By induction on $[L:K]$. \\
+Let $\alpha\in L\setminus K$, $p(x)$: minimal polynomial of $\alpha/K$, let $\sigma$ be an embedding of $K$ in $\C$. $p(x)=\sum_{i=0}^n a_i x^i$, $g(x)=\sum_{i=0}^n\sigma(a_i)x^i$ is irreducible over $\sigma(K)$.
+
+For each root $\beta$ of $g$, define an embedding $\lambda_\beta$ of $K[\alpha]$ in $\C$ by $\lambda_\beta\colon K[\alpha]\to\C$,
+\[ \lambda_\beta(l_0+l_1\alpha+\dotsb+l_{n-1}\alpha^{n-1}) = \sigma(l_0) + \sigma(l_1)\beta + \dotsb + \sigma(l_{n-1})\beta^{n-1} . \]
+One can check $\lambda_\beta$ is an embedding by checking it is an injective homomorphism and extends $\sigma$ on $K$.
+
+Further, there are no other embeddings since $\lambda(0)=0=p(\alpha)=\lambda p(\alpha)=g(\lambda_\alpha)$ ($\lambda_\alpha$ is a root of $g$) \\
+Applying inductive hypothesis to $[L:K(\alpha)]$, there are exactly $[L:K(\alpha)][K(\alpha):K]$ embeddings of $L$ in $\C$.

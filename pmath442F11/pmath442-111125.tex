@@ -1,0 +1,45 @@
+%
+%We start with $k$ a field.
+%
+%\defn $D$ is a derivation if $D$ is additive \&
+%\[ \left.\begin{aligned}D(ab)&=aD(b)+D(a)b\\D(a+b)&=D(a)+D(b)\end{aligned}\right\} \forall a,b\in k \]
+%\defn $(k,D)$ differential field \\
+%\given  $L(y)=D^{(n)}(y)+a_{n-1}D^{(n-1)}(y)+\dotsb+a_1D(y)+a_0$, $a_i\text{s}\in k$ \\
+%Goal: Find $y$ \\
+%If $V=\brace{v_1,\dotsc,v_k}$ are set of differential equations. \\
+%Then the set of solutions is a vector space over
+%$C_k \subseteq k$
+%\begin{gather*}
+%C_k = \set{a\in k}{Da=0} \\
+%y' = Ay \\ %boxed
+%y = \begin{bmatrix}
+%y_0 \\
+%\vdots \\
+%y_{n-1}
+%\end{bmatrix} \\
+%\begin{cases}
+%y_0 &= y \\
+%y_1 &= y_0' \\
+%y_2 &= y_1' \\
+%&\vdots \\
+%y_{n-1} &= y'_{n-2}
+%\end{cases} \\
+%A \in k^{n\times n}
+%\end{gather*}
+%\defn $R$ is a Picard Versot ring if
+%\begin{itemize}
+%\item $\exists F\in R^{n\times n}$
+%\end{itemize}
+$\vabs{\alpha}=\sqrt[n]{\pabs{N_{K/\Q_p}(\alpha)}}$ \\
+\thm $\vabs{\cdot}$ is a non-archimedean valuation on $K$. \\
+\pf All done except:
+\[ \vabs{\alpha+\beta} \leq \max\brace{\vabs\alpha,\vabs\beta} . \]
+Without loss of generality, say $\vabs\beta\geq\vabs\alpha$.  Then it suffices to show: \[\vabs[\Big]{\frac{\alpha}{\beta}+1}\leq\max\brace[\Big]{\vabs[\Big]{\frac{\alpha}{\beta}},1}.\]
+\lemma Let $L$ be a field that's complete with respect to a non-archimedean valuation $\psi$.  Say $f(x)\in L[x]$ is irreducible, $f(x)=a_0+a_1x+\dotsb+a_nx^n$.  Then $\psi(a_i)\leq\max\brace{\psi(a_0),\psi(a_n)}$ for all $i$. \\
+\textbf{Proof of Lemma: }Let $O$ be the valuation ring.  Let $j$ be the smallest index such that $\psi(a_j)\geq\psi(a_i)$ for all $i$.  Then $\frac1{a_j}f\in O[x]$ and
+\[ f \equiv x^j (a_j + \dotsb + a_n x^{n-j}) \bmod M \]
+where $M\subset O$ is the maximal ideal.  By Hensel's Lemma, $f(x)$ factors as the product of $2$ polynomials, one of $\deg j$ \& the other of degree $n-j$.  Since $f$ is irreducible, either $j=0$ or $n-j=0$. \qed~lemma
+
+By the lemma applied to $L=\Q_p$, we see that a monic irreducible polynomial in $\Q_p[x]$ lies in $\Z_p[x]$ \emph{iff} its constant coefficient lies in $\Z_p$.  So $N_{K/\Q_p}(\alpha)\in\Z_p$ \emph{iff} monic minimal polynomial for $\alpha$ lies in $\Z_p[x]$.  Since $\vabs{\frac\alpha\beta}\leq1$, we get $N(\frac\alpha\beta)\in\Z_p$ so monic minimal polynomial for $\frac\alpha\beta$ has coefficients in $\Z_p$.  If $m(x)$ is the monic minimal polynomial for $\frac{\alpha}{\beta}$, then $m(x-1)$ is the monic minimal polynomial for $(\frac\alpha\beta-1)$.  So $m(x)\in\Z_p[x]\implies m(x-1)\in\Z_p[x]$, and hence $N(\frac\alpha\beta+1)\in\Z_p$ \&
+\[ \vabs[\Big]{\frac\alpha\beta+1} \leq \max\brace[\Big]{\vabs[\Big]{\frac\alpha\beta},1} \]
+as desired.

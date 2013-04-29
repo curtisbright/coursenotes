@@ -1,0 +1,59 @@
+\thm (Hensel's Lemma) Let $K$ be a complete field with respect to a non-archedmedian valuation, $O$ is valuation ring, $M\subset O$ the maximal ideal.  Let $f(x)\in O[x]$, and assume $\overline f\equiv\overline g\overline h\bmod M$ for $\gcd(\overline g,\overline h)=1$.  Then $f=gh$ in $K[x]$, where $g\equiv\overline g\bmod M$, $h\equiv\overline h\bmod M$, $\deg(g)=\deg(\overline g)$. \\
+\pf (continued)
+%\[ g_0 (a f_r + h_0Q) + h_0(p_r) \equiv f_r \bmod \pi \]
+%and $\deg(p_r)\leq\deg f-\deg h_0=\deg(g_0)$. \\
+\begin{gather*}
+g_0 (a f_r + h_0Q) + h_0(p_r) \equiv f_r \bmod \pi \\
+\text{and } \deg(p_r)\leq\deg f-\deg h_0=\deg(g_0)
+\end{gather*}
+So after deleting terms in $af_r+h_0Q$ of too high degree (because they're $0\bmod\pi$), we find $q_r$.
+\begin{gather*}
+\mathllap{\text{So }} g_{r+1} = g_r + p_r \pi^r \\
+h_{r+1} = h_r + q_r \pi^r \\
+\mathllap{\text{satisfies }} f \equiv g_r h_r \bmod \pi^{r+1} \\
+\deg(g_{r+1}) = \deg(\overline g) \\
+\deg(h_{r+1}) \leq \deg(\overline h) \\
+\left.\begin{aligned}
+g_{r+1} &\equiv \overline g \\
+h_{r+1} &\equiv \overline h
+\end{aligned}\right\}\bmod M
+\end{gather*}
+So $\brace{g_r}$ \& $\brace{h_r}$ are Cauchy sequences of polynomials in $K[x]$, that must converge to $g$ \& $h$, respectively, satisfying $f=gh$, $\deg g=\deg\overline g$, $g\equiv\overline g$, $h\equiv\overline h$. \qed
+
+\eg $\sqrt2\notin\Q_5$, because if not, then $\abs{\sqrt2}_5^2=\abs{2}_5=1$, so $\sqrt2\in\Z_5$.  But $x^2-2$ is irreducible in the residue field $\F_5$, so $\sqrt2\notin\Z_5$. \\
+\eg $x^{p-1}-1$ splits completely in $\F_p[x]$: $x^{p-1}-1=\prod_{i=1}^{p-1}(x-i)$.  By Hensel's Lemma, $x^{p-1}-1$ splits completely in $\Q_p[x]$, too.  So if $n\divides p-1$, then $\zeta_n\in\Q_p$.
+
+\defn Let $L/K$ be a finite extension, $\alpha\in L$ any element.  The norm of $\alpha$ over $K$ is $\det(m_\alpha)$, where
+\begin{gather*}
+m_\alpha\colon L\to L\text{ is }m_\alpha(x)=\alpha x \\
+N_{L/K}(\alpha) = \det(m_\alpha) \\
+N_{L/K}(\alpha) = (-1)^{[L:K]}(\text{constant term in characteristic polynomial})
+\end{gather*}
+Since $\alpha$ is a root of the monic characteristic polynomial (by Cayley--Hamilton Theorem), the minimal polynomial of $\alpha$ ($m(x)$) is a factor of the characteristic polynomial of $m_\alpha$ ($\chi(x)$).  But every root of $\chi(x)$ is a root of $m(x)$, so $\chi(x)=m(x)^d$, where $d=[L:K(\alpha)]$.  Comparing constant terms gives %$(m(0))^d=(-1)^{[L:K]}\chi(0)$.
+$(m(0))^d=\chi(0)$.
+
+$n=[L:K]$ \\
+$L=1\cdot K+\alpha\cdot K+\dotsb+\alpha^{n-1}\cdot K$ \\
+if $L=K(\alpha)$ %as Eric said...
+\begin{gather*}
+[m_\alpha] = \begin{bmatrix}
+0 & 0 & & & -a_0/a_n \\
+1 & 0 & & & -a_1/a_n \\
+0 & 1 & & & -a_2/a_n \\
+\vdots & & \ddots & & \vdots \\
+0 & \hdots & 0 & 1 & -a_{n-1}/a_n
+\end{bmatrix} \\
+m(x) = a_0 + a_1x + \dotsb + a_nx^n \\
+\implies \alpha^n = -\frac{a_0}{a_1}-\frac{a_1}{a_n}\alpha-\dotsb-\frac{a_{n-1}}{a_n}\alpha^{n-1} \\
+\det[m_\alpha] = (-1)^{n-1}\frac{-a_0}{a_n} = (-1)^n a_0 \\
+N_{L/K}(\alpha) = (-1)^{[L:K]}(\text{constant term of monic minimal polynomials})^{[L:K(\alpha)]}
+\end{gather*}
+Say $K/\Q_p$ is a finite extension.  Define
+\[ \vabs{\alpha}=\sqrt[n]{\pabs{N_{K/\Q_p}(\alpha)}} \]
+where $n=[K:\Q_p]$.  This is a non-archedmedian valuation:
+\begin{enumerate}[label=(\arabic*)]
+\item $\vabs{\alpha}\geq0$, equality \emph{iff} $\alpha=0$ \checkmark
+\item $\vabs{\alpha\beta}=\vabs{\alpha}\vabs{\beta}$ \checkmark
+\item $\vabs{\alpha+\beta}\leq\max\brace{\vabs\alpha,\vabs\beta}$
+\end{enumerate}
+We will justify (3) next time.

@@ -1,0 +1,55 @@
+\textbf{Blichfeldt's theorem} \\
+It remains to consider the case when $A$ is compact and $N\mu(A)$ is an integer $h$.  For $k=1\c 2\c \dotsc$ we put $A_k=(1+\frac1k)A$.  By what we have just proved there is a sequence of points $\x_k\in U^n$, $k=1\c 2\c \dotsc$ for which
+\[ \upsilon(A_k+\x_k)\geq h+1 \]
+Since $\x_k\in\overline U^n$ and $\overline U^n$ is compact there is a subsequence $\x_{kj}$, $j=1\c 2\c \dotsc$ which converges to a point $\x$ in $\overline U^n$.  Since $A$ is compact the sets $A_k+\x_k$ are uniformly bounded and so contain only finitely many points of $P$.
+
+Each of the sets $A_{k_j}+\x_{k_j}$ contain at least $h+1$ points of $P$ and so we may assume by taking a further subsequence that there are $h+1$ points of $P$ say $\u_1\c \dotsc\c \u_{h+1}$ which occur in each set $A_{k_j}+\x_{k_j}$.  $A+\x$ is compact and in fact contains $\u_1\c \dotsc\c \u_{h+1}$ for if not then $\u_i\notin A+\x$ for some $i$ with $1\leq i\leq h+1$.  But then $\u_i$ is a positive distance from $\u_i$ to $A+\x$ and this can't be since $x_{k_j}\to\x$ and the distance from a point in $A_{k_j}$ to the nearest point in $A$ tends to zero as $k_j\to\infty$.  Thus $A+\x$ contains $h+1$ of the points of $P$.  We now choose $\g$ so that $\x-\g\in U^n$ and then $A+\x-\g$ then has $h+1$ points of $P$ as required since $P$ is invariant by translation by integer points.
+
+Let $S\subseteq\R^n$.  $S$ is said to be symmetric about the origin (or symmetric) if whenever $\x\in S$ then $-\x\in S$.  $S$ is said to be convex if whenever $\x$, $\y$ are in $S$ and $\lambda\in\R$ with $0\leq\lambda\leq1$ then $\lambda\x+(1-\lambda)\y\in S$.  In other words $S$ is convex if whenever $\x$ and $\y$ are in $S$ the line segment joining them is also in $S$.
+
+\textbf{Theorem 5} (Minkowski's Convex Body Theorem, 1896) Let $A$ be a convex subset of $\R^n$ which is symmetric about the origin and has volume $\mu(A)$.  If $\mu(A)>2^n$ or if $A$ is compact and $\mu(A)\geq2^n$ then $A$ contains an integer point different from the $\0$.
+
+\pf Notice that $\mu(\frac12 A)>1$ or if $A$ is compact $\mu(\frac12 A)\geq1$.  By Blichfeldt's Theorem applied to $\frac12 A$ where $P=\Lambda_0$, there exists an $\x$ in $U^n$ for which $\frac12 A+\x$ contains two distinct integer points $\g_1$ and $\g_2$.  Notice that $\g_1-\x$ and $\g_2-\x$ are in $\frac12 A$ and so $\g_1-\x=\frac12\x_1$ and $\g_2-\x=\frac12\x_2$ for $\x_1\c \x_2\in A$.  By symmetry, $-(\g_2-\x)=\x-\g_2=\frac12(-\x_2)$ with $-\x_2\in A$.  Since $A$ is convex $\frac12\x_1+\frac12(-\x_2)$ is in $A$ thus
+\[ \g_1-\x + \x - \g_2 = \g_1 - \g_2 \in A . \]
+But $\g_1-\g_2\in\Lambda_0$ and since $\g_1$ and $\g_2$ are distinct $\g_1-\g_2\neq\0$.
+
+\textbf{Remark:} Note that Minkowski's Convex Body Theorem is best possible in the sense that the conclusion does not hold with $2^n$ replaced by a smaller number as the example
+\[ A = \set{(t_1,\dotsc,t_n)\in\R^n}{\abs{t_i}<1\c i=1\c \dotsc\c n} . \]
+One can also check that the hypothesis of symmetry and convexity can't be omitted.
+
+\textbf{Theorem 6} (Minkowski's Linear Forms Theorem):  Let $B=(B_{ij})$ be an $n\times n$ matrix with real entries and non-zero determinant.  Let $c_1\c \dotsc\c c_n$ be positive real numbers with $c_1\dotsm c_n\geq\abs{\det B}$.  Then there exists an integer point $\x=(x_1,\dotsc,x_n)$ different from $\0$ for which
+\[ \abs{B_{i,1}x_1+\dotsb+B_{i,n}x_n} < c_i \qquad\text{for $i=1$, $\dotsc$, $n-1$} \]
+and
+\[ \abs{B_{n1}x_1+\dotsb+B_{nn}x_n} \leq c_n . \]
+
+\pf Let $L_1(\x)$, $\dotsc$, $L_n(\x)$ be linear forms given by
+\[ L_i(\x) = B_{i1}x_1 + \dotsb + B_{in}x_n \qquad\text{for $i=1$, $\dotsc$, $n$} . \]
+Next put,
+\[ L'_i(\x) = \tfrac{1}{c_i}L_i(\x) \qquad\text{for $i=1$, $\dotsc$, $n$} . \]
+Then we wish to solve the system
+\[ \abs{L'_i(\x)} < 1 \qquad\text{for $i=1$, $\dotsc$, $n-1$} \]
+and
+\[ \abs{L'_n(\x)} \leq 1 . \]
+The absolute value of the determinant of the matrix determined by the coefficients of $L'_1$, $\dotsc$, $L'_n$ is at most~$1$.  Thus we may assume that $c_1=\dotsb=c_n=1$ and $0<\abs{\det B}\leq1$.
+
+Let $A$ be the set of $\x\in\R^n$ for which
+\[ \abs{L_i(\x)}\leq 1 \qquad\text{for $i=1$, $\dotsc$, $n$} . \]
+Certainly $A$ is symmetric about the origin.  Also $A$ is convex since if $\x$ and $\y$ are in $A$ then for any $\lambda$ with $0\leq\lambda\leq1$
+\begin{align*}
+\abs{L_i(\lambda\x+(1-\lambda)\y)} &= \abs{\lambda(B_{i1}x_1+\dotsb+B_{in}x_n)+(1-\lambda)(B_{i1}y_1+\dotsb+B_{in}y_n)} \\
+&\leq \lambda \abs{B_{i1}x_1+\dotsb+B_{in}x_n} + (1-\lambda) \abs{B_{i1}y_1+\dotsb+B_{in}y_n} \\
+&\leq \lambda + 1 - \lambda = 1
+\end{align*}
+Further we remark that
+\[ \mu(A) = \frac{1}{\abs{\det(B)}}\cdot\mu\paren[\big]{\tilde U^n} \]
+where $B=(B_{ij})$ and $\tilde U^n=\set{(t_1,\dotsc,t_n)\in\R^n}{\abs{t_i}\leq1}$.  Therefore $\mu(A)\geq2^n$.  By Minkowski's Convex Body Theorem there is an integer point $\x$ with $\x\neq\0$ in $A$.
+
+Finally to get strict inequality in the first $n-1$ inequalities we introduce for each $\epsilon>0$ the set $A_\epsilon$ given by the inequalities
+\[ \abs{L_i(\x)}<1 \qquad\text{for $i=1$, $\dotsc$, $n-1$} \]
+and
+\[ \abs{L_n(\x)}<1+\epsilon . \]
+Then $\mu(A_\epsilon)\geq(1+\epsilon)2^n>2^n$ and so we may apply Minkowski's Convex Body Theorem to find an integer point $\x_\epsilon$ in $A_\epsilon$ with $\x_\epsilon\neq\0$.  Now take any sequence $\epsilon_k$ of positive reals which decreases to $0$.  Associated to it we get a sequence $\x_{\epsilon_k}$ of integer points different from $\0$.  Since $\bigcup_{k=1}^\infty A_{\epsilon_k}$ is bounded there exists an integer point $\x$ in infinitely many of the sets $A_\epsilon$ hence $\x$ satisfies
+\[ \abs{L_i(\x)}<1 \qquad\text{for $i=1$, $\dotsc$, $n-1$} \]
+and
+\[ \abs{L_n(\x)}\leq1 . \]
+\vspace{-\baselineskip}

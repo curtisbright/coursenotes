@@ -1,0 +1,76 @@
+\prop Let $X$ be compact and $f\colon X\to Y$ continuous.  Then $f$ is uniformly continuous.
+
+\pf Let $\epsilon>0$.  $\forall x\in X$ $\exists\delta_x>0$ such that if $d(x,y)<\delta_x$ then $d(f(x),f(y))<\epsilon$. \\
+Look at $\set{B(x,\delta_x/2)}{x\in X}$: open cover of compact set $X$. \\
+Take a finite subcover, say $B(x_1,\delta_{x_1}/2),\dotsc,B(x_n,\delta_{x_n}/2)$ \\
+Let $\delta=\min(\delta_{x_1}/2,\dotsc,\delta_{x_n}/2)>0$ \\
+Suppose $d(x,y)<\delta$.  There is some $i$ such that $x\in B(x_i,\delta_{x_i}/2)$ $\implies d(x,x_i)<\delta_{x_i}/2<\delta_{x_i}$ so by choice of $\delta_{x_i}$, $d(f(x),f(x_i))<\epsilon$. \\
+Calculate $d(y,x_i)\leq d(y,x)+d(x,x_i)<\delta_{x_i}/2+\delta_{x_i}/2=\delta_{x_i}$ \\
+$\implies$ $d(f(y),f(x_i))<\epsilon$ \\
+\[ \text{Hence } d(f(x),f(y))\leq d(f(x),f(x_i))+d(f(y),f(x_i))<\epsilon+\epsilon=2\epsilon \]
+$\implies$ $f$ is uniformly continuous.
+
+\textbf{Connectedness:} \\
+\defin $X$ is \emph{not connected} if $X=U\cup V$ where $U,V$ are both open and non-empty and $U\cap V=\emptyset$.
+
+Note $U^\Co=V$ and $V^\Co=U$, therefore $U,V$ are closed also.
+
+$E\subseteq X$ is \emph{connected} means $E\neq(E\cap U)\cup(E\cap V)$ where $U,V$ open in $X$, $E\cap U$, $E\cap V$ are disjoint and $E\cap U$, $E\cap V$ are both non-empty.
+
+\ex\begin{enumerate}
+\item $E=(0,1)\cup(2,3)$: not connected
+\item $\Q=(\Q\cap(-\infty,\sqrt2))\cup(\Q\cap(\sqrt2,\infty))$
+\item $X$: discrete metric space: only\footnote{(non-empty sets?)} singletons are connected
+\item $[a,b]$ in $\R$ is connected. \\
+Suppose not, say $[a,b]=(U\cap[a,b])\cup(V\cap[a,b])$, $U$, $V$ open, $U\cap[a,b]$ and $V\cap[a,b]$ disjoint, $U\cap[a,b]$, $V\cap[a,b]$ non-empty \\
+Without loss of generality $b\in U\cap[a,b]$.  Let $t=\sup([a,b]\cap V)$ \\
+$([a,b]\cap V)^\Co=(-\infty,a)\cup(b,\infty)\cup U$: open: $[a,b]\cap V$ is closed \\
+$t\in[a,b]\cap V$ \quad $t\neq b$ since $b\in U\cap[a,b]$ and the two sets are disjoint. \\
+$t<b$ \quad So because $V$ is open $\exists\delta>0$ such that $t+\delta\in V$ \emph{and} $t+\delta<b$ \\
+$\implies t+\delta\in V\cap[a,b]$: contradicts definition of $t$ as $\sup V\cap[a,b]$
+\end{enumerate}
+\prop If $X$ is connected and $f\colon X\to Y$ is continuous then $f(X)$ is connected.
+
+\pf Suppose not, say $f(X)=A\cup B$, $A$, $B$ open, disjoint and non-empty \\
+$f^{-1}(A)$, $f^{-1}(B)$
+\begin{itemize}
+\item open as $f$ is continuous
+\item non-empty as $A$, $B$ are non-empty
+\item disjoint because $A$, $B$ are disjoint
+\end{itemize}
+$X=f^{-1}(A)\cup f^{-1}(B)$ as $f(X)=A\cup B$: contradicts assumption $X$ is connected
+
+\textbf{Path Connected} \\
+$X$ is \emph{path connected} if $\forall x\neq y\in X$ there exists an interval $[a,b]$ and continuous function $f\colon[a,b]\to X$ such that $f(a)=x$, $f(b)=y$.
+
+\prop path connected implies connected\marginpar{figure: path between $x$ and $y$ in set $X$} \\
+\pf Say $X=A\cup B$, $A$, $B$ open, disjoint and non-empty. \\
+Let $x\in A$, $y\in B$.  Let $f\colon[a,b]\to X$ be a path from $x$ to $y$.% \\
+%$f([a,b])$ \quad is connected as $f$ is continuous and $[a,b]$ is connected \\
+%$=$ \\
+%$(f[a,b]\cap A)\cup(f[a,b]\cap B)$ \\
+%$\in$ \qquad\qquad $\in$ \\
+%$x$ \qquad\qquad $y$ \\
+%(as $f(a)=x$) \quad ($f(b)=y$) \\
+\begin{gather*}
+f([a,b]) \makebox[0em][l]{\quad is connected as $f$ is continuous and $[a,b]$ is connected} \\
+\rotatebox{90}{$=$} \\
+(f[a,b]\cap A)\cup(f[a,b]\cap B) \\
+\begin{gathered}
+\rotatebox{90}{$\ni$} \\
+x \\
+\text{(as $f(a)=x$)}
+\end{gathered}
+\qquad
+\begin{gathered}
+\rotatebox{90}{$\ni$} \\
+y \\
+\text{($f(b)=y$)}
+\end{gathered}
+\end{gather*}
+so these sets are non-empty and disjoint because $A$, $B$ are disjoint \\
+contradiction
+
+\ex of a connected set that is not path connected
+\[ X = \set{\paren[\Big]{x,\sin\frac1x}}{x>0} \cup \brace[\big]{(0,0)} \]%
+\marginpar{figure: graph of $X$}%

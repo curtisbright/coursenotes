@@ -1,0 +1,27 @@
+$\GF(p^n)={}$Field with $p^n$ elements \\
+$\mathop{\text{GF}\footnotemark}\footnotetext{``Galois Field''}(p)=\Z_p={}$integers mod $p$ \\
+$\GF(p^n)\not\cong\Z_{p^n}$ if $n\geq2$ \\
+Fix a prime $p$.
+\begin{gather*}
+\overline{\F_p} = \overline{\GF(p)} = \text{algebraic closure of $\GF(p)$} \\
+\xymatrix{
+\\
+\GF(p^8)\ar@{-}[d]\ar@{.}[u] & & \\
+\GF(p^4)\ar@{-}[d] & \GF(p^6)\ar@{-}[d]\ar@{-}[ld]\ar@{.}[u] & \GF(p^9)\ar@{-}[ld]\ar@{.}[u] & \\
+\GF(p^2)\ar@{-}[rd] & \GF(p^3)\ar@{-}[d] & \GF(p^5)\ar@{-}[ld] & \GF(p^7)\ar@{-}[lld]\ar@{.}[u] \\
+& \GF(p)
+}
+\end{gather*}
+\thm Let $p$ be prime, $n$, $m\in\Z_{\geq1}$.  Then $\GF(p^n)\subset\GF(p^m)$ \emph{iff} $n\mid m$.  Moreover, if $n\mid m$, then there is a unique subfield of $\GF(p^m)$ with $p^n$ elements. \\
+\pf If $\GF(p^n)\subset\GF(p^m)$, then $\GF(p^m)$ is a vector space over $\GF(p^n)$, with finite dimension $k$.  Then $\GF(p^m)$ has $(p^n)^k$ elements ($p^n$ scalars, $k$ coefficients in basis), so $p^m=p^{nk}$ and so $n\mid m$.
+
+Now assume $n\mid m$.  Then $x^{p^n}-x$ divides $x^{p^m}-x$, because $x^{p^n-1}-1$ divides $x^{p^m-1}-1$, because $p^n-1$ divides $p^m-1$, because $n$ divides $m$.
+
+Every element of $\GF(p^n)$ is a root of $x^{p^n}-x$, and so is a root of $x^{p^m}-x$, and so is an element of $\GF(p^m)$.
+
+Finally, any subfield of $\GF(p^m)$ with $p^n$ elements must be exactly the set of roots of $x^{p^n}-x$. \qed
+
+\eg $\Z[\sqrt{10}]$, $10=2\cdot5=\sqrt{10}\cdot\sqrt{10}$ \\
+$2$, $5$, $\sqrt{10}$ are all irreducible in $\Z[\sqrt{10}]$ \\
+\textbf{But:} $(10)=(2,\sqrt{10})^2\cdot(5,\sqrt{10})^2$ \\
+Check: $(2,\sqrt{10})(5,\sqrt{10})=(10,5\sqrt{10},2\sqrt{10},10)=(\sqrt{10})$

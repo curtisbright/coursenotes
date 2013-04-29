@@ -1,0 +1,51 @@
+\defn Let $F$ be a field, $p(x)\in F[x]$ any nonconstant polynomial.  A splitting field for $p(x)$ over $F$ is a field $E$ such that:
+\begin{enumerate}[label=(\arabic*)]
+\item $p(x)=c(x-a_1)\dotsm(x-a_n)$ for $c$, $a_1$, $\dotsc$, $a_n\in E$
+\item $E=F(a_1,\dotsc,a_n)$.
+\end{enumerate}
+\eg A splitting field for $x^2-2$ over $\Q$ is $\Q(\sqrt2)$, since $\Q(\sqrt2)=\Q(\sqrt2,-\sqrt2)$. \\
+\eg A splitting field for $x^2-1$ over $\Q$ is $\Q$. \\
+\eg A splitting field for $x^3-2$ over $\Q$ is $\Q(\sqrt[3]2,e^{2\pi i/3})=\Q(\sqrt[3]2,\frac{-1+\sqrt{-3}}{2})$ \\
+\pf Let $\gamma=e^{2\pi i/3}$ be a primitive cube root of unity.  Then:
+\[ x^3 - 2 = (x-\sqrt[3]2)(x-\gamma\sqrt[3]2)(x-\gamma^2\sqrt[3]2) \]
+So a splitting field is:
+\[ \Q(\sqrt[3]2,\gamma\sqrt[3]2,\gamma^2\sqrt[3]2) = \Q(\sqrt[3]2,\gamma) \]
+\defn An extension $E/F$ is finite \emph{iff} $[E:F]<\infty$. \\
+\thm Let $E/F$ be a finite extension.  Then $E/F$ is algebraic. \\
+\pf Let $\alpha\in E$, $[E:F]=n$.  Then $\brace{1,\alpha,\alpha^2,\dotsc,\alpha^n}$ is linearly dependent over $F$:
+\[ a_0 + a_1 \alpha + a_2 \alpha^2 + \dotsb + a_n \alpha^n = 0 \]
+for $a_0$, $\dotsc$, $a_n\in F$, not all zero.
+Then $\alpha$ is a root of $a_0+\dotsb+a_n x^n\in F[x]$, so $\alpha$ is algebraic over $F$. \qed
+
+This means that for any $E/F$, the set of elements of $E$ that are algebraic over $F$ is a field:
+\[ E^\text{alg} = \set{\alpha\in E}{\text{$\alpha$ is algebraic over $F$}} \]
+because if $\alpha$, $\beta\in E^\text{alg}$, then $F(\alpha)/F$ and $F(\beta)/F$ are both finite extensions:
+\[ \left.\vcenter{\xymatrix{
+F(\alpha,\beta) \ar@{-}[d]_{\text{finite}} \\
+F(\alpha) \ar@{-}[d]_{\text{finite}} \\
+F
+}}\right\}\mathrlap{\text{finite, by KLM}} \]
+So $F(\alpha,\beta)$ is finite over $F$, and $F(\alpha,\beta)$ contains $\alpha+\beta$, $\alpha\beta$, $\alpha-\beta$, $\alpha/\beta$.  These four are all algebraic over $F$, by the theorem, so $E^\text{alg}$ is closed under $+$, $-$, $\cdot$, $\div$.
+
+For any field $F$, there is a field $\overline F$ that is algebraic over $F$, and every non-constant polynomial $p(x)\in F[x]$ factors into linear factors in $\overline F[x]$.  $\overline F$ is called an algebraic closure of $F$.
+
+\defn Let $F$ be a field, $p(x)\in F[x]$ a nonconstant polynomial.  Then $p(x)$ is separable \emph{iff} $\gcd(p(x),\linebreak p'(x))=1$, where $p'(x)$ is the derivative of $p(x)$.
+
+\defn Let $F$ be a field.  Then the derivative of $a_0+a_1x+\dotsb+a_nx^n\in F[x]$ is $a_1+2a_2x+\dotsb+na_nx^{n-1}\in F[x]$. \\
+Clearly $(cf(x))'=cf'(x)$ and $(f+g)'=f'+g'$. \\
+\thm (Product Rule)
+\[ (fg)' = f' g + g' f \]
+where $f$, $g\in F[x]$, $F$ a field. \\
+\pf By additivity and linearity, we may reduce to the case $f=x^n$, $g=x^m$.  Then:
+\begin{gather*}
+(fg)' = (x^{n+m})' = (n+m)x^{n+m-1} \\
+\begin{aligned}
+\text{and } f' g + g' f &= n(x^{n-1})x^m + m(x^n)x^{m-1} \\
+&= (n+m) x^{n+m-1} \qed
+\end{aligned}
+\end{gather*}
+\thm Let $F$ be a field, $p(x)\in F[x]$ non-constant, $\overline F$ an algebraic closure of $F$.  Then $p(x)$ is separable \emph{iff} $p(x)$ has no multiple roots in $\overline F$. \\
+\pf Forwards: If $p(x)=(x-a)^2q(x)$,
+then $p'(x)=(x-a)^2q'(x)+2(x-a)q(x)$
+$\implies p'(a)=0$
+and $x-a\mid\gcd(p(x),p'(x))$, so $p(x)$ is not separable.

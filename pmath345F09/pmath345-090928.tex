@@ -1,0 +1,134 @@
+\defin $R$ commutative ring, $P\in R[x]$ \\
+Suppose $S$ is an extension of $R$ \\
+Given that $s\in S$, we can \emph{substitute $s$ for $x$}
+
+$P(s)\in S$ as follows: \\
+if $P=a_0+a_1x+\dotsb+a_nx^n$, $n=\deg P$ \\
+then $P(s)=\underbrace{a_0+a_1s+a_2s^2+\dotsb+a_ns^n}_{\footnotemark}$\footnotetext{$+$ and $-$ are happening in $S$} \\
+each $a_i\in R\subseteq S$ \\
+$s\in S$
+
+Another way of describing this is: \\
+$R$ is a subring of $S$ \\
+so $R[x]$ is a subring of $S[x]$ (check) \\
+so $P\in S[x]$ and consider \\
+$f_P\colon S\to S$ \\
+Then $P(s)\coloneqq f_P(s)$ \\
+\emph{``$P$ evaluated at $s$''}
+
+\textbf{Homomorphisms} \\
+\defin $R$, $S$ rings.  A \emph{homomorphism} $\phi\colon R\to S$ is a function with
+\begin{align*}
+\phi(1) &= 1\footnotemark \\
+\footnotemark\phi(a+b) &= \phi(a) + \phi(b) \\
+\phi(ab) &= \phi(a)\phi(b)
+\end{align*}\addtocounter{footnote}{-1}\footnotetext{$*$ Different from text}\addtocounter{footnote}{1}\footnotetext{$a$, $b\in R$}
+\textbf{Remark:} If $\phi$ is a homomorphism, then $\phi(0)=0$ and $\phi(a)=-\phi(a)$. \\
+\pf \begin{align*}
+0 + \phi(0) &= \phi(0+0) = \phi(0) + \phi(0) \\
+\implies 0 &= \phi(0) \\
+\varphi(-a) + \varphi(a) &= \varphi(-a+a) \\
+&= \varphi(0) = 0 \\
+\implies \phi(-a) &= -\phi(a)
+\end{align*}
+
+The \emph{image} of $\phi\colon R\to S$
+\[ \phi(R) = \set{\phi(a)}{a\in R} \subseteq S \]
+\textbf{Check:} $\phi(R)$ is a subring of $S$.
+
+The \emph{kernel} of $\phi$
+\[ \ker\phi = \set{a\in R}{\varphi(a)=0} \subseteq R \]
+\textbf{Remark:} $\ker\phi$ is a subring $\iff$ $\ker\phi=R$ $\iff$ $S=\brace0$. \\
+As long as $S$ is nontrivial, here it is \emph{not} a subring.\footnote{(for us, different in DF)}
+
+\ex
+\begin{enumerate} %alpha list
+\item[(a)] $R$ is a subring of $S$ and
+\begin{align*}
+\phi\colon & R \to S \qquad\text{is the inclusion} \\
+& r \mapsto r \qquad\text{$\phi$ is a homomorphism}
+\end{align*}
+When $R=S$ we call this the identity homomorphism
+\item[(b)]%
+\begin{align*}
+\phi\colon & \C \to \C \qquad\text{homomorphisms} \\
+& z \mapsto \overline{z} \qquad\text{conjugation map}
+\end{align*}
+$z=r+si$, $\overline{z}=r-si$
+\item[(c)]%
+\begin{align*}
+\res\colon & \Z \to \Z_n, \qquad\text{$n$ fixed $\geq2$} \\
+& a \mapsto \overline{a}=\set{b\in\Z}{a\equiv b\pmod n}
+\end{align*}
+homomorphism
+\begin{gather*}
+\res(1) = \overline1 = \text{identity in $\Z_n$} \\
+\res(ab) = \overline{ab} = \overline{a}\overline{b} \\
+\res(a+b) = \overline{a+b} = \overline{a}+\overline{b}
+\end{gather*}
+\item[(d)] What about homomorphisms from $\Z$ to $\Z$? \\
+Suppose $\phi\colon\Z_n\to\Z$ was a homomorphism, then:
+\begin{align*}
+\phi(\overline1) &= 1 \\
+\phi(\overline1+\overline1) &= \phi(\overline1)+\phi(\overline1)=1+1=2 \\
+&\eqvdots \\
+0 = \phi(\overline0) = \phi(\overline n) = \phi(\underbrace{\overline1+\overline1+\dotsb+\overline1}_{\text{$n$ times}}) &= n \qquad\text{in $\Z$}\footnotemark
+\end{align*}\footnotetext{contradiction}
+\emph{No} homomorphisms from $\Z_n$ to $\Z$.
+\item[(e)] Fix any ring $R$, what are the homomorphisms from $\Z$ to $R$? \\
+Consider $\phi\colon\Z\to R$
+$a>0$ in $\Z$, $\phi(a)\coloneqq\overbrace{1_R+_R+\dotsb+_R1_R}^{\text{$a$ times}}$ \\
+$a<0$ in $\Z$, $\phi(a)=-\phi(a)$ \\
+$\phi(0)=0$
+
+\textbf{check:} $\phi$ is a homomorphism \\
+This is the \emph{only} possible since if 
+$\psi\colon\Z\to R$ is any other my homomorphism.
+
+then for $a>0$,
+\begin{align*}
+\psi(a) &= \psi(\underbrace{1+\dotsb+1}_{\text{$a$ times}}) \\
+&= \psi(1) + \dotsb + \psi(1) \\
+&= 1_R + \dotsb + 1_r = \phi(a)
+\end{align*}
+Hence $\psi=\phi$.
+\end{enumerate}
+\textbf{Point:} For any $R$ there is a unique homomorphism in $\Z$ to $R$.
+
+\defin $\phi\colon R\to S$ a ring homomorphism
+\begin{enumerate}
+\item $\phi$ is \emph{injective} if $\phi$ is 1-to-1. \\
+Also called \emph{embedding}, \emph{monomorphism}
+\item $\phi$ is a \emph{surjective homomorphism} if
+\[ \phi(R) = S \]
+Also called a \emph{epimorphism}.
+\item If $R=S$, then a homomorphism $\phi\colon R\to R$ is called \emph{endomorphism}
+\item An \emph{isomorphism} is an injective \emph{and} surjective homomorphism.
+\item If $\phi\colon R\to R$ is an isomorphism we call it an \emph{automorphism}.
+\end{enumerate}
+
+Suppose $\phi\colon R\to R$ is a homomorphism. \\
+\lem $\phi\colon R\to S$ is an endomorphism iff $\ker\phi=\brace0$. \\
+\pf If $\phi$ is an embedding and $\phi(a)=0=\phi(0)\implies a=0$, \\
+i.e., $\ker\phi=\brace0$. \\
+Conversely, suppose $\ker\phi=\brace0$.
+%
+\begin{align*}
+\phi(a) &= \phi(b) \\
+\phi(a)-\phi(b) &= 0 \\
+\phi(a) + -(\phi(b)) &= 0 \\
+\phi(a) + \phi(-b) &= 0 \\
+\phi(a+(-b)) &= 0 \\
+a + (-b) \in \ker\phi &= \brace0 \\
+\implies a + (-b) &= 0 \\
+\implies a &= b
+\end{align*}
+%
+Ideals and Quotients \\
+\defin An ideal $I$ of a ring $R$ is a \emph{nonempty} subset such that
+\begin{enumerate}
+\item $a,b\in I$, $(a+b)\in I$
+\item for any $r\in R$ and $a\in I$, $ra\in I$ and $ar\in I$ in R
+\end{enumerate}
+\remark $0\in I$ \\
+let $a\in I$, $-a=(-1)a$

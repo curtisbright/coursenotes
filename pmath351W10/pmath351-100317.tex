@@ -1,0 +1,60 @@
+Note, the proof of the Arzela--Ascoli Theorem has these lines
+\[ \begin{array}{cccccr}
+f_1, & \dotsc, & f_n, & \dotsc \\
+\ovalbox{$f_{11}$}, & f_{12}, & f_{13}, & f_{14}, & \dotsc, & \text{converging at $x_1$} \\
+f_{21}, & \ovalbox{$f_{22}$}, & f_{23}, & f_{24}, & \dotsc, & \text{converging at $x_2$} \\
+\vdots \\
+f_{m1}, & f_{m2}, & \dotsc, & \ovalbox{$f_{mm}$}, & & \text{converging at $x_m$} \\
+\vdots
+\end{array} \]
+Let $g_n=f_{nn}$. \\
+Claim: $g_n$ is a subsequence of all $f_{m1}$, $f_{m2}$, $\dotsc$ \\
+(From text page 300) \\
+The claim should be modified as $g_n$, \emph{starting with the $m$th term}, is a subsequence of $f_{m1}$, $f_{m2}$, $f_{m3}$, $\dotsc$
+
+\eg Consider the sequence of functions $f_n\colon[0,1]\to\R$ belonging to $C([0,1],\R)$ given by
+\[ f_n(t) = \begin{cases}
+0 & 1 \geq t \geq \tfrac1n \\
+1-nt & 0 \leq t \leq \tfrac1n
+\end{cases} \]\marginpar{figure of $f_n(t)$}%
+\[ \norm{f_n}_\infty=1 \text{ for each $n$} \]
+For each fixed $t$, the sequence \[\begin{cases}
+f_n(t) \to 0 & \text{if $0<t$} \\
+f_n(0) \to 1 & \text{if $0=t$}
+\end{cases}\]
+That is, $f_n$ tends to the function $\phi\colon[0,1]\to\R$
+\[ \begin{cases}
+\phi(t) = 0 & \text{if $t>0$ \emph{pointwise}} \\
+\phi(t) = 1 & \text{otherwise}
+\end{cases} \]
+Is $\phi\in C([0,1],\R)$?  No.
+
+Does $f_n$ converge to some function in the $C([0,1],\R)$ under $\norm{\cdot}_\infty$? \\
+i.e., Does $f_n$ tends to some $f_n$ in $C([0,1],\R)$ uniformly? \\
+No (uniform convergence implies pointwise convergent.)
+
+Does $f_n$ has a convergent subsequence in $C([0,1],\R)$ under $\norm{\cdot}_\infty$? \\
+No. \\
+Let $\B=\set{f_n}{n\in\N}\subset C([0,1],\R)$.
+
+$\B$ is not sequentially compact.  It is not compact (we are dealing with metric spaces).
+
+Some conditions of the A--A theorem must fail. \\
+$\B$ is clearly bounded, as $\norm{f_n}_\infty=1$.  Exercise: Is $\B$ weakly compact?  Is $\B$ equicontinuous?
+
+Approximating continuous functions.
+
+The $e^x$ can be approximated by finite polynomials on $[a,b]$ in the sense that for all $\epsilon>0$, there exists polynomial $p$ so that $\abs{f(x)-p(x)}\leq\epsilon$ for all $x\in[a,b]$
+\begin{center}i.e., $\norm{f-p}_\infty<\epsilon$ in $C([a,b],\R)$.\end{center}
+(Taylor series)
+
+Question: Can a continuous function $f\colon[a,b]\to\R$ be approximated by a polynomial? \\
+Theorem: (Weierstrass Approximation Theorem): Every $f\in C([a,b],\R)$ can be approximated by a polynomial $p\in C([a,b],\R)$.
+
+Rephrased: The set of polynomials is dense in $C([a,b],\R)$. \\
+See Theorem 5.8.1 (page 305). \\
+Indeed the Bernstein polynomials
+\[ p_n(x) = \sum_{r=0}^n \binom{n}{r} f\paren*{\frac{r}{n}} x^r (1-x)^{n-r} \]
+is a sequence of polynomials approximating a continuous $f\colon[0,1]\to\R$ \\
+i.e., $\norm{p_n-f}_\infty\to0$ as $n\to\infty$.
+%Read Bernstein's proof

@@ -1,0 +1,41 @@
+Recall that if $p$ is a prime and $r\in\Z^+$ then
+\[ p = \prod_{\substack{j=1\\(j,p^r)=1}}^{p^r}(1-\zeta_{p^r}^j) . \]
+\textbf{Theorem 33:} Let $p$ be a prime and let $r\in\Z^+$.  Then $\A\cap\Q(\zeta_{p^r})=\Z[\zeta_{p^r}]$. \\
+\pf Note that $\Q(\zeta_{p^r})=\Q(1-\zeta_{p^r})$.  Put $s=\phi(p^r)$.  Then $1$, $1-\zeta_{p^r}$, $\dotsc$, $(1-\zeta_{p^r})^{s-1}$ is a basis for $\Q(\zeta_{p^r})$ over $\Q$ consisting of algebraic integers.  By Theorem~31 if $\alpha\in\A\cap\Q(\zeta_{p^r})$ then there exist integers $m_0$, $\dotsc$, $m_{s-1}$ such that
+\[ \alpha = \frac{m_0+m_1(1-\zeta_{p^r}+\dotsb+m_{s-1}(1-\zeta_{p^r})^{s-1})}{\disc(1-\zeta_{p^r})} . \]
+But
+\begin{align*}
+\disc(1-\zeta_{p^r}) &= \paren*{\prod_{\substack{1\leq i,j\leq p^r\\(i,p)=1,(j,p)=1}}((1-\zeta_{p^r}^i)-(1-\zeta_{p^r}^j))}^2 \\
+&= \paren*{\prod_{\substack{1\leq i\leq j\leq p^r\\(i,p)=1,(j,p)=1}}(\zeta_{p^r}^i-\zeta_{p^r}^j)}^2 = \disc(\zeta_{p^r}) .
+\end{align*}
+But $\disc(\zeta_{p^r})$ is a power of $p$ and so we can write $\alpha$ in the form
+\[ \alpha = \frac{m_0+m_1(1-\zeta_{p^r})+\dotsb+m_{s-1}(1-\zeta_{p^r})^{s-1}}{p^j} \qquad \text{for some integer $j$.} \]
+Suppose $\A\cap\Q(\zeta_{p^r})\neq\Z[1-\zeta_{p^r}]$, in other words there exists an $\alpha\in\A\cap\Q(\zeta_{p^r})$ of the form
+\[ \alpha = \frac{l_0+l_1(1-\zeta_{p^r})+\dotsb+l_{s-1}(1-\zeta_{p^r})^{s-1}}{p} \]
+where $l_0$, $\dotsc$, $l_{s-1}$ are integers not all divisible by $p$.  Let $i$ be the smallest integer for which $p\nmid l_i$.  Then
+\[ \frac{l_i(1-\zeta_{p^r})^i+\dotsb+l_{s-1}(1-\zeta_{p^r})^{s-1}}{p} \]
+is in $\A\cap\Q(1-\zeta_{p^r})$.
+
+For every positive integer $k$, $1-x$ divides $1-x^k$ in $\Z[x]$.  Recall that
+\[ p = \prod_{\substack{k=1\\(k,p)=1}}^{p^r}(1-\zeta_{p^r}^k) \]
+and so
+\[ p = (1-\zeta_{p^r})^s\cdot\lambda \text{ where }\lambda\in\A . \]
+Thus
+\[ (1-\zeta_{p^r})^{s-(i+1)}\cdot\lambda\paren*{\frac{l_i(1-\zeta_{p^r})^i+\dotsb+l_{s-1}(1-\zeta_{p^r})^{s-1}}{p}}\in\A \]
+hence
+\[ \paren*{\frac{l_i(1-\zeta_{p^r})^i+\dotsb+l_{s-1}(1-\zeta_{p^r})^{s-1}}{(1-\zeta_{p^r})^{i+1}}} \in \A . \]
+Thus $l_i/(1-\zeta_{p^r})\in\A$ say is $\gamma$.  But then $\gamma(1-\zeta_{p^r})=l_i$ and hence
+\[ \N_\Q^{\Q(\zeta_{p^r})}(\gamma)\cdot\N_\Q^{\Q(\zeta_{p^r})}(1-\zeta_{p^r}) = \N_\Q^{\Q(\zeta_{p^r})}(l_i) . \]
+But then since $\N_\Q^{\Q(\zeta_{p^r})}(1-\zeta_{p^r})$ is $p$ we see that $p\div l_i^s$ hence $p\div l_i$ which is a contradiction.  Thus $\A\cap\Q(\zeta_{p^r})=\Z[1-\zeta_{p^r}]$ and since $\Z[1-\zeta_{p^r}]=\Z[\zeta_{p^r}]$ our result follows.
+
+Let $L$ and $K$ be finite extensions of $\Q$.  We denote by $LK$, the compositum of $L$ and $K$ the smallest field containing $L\cup K$.
+
+\textbf{Lemma 34:} Let $[L:\Q]=m$ and $[K:\Q]=n$ and suppose $[LK:\Q]=mn$.  Let $\sigma$ be an embedding of $L$ in $\C$ which fixes $\Q$ and let $\tau$ be an embedding of $K$ in $\C$ which fixes $\Q$.  Then there is an embedding of $LK$ which when restricted to $L$ is $\sigma$ and when restricted to $K$ is $\tau$. \\
+\pf For each embedding $\sigma$ of $L$ we can consider the extensions of $\sigma$ to embeddings of $LK$.  There are $n$ of them.  Restricted to $K$ there are $n$ again.  But there are exactly $n$ embeddings of $K$ and so one of them is $\tau$.
+
+\textbf{Theorem 35:} Let $[L:\Q]=m$, $[K:\Q]=n$ and $[LK:\Q]=mn$.  Then 
+\[ \A\cap LK \subseteq \frac{1}{d}(\A\cap K)(\A\cap L) \]
+where $d=\gcd(\disc(K),\disc(L))$. \\
+\pf Ingredients: Lemma 34 and Cramer's Rule.
+
+See Notes.

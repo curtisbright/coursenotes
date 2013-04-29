@@ -1,0 +1,45 @@
+\url{http://cumc.math.ca/} \\
+July 6--July 10
+
+\defn Let $D$ be a domain, $x\in D$ any element, $x\neq0$, $x\notin D^*$.  Recall: $D^*={}$\{units of $D$\}.  Then $x$ is prime \emph{iff} $(x)$ is a prime ideal.  Also, $x$ is irreducible \emph{iff} when $x=ab$ for $a$, $b\in D$, we have $a\in D^*$ or $b\in D^*$.
+
+\eg Prime elements of $\Z$ are prime numbers.  Irreducible elements of $\Z$ are prime numbers.
+
+\eg $D=\Z[\sqrt{10}]$, $x=2$.  Showing that $x$ is irreducible is not easy, but can be done. \par
+But $x$ is not prime.  We will prove this by showing $(2)$ is not a prime ideal, by showing that $\Z[\sqrt{10}]/(2)$ is not a domain. \par
+Well, $\Z[\sqrt{10}]=\set{a+b\sqrt{10}}{a,b\in\Z}$.  $\Z[\sqrt{10}]/(2)$ has 4 elements, represented by $0$, $1$, $\sqrt{10}$, $1+\sqrt{10}$.  To prove this, note that those 4 elements are all different mod $2$, and any $a+b\sqrt{10}$ is congruent to one of these 4 mod $2$. \par
+Notice that $\sqrt{10}\not\equiv0\bmod2$, but $(\sqrt{10})^2\equiv0\bmod2$, so $2$ is not prime.
+
+\defn A domain $D$ is a Principal Ideal Domain (PID) \emph{iff} every ideal of $D$ is principal; \emph{i.e.}, every ideal is of the form $(x)$ for some $x\in D$.
+
+\defn A domain $D$ is a Unique Factorization Domain (UFD) \emph{iff} every $x\in D$, $x\neq0$, can be factored into irreducible elements of $p_1$, $\dotsc$, $p_n\in D$:
+\[ x = p_1 p_2 \dotsm p_n \]
+and this factorization is unique up to multiplication by units and reordering the $p_i$s.
+
+We will show that every PID is a UFD.  However, $\Q[x,y]$ is a UFD, but not a PID because $(x,y)$ is not principal.
+
+\thm Every prime element of a domain $D$ is irreducible. \\
+\pf Let $x\in D$ be prime, and assume $x=ab$, $a$, $b\in D$.  We want to show either $a\in D^*$ or $b\in D^*$.  Since $x$ is prime, $ab\in(x)\implies a\in(x)$ or $b\in(x)$; without loss of generality $a\in(x)$.
+
+So $a=xd$ for some $d\in D$:
+\[ x = xdb . \]
+Since $x\neq0$, we get $1=db$, and so $b\in D^*$. \qed
+
+\thm Let $D$ be a PID.  Then every irreducible element of $D$ is prime.
+
+\note This theorem is not true if $D$ is not a PID!  (\emph{E.g.}, $D=\Z[\sqrt{10}]$.) \\
+\pf Say $a\in D$, $a\neq0$, $a\notin D^*$.  Assume $a$ is irreducible.  Then $(a)$ is a maximal ideal: \par
+If $(a)\subset I$ for some ideal $I$, then $I=(x)$ for some $x\in D$.  Then $a=xd$ for some $d\in D$.  Since $a$ is irreducible, we get $x\in D^*$ or $d\in D^*$.
+If $x\in D^*$ then $I=(1)$.
+If $d\in D^*$ then $I=(a)$.
+So $(a)$ is a maximal ideal.  Which means $(a)$ is a prime ideal.  So $a$ is prime. \qed
+
+\thm Let $D$ be a PID,
+$I_1\subset I_2\subset I_3\subset\dotsb$ be an ascending chain of ideals $I_n$ of $D$.  Then for some $m$, $I_n=I_m$ for all $n\geq m$. \\
+\pf Consider $I=\bigcup_n I_n$.  Then $I$ is an ideal of $D$:
+\begin{enumerate}[label=(\arabic*)]
+\item $0\in I_1\subset I$
+\item If $a$, $b\in I$, then $a\in I_n$ and $b\in I_l$ for some $n$, $l$.  Without loss of generality, $n\geq l$, in which case $I_l\subset I_n$ so $a$, $b\in I_n$.  So $a-b\in I_n\subset I$. $\checkmark$
+\item Similarly, if $d\in D$, $a\in I$, then $a\in I_n\implies da\in I_n\subset I$ $\checkmark$
+\end{enumerate}
+Since $D$ is a PID, we get $I=(x)$ for some $x\in D$.  But $x\in I_n$ for some $n$, so $I=(x)\subset I_n\subset I$, and so $I=I_n$. \qed

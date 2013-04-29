@@ -1,0 +1,40 @@
+\textbf{Midterm Exam: Friday March 1 in class}
+
+Observe that $\zeta_n^j$ is a conjugate of $\zeta_n$ for $j=1$, $\dotsc$, $n$ with $(j,n)=1$.  Certainly $\zeta_n^j\in\Q(\zeta_n)$ and so $\Q(\zeta_n)$ is a normal extension of $\Q$.
+
+The degree of $\Q(\zeta_n)$ over $\Q$ is $\phi(n)$, Euler's function of $n$.  In particular
+\[ \phi(n) = \abs{\set{j}{1\leq j\leq n\co(j,n)=1}} \]
+\textbf{Theorem 17:} Let $n\in\Z^+$.  The Galois group of $\Q(\zeta_n)$ over $\Q$ is isomorphic to $(\Z/n\Z)^\times$. \\
+\pf The elements of $\Gal(\Q(\zeta_n)/\Q)$ fix $\Q$ and are determined by their action on $\zeta$.  In particular if $\sigma\in\Gal(\Q(\zeta_n)/\Q)$ then $\sigma(\zeta)=\zeta^k$ for some $k$ with $1\leq k\leq n$ and $(k,n)=1$.  Denote $\sigma$ by $\sigma_k$.
+
+Let $\lambda\colon\Gal(\Q(\zeta_n)/\Q)\to(\Z/n\Z)^\times$ by $\lambda(\sigma_k)=k+n\Z$.  Plainly $\lambda$ is a bijection.  It is also a group homomorphism since
+\[ \lambda(\sigma_k\circ\sigma_l) = \lambda(\sigma_{kl}) = kl + n\Z = (k+n\Z)\cdot(l+n\Z) = \lambda(\sigma_k)\cdot\lambda(\sigma_l) . \]
+\textbf{Theorem 18:} Let $n\in\Z^+$.  If $n$ is even the only roots of unity in $\Q(\zeta_n)$ are the $n$th roots of unity.  If $n$ is odd the only roots of unity in $\Q(\zeta_n)$ are the $2n$th roots of unity. \\
+\pf If $n$ is odd then $\Q(\zeta_n)=\Q(-\zeta_n)=\Q(\zeta_{2n})$.  Thus to prove our result it suffices to prove it when $n$ is even.
+
+Suppose that $\gamma=e^{2\pi il/s}$ with $(l,s)=1$, $e$, $s\in\Z^+$.  We consider $\gamma^v\zeta_n^w$ with $v$, $w\in\Z$ and note that $\gamma^v\zeta_n^w\in\Q(\zeta_n)$.  Then
+\begin{align*}
+\gamma^v\zeta_n^w &= e^{2\pi i(\frac{vl}{s}+\frac{w}{n})} \\
+&= e^{2\pi i(\frac{vln+sw}{ns})} \\
+&= e^{2\pi i(\frac{1}{b})} \qquad\text{where $b=\frac{ns}{(n,s)}=\lcm(n,s)$}
+\end{align*}
+Since $e^{2\pi i/b}\in\Q(\zeta_n)$ and degree of $\Q(\zeta_n)$ over $\Q$ is $\phi(n)$ we see that $\phi(b)\leq\phi(n)$.
+
+Since $b=\lcm(n,s)$ we have
+\[ b = p_1^{l_1}\dotsm p_k^{l_k} \quad\text{with $p_i$s prime and $l_i\geq1$ for $i=1$, $\dotsc$, $k$} \]
+Then, by reordering the primes,
+\[ n = p_1^{h_1}\dotsm p_r^{h_r} \quad\text{with $r$ satisfying $1\leq r\leq k$} \]
+and with $h_i\geq1$ for $i=1$, $\dotsc$, $r$.  Note $h_i\leq l_i$ for $i=1$, $\dotsc$, $r$.  We have
+\[ \phi(b) = (p_1^{l_1}-p_1^{l_1-1})\dotsm(p_k^{l_k}-p_k^{l_k-1}) \]
+and
+\[ \phi(n) = \phi(p_1^{h_1})\dotsm\phi(p_r^{h_r}) = (p_1^{h_1}-p_1^{h_1-1})\dotsm(p_r^{h_r}-p_r^{h_r-1}) . \]
+But $\phi(b)\leq\phi(n)$.
+
+If $r<k$ then $p_k\neq2$ since $n$ is even and $p_k^{l_k}-p_k^{l_{k-1}}>1$ hence $\phi(b)>\phi(n)$ which is a contradiction.  Therefore $r=k$.  Since $l_i\geq h_i$ for $i=1$, $\dotsc$, $k$ we see that in fact $l_i=h_i$ for $i=1$, $\dotsc$, $k$ since $\phi(n)\geq\phi(b)$.
+
+Let $K$ be a finite extension of $\Q$ with $[K:\Q]=n$.  Let $\sigma_1$, $\dotsc$, $\sigma_n$ be the embeddings of $K$ in $\C$ which fix $\Q$.
+
+Let $\alpha\in K$.  We define the trace of $\alpha$ from $K$ to $\Q$ denoted $T_\Q^K(\alpha)$, by
+\[ T_\Q^K(\alpha) = \sigma_1(\alpha) + \sigma_2(\alpha) + \dotsb + \sigma_n(\alpha) . \]
+We define the norm of $\alpha$ from $K$ to $\Q$, denoted by $N_\Q^K(\alpha)$, by 
+\[ N_\Q^K(\alpha) = \sigma_1(\alpha)\dotsm\sigma_n(\alpha) . \]

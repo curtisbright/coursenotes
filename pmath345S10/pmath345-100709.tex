@@ -1,0 +1,38 @@
+\textbf{Splitting fields} \\
+\defn Let $F$ be a field, $p(x)\in F[x]$ a nonconstant polynomial.  A splitting field for $p(x)$ over $F$ is a field $E$ containing $F$ such that
+\begin{enumerate}%[label=(\arabic*)]
+\item[(1)] $p(x)=c(x-a_1)\dotsm(x-a_n)$ for $c$, $a_1$, $\dotsc$, $a_n\in E$
+\item[\emph{and} (2)] $E=F(a_1,\dotsc,a_n)$.
+\end{enumerate}
+If $p(x)$ is constant, then we say $F$ is a splitting field for $p(x)$ over $F$.
+
+\thm Let $F$ be a field, $p(x)\in F[x]$ any polynomial.  Then there is a splitting field for $p(x)$ over $F$, and any two splitting fields for $p(x)$ over $F$ are isomorphic. \\
+\pf Existence.  We prove this by induction on $\deg(p(x))$. \\
+Base case: $\deg(p(x))=0\implies{}$splitting field is $F$. \\
+Inductive Hypothesis: for any field $F$, and any $p(x)\in F[x]$ of degree $<n$, there exists a splitting field for $p(x)$ over $F$.
+
+Let $p(x)\in F[x]$ have degree $n$.  Write: %If $p(x)$ is reducible, write:
+\[ p(x) = p_1(x)\dotsm p_k(x) \]
+for irreducible $p_1(x)$, $\dotsc$, $p_k(x)\in F[x]$.  Consider $E=F[a]/(p_1(a))$.  Then $E$ is a field (because $p_1(x)$ is irreducible), and it contains a root (namely $a$) of $p(x)$.  Then, in $E[x]$, we have:
+\[ p(x) = (x-a)q(x) \]
+for some $q(x)\in E[x]$.  Since $\deg(q(x))<n$, by induction, there exists a splitting field $E'$ of $q(x)$ over $E$.  Then, in $E'[x]$, we have:
+\[ p(x) = c(x-a)(x-a_2)\dotsm(x-a_n) \]
+for $c$, $a_1$, $\dotsc$, $a_n\in E'$, and
+\begin{align*}
+E' &= E(a_2,\dotsc,a_n) \\
+&= F(a)(a_2,\dotsc,a_n) \\
+&= F(a,a_2,\dotsc,a_n)
+\end{align*}
+so $E'$ is a splitting field for $p(x)$ over $F$, as desired.
+
+Uniqueness: We will induce on $\deg(p(x))$, over all fields simultaneously.  The base case is trivial, so assume the inductive hypothesis for polynomials of degree $<n$, and let $\deg(p(x))=n$.  Let $E_1$ and $E_2$ be splitting fields for $p(x)$ over $F$.
+
+Write $p(x)=c(x-a_1)\dotsm(x-a_n)\in E_1[x]$ and $p(x)=c(x-b_1)\dotsm(x-b_n)\in E_2[x]$. \\ %First, assume $p(x)$ is irreducible.  Then: \\
+\lem Let $L/K$ be a field extension, $p(x)\in K[x]$ irreducible, $\alpha$, $\beta\in L$ such that $p(\alpha)=p(\beta)=0$.  Then $K(\alpha)\cong K(\beta)$ and the isomorphism maps $\alpha$ to $\beta$. \\
+\textbf{Proof of lemma:} We already know $K(\alpha)\cong K[x]/(p(x))\cong K(\beta)$. \qed~lemma \\
+Without loss of generality, assume that $a_1$ and $b_1$ are roots of the same irreducible factor of $p(x)$.  Then by the lemma, $F(a_1)\cong F(b_1)$, and:
+\begin{align*}
+p(x) &= (x-a_1)q_1(x) \text{ in } F(a_1)[x] \\
+\text{and } p(x) &= (x-b_1)q_2(x) \text{ in } F(b_1)[x]
+\end{align*}
+We identify $a_1$ and $b_1$ via the isomorphism $F(a_1)\cong F(b_1)$.  This identifies $q_1(x)=\frac{p(x)}{x-a_1}$ with $q_2(x)=\frac{p(x)}{x-b_1}$, so by induction, any splitting field for $q_1$ over $F(a_1)$ is isomorphic to any splitting field for $q_2$ over $F(b_1)\cong F(a_1)$.  These two fields are exactly $E_1$ and $E_2$ which are therefore isomorphic. \qed

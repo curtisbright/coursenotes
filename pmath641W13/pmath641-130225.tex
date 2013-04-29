@@ -1,0 +1,73 @@
+Recall: Let $f(x)=x^3+x^2-2x+8$ is irreducible over $\Q$.  Let $\theta$ be a root of $f$.  Put $K=\Q(\theta)$.  We have $\disc(\theta)=-R(f,f')=-4\cdot503$.
+
+Let $\theta=\theta_1$, $\theta_2$, $\theta_3$ be the conjugates of $\theta$.  We can check that
+\[ g(x) = \prod_{i=1}^3\paren[\Big]{x-\frac{\theta_i^2+\theta_i}{2}} \]
+is in $\Z[x]$.  Thus $\frac{\theta^2+\theta}{2}$ is an algebraic integer.  Then $\disc(1,\theta,\frac{\theta^2+\theta}{2})=-503$.  Thus $1$, $\theta$, $\frac{\theta^2+\theta}{2}$ is an integral basis for $K$ since $503$ is squarefree and $\disc(K)=-503$.
+
+The question still remains: \emph{is there} an integral power basis for $K$?  In other words, is there $\lambda\in\A\cap K$ such that $1$, $\lambda$, $\lambda^2$ is an integral basis?
+
+Suppose we have such a $\lambda$.  Then there exist integers $a$, $b$, and $c$ so that
+\[ \lambda = a + b\theta + c\paren[\Big]{\frac{\theta^2+\theta}{2}} \]
+but then
+\[ \lambda^2 = A + B\theta + C\paren[\Big]{\frac{\theta^2+\theta}{2}} \]
+where $A=(a^2-2c^2-8bc)$, $B=(-2c^2+2ab+2bc-b^2)$, and $C=(2b^2+2ac+c^2)$.  Note
+\[ \begin{pmatrix}1\\
+\lambda\\
+\lambda^2
+\end{pmatrix} = \begin{pmatrix}
+1 & 0 & 0 \\
+a & b & c \\
+A & B & C
+\end{pmatrix} \begin{pmatrix}
+1 \\
+\theta \\
+\frac{\theta^2+\theta}{2}
+\end{pmatrix} \]
+so
+\[ \disc(\lambda) = \paren*{\det\begin{pmatrix}
+1&0&0\\
+a&b&c\\
+A&B&C
+\end{pmatrix}}^2\disc\paren[\Big]{1,\theta,\frac{\theta^2+\theta}{2}} = \begin{pmatrix}
+1&0&0\\
+a&b&c\\
+A&B&C
+\end{pmatrix}\cdot(-503) . \]
+But
+\begin{align*}
+\paren*{\det\begin{pmatrix}
+1&0&0\\
+a&b&c\\
+A&B&C
+\end{pmatrix}}^2 &= (bC-Bc)^2 \\
+&= (2b^3-bc^2+b^2c+2c^3)^2 \\
+&\equiv (b^2c-2bc^2)^2 \bmod 2 \\
+&\equiv (bc(b-c))^2 \bmod 2 \\
+&\equiv 0 \bmod 2
+\end{align*}
+Thus $\disc(\lambda)\neq-503$ and so no integral power basis exists.
+
+%missing
+$[K:\Q]<\infty$.  An element $\alpha$ in $\A\cap K$ which is not zero and not a unit is said to be an irreducible of $\A\cap K$ if whenever $\alpha=\beta\gamma$ with $\beta$ and $\gamma$ in $\A\cap K$ then $\beta$ is a unit or $\gamma$ is a unit.  We've seen that we don't
+have unique factorization into irreducibles up to units and reordering in $\A\cap\Q(\sqrt{-5})$.
+%missing
+up to units and reordering in $\A\cap\Q(\sqrt{-5})$.
+
+To recover unique factorization we pass to prime ideals in the ring.
+
+Recall that an ideal $P$ in a commutative ring with identity is a prime ideal $\iff$ whenever $ab\in P$ with $a$, $b\in R$ then $a\in P$ or $b\in P$.  Also an integral domain is a commutative ring with identity with no zero divisors.
+
+Suppose $R$ is a subfield of a ring $S$.  Then $\theta$ in $S$ is said to be integral over $R$ if it is the root of a monic polynomial with coefficients in $R$.  $R$ is integrally closed in $S$ if whenever $\theta\in S$ is integral over $R$ then $\theta\in R$.
+
+\defn A Dedekind domain $R$ is an integral domain for which
+\begin{enumerate}
+\item Every ideal in $R$ is finitely generated.
+\item Every non-zero prime ideal in $R$ is maximal
+\item $R$ is integrally closed in its field of fractions.
+\end{enumerate}
+\textbf{Proposition 37:} Let $[L:\Q]<\infty$.  Let $I$ be a non-zero ideal in $\A\cap K$.  There is a positive integer in $I$. \\
+\pf Since $I$ is non-zero there exists an $\alpha\in I$ with $\alpha\neq0$.  Let $\alpha=\alpha_1$, $\dotsc$, $\alpha_n$ be the conjugates of $\alpha$ over $\Q$.  Then
+\[ N_\Q^{\Q(\alpha)}(\alpha) = \alpha_1\dotsm\alpha_n = a \in \Z\setminus\brace0 . \]
+Observe that $\alpha_2\dotsm\alpha_n=a/\alpha_1\in K$.  Further $\alpha_2$, $\dotsc$, $\alpha_n$ are algebraic integers so $\alpha_2$, $\dotsc$, $\alpha_n\in\A$.  Thus $\alpha_2\dotsm\alpha_n\in\A\cap K$.  Thus $(\alpha_1)\cdot(\alpha_2\dotsm\alpha_n)\in I$ so $a\in I$.  But $-a\in I$ also.
+
+\defn Let $[K:\Q]<\infty$ and let $I$ be a non-zero ideal in $\A\cap K$.  Then $\brace{\alpha_1,\dotsc,\alpha_n}$ is an integral basis for the ideal if $\alpha_1$, $\dotsc$, $\alpha_n$ are in $I$ and every element of $I$ has a unique representation as an integral linear combination of $\alpha_1$, $\dotsc$, $\alpha_n$.

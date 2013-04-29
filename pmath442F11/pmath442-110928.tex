@@ -1,0 +1,45 @@
+Shuntaro Yamagishi
+
+If $E$ is a splitting field for a separable polynomial in $F[x]$, then $E/F$ is Galois.  If $F$ is perfect (e.g., if $\Char F=0$ or $F$ is finite) then every splitting field over $F$ is Galois. \\
+\eg $\Q(\sqrt2,\sqrt3)/\Q$: \\
+To determine a homomorphism from $\Q(\sqrt2,\sqrt3)$ to itself, it is enough to figure out where $\sqrt2$ \& $\sqrt3$ go. \\
+Clearly $\substack{\sqrt2\mapsto\pm\sqrt2\\\sqrt3\mapsto\pm\sqrt3}$ are the only possibilities.
+\[ \begin{array}{cc|c|c}
+ & \multicolumn{1}{c}{} & \multicolumn{2}{c}{\sqrt3} \\
+ & & + & - \\ \cline{2-4}
+\multirow{2}{*}{$\sqrt2$} &+ & \id & \sigma_2\footnote{$a+b\sqrt2+c\sqrt3+d\sqrt6\mapsto a+b\sqrt2-c\sqrt3-d\sqrt6$} \\
+ &- & \sigma_3 & \sigma_6\footnote{$a+b\sqrt2+c\sqrt3+d\sqrt6\mapsto a-b\sqrt2-c\sqrt3+d\sqrt6$}
+\end{array} \]
+All four possibilities work, if you check them, so $\mathop{\#}\Aut_\Q(\Q(\sqrt2,\sqrt3))\geq4$.  Since $[\Q(\sqrt2,\sqrt3):\Q]=4$, we conclude that $\#\Aut_\Q(\Q(\sqrt2,\sqrt3))=4$, and $\Q(\sqrt2,\sqrt3)/\Q$ is Galois.
+\[ \Gal(\Q(\sqrt2,\sqrt3)/\Q) \cong (\Z/2\Z)\times(\Z/2\Z) . \]
+This group has 5 subgroups.
+\[ \begin{matrix}
+\brace1 & \longleftrightarrow & \Q(\sqrt2,\sqrt3) \\
+\brace{1,\sigma_3} & \longleftrightarrow & \Q(\sqrt3) \\
+\brace{1,\sigma_2} & \longleftrightarrow & \Q(\sqrt2) \\
+\brace{1,\sigma_6} & \longleftrightarrow & \Q(\sqrt6) \\
+\brace{1,\sigma_2,\sigma_3,\sigma_6} & \longleftrightarrow & \Q
+\end{matrix} \]
+\eg $\F_{343}/\F_7$ \\
+$\F_{343}={}$splitting field of $x^{343}-x$ over $\F_7$.  Since $x^{343}-x$ is separable, $F_{343}/\F_7$ is Galois.  Let $\sigma=\Frob_7\colon\F_{343}\to\F_{343}$.  It's an $\F_7$-automorphism of $\F_{343}$.
+\[ \F_{343} \cong \F_7[x]/(x^3-2) \cong \F_7(\sqrt[3]{2}) \]
+Let Larry, Curly and Moe be the three cube roots of two $\F_{343}$.
+\begin{align*}
+\sigma(\text{Larry}) &= \text{Curly} \mathrlap{\qquad \text{(wlog)}} \\
+\sigma(\text{Curly}) &= \text{Moe} \\
+\sigma(\text{Moe}) &= \text{Larry}
+\end{align*}
+So $\brace{1,\sigma,\sigma^2}$ are three different $\F_7$-automorphisms of $\F_{343}$.  So $\F_{343}/\F_7$ is Galois.
+
+\eg $\Q(\sqrt[4]{2})/\Q$.  Degree 4.
+\[ \xymatrix{
+\Q(\sqrt[4]{2})\ar@{-}[d]_2^{\mathrlap{\biggr\}\text{Galois: }\left\{\substack{\id \\ a+b\sqrt[4]2\stackrel\sigma\mapsto a-b\sqrt[4]2\\a,b\in\Q(\sqrt2)}\right.}} \\
+\Q(\sqrt2)\ar@{-}[d]_2^{\mathrlap{\biggr\}\text{Galois: }\left\{\substack{\id \\ a+b\sqrt2\mapsto a-b\sqrt2\\a,b\in\Q}\right.}} \\
+\Q
+}
+%\footnote{Galois: $\begin{cases}\id\\\begin{gathered}a+b\sqrt[4]{2}\mapsto a-b\sqrt[4]{2}\footnote{$\sigma$}\\a,b\in\Q(\sqrt2)\end{gathered}\end{cases}$}\footnote{Galois: $$}
+\]
+$\Aut_\Q(\Q(\sqrt[4]{2}))=\brace{\id,\sigma}$ which is too small!  So $\Q(\sqrt[4]{2})/\Q$ is not Galois.
+
+\defn Let $G$ be a group, $K$ a field, $V$ a (finite-dimensional) $K$-vector space, $\GL(V)$ the group of invertible $K$-linear transformations $V\to V$. (e.g., $V=K^n$, $\GL(V)=M_n(K)$.) \\
+A representation of $G$ with values in $V$ is a homomorphism $\rho\colon G\to\GL(V)$.

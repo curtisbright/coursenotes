@@ -1,0 +1,93 @@
+\textbf{Weierstrass Theorem} \\
+Polynomials are dense in $C[0,1]$.
+\begin{gather*}
+\text{i.e., }\forall f\in C[0,1]\text{ and }\forall\epsilon>0\text{ there exists polynomial }p \\
+\text{such that } \norm{f-p}=\sup_{x\in[0,1]}\abs{f(x)-p(x)}<\epsilon
+\end{gather*}
+%
+\textbf{Bernstein Proof} \\
+Show $p_n(x)=\sum_{k=0}^n\binom nkf\paren*{\frac kn}x^k(1-x)^{n-k}$ converges uniformly to $f$.
+\begin{enumerate}
+\item[(1)] $\sum_{k=0}^n r_k(x)=1$ where $r_k(x)=\binom nkx^k(1-x)^{n-k}$
+\item[(2)] $\sum_{k=0}^n (k-nx)^2 r_k(x)=nx(1-x)$
+\end{enumerate}
+Let $f\in C[0,1]$, say $\abs{f(x)}\leq M$ $\forall x\in[0,1]$ \\
+Also $f$ is uniformly continuous, so given $\epsilon>0$ get $\delta>0$ such that $\abs{x-y}<\delta\implies\abs{f(x)-f(y)}<\epsilon$ \\
+Take $N$ such that $\frac{2M}{\delta^2N}<\epsilon$. \\
+Let $n\geq N$.  Fix $x\in[0,1]$.
+\begin{align*}
+\abs{p_n(x)-f(x)} &= \mathrlap{\abs[\bigg]{\sum_{k=0}^n f(\tfrac kn)r_k(x)-f(x)\sum_{k=0}^n r_k(x)}}\phantom{\sum_{k\in A} \abs{f(\tfrac kn)-f(x)}r_k(x) + \sum_{k\in B} \abs{f(\tfrac kn)-f(x)}r_k(x)} \\
+&= \abs[\bigg]{\sum_{k=0}^n\paren*{f(\tfrac kn)-f(x)}r_k(x)}
+\end{align*}
+Divide $k$s into 2 classes
+\begin{gather*}
+A=\set{k}{\abs{\tfrac kn-x}<\delta\iff\abs{k-nx}<\delta n} \\
+B=\set{k}{\abs{\tfrac kn-x}\geq\delta\iff\abs{k-nx}\geq\delta n} \\
+\begin{aligned}
+\phantom{\abs{p_n(x)-f(x)}}&\leq \sum_{k=0}^n \abs{f(\tfrac kn)-f(x)}r_k(x) \\
+&\leq \sum_{k\in A} \abs{f(\tfrac kn)-f(x)}r_k(x) + \sum_{k\in B} \abs{f(\tfrac kn)-f(x)}r_k(x) \\
+&\leq \sum_{k\in A}\epsilon r_k(x) + \sum_{\abs{k-nx}\geq\delta n}2Mr_k(x)\frac{(k-nx)^2}{(k-nx)^2} \\
+&\leq \sum_{k\in A}\epsilon r_k(x)\footnote{$=\epsilon$} + \sum_{k=0}^n \frac{2 Mr_k(x)(k-nx)^2}{(\delta n)^2} \\
+&\leq \epsilon + \frac{2M}{(\delta n)^2}nx(1-x) \qquad\text{by (2)} \\
+&= \epsilon + \frac{2M}{\delta^2}\cdot\frac{1}{n} \leq \epsilon + \frac{2M}{\delta^2 N} < 2\epsilon
+\end{aligned}
+\end{gather*}%
+This shows $\norm{p_n-f}\leq2\epsilon$ $\forall n\geq N$ \\
+i.e., $p_n\to f$ uniformly.
+
+\textbf{Approximation by trigonometric polynomials} \\
+\[ \sum_{n=0}^N a_n\sin nx + b_n\cos nx = \sum_{n=-N}^N c_n e^{inx} \]
+$a_n,b_n\in\C$, $c_n\in\C$\marginpar{$z\in\C$\\$\abs z=1$\\$z=e^{ix}$}%
+\begin{gather*}
+e^{ixn} = \cos xn + i\sin xn \\
+\frac{e^{ixn}+e^{-ixn}}{2} = \cos xn \\
+\frac{e^{ixn}-e^{-ixn}}{2i} = \sin xn
+\end{gather*}
+\begin{itemize}
+\item uniformly approximate continuous, $2\pi$ periodic functions \\
+$=C[0,2\pi]$ with $f(0)=f(2\pi)$
+\end{itemize}
+Inner product spaces:
+\begin{gather*}
+\chev{f,g} = \frac{1}{2\pi}\int_0^{2\pi}f(x)\overline{g(x)}\d x \\
+\tnorm f = \paren*{\frac{1}{2\pi}\int_0^{2\pi}\abs{f(x)}^2\d x}^{1/2}
+\end{gather*}
+$\brace{e^{inx}}_{n=-\infty}^\infty$ are orthonormal \\
+Check:
+\begin{align*}
+\chev{e^{inx},e^{imx}} &= \frac{1}{2\pi}\int_0^{2\pi}e^{inx}e^{-imx}\d x \\
+&= \frac{1}{2\pi} \int_0^{2\pi} e^{i(n-m)x}\d x \\
+&=\!\footnotemark \left. \frac{1}{2\pi} \frac{e^{i(n-m)x}}{i(n-m)} \right\rvert_0^{2\pi} \\
+&= 0
+\end{align*}\footnotetext{if $n\neq m$}%
+``Best'' approximation (in inner product sense) to $f$ from
+\[ \Span\set{e^{inx}}{n=-N,\dotsc,N} = \sum_{n=-N}^N \chev{f,e^{-inx}}e^{inx} = \sum_{n=-N}^N \hat f(n) e^{inx} = f_N \]
+\begin{align*}
+\chev{f,e^{inx}} &= \frac{1}{2\pi} \int_0^{2\pi} f(x) e^{-inx}\d x \\
+&\equiv \hat f(n)\footnotemark
+\end{align*}\footnotetext{$n$th Fourier coefficients of $f$}%
+%
+\textbf{Big Theorem} (PM354) \\
+$f_N\to f$ in $\tnorm\cdot$ \\
+i.e., $\paren*{\frac{1}{2\pi}\int_0^{2\pi}\abs{f_N-f}^2}^{1/2}\to0$ \\
+This does not even guarantee pointwise convergence (Big Theorem PM354).
+
+Let $K_n(t)\footnote{Fejer's kernel} = \sum_{j=-n}^n \paren*{1-\frac{\abs j}{n+1}}e^{ijt}$. \\
+Put $f_n(x) = \frac{1}{2\pi}\int_0^{2\pi} K_n(t) f(x-t)\d t = K_n * f(x)$
+
+\thm $f_n\to f$ uniformly and $f_n$ are trigonometric polynomials \\
+First, show $f_n$ are trigonometric polynomials:
+\begin{align*}
+f_n(x) &= \frac{1}{2\pi} \int_0^{2\pi} \sum_{j=-n}^n \paren*{1-\frac{\abs j}{n+1}} e^{ijt} f(x-t) \d t \\
+&= \frac{1}{2\pi} \sum_{j=-n}^n \paren*{1-\frac{\abs j}{n+1}}\int_0^{2\pi} e^{ijt} f(x-t) \d t \\
+\intertext{Change of variable: Let $u=x-t$, $\!\d t=\!\d u$}
+&= \frac{1}{2\pi} \sum_{j=-n}^n \paren*{1-\frac{\abs j}{n+1}} \underbrace{\int_0^{2\pi} e^{ij(x-u)}f(u)\d u}_{\int_0^{2\pi}e^{ijx}e^{-iju}f(u)\d u} \\
+&= \sum_{-n}^n \paren*{1-\frac{\abs j}{n+1}} e^{ijx} \underbrace{\paren*{\frac{1}{2\pi}\int_0^{2\pi}e^{-iju}f(u)\d u}}_{=\hat f(j)} \\
+&= \sum_{j=-n}^n \underbrace{\paren*{1-\frac{\abs j}{n+1}} \hat f(j)}_{=c_j} e^{ijx}
+\end{align*}
+So $f_n$ is a trigonometric polynomial of degree $\leq n$.
+\begin{align*}
+\hat f_n(j) &= \paren*{1-\frac{\abs j}{n+1}} \hat f(j) \\
+&= \hat K_n(j) \hat f(j)
+\end{align*}
+so, $f_n(x)=\sum_{j=-n}^n\paren*{1-\frac{\abs j}{n+1}}\hat f(j) e^{ijx}$

@@ -1,0 +1,78 @@
+PM351 \\
+Real Analysis \\
+Prof.~Kathryn Hare \\
+MC 5072
+
+Office Hours \\
+Wed 2:30--3:30 \\
+Thursday 3--4
+
+Wed Sept 16 \\
+12--1:30 \\
+DC 1302 \\
+NSERC Scholarships \\
+(due Sept 25)
+
+\defin Two sets $A$ and $B$ have the same \emph{cardinality} (and write $\abs{A}=\abs{B}$) if there is a bijection between $A$ and $B$.
+
+Say cardinality of $A$ is $\leq$ cardinality of $B$ (write $\abs A\leq\abs B$) if there is an injection: $A\to B$.
+
+Cardinality is an equivalence relation:
+\begin{enumerate}
+\item $\abs A=\abs A$ (reflexive) (identity map)
+\item $\abs A=\abs B\iff\abs B=\abs A$ (symmetric)
+\item $\abs A=\abs B$ and $\abs B=\abs C$ $\implies$ $\abs A=\abs C$
+\[ A \underset{\substack{\text{1--1}\\\text{onto}}}{\overset{f}{\to}} B \underset{\substack{\text{1--1}\\\text{onto}}}{\overset{g}{\to}} C \]
+\[ g \circ f \colon A \to C \footnote{bijection} \]
+\end{enumerate}
+\textbf{Example:} Say $A$ has $n$ elements and $\abs A=\abs B$.  Here $f\colon A\to B$ is 1--1, onto. %\\
+\begin{itemize}
+\item[$\implies$] $B$ has at least $n$ elements, because $f$ is 1--1.
+\item[$\implies$] $B$ has at most $n$ elements because $f$ is onto.
+\item[] Thus $B$ has $n$ elements.
+\end{itemize}
+On the other hand, if $A$ and $B$ both have $n$ elements then there exists a bijection: $A\to B$. \\
+Say $A=\brace{a_1,a_2,\dotsc,a_n}$, $B=\brace{b_1,b_2,\dotsc,b_n}$. \\
+Define $f(a_j)=b_j$, bijection. \\
+Therefore $\abs A=\abs B$.
+
+\textbf{Example:} $\N\subseteq\Z\subseteq\Q\subseteq\R$ \\
+$\abs\N\leq\abs\Z\leq\abs\Q\leq\abs\R$ \\
+since the embedding maps are injections
+\[f\qquad\begin{matrix}
+\Z & 0 & 1 & -1 & 2 & -2 & 3 & -3 & \cdots \\
+\N & 1 & 2 & 3 & 4 & 5 & 6 & 7 & \cdots
+\end{matrix}\]
+$f\colon\Z\to\N$ is a bijection, therefore $\abs\N=\abs\Z$.
+
+\defin Say a set $A$ is \emph{countable} if it is either finite or $\abs A=\abs\N$.  Say $A$ is \emph{countably infinite} if countable and infinite. \\
+$A$ is \emph{uncountable} if it is not countable. \\
+e.g., $\Z$ is countable.
+
+Countable sets can be written as $a_1,a_2,a_3,\dotsc$
+
+Have $f\colon\N\to A$.  Put $a_j=f(j)$.
+
+Conversely, if there is such a list then just define bijection $g\colon A\to\N$ by $g(a_j)=j$.
+
+$\Q=\set{p/q}{p\in\Z\c q\in\N\c\text{$(p,q)$ coprime}}$,
+\marginpar{figure: diagonal winding through $\N^2$}%
+$\abs\Q=\abs\N$
+
+e.g., $\abs{\N\times\N}=\abs\N$
+
+\textbf{Problem:} $\abs{\R^2}=\abs\R$
+
+e.g., Any countable union of countable sets is countable.  i.e.,
+\[ A = \bigcup_{i=1}^\infty A_i \qquad \abs{A_i}=\abs\N \]
+then $\abs A=\abs\N$
+
+\pf
+\begin{align*}
+A_i &= \brace{a^{(i)}_1,a^{(i)}_2,a^{(i)}_3,\dotsc} \\
+    &= \brace{a(i,1),a(i,2),\dotsc}
+\end{align*}
+\marginpar{figure: diagonal winding through $a(i,j)$}%
+%
+\prop If $\abs A\leq\abs\N$ then either $A$ is finite or $\abs A=\abs\N$. \\
+\cor Hence any subset of a countable set is countable.

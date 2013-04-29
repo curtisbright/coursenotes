@@ -1,0 +1,40 @@
+%\marginpar{
+$f\in\overline \B$\\
+$\implies p(f)\in\overline \B$\\
+$f^2+2f+10$%}%
+%\marginpar{
+$f_{x_1x_2}=h(x_1)$, $f_{x_1x_2}(x_2)=h(x_2)$\\
+$f_{xy}$\\
+Let $\epsilon>0$ and $x\in A$.  For $y\in A$, $\exists$ neighborhood $\U(y)$ of $y$ such that
+\[ f_{yx}(z) > h(z)-\epsilon \text{ for all $z\in\U(y)$} \]
+(simply because $h$ is continuous) %incorrect statement? (oversight)
+%}%
+%\savenotes\marginpar{
+\begin{gather*}
+f_{yx}(y)=h(y) \\
+f_{yx}(y\footnote{$z\in\U(y)$})>h(y\footnote{$z$})-\epsilon \\
+f_{yx}(z)>h(z)-\epsilon
+\end{gather*}%}\spewnotes%
+%
+\textbf{Baire's Category Theorem} \\
+Reference on page 175, chapter 3, Exercise 33.  Let $M$ be a metric space.  A set $S\subset M$ is called \emph{nowhere} dense (in $M$) if for every [nonempty] open $U$, we have $\cl(S)\cap U\neq U$, or equivalently
+\[ \Int(\cl(S)) \savenotes\mathrel{\mathord=\footnote{(typo $\neq$ in text)}}\spewnotes \emptyset \]
+Show that $\R^n$ cannot %\\
+be written as a countable union of nowhere dense sets.
+
+\defn A set $A\subset M$ is of \emph{first} category (in $M$) if it is the union of countably many nowhere dense sets.  Else $A$ is of second category.
+
+The exercise above can be phrased as: $\R^n$ is of 2nd category.
+
+\thm (Baires) Every complete metric space $M$ is of 2nd category (in $M$).
+
+\egs Let the metric space $M$ be $\R$.  Is $\N\subseteq\R$ of 1st category or 2nd category?  Answer: 1st.  $\N$ is of first category in $\R$.
+
+Baire's Theorem gives:
+\begin{center}$\N$ is of 2nd category in $\N$\end{center}
+\marginpar{In $\N$,
+\begin{align*}
+\cl(\brace2)&=\brace2 \\
+\Int(\cl\brace2)&=\Int(\brace2)\\&=\brace2\neq\emptyset
+\end{align*}
+}%

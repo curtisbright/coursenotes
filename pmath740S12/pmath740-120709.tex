@@ -1,0 +1,117 @@
+$F(z_k)=G(z_k)$ \\
+$z_k=x_k+iy_k$, $x_k\to\infty$ \\
+$f(n)=g(n)$
+
+$H=F-G$, $h=f-g$ \\
+$H(z_k)=0$, $h(n)=0$ $\forall n$ \\
+Let $m$ be the smallest index with $h(m)\neq0$
+\begin{align*}
+H(z) &= \sum_{n=m}^\infty\frac{h(n)}{n^z} \\
+&= \frac{h(m)}{m^z} + \sum_{n=m+1}^\infty \frac{f(n)}{n^z} \\ \intertext{Since $H(z_k)=0$}
+h(m) &= -m^{z_k}\sum_{n=m+1}^\infty \frac{h(n)}{n^{z_k}}
+\end{align*}
+Choose $a>1+c$ (so the series for $F$ and $G$ both converge absolutely) \\
+Choose $N>0$ so
+\[ k\geq N \implies x_k>a \]
+For such $k$
+\begin{align*}
+\abs{h(m)} &\leq m^{x_k}\sum_{n=m+1}^\infty\frac{\abs{h(n)}}{n^{x_k}} \\
+&\leq m^{x_k}\sum_{n=m+1}^\infty \frac{\abs{h(n)}}{n^a}\cdot\frac{1}{n^{x_k-a}} \\
+&\leq \frac{m^{x_k}}{(m+1)^{x_k-a}}\sum_{n=m+1}^\infty \frac{\abs{f(n)}}{n^a} \\
+&\leq \paren[\Big]{\frac{m}{m+1}}(m+1)^a M \to 0 \text{ as } k\to\infty
+\end{align*}
+where $M=\sum_{n=1}^\infty\frac{\abs{h(a)}}{n^a}$
+
+\thm (Multiplication of Dirichlet Series) \\
+Suppose $\sum\frac{f(n)}{n^z}$ and $\sum\frac{g(n)}{n^z}$ both converge absolutely for $\Re(z)>a$.  Then
+\[ \paren[\Big]{\sum_{n=1}^\infty\frac{f(n)}{n^z}}\paren[\Big]{\sum_{n=1}^\infty\frac{g(n)}{n^z}} = \sum_{n=1}^\infty \frac{h(n)}{n^z} \]
+where
+\[ h(n) = (f*g)(n) = \sum_{\substack{k,l\\kl=n}}f(k)g(l) \]
+\pf
+\[ \paren[\Big]{\sum_{k=1}^\infty\frac{f(k)}{k^z}} \paren[\Big]{\sum_{l=1}^\infty\frac{g(l)}{l^z}} = \sum_{k,l}\frac{f(k)g(l)}{(kl)^z} = \sum_{n=1}^\infty \paren[\bigg]{\frac{1}{n^z}\sum_{\substack{k,l\\kl=n}}f(k)g(l)}  \]
+where we have used absolute convergence to rearrange terms.
+
+\eg
+\begin{align*}
+\zeta(z) &= \sum_{n=1}^\infty \frac{1}{n^z} \\
+M(z) &= \sum_{n=1}^\infty \frac{\mu(n)}{n^z} \\
+\zeta(z)M(z) &= \sum_{k=1}^\infty\frac1{k^z}\sum_{l=1}^\infty\frac{\mu(l)}{l^z} \\
+&= \sum_{k,l}\frac{\mu(l)}{(kl)^z} = \sum_{n=1}^\infty\sum_{\substack{k,l\\kl=n}}\frac{\mu(l)}{n^z} \\
+&= \sum_{n=1}^\infty \paren[\Big]{\frac1{n^z}\underbrace{\sum_{d\div n}\mu(d)}_{\text{$=1$ only when $n=1$}}} = 1 \\
+\therefore \zeta(z) M(z) &= 1 \text{ for all $z$ with $\Re(z)>1$}
+\end{align*}
+(In particular $\zeta(z)\neq0$ for $\Re(z)>1$)
+
+\eg
+%\begin{gather*}
+\begin{align*}
+\zeta^2(z) &= \sum_k \frac1{k^z} \sum_l \frac1{l^z} \\
+&= \sum_{k,l}\frac1{(kl)^z} = \sum_{n=1}\paren[\Big]{\frac1{n^z}\sum_{d\div n}1} \\
+&= \sum_{n=1}^\infty \frac{\tau(n)}{n^z} \\
+\Aboxed{ \sum_{n=1}^\infty \frac{\tau(n)}{n^z} &= \zeta^2(z) } %circled
+\end{align*}
+%\end{gather*}
+\eg
+\begin{align*}
+\zeta(z)\zeta(z-1) &= \sum_k\frac1{k^z}\sum_l\frac1{l^{z-1}} \\
+&= \sum_{k,l} \frac{l}{(kl)^z} \\
+&= \sum_n \frac1{n^z} \sum_{l\div n}l \\
+&= \sum_{n=1}^\infty \frac{\sigma(n)}{n^z} \\
+\Aboxed{ \therefore \sum_{n=1}^\infty \frac{\sigma(n)}{n^z} &= \zeta(z)\zeta(z-1) } %circled
+\end{align*}
+\eg
+\begin{align*}
+\zeta(z)\zeta(z-w) &= \sum_{k,l}\frac1{k^z}\frac1{l^{z-w}} \\
+&= \sum_n \frac1{n^z}\sum_{d\div n}\frac{l^w} = \sum_{n=1}^\infty \frac{\sigma_w(n)}{n^z} \\
+\therefore \sum_{n=1}^\infty \frac{\sigma_w(n)}{n^z} &= \zeta(z)\zeta(z-w)\footnote{$\Re(z)>1$ and $\Re(z-w)>1$}
+\end{align*}
+\eg
+\begin{align*}
+\zeta(z) \sum_{n=1}^\infty\frac{\phi(n)}{n^z} &= \sum_{n=1}^\infty \frac1{n^z}\sum_{d\div n}\phi(d) = \sum_{n=1}^\infty \frac{n}{n^z} \\
+&= \sum_{n=1}^\infty \frac1{n^{z-1}} \\
+&= \zeta(z-1) \\
+\Aboxed{ \therefore \sum_{n=1}^\infty \frac{\phi(n)}{n^z} &= \frac{\zeta(z-1)}{\zeta(z)} }
+\end{align*}
+\ex Find $\zeta(z)\cdot\sum_{n=1}^\infty\frac{\lambda(n)}{n^z}$ \\
+\eg \begin{align*}
+\zeta(z)\sum_{n=1}^\infty \frac{\Lambda(n)}{n^z} &= \sum_{n=1}^\infty \paren[\Big]{\frac1{n^z}\underbrace{\sum_{d\div n}\Lambda(d)}_{\log n}} \\
+&= \sum_{n=1}^\infty \frac{\log n}{n^z} \\
+&= -\zeta'(z) \\
+\Aboxed{ \therefore \sum_{n=1}^\infty \frac{\Lambda(n)}{n^z} &= -\frac{\zeta'(z)}{\zeta(z)} }
+\end{align*}
+\thm (Euler Products) \\
+Let $f\colon\Z^+\to\C$. \\
+Suppose $\sum\abs{f(n)}$ converges.  Then if $f$ is multiplicative then
+\[ \sum_{n=1}^\infty f(n) = \prod_p (1 + f(p) + f(p^2) + \dotsb ) \]
+(note that the sums $\sum f(p^i)$ converge absolutely) and if $f$ is completely multiplicative then
+\[ \sum_{n=1}^\infty f(n) = \prod_p \frac{1}{1-f(p)} \]
+\pf Let
+\[ P_l = \prod_{i=1}^l (1+f(p_i)+f(p_i^2)+\dotsb) \]
+where $p_i$ is the $i$th prime.  Then (since we have absolute convergence)
+\begin{align*}
+P_l &= \sum_{\substack{0\leq k_1,\\0\leq k_2,\dotsc\\0\leq k_l}} f(p_1^{k_1}) f(p_2^{k_2}) \dotsm f(p_l^{k_l})\footnote{\[ \sum_i a_i \sum_j b_j = \sum_{i,j} a_ib_j \]} \\
+&= \sum_{n\in A_l} f(n) \\ \intertext{where $A_l=\set{n\in\Z^+}{\text{if $p_i\div n$ then $i\leq l$}}$}
+&= \sum_{n=1}^\infty f(n) - \sum_{n\in B_l} f(n) \\ \intertext{where $B_l=\Z^+\setminus A_l=\set{n\in\Z^+}{\text{$p_i\div n$ for some $i>l$}}$}
+\therefore \abs[\Big]{P_l-\sum_{n=1}^\infty f(n)} &= \abs[\Big]{\sum_{n\in B_l}f(n)} \\
+&\leq \sum_{n\in B_l}\abs{f(n)} \\
+&\leq \sum_{n>p_l}\abs{f(n)}\to 0 \text{ as } l\to\infty
+\end{align*}
+since $\sum\abs{f(n)}$ converges
+
+\eg
+\begin{gather*}
+\begin{aligned}
+\zeta(z) &= \sum_{n=1}^\infty \frac1{n^z}\footnote{absolute convergence for $\Re(z)>1$} \\
+&= \prod_p\paren[\Big]{1+\frac1{p^z}+\frac1{p^{2z}}+\frac1{p^{3z}}+\dotsb} \\
+&= \prod_p\frac{1}{1-p^{-z}}
+\end{aligned} \\
+\begin{aligned}
+\frac{1}{\zeta(z)} = \sum_{n=1}^\infty\frac{\mu(n)}{n^z} &= \prod_p \paren[\Big]{1 + \frac{\mu(p)}{p^z} + \frac{\mu(p^2)}{p^{2z}} + \dotsb} \\
+&= \prod_p \paren[\Big]{1-\frac{1}{p^z}} = \prod_p (1-p^{-z})  
+\end{aligned} \\
+\begin{aligned}
+\zeta^2(z) &= \sum_{n=1}^\infty \frac{\tau(n)}{n^z} = \prod_p \paren[\Big]{1 + \frac{\tau(p)}{p} + \frac{\tau(p^2)}{p} + \dotsb} \\
+&= \prod_p \paren[\Big]{1 + \frac{2}{p^z} + \frac{3}{p^{2z}} + \frac{4}{p^{3z}} + \dotsb} \\
+&= \prod_p \paren[\Big]{\frac{1}{(1-p^{-z})^2}}
+\end{aligned}
+\end{gather*}

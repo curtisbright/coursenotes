@@ -1,0 +1,173 @@
+%\[\xymatrix{
+%\Q(i) \ar@{-}[d]^2 \\
+%\Q
+%}\]
+\textbf{Last time:} $F\subseteq L$, $a\in L$, $F$-algebraic.  $\deg(a/F)=m$. \\
+$\brace{1,a}$ is an $F$-basis for $F(a)$. \\
+\ex
+\[ \begin{matrix}
+\Q(i) \\
+| \\
+\Q
+\end{matrix}
+\qquad
+\begin{gathered}
+\deg(i/\Q) = 2 \\
+\text{$\brace{1,i}$ is a $\Q$-basis}
+\end{gathered}
+\qquad
+x^2+1
+\]
+\[ \Q(i)\footnote{$=\text{fraction field of $\Z[i]=\text{Gaussian integers}$}$} = \set{a+bi}{a,b\in\Q} \]
+\[ \begin{matrix} \Q(\sqrt2)\footnotemark \\
+| \mathrlap{\;\}\scriptstyle2} \\
+\Q
+\end{matrix}\footnotetext{$\subseteq\R$} \qquad \text{Basis: $\brace{1,\sqrt2}$} \]
+\[ \Q(\sqrt2) = \set{a+b\sqrt2}{a,b\in\Q} \overset{\text{def/ex}}{=} \set{f(\sqrt2)}{f\in\Q[x]} \]
+%\[ \Q(i)\footnote{$=\text{fraction field of $\Z[i]=\text{Gaussian integers}$}$} = \set{a+bi}{a,b\in\Q} \]
+\[ \begin{matrix} \Q(\sqrt[3]2) \\
+| \mathrlap{\;\}\scriptstyle3} \\
+\Q
+\end{matrix} \qquad \text{$\Q$-basis: $\brace{1,2^{1/3},2^{2/3}}$} \qquad x^3-2 \]
+\cor $F\subseteq K$ algebraic extension of fields \\
+$K\subseteq L$ algebraic extension of fields \\
+Then $L$ is algebraic over $F$.\marginpar{$\begin{matrix}
+L \\
+| \mathrlap{\;\scriptstyle\text{alg}} \\
+K \\
+| \mathrlap{\;\scriptstyle\text{alg}} \\
+F
+\end{matrix}$} \\
+\pf $a\in L$, $a$ is algebraic over $K$ \\
+$\implies$ $h(a)=0$ for some $h=b_0+_1x+\dotsb+b_nx^n\in K[x]$, $b_n\neq0$ \\
+$b_i$s are in $K$ hence algebraic over $F$.
+\[ \begin{matrix}
+F(b_0)(b_1)(b_2)\dotsm(b_n) \mathrel{\smash{\underset{\text{Ex}}{=}}} F(b_0,\dotsc,b_n) \\
+\vdots \\
+F(b_0)(b_1) \\
+\mathllap{{\scriptstyle\text{finite}}\;} | \\
+F(b_0) \\
+\mathllap{{\scriptstyle\N\owns\deg(b_0/F)}\;} | \\
+F
+\end{matrix} \]
+Therefore $[F(b_0,\dotsc,b_n):F]\in\N$.
+\[ \begin{matrix}
+F(b_0,\dotsc,b_n)(a) \\
+\rotatebox{90}{$=$} \\
+F(b_0,\dotsc,b_n,a) \\
+| \mathrlap{\;\scriptstyle\text{finite}} \\
+F(b_0,\dotsc,b_n) \\
+| \mathrlap{\;\scriptstyle\text{finite}} \\
+F
+\end{matrix} \]
+$a$ is algebraic over $F(b_0,\dotsc,b_n)$ since $h\in F(b_0,\dotsc,b_n)[x]$, $h(a)=0$ \\
+Therefore $[F(b_0,\dotsc,b_n,a):F]\in\N$ \\
+$\implies$ $F(b_0,\dotsc,b_n,a)$ is algebraic over $F$ \\
+$\implies$ $a$ is algebraic over $F$.
+
+\ex
+\[ \xymatrix{
+ & \Q(\sqrt2,\sqrt3) \ar@{-}[dd]^4\ar@{-}[dl]\ar@{-}[dr]^{\cancel?\,2} & \\
+\Q(\sqrt3) & & \Q(\sqrt2) \\
+ & \Q\ar@{-}[ul]^2\ar@{-}[ur]_2 &
+} \]
+%\[ \begin{matrix}
+% & & \Q(\sqrt2,\sqrt3) & & \\
+% & & & \cancel{?}\,2 & \\
+%\Q(\sqrt3) & & 4 & & \Q(\sqrt2) \\
+% & 2 & & 2 & \\ 
+% & & \Q & &
+%\end{matrix} \]
+\begin{gather*}
+x^2-2 = \text{minimal polynomial of $\sqrt2$ over $\Q$} \\
+x^2-3 = \text{minimal polynomial of $\sqrt3$ over $\Q$} \\
+\Q(\sqrt2,\sqrt3) = \Q(\sqrt2)(\sqrt3) \\
+[\Q(\sqrt2,\sqrt3):\Q(\sqrt2)] = \deg(\sqrt3/\Q(\sqrt2)) \leq \deg(\sqrt3/\Q) = 2
+\end{gather*}
+If $[\Q(\sqrt2,\sqrt3):\Q(\sqrt2)]=1$ $\implies$ $\Q(\sqrt2,\sqrt3)=\Q(\sqrt2)$ \\
+$\implies$ $\sqrt3\in\Q(\sqrt2) \implies \sqrt3 = a+b\sqrt2$, $a,b\in\Q$ \\
+$\implies$ $3=a^2+2ab\sqrt2+2b^2 \implies ab=0 \implies 3=2b^2\text{ or }3=a^2$, contradiction \\
+Therefore $[\Q(\sqrt2,\sqrt3):\Q(\sqrt2)]=2$ \\
+Therefore $[\Q(\sqrt2,\sqrt3):\Q]=4$
+
+\ex Suppose $F\subseteq L$ field extension \\
+$a,b\in L$, $F$-algebraic
+\[ \begin{gathered}
+\deg(a/F)=m \\
+\deg(b/F)=n
+\end{gathered} \qquad \gcd(m,n)=1 \]
+\emph{Then:} $[F(a,b):F]=nm$
+\[ \xymatrix{
+ & F(a,b)=F(a)(b)\ar@{-}[dd]\ar@{-}[dl]\ar@{-}[dr] & \\
+F(b) & & F(a) \\
+ & F\ar@{-}[ul]^n\ar@{-}[ur]_m &
+} \]
+%\[ \begin{matrix}
+% & & F(a,b)=F(a)(b) & & \\
+% & & & & \\
+%F(b) & & & & F(a) \\
+% & n & & m & \\ 
+% & & F & &
+%\end{matrix} \]
+$n$ and $m$ must divide $[F(a,b):F]$ \\
+$\implies nm\mid [F(a,b):F]\implies F[F(a,b):F]\geq nm$
+\begin{align*}
+[F(a,b):F] &= [F(a,b):F(a)]\cdot[F(a):F] \\
+&= \deg(b/F(a))\cdot\deg(a/F) \\
+&\leq n \cdot m
+\end{align*}
+$F$ field.  $g\in F[x]$ irreducible \\
+$(g)$ is a nonzero prime ideal in the pid $F[x]$ \\
+$\implies$ $(g)$ is maximal ideal \\
+$L\coloneqq F[x]/(g)$ is a field
+
+\[\begin{aligned}
+\phi\colon & F \to L \\
+& r \mapsto r + (g)
+\end{aligned} \qquad \text{homomorphism} \]
+\textbf{Claim:} $\phi$ is en embedding \\
+\pf\vspace{-\baselineskip}
+\begin{align*}
+\text{$r\in F$, $r\neq0$, $\phi(r)=0$} &\implies \text{$r+(g)=0$ in $L$} \\
+&\implies r\in(g)\implies(g)=F[x] \text{ contradiction}
+\end{align*}
+
+Identify $F$ with $\phi(F)$ and we have a field extension
+\[ \begin{matrix}
+\mathllap{L ={}} F[x]/(g) \\
+| \\
+F
+\end{matrix} \]
+
+\prop $F$ field, $g\in F[x]$ irreducible.  $L=F[x]/(g)$ \\
+Then $[L:F]=\deg g$ \\
+\pf\vspace{-\baselineskip}
+\begin{align*}
+\text{Let } a &\coloneqq x + (g) \qquad\text{Call $(g)=I$.} \\
+&= x + I \in L
+\end{align*}
+\textbf{Claim:} $L=F(a)$ \\
+\pf Let $\alpha\in L$.  $\alpha=f+I$ for some $f\in F[x]$ \\
+While $f=a_0+a_1x+\dotsb+a_nx^n$, $a_i\text{s}\in F$.
+\begin{align*}
+\alpha = f + I &= (a_0+\dotsb+a_nx^n) + I \qquad\text{in $L$} \\
+&= a_0 + a_1(x+I) + a_2(x+I)^2 + \dotsb + a_n(x+I)^n \\
+&= f(a) 
+\end{align*}
+Therefore $L=F[a]=F(a)$.
+
+\textbf{Claim 2:} $g(a)=0$ in $L$ \\
+\pf\vspace{-\baselineskip}
+\begin{align*}
+g &= b_0 + b_1x + \dotsb + b_mx^m \qquad m=\deg g \\
+g(a) &= b_0 + b_1a + \dotsb + b_ma^m \\
+&= b_0 + (b_1x+I) + \dotsb + (b_mx^m+I) \\
+&= (b_0+b_1x+\dotsb+b_mx^m) + I \\
+&= g + I = g + (g) \\
+&= \text{$0$ in $L$}
+\end{align*}
+Therefore $\min(a/F)=\frac{1}{bm}\cdot g$
+\begin{align*}
+\text{Therefore } [L:F] &= \deg(\tfrac{1}{bm}g) \\
+&= \deg g
+\end{align*}

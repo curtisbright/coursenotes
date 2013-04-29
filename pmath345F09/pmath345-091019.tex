@@ -1,0 +1,79 @@
+\begin{enumerate}
+\item Preliminaries
+\item Units/Zero Divisors
+\item Polynomials
+\item Homomorphisms
+\item Ideals and Quotients
+\item Localization and fields of fractions
+\item \emph{Euclidean domains}
+\end{enumerate}
+
+Recall the division algorithm for $\Z$. \\
+Given $a,b\in\Z$, $a\neq0$ there exists $q,r\in\Z$ such that
+\[ b = qa+r \]
+and
+\[ \abs{r} < \abs{a} . \]
+\defin An integral domain $R$ is an \emph{Euclidean domain} if there exists a function $N\colon R\to\N$ with $N(0)=0$\footnote{for convenience}, such that given $a,b\in R$, $a\neq0$, there exists $q,r\in R$ with
+\[ b = qa+r \qquad\text{and}\qquad N(r)<N(a) . \]
+\ex $R=\Z$, $N(a)=\abs{a}$. \\
+Such an $N$ is often referred to as a Euclidean norm for $R$.
+
+\prop $F$ a field.  Given $f,g\in F[x]$, $f\neq0$.  There exist $q,r\in F[x]$ such that $g=qf+r$ where either $r=0$ or $\deg(r)<\deg(f)$. \\
+\cor $F[x]$ is a Euclidean domain ($F$ a field) with
+\[ N \coloneqq \begin{cases}
+0 & \text{if $f=0$} \\
+\deg(f)+1 & \text{if $f\neq0$}
+\end{cases} . \]
+\pf If $g=0$ then let $q=r=0$. $\checkmark$ \\
+Assume $g\neq0$. \\
+If $\deg(g)<\deg(f)$ then let $q=0$, $r=g$. $\checkmark$ \\
+Assume $\deg(g)\geq\deg(f)$. \\
+Induction on $\deg(g)$.
+\[ \deg(g)=0 \implies \deg(f)=0. \]
+Therefore $f,g\in F$, so units in $F$.
+\[ g = \paren*{\frac{g}{f}} f + 0 \quad\checkmark \]
+$\deg(g)=n$:
+\begin{align*}
+g &= b_0 + b_1x + \dotsb + b_nx^n & b_n &\neq 0 \\
+f &= a_0 + a_1x + \dotsb + a_mx^m & a_m &\neq 0
+\end{align*}
+$m\leq n$ \\
+Consider $g^* = g - \underbrace{f\cdot\paren*{\frac{b_n}{a_m}x^{n-m}}}$.  OK since $a_m\neq0$ in a field $F$. \\
+The underbrace has leading term $(a_mx^m)(\frac{b_n}{a_m}x^{n-m})=b_nx^n=\text{leading term of $g$}$. \\
+So $\deg(g^*)<\deg(g)=n$.  By Induction Hypothesis,
+\[ g^* = q^* f + r \text{ where either $r=0$ or $\deg(r)<\deg(f)$} . \]
+\[ g - f\cdot\paren*{\frac{b_n}{a_m}x^{n-m}} = q^* f + r \]
+\cor (Factor Theorem): $F$ a field, $g\in F[x]$, $\lambda\in F$ \\
+If $g(\lambda)=0$ (i.e., $\lambda$ is a \emph{root} of $g$) \\
+then $(x-\lambda)$ is a \emph{factor} of $g$. \\
+(i.e., $g=(x-\lambda)f$, for some $f\in F[x]$) \\
+The converse is true as well.
+
+\pf If $g=(x-\lambda)f$,
+$g(\lambda)=(\lambda-\lambda)f=0f=0$ $\checkmark$ \\
+Conversely, suppose $\lambda$ is a root of $g$. \\
+By the proposition, there exists $f,r\in F[x]$ such that
+\[ g = (x-\lambda)f + r \]
+(we are dividing $g$ by $(x-\lambda)$) \\
+with $N(r)<N(x-\lambda)=2$ \\
+$\implies N(r)=0$ or $1$.
+
+If $N(r)=1$ then $\deg r=0$ so $r=a_0\in F$, $a_0\neq 0$.
+\begin{gather*}
+g = (x-\lambda) f + a_0 \\
+g(\lambda) = 0\cdot f + a_0 = a_0 \neq 0
+\end{gather*}
+contradiction.  Therefore $N(r)=0$, therefore $r=0$, therefore $g=(x-\lambda)f$. \\
+\cor $F$ field. \\
+$g\in F[x]$, $\deg(g)=n$ ($g\neq0$) \\
+Then $g$ has at most $n$ roots.
+
+\pf Induction on $n$. \\
+$n=0$: $g$ is nonzero constant polynomial $\implies$ $g$ has no roots \\
+$n>0$: $\lambda_1,\dotsc,\lambda_l$ be distinct roots of $g$. \\
+Divide $(x-\lambda_l)$ into $g$ to get \\
+$g=(x-\lambda_l)q$ (by previous corollary) \\
+But $\deg(q)=n-1$ (since $F$ is an integral domain $\deg(PQ)=\deg(P)+\deg(Q)$) \\
+\emph{For each} $i<l$,
+\[ 0 = g(\lambda_i) = \underbrace{(\lambda_i-\lambda_l)}_{\mathclap{\text{$\neq0$ since $\lambda_i\neq\lambda_l$}}}q(\lambda_i) \]
+By Induction Hypothesis, $l-1\leq n-1\implies l\leq n$.

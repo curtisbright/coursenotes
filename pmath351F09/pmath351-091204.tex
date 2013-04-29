@@ -1,0 +1,51 @@
+\textbf{Metric Completion} \\
+\defin Let $(X,d_X)$ be a metric space. \\
+By a \emph{completion of\/ $(X,d_X)$} we mean a complete metric space $(Y,d_Y)$ and a map $T\colon X\to Y$ such that $d_Y(T(x_1),T(x_2))=d_X(x_1,x_2)$ and $T(X)$ is dense in $Y$.
+
+e.g.,
+\begin{enumerate}
+\item[(1)] $\Q\subseteq\R$ \qquad $T=\text{Identity map}$
+\item[(2)] If $X\subseteq X_0$ complete metric space \\
+Take $\operatorname{Id}\colon X\to\overline X$ to see $\overline X$ is completion of $X$
+\end{enumerate}
+\thm Every metric space $(X,d_X)$ has a completion \\
+\pf Fix $x_0\in X$.  Define a family of functions
+\[ f_x\colon X\to\R \text{ by } f_x(z)=d_X(x,z)-d_X(x_0,z),\quad\forall x\in X . \]
+e.g., $f_{x_0}(z) = 0$ $\forall z\in X$. \\
+\note
+\begin{gather*}
+\begin{aligned}
+d(x,y_1) - d(x,y_2) &\leq d(x,y_2) + d(y_2,y_1) - d(x,y_2) \\
+&= d(y_2,y_1)
+\end{aligned} \\
+\begin{gathered}
+\implies \abs{d(x,y_1)-d(x,y_2)} \leq d(y_1,y_2) \\
+\text{So } \abs{f_x(z_1)-f_x(z_2)} = \abs{d(x,z_1)-d(x_0,z_1)-d(x,z_2)\footnote{arrow from first term}+d(x_0,z_2)\footnote{arrow from second term}} \\
+\leq \abs{d(x,z_1)-d(x,z_2)} + \abs{d(x_0,z_1)-d(x_0,z_2)} \leq 2d(z_1,z_2) %\\
+\end{gathered}
+\end{gather*}
+Thus $f_x$ is (uniformly) continuous.
+\begin{gather*}
+\begin{gathered}
+\text{Look at } \abs{f_{x_1}(y)-f_{x_2}(y)} = \abs{d(x_1,y)-d(x_2,y)} \\
+\leq d(x_1,x_2) \qquad \forall y\in X \\
+\implies \norm{f_{x_1}-f_{x_2}} = \sup_{y\in X}\abs{f_{x_1}(y)-f_{x_2}(y)} \leq d(x_1,x_2)
+\end{gathered}\\
+\begin{aligned}
+\text{But } \abs{f_{x_1}(x_2)-f_{x_2}(x_2)} &= \abs{d(x_1,x_2)-d(x_2,x_2)\footnote{$=0$}} \\
+&= d(x_1,x_2)
+\end{aligned}\\
+\text{Therefore } \norm{f_{x_1}-f_{x_2}} = d(x_1,x_2)
+\end{gather*}
+In particular, $\norm{f_{x_1}}=\norm{f_{x_1}-f_{x_0}\addtocounter{footnote}{-1}\footnotemark}=d(x_1,x_0)<\infty$ so $f_{x_1}$ is bounded for any $x_1\in X$. \\
+i.e., $f_x\in C_b(X)$ $\leftarrow$ complete metric space
+\begin{align*}
+\text{Consider the map } T\colon &X \to C_b(X) \\
+& x \mapsto f_x
+\end{align*}
+\[ d_{C_b(X)}(T(x_1)\footnote{$=f_{x_1}$},T(x_2)\footnote{$=f_{x_2}$}) = \norm{f_{x_1}-f_{x_2}} = d_X(x_1,x_2) \]
+Put $Y=\overline{T(X)}$.  $Y$ is complete, being a closed subset of a complete metric space%[space]
+.  $Y$ is the completion of $X$.
+%
+%T Dec 15 1--3
+%W Dec 16 1--3

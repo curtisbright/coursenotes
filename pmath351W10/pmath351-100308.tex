@@ -1,0 +1,28 @@
+\defn (3.1.4). A metric space is \emph{totally bounded} if for all $\epsilon>0$, there exist finitely many $x_1$,~$\dotsc$, $x_n$ in the space so that $\set{D(x_i,\epsilon)}{i=1,\dotsc,n}$ covers the space.
+
+\eg The square $[0,1]\times[0,1]$ in $\R^2$ is totally bounded.\marginpar{figure: a square is totally bounded}
+
+\thm (3.1.5).  A metric space $(X,d)$ is compact if and only if it is complete and totally bounded.  (A generalization of the Heine--Borel Theorem for subspaces of $\R^n$). \\
+\pf (Page 166).\marginpar{compactness implies sequentially complete and totally bounded}  To see the converse we suppose that $(X,d)$ is complete and totally bounded, and proceed to argue that $X$ is sequentially compact.
+
+Let $y_k$ be a sequence in $X$.
+
+Without loss of generality, we may assume that all terms of $y_k$ are distinct.  Consider $\epsilon=1$.  There are a finite number of discs $D(x_1,1)$, $D(x_2,1)$, $\dotsc$, $D(x_k,1)$ which covers $X$.  There must be one disc, say $D(x_1,1)$, which holds infinitely many $y_k$ terms.
+
+Extract a subsequence
+\[ y_{11}\c y_{12}\c y_{13}\c \dotsc\c y_{1j}\c \dotsc \]
+of $y_1$, $y_2$, $\dotsc$, $y_k$, $\dotsc$ with all terms in $D(x_1,1)$. \\
+Next, repeat the argument using $\epsilon=1/2$, and claim that there exists a disc $D(x_2,1/2)$ and a subsequence
+\[ y_{21}\c y_{22}\c y_{23}\c \dotsc \]
+of the previous $y_{11}$, $y_{12}$, $\dotsc$ so that all terms are in $D(x_2,1/2)$\marginpar{figure: finite cover of discs of radius $1/2$} \\
+\mbox{\qquad}$\vdots$ \\
+By induction, get sequence
+\[ y_{l1}\c y_{l2}\c \dotsc\c \]
+which is a subsequence of $y_{l-1,1}$, $y_{l-1,2}$, $\dotsc$ so that all terms are in $D(x_l,1/l)$. \\
+Consider the diagonal sequence
+\[ y_{11}\c y_{22}\c y_{33}\c \dotsc\c y_{nn}\c \dotsc \]
+It is Cauchy.  As $X$ is complete, it converges to a point of $X$.
+
+\emph{Don't} expect the statement: A metric space $(X,d)$ is compact if and only if it is complete and bounded.
+
+\eg $\R^2$ is complete, but not compact.  However, $(\R^2,\rho=\min(d\footnote{Euclidean},1))$\marginpar{$\R^2$ is bounded by $D_\rho(\0,2)$} has the same topology as $(\R^2,d)$.

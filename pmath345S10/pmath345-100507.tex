@@ -1,0 +1,60 @@
+\defn Let $R$ be a ring.  A subring of $R$ is a set $S\subset R$ such that $S$ is a ring using the same operations as $R$ \emph{and} $1\in S$.
+
+\eg $R=\Z/6\Z$ \\
+$S=\brace{0,3}$ \\
+$S$ is a ring using $+$ and $\cdot$ as $R$, but the multiplicative identity of $S$ is not $1\in R$. \\
+$S\subset R$, $S$ closed under $+$, $\cdot$, $-$, and has $z\in S$ such that $z+r=r$ for all $r\in S$. \\
+$\implies z=0~\checkmark$.
+
+\thm Let $n\geq1$ be an integer.  Then $\Z/n\Z$ is:
+\begin{enumerate}[label=(\arabic*)]
+\item A field \emph{iff} $n$ is prime
+\item Reduced \emph{iff} $n$ is squarefree
+\end{enumerate}
+\pf\begin{enumerate}[label=(\arabic*)]
+\item If $n$ is prime, then every nonzero element of $\Z/n\Z$ is represented by an integer coprime to $n$.  Thus, every nonzero element of $\Z/n\Z$ is a unit, so $\Z/n\Z$ is a field.
+
+Conversely, if $\Z/n\Z$ is a field, then every nonzero element is coprime to $n$, so $n$ is prime.
+\item Assume $p^2\mid n$, $p>1$.  Then $n/p\neq0$, $n/p\in\Z\implies n/p$ is well defined mod $n$, but
+\[ \paren[\Big]{\frac{n}{p}}^2 = \frac{n^2}{p^2} = \paren[\Big]{\frac{n}{p^2}}n = 0 . \]
+So $\Z/n\Z$ is not reduced, since $n/p$ is nilpotent.
+
+Finally, assume that $m$ is nilpotent mod $n$.  We want to show that $n$ is not squarefree.  Well, $m\neq0\bmod n$, but $m^a=0\bmod m$.  As integers, write $\substack{m = p_1^{a_1}\dotsm p_r^{a_r} \\ n = p_1^{b_1} \dotsm p_r^{b_r}}$ where, in principle, some of the $a_i$, $b_i$ may be $0$.
+%$\substack{m = p_1^{a_1}\dotsm p_r^{a_r} \\ n = p_1^{b_1} \dotsm p_r^{b_r}}$
+%$\begin{aligned}m &= p_1^{a_1}\dotsm p_r^{a_r} \\ n &= p_1^{b_1} \dotsm p_r^{b_r}\end{aligned}$
+
+Since $n\nmid m$, we get $n\nmid m$, we get $b_i>a_i$ for some $i$.  Since $n\mid m^a$, we get $b_i\leq aa_i$.  Note $b_i>a_i\geq0$, and $b_i\leq aa_i$, so $a_i>0$.  So $b_i>a_i\geq1$, and so $b_i\geq2$.  Thus, $p_i^2\mid n$, and $n$ is not squarefree. \qed
+\end{enumerate}%Any finite domain will be a field.
+\textbf{Homomorphisms} \\
+\defn Let $R$, $S$ be rings.  A homomorphism from $R$ to $S$ is a function $f\colon R\to S$ satisfying:
+\begin{enumerate}[label=(\arabic*)]
+\item $f(1)=1$
+\item $f(a+b)=f(a)+f(b)$
+\item $f(ab)=f(a)f(b)$
+\end{enumerate}
+\eg $f\colon\C\to\C$, $f(a+bi)=a-bi$ \\
+\eg $f\colon\Z\to\Z/n\Z$ \\ $f(r)=r\bmod n$ \\
+\eg $f\colon\Q[x]\to\Q$ \\ $f(p(x))=p(3\frac12)$ \\ $f(x-7)=-3\frac12$ \\
+$%\begin{aligned}
+%f(x^2+2x+3) &= \tfrac{49+28+12}{4} \\ &= \tfrac{89}{4}
+f(x^2+2x+3) = \tfrac{49+28+12}{4} = \tfrac{89}{4}
+%\end{aligned}
+$ \\ $f(6)=6$ \\
+``Plugging in'' homomorphism:
+\[ f\colon R[x_1,\dotsc,x_n] \to T \]
+where $R$ is a ring, $R\subset T$, and:
+\[ f(p(x_1,\dotsc,x_n)) = p(t_1,\dotsc,t_n) \]
+where $t_1$, $\dotsc$, $t_n\in T$ are any fixed elements of $T$.
+
+\eg $f\colon\Z[i]\to\Z/5\Z$ \\
+$f(a+bi)=a+2b\bmod5$
+\begin{enumerate}[label=(\arabic*)]
+\item $f(1)=1\bmod5~\checkmark$
+\item $f((a+bi)+(c+di))=f((a+c)+(b+d)i)=a+c+2(b+d)\bmod5$ \\
+$f(a+bi)+f(c+di)=a+2b+c+2d\bmod5$. Same.
+\item \begin{gather*}\\[-2.25\baselineskip]
+f(a+bi)f(c+di) = (a+2b)(c+2d) = ac + 4bd + 2ad + 2bc \bmod 5 \\
+f((a+bi)(c+di)) = f(ac-bd+bci+adi) = ac - bd + 2(ad+bc) \bmod 5
+\end{gather*}
+These are the same, so $\Box$.
+\end{enumerate}

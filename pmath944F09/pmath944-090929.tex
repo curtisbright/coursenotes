@@ -1,0 +1,71 @@
+\textbf{Theorem 7:} Let $\alpha_{ij}$ be real numbers, with $1\leq i\leq n$, $1\leq j\leq m$, and let $Q$ be a real number with $Q>1$.  Then there exist integers $q_1\c \dotsc\c q_m$ and $p_1\c \dotsc\c p_n$ with
+\[ 0 < \max_{1\leq j\leq m}\abs{q_j}< Q^{n/m} \]
+and
+\[ \abs{\alpha_{i1}q_1+\dotsb+\alpha_{im}q_m-p_i} \leq \frac{1}{Q} \qquad\text{for $i=1\c \dotsc\c n$} . \]
+(This was proved in 1842 by Dirichlet under the assumption that $Q$ is an integer.)
+
+We have the following consequence of Theorem 7: \\
+\cor Let $\alpha_{ij}$ be real numbers with $1\leq i\leq n$, $1\leq j\leq m$.  Suppose that for some $t$ with $1\leq t\leq n$, $1\c \alpha_{t1}\c \dotsc\c \alpha_{tm}$ are linearly independent over the rationals.  Then there exist infinitely many coprime $m+n$\nobreakdash-tuples of integers $(q_1,\dotsc,q_m,p_1,\dotsc,p_n)$ with $q=\max_{1\leq j\leq m}\abs{q_j}>0$ and
+\begin{equation} \abs{\alpha_{i1}q_1+\dotsb+\alpha_{im}q_m-p_i} < \frac{1}{q^{m/n}} \label{star090929}\qquad\text{for $i=1\c \dotsc\c n$} . \end{equation}
+\pf Take $Q=2$.  By Theorem 7 there exists a solution $q_1\c \dotsc\c q_m\c p_1\c \dotsc\c p_n$ of~\eqref{star090929}.  We now divide through by the $\gcd$ of $q_1\c \dotsc\c q_m\c p_1\c \dotsc\c p_n$ to give us a solution of~\eqref{star090929} with a coprime $m+n$\nobreakdash-tuple.  Thus we may suppose, without loss of generality, $\gcd(q_1,\dotsc,q_m,p_1,\dotsc,p_n)=1$.  Let
+\[ \abs{q_1\alpha_{t1}+\dotsb+q_m\alpha_{tm}} = \delta_t \]
+and $\delta_t>0$ since $1\c \alpha_{t1}\c \dotsc\c \alpha_{tm}$ are linearly independent over $\Q$.
+
+We now apply Theorem 7 with $Q$ so that $\frac1Q<\delta_t$ to get a new $m+n$-tuple satisfying~\eqref{star090929}.  We remove the $\gcd$ to make the $m+n$\nobreakdash-tuple coprime.  Repeating this process gives us infinitely many coprime $m+n$-tuples satisfying~\eqref{star090929}.
+
+\textbf{Proof of Theorem 7:} Put $l=m+n$ and consider the $l$ linear forms $L_1\c \dotsc\c L_l$ in $\x=(x_1,\dotsc,x_l)$ given by
+\[ L_i(\x) = x_i \qquad\text{for $i=1\c \dotsc\c m$} \]
+and
+\[ L_{m+j}(\x) = \alpha_{j1}x_1+\dotsb+\alpha_{jm}x_m-x_{m+j}\qquad\text{for $j=1\c \dotsc\c n$} . \]
+Note that the determinant of the matrix associated with $L_1\c \dotsc\c L_l$ is $(-1)^n$.
+
+Let $Q>1$ and apply Minkowski's Linear Forms Theorem to the system of inequalities:
+\begin{equation} \abs{L_i(\x)} < Q^{n/m} \qquad\text{for $i=1\c \dotsc\c m$} \label{eq1090929} \end{equation}
+and
+\begin{equation} \abs{L_{m+j}(\x)} \leq \frac{1}{Q} \qquad\text{for $j=1\c \dotsc\c n$} \label{eq2090929} \end{equation}
+to find a non-zero integer point $\x$ satisfying \eqref{eq1090929} and~\eqref{eq2090929}.  We now put $q_i=x_i$ for $i=1\c \dotsc\c m$ and $p_j=x_{m+j}$ for $j=1\c \dotsc\c n$.  Then
+\[ q = \max_i \abs{q_i} < Q^{n/m} \]
+and
+\[ \abs{\alpha_{j1}q_1+\dotsb+\alpha_{jm}q_m-p_j} \leq \frac{1}{Q} . \]
+It remains to check that $q\neq0$.  Suppose otherwise.  Then $q_1=\dotsb=q_m=0$ so
+\[ \abs{p_j} \leq \frac{1}{Q} \qquad\text{for $j=1\c \dotsc\c n$} . \]
+But $Q>1$ so $p_1=\dotsb=p_n=0$ and this contradicts the fact that $\x$ is a non-zero point.  The result follows.
+
+\textbf{Theorem 8:} Let $\Lambda$ be a lattice in $\R^n$ and let $A$ be a convex set in $\R^n$ which is symmetric about the origin and has volume greater than $2^n d(\Lambda)$, or if $A$ is compact has volume $\geq2^n d(\Lambda)$.  Then $A$ contains a point of $\Lambda$ different from $\0$.
+
+\pf Suppose $v_1\c \dotsc\c v_n$ is a basis for $\Lambda$.  Let $v_j=(\alpha_{j1},\dotsc,\alpha_{jn})$ for $j=1\c \dotsc\c n$.  Let $T$ be the linear transformation from $\R^n$ to $\R^n$ associated with the matrix $(\alpha_{ij})$.  Then $\Lambda=T\Lambda_0$.  Notice that $\mu(T^{-1}A)=d(\Lambda)^{-1}\mu(A)$ and that $T^{-1}A$ is a convex set which is symmetric about the origin.  The result now follows from Minkowski's Convex Body Theorem.
+
+\textbf{Proposition 9:} Let $R$ be a positive real number and let $n$ be a positive integer.  The volume of the sphere of radius $R$ in $\R^n$ is $\omega_n R^n$ where $\omega_n=\frac{\pi^{n/2}}{\Gamma(1+n/2)}$. \\
+\pf If suffices to prove that $\omega_n$ is the volume of the unit sphere given by
+\[ \set{(x_1,\dotsc,x_n)\in\R^n}{x_1^2+\dotsb+x_n^2\leq1} . \]
+We have $\omega_1=2$ and $\omega_2=\pi$.  We now proceed inductively.  Suppose $n\geq3$.  Then
+\[ \omega_n = \int\limits_{x_1^2+\dotsb+x_n^2\leq1}\d x_1\dotsm\d x_n = \int_{-1}^1\int_{-1}^1\paren*{\int_{\R^{n-2}} g(x_1,\dotsc,x_{n})}\d x_{n-1}\d x_n , \]
+where $g$ is the characteristic function of the unit sphere.\footnote{This not necessary; can ignore.}  Thus
+\begin{align*}
+\omega_n
+&= \int\limits_{x_{n-1}^2+x_n^2\leq1}\omega_{n-2}(1-x_{n-1}^2-x_n^2)^{(n-2)/2}\d x_{n-1}\d x_n \\
+&= \omega_{n-2}\int\limits_{x_{n-1}^2+x_n^2\leq1}(1-x_{n-1}^2-x_n^2)^{(n-2)/2}\d x_{n-1}\d x_n 
+\end{align*}
+Change to polar coordinates $(r,\theta)$. Thus
+\begin{align*}
+\omega_n &= \omega_{n-2} \int_0^{2\pi}\int_0^1 (1-r^2)^{(n-2)/2} r\d r\d\theta \\
+&= 2\pi\omega_{n-2} \int_0^1 (1-r^2)^{(n-2)/2} r \d r \\
+&= 2\pi\omega_{n-2} \left[ \vphantom{-\tfrac1n(1-r^2)^{n/2}} \right._0^1 {-\tfrac1n(1-r^2)^{n/2}} \\
+&= \frac{2\pi}{n}\omega_{n-2}
+\end{align*}
+Thus
+\[ \omega_{2n} = \frac{2\pi}{2n}\cdot\frac{2\pi}{2(n-1)}\dotsm\frac{2\pi}{4}\cdot\frac{2\pi}{2}=\frac{\pi^n}{n!} \]
+while
+\[ \omega_{2n+1} = \frac{2\pi}{2n+1}\cdot\frac{2\pi}{2n-1}\dotsm\frac{2\pi}{3}\cdot2 = \frac{\pi^n}{(n+\frac12)(n-\frac12)\dotsm\frac{3}{2}\cdot\frac{1}{2}} . \]
+The result follows on noting that $\Gamma(x+1)=x\Gamma(x)$ for $x>0$ and that $\Gamma(\frac12)=\sqrt\pi$.
+
+\textbf{Theorem 10:} Let $\Lambda$ be a lattice in $\R^n$.  There is a non-zero element $\x\in\Lambda$ for which 
+\[ 0<\x\cdot\x=x_1^2+\dotsb+x_n^2 \leq 4(\omega^{-1}_n d(\Lambda))^{2/n} . \]
+\pf We apply Theorem 8 to the set
+\[ A = \set{\x\in\R^n}{x_1^2+\dotsb+x_n^2\leq t} \]
+with $t=4(\omega^{-1}_n d(\Lambda))^{2/n}$.  Then
+\begin{align*}
+\mu(A) = \omega_n t^{n/2} &= \cancel{\omega_n} 2^n \cancel{\omega_n^{-1}} d(\Lambda) \\
+&= 2^n d(\Lambda)
+\end{align*}
+$A$ is convex, symmetric about the origin and compact and the result now follows from Theorem 8.

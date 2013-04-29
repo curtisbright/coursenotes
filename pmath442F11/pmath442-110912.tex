@@ -1,0 +1,38 @@
+David McKinnon \\
+PMATH 442/642
+
+NSERC \& OGS scholarship info meeting \\
+Thursday Sept.\ 15 10--12 noon DC 1302 Refreshments \\
+Office hours are cancelled this Wednesday.
+
+\url{http://www.student.math.uwaterloo.ca/~pmat442}
+
+\defn A homomorphism of rings is a function $f\colon R\to S'$ such that
+\begin{enumerate}
+\item $f(a+b)=f(a)+f(b)$
+\item $f(ab)=f(a)f(b)$
+\item $f(1)=1$
+\end{enumerate}
+\defn Let $R$ be a ring.  There is a unique homomorphism $\phi\colon\Z\to R$ given by $\phi(n)=n$, called the characteristic homomorphism.  Since $\Z$ is a PID, there is a unique nonnegative $n\in\Z$ such that $\ker\phi=(n)$.  The characteristic of $R$ is $n$. %\\
+
+\defn An extension of fields is a pair of fields $L$, $K$ such that $K\subset L$.  It's written $L/K$.
+
+The degree of $L/K$ is the dimension of $L$ as a $K$-vector space. \\
+\recall Let $F$ be a field, $R$ a non-zero ring, $\phi\colon F\to R$ a homomorphism.  Then $\phi$ is $1$--$1$.
+
+If $p(x)\in F[x]$ is irreducible, then $F[x]/(p(x))$ is a field.  As an extension of $F$, it has degree $\deg(p)$, with basis
+\[ \brace{1,x,\dotsc,x^{\deg(p)-1}} . \]
+\defn Let $K$ be a field.  A $K$-algebra is a ring $R$ that contains $K$. \\
+\defn A $K$-algebra homomorphism is a function $f\colon R\to S$ that is a ring homomorphism satisfying $f(a)=a$ for all $a\in K$.
+\begin{align*}
+ f(ab) &= f(a)f(b) \\
+ f(cv) &= cf(v)
+\end{align*}
+Note that a $K$-algebra homomorphism is also, equivalently, a ring homomorphism that is also a $K$-linear transformation.
+
+\thm Let $L/K$ be an extension of fields, $p(x)\in K[x]$ an irreducible polynomial, $\alpha\in L$ an element satisfying $p(\alpha)=0$.  Then $\phi\colon K[x]/(p(x))\to K(\alpha)$ given by $\phi(f(x))=f(\alpha)$ is a $K$-algebra isomorphism. \\
+\pf Not doing it. \qed \\
+So $\brace{1,\alpha,\alpha^2,\dotsc,\alpha^{\deg(p)-1}}$ is a basis for $K(\alpha)$ over $K$. \\
+\defn In this context, $p(x)$ is called a minimal polynomial for $\alpha$ over $K$.  It is unique to multiplication by a nonzero element of $K$. \\
+\thm Let $p(x)$ be a minimal polynomial for $\alpha$ over $K$.  If $f(x)\in K[x]$ satisfies $f(\alpha)=0$, then $p(x)\divides f(x)$. \\
+\pf Not doing it. \qed

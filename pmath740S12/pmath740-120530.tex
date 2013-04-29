@@ -1,0 +1,109 @@
+$\exists\infty$ primes $p=k\mod l$ when $\gcd(k,l)=1$
+
+\eg Show that there exist infinitely many primes of each of the forms
+\begin{align}
+p &= 1 \bmod 4 \\
+p &= 3 \bmod 4 \\
+p &= 1 \bmod 8 \\
+p &= 3 \bmod 8
+\end{align}
+\begin{enumerate}
+\item $1\bmod4$ \\
+Suppose there are only finitely many primes $p$ with $p=1\bmod4$, say $p_1$, $p_2$, $\dotsc$, $p_l$.  Consider $n=(2p_1p_2\dotsm p_l)^2+1$.  Let $p$ be a prime factor of $n$.  Note that $p\neq p_i$ for any $i$ since $n=1\bmod p_i$ so $p_i\ndiv n$.  Since $p\div n$, $\therefore n=0\bmod p$.
+\begin{gather*}
+\therefore (2p_1\dotsm p_l)^2 + 1 = 0 \bmod p \\
+-1 = (2p_1\dotsm p_l)^2 \bmod p \\
+\therefore -1 \in Q_p \\
+\therefore p = 1 \bmod 4
+\end{gather*}
+\item $p=3\bmod 4$ \\
+Suppose there are finitely many, say $p_1$, $\dotsc$, $p_l$.  Consider $n=4p_1p_2\dotsm p_l-1$ (note that $n=3\bmod4$).  The prime factors of $n$ are odd so they are all of the form
+\[ p = 1,3\bmod4 . \]
+Not every prime factor of $n$ can be equal to $1\bmod4$ (since $n=3\bmod4$). $\therefore n$ has a prime factor $p=3\bmod4$.  And $p\neq p_i$ for any $i$ since $p_i\ndiv n$.
+\item $p=1\bmod8$ \\
+Suppose there are finitely many such primes $p$.  Consider $n=(2p_1\dotsm p_l)^4+1$.  Let $p$ be a prime factor of $n$.  Then $n=0\bmod p$.
+\begin{align*}
+\therefore (2p_1\dotsm p_l)^4&=-1\bmod p \\
+(2p_1\dotsm p_l)^8 &= 1 \bmod p \\
+\therefore \ord_p(2p_1\dotsm p_l) &= 8 \\
+\therefore 8\div\abs{U_p}&\co8\div p-1 \\
+\therefore p &= 1 \bmod 8
+\end{align*}
+Also, $p\neq p_i$ for any $i$.
+\item $p=3\bmod 8$. \\
+Suppose there are only finitely many such primes, say
+\[ p_1\co p_2\co \dotsc, p_l . \]
+Consider $n=(p_1p_2\dotsm p_l)^2+2$.  Let $p$ be a prime factor of $n$.  Then $n=0\bmod p$
+\[ (p_1p_2\dotsm p_l)^2 = -2 \bmod p \]
+Note that $n$ is odd so $p$ is odd
+\begin{align*}
+-2 &\in Q_p \\
+\therefore p &= 1,3\bmod 8
+\end{align*}
+Since each $p_i=3\bmod 8$, $p_i^2=1\bmod8$ so $n=3\bmod8$.  Not every prime factor can be equal to $1\bmod8$. $\therefore n$ has a prime factor $p=3\bmod8$ and $p\neq p_i$ for any $i$.
+\end{enumerate}
+\textbf{Chapter 2 Arithmetical Functions} \\
+\defn An \emph{arithmetic function} is a function $f\colon\Z^+\to\C$, $f$ is called \emph{multiplicative} when
+\[ f(kl) = f(k)f(l) \qquad \text{for all $k$, $l$ with $\gcd(k,l)=1$} \]
+(equivalently when $f(\prod p_i^{k_i})=\prod f(p_i^{k_i})$ and $f(1)=1$).  $f$ is called \emph{completely multiplicative} when $f(kl)=f(k)f(l)$ for all $k$, $l\in\Z^+$ (equivalently, when $f(\prod p_i^{k_i})=\prod f(p_i)^{k_i}$)
+\begin{flalign*}
+\egs && p_n=p(n)&=\text{the $n$th prime} && \\
+&& \tau(n) &=\text{\# of distinct divisors of $n$} && \\
+&& &= \sum_{d\div n}1 && \\
+&& \sigma(n) &= \text{sum of divisors of $n$} && \\
+&& &=\sum_{d\div n}d && \\
+&& \sigma_x(n) &= \sum_{d\div n}d^x \qquad (x\in\Z^+\text{ or }x\in\R\text{ or }x\in\C)&& \\
+&& \text{Euler:}\qquad \phi(n) &= \abs{U_n} && \\
+&& u(n) &= 1 \text{ for all $n$} \\
+&& I(n) &= \floor*{\frac1n} = \begin{cases}1&\text{when $n=1$}\\0&\text{otherwise}\end{cases} && \\
+&& N(n) &= n \text{ for all $n$} && \\
+&& \text{M\"obius:}\qquad \mu(n) &= \begin{cases}
+(-1)^l & \text{when $n$ is a product of $l$ distinct primes $l\geq0$} \\
+0 & \text{otherwise (when $n$ is not square free)}
+\end{cases} && \\
+&& \text{Mangoldt:}\qquad \Lambda(n) &= \begin{cases}
+\log p &\text{when $p$ is prime and $n=p^k$ for some $k\in\Z^+$} \\
+0 &\text{otherwise}
+\end{cases} && \\
+&& \text{Liouville:}\qquad \lambda\paren[\Big]{\prod p_i^{k_i}} &= (-1)^{\sum k_i} && \\ \intertext{Some other functions include}
+&& \pi(x) &= \text{\# of primes $p\leq x$} && \\
+&& &= \sum_{p\leq x}1 && \\
+&& \text{Riemann:}\qquad \zeta(x) &= \sum_{n=1}^\infty\frac{1}{n^x} \text{ for $1<x\in\R$} && \\
+&& \text{Chebyshev:}\qquad \psi(x) &= \sum_{n\leq x}\Lambda(n) && \\
+&& &= \sum_{l^k\leq x}\log p && \\
+&& \vartheta(x) &= \sum_{p\leq x}\log p && \\ \intertext{}
+&& \tau\paren[\Big]{\prod p_i^{k_i}} &=\prod\tau(p_i^{k_i}) = \prod(k_i+1) && \\
+&& \sigma\paren[\Big]{\prod(p_i^{k_i})} &= \prod \sigma(p_i^{k_i}) = \prod(1+p_i+p_i^2+\dotsb p_i^{k_i}) && \\
+&& \sigma_k(n) &= \sum_{d\div n}d^k \text{ for $n=\prod p_i^{k_i}$} && \\
+&& &=\sum_{\substack{1\leq i_1\leq k_1\\\rule{0ex}{0.8em}\smash\vdots\\1\leq i_l\leq k_l}}(p_1^{i_1}\dotsm p_l^{i_l})^k && \\
+&& &=\paren[\Big]{\sum_{1\leq i_1\leq k_1}p_1^{ki_1}}\dotsm\paren[\Big]{\sum_{1\leq i_l\leq k_l}p_l^{ki_l}} && \\
+&& &=\prod\sigma_k(p_i^{k_i}) && \\
+&& &=\prod(1+p_1^k+p_2^{2k}+\dotsb+p_l^{k_lk}) &&
+\end{flalign*}
+%Euler: $\phi(n)=\abs{U_n}$
+\textbf{The M\"obius Function}
+\[ \mu(n) = \begin{cases}
+(-1)^l & \text{when $n$ is a product of $l$ distinct primes} \\
+0 & \text{otherwise}
+\end{cases} \]
+\thm
+\[ \sum_{d\div n}\mu(d) = I(n) = \begin{cases}
+1 & \text{if $n=1$} \\
+0 & \text{if $n\neq1$}
+\end{cases} \]
+\pf For $n=\prod(p_i^{k_i})\neq1$ \\
+\begin{align*}
+\sum_{d\div n}\mu(d) &= \sum_{\substack{\text{$d$ squarefree}\\d\div n}}\mu(l) \\ \intertext{(the squarefree divisors of $n$ are $p_1^{e_1}p_2^{e_2}\dotsm p_l^{e_l}$ with $e_i\in\brace{0,1}$)}
+&= \sum_{\substack{e_1\in\brace{0,1}\\\rule{0ex}{0.8em}\smash\vdots\\e_l\in\brace{0,1}}}\mu(p_1^{e_1}\dotsm p_l^{e_l}) \\
+&= \sum_{\substack{e_1\in\brace{0,1}\\\rule{0ex}{0.8em}\smash\vdots\\e_l\in\brace{0,1}}}(-1)^{e_1}(-1)^{e_2}\dotsm(-1)^{e_l} \\
+&= \paren[\Big]{\sum_{e_1\in\brace{0,1}}(-1)^{e_1}}\paren[\Big]{\sum_{e_2\in\brace{0,1}}(-1)^{e_2}}\dotsm\paren[\Big]{\sum_{e_l\in\brace{0,1}}(-1)^{e_l}} \\
+&= (1-1)(1-1)\dotsm(1-1) \\
+&= 0
+\end{align*}
+when $n=1$, $\mu(n)=\sum_{d\div n}\mu(d)=\mu(1)=1$
+
+\thm (The M\"obius Inversion Formula)
+\begin{enumerate}
+\item For $f\colon\Z^+\to\C$, if $g(n)=\sum_{d\div n}f(d)$, then $f(n)=\sum_{d\div n}\mu(d)g(\frac nd)=\sum_{\substack{k,l\\kl=n}}\mu(k)g(l)$.
+\item For $f\colon[1,\infty)\to\C$, if $g(x)=\sum_{n\leq x}f(\frac xn)$, then $f(x)=\sum_{n\leq x}\mu(n)g(\frac xn)$.
+\end{enumerate}

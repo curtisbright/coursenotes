@@ -1,0 +1,93 @@
+\textbf{Kronecker's Theorem: }$F$ field, $f\in F[x]$, $\deg f>0$. \\
+There exists a field extension $L\supseteq F$ in which $f$ has a root, and $[L:F]\leq\deg f$. \\
+\pf Let $g\in F[x]$ be irreducible and $g\mid f$
+\begin{gather*}
+L = F[x]/(g) \\
+| \\
+F
+\end{gather*}
+By the previous proposition, $[L:F]=\deg g\leq\deg f$ and if
+\[ a \coloneqq x + (g) \in L \]
+then $g(a)=0$ \\
+$\implies f(a)=0$.
+
+\cor $F$ field, $f\in F[x]$ monic, $\deg f=n>0$.  There exists a field extension $L\supseteq F$ such that
+\begin{enumerate}
+\item[(i)] $f=(x-a_1)(x-a_2)\dotsm(x-a_n)$ in $L[x]$ where $a_1,\dotsc,a_n\in L$
+\item[(ii)] $[L:F]\leq n!$
+\end{enumerate}
+\pf Apply Kronecker's to $f$ get {\scriptsize$\begin{gathered}L_1\\\bigm|\\F\end{gathered}$} in which $f$ has a root, say $a_1$.  By factor theorem, $f=(x-a_1)f_1$ in $L_1[x]$
+\[ f_1 \in L_1[x] \qquad \deg f_1 = n-1 . \]
+Iterate, $n-1$ times to get
+\[ f = (x-a_1)(x-a_2)\dotsm(x-a_{n-1})f_{n-1} \]
+where $a_i\in L_i$, $f_{n-1}\in L_{n-1}[x]$
+\begin{gather*}
+L_{n-1} \\
+\vdots \\
+\mathllap{\text{\scriptsize$n{-}1$}\,\{\,} L_2 \\
+| \\
+\mathllap{\text{\scriptsize$n$}\,\{\,} L_1 \\
+| \\
+F
+\end{gather*}
+$\Longrightarrow\; \deg f_{n-1}=1$ and monic \\
+$\implies f_{n-1}=(x-a_n)$ for some $a_n\in L_{n-1}$
+\[ [L_{i+1}:L_i] \leq \deg f_i = n-i \]
+$L\coloneqq L_{n-1}$ then $[L:F]=n!$ and $L$ works.
+
+\defin $F$ field, $f\in F[x]$, $\deg f>0$, a \emph{splitting field of $f$ over $F$} is a minimal field extension $L\supseteq F$ over which $f=c(x-a_1)(x-a_2)\dotsm(x-a_n)$, $c,a_1,\dotsc,a_n\in L$ \\
+(i.e., $f$ factors into a product of linear polynomials.)
+
+\ex
+\begin{enumerate}
+\item[(i)] Suppose $L\supseteq F$ and in $L[x]$, $f=c(x-a_1)\dotsm(x-a_n)$ then $F(a_1,\dotsc,a_n)$ is a splitting field
+\item[(ii)] If $L\supseteq F$ is the splitting field of $f$ over $F$ then, $L=F(a_1,\dotsc,a_n)$ where $a_1,\dotsc,a_n\in L$ are the roots of $f$.
+\end{enumerate}
+\note
+\begin{itemize}
+\item The roots may \emph{repeat}
+\item As $L[x]$ is a ufd, this factorization is unique
+\end{itemize}
+\defin $f\in F[x]$ has \emph{repeated roots} if in some extension $L\supseteq F$, $f=(x-a)^2g$ for some $a\in L$, $g\in L[x]$. \\
+\ex $f$ has repeated roots if and only if it has a repeated root in a splitting field. \\
+\thm $F$ field, $f\in F[x]$, $\deg f>0$. \\
+$f$ has repeated roots if and only if $\gcd(f,f')=1$\footnote{in $F[x]$} where $f'$ is the \emph{formal derivative} of $f$ with respect to $x$.  So
+\begin{align*}
+f &= a_0 + a_1x + \dotsb + a_nx^n \qquad n=\deg f \\
+f' &\coloneqq a_1 + 2a_2x + 3a_3x^2 + \dotsb + na_nx^{n-1} \qquad \text{in $L[x]$}
+\end{align*}
+\remark A natural choice of representatives of association classes of primes in $F[x]$ is the set of monic irreducible polynomials: $\mathcal{P}$. \\
+\pf Let $L$ be a splitting field for $f$ over $F$. \\
+If $f=(x-a)^2g$, $g\in L[x]$, $a\in g$ \\
+then $f'=2(x-a)g+(x-a)^2g'$ $\to$ exercise \\
+$f'(a)=0$ also. \\
+Let $I=(f,f')$ in $F[x]$. \\
+Since $f(a)=f'(a)=0$\footnote{in $L$} $\implies$ for all $h\in I$, $h(a)=0$\footnote{in $L$} $\implies$ $1\notin I$ $\implies$ $I\subsetneq L[x]$. \\
+$F[x]$ is a pid $\implies$ $I=(h)$ for some nonzero \emph{nonunit} $h$. \\
+$f,f'\in(h)$ \\
+$\implies$ $h\mid f$ and $h\mid f'$ \\
+$\implies$ $\gcd(f,f')\neq1$ \\
+Conversely, suppose $a_1,\dotsc,a_n\in L$, roots of $f$, are all distinct
+\begin{align*}
+f &= c(x-a_1)(x-a_2)\dotsm(x-a_n) \qquad \text{in $L[x]$} \\
+f' &= \sum_{i=1}^n \frac{f}{(x-a_i)} \\
+   &= c\bigl((x-a_2)(x-a_3)\dotsm(x-a_n)+(x-a_1)(x-a_3)\dotsm(x-a_n)+\dotsb(x-a_1)\dotsm(x-a_{n-1})\bigr)
+\end{align*}
+Since $a_i\neq a_j$ for all $i\neq j$,
+\[ f'(a_i) \neq 0 \qquad\text{for any}\qquad i=1,\dotsc,n . \]
+In fact, $f'\neq0$. \\
+$\gcd(f,f')=\text{?}$ \\
+Suppose $g\mid f$ and $g\mid f'$. \\
+$g\in F[x]$, $g$ not a unit \\
+$g\in L[x]$, and $\deg g>0$
+\begin{gather*}
+L' \\
+| \\
+L \\
+| \\
+F
+\end{gather*}
+there is $L'\supseteq L$ with $a$ roots of $g$ in $L'$, say $b$. \\
+$\implies f(b)=0=f'(b)$ \\
+But $f(b)=0\implies b=a_i$ for some $i=1,\dotsc,n$. \\
+Contradiction: $f'(a_i)\neq0$ for any $i=1,\dotsc,n$.

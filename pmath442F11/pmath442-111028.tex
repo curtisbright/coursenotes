@@ -1,0 +1,76 @@
+Let $f(x)=t_nx^n+\dotsb+t_0$.  Then
+\[ \Disc(f) = \frac{(-1)^{n(n-1)/2}\Res(f,f')}{t_n} \]
+This is what we will prove, eventually.
+%
+\begin{flalign*}
+\lem && f(x)&=t_n\prod_{i=1}^n(x-\alpha_i) && \\
+&& g(x)&=u_m\prod_{i=1}^m(x-\beta_i) && 
+\end{flalign*}
+Then $\Res(f,g)=t_n^m u_m^n \prod_{i,j}(\alpha_i-\beta_j)$
+
+\textbf{Proof of lemma: }We showed $\Res(f,g)=t_n^mu_m^n(\text{symmetric polynomial in $\alpha_i$, $\beta_j$})$ by showing that
+\begin{align*}
+\phi(x) &= T_n \prod(x-a_i) \\
+\psi(x) &= U_m \prod(x-b_i)
+\end{align*}
+satisfy $\Res(\phi,\psi)=T_n^mU_m^n\cdot(\text{some polynomial symmetric in $a_i$ and $b_j$})$
+
+Next, we will show that $\Res(f,g)=0$ \emph{iff} $\gcd(f,g)\neq1$.  To see this, note that $\gcd(f,g)\neq1$ \emph{iff} there are polynomials $p(x)$, $q(x)$ of degrees at most $m-1$, $n-1$, respectively, such that $fp=gq$.
+
+This is equivalent to saying that $\brace{f,xf,\dotsc,x^{m-1}f,g,xg,\dotsc,x^{n-1}g}$ is linearly dependent.  Writing this out in terms of the basis $\brace{1,x,\dotsc,x^{n+m-1}}$, we see that $\gcd(f,g)\neq1$ \emph{iff}
+\[ \det\begin{bmatrix}
+t_n & t_{n-1} & \hdotsfor{1} & t_0 \\
+& t_n & \hdotsfor{2} & t_0 \\
+& & \ddots & & & \ddots \\
+& & & t_n & \hdotsfor{2} & t_0 \\
+u_m & u_{m-1} & \hdotsfor{2} & u_0 \\
+ & \ddots & & & & \ddots \\
+ & & u_m & \hdotsfor{3} & u_0
+\end{bmatrix}\footnote{$m$ rows, $n$ rows} = 0 = \Res(f,g) \]
+Therefore, $\Res(\phi,\psi)=CT_n^mU_m^n\prod_{i,j}(a_i-b_j)$ for some $C\in F$.
+
+To find $C$, compute $\Res(x^n, x^m-1)$.
+\[ = \det\begin{bmatrix}
+1 \\
+& \ddots \\
+& & 1 \\
+1 & & & -1 \\
+& \ddots & & & \ddots \\
+& & 1 & \hdotsfor{2} & -1
+\end{bmatrix}\footnote{$m$ rows, $n$ rows} = (-1)^n \]
+\begin{align*}
+\Res(x^n, x^m-1) &= C\prod_{i=1}^n\prod_{j=1}^m(0-\beta_j) \\
+&= C\prod_{j=1}^m (-\beta_j)^n \\
+&= C(-1)^{mn}\paren[\Big]{\prod_{j=1}^m\beta_j}^n \\
+&= C(-1)^{mn}\paren[\big]{(-1)^{m+1}}^n \\
+&= C(-1)^n
+\end{align*}
+$\implies C=1$ \qed\ lemma
+
+$g(\alpha_i)=u_m\prod_j(\alpha_i-\beta_j)$
+\begin{align*}
+\implies\Res(f,g) &= t_n^m\prod_{i=1}^n g(\alpha_i) \\
+&= (-1)^{nm} u_m^n \prod_{j=1}^m f(\beta_j)
+\end{align*}
+Now, $\Disc(f)=t_n^{2n-2}\prod_{i<j}(\alpha_i-\alpha_j)^2$, and $f'(\alpha_i)=\left.\frac{\d}{\d x}\right\rvert_{x=\alpha_i} t_n \prod_{j=1}^n(x-\alpha_j)=\prod_{j\neq i}(\alpha_i-\alpha_j)$.
+\begin{align*}
+\text{So } \frac{\Res(f,f')}{t_n} &= t_n^{n-2}\prod_{i=1}^n f'(\alpha_i) \\
+&= t_n^{n-2}t_n^n \prod_{i=1}^n\prod_{j\neq i}(\alpha_i-\alpha_j) \\
+&= (-1)^{n(n-1)/2}\footnote{one factor of $-1$ for each pair $(i,j)$, $i\neq j$}t_n^{2n-2}\prod_{i<j}(\alpha_i-\alpha_j)^2 \\
+&= (-1)^{n(n-1)/2}\Disc(f,f')
+\end{align*}
+This proves the claim!
+
+\eg $f(x)=x^2+bx+c$
+\begin{gather*}
+\implies \Disc(f) = -\Res(f,f') \\
+= - \Res(x^2+bx+c,2x+b) \\
+= - \det\begin{bmatrix}
+1 & b & c \\
+2 & b & 0 \\
+0 & 2 & b
+\end{bmatrix} \\
+= -(b^2+4c-2b^2) = b^2 - 4c
+\end{gather*}
+This looks familiar:
+\[ x = \frac{-b\pm\sqrt{b^2-4c}}{2} \]

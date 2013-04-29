@@ -1,0 +1,106 @@
+Let $\b_1\c \dotsc\c \b_n$ be linearly independent vectors in $\R^n$.  Apply Gram--Schmidt to get
+\[ \tilde\b_1\c \dotsc\c \tilde\b_n \qquad\text{orthogonal linearly independent vectors in $\R^n$} . \]
+$\tilde\b_i$ is the projection of $\b_i$ on the orthogonal complement of $\Sp\brace{\b_1,\dotsc,\b_{i-1}}$.  Further
+\[ \Sp\brace{\b_1,\dotsc,\b_i} = \Sp\brace{\tilde\b_1,\dotsc,\tilde\b_i} \qquad\text{for $i=1\c \dotsc\c n$} . \]
+
+\defin A basis $\b_1\c \dotsc\c \b_n$ for a lattice $\Lambda$ in $\R^n$ is said to be reduced if
+\begin{enumerate}
+\item[i)] $\abs{\mu_{ij}}\leq\frac12$ for $1\leq j<i\leq n$
+\end{enumerate}
+\begin{enumerate}
+\item[ii)] $\abs{\tilde\b_i+\mu_{i,i-1}\tilde\b_{i-1}}^2\geq\frac34\abs{\tilde\b_{i-1}}^2$ for $2\leq i\leq n$.
+\end{enumerate}
+Here $\abs{\x}$ is the Euclidean length of $\x$, so $\abs{\x}^2=\x\cdot\x$.
+
+\textbf{Remarks}
+\begin{enumerate}
+\item The vectors $\tilde\b_i+\mu_{i,i-1}\tilde\b_{i-1}$ and $\tilde\b_{i-1}$ are the projections of $\b_i$ and $\b_{i-1}$ respectively on the orthogonal complement of $\Sp\brace{\b_1,\dotsc,\b_{i-2}}$.
+\item The constant $\frac34$ is somewhat arbitrary, it could have been replaced by $y$ for any $y$ with $\frac14<y<1$.
+\end{enumerate}
+\textbf{Objective:}
+\begin{enumerate}
+\item Describe properties of a reduced basis for a lattice $\Lambda$.
+\item Give an algorithm (the \LLL-algorithm) for efficiently transforming a basis to a reduced basis.
+\end{enumerate}
+\textbf{Proposition 17:} Let $\b_1\c \dotsc\c \b_n$ be a reduced basis for a lattice $\Lambda$ in $\R^n$ and let $\tilde\b_1\c \dotsc\c \tilde\b_n$ be the vectors obtained be applying the Gram--Schmidt process.  Then
+\begin{enumerate}
+\item[i)] $\abs{\b_j}^2\leq 2^{i-1}\abs{\tilde\b_i}^2$ for $1\leq j\leq i\leq n$
+\item[ii)] $d(\Lambda)\leq\abs{\b_1}\dotsm\abs{\b_n}\leq 2^{n(n-1)/4}d(\Lambda)$
+\item[iii)] $\abs{\b_1}\leq 2^{(n-1)/4} d(\Lambda)^{1/n}$
+\end{enumerate}
+\pf By the definition of a reduced basis
+\[ \abs{\tilde\b_i+\mu_{i,i-1}\tilde\b_{i-1}}^2 \geq \tfrac34 \abs{\tilde\b_{i-1}}^2 \qquad\text{with $\abs{\mu_{i,i-1}}\leq\tfrac12$} . \]
+Thus
+\begin{align*}
+\abs{\tilde\b_i+\mu_{i,i-1}\tilde\b_{i-1}}^2 &= \inn{\tilde\b_i+\mu_{i,i-1}\tilde\b_{i-1},\tilde\b_i+\mu_{i,i-1}\tilde\b_{i-1}} \\
+&= \abs{\tilde\b_i}^2 + \mu_{i,i-1}^2 \abs{\tilde\b_{i-1}}^2, \qquad\text{for $i=2\c \dotsc\c n$.}
+\end{align*}
+Thus
+\begin{align*}
+\abs{\tilde\b_i}^2 &= \abs{\tilde\b_i+\mu_{i,i-1}\tilde\b_{i-1}}^2 - \mu_{i,i-1}^2\abs{\tilde\b_{i-1}}^2 \\
+&\geq \paren*{\tfrac34-\mu_{i,i-1}^2}\abs{\tilde\b_{i-1}}^2 \\
+&\geq \tfrac12 \abs{\tilde\b_{i-1}}^2
+\end{align*}
+or equivalently $\abs{\tilde\b_{i-1}}^2\leq2\abs{\tilde\b_i}^2$.
+
+Thus, by induction,
+\begin{equation} \abs{\tilde\b_j}^2 \leq 2^{i-j}\abs{\tilde\b_i}^2\qquad\text{for $1\leq j\leq i\leq n$} .  \label{one091013} \end{equation}
+Now
+\begin{align}
+\abs{\b_i}^2 &= \abs{\tilde\b_i}^2 + \sum_{j=1}^{i-1} \mu_{ij}^2 \abs{\tilde\b_j}^2 \notag\\
+&\leq \abs{\tilde\b_i}^2 \paren[\bigg]{1 + \sum_{j=1}^{i-1} \tfrac14 2^{i-j}} \notag\\
+&\leq \abs{\tilde\b_i}^2 \paren*{1 + \tfrac14(2^i-2)} \notag\\ \intertext{so}
+\abs{\b_i}^2 &\leq 2^{i-1} \abs{\tilde\b_i}^2 \qquad\text{for $i=1\c \dotsc\c n$} . \label{two091013}
+\end{align}
+Thus, by \eqref{one091013} and~\eqref{two091013},
+\[ \abs{\b_j}^2 \leq 2^{j-1}\abs{\tilde\b_j}^2 \leq 2^{j-1}\cdot2^{i-j}\abs{\tilde\b_i}^2 = 2^{i-1}\abs{\tilde\b_i}^2 \qquad\text{for $1\leq j\leq i\leq n$} \]
+and this proves i).
+
+Note that $d(\Lambda)=\abs{\det(\b_1,\dotsc,\b_n)}$ and so by Hadamard's inequality,
+\[ d(\Lambda) \leq \abs{\b_1} \dotsm \abs{\b_n} . \]
+By construction
+\[ d(\Lambda) = \abs{\det(\b_1,\dotsc,\b_n)} = \abs{\det(\tilde\b_1,\dotsc,\tilde\b_n)} . \]
+But $\tilde\b_1\c \dotsc\c \tilde\b_n$ are orthogonal and so
+\[ d(\Lambda) = \abs{\det(\tilde\b_1,\dotsc,\tilde\b_n)} = \abs{\tilde\b_1}\dotsm\abs{\tilde\b_n} . \]
+By i)
+\[ \abs{\b_i} \leq 2^{(i-1)/2} \abs{\tilde\b_i} \qquad\text{for $1\leq i\leq n$} . \]
+and so
+\[ \abs{\b_1}\dotsm\abs{\b_n} \leq 2^0\cdot 2^{1/2} \dotsm 2^{(n-1)/2} \abs{\tilde\b_1}\dotsm\abs{\tilde\b_n} = 2^{n(n-1)/4} d(\Lambda) \]
+and this proves ii).
+
+To prove iii) we apply i) with $j=1$.  Then
+\[ \abs{\b_1} \leq 2^{(i-1)/2} \abs{\tilde\b_i}, \qquad\text{for $i=1\c \dotsc\c n$} . \]
+Thus
+\[ \abs{\b_1} \leq 2^{(n-1)/4} d(\Lambda)^{1/n} . \]
+
+\textbf{Proposition 18:} Let $\b_1\c \dotsc\c \b_n$ be a reduced basis for a lattice $\Lambda$ in $\R^n$.  Then for any vector $\x$ in $\Lambda$ with $\x\neq\0$ we have
+\[ \abs{\b_1}^2 \leq 2^{n-1} \abs{\x}^2 \]
+\pf Write $\x=g_1\b_1 + \dotsb + g_n\b_n$ with $g_1\c \dotsc\c g_n$ integers and
+\[ \x = \lambda_1\tilde\b_1 + \dotsb + \lambda_n\tilde\b_n \]
+with $\lambda_1\c \dotsc\c \lambda_n$ real numbers.  Let $i$ be the largest index for which $g_i\neq0$.  Then by construction $\lambda_i=g_i$.  Thus
+\[ \abs{\x}^2 \geq \lambda_i^2 \abs{\tilde\b_i}^2 \geq \abs{\tilde\b_i}^2 \]
+and by Proposition 17 i),
+\[ 2^{i-1}\abs{\x}^2 \geq 2^{i-1}\abs{\tilde\b_i}^2 \geq \abs{\b_1}^2 \]
+are required.
+
+\textbf{Proposition 19:} Let $\b_1\c \dotsc\c \b_n$ be a reduced basis for a lattice $\Lambda$ in $\R^n$.  Let $\x_1\c \dotsc\c \x_t$ be $t$ linearly independent vectors from $\Lambda$.  Then
+\[ \abs{\b_j}^2 \leq 2^{n-1} \max\brace{\abs{\x_1}^2,\dotsc,\abs{\x_t}^2} \qquad\text{for $j=1\c \dotsc\c t$} . \]
+\pf Write $\x_j = g_{1j}\b_1 + \dotsb + g_{nj}\b_n$ with $g_{ij}\in\Z$ for $1\leq j\leq t$, $1\leq i\leq n$.  For each $j$ let $i(j)$ be the largest index for which $g_{ij}$ is non-zero.  Just as in the proof of Proposition 18
+\[ \abs{\x_j}^2 \geq \abs{\tilde\b_{i(j)}}^2 . \]
+Renumber the $\x_j$s so that $i(1)\leq i(2)\leq \dotsb \leq i(t)$.  Observe that $j\leq i(j)$ since otherwise $\x_1\c \dotsc\c \x_j$ would be in $\Sp\brace{\b_1,\dotsc,\b_{j-1}}$ which contradicts the assumption that $\x_1\c \dotsc\c \x_j$ are linearly independent.  Thus by Proposition 17 i),
+\[ \abs{\b_j}^2 \leq 2^{i(j)-1}\abs{\tilde\b_{i(j)}}^2 \leq 2^{i(j)-1}\abs{\x_j}^2 \qquad\text{for $j=1\c \dotsc\c t$} . \]
+Since $i(j)\leq n$ our result follows.
+
+We now describe the \LLL-algorithm for transforming a basis $\b_1\c \dotsc\c \b_n$ for a lattice $\Lambda$ in $\R^n$ to a reduced basis for $\Lambda$.  The first step is to apply Gram--Schmidt and compute $\tilde\b_1\c \dotsc\c \tilde\b_n$ and the $\mu_{ij}$s.  During the course of the algorithm we will change the $\b_j$s and each time we recompute the $\tilde\b_j$s and the $\mu_{ij}$s.
+
+At each step of the algorithm there is a current subscript $k$ with $k$ in $\brace{1,\dotsc,n+1}$.  We start with $k=2$.
+
+We shall now iterate a sequence of steps which starts from and returns to a situation where the following conditions are satisfied
+\begin{enumerate}
+\item[1)] $\mu_{ij}\leq\tfrac12$ for $1\leq j<i<k$
+\end{enumerate}
+and
+\begin{enumerate}
+\item[2)] $\abs{\tilde\b_i+\mu_{i,i-1}\tilde\b_{i-1}}\geq\tfrac34\abs{\tilde\b_{i-1}}^2$ for $1<i<k$
+\end{enumerate}
+Note that 1) and 2) hold for $k=2$.

@@ -1,0 +1,88 @@
+My name is Collin Roberts.  I'm a PhD student in Pure Math, and your PMath 345 TA.
+
+\textbf{Chinese Remainder Theorem} \\
+Recall: For a positive integer $n$, the \emph{Euler function $\phi(n)$}, is the \# of positive integers ($\leq n$) coprime to $n$ (i.e., that have $\gcd=1$ with $n$).
+\[ \phi(n) = \text{\# of units in $\Z_n=\Z/(n)$} . \]
+If $p$ is prime then
+\begin{align*}
+\phi(p) &= p-1 \\
+\phi(p^e) &= p^e - p^{e-1} = p^e\paren*{1-\tfrac1p}\footnotemark
+\end{align*}\footnotetext{(the only divisors of $p^e$ are powers of $p$)}
+%
+Goal for today: Develop a ``nice'' formula for $\phi(n)$ when $n$ has multiple prime factors.
+
+\prop (Chinese Remainder Theorem) \\
+For positive integers $m,n$: If $\gcd(m,n)=1$, then
+\[ \Z_{mn} \cong \Z_m \times \Z_n . \]
+\pf Let
+\begin{align*}
+\sigma_m\colon &\Z \to \Z_m & \sigma_n\colon & \Z \to \Z_n \\
+& k \mapsto \overline k & & k \mapsto \overline k
+\end{align*}
+be the residue maps: these are homomorphisms.
+
+Define:
+\begin{align*}
+\sigma\colon & \Z \to \Z_m \times \Z_n \\
+& k \mapsto (\sigma_m(k),\sigma_n(k))
+\end{align*}
+a homomorphism since $\sigma_m,\sigma_n$ are.
+
+1st Isomorphism Theorem: $\Z/\ker\sigma\cong\im\sigma$.
+
+So we're done if we can prove:
+\begin{itemize}
+\item $\ker\sigma = (mn)$
+\item $\im\sigma = \Z_m \times \Z_n$
+\end{itemize}
+\textbf{Proof that $\ker\sigma=(mn)$:} \\
+$((mn)\subseteq\ker\sigma)$: $\sigma(mn)=(\sigma_m(mn),\sigma_n(mn))=(\overline0,\overline0)$ in $\Z_m\times\Z_n$ \\
+$(\ker\sigma\subseteq(mn))$: Let $k\in\ker\sigma$ be arbitrary. $\iff$ $\sigma(k)=(\overline0,\overline0)$. $\implies$ $(\overline0,\overline0)=(\sigma_m(k),\sigma_n(k))\implies m\mid k\text{ and }n\mid k$. \\
+Since $\gcd(m,n)=1$, there exists integers $u,v$ such that $1=um+vn$. \\
+Multiplying by $k$ gives: $k=umk+vnk$. \\
+Since $m\mid k$ and $n\mid k$, $mn$ divides the RHS. \\
+$\implies mn\mid k\implies k\in(mn)$. Therefore ($\ker\sigma=(mn)$).
+
+\textbf{Proof that $\im\sigma=\pmb\Z_m\times\pmb\Z_n$:} \\
+By definition, $\im\sigma\subseteq\Z_m\times\Z_n$.  We need to check the containment cannot be proper. \\
+It's clear that $\Z_m\times\Z_n$ contains $mn$ elements. \\
+1st Isomorphism Theorem now says: $\Z_{mn}=\Z/(mn)\cong\im\sigma$. \\
+This isomorphism guarantees $\im\sigma$ contains $mn$ elements. \\
+$\implies\im\sigma=\Z_m\times\Z_n$. \\
+So finally, $\Z_{mn}=\Z/(mn)=\Z/\ker\sigma\cong\im\sigma=\Z_m\times\Z_n$.
+
+\cor If $\gcd(m,n)=1$, then $\phi(mn)=\phi(m)\phi(n)$. \\
+\pf By previous proposition, $\Z_{mn}\cong\Z_m\times\Z_n$. \\
+\# of units in $\Z_{mn}$ is $\phi(mn)$ $\implies$ \# of units in $\Z_m\times\Z_n$ is $\phi(mn)$. \\
+So we just need to count the units of $\Z_m\times\Z_n$ another way. \\
+An element $(a,b)$ of $\Z_m\times\Z_n$ is a unit $\iff$
+\begin{itemize}
+\item $a$ is a unit in $\Z_m$ ($\phi(m)$ of these) AND
+\item $b$ is a unit in $\Z_n$ ($\phi(n)$ of these)
+\end{itemize}
+Therefore there are $\phi(m)\phi(n)$ units in $\Z_m\times\Z_n$.
+
+Example: Instead of using brute force, we can now compute
+\[ \phi(637) = \phi(7\cdot91) = \phi(\underbrace{7^2}_m\cdot\underbrace{13}_n) = \phi(7^2)\phi(13) = 7^2\paren*{1-\tfrac17}\paren*{12} = 504 . \]
+Recall that every positive integer $n$ has a unique factorization into distinct primes: $n=p_1^{e_1}\dotsm p_k^{e_k}$.  We can now state our formula for $\phi(n)$.
+
+\prop If the prime factorization for $n$ is $n=p_1^{e_1}\dotsm p_k^{e_k}$, then
+\[ \phi(n) = n \paren*{1-\tfrac{1}{p_1}} \paren*{1-\tfrac{1}{p_2}} \dotsm \paren*{1-\tfrac{1}{p_k}} \]
+\pf Since $p_1^{e_1}$ is coprime to $p_2^{e_2}\dotsm p_k^{e_k}$, previous corollary says:
+\begin{align*}
+\phi(n) &= \phi(p_1^{e_1})\phi(p_2^{e_2}\dotsm p_k^{e_k}) = p_1^{e_1} \paren*{1-\tfrac{1}{p_1}} \phi(p_2^{e_2}\dotsm p_k^{e_k}) \\
+\intertext{(Repeat the argument for $p_2^{e_2}$ to get)}
+&= p_1^{e_1} \paren*{1-\tfrac{1}{p_1}} p_2^{e_2} \paren*{1-\tfrac{1}{p_2}} \phi(p_3^{e_3}\dotsm p_k^{e_k}) \\
+\intertext{Continue until all prime factors are exhausted.  Get}
+&= \paren*{p_1^{e_1}p_2^{e_2}\dotsm p_k^{e_k}} \paren*{1-\tfrac{1}{p_1}} \paren*{1-\tfrac{1}{p_2}} \dotsm \paren*{1-\tfrac{1}{p_k}} \\
+&= n \paren*{1-\tfrac{1}{p_1}} \dotsm \paren*{1-\tfrac{1}{p_k}}
+\end{align*}
+\textbf{Final Observation: Euler's Formula} \\
+Suppose $n=p^e$ for some prime $p$.  Then:
+\begin{align*}
+n = p^e &= (p^e - p^{e-1}) + (p^{e-1} - p^{e-2}) + \dotsb + (p^1-p^0) + 1 \\
+&= \phi(p^e) + \phi(p^{e-1}) + \dotsb + \phi(p^1) + \phi(1) \\
+&= \sum_{d\mid n, d>0} \phi(d)
+\end{align*}
+Remark: This holds when $n$ has multiple prime factors also. \\
+Sadly, we don't have time to prove it today.

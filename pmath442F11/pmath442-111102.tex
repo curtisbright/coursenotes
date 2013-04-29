@@ -1,0 +1,58 @@
+Question \#6: Assume $f$ \& $g$ are monic. \\
+Tuesday November 8 4:30 MC 2065 \\
+Info session for Waterloo Math Grad School \\
+Refreshments/Snacks
+
+Galois Groups of degree 4 polynomials (irreducible):
+\begin{center}
+\begin{tabular}{c|c|c}
+& Disc a square? & Gal group of resolvent \\ \hline
+$C_2\times C_2$ & Yes & $\brace{1}$ (factors completely) \\
+$C_4$ & No & $\S_2$ ($\text{linear}\cdot\text{quadratic}$) \\
+$D_4$ & No & $\S_2$ ($\text{linear}\cdot\text{quadratic}$) \\
+$A_4$ & Yes & $A_3$ (irreducible) \\
+$S_4$ & No & $S_3$ (irreducible)
+\end{tabular}
+\end{center}
+Resolvent cubic: \\
+Let $\alpha_1$, $\dotsc$, $\alpha_4$ be the roots of $f(x)$.  Then $\Gal(f(x))$ permutes the following three elements of the splitting field:
+\begin{align*}
+\theta_1 &= (\alpha_1+\alpha_2)(\alpha_3+\alpha_4) \\
+\theta_2 &= (\alpha_1+\alpha_3)(\alpha_2+\alpha_4) \\
+\theta_3 &= (\alpha_1+\alpha_4)(\alpha_2+\alpha_3)
+\end{align*}
+So $p(x)=(x-\theta_1)(x-\theta_2)(x-\theta_3)$ has coefficients in the ground field $F$.
+
+If $f(x)=x^4+ax^3+bx^2+cx+d$, then its discriminant and resolvent cubic are heinous.  Substituting $x=x-\frac a4$ will eliminate the $x^3$ term without changing the discriminant, galois group, or galois group \& splitting behaviour of the resolvent cubic.
+
+So we assume $a=0$.  In that case:
+\[ =16b^4d-4b^3c^2-128b^2d^2+144bc^2d-27c^4+256d^3 \]
+\& resolvent cubic is:
+\[ x^3 - 2b x^2 + (b^2-4d) x + c^2 \]
+\eg Find Galois group of $x^4+2x^2-x+3$ over $\Q$. \\
+\soln $\Disc=\text{not a square}$ \\
+Resolvent cubic:
+\[ x^3 -4x^2-8x+1\qquad\text{irreducible over $\Q$ (rational roots theorem)} \]
+%substitute $x=x+\frac43$:
+%\[ (x+\tfrac43)^3-(4+\tfac43)^2-8(x+\tfrac43)+1 \]
+$\implies \Gal \cong S_4$.
+
+\eg Same for $x^4+2x^2+4$.
+\begin{flalign*}
+\soln&& \Disc&=16\cdot2^4\cdot4-128\cdot2^2\cdot4^2+256\cdot4^3 && \\
+&& &= 2^{10}-2^{13}+2^{14} && \\
+&& &= 2^{10}(1-8+16) && \\
+&& &= 2^{10}\cdot 9 && \\
+&& &= (3\cdot2^5)^2 &&
+\end{flalign*}
+%Resolvent: $x^3-4x^2-12x=x(x-8)(x+4)$ \\
+Resolvent: $x^3-4x^2-12x=x(x-6)(x+2)$ \\
+Therefore $\Gal\cong C_2\times C_2$
+
+\thm Let $f(x)$ be an irreducible polynomial in $\Z[x]$, primitive.  Let $p\in\Z$ be a prime such that $f(x)$ is separable mod $p$, and $p$ does not divide the leading coefficient of $f(x)$.  If $f(x)$ factors mod $p$ as $f(x)=m_1(x)\dotsm m_r(x)$, $\deg(m_i)=d_i$, then $\Gal(f)$ over $\Q$ contains a permutation with cycle structure $(d_1)\dotsm(d_r)$.
+
+\eg Compute $\Gal(x^4+5x^2+11)$. \\
+Previous techniques $\implies$ $C_4$ or $D_4$. \\
+Mod 2: $x^4+x^2+1=(x^2+x+1)^2$ $\xcancel{\phantom{I}}$ \\
+Mod 3: $x^4-x^2-1=(x^2+1)^2$ $\xcancel{\phantom{I}}$ \\
+Mod 5: $x^4+1=(x^2+2)(x^2-2)$ $\xcancel{\phantom{I}}$

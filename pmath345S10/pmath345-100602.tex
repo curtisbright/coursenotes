@@ -1,0 +1,65 @@
+\textbf{Long division and Euclidean algorithm} \\
+Divide $x^3-1$ by $x^2+2x-3$ with remainder in $\Z_5\footnote{field}[x]$
+\[\begin{array}{@{}r@{}r@{}r@{}r@{}r@{}r@{}}
+& & & & x & {}-2 \\
+\cline{2-6}
+x^2+2x-3\rule{0pt}{1em}& \bigl) & x^3 & {}+0x^2 & {}+0x & {}-1 \\
+& & x^3 & {}+2x^2 & {}-3x &    \\
+\cline{3-5}
+\rule{0pt}{1em}& & & {}-2x^2 & {}+3x & {}-1 \\
+& & & {}-2x^2 & {}+\phantom1x & {}+1 \\
+\cline{4-6}
+\rule{0pt}{1em}& & & & 2x & {}-2
+\end{array}\]
+\ans $x^3-1=(x-2)(x^2+2x-3)+(2x-2)$
+
+To find $\gcd(x^3-1,x^2+2x-3)$:
+\begin{gather*}
+x^3 - 1 = (x-2)(x^2+2x-3) + (2x-2) \\
+\begin{array}{@{}r@{}r@{}r@{}r@{}r@{}r@{}}
+& & & 3x & {}-1 \\
+\cline{2-5}
+2x-2\rule{0pt}{1em}& \bigl) & x^2 & {}+2x & {}-3 \\
+& & x^2 & {}-\phantom1x & \\
+\cline{3-4}
+\rule{0pt}{1em}& & & 3x & {}-3 \\
+& & & 3x & {}-3 \\
+\cline{4-5}
+\rule{0pt}{1em}& & & & 0
+\end{array} \\
+\begin{gathered}
+x^2+2x-3 = (2x-2)(3x-1) + 0
+\end{gathered}
+\end{gather*}
+%\[ \polylongdiv{x^2+2x-3}{2x-2} \]
+So $\gcd(x^3-1,x^2+2x-3)=2x-2$ or $x-1$
+
+\thm Let $F$ be a field, $a(x)$, $b(x)\in F[x]$ with $b(x)\neq0$.  Then there are polynomials $q(x)$, $r(x)\in F[x]$ satisfying:
+\begin{enumerate}[label=(\arabic*)]
+\item $a(x)=q(x)b(x)+r(x)$
+\item $\deg(r(x))<\deg(b)$
+\end{enumerate}
+(If $b(x)$ is constant, then (2) means $r(x)=0$.) \\
+\pf Not gonna do it. \qed
+
+\cor Let $F$ be a field.  Then $F[x]$ is a PID. \\
+\pf Let $I\subset F[x]$ be an ideal.  If $I=(0)$, then it's principal.  If not, then it contains a nonzero polynomial $p(x)$ of minimal degree.  If $a(x)\in I$, then $a(x)=p(x)q(x)+r(x)$ where $\deg(r(x))<\deg(p(x))$.  But $r(x)=a(x)-p(x)q(x)\in I$, so by minimality of $p(x)$, we get $r(x)=0$ and $a(x)\in(p(x))$.  So $I\subset(p(x))$, and $p(x)\in I\implies(p(x))\subset I$, so $I=(p(x))$. \qed
+
+\cor Let $F$ be a field, $a\in F$, $p(x)\in F[x]$ with $p(a)=0$.  Then $x-a\mid p(x)$. \\
+\pf $p(x)=q(x)(x-a)+r(x)$ with $\deg r(x)<\deg(x-a)=1$.  Plug in $x=a$ to deduce $r=0$. \qed
+
+\cor Let $F$ be a field, $p(x)\in F[x]$ a nonzero polynomial of degree $d$.  Then $p(x)$ has at most $d$ roots. \\
+\pf Each root corresponds to a factor of $p(x)$, and $F[x]$ is a PID and hence a UFD. \qed
+
+If $p(x)$ has degree 3 or less, then $p(x)$ factors in $F[x]$ \emph{iff} it has a root in $F$.  The proof is easy. \\
+\eg $x^2+x+1$ is irreducible in $\Z_2[x]$ because its degree is $2\leq3$, and $0^2+0+1\neq0$ and $1^2+1+1\neq0$.
+
+\thm Let $R$ be a ring, $P$ a prime ideal of $R$, $p(x)\in R[x]$ a polynomial.  If $p(x)$ is irreducible in $(R/P)[x]$ and if the leading coefficient of $p(x)$ doesn't lie in $P$, then $p(x)$ is irreducible in $R[x]$. \\
+\pf If $p(x)=a(x)b(x)$ in $R[x]$ with $\deg(a)$, $\deg(b)\geq1$, then
+\[ p(x) \equiv a(x) b(x) \bmod P , \]
+with $\deg(a)$, $\deg(b)\geq1$ mod $P$ because $\deg(p(x))$ is the same over $R/P$ as over $R$.  By contrapositive, we're done. \qed
+
+\eg $x^2+x+1$ is irreducible in $\Z[x]$ because it's irreducible mod $2$.
+
+\eg Is $x^3-x+1$ irreducible in $\Q[x]$? \\
+Yes.  Reducing mod $2$ yields $x^3+x+1$, which has no roots, so $x^3-x+1$ is irreducible in $\Z_2[x]$ since $\deg\leq3$, and so irreducible in $\Z[x]$, and by Gauss's Lemma irreducible in $\Q[x]$.

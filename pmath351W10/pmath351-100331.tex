@@ -1,0 +1,39 @@
+\eg If $X$ is a topological space and $A$, $B\subset X$ are connected subsets, $A\cap B\neq\emptyset$, then $A\cup B$ is connected. \\
+\pf (Version 1).  Suppose that $U$ and $V$ are open, disjoint sets partitioning $A\cup B$.  We intend to show that one of them is empty.
+
+Since $A$ is connected,\marginpar{figure: $U$ and $V$ partition $A\cup B$} \\{}
+[$U_A=U\cap A$ is open in $A$, $V_A=V\cap A$ is open in $A$, and $U_A$ and $V_A$ partition $A$]
+
+$U\cap A$ \emph{or} $V\cap A$ must be empty.  Hence either $A\subset U$ or $A\subset V$, without loss of generality, say $A\subset U$.
+
+Similarly, either $B\subset U$ \emph{or} $B\subset V$.
+
+\textbf{Case 1:}~Suppose that $B\subset U$.\marginpar{figure: $A$,~$B\subset U$} \\
+Hence $A\cup B\subset U$. \\
+Then, as $A\cup B=U\footnote{disjoint}$ and $V\footnote{disjoint}$. \\
+So $V=\emptyset$.
+
+\textbf{Case 2:}~Suppose that $B\subset V$.\marginpar{figure: $A\subset U$, $B\subset V$}  As $U$ and $V$ are disjoint, $A$ and $B$ must be disjoint.  A contradiction to $A\cap B\neq\emptyset$.
+
+\textbf{Version 2:}~We show $A\cup B$ has the IVP.  Let $f\colon A\cup B\to\R$ be continuous and that $f(x_1)>0$ and $f(x_2)<0$ for given $x_1$, $x_2\in A\cup B$.  Let $x_0\in A\cap B$ be fixed (exists by assumption).\marginpar{figure: $x_1$,~$x_2\in A\cup B$} \\
+\textbf{Case 1:}~$f(x_0)=0$.  (Done) \\
+\textbf{Case 2:}~Suppose that $f(x_0)<0$. \\
+\textbf{Subcase:}~If $x_1$ and $x_2$ are both from $A$, by the continuity of $f|_A\colon A\to\R$ and the connectedness of $A$, there exists \emph{$c\in A$} where $f(c)=0$. \\
+\textbf{Subcase:}~If $x_1$ and $x_2$ are both from $B$, similarly, we get that there exists $c\in B$ where $f(c)=0$.
+\textbf{Subcase:}~If $x_1\in A$, $x_2\in B$, then by continuity of $f|_A\colon A\to\R$ and connectedness of $A$, and $f(x_1)>0$, $f(x_0)<0$, there exists $c\in A$ with $f(c)=0$.%\marginpar{[missing]}%missing
+
+\marginpar{figure: connected sets which are not path connected sets}
+
+$(M,d)$ a metric space \\
+$d\colon M\times M\to\R$ \\
+$\rho$ metric on $M\times M$ may be defined by $\rho((x_1,x_2),(y_1,y_2))=\max(d(x_1,y_1),d(x_2,y_2))$
+%
+\begin{align*}
+D(x_0,r) &= \set{x\in M}{d(x_0,x)<r} \\
+%&= \set{x\in M}{\underbrace{d(x_0,x)}_{f(x)}\in\open{-\infty,r}} \\
+&= \bigl\{\,x\in M{}:{}\underbrace{d(x_0,x)}_{f(x)}\in\open{-\infty,r}\,\bigr\} \\
+&= f^{-1}(\open{-\infty,r})
+\end{align*}
+Therefore $D(x_0,r)$ is open.
+
+$\set{x\in M}{1<d(x_0,x)<2}=f^{-1}(\open{1,2})$

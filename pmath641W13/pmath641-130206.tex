@@ -1,0 +1,59 @@
+Assignment \#2 Typos: Q1(b) $2\cdot3$, Q3 $Q(\alpha)\to\Q(\theta)$.
+
+\textbf{Proof of Theorem 28}
+\[ \N_\Q^{\Q(\zeta_n)}(n) = \N_\Q^{\Q(\zeta_n)}(\zeta_n)\N_\Q^{\Q(\zeta_n)}(\Phi'(\zeta_n))\N_\Q^{\Q(\zeta_n)} \tag{$*$} \]
+where $x^n-1=\Phi_n(x)\cdot g(x)$ with $g\in\Z[x]$.  Now take $n=p$, a prime in $*$.
+\begin{align*}
+\N_\Q^{\Q(\zeta_p)}(p) &= \N_\Q^{\Q(\zeta_p)}(\zeta_p)\N_\Q^{\Q(\zeta_p)}(\Phi'_p(\zeta_p))\N_\Q^{\Q(\zeta_p)}(g(\zeta_p)) \\
+p^{p-1} &= \zeta_p^{p(p-1)/2}(-1)^{(p-1)(p-2)/2}\disc(\zeta_p)\N_\Q^{\Q(\zeta_p)}(g(\zeta_p)) \\
+p^{p-1} &= (-1)^{(p-1)/2}\disc(\zeta_p)\cdot\N_\Q^{\Q(\zeta_p)}(g(\zeta_p))
+\end{align*}
+But $x^p-1=\Phi(x)(x-1)$ so $g(x)=x-1$ and so
+\begin{align*}
+\N_\Q^{\Q(\zeta_p)}(g(\zeta_p)) &= \N_\Q^{\Q(\zeta_p)}(\zeta_p-1) \\
+&= \prod_{j=1}^{p-1}(\zeta_p^j-1) \\
+&= \prod_{j=1}^{p-1}(1-\zeta_p^j) \\
+&= \Phi(1)
+\end{align*}
+and since $\Phi_p(x)=\frac{x^p-1}{x-1}=1+x+\dotsb+x^{p-1}$ we see that $\Phi_p(1)=p$.  Thus
+\[ \disc(\zeta_p) = (-1)^{(p-1)/2}\cdot p^{p-2} . \]
+\defn Let $K$ be an extension of $\Q$ of degree $n$.  A set of $n$ algebraic integers $\brace{\alpha_1,\dotsc,\alpha_n}$ in $K$ is said to be an integral basis for $K$ if every algebraic integer in $K$ can be uniquely expressed as an integral linear combination of $\alpha_1$, $\dotsc$, $\alpha_n$.
+
+\remarks If $\brace{\alpha_1,\dotsc,\alpha_n}$ is an integral basis for $K$ over $\Q$ then it is a basis for $K$ over $\Q$.  To see this note that if $\gamma$ is in $K$ then there is a positive integer $r$ such that $r\gamma\in A\cap K$.  But then since $\brace{\alpha_1,\dotsc,\alpha_n}$ is an integral basis there exist integers $a_1$, $\dotsc$, $a_n$ such that
+\begin{align*}
+r\gamma &= a_1\alpha_1 + \dotsb + a_n\alpha_n \\
+\gamma &= \frac{a_1}{r}\alpha_1 + \dotsb + \frac{a_n}{r}\alpha_n
+\end{align*}
+so $\gamma$ is a $\Q$-linear combination of $\alpha_1$, $\dotsc$, $\alpha_n$.  Further $\alpha_1$, $\dotsc$, $\alpha_n$ are linearly independent over $\Q$ and this follows since $[K:\Q]=n$.
+
+\textbf{Theorem 29:} Let $[K:\Q]=n$.  Then there exists an integral basis for $K$. \\
+\pf Consider the set of bases for $K$ over $\Q$ which are made up of algebraic integers.  The set is non-empty since there exists an algebraic integer $\theta$ such that $K=\Q[\theta]$.  Then $\brace{1,\theta,\dotsc,\theta^{n-1}}$ is a basis of algebraic integers.
+
+Let $\brace{\alpha_1,\dotsc,\alpha_n}$ be a basis for $K$ comprised of algebraic integers for which $\abs{\disc\brace{\alpha_1,\dotsc,\alpha_n}}$ is minimal.  We claim that $\brace{\alpha_1,\dotsc,\alpha_n}$ is an integral basis for $K$.  Suppose that it is not an integral basis.  Then there exists an element $\gamma$ in $\A\cap K$ which is not an integral linear combination of $\alpha_1$, $\dotsc$, $\alpha_n$.
+
+But $\brace{\alpha_1,\dotsc,\alpha_n}$ is a basis and so $\exists r_1$, $\dotsc$, $r_n\in\Q$ with
+\[ \gamma = r_1\alpha_1 + \dotsb + r_n\alpha_n . \]
+By reordering we may suppose that $r_1\notin\Z$.  Put $b_1=r_1-\floor{r_1}$ and note $0<b_1<1$.  Note that $\gamma-\floor{r_1}\alpha_1\in\A\cap K$ and
+\[ \gamma - \floor{r_1}\alpha_1 = b_1\alpha_1 + r_2\alpha_2 + \dotsb + r_n\alpha_n . \]
+Further observe that $\brace{\gamma-\floor{r_1}\alpha_1,\alpha_2,\dotsc,\alpha_n}$ is also a basis for $K$ over $\Q$ consisting of algebraic integers.  But
+\begin{align*}
+\disc\brace{\gamma-\floor{r_1}\alpha_1,\alpha_2,\dotsc,\alpha_n} &= \paren*{\det\begin{pmatrix}
+b_1 & r_2 & \dotsc & r_n \\
+& \ddots & 0 \\
+0 & & 1
+\end{pmatrix}}^2\disc\brace{\alpha_1,\dotsc,\alpha_n} \\
+&= b_1^2\abs{\disc\brace{\alpha_1,\dotsc,\alpha_n}}
+\end{align*}
+and since $0<b_1^2<1$ we have a contradiction.  The result follows.
+
+\textbf{Theorem 30:} Let $K$ be a finite extension of $\Q$.  All integral bases for $K$ have the same discriminant. \\
+\pf Let $\brace{\alpha_1,\dotsc,\alpha_n}$ and $\brace{\beta_1,\dotsc,\beta_n}$ be integral bases for $K$.  Then
+\[ \alpha_j = \sum_{k=1}^n c_{jk} \beta_k \qquad \text{with $c_{jk}\in\Z$} . \]
+Thus
+\[ \disc\brace{\alpha_1,\dotsc,\alpha_n} = (\det(c_{jk}))^2\disc\brace{\beta_1,\dotsc,\beta_n} . \]
+Note $(\det(c_{jk}))^2\in\Z^+$.  Thus
+\[ \disc\brace{\beta_1,\dotsc,\beta_n} \div \disc\brace{\alpha_1,\dotsc,\alpha_n} . \]
+Similarly
+\[ \disc\brace{\alpha_1,\dotsc,\alpha_n} \div \disc\brace{\beta_1,\dotsc,\beta_n}. \]
+\[ \implies \disc\brace{\alpha_1,\dotsc,\alpha_n} = \pm\brace{\beta_1,\dotsc,\beta_n} \]
+and since $(\det(c_{jk}))^2$ is positive the result follows.

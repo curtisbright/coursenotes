@@ -1,0 +1,90 @@
+Handout:
+\[\catcode`?=\active\def?{\phantom{-}}
+\tfrac{1}{\sqrt8}\paren*{\begin{smallmatrix}
+?8 \\
+?4 & 4 \\
+?4 & 0 & 4 \\
+?4 & 0 & 0 & 4 \\
+?4 & 0 & 0 & 0 & 4 \\
+?4 & 0 & 0 & 0 & 0 & 4 \\
+?4 & 0 & 0 & 0 & 0 & 0 & 4 \\
+?2 & 2 & 2 & 2 & 2 & 2 & 2 & 2 \\
+?4 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 \\
+?4 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 \\
+?4 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 \\
+?2 & 2 & 2 & 2 & 0 & 0 & 0 & 0 & 2 & 2 & 2 & 2 \\
+?4 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 \\
+?2 & 2 & 0 & 0 & 2 & 2 & 0 & 0 & 2 & 2 & 0 & 0 & 2 & 2 \\
+?2 & 0 & 2 & 0 & 2 & 0 & 2 & 0 & 2 & 0 & 2 & 0 & 2 & 0 & 2 \\
+?2 & 0 & 0 & 2 & 2 & 0 & 0 & 2 & 2 & 0 & 0 & 2 & 2 & 0 & 0 & 2 \\
+?4 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 4 \\
+?2 & 0 & 2 & 0 & 2 & 0 & 0 & 2 & 2 & 2 & 0 & 0 & 0 & 0 & 0 & 0 & 2 & 2 \\
+?2 & 0 & 0 & 2 & 2 & 2 & 0 & 0 & 2 & 0 & 2 & 0 & 0 & 0 & 0 & 0 & 2 & 0 & 2 \\
+?2 & 2 & 0 & 0 & 2 & 0 & 2 & 0 & 2 & 0 & 0 & 2 & 0 & 0 & 0 & 0 & 2 & 0 & 0 & 2 \\
+?0 & 2 & 2 & 2 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 2 & 0 & 0 & 0 & 2 \\
+?0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 2 & 2 & 0 & 0 & 2 & 2 & 0 & 0 & 2 & 2 & 0 & 0 & 2 & 2 \\
+?0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 2 & 0 & 2 & 0 & 2 & 0 & 2 & 0 & 2 & 0 & 2 & 0 & 2 & 0 & 2 \\
+-3& 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 
+\end{smallmatrix}}
+\]
+A generator matrix for the Leech lattice $L$, in terms of the standard basis.  Notice the index of $L$ as a sublattice of $\brace[\big]{\frac{1}{\sqrt8}\e_1,\dotsc,\frac{1}{\sqrt8}\e_{24}}$ is $2^{36}$.
+
+Suppose that there is an element $\x\in L$ with $\x\cdot\x=2$.  Write
+\[ \x\cdot\x = t_1\b_1 + \dotsb + t_{24}\b_{24}\footnote{$\b_i=\frac{1}{\sqrt8}\e_i$}, \qquad t_i\in\Z, \]
+and then
+\[ \x\cdot\x = \tfrac18(t_1^2+\dotsb+t_{24}^2) = 2 \]
+hence
+\[ t_1^2 + \dotsb + t_{24}^2 = 16 . \]
+
+Notice that if the $t_i$ are all odd then $t_1^2+\dotsb+t_{24}^2>16$.  Thus $t_1\c \dotsc\c t_{24}$ are even.  We have two possibilities, one of the $t_i$s is $4$ and the others are $0$ or four of the $t_i$s are $2$ and the others are $0$.  But $t_1+\dotsb+t_{24}\equiv0\pmod8$ which excludes the first possibility.  The second possibility is excluded by Proposition 28 since the number of terms which are $\equiv2\pmod4$ is either $0$ or at least $8$.  Therefore there is no $x\in L$ for which $\x\cdot\x=2$.
+
+Thus $\x\cdot\x\geq4$ for $\x\neq0$ in $L$.
+
+Next observe that for any $\x$, $\y\in L$
+\[ \x\cdot\y = \tfrac12\paren[\big]{(\x+\y)\cdot(\x+\y)-\x\cdot\x-\y\cdot\y} \]
+and since $\z\cdot\z\equiv0\pmod2$, for all $\z\in L$ we see that $\x\cdot\y\in\Z$ for all $\x$, $\y\in L$.
+
+$L$ is a sublattice of $L_0$.
+
+We can calculate the index of $L$ in $L_0$.  It is $8\cdot4^{11}\cdot2^{11}\cdot1=2^3\cdot2^{22}\cdot2^{11}\cdot1=2^{36}$.  But $d(L_0)=\paren[\big]{\frac{1}{\sqrt8}}^{24}=\frac{1}{2^{(3/2)\cdot24}}=\frac{1}{2^{36}}$ and so $d(L)=1$.
+
+Recall the notion of the polar lattice or dual lattice of a lattice $\Lambda$.  Suppose $\b_1\c \dotsc\c \b_n$ is a basis for $\Lambda$.  Define $\b_1^*\c \dotsc\c \b_n^*$ so that
+\[ \b^*_i\cdot\b_j = \begin{cases}
+1 & \text{if $i=j$} \\
+0 & \text{otherwise}
+\end{cases} . \]
+Then $\b_1^*\c \dotsc\c \b_n^*$ is a basis for the polar lattice $\Lambda^*$ of $\Lambda$.
+
+Recall: \\
+\textbf{Theorem 2: }The polar lattice $\Lambda^*$ of a lattice $\Lambda$ in $\R^n$ consists of all vectors $\v^*$ in $\R^n$ for which $\v^*\cdot\v$ is an integer for all $\v$ in $\Lambda$.  In addition $d(\Lambda)\cdot d(\Lambda^*)=1$.
+
+What is the polar lattice of the Leech lattice $L$?  Note that since $d(L)=1$ we have $d(L^*)=1$.  Further $\x\cdot\y$ is an integer for all $\x$, $\y$ in $L$.  Thus $L^*$ contains $L$ and, since $d(L)=d(L^*)$ we see that $L^*=L$.  Thus the Leech lattice is self-dual.
+
+The theta series $\theta_L(z)$ associated with the Leech lattice is a modular form of weight $\frac{24}{2}=12$.  The vector space of modular forms of weight $12$ has dimension $2$ over $\C$.  With $q=e^{2\pi iz}$ we have
+\[ \theta_L(z) = \sum_{n=0}^\infty N(m) q^m = 1 + 196{,}560q^4 + 16773120q^6 + \dotsb \]
+In fact, for even positive integers $m$,
+\begin{equation} N(m) = \frac{65{,}520}{691}\paren*{\sigma_{11}\paren*{\frac{m}{2}}-\tau\paren*{\frac{m}{2}}} , \label{one091124} \end{equation}
+where $\sigma_{11}(n) = \sum_{\substack{d\mid n\\d>0}}d^{11}$ and $\tau(n)$ is Ramanujan's tau function defined by
+\begin{align*}
+\Delta_{24}(z) &= q \prod_{m=1}^\infty(1-q^m)^{24} = \sum_{m=0}^\infty\tau(m)q^m \\
+&= q - 24q^2 + 252q^3 - 1472q^4 + \dotsb .
+\end{align*}
+Thus $N(4)=\frac{65{,}520}{691}(2^{11}+1+24)=196{,}560$.
+
+Since $N(2k)$ is an integer for $k=1\c 2\c \dotsc$ we see that $\sigma_{11}(k)\equiv\tau(k)\pmod{691}$ for $k=1\c 2\c \dotsc$.
+
+Another representation for $\theta_L(z)$ is
+\[ \theta_L(z) = \paren[\big]{\theta_{E_8(\sqrt2)}(z)}^3-720\Delta_{24}(z) . \]
+Examining coefficients in the above representation yields \eqref{one091124}.
+
+Since $N(4)=196{,}560$ we see that this is the kissing number of $L$.  But by our earlier analysis we see that it is the kissing number of $\R^{24}$ so $\tau_{24}=196{,}560$.
+
+What are the vectors of minimal length in $L$?  There are $2^7\cdot759=97{,}152$ of the form
+\[ \frac{1}{\sqrt8}(\underbrace{\pm2,\dotsc,\pm2}_8,0,\dotsc,0) \]
+where any choice of sign and position is permitted provided that $t_1+\dotsb+t_{24}\equiv0\pmod8$ and $\frac12(t_1,\dotsc,t_{24})$ reduced mod $2$ is in $S$.  There are $2^{12}\cdot24=98{,}304$ of the form $\frac{1}{\sqrt8}(\pm3,\pm1,\dotsc,\pm1)$ where $t_1+\dotsb+t_{24}\equiv4\pmod8$ and $\frac12(1+t_1,\dotsc,1+t_{24})$ reduced mod $2$ is in $S$.  Also there are $4\cdot\binom{24}{2}=1104$ of the form $(\pm4,\pm4,0,\dotsc,0)$ where any choice of sign and position is permitted.
+
+Notice that the sphere packing density in $\R^{24}$ associated with $L$ is
+\[ \frac{\pi^{12}}{12!} = 0.001930\ldots . \]
+The automorphism group of $L$ is $\Co_0$ or $.0$ the $0$th Conway group and it is of order $2^{22}\cdot3^9\cdot5^4\cdot7^2\cdot11\cdot13\cdot23$.
+
+The automorphism group permutes the $196{,}560$ non-zero vectors of minimal length transitively.  Further the automorphism modulo its centre is a sporadic simple group of order $2^{21}\cdot3^9\cdot5^4\cdot7^2\cdot11\cdot13\cdot23$.  There are 26 sporadic simple groups.

@@ -1,0 +1,70 @@
+Proof that $\psi$ is well-defined.  Let $\frac as = \frac{a'}{s'}$.
+\begin{align*}
+\implies as' &= a's \\
+\implies \phi(as') &= \phi(a's) \\
+\implies \phi(a)\phi(s') &= \phi(a')\phi(s) \\
+\implies \phi(a)\phi(s)^{-1} &= \phi(a')\phi(s')^{-1} \\
+\implies \psi(\tfrac as) &= \psi(\tfrac{a'}{s'}) \text{, so $\psi$ is well-defined.}
+\end{align*}
+\check $\psi$ is a homomorphism \\
+Now, show $\psi$ in injective.  Let $\frac as\in\ker\psi$
+\begin{align*}
+\implies \psi(\tfrac as) &= 0 \\
+\implies \phi(a)\phi(s)^{-1} &= 0 \\
+\implies \phi(a) &= 0 \text{, since $\phi(s)$ is a unit} \\
+\implies a &= 0\footnote{since $\phi$ is an embedding} \implies \tfrac as = 0\text{, so $\psi$ is an embeddding}
+\end{align*}
+Now, we will show $\psi(\phi(a))=\phi(a)$
+\begin{align*}
+\psi(\phi(a)) &= \psi(\tfrac a1) \\
+&= \phi(a) \phi(1)^{-1} \\
+&= \phi(a) 1^{-1} \\
+&= \phi(a) \text{, as required}
+\end{align*}
+Lastly, we will show $\psi$ in unique. \\
+Suppose $\psi'\colon R_S\to T$ is an embedding such that $\psi'\circ\rho=\phi$.  Let $\frac as\in R_S$. \\
+Then, $\psi'(\frac a1)=\psi'(\rho(a)) = \phi(a)$ \\
+And, $1=\psi'(1)=\psi'(\frac s1\cdot\frac1s)=\psi'(\frac s1)\psi'(\frac1s)=\phi(s)\psi'(\frac1s)$, so $\psi'(\frac1s)=\phi(s)^{-1}$ \\
+So, $\psi'(\frac a1)\psi'(\frac1s)=\phi(a)\phi(s)^{-1}$ \\
+$\implies \psi'(\frac a1\cdot\frac1s)=\phi(a)\phi(s)^{-1}$ \\
+$\implies \psi'(\frac as)=\phi(a)\phi(s)^{-1}$ \\
+$\implies \psi'(\frac as)=\psi(\frac as)$.  So $\psi$ is unique.
+
+\textbf{Convention:}~We usually identify $R$ with its image under $\rho$ in $R_S$, i.e., we view $R$ as a subring of $R_S$, with $a=\frac a1$ \\
+\defin Suppose $R$ is an integer domain, and let $S=R\setminus\brace0$.  Then $R_S$ is called the \emph{field of fractions of $R$}, and we will denote it by $Q(R)$.
+
+The obvious example is $Q(\Z)=\Q$. \\
+\note $Q(R)$ is a field. \\
+\pf Let $\frac ab\in Q(R)\implies a\in R\c b\neq0\in R$ \\
+If $\frac ab\neq0$, then $a\neq0$, then $\frac ba\in Q(R)$ \\
+And, $\frac ab\cdot\frac ba=\frac{ab}{ba}=\frac11=1$ \\
+So $\frac ab$ is a unit.  Therefore $Q(R)$ is a field. \\
+\ex Let $R$ be an integral domain.\\
+$R[x]$ is an integral domain.
+\begin{align*}
+Q(R[x]) & = \set{f/g}{f,g\in R[x]\c g\neq0} \\
+&\coloneqq R(x) \text{ called \emph{rational functions} on $R$}
+\end{align*}
+Perhaps later we will talk about $Q(R[[x]])$, called the set of \emph{Laurent series}. \\
+\prop Let $R$ be a principal ideal domain, (respectively integral domain) and let $S\subseteq R$ satisfy the properties. \\
+Then $R_S$ is a principal ideal domain.  (respectively integral domain) \\
+\pf $R$ is not trivial $\implies$ $R_S$ is not trivial. \\
+And, $R_S$ is commutative. \\
+Suppose $\frac as,\frac bt\in R_S$
+\begin{align*}
+\frac{ab}{st} = 0 = \frac01 &\implies ab = 0 \\
+&\implies a=0 \text{ or } b=0 \text{, since $R$ is an integral domain} \\
+&\implies \tfrac as = 0 \text{ or } \tfrac bt = 0
+\end{align*}
+And, recall that principal ideal domains are all integral domains. \\
+Let $I\subseteq R_S$ be an ideal in $R_S$. \\
+Identify $R\subseteq R_S$, and let $I^*=I\cap R$. \\
+\check $I^*$ is an ideal in $R$. \\
+Thus, $I^*=cR$ for some $c\in R$ \\
+Suppose $\frac as\in I$. \\
+Then, $a=s(\frac as)\in I\cap R=I^*$ \\
+$\implies a=cr$ for some $r\in R$ \\
+$\implies \frac as=\frac{cr}s=c\frac rs\in cR$ \\
+$\implies I\subseteq cR_S$ \\
+And, since $c\in I$, $cR_S\subseteq I$. \\
+Therefore $I=cR_S$, so $R_S$ is a principal ideal domain.

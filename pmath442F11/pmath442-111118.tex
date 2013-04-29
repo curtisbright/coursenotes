@@ -1,0 +1,97 @@
+%
+%Ty %\\
+%\begin{align*}
+%h &= y^4-2xy^2-y^2+x \text{ irreducible in $\C(x)$} \\
+%R_h &= \C[x,y]/(h) \\
+%K &= \text{Fraction field of $R_h$} \\
+%L &= \text{Gal closure of $K/\C(x)$}
+%\end{align*}
+%Let $g_1$ be a root of $h$
+%\begin{gather*}
+%K \cong \C(x)(g_1) \\
+%\phi\colon\C[x,y]\to\C(x)(g_1) \\
+%f(x,y) = f(x,g_1) \\
+%\ker\phi = (h) \\
+%\C[x,y]/(h) \embeds \C(x)(g_1) \\
+%\implies K \embeds \C(x)(g_1) \\
+%\implies K \cong \C(x)(g_1)
+%\end{gather*}
+%$\sigma\in\Aut(K/\C(x))$ \\
+%\textbf{Fact 1: }$\set{(a,b)\in\C^2}{h(a,b)=0}\iff\brace{(x-a,y-b)\subset R_h}$ \\
+%\textbf{Fact 2: }$\C[x,y]/(f)$ is stable under automorphisms of fraction field if $f_x=f_y=0$
+%\[ \sigma((x-a,y-b)) \]
+%%diagram
+%\begin{center}\includegraphics[scale=0.5]{plot.png}\end{center}
+%\textbf{Fact 3: }$\Aut(K/\C(x))$
+%
+%$\Res(h(y),h'(y))=0\implies x=0,\pm1/2$
+%%\[ y = \pm \sqrt{\frac{2x+1\pm\sqrt{4x^2+1}}{2}} \]
+%\begin{gather*}
+%y = \pm \sqrt{\frac{2x+1\pm\sqrt{4x^2+1}}{2}} \\
+%x = 0 \\
+%y = \pm\sqrt{\frac{1\pm1}{2}} \\
+%++ \implies 1 \\
+%+- \implies 0 \\
+%-+ \implies -1 \\
+%-- \implies 0 \\
+%%\end{gather*}
+%%diagrams
+%%\begin{gather*}
+%\begin{array}{c|ccc}
+%\multicolumn{1}{c}{}&&0& \\
+%& 0 & 1 & -1 \\ \hline
+%++ & & \checkmark & \\
+%+- & \checkmark & & \\
+%-+ & & & \checkmark \\
+%-- & \checkmark & &
+%\end{array}\qquad
+%\begin{array}{c|cc}
+%\multicolumn{1}{c}{}&\multicolumn{2}{c}{i/2} \\
+%& \sqrt{\frac{i+1}{2}} & -\sqrt{\frac{i+1}{2}} \\ \hline
+%++ & \checkmark & \\
+%+- & \checkmark & \\
+%-+ & & \checkmark \\
+%-- & & \checkmark
+%\end{array}\qquad
+%\begin{array}{c|cc}
+%\multicolumn{1}{c}{}&\multicolumn{2}{c}{-i/2} \\
+%& \sqrt{\frac{i-1}{2}} & -\sqrt{\frac{i-1}{2}} \\ \hline
+%++ & \checkmark & \\
+%+- & \checkmark & \\
+%-+ & & \checkmark \\
+%-- & & \checkmark
+%\end{array} \\
+%\entrymodifiers={++[o][F-]}
+%\xymatrix{ 
+%++\ar@/^/@{-}[r]^{i/2} & +-\ar[d]^0\ar@/^/@{-}[l]^{-i/2} \\
+%-+\ar@/^/@{-}[r]^{i/2} & --\ar@/^/@{-}[l]^{-i/2}
+%} \\
+%\abs{\Gal(L/\C(x))}>4 \\
+%\alpha\c-\alpha\c\beta\c-\beta \\
+%\sigma(\alpha) = \beta \\
+%\sigma(-\alpha) = -\beta \\
+%\implies \abs{\Gal(L/\C(x))} \leq 8 \\
+%\implies \Gal(L/\C(x)) \cong D_4
+%\end{gather*}
+\defn A valuation on a field $K$ is a function $\phi\colon K\to\R$ such that:
+\begin{enumerate}[label=(\arabic*)]
+\item $\phi(x)\geq0$, $\phi(x)=0$ \emph{iff} $x=0$
+\item $\phi(xy)=\phi(x)\phi(y)$
+\item $\phi(x+y)\leq\phi(x)+\phi(y)$
+\end{enumerate}
+If $\phi$ also satisfies $\phi(x+y)\leq\max\brace{\phi(x),\phi(y)}$ then we say $\phi$ is non-archimedean.
+
+Assume $K$ is a field complete with respect to a non-archimedean valuation $\vabs{\cdot}$. \\
+\defn The valuation ring of $K$ is $O=\set{x\in K}{\vabs{x}\leq1}$.  It is easy to see that $O$ is a ring. \\
+\defn The maximal ideal of $O$ is $M=\set{x\in O}{\vabs{x}<1}$. \\
+It is easy to see that $M$ is the set of non-units of $O$, and is therefore the unique maximal ideal of $O$. \\
+\defn The field $O/M$ is called the residue field of $O$ (or $K$). \\
+\textbf{Theorem (Hensel's Lemma): }Let $K$ be complete with respect to a non-archimedean valuation $\vabs{\cdot}$.
+Let $f(x)\in O[x]$, $f\nequiv M$.  Say $\overline f=\overline g\overline h$ in $(O/M)[x]$, where $\overline g$, $\overline h\in(O/M)[x]$ are relatively prime.  Then $f=gh$, where $g\equiv\overline g\bmod M$, $h\equiv\overline h\bmod M$, and $\deg g=\deg\overline g$, and $g$, $h\in O[x]$.
+
+\eg Say $K=\Q_7$, $O=\Z_7$, $f(x)=x^2-2$.  Then
+\[ x^2-2 \equiv (x+3)(x-3) \bmod 7 \text{ in the residue field $\Z/7\Z$} . \]
+Helsel $\implies\exists g,h\in\Z_7[x]$ such that $\deg g=\deg h=1$ and
+\[ x^2-2=g(x)h(x) . \]
+But $\deg g=\deg h=1\implies gh$ has two roots in $\Z_7$,
+\[ \pm\sqrt2 \in \Z_7 \subset \Q_7 . \]

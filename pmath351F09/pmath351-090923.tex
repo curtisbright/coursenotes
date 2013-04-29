@@ -1,0 +1,94 @@
+\textbf{Review:} \\
+\textbf{Completeness axiom:} Every bounded above, increasing sequence converges.
+
+\textbf{Completeness Theorem:} Every non-empty subset of $\R$ which is bounded above has a LUB or sup.
+
+\defin A sequence $(x_n)$ is Cauchy if for all $\epsilon>0$ there exists an $N$ such that for all $n,m\geq N$, $\abs{x_n-x_m}<\epsilon$.
+
+\textbf{exercise:} Cauchy sequences are bounded. \\
+Convergent sequences are Cauchy.
+
+\textbf{Theorem:} (Completeness Property) \\
+Every Cauchy sequence in $\R$ converges. \\
+Say $\R$ is \emph{complete}.
+
+\textbf{Limit Inferior and Limit Superior:} \\
+$(x_n)$ bounded sequence.
+
+Consider the sets $\brace{x_n,x_{n+1},\dotsc}$: bounded sets\marginpar{(because entire sequence is bounded)}
+
+Let $A_n=\inf\brace{x_n,x_{n+1},\dotsc}$ (exists by completeness)
+
+(then) $A_n\leq A_{n+1}\implies(A_n)_{n=1}^\infty$ increasing sequence.
+
+(and) $(A_n)$ is bounded above (UB for original sequence). \\
+By completeness theorem, this sequence converges to
+\[ \lim_{n\to\infty} A_n = \sup_n A_n , \]
+since increasing.
+
+\textbf{Notation:} $\liminf(x_n)\overset{\text{def}}{=}\lim_{n\to\infty}A_n=\sup A_n$\marginpar{[also written as: $\underline{\lim}(x_n)$]}%
+%
+\marginpar{[Reason for terminology $\liminf$:]}%
+\begin{gather*}
+\begin{aligned}
+\lim_{n\to\infty} A_n &= \lim_{n\to\infty}(\inf\brace{x_n,x_{n+1},\dotsc}) \\
+&= \lim_{n\to\infty}\paren[\Big]{\inf_{j\geq n}x_j}
+\end{aligned}\\
+\begin{aligned}
+\limsup(x_n)\footnotemark &\overset{\text{def}}{=} \lim_{n\to\infty}(\sup\brace{x_n,x_{n+1},\dotsc}) \\
+&= \lim_{n\to\infty}\paren[\Big]{\sup_{j\geq n}x_j} = \inf_n\paren[\Big]{\sup_{j\geq n}x_j}
+\end{aligned}\footnotetext{$\overline{\lim}(x_n)$}\\
+\limsup(x_n) \geq \liminf(x_n) .
+\end{gather*}
+Always these exist for bounded sequence.
+
+\ex $x_{2n}=1+\frac{1}{2n}$, $x_{2n+1}=\frac{-1}{2n+1}$\marginpar{figure: $x_i$ on real line}
+\[ \left.
+\begin{aligned}
+A_1 &= x_1 \\
+A_2 &= x_3 \\
+A_3 &= x_3 \\
+A_4 &= x_5 \\
+A_5 &= x_5
+\end{aligned}
+\right\} \lim A_n = 0 \implies \liminf(x_n)=0
+\]
+Similarly, $\limsup(x_n)=1$.
+
+\thm $L=\limsup(x_n)$ if and only if $\forall\epsilon>0$, $x_n<L+\epsilon$, for all but finitely many $n$, and $x_n>L-\epsilon$ for infnitely many $n$.
+
+$L=\liminf(x_n)$ if and only if $\forall\epsilon>0$, $x_n>L-\epsilon$, for all but finitely many $n$, and $x_n<L+\epsilon$ infinitely often.
+
+\textbf{Problem:} \\
+\thm A bounded sequence $(x_n)$ converges if and only if $\liminf x_n=\limsup x_n$, and in this case the common value is $\lim x_n$.
+
+\pf ($\Longrightarrow$) Say $\lim x_n=L$.  This means for all $\epsilon>0$, there exists $N$ such that
+\[ \abs{x_n-L}<\epsilon, \qquad \forall n\geq N . \]
+i.e., $L-\epsilon<x_n<L+\epsilon$, $\forall n\geq N$. \\
+By our characterization, $L=\limsup(x_n)=\liminf(x_n)$.
+
+($\Longleftarrow$) Suppose $\limsup x_n = \liminf x_n = L$. \\
+We'll see that $L=\lim x_n$. \\
+For $\epsilon>0$, want to find $N$ such that $\abs{x_n-L}<\epsilon$, $\forall n\geq N$.
+
+Since $L=\limsup x_n$, $\exists N_1$ such that $x_n<L+\epsilon$, $\forall n\geq N_1$.
+
+Similarly, since $L=\liminf x_n$, $\exists N_2$ such that $x_n>L-\epsilon$, $\forall n\geq N_2$.
+
+Take $N=\max(N_1,N_2)$. \\
+Then $\forall n\geq N$, $L-\epsilon<x_n<L+\epsilon$, $\forall n\geq N$. \\
+$\implies L = \lim x_n$.
+
+\prop Every bounded sequence $(x_n)$ has a subsequence which converges to $\limsup(x_n)$ and (another) subsequence converging to $\liminf(x_n)$.
+
+\pf Let $L=\limsup x_n$.  Know for all $k$, $x_n<L+1/k$, $\forall n\geq N_k$, and $x_n>L-1/k$, infinitely often.
+
+Construct our subsequence: Pick $n_1>N_1$ such that $x_{n_1}>L-1/1$.  Since $n_1>N_1$, we have $x_{n_1}<L+1/1$.
+
+Pick $n_2>\max(n_1,N_2)$, such that $x_{n_2}>L-1/2$, and $x_{n_2}<L+1/2$.
+
+Repeat: Pick $n_k>n_{k-1}$ such that $L+1/k>x_{n_k}>L-1/k$.
+
+Consider the sequence $(x_{n_k})_{k=1}^\infty$.  By construction it converges to $L$.
+
+\textbf{Bolzano--Weierstrass Theorem (Corollary):}  Every bounded sequence has a convergent subsequence.

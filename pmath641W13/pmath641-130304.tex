@@ -1,0 +1,23 @@
+\textbf{Theorem 40:} Let $R$ be a commutative ring.  The following are equivalent:
+\begin{enumerate}
+\item Every ideal in $R$ is finitely generated.
+\item Every increasing sequence of ideals in $R$ is eventually constant.
+\item Every non-empty set of ideals in $R$ has a maximal element.
+\end{enumerate}
+\pf $(1)\implies(2)$. Suppose that $I_1\subseteq I_2\subseteq\dotsb$ with $I_i\in R$ for $i=1$, $2$, $\dotsc$.  Put
+\[ I = \bigcup_{n=1}^\infty I_n . \]
+Then $I$ is an ideal of $R$ and so $I=(\alpha_1,\dotsc,\alpha_t)$.  But notice that $\alpha_j$ is in $I$ so there exists an integer $n_j$ so that $\alpha_j\in I_{n_j}$ for $j=1$, $\dotsc$, $t$.  But then $I\subseteq I_b$ where $b=\max(n_1,\dotsc,n_t)$.  Thus $I=I_b=I_{b+1}=\dotsb$.
+
+$(2)\implies(3)$. Let $S$ be a non-empty set of ideals in $R$.  Thus there exists $I_1$ in $S$.  Either $I_1$ is maximal in $S$ or there exists $I_2$ in $S$ with $I_1\subsetneq I_2$.  Either $I_2$ is maximal in $S$ or there exists $I_3$ in $S$ with $I_2\subsetneq I_3$.  Eventually this process terminates by~(2).
+
+$(3)\implies(1)$. Let $I$ be an ideal of $R$.  Let $S$ be the set of finitely generated ideals of $R$ in $I$.  $(0)$ is in $I$ so $S$ is non-empty.  Let $M$ be a maximal element of $S$.  Then $M\subseteq I$.  Suppose that $M\subsetneq I$.
+
+Now $M$ is finitely generated so $M=(\alpha_1,\dotsc,\alpha_t)$ say.  Pick $\gamma\in I\setminus M$.  Then the ideal $I_1=(\alpha_1,\dotsc,\alpha_t,\gamma)$ is in $I$ and so $M$ is not a maximal element of $S$ which is a contradiction.  Thus $M=I$. $\checkmark$
+
+\textbf{Lemma 41:} In a Dedekind domain every non-zero ideal contains a product of non-zero prime ideals.  (Here the product may be a product of 1 element.) \\
+\pf Let $S$ be the set of non-zero ideals in the Dedekind domain $R$ which do not contain a product of non-zero prime ideals.  Suppose that $S$ is non-empty.  Then by the definition of a Dedekind domain and Theorem~40 we see that $S$ has a maximal element $M$.  Note that $M$ is not a prime ideal.  Thus there exist $a$, $b\in R$ with $ab\in M$ and $a\notin M$, $b\notin M$.  Therefore
+\[ (M+(a))(M+(b)) \subseteq M . \]
+But $M\subsetneq M+(a)$ and $M\subsetneq M+(b)$.  Since $M$ is maximal both $M+(a)$ and $M+(b)$ contain a product of non-zero prime ideals.  Then by $*$ so does $M$ which is a contradiction.
+
+\textbf{Lemma 42:} Let $I$ be a prime ideal in a Dedekind domain $R$ with field of fractions $K$.  Then there is an element $\gamma\in K\setminus R$ such that $\gamma I\subseteq R$. \\
+\pf Let $a$ be any non-zero element of $I$.  Then $\frac{1}{a}\notin R$ since $I$ is proper.

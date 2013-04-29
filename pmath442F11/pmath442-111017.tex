@@ -1,0 +1,50 @@
+\defn Let $\phi\colon G\to\Sym(S)$ be a group action of $G$ on a set $S$.  Then $\phi$ is transitive \emph{iff} for every $a$, $b\in S$, there is a $g\in G$ such that $[\phi(g)](a)=b$.
+
+\thm Let $K_1$, $K_2$ be Galois extensions of $F$.  Then $K_1\cap K_2$ and $K_1K_2$ are Galois extensions of $F$, and
+\[ \Gal(K_1K_2/F) \cong \Gal(K_1/F) \times_{\Gal(K_1\cap K_2/F)} \Gal(K_2/F) = \set*{(\sigma,\tau)}{\substack{\sigma\in\Gal(K_1/F)\\\tau\in\Gal(K_2/F)}\quad\sigma|_{K_1\cap K_2}=\tau|_{K_1\cap K_2}} \]
+\pf $K_1\cap K_2$ is Galois over $F$ because it's contained in $K$, (\& so is separable) and if $p(x)\in F[x]$ is irreducible \& has a root in $K_i$, then by normality of $K_i/F$ it splits into linear factors in $K_i[x]$, and hence in $(K_1\cap K_2)[x]$.  So $K_1\cap K_2/F$ is normal.
+
+$K_1K_2/F$ is Galois because it's a splitting field for $\lcm(f_1,f_2)$ over $F$, where $K_i$ is a splitting field for $f_i(x)$ over $F$.
+
+Define $\psi\colon\Gal(K_1K_2/F)\to G$ by $\psi(\sigma)=(\sigma|_{K_1},\sigma|_{K_2})$.  It's clearly a homomorphism, and its image clearly lives in $G$ because $(\sigma|_{K_1})|_{K_2}=(\sigma|_{K_2})|_{K_1}$.  It's also injective because $\sigma$ is determined by its values on $K_1$ \& $K_2$.
+\begin{align*}
+\#\Gal(K_1K_2/F) &= \frac{[K_1:F][K_2:F]}{[K_1\cap K_2:F]} \\
+&= \frac{\#\Gal(K_1/F)\#\Gal(K_2/F)}{\#\Gal(K_1\cap K_2/F)} \\
+&= \#\Gal(K_1/F)\#\Gal(K_2/K_1\cap K_2) \\
+&= \# G
+\end{align*}
+because there are $[K_2:K_1\cap K_2]$ ways to extend $\sigma|_{K_1\cap K_2}$ to $K_2$.
+
+Therefore $\psi$ is surjective and hence an isomorphism. \qed \\
+In particular, if $K_1\cap K_2=F$, then 
+\[ \Gal(K_1K_2/F) \cong \Gal(K_1/F)\times\Gal(K_2/F) \]
+%
+\defn Let $K/F$ be a separable extension, and let $L/F$ be a Galois extension containing $K/F$.  The Galois closure of $K$ in $L$ is the intersection of all Galois extensions of $F$ that contain $K/F$ \& are contained in $L$. \\
+\note The Galois closure of $K$ is a Galois extension of $F$. \\
+\textbf{Other notes: }Say $K/F$ is finite \& separable.  Then $K=F(\alpha_1,\dotsc,\alpha_n)$, so a splitting field for the $\lcm$ of the minimal polynomials over $F$ of the $\alpha_i$s is a Galois extension of $F$ containing $K$.  In fact, this field is a Galois closure of $K$ over $F$.  Any Galois closure of $K$ is isomorphic to this one.
+%
+%$\F_{25}\cong\F_5(\sqrt2)$ \\
+%$(2\sqrt2)^2=(3\sqrt2)^2=-2$ \\
+%$(\sqrt{a})(\sqrt{b})\neq\sqrt{ab}$
+%
+%$1=1$ \\
+%$\implies 1\cdot1=(-1)(-1)$ \\
+%%$\implies \sqrt{1\cdot1}=\sqrt{(-1)(-1)}$ \\
+%%$\implies \sqrt{1}\sqrt{1}=\sqrt{-1}\sqrt{-1}$\footnote{WRONG!} \\
+%$\left.\begin{gathered}
+%\implies \sqrt{1\cdot1} = \sqrt{(-1)(-1)} \\
+%\implies \sqrt{1}\sqrt{1} = \sqrt{-1}\sqrt{-1}
+%\end{gathered}\right\}\text{WRONG!}$ \\
+%$\implies 1 = -1$
+\begin{gather*}
+\F_{25}\cong\F_5(\sqrt2) \\
+(2\sqrt2)^2=(3\sqrt2)^2=-2 \\
+(\sqrt{a})(\sqrt{b})\neq\sqrt{ab} \\
+1 = 1 \\
+\implies 1\cdot1 = (-1)(-1) \\
+\left.\begin{gathered}
+\implies \sqrt{1\cdot1} = \sqrt{(-1)(-1)} \\
+\implies \sqrt{1}\sqrt{1} = \sqrt{-1}\sqrt{-1}
+\end{gathered}\right\}\mathrlap{\text{WRONG!}} \\
+\implies 1 = -1
+\end{gather*}

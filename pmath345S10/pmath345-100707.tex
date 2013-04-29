@@ -1,0 +1,52 @@
+\thm Let $F$ be a field, $p(x)\in F[x]$ a non-constant polynomial, $\overline F$ an algebraic closure of $F$.  Then $p(x)$ is separable \emph{iff} $p(x)$ has no multiple roots in $\overline F$. \\
+\pf Forwards: If $p(x)$ has a multiple root $a\in\overline F$, then $(x-a)^2\mid p(x)$, so by Product Rule $x-a\mid p'(x)$ so $x-a\mid\gcd(p,p')$ in $\overline F[x]$.  Since $a$ is algebraic over $F$, it has a minimal polynomial $q(x)$ in $F[x]$, and $q(x)\mid\gcd(p,p')$ in $F[x]$. \\
+Backwards: Say $g(x)=\gcd(p,p')$, and assume $g\neq1$.  Then $g(x)$ has a root $a\in\overline F$.  So $p(a)=p'(a)=0$.  Then $p(x)=(x-a)q(x)$ for some $q(x)\in\overline F[x]$, so
+\begin{align*}
+p'(x) &= q(x) + (x-a)q'(x) \\
+\implies q(a) &= 0 .
+\end{align*}
+This means $x-a\mid q(x)\implies(x-a)^2\mid p(x)$. \qed \\
+\thm Let $F$ be a field, $p(x)\in F[x]$ an irreducible polynomial.  Then $p(x)$ is separable, unless $p'(x)=0$. \\
+\pf Well, $p'(x)\in F[x]$, and has smaller degree than $p(x)$.  In particular, $p(x)\nmid p'(x)$ unless $p'(x)=0$.  So $\gcd(p(x),p'(x))=1$. \qed \\
+\cor If $\Char F=0$, then every irreducible polynomial in $F[x]$ is separable. \\
+\eg $x^3-1\in\Z_3$.  Then:
+\[ (x^3-1)' = 3x^2 = 0 \]
+\eg $F=\Z_3(T)$ \\
+Consider $x^3-T\in F[x]\footnote{imperfect}$.  Then $(x^3-T)'=3x^2=0$ but $x^3-T$ has no roots in $F$, because $\sqrt[3]{T}$ is not a rational function. \\
+\defn A field is perfect \emph{iff} every irreducible polynomial in $F[x]$ is separable. \\
+\note Every field of characteristic $0$ is perfect. \\
+\fact Every finite field is perfect.
+
+\defn Let $E/F$ be a field extension, $\alpha\in E$ any element.  Then $\alpha$ is separable over $F$ \emph{iff} $\alpha$ is algebraic over $F$ and its minimal polynomial is separable.  $E/F$ is separable \emph{iff} every $\alpha\in E$ is separable over $F$. \\
+\note $F$ is perfect \emph{iff} every extension of $F$ of finite degree is separable.  Say $f(x)=a_0+\dotsb+a_n x^n$ satisfies $f'(x)=0$.  Assume $\Char F=p>0$. \\
+Then $f'(x)=a_1+2a_2+\dotsb+na_nx^{n-1}=0$ so for all $i$, $ia_i=0$.  This means:
+\[ f(x) = a_0 + a_p x^p + a_{2p}x^{2p} + \dotsb + a_{kp} x^{kp} \]
+\thm If $\Char R=p$ is prime, then for all $a$, $b\in R$, $(a+b)^p=a^p+b^p$.
+\begin{flalign*}
+\mathrlap{\pf} && (a+b)^p &= \sum_{i=0}^p \binom{p}{i} a^i b^{p-i} && \\
+&& &= a^p + b^p &&
+\end{flalign*}
+because $p\mid\binom{p}{i}=\frac{p!}{i!(p-i)!}$ for $i\in\brace{1,\dotsc,p-1}$. \qed
+
+\defn Let $R$ be a ring of characteristic $p$ for $p$ prime.  Then the function
+\[ \Phi_p(a)=a^p \]
+is a homomorphism, called the Frobenius homomorphism.  It's often written $\Frob_p$.
+
+\thm Let $F$ be a field of characteristic $p$.  Then $F$ is perfect \emph{iff} $\Frob_p\colon F\to F$ is onto. \\
+\pf Forwards: Say $F$ is perfect, and let $a\in F$ be any element.  We want to show $a=b^p$ for some $b\in F$.  Consider $x^p-a\in F[x]$.  Its derivative is $0$, so $x^p-a$ is reducible in $F[x]$.  However, if $\overline F$ is an algebraic closure of $F$, and $b\in\overline F$ is a root of $x^p-a$, we get,
+\[ (x-b)^p = x^p - a . \]
+Comparing constant terms gives $b^p=a$.  Write $x^p-a=f(x)g(x)$ for $f$, $g\in F[x]$.  Then $f(x)=(x-b)^k$ for some $k\in\brace{1,\dotsc,p-1}$.  The coefficient of $x^{k-1}$ in $f(x)$ is $-kb\in F$.  Since $k\in\brace{1,\dotsc,p-1}$, this means $k\neq0$, so $b\in F$.
+
+Backwards: Say $f(x)=a_0+\dotsb+a_nx^n$ is irreducible.  If $f'(x)\neq0$, then $f(x)$ is separable, so assume $f'(x)=0$.
+\begin{align*}
+\text{Then } f(x) &= a_0 + a_p x^p + \dotsb + a_{pk} x^{pk} \\
+&= b_0^p + b_1^p x^p + \dotsb + b_k^p x^{pk} \\
+\intertext{for some $b_i\in F$.}
+&= \Phi_p(b_0) + \Phi_p(b_1x) + \dotsb + \Phi_p(b_k x^k) \\
+&= \Phi_p(b_0 + b_1 x + \dotsb + b_k x^k) \\
+&= (b_0 + b_1 x + \dotsb + b_k x^k)^p
+\end{align*}
+so $f(x)$ factors, a contradiction.  So $f'(x)\neq0$, and $f(x)$ is separable. \qed
+
+\thm Let $F$ be a finite field.  Then $F$ is perfect. \\
+\pf The Frobenius homomorphism from $F$ to $F$ is 1--1, so since $F$ is finite, Frobenius is also onto.  So $F$ is perfect. \qed

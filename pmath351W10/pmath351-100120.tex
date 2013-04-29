@@ -1,0 +1,51 @@
+Grad Studies Info Session, tomorrow at 4, DC 1302 \\
+Midterm Exam Date: Mon Feb 22 %or Fri Feb $22-7-3=12$
+
+\textbf{Metric Spaces:}~An important class of topological spaces are the metric spaces. \\
+\defn Let $X$ be a set.  A function $d$ which assigns to each pair of points of $X$ a non-negative real number is called a metric on $X$ if it satisfies
+\begin{enumerate}
+\item $d(x,y)=d(y,x)$
+\item $d(x,y)\geq0$ and $d(x,y)=0$ if and only if $x=y$
+\item $d(x,y)\leq d(x,z)+d(z,y)$ (the triangular inequality)
+\end{enumerate}
+for all $x$, $y$, $z\in X$.
+
+We refer to $d(x,y)$ as the \emph{distance} between $x$ and $y$. \\
+\egs Let $X$ be any non-empty set.  Let $d\colon X\times X\to\R$ be defined by
+\[ d(x,y) = \begin{cases}
+1 & \text{if $x\neq y$} \\
+0 & \text{if $x=y$}
+\end{cases} \]
+We call this the \emph{discrete} metric on $X$.
+
+Let $X$ be $\R^n$, a real vector space.  Let $d(x,y)=\sqrt{\sum_{i=1}^n(x_i-y_i)^2}$, where $x=(x_i)_{i=1}^n$, $y=(y_i)_{i=1}^n$.  It is called the Euclidean distance (the default).
+
+Let $(X,d)$ be a metric space ($X\neq\emptyset$)
+
+$D(x,\epsilon)=\set{y\in X}{d(y,x)<\epsilon}$, $\epsilon>0$, is called a disc, or the $\epsilon$-disc, about $x$.
+
+A subset $A\subset X$ is called \emph{open} if for \emph{all} $a\in A$, there exists $\epsilon>0$ so that $D(a,\epsilon)\subset A$.
+
+\eg Let $X=\R^2$ with the default metric (distance function).  Let $A=[0,1]\times[0,1]$.  Then $A$ is \emph{not} open because $a=(0,0)$ is a point which has no disc around it fully contained by $A$.\marginpar{figure: $A$ with dashed circle around the origin}
+
+Let $B=\open{0,\infty}\times\R$ in $\R^2$.  Then $B$ is open. \\
+For given $b=(b_1,b_2)\in B$, the disc $D(b,b_1)$ is contained in $B$.\marginpar{figure: $b\in B$}
+
+Let $(X,d)$ be a metric space, $X\neq\emptyset$. \\
+Let $\T$ be the set of all open subsets of $X$. \\
+\prop $\T$ is a topology on $X$. \\
+\pf
+\begin{enumerate}[label=(\roman*)]
+\item $X\in\T$ and $\emptyset\in\T$ because: The full $X$ is \emph{open} due to the observation that for each $x\in X$, $D(x,1)\subset X$.  So $X\in\T$.  Clearly $\emptyset$ is open.  So $\emptyset\in\T$.
+\item Let $A$ and $B\in\T$, and consider $A\cap B$.  Let $x_0\in A\cap B$ be given (arbitrarily).\marginpar{figure: $A\cap B$}  Then $x_0\in A$ and $x_0\in B$.  Because $A$ is open, there exists $\epsilon_1>0$ such that $D(x_0,\epsilon_1)\subset A$.  Similarly, there exists $\epsilon_2>0$ such that $D(x_0,\epsilon_2)\subset B$.  Then, for $\epsilon=\min(\epsilon_1,\epsilon_2)>0$
+%\[ D(x_0,\epsilon) \left\{ \begin{gathered}
+%{} \subset D(x_0,\epsilon_1) \subset A \\
+%{} \subset D(x_0,\epsilon_2) \subset B
+%\end{gathered} \right. \]
+\[ D(x_0,\epsilon) \left\{ \begin{gathered}
+\subset D(x_0,\epsilon_1) \subset A \\
+\subset D(x_0,\epsilon_2) \subset B
+\end{gathered} \right. \]
+and so $D(x_0,\epsilon)\subset A$ and $B$.  So $D(x_0,\epsilon)\subset A\cap B$.
+\item Let $A_i\in\T$ for all $i\in I$.  Without loss of generality, $I\neq\emptyset$, and consider $\bigcup_{i\in I}A_i$.  Let $x_0\in\bigcup_{i\in I}A_i$ be given.  Then $x_0\in A_{i_0}$ for some $i_0\in I$.  As $A_{i_0}$ is open, there exists $\epsilon>0$ such that $D(x_0,\epsilon)\subset A_{i_0}$.  Then $D(x_0,\epsilon)\subset\bigcup_{i\in I}A_i$ follows.  This proves that $\bigcup_{i\in I}A_i$ is open, hence in $\T$.
+\end{enumerate}

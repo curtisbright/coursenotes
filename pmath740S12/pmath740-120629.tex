@@ -1,0 +1,85 @@
+\vspace{-\baselineskip}
+\begin{flalign*}
+(1) && \sum_{\substack{p\leq x\\p=k\bmod l}}\frac{\log p}{p} = \frac1{\phi(l)}\log x + \frac1{\phi(l)} + \sum_{\chi\neq\1}\overline{\chi(k)}\sum_{p\leq x}\frac{\chi(p)\log p}{p} + O(1) &&
+\end{flalign*}
+In particular, taking $k=1$,
+\[ \sum_{\substack{p\leq x\\p=1\bmod l}}\frac{\log p}{p} = \frac1{\phi(l)}\log x + \frac1{\phi(l)}\sum_{\chi\neq\1}\underbrace{\sum_{p\leq x}\frac{\chi(p)\log p}{p}} + O(1) \]
+\begin{flalign*}
+(2) && \sum_{p\leq x}\frac{\chi(p)\log p}{p} = \sum_{n\leq x}\frac{\chi(n)\Lambda(n)}{n} + O(1) &&
+\end{flalign*}
+\begin{flalign*}
+(3) && \sum_{n\leq x}\frac{\chi(n)\Lambda(n)}{n} = K_x \cdot \underbrace{\sum_{n\leq x}\frac{\chi(n)\mu(n)}{n}} + O(1) &&
+\end{flalign*}
+\[ L_x \cdot \sum_{n\leq x}\frac{\chi(n)\mu(n)}{n} = O(1) \]
+\emph{If} $L_x\neq0$ then $\sum_{n\leq x}\frac{\chi(n)\mu(n)}{n}=O(1)$ \\
+We shall show that for $\1\neq\chi\in\hat U_l$
+\[ K_x \sum_{n\leq x}\frac{\chi(n)\mu(n)}{n} = -\log x + O(1) \]
+It follows that if $N=\text{\# of $\chi\in\hat U_l$ with $\chi\neq\1$ such that $L_x=0$}$ then
+\[ \sum_{\substack{p\leq x\\p=1\bmod k}}\frac{\log p}{p} = \frac{1-N}{\phi(l)}\log x + O(1) \]
+We can only have $N=0$ or $1$ otherwise $\text{RS}\to\infty$ but $\text{LS}>0$.
+
+Recall that if $\chi$ is real-valued then $L_x\neq0$.
+Note that if $\chi$ is not real-valued then $\chi\neq\overline\chi$ and
+\[ L_x = \sum_{n=1}^\infty \frac{\overline{\chi}(n)}{n} = \overline{\sum_{n=1}^\infty \frac{\chi(n)}{n}} = \overline{L_x} \]
+So we have $L_x=0\iff L_{\overline x}=0$.
+Thus $N$ is even and hence $N=0$.
+
+\textbf{Final step:} It remains to show that when $L_x=0$
+\[ K_x\cdot\sum_{n\leq x}\frac{\chi(n)\mu(n)}{n} = -\log x + O(1) \]
+where
+\[ K_x = \sum_{n=1}^\infty \frac{\chi(n)\log n}{n} . \]
+\begin{align*}
+\sum_{\substack{c,d\\cd\leq x}}\frac{\chi(c)}{c}\log\paren[\Big]{\frac{cd}{x}}\frac{\chi(d)\mu(d)}{d} &= \sum_{n\leq x}\frac{\chi(n)}{n}\log\frac xn \underbrace{\sum_{d\div n}\mu(d)}_{\text{$=1$ only when $=1$}} \\
+&= \frac{\chi(1)}{1}\log\frac1x \\
+&= -\log x \\
+\therefore -\log x &= \sum_{d\leq x}\frac{\chi(d)\mu(d)}{d}\sum_{c\leq x/d}\frac{\chi(c)}{c}\log\paren[\Big]{\frac{cd}{x}} \\
+&= \sum_{d\leq x}\frac{\chi(d)\mu(d)}{d}\sum_{c\leq x/d}\frac{\chi(c)}{c}\paren[\Big]{\log c-\log\frac xd} \\
+&= \sum_{d\leq x}\frac{\chi(d)\mu(d)}{d}\paren[\Big]{\sum_{c\leq x/d}\frac{\chi(c)\log c}{c}-\log\frac xd\sum_{c\leq x/d}\frac{\chi(c)}{c}} \\
+&= \sum_{d\leq x}\frac{\chi(d)\mu(d)}{d}\paren[\Big]{(K_x+g(x))-\log\frac xd(L_x+h(x))} \\ \intertext{with $\abs{g(x)}\leq\phi(l)\frac{\log x/d}{x/d}$, $\abs{h(x)\leq\phi(l)\frac{1}{x/d}}$}
+&= K_x \sum_{d\leq x}\frac{\chi(d)\mu(d)}{d} + \sum_{d\leq x}\frac{\chi(d)\mu(d)}{d}k(x)
+\end{align*}
+where $k(x)=g(x)-\log\frac xd h(x)$, so $\abs{k(x)}\leq 2\phi(l)\frac{\log x/d}{x/d}$ and we have
+\begin{align*}
+\abs[\Big]{\sum_{d\leq x}\frac{\chi(d)\mu(d)k(x)}{d}} &\leq \sum_{d\leq x}\frac{2\phi(l)\log x/d}{x} \\
+&= \frac{2\phi(l)}{x}\sum_{d\leq x}(\log x-\log d) \\
+&= \frac{2\phi(l)}{x}\paren[\Big]{\log x\sum_{d\leq x}1-\sum_{d\leq x}\log d} \\
+&= \frac{2\phi(l)}{x}\paren[\Big]{\log x(x+O(1))-(x\log x+O(x))} \\
+&= \frac{2\phi(l)}{x}O(x) \\
+&= O(1)
+\end{align*}
+This completes the proof.
+
+\begin{align*}
+p(n) &= p_n = \text{the $n$th prime} \\
+\rho(n) &= \begin{cases}
+1 & \text{if $n$ is prime} \\
+0 & \text{otherwise}
+\end{cases} \\
+\pi(x) &= \sum_{n\leq x}\rho(n) = \text{\# of primes $p\leq x$} = \sum_{p\leq x}1 \\
+\footnote{Chebyshev} \psi(x) &= \sum_{n\leq x}\Lambda(n) = \sum_{p^k\leq x}\log p \\
+\vartheta(x) &= \sum_{p\leq x}\log p \\
+M(x) &= \sum_{n\leq x}\mu(n) \\
+A(x) &= \sum_{n\leq x}\frac{\mu(n)}{n}
+\end{align*}
+\thm The following are equivalent
+\begin{align*}
+p(n) &\sim n\log n \\
+\lim_{x\to\infty}\frac{\pi(x)\log\pi(x)}{x} &= 1 \\
+\pi(x) &\sim \frac{x}{\log x} \sim \int_2^x\frac{\!\d t}{\log t} \\
+\psi(x) &\sim x \\
+\vartheta(x) &\sim x \\
+M(x) &= o(x) \text{, i.e., } \\
+\lim_{x\to\infty}\frac{M(x)}{x} &= 0 \\
+A(x) &= o(1) \text{, i.e., } \\
+\lim_{x\to\infty}A(x) &= 0 \text{, i.e., } \\
+\sum_{n=1}^\infty\frac{\mu(n)}{n} &= 0
+\end{align*}
+\thm 
+\[ a\frac{\log x}{x} \leq \pi(x) \leq b\frac{\log x}{x} \]
+for some $a<1$, $b>1$
+
+\thm (Bertrand's Conjecture) \\
+For all $n\in\Z^+$ there exists a prime $p$ with $n<p\leq 2n$.
+
+\textbf{Unknown:} For all $n\geq2$ there exists a prime $p$ with
+\[ n^2 < p < (n+1)^2 . \]

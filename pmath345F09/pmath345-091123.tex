@@ -1,0 +1,107 @@
+\defin $F$ field, $f\in F[x]$ irreducible is \emph{separable} if it has no repeated roots. \\
+\cor $f\in F[x]$ irreducible, $f$ separable $\iff$ $f'\neq0$ \\
+\pf $f$ separable $\implies$ $f'\neq0$ by the previous theorem \\
+(in fact we showed $f'(a)\neq0$ for any root $a$ of $f$ in a splitting field of $f$.) \\
+Suppose $f'\neq0$ and $f$ has repeated roots. \\
+$\overset{\text{thm}}{\Longrightarrow}\gcd(f,f')\neq1$.  Since $f$ is irreducible, the prime factorization of $f$ is $f=cg$ where $c\in F\setminus\brace0$, $g\in F[x]$ monic irreducible \\
+$\gcd(f,f')\neq1 \implies g\mid f' \implies f\mid f'$.  But $\deg f'\leq\deg f-1<\deg f$. \\
+\cor $\Char(F)=0$, $f\in F[x]$ irreducible, then $f$ is separable. \\
+\pf $f=a_0+a_1x+\dotsb+a_nx^n$, $n=\deg f$, $a_n\neq0$, $n>0$ \\
+$f'=a_1+2a_2+\dotsb+na_n^{n-1}$ \\
+$n\neq0$ in $F$ since $\Z$ embeds in $F$ \\
+(i.e., $\underbrace{1+1+\dotsb+1}_\text{$n$ times}\neq0$ in $F$, $na_n=(1+\dotsb+1)a_n$) \\
+$\implies na_n\neq0 \implies f'\neq0$. \\
+\ex $\Z_2$, $t$ indeterminant
+\begin{gather*}
+\mathllap{L={}} \Z_2(t) \\
+| \\
+\mathllap{F={}} \Z_2(t^2)
+\end{gather*}
+$f\in F[x]$ \\
+$f=-t^2+x^2$ \\
+Since $t\notin F$ it's not hard to check that $t^2$ is prime in $F$.  Apply Eisenstein $\implies$ $f$ is irreducible $F[x]$ \\
+In $L$,
+\begin{align*}
+f = x^2 - t^2 &= (x-t)(x+t) \\
+&= (x-t)^2 \qquad \text{since $1=-1$ in $L$}
+\end{align*}
+$\Longrightarrow\;$ $f$ \emph{not} separable. \\
+\note
+\begin{itemize}
+\item $f'=2x=0$ in $F$
+\item $f=\text{minimal polynomial of $f$ over $F$}$
+\end{itemize}
+
+\textbf{10. Finite fields} \\
+$F$ finite field \\
+$\implies \Q \subsetneq F$ \\
+$\implies \Char(F)\neq0$ \\
+$\implies \Char(F)=p$, $p$ prime \\
+$\Z_p \subseteq F$ \\
+Since $F$ is finite $\implies$ $[F:\Z_p]\in\N$ \\
+$\implies$ $F$ is an algebraic extension of $\Z_p$ \\
+$F$ finite dimensional over $\Z_p$, say $\dim = n$ \\
+$\implies$ As vector spaces $F\approx(\Z_p)^n$ \\
+$\implies$ $\abs F=p^n$ \\
+\prop $F$ finite field then $\Char(F)=p$, $p$ a prime \\
+$F$ is a finite extension of $\Z_p$, and cardinality of $F$ is a power of $p$.
+
+Suppose $\abs F=p^n=q$. \\
+If $a\in F\setminus\brace0$,
+\[ \brace{1,a,a^2,\dotsc,a^{q-1}} \subseteq F\setminus\brace0 \]
+$\Longrightarrow\;$ $a^i=a^j$ for some $0\leq i<j\leq q-1$. \\
+$\implies$ $a^{j-i}=1$, $0<j-i<q$
+
+\defin $F$ finite field, $a\in F\setminus\brace0$ \\
+The \emph{order of $a$}, $o(a)$, is the least positive integer $m$ such that $a^m=1$.
+\begin{itemize}
+\item[$\to$] Always exists by previous remarks, and $o(a)\leq q-1$
+\[ q = p^n = \abs F \]
+\end{itemize}
+\lem $\abs F=p^n=q$. $a,b\in F\setminus\brace0$, $k>0$
+\begin{enumerate}
+\item[(a)] $a^k=1 \implies o(a)\mid k$
+\item[(b)] $o(a^k) = \frac{o(a)}{\gcd(k,o(a))}$
+\item[(c)] \emph{If} $\gcd(o(a),o(b))=1$ then $o(ab)=o(a)\cdot o(b)$.
+\end{enumerate}
+\pf
+\begin{enumerate}
+\item[(a)] $k=qo(a)+r$, $0\leq r<o(a)$
+\[ 1 = a^k = (a^{o(a)})^q\cdot a^r = a^r \]
+$\Longrightarrow\; r=0$ $\checkmark$
+\item[(b)] $d=\gcd(k,o(a))$
+\[ (a^k)^{o(a)/d} = a^{ko(a)/d} = (a^{o(a)})^{k/d} = 1 \]
+$\overset{\text{(a)}}{\Longrightarrow} o(a^k)\mid \frac{o(a)}{d}$ \\
+On the other hand,
+\[ a^{k\cdot o(a^k)} = (a^k)^{o(a^k)} = 1 \]
+$\underset{\text{(a)}}\Longrightarrow o(a)\mid k\cdot o(a^k)$ \\
+$\implies \frac{o(a)}{d} \mid \frac{k}{d}\cdot o(a^k)$ \\
+since $\gcd(\frac{o(a)}{d},\frac{k}{d})=1$ \\
+$\implies \frac{o(a)}{d} \mid o(a^k)$ \\
+Therefore $o(a^k)=\frac{o(a)}{d}$
+\item[(c)] \begin{align*}
+(ab)^{o(a)\cdot o(b)} &= a^{o(a)\cdot o(b)} \cdot b^{o(a)\cdot o(b)} \\
+&= 1
+\end{align*}
+$\overset{\text{(a)}}\Longrightarrow o(ab)\mid o(a)o(b)$
+\begin{align*}
+a^{o(ab)\cdot o(b)} &= a^{o(ab)\cdot o(b)}\cdot b^{o(ab)\cdot o(b)} \\
+&= (ab)^{o(ab)o(b)} = 1
+\end{align*}
+$\Longrightarrow\; o(a)\mid o(ab)\cdot o(b) \implies o(a)\mid o(ab)$ \\
+Similarly $o(b)\mid o(ab)$. \\
+Since $\gcd(o(a),o(b))=1$ \\
+Therefore $o(a)o(b)\mid o(ab)$ \\
+Therefore $o(ab)=o(a)o(b)$
+\end{enumerate}
+\thm $\abs F=p^n=q$
+\begin{enumerate}
+\item[(a)] There exists $a\in F\setminus\brace0$ such that $o(a)=q-1=\abs F-1$.
+\item[(b)] Every element of $F$ is a root of $x^q-x\in F[x]$
+\end{enumerate}
+\cor $a\in F\setminus\brace0\implies o(a)\mid q-1$. \\
+\pf $\text{Theorem (b)}\implies a^q=a \implies a^{q-1}=1$ \\
+$\overset{\text{Lemma (a)}}\implies o(a)\mid q-1$. \\
+\defin $a\in F$ is an \emph{primitive element} if $o(a)=\abs F-1$ \\
+\remark If $a$ is primitive in $F$, then
+\[ \brace{1,a,a^2,\dotsc,a^{q-2}}=F\setminus\brace0 \qquad q=\abs F \]

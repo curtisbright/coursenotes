@@ -1,0 +1,73 @@
+\textbf{Equicontinuity} \\
+\defin Say $E\subseteq C(X)$ is \emph{equicontinuous} if $\forall\epsilon>0$ $\exists\delta>0$ such that if $d(x,y)<\delta$ then $\abs{f(x)-f(y)}<\epsilon$ $\forall f\in E$.
+
+\ex $E=\set{f\in C(\R)}{\text{$f'$ exists and $\abs{f'(x)}\leq M$ $\forall x\in X$ and $\forall f\in E$}}$. \\
+Then $E$ is equicontinuous. \\
+\pf By Mean Value Theorem $\abs{f(x)-f(y)}\footnote{$=\abs{f'(z)}\abs{x-y}$ for some $z$}\leq M\abs{x-y}$ $\forall x,y$ \\
+Given $\epsilon$ we take $\delta=\frac{\epsilon}{M}$.
+
+\prop If $E\subseteq C(X)$ is equicontinuous then so is $\overline E$. \\
+\pf Let $f\in\overline E\setminus E$ and let $\epsilon>0$. \\
+Get $f_n\in E$ such that $f_n\to f$, i.e., $f_n\to f$ uniformly. \\
+So $\exists N$ such that $\norm{f_N-f}\footnote{$=\sup_{x\in X}\abs{f_N(x)-f(x)}$}<\epsilon$.  Get $\delta$ that works for $\epsilon$ and $E$. \\
+Let $x,y\in X$ with $d(x,y)<\delta$, then
+\begin{align*}
+\abs{f(x)-f(y)} &\leq \abs{f(x)-f_N(x)} + \abs{f_N(x)-f_N(y)} +\abs{f_N(y)-f(y)} \\
+&< \epsilon + \epsilon + \epsilon = 3\epsilon .
+\end{align*}
+This proves $\overline E$ is equicontinuous.
+
+\prop Suppose $X$ is compact and $f_n\in C(X)$. \\
+If $f_n\to f$ uniformly, then $E=\set{f_n}{n=1,2,\dotsc}$ is equicontinuous. \\
+$f$ is continuous being uniform limit of continuous functions. \\
+\pf $f$ is uniformly continuous being continuous on a compact set of $X$. \\
+Let $\epsilon>0$.  Get $\delta$ for $f$. \\
+Get $N$ such that $\norm{f_n-f}<\epsilon$ $\forall n\geq N$. \\
+For any $n\geq N$ and $x,y$ such that $d(x,y)<\delta$,
+\begin{align*}
+\abs{f_n(x)-f_n(y)} &\leq \abs{f_n(x)-f(x)} + \abs{f(x)-f(y)} + \abs{f(y)-f_n(y)} \\
+&< 3\epsilon
+\end{align*}
+For each $f_i$, $i=1,\dotsc,N-1$ get $\delta_i>0$ such that $d(x,y)<\delta_i\implies\abs{f_i(x)-f_i(y)}<3\epsilon$ (can do as each $f_i$ is uniformly continuous) \\
+Take $\delta_0=\min(\delta,\delta_1,\dotsc,\delta_{N-1})$. \\
+If $d(x,y)<\delta_0$ then $\abs{f_n(x)-f_n(y)}<3\epsilon$ $\forall n$. \\
+So $E$ is equicontinuous.
+
+\ex $E=\set{f_n(x)=\frac{\sin nx}{\sqrt n}}{x\in[0,2\pi]}$ \\
+$\abs{f_n(x)}\leq\frac{1}{\sqrt n}\to0$ so $f_n\to0$ uniformly. $\implies E$ is equicontinuous. \\
+But $f_n'(x)=\frac{n\cos nx}{\sqrt n}=\sqrt n\cos nx$ so $f_n'(0)=\sqrt n\to\infty$.
+
+\textbf{Uniformly Bounded} \\
+$E\subseteq C(X)$ is uniformly bounded if $E\subseteq B(0,M)$ for some $M$, equivalently $\exists M$ such that $\norm f\leq M$ $\forall f\in E$.
+
+\defin Say $E\subseteq C(X)$ is \emph{pointwise bounded} if $\forall x\in X$ $\exists M_x$ such that $\abs{f(x)}\leq M_x$ $\forall f\in E$.
+
+Uniformly bounded $\implies$ pointwise bounded, but not conversely. \\
+Fix $x\neq0$.\marginpar{graph: $f_n(x)$ has peak of $n$ and is zero for $x>\frac1n$}  Have $f_n(x)\neq0$ $\forall n\geq N$ where $\frac{1}{N}<x$.
+\[ \sup\abs{f_n(x)} \leq \max(\abs{f_1(x)},\dotsc,\abs{f_N(x)}) \]
+So $\brace{f_n}$ is pointwise bounded, but not uniformly bounded.
+
+\prop If $X$ is compact and $E$ is equicontinuous and pointwise bounded, then $E$ is uniformly bounded. \\
+\pf Take $\epsilon=1$.  Get $\delta$ by equicontinuity so $d(x,y)<\delta$ $\implies\abs{f(x)-f(y)}<1$ $\forall f\in E$ \\
+Look at balls $B(x,\delta)$ for $x\in X$.  This is an open cover of compact $X$ so take a finite subcover, say $B(x_1,\delta),\dotsc,B(x_n,\delta)$. \\
+Let $M_i=\sup\set{\abs{f(x_i)}}{f\in E}$ ($<\infty$ by pointwise boundedness of $E$) \\
+Take $M=(\max_{i=1,\dotsc,n}M_i)+1$. \\
+Let $x\in X$.  There is a ball $B(x_i,\delta)$ containing $x$.
+\begin{align*}
+\implies d(x,x_i)<\delta \implies \abs{f(x)} &\leq \abs{f(x)-f(x_i)} + \abs{f(x_i)} \\
+&\leq 1 + M_i \\
+&\leq M
+\end{align*}
+
+\thm Let $X$ be compact.  Let $\brace{f_n}_{n=1}^\infty\subseteq C(X)$ be a pointwise bounded, equicontinuous family.  Then
+\begin{enumerate}[label=(\arabic*)]
+\item $\brace{f_n}$ is uniformly bounded. (already done)
+\item There is a subsequence of the sequence $(f_n)$ which converges uniformly.
+\end{enumerate}
+\cor (Arzela--Ascoli Theorem) \\
+Let $X$ be compact.  $E\subseteq C(X)$ is compact if and only if $E$ is pointwise (uniformly) bounded, closed and equicontinuous. \\
+\pf ($\Longrightarrow$) $E$ compact $\implies$ $E$ bounded (meaning uniformly bounded) and closed \\
+Suppose $E$ is not equicontinuous.  This means $\exists\epsilon>0$ such that $\forall\delta=\frac{1}{n}$ there are $x_n,y_n\in X$ with $d(x_n,y_n)<\frac{1}{n}$ and $\exists f_n\in E$ with $\abs{f_n(x_n)-f_n(y_n)}\geq\epsilon$\footnote{(2)}. \\
+Since $E$ is compact the Bolzano--Weierstrass characterization of compactness says there is a subsequence \savenotes$f_{n_k}\mathbin{\mathord\to\footnote{uniform convergence}} f\in E$\spewnotes. \\
+Hence the set $\brace{f_{n_k}}$ is equicontinuous and hence $\exists\delta_0$ such that \savenotes$d(x,y)<\delta_0\implies\abs{f_{n_k}(x)-f_{n_k}(y)}\mathbin{\mathord<\footnote{(1)}}\epsilon$ $\forall n_k$\spewnotes. \\
+Take $n_k$ such that $\delta_0>\frac{1}{n_k}$ so $d(x_{n_k},y_{n_k})<\frac{1}{n_k}<\delta_0$ so $\abs{f_{n_k}(x_{n_k})-f_{n_k}(y_{n_k})}<\epsilon$ by (1) and this contradicts (2).

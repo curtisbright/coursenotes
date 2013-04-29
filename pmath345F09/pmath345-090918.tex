@@ -1,0 +1,64 @@
+\begin{itemize}
+\item[Aside:]
+\remark $R$ is a ring.  Then $0$, $1$ are unique.
+\begin{enumerate}
+\item[a)] If $a\in R$ such that $a+x=x$ for all $x$, then $a=0$
+\item[b)] If $a\in R$ such that $ax=x$ for all $x$, then $a=1$
+\end{enumerate}
+\pf
+\begin{enumerate}
+\item[a)] $a+x=x \implies a+0 = 0$ \\
+$\phantom{a+x=x} \implies a=0$, since $a+0=a$
+\item[b)] $ax=x \implies a1=1$ \\
+$\phantom{ax=x} \implies a=1$
+\end{enumerate}
+\note In fact, if $a+x=x$ for any $x$, then $a=0$ since $a+x=x=0+x$ \\
+$\implies a=0$ \\
+\note If $R$ is such that $0=1$, then $R=\brace0$ \\
+\pf If $x\in R$, then
+\begin{align*}
+x &= 1x \\
+&= 0x \\
+&= 0
+\end{align*}
+Therefore $x=0$. \\
+$R=\brace0$ is called the trivial ring.
+\end{itemize}
+For $\Z_n$, $n\geq2$, given $a\in\Z$, then the \emph{residue} of $a$,
+\begin{align*}
+\overline a &= \set{b\in\Z}{a\equiv b\pmod n} \\
+&= \set{a+rn}{r\in\Z}\subseteq\Z
+\end{align*}
+\note $\overline a\cap\overline b=\emptyset$ or $\overline a=\overline b$ \\
+\note For all $x\in\Z$, $x\in\overline a$ for some $a\in\brace{0,\dotsc,n-1}$
+\begin{align*}
+\text{Therefore } \Z_n &= \set{\overline a}{a\in\Z} \text{ is \emph{finite}.} \\
+&= \brace{\overline0,\dotsc,\overline{n-1}}
+\end{align*}
+\defin Let $R$ be a ring.  A \emph{subring} of $R$ is a set $S\subseteq R$ which is preserved by $+$ and $\times$ and $-$ and contains $0$ and $1$. \\
+i.e., if $a,b\in S\implies a+b\in S$ \\
+and $a,b\in S\implies ab\in S$, then $S$ is a subring and $-a\in S$. \\
+%\begin{enumerate}\item[$*$] different from textbook for us, $\brace0$ is not a subring of $R$ unless $R=\brace0$.\end{enumerate}
+$*$ different from textbook for us, $\brace0$ is not a subring of $R$ unless $R=\brace0$. \\
+\note $S$ is a ring, we call it the ``induced ring''. \\
+\ex $\Z$ is a subring of $\Q$ which is a subring of $\R$ which is a subring of $\C$. \\
+\ex The Gaussian integers $\Z[i]=\set{a+bi}{a,b\in\Z}$ is a subring of $\C$.
+
+\textbf{Units and Zero Divisors} \\
+\defin Let $R$ be a ring.  An element of $a\in R$ is a \emph{unit} if there exists $b\in R$ such that $ab=1$ and $ba=1$ \\
+\remark $b$ is unique \\
+\pf If $ac=1$ and $ca=1$, \\
+therefore $ac=ab$ \\
+$\implies cac=cab$ \\
+$\implies 1c = 1b \implies c=b$ \\
+Such a $b$ is called the multiplicative inverse of $a$ and is denoted $a^{-1}$. \\
+\defin A \emph{field} is a commutative ring where $0\neq1$ and every nonzero element is a unit. \\
+Note: If $0x=1$, then since $0x=0$, we have $0=1$. \\
+So, in a nontrivial ring, $0$ is \emph{not} a unit. \\
+\ex $\Z$ is \emph{not} a field, $\Q$ is a field. \\
+\defin Let $R$ be a ring.  An element $a\in R$, $a\neq0$ is a \emph{zero divisor} if there exists $b\in R$, $b\neq0$ such that
+\[ ab=0 \qquad\text{or}\qquad ba=0 \]
+$b$ is not necessarily unique. \\
+\defin An \emph{integral domain} is a commutative ring with $0\neq1$ and there are no zero divisors. \\
+\ex $\Z$, $\Q$ are integral domains \\
+$\Z\times\Z$ is not an integral domain, as $(a,0)\cdot(0,a)=(0,0)$, so $(a,0)$ is a zero divisor for $a\neq0$.

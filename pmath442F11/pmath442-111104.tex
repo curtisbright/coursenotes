@@ -1,0 +1,31 @@
+Compute $\Gal(x^4+5x^2+11)$ \\
+Reduce mod $17$:
+\[ x^4+5x^2+11 = (x+1)(x-1)(x^2+6) \]
+$\implies$ Gal contains a permutation with cycle structure $(1)(1)(2)$, and so cannot be $C_4$.
+
+When can the roots of a polynomial in $x$ be expressed in terms of $+$, $-$, $\cdot$, $\div$, $\sqrt[n]{\cdot}$, and the coefficients?
+
+\thm Let $F$ be a field that contains all the $n$th roots of unity.  Let $a\in F$.  Then $F(\sqrt[n]{a})/F$ is Galois, with cyclic Galois group, provided $\Char F\ndivides n$. \\
+\pf First, we may assume that $[F(\sqrt[n]{a}):F]=n$, since otherwise we may replace $n$ with
+\[ k = \min_i\brace{(\sqrt[n]{a})^i\in F} \]
+and we will have $k\divides n$.
+
+Write $x^n-a=(x-\sqrt[n]{a})(x-\zeta\sqrt[n]{a})\dotsm(x-\zeta^{n-1}\sqrt[n]{a})$
+where $\zeta$ is a primitive $n$th root of unity.  Therefore, since $\zeta\in F$, $F(\sqrt[n]{a})$ is a splitting field for $x^n-a$ over $F$.  Since $\Char F\ndivides n=[F(\sqrt[n]{a}):F]$, we see that $F(\sqrt[n]{a})/F$ is separable, so it's Galois.
+
+Let $\sigma\in\Gal(F(\sqrt[n]{a})/F)$ be such that $\sigma(\sqrt[n]{a})=\zeta\sqrt[n]{a}$.  Since $\zeta\in F$, $\sigma(\zeta)=\zeta$, so $\sigma(\zeta^r\sqrt[n]{a})=\zeta^{r+1}\sqrt[n]{a}$.  Therefore $\sigma$ has order $n$ and $\Gal(F(\sqrt[n]{a})/F)=\chev{\sigma}$ is cyclic. \qed
+
+\thm Let $F$ be a field containing the $n$th roots of unity.  Let $K/F$ be a finite Galois extension with cyclic Galois group.  Then $K=F(\sqrt[n]{a})$ for some $a\in F$, $n=[K:F]$.\footnote{$\Char F\ndivides n$} \\
+\pf Say $\alpha\in K$, $\zeta$ a primitive $n$th root of unity.  Define
+\[ (\alpha,\zeta) = \alpha + \zeta\sigma(\alpha) + \zeta^2\sigma^2(\alpha) + \dotsb + \zeta^{n-1}\sigma^{n-1}(\alpha) \]
+where $\Gal(K/F)=\chev{a}$.  Then
+\begin{align*}
+\sigma((\alpha,\zeta)) &= \sigma(\alpha) + \zeta\sigma^2(\alpha) + \dotsb + \zeta^{n-1}\sigma^n(\alpha) \\
+\zeta^{-1}(\alpha,\zeta) &= \zeta^{-1}\alpha + \sigma(\alpha) + \zeta\sigma^2(\alpha) + \dotsb + \zeta^{n-2}\sigma^{n-1}(\alpha)
+\end{align*}
+Since $\zeta^{-1}\alpha=\zeta^{n-1}\sigma^n(\alpha)$, we see that $\sigma((\alpha,\zeta))=\zeta^{-1}(\alpha,\zeta)$. \\
+In particular, $\sigma((\alpha,\zeta)^n)=(\sigma,\zeta)^n$, so $(\alpha,\zeta)^n\in F$.  Furthermore, if $1\leq k\leq n-1$, then $\sigma^k((\alpha,\zeta))=\zeta^{-k}(\alpha,\zeta)\neq(\alpha,\zeta)$, so $(\alpha,\zeta)$ does not lie in any proper subfield of $K$.  So we may set $a=(\alpha,\zeta)^n$ to get $K=F(\sqrt[n]{a})$. \qed
+
+\thm Assume $F$ contains the $n$th roots of unity, $a$, $b\in F^*$.  Then $F(\sqrt[n]{a})\cong F(\sqrt[n]{b})$ \emph{iff} $\chev{a}\equiv \chev{b} \bmod (F^*)^n$, where
+\[ (F^*)^n = \set{\alpha^n}{\alpha\in F^*} \]
+(that is, $a^k=b^l\alpha^n$ for some $\alpha\in F$, $1\leq k,l\leq n-1$.)

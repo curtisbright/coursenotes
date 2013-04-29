@@ -1,0 +1,26 @@
+$K$ complete with respect to a non-archimean valuation $\vabs{\cdot}$.  Let $O=\set{a\in K}{\vabs{a}\leq1}$ be the valuation ring.  $M\subset O$ the maximal ideal $\set{a\in K}{\vabs{a}<1}$.
+\begin{flalign*}
+K &= \Q_p \\
+O &= \Z_p \\
+M &= p\Z_p
+\end{flalign*}
+\thm (Hensel's Lemma) \\
+Let $f(x)\in O[x]$ be non-constant, $f\nequiv0\bmod M$.  Assume $\overline f=\overline g\overline h \bmod M$, where $\overline f$ is the reduction of $f\bmod M$, and that $\overline g$, $\overline h$ are relatively prime in $(O/M)[x]$.  Then $f=gh$ in $\theta[x]$, where $g\equiv\overline g$ and $h\equiv\overline h\bmod M$, and $\deg(g)=\deg(\overline g)$.
+
+\pf Pick $g_0$, $h_0\in O[x]$ willy-nilly so that $\deg(g_0)=\deg(\overline g)$, $\deg(h_0)\leq\deg(\overline h)$, $g_0\equiv\overline g$, $h_0\equiv\overline h\bmod M$.  Since $\overline h$, $\overline g$ are coprime in $(O/M)[x]$, there are $a(x)$, $b(x)\in O[x]$ such that $ag_0+bh_0\equiv1\bmod M$. \\
+Amongst the coefficients of $f-g_0h_0$ and $ag_0+bh_0-1$, there is (at least) one with smallest valuation.  Call it $\pi$. \\
+We show: $f\equiv g_rh_r\bmod\pi^{r+1}$. \\
+If $r=0$, we're already done.  Proceed by induction.  Say $f\equiv g_{r-1}h_{r-1}\bmod\pi^r$, with $\deg g_{r-1}=\deg\overline g$, $\deg h_{r-1}\leq\deg\overline h$.  We're looking for $g_r$ and $h_r$. \\
+Write $\left\{\begin{smallmatrix}g_r=g_{r-1}+p_r\pi^r\\h_r=h_{r-1}+q_r\pi^r\end{smallmatrix}\right.$, for $p_r$, $q_r\in O[x]$.  Then:
+\begin{gather*}
+f-g_rh_r \equiv \pi^r (g_{r-1}g_r+h_{r-1}p_r) \bmod \pi^{r+1} \\
+\implies\underbrace{\frac{1}{\pi^r}(f-g_rh_r)}_{f_r\coloneqq} \equiv g_{r-1}g_r+h_{r-1}p_r \bmod \pi %(\equiv g_0g_r+h_0p_r\bmod\pi)
+\end{gather*}
+Now, $q_r=af_r$ and $p_r=bf_r$ works because $g_r\equiv g_0\bmod M$, $h_r\equiv h_0\bmod M$.  However, this choice may not satisfy the degree constraints $\deg g_r=\deg\overline g$ and $\deg h_r\leq\deg\overline h$.  So write:
+$bf_r=Qg_0+R$ for $\deg R\leq\deg g_0$, and set $p_r=R$.  The leading coefficient of $g_0$ is not in $M$, so it's a unit in $O$.  The Euclidean Algorithm will show that $Q$, $R\in O[x]$.  So:
+\begin{align*}
+g_0(af_r+h_0Q)+h_0p_r &\equiv ag_0f_r+g_0h_0Q+h_0p_r \\
+&\equiv ag_0f_r+h_0(bf_r-p_r)+h_0p_r \\
+&\equiv ag_0f_r+bh_0f_r \\
+&\equiv f_r \bmod \pi
+\end{align*}

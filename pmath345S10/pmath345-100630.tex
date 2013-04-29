@@ -1,0 +1,82 @@
+\fact If $F$ is a field, $\alpha$ an element of some ring $R$ containing $F$, then any field $E$ that contains $F$ and $\alpha$ must contain $F(\alpha)$.
+\[ \left.
+\vcenter{\xymatrix{
+%M\ar@{-}[d]^{[M:L]}\ar@/_8px/@{-}[dd]_{[M:K]} \\
+M\ar@{-}[d]^{[M:L]}\ar@/_8bp/@{-}[dd]_{[M:K]} \\
+L\ar@{-}[d]^{[L:K]} \\
+K}}
+\right\}
+\mathrlap{\text{Tower of fields, $K\subset L\subset M$}} \]
+%\[ \left.\xymatrix{
+%M\ar@{-}[d]_{[M:L]}\ar@/^/@{-}[dd]^{[M:K]} \\
+%L\ar@{-}[d]_{[L:K]} \\
+%K
+%}\right\}\text{ Tower of fields, $K\subset L\subset M$} \]
+\thm (KLM) Say $K\subset L\subset M$ is a tower of fields.  Then:
+\[ [M:K] = [M:L] [L:K] \]
+where $[M:K]=\infty$ \emph{iff} either $[M:L]=\infty$ or $[L:K]=\infty$. \\
+\pf Let $\brace{\u_1,\dotsc,\u_l}$ be a basis for $L/K$, and let $\brace{\v_1,\dotsc,\v_m}$ be a basis of $M/L$. \\
+\claim $\brace{\u_i\v_j}_{\substack{i\in\brace{1,\dotsc,l}\\j\in\brace{1,\dotsc,m}}}$ is a basis of $M/K$. \\
+Note that the claim immediately implies the theorem. \\
+\textbf{Proof of claim:} Spanning: Let $\x\in M$ be any element.  We want to find $a_{ij}\in K$ such that $\x=\sum_{i,j}a_{ij}\u_i\v_j$.  Since $\brace{\v_1,\dotsc,\v_m}$ is a basis of $M/L$, we can find $b_1$, $\dotsc$, $b_m\in L$ such that:
+\[ \x = b_1 \v_1 + \dotsb + b_m \v_m \]
+for each $j$, write:
+\[ b_j = a_{1j}\u_1 + a_{2j}\u_2 + \dotsb + a_{lj}\u_l \]
+for $a_{ij}\in K$.  Then:
+\begin{align*}
+\x &= \paren[\Big]{\sum_i a_{i1}\u_i}\v_1 + \dotsb + \paren[\Big]{\sum_i a_{im}\u_i}\v_m \\
+&= \sum_{i,j} a_{ij} \u_i \v_j
+\end{align*}
+where $a_{ij}\in K$, as desired.
+
+Linear independence: Set $\sum_{i,j}a_{ij}\u_i\v_j=0$.  We want to show that if $a_{ij}\in K$, then $a_{ij}=0$ for all $i$, $j$.  Rewrite:
+\[ \paren[\Big]{\sum_i a_{i1}\u_i} \v_1 + \dotsb + \paren[\Big]{\sum_i a_{im}\u_i}\v_m = 0 \]
+The coefficient of each $\v_j$ lies in $L$, since $a_{ij}\in K\subset L$ and $\u_1\in L$.  So:
+\[ \text{Since $\brace{\v_1,\dotsc,\v_m}$ is linear independent over $L$}\left\{\begin{gathered}
+a_{11}\u_1 + a_{21}\u_2 + \dotsb + a_{l1}\u_l = 0 \\
+\vdots \\
+a_{1m}\u_1 + a_{2m}\u_2 + \dotsb + a_{lm}\u_l = 0
+\end{gathered}\right. \]
+%\thm (KLM) Say $K\subset L\subset M$ is a tower of fields.  Then:
+%\[ [M:K] = [M:L][L:K] \]
+Since $\brace{\u_1,\dotsc,\u_l}$ is linearly independent over $K$, we conclude $a_{ij}=0$ for all $i$, $j$, as desired. \qed~(claim) \\
+If $[M:L]$ or $[L:K]$ is infinite, then it is clear that $[M:K]=\infty$ because any infinite linearly independent subset of $M/L$ or $L/K$ is also linearly independent in $M/K$.
+
+Otherwise, if $[M:L]$ and $[L:K]$ are both finite, we've already shown that $[M:K]$ is also finite. \qed
+
+\eg Compute $[\Q(\sqrt{13},\sqrt{7}):\Q]$.  Find a basis for $\Q(\sqrt{13},\sqrt{7})/\Q$.
+\[ \xymatrix{
+\Q(\sqrt{13},\sqrt7)\ar@{-}[d] \\
+\Q(\sqrt{13})\ar@{-}[d]^{2\mathrlap{\qquad\text{$x^2-13$ is a minimal polynomial (Eisenstein on $(13)$)}}} \\
+\Q
+} \]
+\claim $x^2-7$ is irreducible over $\Q(\sqrt{13})$. \\
+\textbf{Proof of claim:} Look for roots:
+\begin{align*}
+(a+b\sqrt13)^2 - 7 &= a^2 + 13 b^2 + 2ab\sqrt{13} - 7 \\
+&= 0 \\
+\implies (a^2+13b^2-7)+(2ab)\sqrt{13} &= 0
+\end{align*}
+Since $\brace{1,\sqrt{13}}$ is linearly independent over $\Q$:
+\[ \left\{\begin{gathered}
+a^2 + 13b^2 - 7 = 0 \\
+2ab = 0
+\end{gathered}\right. \]
+It is easy to see that there are no $a$, $b\in\Q$ satisfying both equations, so $x^2-7$ has no roots in $\Q(\sqrt{13})$, and so $x^2-7$ is irreducible over $\Q(\sqrt{13})$. \qed~(claim) \\
+So $[\Q(\sqrt{13},\sqrt7):\Q]=4$ by KLM.  A basis for $\Q(\sqrt{13},\sqrt7)/\Q$ is $\brace{1,\sqrt{13},\sqrt7,\sqrt{91}}$.
+
+Say $L/K$ is a field extension of degree $n$.  If $K\subset F\subset L$ with $F$ a field, then $n$ is a multiple of $[F:K]$ and $[L:F]$.
+%\begin{gather*}
+\[
+\xymatrix{
+&\Q(\sqrt{13},\sqrt7)\ar@{-}[ld]_2\ar@{-}[rd]^2& \\
+\Q(\sqrt{13})\ar@{-}[rd]_2 & & \Q(\sqrt7)\ar@{-}[ld]^2 \\
+&\Q
+} \qquad
+\xymatrix{
+&\Q(\sqrt{13},\sqrt[3]7)\ar@{-}[ld]_3\ar@{-}[rd]^2& \\
+\Q(\sqrt{13})\ar@{-}[rd]_2 & & \Q(\sqrt[3]7)\ar@{-}[ld]^3 \\
+&\Q
+}
+\]
+%\end{gather*}

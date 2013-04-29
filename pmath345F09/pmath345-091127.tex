@@ -1,0 +1,91 @@
+\thm $p$ prime, $n>0$.
+\begin{enumerate}
+\item[(a)] There exists a field of size $p^n$.
+\item[(b)] Any two fields are isomorphic.
+\end{enumerate}
+\textbf{Proof (b): }$x^{p^n}-x\in\Z_p[x]$
+\begin{gather*}
+L \mathrlap{{}=\text{splitting field of $x^{p^n}-x$}} \\
+| \\
+\Z_p
+\end{gather*}
+\[ F = \set{a\in L}{a^{p^n}=a} = \text{roots of $x^{p^n}-x$ in $L$} \]
+We proved:
+\begin{itemize}
+\item $F$ is a subfield of $L$
+\item $\abs F=p^n$
+\end{itemize}
+We show that if $K$ a field, $\abs K=p^n$ then $K\cong F$.
+We know $K=\Z_p(a)$ for some $a\in K$,
+\[ \deg(a/\Z_p) = n \]
+\[ \text{So } K \cong \Z_p[x]/(g) \]
+where $g=\text{minimal polynomial of $a/\Z_p$}$. \\
+We show $\Z_p[x]/(g)\cong F$. \\
+$g$ is irreducible of degree $n$ in $\Z_p[x]$
+\[ \implies g \mid x^{p^n-x} \qquad \text{previous corollary} \]
+Hence $g$ has a root in $L$, say $b\in L$. \\
+$\implies b^{p^n}=b\implies b\in F$.
+\begin{align*}
+\phi\colon &\Z_p[x] \to F \\
+&h\mapsto h(b)
+\end{align*}
+evaluation at $b$ ring homomorphism. \\
+Since $g(b)=0\implies g\in\ker(\phi)$ \\
+$g$ irreducible, $\Z_p[x]$ pid $\implies$ $(g)$ is maximal \\
+$\implies (g)=\ker(\phi)$ \\
+1st isomorphism theorem $\implies$ $\Z_p[x]/(g)$ is isomorphism to a subfield of $F$. \\
+Both of size $p^n$ $\implies$ this subfield is all of $F$. \\
+Therefore $K\cong\Z_p[x]/(g)\cong F$.
+
+\defin $\F_{p^n}$ is the unique (up to isomorphism) field of size $p^n$.
+\begin{itemize}
+\item[$\to$] $\F_p=\Z_p$
+\end{itemize}
+\cor $p$ prime, $n>0$
+\begin{enumerate}
+\item[(a)] There exists an irreducible polynomial of degree $n$ in $\Z_p[x]$
+\item[(b)] Given $g,h\in\Z_p[x]$ irreducible of degree $n$, then
+\end{enumerate}
+\[ \Z_p[x]/(g) \cong \Z_p[x]/(n) . \]
+\pf $\F_{p^n}$ is a simple algebraic extension of $\Z_p$ of degree $n$. \\
+$\implies$ $\F_{p^n}=\Z_p(a)\cong\Z_p[x]/(g)$ where $g=\text{minimal polynomial of $a$ over $\Z_p$}$ \\
+$\implies$ $g$ is irreducible, $\deg g=n$. \\
+(b) Follows by previous theorem part (b) as both $\Z_p/(g)$ and $\Z_p/(h)$ are degree $n$ extensions of $\Z_p$ and hence of size $p^n$.
+%
+\[ \xymatrix{
+\F_{p^2} & \F_{p^3} & \F_{p^4} & \cdots \\
+ & \F_p\ar@{-}[ul]\ar@{-}[u]\ar@{-}[ur]\ar@{-}[urr] & &
+} \]
+\marginpar{$\F_{p^2}\not\subseteq\F_{p^3}$ but $\F_{p^2}\subseteq\F_{p^4}$}%
+%
+\thm $p$ prime, $m>0$, $n>0$
+\[ \F_{p^m} \mathrel{{\subseteq}\footnotemark}\footnotetext{actually: $\F_{p^m}$ embeds in $\F_{p^n}$} \F_{p^n} \iff m\mid n \]
+\pf $\F_{p^m}\subseteq\F_{p^n}$ \\
+$\F_{p^n}$ is an $\F_{p^m}$-vector space of finite dimensional, say dimension $d$.
+\[ \F_{p^n} \cong (\F_{p^m})^d \]
+\[ \abs{\F_{p^n}} = \abs{(\F_{p^m})^d} \]
+\[ p^n = (p^m)^d = p^{md} \]
+\[ \implies n=md \implies m\mid n\quad \checkmark \]
+Conversely suppose $m\mid n$. \\
+say $n=md$ \\
+\marginpar{\begin{gather*}
+L \\
+| \\
+\F_{p^n}
+\end{gather*}}%
+$L$ is splitting field of $x^{p^m}-x$ over $\F_{p^n}$ \\
+$x^{p^m}-x\in\F_{p^n}[x]$
+Let $a\in F$, $a^{p^m}=a$
+\begin{align*}
+a^{p^n} &= a^{(p^m)^d} \\
+%&= {(\cdots{({({(a^{p^m})}^{p^m})}^{p^m})}^{\iddots})}^{p^m}\footnotemark \\
+%&= \paren*{\cdots\paren*{\paren*{{\paren*{a^{p^m}}}^{p^m}}^{p^m}}^{\iddots}}^{p^m}\footnotemark \\
+&= \paren*{\cdots\paren*{\paren*{a^{p^m}}^{p^m}}^{p^m}\cdots}^{p^m}\footnotemark \\
+&= a
+\end{align*}\footnotetext{$d$ times}%
+$\implies$ $a$ is a root of $x^{p^n}-x$. \\
+But $\F_{p^n}\subseteq L$ is the set of \emph{all} roots of $x^{p^n}-x$ since they are roots and there are $p^n$. \\
+Therefore $a\in\F_{p^n}$ \\
+Therefore $F\footnote{$\cong\F_{p^m}$}\subseteq\F_{p^n}$ \\
+\remark $p$ prime $n>0$,
+\[ \F_{p^n} = \text{splitting field of $x^{p^n}-x$ over $\Z_p$} \]

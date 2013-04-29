@@ -1,0 +1,53 @@
+Every finite field $F$ has $p^n$ elements for some prime $p$ and some positive integer $n$. \\
+Every such $F$ is the splitting field of $x^{p^n}-x$ over $\Z_p$. \\
+Any two fields of cardinality $p^n$ are isomorphic.
+
+\prop If $p$ is a prime and $n$ a positive integer and $F={}$splitting field of $x^{p^n}-x$, then $\#F=p^n$. \\
+\lem If $\phi\colon K\to K$ is a field homomorphism, then $M=\set{a\in K}{\phi(a)=a}$ is a subfield of $K$. \\
+\pf Let $a$, $b\in M$, i.e., $\phi(a)=a$, $\phi(b)=b$. \\
+Then $\phi(a\tpm b)=\phi(a)\tpm\phi(b)=a\tpm b$, \\
+%Then $\phi(a\overset{\smash{\mbox{$\ldotp$}}}\pm b)=\phi(a)\overset{\smash{\mbox{$\ldotp$}}}\pm\phi(b)=a\overset{\smash{\mbox{$\ldotp$}}}\pm b$, \\
+%Then $\phi(a\overset{\mbox{$\ldotp$}}\pm b)=\phi(a)\overset{\mbox{$\ldotp$}}\pm\phi(b)=a\overset{\mbox{$\ldotp$}}\pm b$, \\
+%Then $\phi(a\overset{\smash{\textstyle\ldotp}}\pm b)=\phi(a)\overset{\smash{\textstyle\ldotp}}\pm\phi(b)=a\overset{\smash{\textstyle\ldotp}}\pm b$, \\
+%Then $\phi(a\overset{\textstyle\ldotp}\pm b)=\phi(a)\overset{\textstyle\ldotp}\pm\phi(b)=a\overset{\textstyle\ldotp}\pm b$, \\
+%Then $\phi(a\mathbin{\dot\pm}b)=\phi(a)\mathbin{\dot\pm}\phi(b)=a\mathbin{\dot\pm}b$, \\
+and if $a\neq0$, we also get $\phi(a^{-1})=\phi(a)^{-1}=a^{-1}$. \\
+\textbf{Proof of proposition:} Have $F$: splitting field of $x^{p^n}-x$. \\
+Take Frobenius automorphism:
+%\begin{align*}
+%\phi\colon & F \to F \\
+%& a \mapsto a^p
+%\end{align*}
+\[\left.\begin{aligned}
+\phi\colon & F \to F \\
+& a \mapsto a^p
+\end{aligned}\qquad\right\}\text{(use $(a\pmt b)^p=a^p\pmt b^p$ to show this is a field homomorphism)}\]
+Then $\phi^n=\phi\circ\phi\circ\dotsb\circ\phi$, $n$-times is also a field homomorphism, whose set of fixed elements is $M=\set{a\in F}{a^{p^n}=a}$, which is a field inside $F$, by the lemma.
+
+We see that $M={}$set of roots of $x^{p^n}-x$.  So $F$ is a subfield of $F$, which was the splitting field of $x^{p^n}-x$.  Since $F={}$smallest field containing roots of $x^{p^n}-x$, we get $M=F$. \\
+%We see that $M=\text{set of roots of $x^{p^n}-x$}$.  So $F$ is a subfield of $F$, which was the splitting field of $x^{p^n}-x$.  Since $F={}$smallest field containing roots of $x^{p^n}-x$, we get $M=F$. \\
+Finally, note that $x^{p^n}-x$ has no repeated roots, because its derivative
+\[ (x^{p^n}-x)' = p^nx^{p^n-1}-1 = -1 \text{ in } \Z_p[x] \]
+is coprime with $x^{p^n}-x$.  So $\#F=p^n$. \qed
+
+\textbf{Primitive generators} \\
+Let $F={}$finite field and $F^*=F\setminus\brace0$. \\
+Let $q=p^n-1=\#F^*$. \\
+We saw that for every $a$ in $F^*$, $a^q=1$.
+
+\thm There is some $a\in F^*$ such that the list $1$, $a^1$, $a^2$, $\dotsc$, $a^{q-1}$ picks up all of $F^*$.
+
+\defn If $a\in F^*$ its \emph{order} is the least integer $k\geq1$ such that $a^k=1$.  Write $k=\ord(a)$.
+
+\textbf{Proposition 1:} If $k=\ord(a)$ and $a^m=1$, then $k\mid m$. \\
+\pf Write $m=ks+r$, where $0\leq r<k$.  Then
+\[ 1 = a^m = a^{ks+r} = (a^k)^s a^r = 1^s a^r = a^r . \]
+By the minimality of $k$ get $r=0$.  So $m=ks$. \qed
+
+\textbf{Proposition 2:} If $a\in F^*$ and $\ord(a)=k\geq1$, then $1$, $a$, $a^2$, $\dotsc$, $a^{k-1}$ is the complete non-repeating list of all $b$ in $F^*$ such that $b^k=1$. \\
+\pf\begin{enumerate}[label=\roman*)]
+\item If $a^j$ is in the list, we see that $(a^j)^k=(a^k)^j=1^j=1$.
+\item No repeats: Say $a^i=a^j$, where $0\leq i\leq j\leq k-1$. \\
+Thus $a^{j-i}=1$, and since $0\leq j-i<k$, the minimality of $k$ gives $j=i$.
+\item Let $b\in F^*$ where $b^k=1$.  Then $b$ is a root of $x^k-1\in\Z_p[x]$.  This polynomial has at most $k$ roots.  But the list is made up of such roots, and the list has $k$ elements.  So $b$ is in the list. \qed
+\end{enumerate}

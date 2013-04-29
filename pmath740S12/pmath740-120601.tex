@@ -1,0 +1,145 @@
+$\mu(n)$, $\Lambda(n)$, $\lambda(n)$ \\
+$\pi(x)$, $\psi(x)$, $\Theta(x)$ \\
+$\zeta(x)$, $1<x$
+
+\textbf{M\"obius}
+\[ \mu(n) = \begin{cases}
+(-1)^l & \text{when $n$ is a product of $l\geq0$ distinct primes} \\
+0 & \text{otherwise}
+\end{cases} \]
+\thm
+\[ \sum_{d\div n}\mu(d) = I(n) = \floor*{\frac{1}{n}} = \begin{cases}
+1 & \text{if $n=1$} \\
+0 & \text{otherwise}
+\end{cases} \]
+\thm (M\"obius Inversion Formula) \\
+For $f\colon\Z^+\to\C$, if $g(n)=\sum_{d\div n}f(d)$ then
+\begin{align*}
+f(n) &= \sum_{d\div n}\mu(d)g\paren*{\frac{n}{d}} \\
+&= \sum_{\substack{k,l\\kl=n}}\mu(k)g(l)
+\end{align*}
+For $f\colon[1,\infty)\to\C$ if $g(x)=\sum_{n\leq x}f(\frac{x}{n})$ then $f(x)=\sum_{n\leq x}\mu(n)g(\frac{x}{n})$ \\
+\pf Let $f\colon\Z^+\to\C$.  Define $g\colon\Z^+\to\C$ by $g(n)=\sum_{d\div n}f(d)$.  Then\footnote{Aside: $g(m)=\sum_{e\div m}f(e)$ for $d$, $e\in\Z^+$
+\[ d\div n\co e\div\frac nd \iff de\div n \]
+}
+\begin{align*}
+\sum_{d\div n}\mu(d)g\paren[\Big]{\frac{n}{d}} &= \sum_{d\div n}\mu(d)\sum_{e\div\frac nd}f\paren{e} \\
+&= \sum_{\substack{d,e\\de\div n}}\mu(d)f(e) \\
+&= \sum_{e\div n}\sum_{d\div\frac ne}\mu(d)f(e) \\
+&= \sum_{e\div n}f(e)\paren[\Big]{\sum_{d\div\frac ne}\mu(d)} \\
+&= \sum_{e\div n}f(e)\underbrace{I\paren[\Big]{\frac ne}}_{\text{$=1$ only when $e=n$}} \\
+&= f(n)
+\end{align*}
+Let $f\colon[1,\infty)\to\C$.  Define $g\colon[1,\infty)\to\C$ by
+\[ g(x) = \sum_{n\leq xx}f\paren[\Big]{\frac xn} . \]
+Then\footnote{Aside: $g(y)=\sum_{m\leq y}f(\frac ym)$ for $n$, $m\in\Z^+$
+\[ n\leq x\co m\leq\frac xn\iff nm\leq x \]}
+\begin{align*}
+\sum_{n\leq x}\mu(n)g\paren[\Big]{\frac xn} &= \sum_{n\leq x}\mu(n)\sum_{m\leq\frac xn}f\paren[\Big]{\frac{x/n}{m}} \\
+&= \sum_{\substack{n,m\\nm\leq x}}\mu(n)f\paren[\Big]{\frac{x}{nm}} \\
+&= \sum_{\substack{k,l\\ kl\leq x}}\mu(k)f\paren[\Big]{\frac{x}{kl}} \\
+&= \sum_{n\leq x}\sum_{\substack{k,l\\kl=n}}\mu(k)f\paren[\Big]{\frac xn}\footnote{Aside: $n=kl$, $k=d$} \\
+&= \sum_{n\leq x}\sum_{d\div n}\mu(d)f\paren[\Big]{\frac xn} \\
+&= \sum_{n\leq x}f\paren[\Big]{\frac xn}\paren[\Big]{\sum_{d\div n}\mu(d)} \\
+&= \sum_{n\leq x}f\paren[\Big]{\frac xn}\underbrace{I(n)}_{\text{$=1$ only when $n=1$}} \\
+&= f\paren[\Big]{\frac x1} = f(x) .
+\end{align*}
+\eg
+\begin{align*}
+\tau(n) &= \sum_{d\div n}1 = \sum_{d\div n}u(d) \\
+\therefore u(n) &= \sum_{d\div n}\mu(d)\tau\paren[\Big]{\frac nd} \\
+\therefore 1 &= \sum_{\substack{k,l\\kl=n}}\mu(k)\tau(l)
+\end{align*}
+\eg
+\begin{align*}
+\sigma(n) &= \sum_{d\div n}d = \sum_{d\div n}N(d) \\ \intertext{($N(n)=n$ for all $n$)}
+N(n) &= \sum_{d\div n}\mu(d)\sigma\paren[\Big]{\frac nd} \\
+n &= \sum_{\substack{k,l\\kl=n}}\mu(k)\sigma(l)
+\end{align*}
+\eg
+\begin{align*}
+n &= \sum_{d\div n}\phi(d) \\
+N(n) &= \sum_{d\div n}\phi(d) \\
+\phi(n) &= \sum_{d\div n}\mu(d)N\paren[\Big]{\frac nd} \\
+\phi(n) &= \sum_{d\div n}\frac{n\mu(d)}{d}
+\end{align*}
+\remark If $f\colon\Z^+\to\C$ is multiplicative and $g\colon\Z^+\to\C$ is defined by
+\[ g(n) = \sum_{d\div n}f(d) \]
+then $g$ is multiplicative. \\
+\pf For $a$, $b\in\Z^+$ with $\gcd(a,b)=1$ each divisor $d\div ab$ can be expressed uniquely as $d=kl$ where $k\div a$, $l\div b$.
+\begin{align*}
+g(ab) &= \sum_{d\div ab}f(d) \\
+&= \sum_{\substack{k,l\\k\div a,l\div b}}f(kl) \\
+&= \sum_{\substack{k,l\\k\div a,l\div b}}f(k)f(l) \\
+&= \paren[\Big]{\sum_{k\div a}f(k)}\paren[\Big]{\sum_{l\div b}f(l)} \\
+&= g(a) g(b)
+\end{align*}
+\remark We can define a product, called the \emph{Dirichlet product}, on the set of arithmetic functions by
+\begin{align*}
+(f*g)(n) &= \sum_{d\div n}f(a)g\paren[\Big]{\frac nd} \\
+&= \sum_{\substack{k,l\\kl=n}}f(k)g(l)
+\end{align*}
+This product is commutative and associative and $I(n)=\begin{cases}
+1 & \text{if $n=1$} \\
+0 & \text{otherwise}
+\end{cases}$ is the identity.  If $f(1)\neq0$ then $f$ has an inverse $g=f^{-1}$ which is given by a recursive formula
+\[ g(n) = -\frac{1}{f(1)}\sum_{\substack{d\div n\\d\neq n}}f\paren[\Big]{\frac nd}g(d) . \] %\qquad ? \]
+The set of arithmetic functions $f$ with $f(1)\neq0$ is a group under $*$. %\\
+The set of multiplicative arithmetic functions is a subgroup.
+
+\eg The Mangoldt function
+\[ \Lambda(n) = \begin{cases}
+\log p & \text{if $p$ is prime} \\
+0 & \text{otherwise}
+\end{cases} \]
+Find $\sum_{d\div n}\Lambda(d)$. \\
+\soln For $n=1$, $\sum_{d\div n}\Lambda(d)=\Lambda(1)=0$.  For $n=\prod_{i=1}^l p_i^{k_i}$ where the $p_i$ are distinct primes and each $k_i\geq1$,
+\begin{align*}
+\sum_{d\div n}\Lambda(d) &= \sum_{p^k\div n}\Lambda(p^k) \\
+&= \sum_{p^k\div n}\log p \\
+&= \sum_{i=1}^l \sum_{1\leq j_i\leq k_i}\log p_i \\
+&= \sum_{i=1}^l k_i\log p_i \\
+&= \sum_{i=1}^l \log p_i^{k_i} \\
+&= \log \prod_i^{k_i} = \log n \\
+\therefore \sum_{d\div n}\Lambda(d) &= \log n
+\end{align*}
+\eg By M\"obius Inversion
+\begin{align*}
+\Lambda(n) &= \sum_{d\div n}\mu(d)\log\paren[\Big]{\frac nd} \\
+&= \underbrace{\sum_{d\div n}}_{\text{$=1$ only when $n=1$}}\mu(d)\log n - \sum_{d\div n}\mu(d)\log d \\
+&= \log n\paren[\Big]{\sum_{d\div n}\mu(d)} - \sum_{d\div n}\mu(d)\log d \\
+&= \log n \underset{\begin{cases}
+1 & \text{if $n=1$} \\
+0 & \text{otherwise}
+\end{cases}}{I(n)} - \sum_{d\div n}\mu(d)\log d \\
+\Lambda(n) &= - \sum_{d\div n}\mu(d)\log d
+\end{align*}
+\eg\textbf{Liouville's Function} \\
+\[ \lambda(n) = (-1)^l \text{ when $n$ is a product of $l\geq0$ primes (not necessarily distinct)} \]
+Find $\sum_{d\div n}\lambda(d)$. \\
+\soln For $n=1$
+\[ \sum_{d\div n}\lambda(d) = \lambda(1) = 1 \]
+For $n=\prod_{i=1}^l p_i^{k_i}$ with each $k_i\geq1$
+\begin{align*}
+\sum_{d\div n}\lambda(d) &= \sum_{\substack{0\leq j_1\leq k_1\\\vdots\\0\leq j_l\leq k_l}}\lambda\paren[\Big]{\prod_{i=1}^l p_i^{j_i}} \\
+&= \sum_{\substack{0\leq j_1\leq k_1\\\vdots\\0\leq j_l\leq k_l}}(-1)^{j_1}(-1)^{j_2}\dotsm(-1)^{j_l} \\
+&= \prod_{i=1}^l\paren[\Big]{\underbrace{\sum_{0\leq j_i\leq k_i}(-1)^{j_i}}_{=1-1+1-1+\dotsb\pm1}}
+\end{align*}
+For each $i$,
+\begin{align*}
+\sum_{0\leq j_i\leq k_i}(-1)^{j_i} &= 1-1+1-1+\dotsb+(-1)^{k_i} \\
+&= \begin{cases}
+1 & \text{if $k_i$ is even} \\
+0 & \text{if $k_i$ is odd}
+\end{cases}
+\end{align*}
+\[ \therefore \sum_{d\div n}\lambda(d) = \prod \sum_{0\leq j_i\leq k_i}(-1)^{j_i} = \begin{cases}
+1 & \text{if every $k_i$ is even} \\
+0 & \text{otherwise}
+\end{cases} \]
+For all $n\in\Z^+$, $\sum_{d\div n}\lambda(d)=\begin{cases}
+1 & \text{if $n$ is a square} \\
+0 & \text{otherwise}
+\end{cases}$
+\[ \zeta(x) = \sum_{n=1}^\infty \frac{1}{n^x} \]
+Find $\zeta(2k)$ for $k\in\Z^+$.

@@ -1,0 +1,72 @@
+\exs $R$ is a ufd, working in $R[x]$
+\begin{enumerate}
+\item[a)] $a+x^n$, where $a$ is a product of distinct primes is irreducible in $R[x]$ \\
+as long as the factors of $a$ are all distinct (because $8+x^3$ can be factored in $\Z[x]$)
+\item[b)] Let $p$ be a prime number $\in\Z$ \\
+Then $f=1+x+x^2+\dotsb+x^{p-1}$ is irreducible in $\Q[x]$ \\
+\pf By Einsenstein, $g=p+\binom p2x+\binom p3x^2+\dotsb+\binom p{p-2}x^{p-3}+px^{p-2}+x^{p-1}$ is irreducible, since $p\mid\binom pi$, $p\nmid1$, and $p^2\nmid p$
+\end{enumerate}
+\begin{align*}
+\text{Consider } \sigma\colon & \Q[x] \to \Q[x] \\
+& h \mapsto h(x+1)
+\end{align*}
+[We showed this in an assignment.  We can use $R[x]$ to send any extension of $R$, called $S$, to $S$.  In this case, $S=R[x]$.] \\
+So if $h=a_0+\dotsb+a_nx^n$, $a_n\neq0$, then
+\[ \sigma(h) = a_0 + a_1(x+1) + \dotsb + a_n(x+1)^n \]
+Note that the leading term is still $a_nx^n$ \\
+Thus, $\ker\sigma=\brace0$\footnote{$\implies$ $\sigma$ is injective} and $\sigma$ perserves degree. \\
+Also, $\sigma$ is surjective, since given $h$,
+\[ \sigma(a_0+a_1(x-1)+a_2(x-1)^2+\dotsb+a_n(x-1)^n) = h \]
+So, $\sigma$ is an automorphism that preserves degree.
+
+\exer Given any automorphism, if $h$ is irreducible, then $\sigma h$ is irreducible. \\
+$\to$ This is true for all automorphisms on integral domains.
+
+\claim $\sigma(f)=g$ \\
+$(-1+x)(1+x+\dotsb+x^{p-1})=(-1+x^p)$
+\begin{align*}
+\text{Thus, } \sigma((-1+x)(1+\dotsb+x^{p-1})) &= \sigma(-1+x^p) \\
+\implies \sigma(-1+x)\sigma(1+\dotsb+x^{p-1}) &= \sigma(-1+x^p) \\
+x\sigma(1+\dotsb+x^{p-1}) &= -1 + (x+1)^p \\
+&= px + \tbinom p2x^2 + \tbinom p3x^3 + \dotsb + \tbinom p{p-2}x^{p-2} + px^{p-1} + x^p \\
+\implies \sigma(1+\dotsb+x^{p-1}) &= p + \tbinom p2x+\dotsb+\tbinom p{p-2}x^{p-3}+px^{p-2}+x^{p-1} \\
+\implies \sigma(f) &= g
+\end{align*}
+So $f$ is irreducible, since $g$ is.
+
+\textbf{Fields} \\
+Let $R$ be an integral domain.  Then, there is a unique homomorphism
+\begin{align*}
+\phi\colon & \Z \to R \\
+& n \mapsto \underbrace{1+\dotsb+1}_n \quad n\geq0 \\
+%& \mathllap{-}n \mapsto -\phi(n)
+& {-n} \mapsto -\phi(n)
+\end{align*}
+\recall $R$ integral domain $\implies$ $\ker\phi$ is a prime ideal. \\
+$\implies \ker(\phi)=(0)$ or $\ker(\phi)=(p)$, $p$ is prime
+
+\defin If, as above, $\ker\phi=(0)$, then we say $R$ is at \emph{characteristic 0}. ($\iff\smash{\underbrace{1+1+\dotsb+1}_n}\neq0$ in $R$ for all $n\in\Z$) \\
+If $\ker\phi=(p)$, we say \emph{characteristic of $R$ is $p$}. ($\iff\smash{\underbrace{1+1+\dotsb+1}_p}=0$ in $R$)
+
+\remark If $R=F$ is a field then,
+\begin{enumerate}
+\item[a)] $\Char F=0\implies\phi$ extends to an embedding of $\Q$ in $F$\marginpar{(by the universal property, or by showing directly)}
+\begin{align*}
+\hat\phi\colon &\Q \to F \\
+& \tfrac nm \mapsto \phi(n)\phi(m)^{-1}
+\end{align*}
+\item[b)] $\Char F=p\implies$ we have an embedding\marginpar{(by 1st isomorphism theorem, oy by showing directly)}
+\[ \text{also an embedding }\left\{ \begin{aligned}
+\hat\phi\colon & \Z_p = \Z/(p) \to F \\
+&n+(p) \mapsto \underbrace{1+\dotsc+1}_n
+\end{aligned} \right. \]
+\end{enumerate}
+\defin A subfield of a field is a subring that is a field. \\
+Therefore every field has a subfield isomorphic to $\Q$ ($\Char F=0$) or $\Z_p$ ($\Char F=p$)
+
+\convention Idenitify $\Q$ and $\Z_p$ with their images in $F$. \\
+So $\Q=\set{\phi(n)\phi(m)^{-1}}{n,m\in\Z\c m\neq0}\subseteq F$ for $\Char F=0$ and $\Z_p=\brace{0,1,1+1,\dotsc,\smash{\underbrace{1+1+\dotsb+1}_{p-1}}}\subseteq F$ for $\Char F=p$
+
+\defin The set above is the \emph{prime subfield} of $F$. \\
+\exer The prime subfield of $F$ is the unique smallest subfield of $F$. \\
+\notation $\F$ is the prime subfield of $F$.

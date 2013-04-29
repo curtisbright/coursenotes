@@ -1,0 +1,32 @@
+Let $X$ and $Y$ be topological spaces and $f\colon X\to Y$.  Let $a\in X$.  We say that $f$ is \emph{continuous} at $a$ if for all $U\in\U(f(a))$
+there exists a $V\in\U(a)$ such that $f(V)\subset U$.
+\marginpar{figure: $f\colon X\to Y$}
+
+If $f$ is continuous at each $a\in X$ we say that $f$ is continuous \emph{on\/ $X$}.
+
+If $X$ and $Y$ are metric spaces under $d$ and $\rho$ respectively, then $f$ is continuous at $a$ if for all $D(f(a),\epsilon)$, there exists $D(a,\delta)$ such that $f(D(a,\delta))\subset D(f(a),\epsilon)$, i.e., for all $\epsilon>0$, there exists $\delta>0$ such that for all $x$, $d(x,a)<\delta$ implies $\rho(f(x),f(a))<\epsilon$.
+
+Theorem: The following statements are equivalent for a map $f\colon X\to Y$ on topological spaces.
+\begin{enumerate}[label=(\arabic*)]
+\item $f$ is continuous on $X$
+\item $f^{-1}(G)$ is open in $X$ for each open $G$ in $Y$
+\item $f^{-1}(F)$ is closed in $X$ for each closed $F$ in $Y$
+\item $f(\cl(A))\subset\cl(f(A))$ for all subsets $A\subset X$
+\end{enumerate}
+\pf [(1)$\implies$(2)]  Assume (1).  Let open $G$ in $Y$ be given.  Consider $f^{-1}(G)$. \marginpar{figure: $f^{-1}(G)$}%
+Let $a\in f^{-1}(G)$.  Then $f(a)\in G$ (by definition of pre-image).  Now, $G\in\U(f(a))$ because $G$ is open.  Because $f$ is continuous at $a$, there exists $U\in\U(a)$ such that $f(U)\subset G$.  Without loss of generality, we may assume that $U$ is open.  [As there exists an \emph{open neighbourhood} of $a$ inside $U$.]  As $f(U)\subset G$, $U\subset f^{-1}(G)$.  Notice that $a\in U$.  Then, it is clear that,
+\[ \bigcup\set{U}{\text{$U$ is open, $U\subset f^{-1}(G)$}} = f^{-1}(G) . \]
+Being the union of open sets, $f^{-1}(G)$ is open.
+
+[(2)$\implies$(3)]  Assuming (2).  Let $F\subset Y$ be a given closed set.  Consider $f^{-1}(F)$. \marginpar{figure: $f^{-1}(F)$}%
+
+Then $F^c$ (i.e., $Y\setminus F$) is open in $Y$.  By (2), $f^{-1}(F^c)$ is open in $X$. \\
+As $f^{-1}(F^c)=[f^{-1}(F)]^c$, we see that $f^{-1}(F^c)$ is closed.
+
+[(3)$\implies$(4)]  Assume (3).  Let $A\subset X$ be given.  Consider $f^{-1}(\cl(A))$ \marginpar{figure: $\cl(A)\mapsto\cl(f(A))$} \\
+By (3), $f^{-1}(\cl(f(A)))$ is closed. \\
+Notice that $\cl(f(A))\supset f(A)$ \\
+so $f^{-1}(\cl(f(A)))\supset f^{-1}(f(A))$ \\
+so $f^{-1}(\cl(f(A)))\supset A$ \\
+So $\cl(A)\subset f^{-1}(\cl(f(A)))$ (by definition of closure).  Therefore $f(\cl(A))\subset f[f^{-1}(\cl(f(A)))]\subset\cl(f(A))$.  We see (4).
+%exercise: (4)$\implies$(1)

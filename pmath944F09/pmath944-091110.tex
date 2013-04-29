@@ -1,0 +1,102 @@
+Let $\x_1\c \dotsc\c \x_m$ be on $S^{n-1}$ in $\R^n$.  Let $\theta_{ij}$ be the (angular) distance between $\x_i$ and $\x_j$ on $S^{n-1}$.
+\setlength{\unitlength}{1cm}
+\[ \begin{picture}(2,1)(-1,0)
+\arc{2}{4.19}{5.24}
+\put(0,0){\circle*{0.05}}
+\path(0,0)(0.5,0.865)
+\path(0,0)(-0.5,0.865)
+\arc{0.5}{4.19}{5.24}
+\put(0,0.5){\small\makebox(0,0){$\theta_{ij}$}}
+\put(0.5,0.865){\makebox(0,0)[lb]{$\x_j$}}
+\put(-0.5,0.865){\makebox(0,0)[rb]{$\x_i\vphantom{\x_j}$}}
+\end{picture} \]
+%figure: $\theta_{ij}$ is the angle between $\x_i$ and $\x_j$.
+Notice that for any real numbers $t_1\c \dotsc\c t_m$ we have
+\begin{align*}
+\norm{t_1\x_1+\dotsb+t_m\x_m} &= (t_1\x_1+\dotsb+t_m\x_m,t_1\x_1+\dotsb+t_m\x_m) \\
+&= \sum_{i=1}^m\sum_{j=1}^m t_i t_j \cos\theta_{ij} \geq 0 .
+\end{align*}
+Equivalently
+\[ (t_1,\dotsc,t_m) \begin{pmatrix}\cos\theta_{ij}\end{pmatrix} \begin{pmatrix}t_1\\\vdots\\t_m\end{pmatrix} \geq 0 . \]
+Thus the matrix $(\cos\theta_{ij})_{\substack{i=1,\dotsc,m\\j=1,\dotsc,m}}$ is positive semi-definite.
+
+In 1943 Schoenberg proved that the matrix $(G^{(n)}_k(\cos(\theta_{ij})))_{\substack{i=1,\dotsc,m\\j=1,\dotsc,m}}$ is again positive semi-definite for any set of points $\x_1\c \dotsc\c \x_m$ on $S^{n-1}$ where the $G_k^{(n)}$s are Gegenbauer polynomials.
+
+Schoenberg also proved that if $(f(\cos\theta_{ij}))_{\substack{i=1,\dotsc,m\\j=1,\dotsc,m}}$ is positive semi-definite for all choices of $\x_1\c \dotsc\c \x_m$ in $S^{n-1}$ then $f$ can be expressed as a linear combination (perhaps infinite) with non-negative coefficients of Gegenbauer polynomials.
+
+We may define polynomials $C_k^{(n)}(t)$ by the expansion
+\[ (1-2rt+r^2)^{(2-n)/2} = \sum_{k=0}^\infty r^k C_k^{(n)}(t) \qquad \text{for $n=3\c 4\c \dotsc$} . \]
+We then put
+\[ G_k^{(n)}(t) = \frac{C_k^{(n)}(t)}{C_k^{(n)}(1)}, \qquad \text{so $G_k^{(n)}(1)=1$} . \]
+We may also define $G_k^{(n)}(t)$ for $n=1\c 2\c \dotsc$ recursively by the rules
+\begin{gather*}
+G_0^{(n)}(t) = 1, \qquad G_1^{(n)}(t) = t \qquad \text{and} \\
+G_k^{(n)}(t) = \frac{(2k+n-4)tG_{k-1}^{(n)}(t) - (k-1)G_{k-2}^{(n)}(t)}{k+n-3}
+\end{gather*}
+In the special case that $n=3$ the polynomials are known as the Legendre polynomials.
+
+Since $(G_k^{(n)}(\cos\theta_{ij}))_{\substack{i=1,\dotsc,m\\j=1,\dotsc,m}}$ is positive semi-definite, if $a_0\c \dotsc\c a_d$ are non-negative real numbers then
+\[ (a_0G_0^{(n)}+\dotsb+a_dG_d^{(n)}(\cos\theta_{ij})) \]
+is also positive semi-definite.  We put
+\[ f(n,a_0,\dotsc,a_d)(t) = f(t) = a_0G_0^{(n)}(t) + \dotsb + a_dG_d^{(n)}(t) \]
+and we define $S_f(\x_1,\dotsc,\x_m)$ by
+\begin{align*}
+S_f(\x_1,\dotsc,\x_m) &= \sum_{i=1}^m\sum_{j=1}^m f(\cos\theta_{ij}) \\
+&= \sum_{k=0}^d a_k \sum_{i=1}^m\sum_{j=1}^m G_k^{(n)}(\cos(\theta_{ij})) .
+\end{align*}
+Thus, since $a_0\c \dotsc\c a_d$ are non-negative and $\sum_{i=1}^m\sum_{j=1}^m G_k^{(n)}(\cos\theta_{ij})\geq0$ for $k=0\c \dotsc\c d$ we see that
+\begin{equation} S_f(\x_1,\dotsc,\x_m) \geq a_0 \sum_{i=1}^m\sum_{j=1}^m G_0^{(n)}(\cos(\theta_{ij})) = a_0 m^2 \label{star091110} . \end{equation}
+
+Let us suppose now that $\x_1\c \dotsc\c \x_m$ is a configuration of $m$ points on $S^{n-1}$ which correspond to the $m$ points of contact by $m$ spheres of radius $1$ which surround $S^{n-1}$ in a kissing configuration.  Then $\theta_{ij}\geq\frac\pi3$ provided that $i\neq j$ hence $\cos(\theta_{ij})\leq\frac12$ for $i\neq j$.
+%figure: three touching circles with equilateral triangle joining centres
+
+Suppose that $a_0\c \dotsc\c a_d$ are non-negative real numbers for which $f(t)\leq0$ for $t$ in the range $[-1,\frac12]$.  Then
+\begin{align*}
+S_f(\x_1,\dotsc,\x_m) &\leq m f(1) \qquad\text{and so by~\eqref{star091110}, if $a_0>0$,} \\
+m &\leq \frac{f(1)}{a_0}
+\end{align*}%[terms with $i\neq j$ will be $\leq0$; drop these, keep only these with $i=j$]
+The strategy is now to choose $a_0\c \dotsc\c a_d$ so that $f(t)\leq0$ for $[-1,\frac12]$ and such that $a_0$ is large and $f(1)$ is small.  There are two amazing applications of this approach.  They were found independently in 1979 by Odlyzko and Sloan and by Levenshtein and they treat the cases $n=8$ and $n=24$. %\\
+For $n=8$ we consider
+\[ f(t) = G_0^{(8)} + \tfrac{16}{7}G_1^{(8)} + \tfrac{200}{63}G_2^{(8)} + \tfrac{832}{231}G_3^{(8)} + \tfrac{1216}{429}G_4^{(8)} + \tfrac{5120}{3003}G_5^{(8)} + \tfrac{2560}{4641}G_6^{(8)} \]
+then
+\[ f(t) = \tfrac{320}{3}(t+1)(t+\tfrac12)^2t^2(t-\tfrac12) . \]
+One can check that $f(t)\leq0$ for $[-1,\frac12]$.  Thus $\tau_8\leq\frac{320}{\cancel3}\cdot\cancel2\cdot\frac{3^{\cancel2}}{2^2}\cdot\cancel{\frac{1}{2}}=240$.
+
+For $n=24$ one can find a non-negative linear combination of the $G_k^{(24)}$s to give $f(t)$ where
+\[ f(t) = \tfrac{1490944}{15}(t+1)(t+\tfrac12)^2(t+\tfrac14)^2t^2(t-\tfrac14)^2(t-\tfrac12) \]
+and $f(t)\leq0$ for $t$ in $[-1,\frac12]$.  Thus
+\[ \tau_{24} \leq 196{,}560 . \]
+
+We'll show that the $E_8$ lattice has kissing number $240$ and the Leech lattice has kissing number $196{,}560$.  Thus $\tau_8$ and $\tau_{24}$ are determined.  In general things don't go quite so smoothly.  This approach gives $\tau_3\leq13$ and $\tau_4\leq25$, yet we know $\tau_3=12$ and $\tau_4=24$.  The choice of $a_0\c \dotsc\c a_d$ is made after running linear programming packages.
+
+Let us now return to lattices.  Recall $E_8$ has diagram %.-.-.|-.-.-.-.
+\setlength{\unitlength}{0.5cm}\phantom{$\Bigm|$}\begin{picture}(6,0)(0,0.25)\multiput(0,0)(1,0){7}{\circle*{0.2}}\put(2,1){\circle*{0.2}}\put(0,0){\line(1,0){6}}\put(2,0){\line(0,1){1}}\end{picture}\phantom{$\Bigm|$}
+.  With each vector normalized to have length $\sqrt2$ we have that the matrix $B$ of inner products is
+\[ B = B(E_8(\sqrt2)) = \begin{pmatrix}
+2 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+1 & 2 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 2 & 1 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 2 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 2 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 1 & 2 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 2 & 1 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 2
+\end{pmatrix} \]
+
+One can check that $\det B=1$.  Notice that we may realize $E_8(\sqrt2)$ in the following way:
+\setlength{\unitlength}{2cm}
+\[\begin{picture}(6,1.75)(0,-0.5)
+\multiput(0,0)(1,0){7}{\circle*{0.1}}
+\put(2,1){\circle*{0.1}}
+\put(0,0){\line(1,0){6}}
+\put(2,0){\line(0,1){1}}
+\put(0,-0.20){\makebox(0,0){\small$(1,-1,0,0,0,0,0,0)$}}
+\put(1,0.20){\makebox(0,0){\small$(0,-1,1,0,0,0,0,0)$}}
+\put(2,-0.20){\makebox(0,0){\small$(0,0,1,-1,0,0,0,0)$}}
+\put(3,0.20){\makebox(0,0){\small$(0,0,0,-1,1,0,0,0)$}}
+\put(4,-0.20){\makebox(0,0){\small$(0,0,0,0,1,-1,0,0)$}}
+\put(5,0.20){\makebox(0,0){\small$(0,0,0,0,0,-1,1,0)$}}
+\put(6,-0.20){\makebox(0,0){\small$(0,0,0,0,0,0,1,-1)$}}
+\put(2,1.20){\makebox(0,0){\small$(\frac12,\frac12,\frac12,-\frac12,-\frac12,-\frac12,-\frac12,-\frac12)$}}
+\end{picture}\]
+\vspace{-\baselineskip}

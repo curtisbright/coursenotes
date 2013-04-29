@@ -1,0 +1,95 @@
+Calculate $\zeta(2n)=\sum_{k=1}^\infty\frac{1}{k^{2n}}$ \\
+\soln Let $f(z)=\frac{\cot z}{z^{2n}}=\frac{\cos z}{z^{2n}\sin z}$ \\
+$f$ has simple poles at $z=k\pi$, $0\leq k\in\Z$ and a multiple pole at $z=0$. \\
+$f(z)=\frac{g(z)}{\sin z}$ where $g(z)=\frac{\cos z}{z^{2n}}$. \\
+For $0\neq k\in\Z$,
+\[ \Res(f,k\pi) = \frac{g(k\pi)}{\cos(k\pi)} = \frac{\cos k\pi/(k\pi)^{2n}}{\cos(k\pi)} = \frac{1}{(k\pi)^{2n}} \]
+At $z=0$
+\[ \Res(f,0) = \paren[\Big]{\Res\frac{z\cot z}{z^{2n+1}},0} = \text{coefficient of $z^{2n}$ in $z\cot z$} \]
+Let $\sigma_n$ be the square as shown.
+%[diagram]
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\draw(-5,0)--(5,0);
+\draw(0,-5)--(0,5);
+\path[decoration={markings,mark=at position 0.5 with {\arrow{>}\node[label=right:$\sigma_n$]{};}},decorate](3.5,0)--(3.5,3.5);
+\draw(3.5,3.5)--(-3.5,3.5)--(-3.5,-3.5)--(3.5,-3.5)--cycle;
+\foreach \x in {-4,...,4}
+\draw(\x,0) circle [radius=0.1];
+\node[circle,draw,fill,color=black,inner sep=0.75,label=below right:$(n+\frac12)\pi$] at (3.5,0){};
+\node[circle,draw,fill,color=black,inner sep=0.75,label=above left:$i(n+\frac12)\pi$] at (0,3.5){};
+\end{tikzpicture}
+\end{center}
+\[ g' = f \qquad \int_\alpha f = \int_\alpha g' = \brack[\big]{g(z)}_{\alpha(t_1)}^{\alpha(t_2)} \]
+We have
+\[ \int_{\sigma_n}f = 2\pi i\paren[\bigg]{\Res(0)+2\sum_{k=1}^n\frac{1}{(k\pi)^{2n}}} \]
+If we can show that $\int f_{\sigma_n}\to0$ as $n\to\infty$ then we get $2\sum_{k=1}^\infty\frac{1}{(k\pi)^{2n}}=-\Res(0)$. \\
+We have
+\begin{align*}
+\abs{\sin(x+iy)}^2 &= \abs{\sin x\cosh y+i\cos x\sinh y}^2 \\
+&= \sin^2 x \cosh^2 y + \underbrace{\cos^2 x}_{1-\sin^2 x} \sinh^2 y \\
+&= \sin^2 x (\cosh^2 y - \sinh^2 y) + \sinh^2 y \\
+&= \sin^2 x + \sinh^2 y \\
+\abs{\cos(x+iy)}^2 &= \cos^2 x \cosh^2 y + \underbrace{\sin^2 x}_{1-\cos^2 x}\sinh^2 y \\
+\abs{\cot z}^2 &= \frac{\cos^2 x+\sinh^2 y}{\sin^2 x+\sinh^2 y}
+\end{align*}
+On the vertical sides with $x = (n+\tfrac12)\pi$ we have
+\[ \abs{\cot z}^2 = \frac{\sinh^2 y}{1+\sinh^2 y} = \frac{\sinh^2 y}{\cosh^2 y} = \tanh^2 y \leq 1 \]
+\begin{center}
+\begin{tikzpicture}[domain=-4:4]
+\draw(-4,0)--(4,0);
+\draw(0,-1)--(0,1);
+\draw[postaction={decoration={markings,mark=at position 0.5 with {\node[label=above left:{$y=\operatorname{tanh}x$}]{};}},decorate}] plot (\x,{tanh(\x)});
+\end{tikzpicture}
+\end{center}
+On the horizontal sides with $y=(n+\frac12)\pi$
+\begin{align*}
+\abs{\cot z}^2 &= \frac{\cos^2 x+\sinh^2 y}{\sin^2 x+\sinh^2 y} \\
+&\leq \frac{1+\sinh^2 y}{\sinh^2 y} = \frac{\cosh^2 y}{\sinh^2 y} \\
+&= \coth^2 y \leq 2
+\end{align*}
+for large $n$.
+\begin{align*}
+\therefore \abs[\Big]{\int_{\sigma_l}f} &= \abs[\Big]{\int_{\sigma_l}\frac{\cot z}{z^{2n}}} \\
+&\leq \operatorname{length}(\sigma_l)\max_{z=\sigma_l(t)}\abs[\Big]{\frac{\cot z}{z^{2n}}} \\
+&= 4(2l+1)\pi\cdot\frac{2}{((l+\frac12)\pi)^{2n}}
+\end{align*}
+$\to0$ as $l\to\infty$.
+
+% \\
+\textbf{Chapter 3 (and a bit of 4) Asymptotic Formulas} \\
+We shall find asymptotic formulas for $\sum_{n\leq x}\frac{1}{n}$, $\sum_{n\leq x}\frac{1}{n^a}$ for $a>1$, $\sum_{n\leq x}\tau(n)$, $\sum_{n\leq x}\sigma(n)$, $\sum_{n\leq x}\phi(n)$, $\sum_{p\leq x}\frac{\log p}{p}$, $\sum_{p\leq x}\frac{1}{p}$ \\
+later: $\pi(x)=\sum_{p\leq x}1$
+
+\textbf{Terminology} \\
+For $g\colon[1,\infty)\to(0,\infty)$ we write $O(g(x))$ to denote some function $f(x)\colon[1,\infty)\to\C$ with the property that for some $C>0$ and some $R>0$
+\[ \abs{f(x)} \leq C g(x) \qquad \text{for all $x\geq R$} . \]
+We write $o(g(x))$ to denote some function $f(x)$ with the property that
+\[ \lim_{n\to\infty}\frac{\abs{f(x)}}{g(x)} = 0 . \]
+We write $f(x)\sim g(x)$ and say that $f$ is \emph{asymptotic to\/ $g$} when
+\[ \lim_{x\to\infty}\frac{f(x)}{g(x)} = 1 . \]
+\thm (Abel's Summation Formula) \\
+Let $a\colon\Z^+\to\C$, let $f\colon[1,\infty)\to\C$ be $\mathcal{C}^1$.  Then
+\[ \sum_{n\leq x}a(n)f(n) = A(x)f(x) - \int_1^x A(t)f'(t)\d t \]
+where $A(x)=\sum_{n\leq x}a(n)$. \\
+\pf Let $l=\ceil{x}$.  Then
+\begin{align*}
+\sum_{n\leq x}a(n)f(n) &= a(1)f(1) + a(2)f(2) + \dotsb + a(l)f(l) \\
+&= A(1)f(1) + (A(2)-A(1))f(2) + \dotsb + (A(l)-A(l-1))f(l) \\
+&= A(l)f(l) + A(1)(f(1)-f(2)) + A(2)(f(2)-f(3)) + \dotsb + A(l-1)(f(l-1)-f(l)) \\
+&= A(l)f(l) - \int_1^2 A(t)f'(t)\d t - \int_2^3 A(t)f'(t) - \dotsb - \int_{l-1}^l A(t) f'(t) \d t
+\end{align*}
+because for $t\in[k,k+1)$ we have $A(t)=A(k)$ so
+\[ \int_k^{k+1}A(t)f'(t)\d t = \int_k^{k+1}A(k)f'(t) = A(k)\brack{f(t)}_{t=k}^{k+1} = A(k)(f(k+1)-f(k)) \]
+\[ \sum_{n\leq x} a(n)f(n) = A(l)f(l) - \int_1^l A(t)f'(t)\d t \]
+We have $x\in[l,l+1)$ so
+\begin{gather*}\begin{aligned}
+\int_l^x A(t) f'(t) \d t &= \int_l^x A(l)f'(t)\d t \\
+&= A(l)\brack{f(t)}_{t=l}^x = A(l)f(x) - A(l)f(l)
+\end{aligned}\\
+\begin{aligned}
+\therefore \sum_{n\leq x} a(n)f(n) &= A(l)f(l) - \int_1^l A(t)f'(t)\d t - \int_l^x A(l)f'(t)\d t + A(l)f(x) - A(l)f(l) \\
+&= A(x)f(x) - \int_1^x A(t)f'(t)\d t
+\end{aligned}\end{gather*}
+since $A(x)=A(l)$.
+%Aside: $\sum_{n\leq t}a(n)=A(t)=A(\floor{t})=\sum_{n=1}^{\floor{t}}a(n)$

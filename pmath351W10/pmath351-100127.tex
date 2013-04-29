@@ -1,0 +1,23 @@
+%Example.  
+\eg Consider $\R$ under the usual metric.  Let $A=[0,1]\cup\brace2\cup[3,4]$.  Then $2$ is a limit (contact) point of $A$.  It is not an accumulation point of $A$.  The open set $D(2,1/2)$ meets $A$ at $\brace2$.
+
+\defn Let $X$ be a topological space.  A set $U$ is called a neighbourhood of $a\in X$ if $U$ contains an open set $G$ which has $a$ as an element.\marginpar{figure: $a\in G$}  Clearly, every open set which contains $a$ is a neighbourhood of $a$.
+\[ \U(a) = \set{U\subset X}{\text{$U$ is a neighbourhood of $a$}} \]
+is called the \emph{neighbourhood system at\/ $a$}.  Notice that $\U(a)$ is closed under finite intersection.  Further, if $U\in\U(a)$ and $V\supset U$, then $V\in\U(a)$.
+
+\defn Let $\Delta$ be a set ($\neq\emptyset$) with a partial order $\leq$.  Suppose that for any two elements $a$, $b\in\Delta$, there exists $c\in\Delta$ so that $a\leq c$ and $b\leq c$.  We call such $(\Delta,\leq)$ a \emph{directed} set.
+
+\egs
+\begin{enumerate}
+\item $\N$ under the usual ordering is a directed set.
+\item Let $X$ be a topological space, $a\in X$ be any point.  Consider $\Delta=\U(a)$.  Define on $\Delta$ the partial ordering $\leq$ by $U$, $V\in\U(a)$, $U\leq V$ if $V\subset U$.  Then $(\U(a),\leq)$ is a directed set.  In fact, if $U$ and $V$ are two neighbourhoods of $a$, then $U\cap V$ is a neighbourhood of $a$ and is higher than both.
+\end{enumerate}
+\defn Let $(\Delta,\leq)$ be a directed set.  Let $X$ be a set.  A function $\x\colon\Delta\to X$ is called a \emph{net in\/ $X$}.  When $(\Delta,\leq)$ is $\N$ under the usual ordering, we call the net a \emph{sequence in\/ $X$}.
+
+\defn Let $(\Delta,\leq)$ be a directed set, $X$ be a topological space.  Let $\x$ be a net on $\Delta$ in $X$.  The image of an element $\alpha\in\Delta$ under $\x$ will be denoted by $\x_\alpha$.  The map $\x$ is sometimes recorded as $(\x_\alpha)_{\alpha\in\Delta}$.
+
+Let $x_0\in X$.  We say that $\x$ \emph{converges} to $x_0$ if for all $U\in\U(x_0)$, there exists $x\in\Delta$ such that $\x_\beta\in U$ for all $\alpha\leq\beta$.
+
+\prop Let $X$ be a topological space and $A\subset X$.  Let $b\in X$.  Then $b$ is a limit point of $A$ if and only if every neighbourhood $U\in\U(b)$ meets $A$ if and only if there exists a net $\x\colon\Delta\to X$, with terms in $A$, so that $\x$ converges to $b$. \\
+(Partial Proof).  Suppose that $b$ is a limit point of $A$.\marginpar{figure: $b$ limit point of $A\subset X$}  Consider $\Delta=\U(b)$, with the partial ordering $U\leq V$ if $V\subset U$.  To each $U\in\U(b)$, choose $\x_u\in A\cap U$. [So, $\x$ is a choice function]. \\
+Then $\x$ is a net whose terms are in $A$.  Moreover, we can check that indeed $\x$ converges to $b$.

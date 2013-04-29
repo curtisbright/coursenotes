@@ -1,0 +1,76 @@
+\textbf{Stone--Weierstrass Theorem} \\
+Algebra $\A$: $f,g\in\A$
+$\implies f+g\in\A$ \\
+$fg\in\A$ \\
+$cf\in\A$ \\
+$\A\subseteq C(X,F)$, $F=\R\text{ or }\C$ separates points \\
+if whenever $x\neq y\in X$ \\
+$\exists f\in\A$ such that $f(x)\neq f(y)$
+
+Let $X$ be compact, metric space and let $\A\subseteq C(X)$ be an algebra that separates points.  Assume constant functions belong to $\A$.  Then $\A$ is dense in $C(X)$.
+
+\textbf{Lemma 1:} Suppose $B$ an algebra $\subseteq C(X)$ that contains the constants.  If $f\in B$ then $\abs f\in\overline B$. \\
+\textbf{Lemma 2:} If $f,g\in\overline\A$ then $\max(f,g)$\footnote{$=h$, $h(x)=\max(f(x),g(x))$} and $\min(f,g)\in\overline\A$ \\
+\pf First check $\A$ is an algebra. \\
+Let $f,g\in\overline\A$, say $f_n\footnote{$\in\A$}\to f$, $g_n\addtocounter{footnote}{-1}\footnotemark\to g$, $f_n+g_n\in\A$ since $\A$ is an algebra.
+\[ \begin{gathered}
+f_n + g_n \to f + g \\
+c\addtocounter{footnote}{-1}\footnotemark f_n \to cf
+\end{gathered} \implies \begin{gathered}
+f + g \in \overline\A \\
+cf \in \overline\A
+\end{gathered} \]%\footnotetext{$\in\A$}%
+By Lemma, $\abs{f-g}\in\overline\A$.
+\begin{align*}
+\max(f,g) &= \tfrac12(f+g+\abs{f-g})\in\overline\A \\
+\min(f,g) &= \tfrac12(f+g+\abs{f-g})\in\overline\A %\\
+\end{align*}
+\textbf{Lemma 3:} Given $x\neq y\in X$, $a,b\in\R$, there exists $f\in\A$ such that $f(x)=a$, $f(y)=b$ \\
+\pf Since $\A$ separates points there exists $g\in\A$ such that $g(x)\neq g(y)$
+\begin{gather*}
+\begin{aligned}
+\text{Put } f(t\footnote{$\in X$}) &= a + (b-a)\paren[\bigg]{\frac{g(t)-g(x)\footnote{$\in\R$}}{\underbrace{g(y)-g(x)}_{\neq0}}} \\
+&= \alpha_1 + \alpha_2 g(t)\in\A
+\end{aligned}\\%\addtocounter{footnote}{-1}\footnotetext{$\in X$}\addtocounter{footnote}{1}\footnotetext{$\in\R$}%
+f(x)=a\text{, }f(y)=b~\checkmark
+\end{gather*}
+\textbf{Lemma 4:} If $f\in C(X)$, $x_0\in X$ and $\epsilon>0$ then there exists $g\footnote{$=g(x_0,\epsilon)$}\in\overline\A$ such that $g(x_0)=f(x_0)$ and $g(z)\leq f(z)+\epsilon$ $\forall z\in X$ \\
+\pf Apply lemma 3 with $x=x_0$, $y$ fixed\footnote{$y\neq x_0$} but arbitrary, $a=f(x_0)$, $b=f(y)$. \\
+Get $h_y\in\A$ such that $h_y(x_0)=f(x_0)$, $h_y(y)=f(y)$. \\
+If $y=x_0$ just take $h_{x_0}(t)=f(x_0)$ (constant function) \\
+Look at $(h_y-f)(y)=0$. \\
+$h_y-f$ is continuous so $\exists\delta y>0$ such that $\abs{h_y(z)-f(z)}<\epsilon$ if $d(y,z)<\delta_y$. \\
+Look at balls $\set{B(y,\delta_y)}{y\in X}$: open cover of compact set $X$, so there is a finite subcover, say
+\[ B(y_1,\delta y_1),\dotsc,B(y_k,\delta y_k) \]
+Take $g=\min(h_{y_1},\dotsc,h_{y_k})\in\overline\A$ by lemma 2. \\
+$g(x_0)=f(x_0)$ as all $h_y(x_0)=f(x_0)$. \\
+If $z\in X$, then $z\in B(y_j,\delta_{y_j})$ for some $j$ \\
+$\implies$ $d(y_j,z)<\delta_{y_j}$ \\
+By definition of $\delta_{y_j}$, this implies $h_{y_j}(z)<f(z)+\epsilon$ \\
+$\implies$ $g(z)\leq h_{y_j}(z)<f(z)+\epsilon$ \\
+\textbf{Lemma 5:} If $f\in C(X)$ and $\epsilon>0$ there exists $g\in\overline\A$ such that $\norm{g-f}<\epsilon$. \\
+\pf For each $x\in X$ by Lemma 4 we get $g_x\in\overline\A$ such that $g_x(x)=f(x)$ and
+\[ g_x(z) \leq f(z) + \epsilon \quad\forall z\in X \label{two}\tag{2} \]
+Know $g_x-f(x)=0$ so there exists $\delta_x>0$ such that
+\[ d(x,z) < \delta_x \implies \abs{g_x(z)-f(z)}<\epsilon \]
+Balls $B(x,\delta_x)$: $x\in X$ open cover of $X$ \\
+Take a finite subcover, say $B(x_1,\delta_{x_1}),\dotsc,B(x_L,\delta_{x_L})$ \\
+Put $g=\max(g_{x_1},\dotsc,g_{x_L})\in\overline\A$ \\
+Take $y\in X$ say $y\in B(x_i,\delta_{x_i})$ \\
+$\implies$ $\abs{g_{x_i}-f(y)}<\epsilon$ %\\
+\[ f(y)-\epsilon \underset{(1)}{<} g_{x_i}(y) < f(y)+\epsilon \]
+\begin{align*}
+f(y)-\epsilon \underset{(1)}{<} g_{x_i}(y) \leq g(y) &= g_{x_j}(y) \text{ (some index)} \\
+&\leq f(y) + \epsilon \text{ by (2)} \\
+\implies \abs{g(y)-f(y)} &\leq \epsilon \quad\forall y\in X \\
+\implies \norm{g-f} &\leq \epsilon
+\end{align*}
+\textbf{Proof of S--W Theorem} \\
+Let $f\in C(X)$, and $\epsilon>0$ \\
+By lemma 5 get $g\in\overline\A$ such that $\norm{g-f}\leq\epsilon/2$. \\
+Get $h\in\A$ such that $\norm{g-h}\leq\epsilon/2$. \\
+By triangle inequality
+\begin{align*}
+\norm{f-h} &\leq \norm{f-g}+\norm{g-h} \\
+&\leq \epsilon
+\end{align*}

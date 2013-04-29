@@ -1,0 +1,45 @@
+\defn A set $\brace{f_1,\dotsc,f_r}\subset F[x_1,\dotsc,x_n]$ is a Gr\"obner basis \emph{iff}
+\[ \LT(f_1,\dotsc,f_r) = (\LT(f_1),\dotsc,\LT(f_r)) \]
+\defn A Gr\"obner basis $\brace{f_1,\dotsc,f_r}$ is minimal \emph{iff} every $f_i$ has leading coefficient $1$ and $\LT(f_i)\nmid\LT(f_j)$ if $i\neq j$.
+
+\thm Any two minimal Gr\"obner bases for the same ideal have the same number of elements. \\
+\pf Let $\brace{f_1,\dotsc,f_r}$ and $\brace{g_1,\dotsc,g_t}$ be two minimal Gr\"obner bases for the ideal $I=(f_1,\dotsc,f_r)=(g_1,\dotsc,g_t)$.  We want to show $r=t$.  Let $f_i\in\brace{f_1,\dotsc,f_r}$ be any element.  Then there is some $g_j$ such that $\LT(g_j)\mid\LT(f_i)$, since $\LT(f_i)$ is not in the (zero) remainder left upon division of $f_i$ by $\brace{g_1,\dotsc,g_t}$.  Similarly, some $f_k$ satisfies $\LT(f_k)\mid\LT(g_j)$.
+So $\LT(f_k)\mid\LT(f_i)$.  Then minimality of $\brace{f_1,\dotsc,f_r}$ implies $i=k$, and so $\LT(f_i)=\LT(g_j)$.  Since all the leading terms of the $f_i$s are different, and similarly for the $g_j$s, we've just built a bijection between the $f_i$s and $g_j$s. \qed
+
+\defn A Gr\"obner basis $\brace{f_1,\dotsc,f_r}$ is reduced \emph{iff} it is minimal and no term of any $f_i$ is divisible by $\LT(f_j)$ for $i\neq j$.
+
+\eg $\brace{x-y,y^2-1}$ is reduced. \\
+$\brace{x-y^2-y+1,y^2-1}$ is not reduced.
+
+To find a reduced Gr\"obner basis, first find a minimal one $\brace{f_1,\dotsc,f_r}$.  For each $i$, replace $f_i$ by its remainder upon division by $\brace{f_1,\dotsc,\hat{f_i},\dotsc,f_r}$.
+
+\thm Any nonzero ideal $I\subset F[x_1,\dotsc,x_n]$ has a unique reduced Gr\"obner basis. \\
+\pf Say $\brace{g_1,\dotsc,g_r}$ and $\brace{g'_1,\dotsc,g'_r}$ are reduced Gr\"obner bases for $I=(g_1,\dotsc,g_r)=(g'_1,\dotsc,g'_r)$.  For any $g_i$, let $g'_j$ be the element such that $\LT(g_i)=\LT(g'_j)$.
+
+The element $g_i-g'_j$ has no terms divisible by \emph{any} $\LT(g_k)$ (because $\LT(g_i)$ is cancelled by $\LT(g'_j)$).  But $g_i-g'_j\in I$, so $g_i-g'_j=0$, and so $g_i=g'_j$. \qed
+
+Let $F$ be a field, $F[x]$ the polynomial ring in one variable.  Then $F$ has two ideals: $(0)$ and $(1)$, and every nonzero element of $F$ is a unit.
+
+\fact Let $R$ be a nonzero ring.  $F$ a field.  Then every homomorphism from $F\to R$ is 1--1.
+
+$F[x]$ is a PID, so it's also a UFD.  Every ideal of $F[x]$ is of the form $I=(p(x))$ for some $p(x)\in F[x]$.  The ideal $(p(x))$ is maximal \emph{iff} $p(x)$ is irreducible, and prime \emph{iff} $p(x)$ is irreducible or zero.
+
+What does $F[x]/(p(x))$ look like?
+
+\thm (Chinese Remainder) Let $p(x)$, $q(x)\in F[x]$ be coprime polynomials.  Then:
+\[ \phi\colon F[x]/(pq)\to F[x]/(p) \oplus F[x]/(q) \]
+given by $\phi(a(x)\bmod pq)=(a(x)\bmod p,a(x)\bmod q)$ is an isomorphism. \\
+\pf $\phi$ is clearly a homomorphism. \\
+1--1: Say $a(x)\equiv b(x)\bmod p$
+and $a(x)\equiv b(x)\bmod q$.  We want to show
+\[ a(x) \equiv b(x) \bmod pq . \]
+Since $p\mid a-b$ and $q\mid a-b$, the fact%s
+\ that $p$, $q$ are coprime and $F[x]$ is a UFD $\implies pq\mid a-b$, so
+\[ a(x) \equiv b(x) \bmod pq . \]
+\textbf{Onto:} Say $f(x)$, $g(x)$ are any elements of $F[x]$.  We want to find a single $h(x)\in F[x]$ satisfying $\phi(h(x)\bmod pq)=(f(x)\bmod p,g(x)\bmod q)$:
+\begin{align*}
+h(x) &\equiv f(x) \bmod p \\
+h(x) &\equiv g(x) \bmod q
+\end{align*}
+Since $p$, $q$ coprime, there are $a(x)$, $b(x)\in F[x]$ such that:
+\[ a(x)p(x) + b(x)q(x) = 1 . \]

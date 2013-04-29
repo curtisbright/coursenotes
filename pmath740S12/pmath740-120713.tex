@@ -1,0 +1,116 @@
+$\Gamma(z)$ is holomorphic in $\C\setminus\brace{0,-1,-2,\dotsc}$ with simple poles at $z=0$, $-1$, $-2$, $\dotsc$.
+
+\thm (Euler's Reflection Formula for $\Gamma$) \\
+For $z\in\C\setminus\Z$ we have
+\[ \Gamma(z) \Gamma(1-z) = \frac{\pi}{\sin\pi z} \]
+\pf For $z=a\in\R$ with $0<a<1$,
+\begin{align*}
+\Gamma(a)\Gamma(1-a) &= \int_0^\infty t^{a-1}e^{-t} \d t \int_0^\infty t^{-a}e^{-t} \d t \\
+&= \int_{u=0}^\infty u^{2a-2} e^{-u^2}\cdot2u\d u\int_0^\infty v^{-2a}e^{-v^2}\cdot2v\d v \\ \intertext{where $u=v=\sqrt t$, $u^2=v^2=t$, $2u\d u=2v\d v=\!\d t$}
+&= 4\int_{v=0}\int_{u=0}u^{2a-1}v^{1-2a}e^{-u^2-v^2}\d u\d v \\
+&= 4\int_{\theta=0}^{\pi/2}\int_{r=0}^\infty (\tan\theta)^{1-2a} e^{-r^2}r\d r\d\theta \\ \intertext{where $r^2=u^2+v^2$, $\tan\theta=\frac vu$}
+&= \int_{\theta=0}^{\pi/2}2(\tan\theta)^{1-2a}\d\theta\int_{r=0}^\infty 2re^{-r^2}\d r .
+\end{align*}
+We have
+\[ \int_{r=0}^\infty 2re^{-r^2}\d r = \brack[\Big]{-e^{-r^2}}_0^\infty = 1 \]
+To find $\int_0^{\pi/2}2(\tan\theta)^{1-2a}\d\theta$ we let $x=\tan^2\theta$, $\!\d x=2\tan\theta\sec^2\theta\d\theta$.  Then
+\[ \int_0^{\pi/2}2(\tan\theta)^{1-2a}\d\theta = \int_{\theta=0}^{\pi/2}\frac{2\tan\theta}{(\tan^2\theta)^a}\cdot\frac{\sec^2\theta}{\sec^2\theta}\d\theta = \int_{x=0}^\infty\frac{\!\d x}{x^a(x+1)} \]
+To find $I=\int_0^\infty\frac{x^{-a}}{x+1}\d x$ we integrate $f(z)=\frac{z^{-a}}{z+1}$ along the loop $\alpha=\lambda\cdot\sigma\cdot\mu^{-1}\cdot\tau^{-1}$,
+\begin{gather*}
+\tikz{
+\draw(-2.5,0)--(2.5,0);
+\draw(0,-2.5)--(0,2.5);
+\draw[decoration={markings,mark=at position 0.125 with {\arrow{>},\node[above right]{$\sigma$};}},postaction=decorate]({asin(0.1/2)}:2)arc({asin(0.1/2)}:{360-asin(0.1/2)}:2);
+\draw[decoration={markings,mark=at position 0.125 with {\arrow{>},\node[above right]{$\tau$};}},postaction=decorate]({asin(0.1/0.25)}:0.25)arc({asin(0.1/0.25)}:{360-asin(0.1/0.25)}:0.25);
+\draw[decoration={markings,mark=at position 0.5 with {\arrow{>},\node[above]{$\lambda$};}},postaction=decorate]({asin(0.1/0.25)}:0.25)--({asin(0.1/2)}:2);
+\draw[decoration={markings,mark=at position 0.5 with {\arrow{>},\node[below]{$\mu$};}},postaction=decorate]({360-asin(0.1/0.25)}:0.25)--({360-asin(0.1/2)}:2);
+\draw[fill](-1,0)circle(0.05);
+\draw[fill](0,0)circle(0.05);
+\node[below right] at(2-0.1,0){$R$};
+\node[below=3] at(0.25,0){$r$};
+} \\
+\begin{aligned}
+\text{where } \lambda(t) &= t = te^{i0} \text{ (with $\log(\lambda(t))=\ln t+i0$) for $r\leq t\leq R$} \\
+\mu(t) &= t = te^{i2\pi} \text{ (so $\log(\mu(t))=\ln t+i2\pi$) for $r\leq t\leq R$} \\
+\sigma(t) &= Re^{it} \text{ for $0\leq t\leq 2\pi$ ($R>1$)} \\
+\tau(t) &= re^{it} \text{ for $0\leq t\leq 2\pi$ ($0<r<1$)}
+\end{aligned}
+\end{gather*}
+By Cauchy's Residue Theorem,
+\begin{align*}
+\int_\alpha f &= 2\pi i \Res(f,-1) \\
+&= 2\pi i (-1)^{-a} \\
+&= 2\pi i e^{-a\log(-1)} \\
+&= 2\pi i e^{-a(\ln 1+i\pi)} \\
+&= 2\pi i e^{-i\pi a}
+\end{align*}
+Also
+\[ \int_\alpha f = \int_\lambda f + \int_\sigma f - \int_\mu f - \int_\tau f \]
+and
+\begin{gather*}
+\int_\lambda f = \int_r^R f(\lambda(t)) 1 \d t = \int_r^R \frac{t^{-a}}{t+1} \d t \to I \text{ as $r\to0$, $R\to\infty$} \\
+\begin{aligned}
+\int_\mu f &= \int_r^R f(\mu(t))\d t \\
+&= \int_r^R \frac{t^{-a}e^{-i2\pi a}}{t+1} \d t \footnote{\[\begin{aligned}
+(\mu(t))^{-a} &= e^{-a\log\mu(t)} \\
+&= e^{-a(\ln t+i2\pi)} \\
+&= e^{-a\ln t}e^{-ai2\pi} \\
+&= t^{-a} e^{-i2\pi a}
+\end{aligned}\]} \\
+&= e^{-i2\pi a}\int_r^R \frac{t^{-a}}{t+1} \d t \\
+&\to e^{-i2\pi a} I \text{ as $r\to0$, $R\to\infty$}
+\end{aligned} \\
+\begin{aligned}
+\abs[\Big]{\int_\sigma f} &\leq \length(\sigma)\max_{\text{$z$ on $\sigma$}}\abs{f(z)} \\
+&= 2\pi R \cdot \max_{0\leq t\leq2\pi}\abs[\Big]{\frac{(Re^{it})^{-a}}{Re^{it}+1}}\footnote{\[\begin{aligned}
+(Re^{it})^{-a} &= e^{-a\log(Re^{it})} \\
+&= e^{-a(\ln R+it)} \\
+&= e^{-a\ln R}e^{-iat}
+\end{aligned}\]} \\
+&= 2\pi R \max_{0\leq t\leq2\pi}\abs[\Big]{\frac{R^{-a}}{Re^{it}+1}} \\
+&= 2\pi R\frac{R^{-a}}{R-1}\to 0 \text{ as $R\to\infty$}
+\end{aligned} \\ \intertext{and}
+\begin{aligned}
+\abs[\Big]{\int_\tau f} &\leq \length(\tau) \max_{\text{$z$ on $\tau$}}\abs{f(z)} \\
+&= 2\pi r \max_{0\leq t\leq2\pi}\abs[\Big]{\frac{r^{-a}}{re^{it}+1}} \\
+&= 2\pi r\frac{r^{-a}}{1-r} \\
+&= \frac{2\pi r^{1-a}}{1-r}\to 0 \text{ as $r\to0$}
+\end{aligned} \\
+2\pi i e^{-i\pi a} = \int_\alpha f = \int_\lambda f + \int_\sigma f - \int_\mu f - \int_\tau f
+\end{gather*}
+Take the limit as $r\to0$, $R\to\infty$ to get
+\begin{gather*}
+2\pi i e^{-i\pi a} = I + 0 - e^{-i2\pi a} I + 0 \\
+\therefore I = \frac{2\pi ie^{-i\pi a}}{1-e^{-i2\pi a}} = \frac{2\pi i}{e^{i\pi a}-e^{-i\pi a}} = \frac{\pi}{\sin(\pi a)}\footnote{$\sin z=\frac{e^{iz}-e^{-iz}}{2i}$} \\
+\therefore \Gamma(a)\Gamma(1-a) = I = \frac{\pi}{\sin(\pi a)}
+\end{gather*}
+for $a\in\R$ with $0<a<1$.  By the Identity Theorem
+\[ \Gamma(z)\Gamma(1-z) = \frac{\pi}{\sin(\pi z)} \]
+for all $z\in\C\setminus\Z$.
+
+\note $\Gamma(z)$ is holomorphic in $\C\setminus\brace{0,-1,-2,\dotsc}$ with simple poles at $z=0$, $-1$, $-2$, $\dotsc$. \\
+$\Gamma(1-z)$ is holomorphic in $\C\setminus\brace{1,2,3,\dotsc}$ with simple poles at $z=1$, $2$, $3$, $\dotsc$. \\
+$\frac{\pi}{\sin\pi z}$ is holomorphic in $\C\setminus\Z$ with simple poles at $z\in\Z$ and \emph{no zeros}. \\
+$\therefore\Gamma(z)$ has no zeros in $\C\setminus\Z$.  Also $\Gamma(z)\neq0$ for $z=1$, $2$, $3$, $\dotsc$ (otherwise a zero of $\Gamma(z)$ at $k$ would cancel the pole of $\Gamma(1-z)$ so that $\frac{\pi}{\sin\pi z}=\Gamma(z)\Gamma(1-z)$ would be holomorphic at $z=k$). \\
+Thus $\frac{1}{\Gamma(z)}$ is holomorphic in all of $\C$ (it's entire) with zeros at $z=0$, $-1$, $-2$, $\dotsc$ (and no other zeros).
+
+\thm $\zeta(z)$ is holomorphic in $\C\setminus\brace{1}$ with a simple pole at $1$ of residue $1$. \\
+\pf Note that for $n\in\Z^+$,
+\begin{align*}
+\int_0^\infty t^{z-1} e^{-nt}\d t &= \int_{s=0}^\infty\paren[\Big]{\frac sn}^{z-1}e^{-s}\frac1n\d s \\ \intertext{where $s=nt$}
+&= \int_0^\infty \frac1{n^z}\cdot s^{z-1}e^{-s}\d s \\
+&= \frac1{n^z}\Gamma(z) \\
+\therefore \zeta(z) &= \sum_{n=1}^\infty \frac1{n^z} \\
+&= \sum_{n=1}^\infty \frac1{\Gamma(z)}\int_0^\infty t^{z-1}e^{-nt}\d t
+\end{align*}
+We want to show that
+\[ \zeta(z) - \frac{1}{z-1} \]
+is entire.  We have
+\begin{align*}
+\zeta(z) - \frac1{z-1} &= \sum_{n=1}^\infty \frac1{\Gamma(z)}\int_0^\infty t^{z-1}e^{-nt}\d t - \frac{\Gamma(z-1)}{\Gamma(z)}\footnote{$\Gamma(z)=(z-1)\Gamma(z-1)$} \\
+&= \frac1{\Gamma(z)}\paren[\Big]{\int_0^\infty t^{z-1}\sum_{n=1}^\infty e^{-nt}\d t - \int_0^\infty t^{z-2}e^{-t}\d t} \\
+&= \frac1{\Gamma(z)}\int_0^\infty t^{z-1}\paren[\Big]{\frac{e^{-t}}{1-e^{-t}}}\footnote{\[
+\sum_{n=1}^\infty e^{-nt} = e^{-t} + e^{-2t} + e^{-3t} + \dotsb = \frac{e^{-t}}{1-e^{-t}}
+\]} - t^{z-2}e^{-t}\d t \\
+\Aboxed{ \zeta(z)-\frac1{z-1} &= \frac{1}{\Gamma(z)}\int_0^\infty t^{z-1}\paren[\Big]{\frac1{e^t-1}-\frac1{te^t}}\d t } % boxed
+\end{align*}

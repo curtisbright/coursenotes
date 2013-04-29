@@ -1,0 +1,87 @@
+$2^A = \set{f}{A\to\brace{0,1}}$ \\
+If $A$ has $n$ elements then $\abs{\P(A)}=2^n$ and $\abs{2^A}=2^n$
+
+\thm $\abs{2^A}=\abs{\P(A)}$ for all sets $A$ \\
+\pf Need to construct bijection $g\colon\P(A)\to2^A$ \\
+Define $g(B)=1_B$ \\
+$B\subseteq\P(A)$ i.e., $B\subseteq A$ \\
+where $1_B(x) = \begin{cases}
+1 & \text{$1$ if $x\in B$} \\
+0 & \text{$0$ if $x\notin B$}
+\end{cases}$ \\
+$1_B \in 2^A$ \\
+Check $g$ is 1--1 and onto. \\
+First, if $B\neq C$ then $1_B\neq1_C$ so $g(B)\neq g(C)\implies\text{$g$ is 1--1}$ \\
+\textbf{Onto:} Take $f\in2^A$ \\
+Put $B=\set{x\in A}{f(x)=1}\implies f(x)=1_B(x)$ \\
+Therefore $g(B)=f$ where $g$ is a bijection.
+
+\textbf{Schroeder--Bernstein Theorem} \\
+If $\abs A\leq\abs B$ and $\abs B\leq\abs A$ then $\abs A=\abs B$. \\
+\pf Given injections $f\colon A\to B$ and $g\colon B\to A$.
+\marginpar{figure: $D^\Co=g(f(D)^\Co)$ and $D=(g(f(E)^\Co))^\Co$}%
+%
+%Define $Q\colon\P(A)\to\P(A)$ by $E\mapsto(g(f(E)^\Co))^\Co$. \\
+\begin{align*}
+\text{Define } Q\colon & \P(A) \to \P(A) \\
+& E \mapsto (g(f(E)^\Co))^\Co
+\end{align*}
+Want to find a set $D$ such that $Q(D)=D$. \\
+First, if $E\subseteq F$ then $Q(E)\subseteq Q(F)$ because $f(E)\subseteq f(F)\implies f(E)^\Co\supseteq f(F)^\Co$ \\
+$\implies g(f(E)^\Co)\supseteq g(f(F)^\Co)\implies\underbrace{(g(f(E)^\Co))^\Co}_{Q(E)}\subseteq\underbrace{(g(f(F)^\Co))^\Co}_{Q(F)}$ \\
+Let $\D=\set{E\subseteq A}{E\subseteq Q(E)}$. \\
+Take $D=\bigcup_{E\in\D} E$ \\
+If $E\in\D$ then $E\subseteq D$ \\
+$\implies Q(E)\subseteq Q(D)$ \\
+Also $E\subseteq Q(E)\subseteq Q(D)$ for all $E\in\D$ \\
+hence $D=\bigcup_{E\in\D} E \subseteq Q(D)$. \\
+So $D\subseteq Q(D)\implies Q(D)\subseteq Q(Q(D))$ \\
+therefore $Q(D)\in\D$. \\
+So $Q(D)\subseteq D$. \\
+Hence $Q(D) = D$ \\
+i.e., $D=(g(f(D)^\Co))^\Co$ or $D^\Co=g(f(D)^\Co)$. \\
+Now define $h\colon A\to B$ as follows:
+\[ h(x) = \begin{cases}
+f(x) & \text{if $x\in D$} \\
+g^{-1}(x) & \text{for $x\in D^\Co$ and this is well defined because $D^\Co\subseteq\Range g$}
+\end{cases} \]
+%Hence $h$ is a bijection and $\abs A=\abs B$. \\
+If $x\in D^\Co$ then $x\in g(f(D)^\Co)$. \\
+$h$ is 1--1 since both $f|_D$ and $g^{-1}|_{D^\Co}$ are 1--1 and similarly is onto by construction. \\
+Hence $h$ is a bijection and $\abs A=\abs B$.
+
+\textbf{Consequences}
+\begin{enumerate}
+\item If $A_1\subseteq A_2\subseteq A_3$ and $\abs{A_1}=\abs{A_3}$ then also $\abs{A_2}=\abs{A_3}$. \\
+\pf $\underbrace{A_2 \overset{\text{inj}}{\hookrightarrow} A_3}_{\text{embedding}}\implies\abs{A_2}\leq\abs{A_3}$
+\[ \underbrace{A_3 \overset{\text{bij}}{\to} A_1 \overset{\text{inj}}{\hookrightarrow} A_2}_f \]
+$f\colon A_3\to A_2$ is an injection $\implies\abs{A_3}\leq\abs{A_2}$ \\
+By S--B, $\abs{A_3}=\abs{A_2}$.
+\item $\abs{(0,1)}=\abs{[0,1)}=\abs\R$ \marginpar{figure: arctan}%
+\\$[0,1)\subseteq[0,1)\subseteq\R$. \\
+So enough to prove $(0,1)$ and $\R$ have same cardinality. \\
+Let $f(x)=\arctan x$ by $f\colon\R\underset{\text{bij}}{\to}(-\frac{\pi}{2},\frac{\pi}{2})\overset{\text{lin}}{\underset{\text{bij}}{\to}}(0,1)$
+\marginpar{figure: alternate definition of $f$, line between point $(0,1)$ and $r\in\R$, intersects circle with centre $(0,1)$ and radius $1$ at $f(r)$}%
+\item $\abs\R=\abs{2^\N}$, another proof that $\R$ is uncountable. \\
+Show $\abs{[0,1)}=\abs{2^\N}$. \\
+Given $r\in[0,1)$ write its binary representation
+\[ r = .a_1a_2a_3\ldots \qquad\text{(where $a_i=0$ or $1$)} \]
+Define $f_r(n)=a_n$.  Then $f_r\colon\N\to\brace{0,1}$, i.e., $f_r\in2^\N$.% \\
+%Define $\Phi\colon[0,1)\to2^\N$ by $r\mapsto f_r$. \\
+\begin{align*}
+\text{Define } \Phi\colon & [0,1) \to 2^\N \\
+& r \mapsto f_r
+\end{align*}
+$\Phi$ is 1--1 because $r_1\neq r_2$, then there exists $n$ such that $n$th digits are different, so $f_{r_1}(n)\neq f_{r_2}(n)\implies f_{r_1}\neq f_{r_2}$.
+
+\emph{But} $\Phi$ is \emph{not} onto because of non-uniqueness of binary representation.
+%
+%Define $\Lambda\colon2^\N\to[0,1)$ by $f\mapsto.0f(1)0f(2)0f(3)\ldots$ \\
+\begin{align*}
+\text{Define } \Lambda\colon & 2^\N \to [0,1) \\
+& f \mapsto .\mspace{1mu}0\mspace{1mu}f(1)\mspace{1mu}0\mspace{1mu}f(2)\mspace{1mu}0\mspace{1mu}f(3)\mspace{1mu}\ldots
+\end{align*}
+$\Lambda$ is 1--1, since one of the binary representations of a number with two forms ends with a tail of $1$s, \emph{and} $\Lambda(f)$ never has a tail of $1$s.
+
+Therefore, by Schroeder--Bernstein, $\abs{2^\N}=\abs{\R}$.
+\end{enumerate}

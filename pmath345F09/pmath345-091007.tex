@@ -1,0 +1,115 @@
+\textbf{Corrected:}
+\begin{enumerate}
+\item Assume in (a), (b) that \emph{$\phi$ is surjective}
+\begin{enumerate}
+\item[(a)] Just do \emph{maximal}, not prime
+\end{enumerate}
+\item[\textbf{Bonus:}] Counterexample to (b) if $\phi$ is \emph{not} surjective
+\item[\phantom{\textbf{Bonus:}}] Counterexample to (a) for \emph{prime}
+\end{enumerate}
+
+\thm $R$ commutative ring.  $I$ an ideal.
+\begin{enumerate}
+\item[(a)] $I$ is prime $\iff$ $R/I$ is an integral domain
+\item[(b)] $I$ is maximal $\iff$ $R/I$ is a field
+\end{enumerate}
+\pf
+\begin{enumerate}
+\item[(a)] Suppose $I$ is prime.  $\overline a\coloneqq a + I$.
+\[ \overline a, \overline b \in R/I \qquad \begin{gathered}\overline a\neq0_{R/I}\\\overline b\neq0_{R/I}\end{gathered} \]
+\begin{gather*}
+\overline a \neq 0 \implies a \notin I \\
+\overline b \neq 0 \implies b \notin I \\
+\implies ab \notin I \text{ as $I$ is prime} \\
+\implies \overline{ab}\neq0_{R/I} \\
+\implies \overline a\cdot\overline b\neq0_{R/I}
+\end{gather*}
+Therefore $R/I$ is an integral domain. \\
+(Note prime ideals \emph{are} proper so $R/I$ is not trivial.)
+
+Suppose $R/I$ is an integral domain. \\
+\[ \text{$R/I$ maximal} \implies \text{$I$ proper} . \]
+$a,b\in R$, suppose $ab\in I$.
+\begin{gather*}
+\overline{ab} = 0_{R/I} \\
+\implies\overline{a}\overline{b} = 0_{R/I} \\
+\implies\text{either $\overline a=0$ or $\overline b=0$ in $R/I$}
+\end{gather*}
+as $R/I$ is an integral domain \\
+$\implies$ $a\in I$ or $b\in I$.
+\item[(b)] Suppose $I$ is maximal. \\
+Let $\overline a\neq\overline 0$ in $R/I$.  \textbf{Need:} $\overline a$ is invertible in $R/I$. \\
+Consider: $(a)+I$ in \emph{$R$}.
+\[ J \coloneqq (a) + I = \set{ar+b}{r\in R, b\in I} \]
+\textbf{Check:} In any commutative ring $S$, given ideals $A$ and $B$,
+\[ A + B \coloneqq \set{a+b}{a\in A\c b\in B} \]
+\[ A + B \text{ is an ideal}\footnotemark \]\footnotetext{\textbf{Exercise:} $A+B$ is the smallest ideal containing $A$ and $B$}% interesting bug here?
+\textbf{Note:} $I\subseteq(a)+I$.  If $b\in I$, then $I\subseteq J$. \\
+$b=a\cdot0+b\in(a)+I$ \\
+$I$ maximal $\implies$ $\cancel{J=I}$ or $J=R$. \\
+But $a=a\cdot1+0\in J$ but $\overline a\neq\overline0$ so $a\notin I$. \\
+Therefore $J=R$. \\
+In particular there is $r\in R$, $b\in I$ such that $ar+b=1$
+\begin{gather*}
+\implies ar-1 = -b \in I \\
+\implies \overline{ar} = \overline1 \\
+\implies \overline a \overline r = \overline1 = 1_{R/I}
+\end{gather*}
+Therefore $\overline a$ is invertible. \\
+Therefore $R/I$ is a field.
+
+Suppose $R/I$ is a field. \\
+Suppose there exists an ideal $J$ such that
+\[ I \subsetneq J \subseteq R . \]
+Let $a\in J\setminus I$. \\
+$\overline a\neq\overline0$. \\
+$\implies$ there is $\overline b\in R/I$ such that\footnote{$R/I$ a field}
+\[ \overline a \cdot \overline b = \overline1 \text{ in $R/I$} \]
+$\implies$ $ab-1\in I\subseteq J$ \\
+Also $a\in J \implies ab\in J$ so
+\[ 1 = \underbrace{-(ab-1)}_{\text{in $J$}}+\underbrace{ab}_{\text{in $J$}} \implies 1 \in J \]
+For any $r\in R$,
+\[ r = r\cdot 1 \in J \]
+i.e., $J=R$ \\
+i.e., $I$ is maximal.
+\end{enumerate}
+\cor All maximal ideals are prime.
+
+Existence?
+
+\textbf{Zorn's Lemma} \\
+\defin A \emph{partially ordered set} is a nonempty set $P$ with a binary relation, $\leq$, that is reflexive, transitive, anti-symmetric. \\
+i.e.,
+\begin{enumerate}
+\item For all $a\in P$, $a\leq a$
+\item If $a,b,c\in P$,
+\[ a\leq b \text{ and } b\leq c \implies a \leq c \]
+\item If $a\leq b$ and $b\leq a$ $\implies$ $a=b$
+\end{enumerate}
+\textbf{Typical example:} $X$ nonempty set, \\
+Let $\emptyset\neq\mathcal{S}\footnote{a collection of subsets of $X$}\subseteq\mathcal{P}(X)$ \\
+$(\mathcal{S},\subseteq)$ is a poset.
+
+\defin Suppose $(P,\leq)$ is a poset. \\
+A \emph{chain} in $(P,\leq)$ (or a \emph{totally ordered subset}) is a subset $C\subseteq P$ such that for all $a,b\in C$, either $a\leq b$ or $b\leq a$.
+
+\textbf{Zorn's lemma:} Suppose $(P,\leq)$ is a poset where $C\subseteq P$ is a chain, there exists $a\in P$ such that $a\geq b$ for \emph{all} $b\in C$.  ($a$ is an \emph{upper bound} for $C$). \\
+Then $(P,\leq)$ has a \emph{maximal} element i.e., there exists $d\in P$ such that if $a\in P$, $d\leq a$, then $a=d$. (Nothing strictly bigger than $d$ in $P$.) \\
+We will assume this.
+
+\thm Let $R$ be a ring.  $I$ a \emph{proper} ideal.  Then $I$ is contained in a maximal ideal.
+
+\pf Let $\mathcal{S}=\text{set of all proper ideals in $R$ containing $I$}$.
+\[ \mathcal{S}\subseteq\mathcal{P}(R) \qquad I \in \mathcal{S} \]
+So $(\mathcal S, \subseteq)$ is a poset. \\
+Let $C$ be a chain in $\mathcal S$. \\
+So $C=\set{J_i}{i\in\kappa}$
+\begin{align*}
+\text{Let } J^* &= \bigcup C \\
+&= \set{a\in R}{\text{$a\in J_i$ for some $i\in\kappa$}}
+\end{align*}
+\textbf{Exercise:} Show $J^*$ is a proper ideal.
+\[ J^* = R \iff 1\in J^* \iff \text{$1\in J_i$ for some $i$} \iff \text{$J_i=R$ for some $i$} \]
+Note $I\subseteq J^*$.  So $J^*\in\mathcal S$. \\
+Hence by Zorn's Lemma, $(\mathcal S,\subseteq)$ has a \emph{maximal} element, i.e., there exists a proper ideal $M$ containing $I$ such that if $M\subseteq J\subsetneq R$ where $J\neq R$ ideal containing $I$ then $M=J$. \\
+i.e., $M$ is a maximal ideal.

@@ -1,0 +1,72 @@
+\textbf{Chapter 11: Dirichlet Series} \\
+A power series is a series of the form $\sum c_nz^n$ (or $\sum c_n(z-a)^n$)\footnote{will always diverge for at least one complex value on circumference
+\[ \myvcenter{\tikz[scale=0.6]{\draw(0,0)circle(1);\draw(0,0)to node[above]{$R$}(35:1);}} \qquad R=\text{radius of converge} \]
+\[ \sum_{n=1}^\infty\frac{1}{z^n}\quad\abs{z}=1\implies\abs[\Big]{\frac1{z^n}}=1\neq0\quad\therefore\text{ diverges}\]}
+
+\defn A \emph{Dirichlet series} is a series of the form
+\[ \sum_{n=1}^\infty \frac{f(n)}{n^z} \]
+where $f\colon\Z^+\to\C$. \\
+(such a series will converge for some values of $z\in\C$ and diverge for others)
+
+\thm (Abscissa of Absolute Convergence) \\
+Let $f\colon\Z^+\to\C$. \\
+There is a number $\sigma_a\in\R\cup\brace{\pm\infty}$ which we call the \emph{abscissa of absolute convergence} of the Dirichlet series $\sum_{n=1}^\infty\frac{f(n)}{n^z}$ such that $\sum\frac{f(n)}{n^z}$ converges absolutely for $\Re(z)>\sigma_a$ and $\sum\frac{f(n)}{n^z}$ does not converge absolutely for any $z$ with $\Re(z)<\sigma_a$.  When $\sigma_a\in\R$ the set of points $z$ for which $\sum\abs[\big]{\frac{f(n)}{n^z}}$ converges is either $\set{z}{\Re(z)>\sigma_a}$ or $\set{z}{\Re(z)\geq\sigma_a}$. \\
+\pf Note that for $z=x+iy$,
+\begin{align*}
+n^z &= e^{z\ln(n)} \\
+&= e^{x\ln(n)+iy\ln(n)} \\
+\abs{n^z} &= e^{x\ln(n)} = n^x = n^{\Re(z)}
+\end{align*}
+We shall show that if $\sum_{n=1}^\infty\abs[\big]{\frac{f(n)}{n^w}}$ converges then  $\sum_{n=1}^\infty\abs[\big]{\frac{f(n)}{n^z}}$ converges for all $z$ with $\Re(z)\geq\Re(w)$.
+It follows that
+\[ \sigma_a = \inf\set[\Big]{\Re(w)}{\sum_{n=1}^\infty\abs[\Big]{\frac{f(n)}{n^w}}\text{ converges}} . \]
+Let $w\in\C$. \\
+Suppose $\sum_{n=1}^\infty\abs[\big]{\frac{f(n)}{n^w}}$ converges.
+Let $z\in\C$ with $\Re(z)\geq\Re(w)$.  Say $w=a+ib$, $z=x+iy$, so $x\geq a$.  Then
+\[ \abs[\Big]{\frac{f(n)}{n^z}} = \frac{\abs{f(n)}}{n^x} \leq \frac{\abs{f(n)}}{n^a} = \abs[\Big]{\frac{f(n)}{n^w}} \]
+So $\sum_{n=1}^\infty\abs[\big]{\frac{f(n)}{n^z}}$ converges by the Comparison Test.
+
+\thm (Abscissa of Convergence) \\
+Let $f\colon\Z^+\to\C$.
+There exists a number $\sigma_c\in\R\cup\brace{\pm\infty}$ such that $\sum_{n=1}^\infty\frac{f(n)}{n^z}$ converges for $\Re(z)>\sigma_c$ and $\sum_{n=1}^\infty\frac{f(n)}{n^z}$ diverges for $\Re(z)<\sigma_c$.
+
+We show that if $\sum\frac{f(n)}{n^w}$ converges then $\sum\frac{f(n)}{n^z}$ for all $z$ with $\Re(z)>\Re(w)$. \\
+Fix $w=a+ib\in\C$. \\
+Suppose $\sum_{n=1}^\infty\frac{f(n)}{n^w}$ converges.  Let $z=x+iy\in\C$ with $x>a$.  Write
+\[ S_l = \sum_{n=1}^l \frac{f(n)}{n^z} = \sum a(n) g(n) \]
+where $a(n)=\frac{f(n)}{n^w}$, $g(t)=\frac{t^w}{t^z}=t^{w-z}$. \\
+For $k<l$, by Abel Summation, we have
+\begin{align*}
+\abs{S_l-S_k} &= \abs[\Big]{\sum_{n=1}^l a(n)g(n) - \sum_{n=1}^k a(n)g(n)} \\
+&= \abs[\Big]{A(l)g(l) - \int_1^l A(t)g'(t)\d t - A(k)g(k) + \int_1^k A(t)g'(t)\d t} \\ \intertext{where $A(x)=\sum_{n\leq x}a(n)=\sum_{n\leq x}\frac{f(n)}{n^w}$}
+&= \abs[\Big]{A(l)l^{w-z}-A(k)k^{w-z}-\int_k^l A(t)(w-z)t^{w-z-1}\d t} \\
+&\leq \abs{A(l)}l^{a-x} + \abs{A(k)}k^{a-x} + \int_k^l \abs{A(t)}\abs{w-z}t^{a-x-1}\d t \\
+&\leq M\paren[\Big]{\frac1{l^{x-a}}+\frac1{k^{x-a}}+\abs{w-z}\brack[\Big]{\frac{1}{a-x}t^{a-x}}_k^l} \\ \intertext{where we have chosen $M$ so that $\abs{A(x)}\leq M$ for all $x$ (which we can do since $\sum\frac{f(n)}{n^w}$ converges)}
+&= M\paren[\Big]{\frac1{l^{x-a}}+\frac1{k^{x-a}}+\frac{\abs{w-z}}{x-a}\paren[\Big]{\frac1{k^{x-a}}-\frac1{l^{x-a}}}} \\
+&\leq M\paren[\Big]{\frac1{k^{x-a}}+\frac1{k^{x-a}}+\frac{\abs{w-z}}{x-a}\cdot\frac1{k^{x-a}}} \\
+&= M\paren[\Big]{2+\frac{\abs{w-z}}{x-a}}\cdot\frac{1}{k^{x-a}} \\
+&\to 0 \text{ as $k\to\infty$ since $x>a$}
+\end{align*}
+$\therefore\brace{S_l}$ converges by Cauchy's Criterion \\
+$\therefore\sum_{n=1}^\infty\frac{f(n)}{n^z}$ converges.
+
+\thm For any Dirichlet series $\sum\frac{f(n)}{n^z}$ we have
+\[ \sigma_a - 1 \leq \sigma_c \leq \sigma_a \]
+\pf We shall show that if $\sum\frac{f(n)}{n^w}$ converges then $\sum\abs{\frac{f(n)}{n^z}}$ converges for all $z$ with $\Re(z)>\Re(w)+1$.
+
+Fix $w=a+ib$. \\
+Suppose $\sum\frac{f(n)}{n^w}$ converges. \\
+Let $z=x+iy\in\C$ with $x>a+1$. \\
+\emph{Then}
+\begin{align*}
+\abs[\Big]{\frac{f(n)}{n^z}} &= \frac{\abs{f(n)}}{n^x} = \frac{\abs{f(n)}}{n^a}\cdot\frac{n^a}{n^x} \\
+&= \abs[\Big]{\frac{f(n)}{n^w}}\frac{1}{n^{x-a}} \\
+&\leq M\cdot\frac{1}{n^{x-a}}
+\end{align*}
+where we have chosen $M$ so that
+\[ \abs[\Big]{\frac{f(n)}{n^w}} \leq M \]
+(which we can do since $\sum\frac{f(n)}{n^w}$ converges so $\abs[\big]{\frac{f(n)}{n^w}}\to0$) \\
+$\therefore\sum\abs[\big]{\frac{f(n)}{n^z}}$ converges by Comparison since $x-a>1$ so $\sum\frac{M}{n^{x-a}}$ converges. \\
+\eg For $\zeta(z)=\sum_{n=1}^\infty\frac{1}{n^z}$ we have $\sigma_a=1$, $\sigma_c=1$, since $\sum\abs[\big]{\frac{1}{n^z}}=\sum\frac{1}{n^x}$ converges for $x>1$, and $\sum\frac1{n^x}$ diverges when $x=1$.
+
+\eg For $L_x(z)=\sum_{n=1}^\infty\frac{\chi(n)}{n^z}$ with $\chi\in\hat U_l$ show that $0\leq\sigma_c\leq\sigma_a=1$.

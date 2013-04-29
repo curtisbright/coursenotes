@@ -1,0 +1,28 @@
+\thm $\Z_p=\text{the closure of $\Z$}$ in $\Q_p$. \\
+\pf If $\brace{x_i}$ is a Cauchy sequence of integers $x_i\in\Z$, then $\pabs{\brace{x_i}}\leq1$ because $\pabs{x_i}\leq1$ for all $i$.  So $\overline\Z\subset\Z_p$.
+
+Conversely, say $\brace{x_i}\in\Z_p$.  Then $\lim_{i\to\infty}\pabs{x_i}\leq1$.  If $\lim_i\pabs{x_i}=0$, then $\brace{x_i}=0\in\overline\Z$.  Otherwise, we have $\pabs{x_n}=\lim_i\pabs{x_i}$ for all large enough $n$.  Write $x_n=p^r\frac{a_n}{b_n}$ for $p\ndivides a_nb_n$.  Then for every positive integer $m$, there is an integer $\alpha_{n,m}$ such that
+\[ \alpha_{n,m}\equiv x_n\bmod p^m \iff \pabs{\alpha_{n,m}-x_n}\leq p^{-m} \]
+So up to messing around with finitely initial terms, the sequence $\brace{\alpha_{n,n}}\in\overline\Z$ is equal in $\Q_p$ to $\brace{x_n}$, so $\brace{x_n}\in\overline\Z$. \qed
+
+\thm $\Z_p/p^r\Z_p\cong\Z/p^r\Z$. \\
+\pf Consider $\phi\colon\Z\to\Z_p/p^r\Z_p$.  It is clear that $\ker\phi=p^r\Z$.  So there is an injection $\phi\colon\Z/p^r\Z\to\Z_p/p^r\Z_p$.  It is onto because any $\alpha\in\Z_p$ satisfies 
+\[ \pabs{\alpha-n}\leq p^{-r} \text{ for some $n\in\Z$,} \iff \alpha\equiv n\bmod p^r\Z_p \iff \alpha\equiv\phi(n) \checkmark \qed \]
+Say $\alpha\in\Q_p$.  If $\alpha=0$, then $\alpha$ is clearly of the form $\alpha=\sum_{i=n}^\infty$ for $0\leq a_i\leq p-1$.  If $\alpha\neq0$, write $\alpha=p^r\frac{a}{b}$, where $p\ndivides ab$.  It suffices to write $\frac ab=\sum_{i=n}^\infty a_ip^i$.
+
+But $\frac ab\in\Z_p$, so for each $r\geq1$, we can find $m_r\in\Z$ such that $\frac ab\equiv m_r\bmod p^r\Z_p$.  So if we choose $m_r\in\brace{0,\dotsc,p-1}$, we write $m_r$ in base $p_i$ and get
+\[ \frac ab = a_0 + a_1 p + \dotsb + a_{r-1} p^{r-1} + E p^r \]
+for $0\leq a_i\leq p-1$.  Moreover, note that $m_{r+t}\equiv m_r\bmod p^r$.  So we get a well defined series
+\[ \frac ab = \sum_{i=0}^\infty a_i p^i \]
+where $a_i\in\brace{0,\dotsc,p-1}$.  So $\Q_p$ really is
+\[ \Q_p = \set[\bigg]{\sum_{i=n}^\infty a_ip^i}{a_i\in\brace{0,\dotsc,p-1}} \]
+\[ \begin{aligned}
+{\cancel0} {\cancel0} {\cancel0} \overset{7}{0} \\
+-1 \\ \hline
+\ldots666 \\
+=\sum_{n=0}^\infty 6\cdot 7^n
+\end{aligned} \text{ in $\Q_7$} \]
+Define $R\subset(\Z/p\Z)\times(\Z/p^2\Z)\times\dotsb$ by
+\[ R = \set*{(a_1,a_2,\dotsc)}{a_i\equiv a_{i+r}\bmod p^i\c a_i\in\Z/p^i\Z} = H \]
+\thm $\Z_p\cong R$. \\
+\pf Define $\phi\colon\Z_p\to H$ by $\phi(\alpha)=(\alpha\bmod p,\alpha\bmod p^2,\dotsb)$.  Clearly $\im\phi\subset$, so $\phi\colon\Z_p\to R$.  Since $\ker\phi=\brace0$, $\phi$ is injective.  For surjectivity, say $(n_1,n_2,\dotsc)\in R$.  If we choose $n_i\in\brace{0,\dotsc,p^i-1}$, then writing $n_i$ in base $p$ will have a consistent set of $i$th order \p-adic approximations $\sum_{i=0}^\infty a_i p^i$, where $n_i=\sum_{j=0}^{i-1} a_j p^j$.  So $(n_1,n_2,\dotsc)\in\im\phi$. \qed

@@ -1,0 +1,82 @@
+$R$ ufd \\
+Association is an equivalence relation on the set of primes in $R$. \\
+We choose and fix once and for all, one prime from each class: $P_R$ is the set of these primes.
+\begin{itemize}
+\item If $p\in R$ is a prime then $p$ is associate to exactly one prime in $P_R$.
+\item Any two distinct primes $p,q\in P_R$ are non-associate.
+\end{itemize}
+\cor (of unique factorization).  Given $a\in R$ nonzero nonunit, $a$ can be written uniquely (up to rearrangements) as
+\[ a = up_1^{a_1}\dotsm p_l^{a_l} \]
+where $u$ is a unit, $p_1,\dotsc,p_l$ are distinct primes from $P_R$, $a_1,\dotsc,a_l$ are positive integers. \\
+\pf Exercise. \\
+\remark Given $a,b\in R$ nonzero %nonunits
+we can write
+\begin{align*}
+a &= u p_1^{a_1} \dotsm p_l^{a_l} \\
+b &= v p_1^{b_1} \dotsm p_l^{b_l}
+\end{align*}
+where $p_1,\dotsc,p_l$ are distinct primes from $P_R$, $u,v$ units, $a_1,\dotsc,a_l,b_1,\dotsc,b_l$ non-negative integers.
+
+\textbf{8.  Factoring in polynomials rings.}
+
+\defin $R$ ufd, $P_R$ as above, $a,b\in R$ nonzero nonunits
+\[ \begin{aligned}
+a &= u p_1^{a_1} \dotsm p_l^{a_l} & a_1,\dotsc,a_l &\geq 0 \\
+b &= v p_1^{b_1} \dotsm p_l^{b_l} & b_1,\dotsc,b_l &\geq 0
+\end{aligned} \qquad \text{prime factorizations} \]
+The $\gcd(a,b)\coloneqq p_1^{\min\brace{a_1,b_1}} \cdot p_2^{\min\brace{a_2,b_2}} \dotsm p_l^{\min\brace{a_l,b_l}}$ greatest common divisor. \\
+\note This depends on $P_R$.
+
+\lem $d=u\gcd(a,b)$, $u$ a unit\footnote{i.e., there is a unit $u$ such that $d=u\gcd(a,b)$} $\iff$ $d\mid a$, $d\mid b$ and whenever $e\mid a$, $e\mid b$ $\implies$ $e\mid d$.
+
+\note RHS does \emph{not} depend on $P_R$. \\
+\pf ($\Longrightarrow$) without loss of generality $d=\gcd(a,b)$. \\
+$d\mid a$, $d\mid b$ by definition of $\gcd$. \\
+Suppose $e\mid a$ and $e\mid b$. \\
+Write $e=wp_1^{e_1}\dotsm p_l^{e_l}$: this is possible after increasing $l$.
+
+\[ e\mid a \iff a=ex \iff up_1^{a_1}\dotsm p_l^{a_l} = wp_1^{e_1}\dotsm p_l^{e_l} x \qquad\text{for some $x\in R$, $x\neq0$} \]
+Again increasing $l$ if necessary, write $x=w'p_1^{x_1}\dotsm p_l^{x_l}$, $x_1,\dotsc,x_l\geq0$.
+\begin{align*}
+&\implies u p_1^{a_1} \dotsm p_l^{a_l} = \underbrace{ww'}_\text{unit} p_1^{e_1+x_1}\dotsm p_l^{e_l+x_l} \\
+&\implies a_i = e_i + x_i \qquad \text{for all $i=1,\dotsc,l$} \\
+&\implies e_i \leq a_i \qquad i=1,\dotsc,l
+\end{align*}
+Similarly $e_i\leq b_i$ for all $i=1,\dotsc,l$. \\
+Therefore $e_i \leq \min\brace{a_i,b_i}\coloneqq 1,\dotsc,l$ \\
+$e\frac{1}{w}p_1^{\min\brace{a_1,b_1}-e_1}\dotsm p_l^{\min\brace{a_l,b_l}-e_l}=d$ \\
+$\implies e\mid d$. \\
+Conversely, let's prove ($\Longleftarrow$), assume RHS.  $d\mid a$, $d\mid b$, and when $e\mid a$ and $e\mid b$ $\implies$ $e\mid d$. \\
+Let $e=\gcd(a,b)$ \\
+$\implies \gcd(a,b)\mid d$. \\
+On the other hand, from ($\Longrightarrow$) we know that $\gcd(a,b)$ satisfies RHS. \\
+$\implies d\mid\gcd(a,b)$ \\
+$xd=\gcd(a,b)=xy\gcd(a,b) \implies xy=1 \implies \text{$x$ is a unit}$. \\
+Therefore $d=\frac{1}{x}\gcd(a,b)$.
+
+\defin $R$ ufd, $P_R$ as above. \\
+Consider $R[x]$, $f\in R[x]$, $f\neq0$. \\
+Write $f=a_0+a_1x+\dotsb+a_nx^n$ where $n=\deg(f)$: so $a_n\neq0$. \\
+The \emph{content} of $f$ is
+\[ G(f) = \gcd(a_i : i=0,\dotsc,n\c a_i\neq 0) \]
+\ex In $\Z[x]$, $f=2+12x+4x^3$ \\
+$G(f)=\gcd(2,12,4)=2$.
+% gcd can be extended to multiple argments
+
+\thm $f,g\in R[x]$ nonzero.
+\[ G(fg) = G(f)G(g) \]
+Start with a lemma. \\
+\lem If $G(f)=G(g)=1$ then $G(fg)=1$.
+
+\textbf{Proof of theorem from Lemma} \\
+Given any $f\in R[x]$, $f\neq0$,
+\[ f = G(f) \cdot \hat f \]
+where $\hat f\in R[x]$ has content $1$. $\to$ Exercise.
+\begin{align*}
+fg &= G(f)\hat f \cdot G(g)\cdot \hat g \\
+fg &= G(f)G(g)\cdot \hat f \hat g \\
+G(fg) &= G(G(f)G(g)\hat f\hat g) \\
+&= G(f)G(g)\cdot G(\hat f\hat g) \mathrel{{=}\footnotemark} G(g)G(f)
+\end{align*}\footnotetext{Lemma}%
+\ex for any $cP\in R[x]$, $c\in R$, $c\neq0$,
+\[ G(cP) = cG(P) \]

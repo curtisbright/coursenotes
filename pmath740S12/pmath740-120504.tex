@@ -1,0 +1,111 @@
+\textbf{Ch.~1 F.T.A.} \\
+\textbf{basic facts} \\
+for $p$ prime, $a\in\Z$, $\gcd(p,a)=\begin{cases}
+p & \text{if $p\div a$} \\
+1 & \text{if $p\ndiv a$}
+\end{cases}$ \\
+for $1<n\in\Z$, if $n$ is composite then $n$ has a prime factor $p$ with $p\leq\sqrt n$ \\
+for $p$ prime, $ab\in\Z$ if $p\div ab$ then $p\div a$ or $p\div b$
+
+\thm (Euclid's) \\
+There are infinitely many primes \\
+\pf Suppose that $p_1$, $p_2$, $\dotsc$, $p_l$ are \emph{all} the primes.
+Let $n=p_1p_2\dotsm p_l+1$.  Then $n$ has a prime factor $p$.  But $p\neq p_i$ for any $i$ since $p_i\ndiv n$ (since $n$ is divided by $p_i$ is $1$)
+
+\thm (The Sieve of Eratosthenes) \\
+We can list all primes $p\leq n$ for a given integer $n$ as follows: \\
+list all integers from $1$ to $n$ \\
+cross off $1$ since it is not prime \\
+circle the smallest remaining number, namely $2$; it is prime \\
+cross off all other multiples of $2$ since they are composite \\
+circle the smallest remaining number, namely $3$; it is prime \\
+continue until we circle a prime $p\geq\sqrt n$ and then all remaining numbers are prime
+
+\thm (The Fundamental Theorem of Arithmetic) \\
+Every integer $n>1$ can be written uniquely as
+\[ n=p_1^{e_1}\dotsm p_m^{k_m} \]
+with $m$, $p_i$, $k_i\in\Z$ \\
+$m\geq1$, each $p_i$ is prime, $p_1<p_2<\dotsb<p_m$, each $k_i\geq1$. \\
+% $p\div ab\implies p\div a\text{ or }p\div b$
+In $\Z_{12}$, $3=3\cdot3\cdot3=3\cdot3\cdot3\cdot3\cdot3=\cdots$ \\
+In $\Z[\sqrt{3}i]=\set{a+b\sqrt{3}i}{a,b\in\Z}$
+%diagram
+\[
+\begin{tikzpicture}
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(0,0){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(1,0){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(2,0){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(-1,0){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(-2,0){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(0,{sqrt(3)}){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(1,{sqrt(3)}){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(2,{sqrt(3)}){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(-1,{sqrt(3)}){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(-2,{sqrt(3)}){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(0,{-sqrt(3)}){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(1,{-sqrt(3)}){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(2,{-sqrt(3)}){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(-1,{-sqrt(3)}){};
+\node[circle,draw,fill,color=black,inner sep=0.5pt]at(-2,{-sqrt(3)}){};
+\draw(-2,0)to(2,0);
+\draw(0,-2)to(0,2);
+\end{tikzpicture}
+\]
+$(1+\sqrt3i)(1-\sqrt3i)=4=2\cdot2$
+
+\textbf{basic facts} \\
+for $n=p_1^{k_1}\dotsm p_m^{k_m}$ where the $p_i$ are distinct primes and $k_i\geq0$ \\
+then the positive divisors $d$ of $n$ are the numbers of the form $d=p_1^{j_1}\dotsm p_m^{j_m}$ with $0\leq j_i\leq k_i$ for all $i$
+
+for $a=p_1^{k_1}\dotsm p_m^{k_m}$, $b=p_1^{l_1}\dotsm p_m^{l_m}$ we have
+\begin{align*}
+\gcd(a,b) &= p_1^{\min(k_1,l_1)}p_2^{\min(k_2,l_2)}\dotsm \\
+\lcm(a,b) &= p_1^{\max(k_1,l_1)}\dotsm \\
+\gcd(a,b)\lcm(a,b) &= ab
+\end{align*}
+(where $\lcm(a,b)$ needs to be defined)
+
+we can also define $\gcd(a_1,\dotsc,a_l)$ and $\lcm(a_1,\dotsc,a_l)$ for $a_1$, $\dotsc$, $a_l\in\Z$ \\
+Similar formulas hold for their prime factorizations.
+
+\textbf{Unsolved Problems} \\
+Goldbach's Conjecture: every even $n>4$ is a sum of $2$ primes \\
+$n^2+1$ Conjecture: $\exists\infty$ many primes of the form $n^2+1$ \\
+Do there exist infinitely many primes of any of the forms
+\[ 2^n\pm1\co n^n\pm1\co n!\pm1 \]
+Twin Primes Conjecture: there exist infinitely many pairs of primes $p$, $q$ with $\abs{p-q}=2$. \\
+$\forall n\in\Z^+$ $\exists$ prime $p$ with $n^2<p<(n+1)^2$
+
+\defn For a prime $p$ and $n\in\Z^+$ the \emph{exponent of\/ $p$} in $n$, written $e_p(n)$, is the largest $k\geq0$ such that $p^k\div n$ \\
+\eg Find a formula for $e_p(n!)$ \\
+\soln In the list $1$, $2$, $\dotsc$, $n$ the multiples of $p$ are
+\[ p,2p,\dotsc \]
+and the number of these is
+\[ \floor*{\frac{n}{p}} \]
+the \# of multiples of $p^2$ is
+\[ \floor*{\frac{n}{p^2}} \]
+and so on:
+\[ \therefore e_p(n!) = \floor*{\frac{n}{p}}+\floor*{\frac{n}{p^2}}+\floor*{\frac{n}{p^3}}+\dotsb \]
+\eg The \# of zeros at the end of $100!$ is
+\[ e_5(100!) = \floor*{\frac{100}{5}} + \floor*{\frac{100}{25}} + \floor*{\frac{100}{125}} = 20 + 4 = 24 \]
+\defn For $n\in\Z^+$
+\begin{align*}
+d(n) = \tau(n) &= \text{the \# of positive divisors of $n$}, \\
+&= \sum_{d\mid n}1 \\
+\sigma(n) &= \text{the sum of the positive divisors of $n$} \\
+&= \sum_{d\mid n}d
+\end{align*}
+\eg Find a formula for $\tau(n)$ and $\sigma(n)$ when $n=p_1^{k_1}\dotsm p_m^{k_m}$. \\
+\soln $d\mid n\iff d=p_1^{j_1}\dotsm p_m^{j_m}$ for some $0\leq j\leq k_i$ \\
+There are $k_i+1$ choices for $j_i$ \\
+$\therefore\tau(n)=\prod_{i=1}^m(k_i+1)$
+\begin{align*}
+\text{Also } \sigma(n) &= \sum_{d\mid n}d \\
+&= \sum_{0\leq j_1\leq k_1}\sum_{0\leq j_2\leq k_2}\dotsi\sum_{0\leq j_m\leq k_m}p_1^{j_1}p_2^{j_2}\dotsm p_m^{j_m} \\
+&= \prod_i\paren[\Big]{\sum_{0\leq j_i\leq k_i}p_i^{d_i}} \\
+&= \prod_{i=1}^m\paren{1+p_i+p_i^2+\dotsb+p_i^{k_i}} \\
+&= \prod_{i=1}^m\frac{p_i^{k_i+1}-1}{p_i-1}
+\end{align*}
+\eg For which $n\in\Z^+$ is $\tau(n)$ odd? \\
+\ans $n$ is a square \\
+\eg Show that $\sum_{\text{$p$ primes}}\frac{1}{p}=\infty$.

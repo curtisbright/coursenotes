@@ -1,0 +1,72 @@
+\textbf{Theorem 48:} Let $[K:\Q]<\infty$.  Let $D$ be the discriminant of $K$.  If $p$ is a prime which does not divide $D$ then $p$ is unramified in $\A\cap K$. \\
+\pf We'll prove the contrapositive.
+
+Suppose that $P$ is a prime ideal and $P^2\mid(p)$.  We'll show that then $p\mid D$.
+
+Since $P^2\mid(p)$ there is an ideal $Q$ with $P^2Q=(p)$.  Then there exists an $\alpha\in\A\cap K$ with $\alpha\in PQ$ but $\alpha\notin P^2Q$.
+
+But then $\alpha^2\in P^2Q^2$ and so $\alpha^2\in(p)$ hence $\alpha^2/p\in\A\cap K$.  Thus $\alpha^p/p\in\A\cap K$ and so for each $\beta\in\A\cap K$, $(\alpha\beta)^p/p\in\A\cap K$.  Notice then that $T_\Q^K(\alpha\beta)^p=T_\Q^K(p(\alpha\beta)^p/p)=pT_\Q^K((\alpha\beta)^p/p)$.  Since $T_\Q^K((\alpha\beta)^p/p)$ is an integer we see that $p\mid T_\Q^K(\alpha\beta)^p$.  But
+\[ (T_\Q^K\alpha\beta)^p = \paren[\Big]{\sum_\sigma\sigma(\alpha\beta)}^p = \sum_\sigma \sigma(\alpha\beta)^p + p\gamma \]
+where $\gamma$ is an integer by the multinomial expansion so
+\[ (T_\Q^K\alpha\beta)^p = T_\Q^K(\alpha\beta)^p + p\gamma \]
+and since $p\mid T_\Q^K(\alpha\beta)^p$ we see that $p\mid(T_\Q^K\alpha\beta)^p$.  Since $p$ is a prime we see that $p\mid T_\Q^K\alpha\beta$.
+
+Let $\brace{\omega_1,\dotsc,\omega_n}$ be an integral basis for $\A\cap K$.  Then for $i=1$, $\dotsc$, $n$ we have $T_\Q^K(\alpha\omega_i)$ is divisible by $p$.  We have
+\[ \alpha = a_1\omega_1 + \dotsb + a_n\omega_n \]
+with $a_1$, $\dotsc$, $a_n$ integers.  Since $\alpha\notin(p)$ hence $\alpha/p\notin\A\cap K$ we see that at least one of $a_1$, $\dotsc$, $a_n$ is not divisible by $p$ without loss of generality suppose $p\nmid a_1$.
+
+Observe that since $p\mid T_\Q^K(\alpha\omega_i)$ we see that $p$ divides \[ T_\Q^K(\alpha_1\omega_1+\dotsb+\alpha_n\omega_n)\omega_i = a_1T_\Q^K\omega_1\omega_i + a_2T_\Q^K\omega_2\omega_i + \dotsb + a_n T_\Q^K\omega_n\omega_i . \]
+By Theorem~25 we have
+\begin{align*}
+a_1 D &= \det\begin{pmatrix}
+a_1 T_\Q^K(\omega_1\omega_1) & \cdots & a_1 T_\Q^K(\omega_1\omega_n) \\
+T_\Q^K(\omega_2\omega_1) & \cdots & \vdots \\
+\vdots & & \vdots \\
+T_\Q^K(\omega_n\omega_1) & \cdots & T_\Q^K(\omega_n\omega_n)
+\end{pmatrix} \\
+&= \det\begin{pmatrix}
+a_1T_\Q^K(\omega_1\omega_1)+a_2T_\Q^K(\omega_2\omega_1)+\dotsb+a_nT_\Q^K(\omega_n\omega_1) & \cdots & a_1T_\Q^K(\omega_1\omega_n)+\dotsb+a_nT_\Q^K(\omega_n\omega_n) \\
+T_\Q^K(\omega_2\omega_1) & \cdots \\
+\vdots \\
+T_\Q^K(\omega_n\omega_1) & \cdots & T_\Q^K(\omega_n\omega_n)
+\end{pmatrix}
+\end{align*}
+Since $p$ divides each integer in the top row of the matrix we see that $p\mid a_1D$.  But $p\nmid a_1$ hence $p\mid D$ as required.
+
+Let $[K:\Q]<\infty$.  We define the norm of an ideal $I$ of $\A\cap K$, denoted by $NI$,
+\[ NI = \abs{\A\cap K/I} . \]
+Thus $NI$ is the number of residue classes modulo $I$.  $NI$ is also denoted by $N_\Q^K(I)$.
+
+\textbf{Theorem 49:} Let $[K:\Q]=n$.  %Let $\omega_1$, $\dotsc$, $\omega_n$ be an integral basis for $K$ and let $I$ be a non-zero ideal of $\A\cap K$.  Then
+Let $I$ be a non-zero ideal of $\A\cap K$ and let $\alpha_1$, $\dotsc$, $\alpha_n$ be an integral basis for $I$.  Then
+\[ NI = \abs[\Big]{\frac{\disc(\alpha_1,\dotsc,\alpha_n)}{D}}^{1/2} , \]
+where $D$ is the discriminant of $K$. \\
+\pf We first remark that all integral bases for $I$ have the same discriminant.  This follows just as for the discriminant of $K$.
+
+Let $\omega_1$, $\dotsc$, $\omega_n$ be an integral basis for $K$.  Then we can find an integral basis $\alpha_1$, $\dotsc$, $\alpha_n$ of $I$ of the form
+\begin{align*}
+\alpha_1 &= a_{11} \omega_1 \\
+\alpha_2 &= a_{21} \omega_1 + a_{22}\omega_2 \\
+&\vdots \\
+\alpha_n &= a_{n1} \omega_1 + \dotsb + a_{nn}\omega_n
+\end{align*}
+with $a_{ii}\in\Z^+$, by Theorem~38.  Since
+\[ \disc\brace{\alpha_1,\dotsc,\alpha_n} = \paren*{\begin{pmatrix}
+a_11 & & 0 \\
+\vdots & \ddots \\
+a_{n1} & \cdots & a_{nn}
+\end{pmatrix}}^2 D \]
+we see that it suffices to show that
+\[ NI = a_{11}\dotsm a_{nn} . \]
+Suppose that
+\[ r_1\omega_1 + \dotsb + r_n\omega_n \equiv s_1\omega_1 + \dotsb + s_n\omega_n \pmod{I} \]
+with $0\leq r_i<a_{ii}$ for $i=1$, $\dotsc$, $n$ and with $0\leq s_i<a_{ii}$ \dots.
+\begin{align*}
+\implies (r_1-s_1)\omega_1 + \dotsb + (r_n-s_n)\omega_n &\in I \\
+\implies (s_1-r_1)\omega_1 + \dotsb + (s_n-r_n)\omega_n &\in I
+\end{align*}
+Recall from the proof of Theorem~38 that $a_{nn}$ is chosen to be minimal and positive.
+\[ \implies a_{nn} \mid r_n - s_n \implies r_n = s_n \text{ since } 0\leq\abs{r_n-s_n}<a_{nn} \]
+Similarly $r_{n-1}=s_{n-1}$, $\dotsc$, $r_1=s_1$.
+
+Thus $NI \geq a_{11}\dotsm a_{nn}$.

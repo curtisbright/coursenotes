@@ -1,0 +1,26 @@
+\textbf{Corollary 8:} Let $K\subseteq L\subseteq\C$ and let $L$ be a finite extension of $K$.  Then there is a finite extension $H$ of $L$ which is normal over $K$. \\
+\pf By Theorem 5, $L=K[\theta]$ where $\theta$ is algebraic over $K$.  Let $\theta=\theta_1$, $\dotsc$, $\theta_n$ be the conjugates of $\theta$ over $K$.  We put $H=K(\theta_1,\dotsc,\theta_n)$ and the result follows by Theorem 7. \\
+Remark: $H$ is normal over $K$ and also normal over $L$.
+
+Note that $\Q(\sqrt[3]{2})$ is not a normal extension of $\Q$ since $\omega\sqrt[3]{2}$ is a conjugate of $\sqrt[3]{2}$ over $\Q$ where $\omega=e^{2\pi i/3}$ and $\omega\sqrt[3]{2}\notin\R$ whereas $\Q(\sqrt[3]{2})\subseteq\R$.  Observe that by Corollary 8, $H=\Q(\sqrt[3]{2},\omega\sqrt[3]{2},\omega^2\sqrt[3]{2})$ is normal over $\Q$.  $H=\Q(\sqrt[3]{2},\omega)$ so $[H:\Q(\sqrt[3]{2})]=2$.
+
+Let $K\subseteq L\subseteq\C$ with $[L:K]<\infty$.  We define the Galois group $\Gal(L/K)$ to be the group of automorphisms of $L$ which fixes each element of $K$.  This is a group under the binary operation of composition.  The identity element is the identity map.  By Theorem 4 and Theorem 6
+\[ \text{$L$ is normal over $K$} \iff \abs{\Gal(L/K)} = [L:K] . \]
+For each subgroup $H$ of $G=\Gal(L/K)$ we define $F_H$ to be the fixed field of $H$, in other words
+\[ F_H = \set{\alpha\in L}{\sigma\alpha=\alpha\text{ for all }\sigma\in H} . \]
+Note that $F_H$ is a field.
+
+\textbf{Theorem 9:} Let $K\subseteq L\subseteq\C$ with $[L:K]<\infty$.  Suppose that $L$ is normal over $K$ and that $G$ is the Galois group of $L$ over $K$.  Then $K$ is the fixed field of $G$ and $K$ is not the fixed field of any proper subgroup $H$ of $G$. \\
+\pf Plainly $K$ is fixed by $G$.  Suppose that there is an $\alpha\in L\setminus K$ which is fixed by $G$.  Then $K[\alpha]$ is also fixed by $G$.  By Theorem 4 and 6 there are exactly $[L:K[\alpha]]$ embeddings of $L$ in $\C$ which fix $K[\alpha]$ and, since $L$ is normal, each of them is an automorphism of $L$.  Similarly, by Theorem 4 and 6, there are exactly $[L:K]$ embeddings of $L$ in $\C$ which fix $K$ and since $L$ is normal each is an automorphism.  But $[L:K[\alpha]]<[L:K]$ and this gives a contradiction.
+
+We'll now suppose that $K$ is the fixed field of a proper subgroup $H$ of $G$.  Let $\alpha$ be such that $L=K[\alpha]$ and define the polynomial $f$ by
+\[ f(x) = \prod_{\sigma\in H}(x-\sigma\alpha) . \]
+Note that since $H$ is a subgroup of $G$ if $\sigma'\in H$ then $H\sigma'=\set{\sigma\sigma'}{\sigma\in H}=H$.  Therefore
+\[ f(x) = \prod_{\sigma\in H}(x-\sigma\sigma'\alpha) . \]
+Thus the coefficients of $F$ are fixed by the elements of $H$.  Thus $f\in K[x]$ with $\alpha$ as a root and it is monic.  Therefore $\alpha$ is algebraic over $K$ of degree at most $\abs{H}$.  But $\alpha$ is algebraic over $K$ of degree $\abs{G}$ since $L=K[\alpha]$ is normal over $K$.  Finally since $H$ is a proper subgroup of $G$, $\abs{H}<\abs{G}$ which gives a contradiction.
+
+As always $K\subseteq L\subseteq\C$ with $[L:K]<\infty$.  Suppose $L$ is normal over $K$.  Let $G=\Gal(L/K)$. \\
+Let $S_1$ be the set of fields $F$ with $L\subseteq F\subseteq K$. \\
+Let $S_2$ be the set of subgroups $H$ of $G$.
+
+Define $\lambda\colon S_1\to S_2$ by $\lambda(F)=\Gal(L/F)$.  Define $\mu\colon S_2\to S_1$ by $\mu(H)=F_H$ where $F_H$ is the fixed field of $H$.

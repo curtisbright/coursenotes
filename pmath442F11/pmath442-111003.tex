@@ -1,0 +1,43 @@
+\thm Let $K/F$ be a Galois extension.  If $p(x)\in F[x]$ is irreducible and has a root in $K$, then $p(x)$ splits into linear factors in $K[x]$, and $p(x)$ is separable. \\
+\pf Let $G=\Gal(K/F)=\brace{\sigma_1,\sigma_2,\dotsc,\sigma_n}$, $\sigma\in K$, $p(\alpha)=0$.  Let $\alpha_i=\sigma_i(\alpha)$ be the conjugates of $\alpha$.  Define $f(x)=\prod_i\footnote{\emph{distinct} $\alpha_i$}(x-\alpha_i)$.  Then $G$ acts on the roots of $f(x)$ by permutation, so the coefficients of $f(x)$ are fixed by $G$. \\
+The fixed field of $G$ is a field that contains $F$ and of which $K$ is a degree $n$ extension, so it \emph{is} $F$. \\
+Now, $f(\alpha)=0$, so $p(x)\divides f(x)$.  Since $p(\alpha_i)=0$ for all $i$, we get $f(x)\divides p(x)$, and so $f(x)$ is also irreducible (it's a constant times $p(x)$).  Furthermore, $p(x)$ has all its roots in $K$, and it's separable (because $f(x)$ is). \qed
+
+\thm Let $K/F$ be a finite extension.  Then $K/F$ is Galois \emph{iff} $K$ is the splitting field for a separable polynomial in $F[x]$. \\
+\pf Let $\brace{w_1,\dotsc,w_n}$ be an $F$-basis of $K$.  Let $p_i(x)$ be a minimal polynomial for $w_i$ over $F$.  Let $g(x)=\lcm(p_i(x))$.  Then since each $p_i(x)$ is separable, so is $g(x)$.  Since each $p_i(x)$ splits in $K$, so does $g(x)$.  Since $K=F(w_1,\dotsc,w_n)$, $K$ is a splitting field for $g(x)$ over $F$.
+
+\thm Let $K/F$ be a finite extension.  Then $K/F$ is Galois \emph{iff} it is normal and separable. \\
+\pf Forwards: $\text{Galois}\longrightarrow\text{normal}$, done. \\
+If $\alpha\in K$, then its minimal polynomial $p(x)\in F[x]$ is separable, so $K/F$ is separable. \\
+Backwards: Follows immediately from previous theorem. \qed
+
+\thm (The Fundamental Theorem of Galois Theory). \\
+Let $K/F$ be a finite Galois extension, $G=\Gal(K/F)$.  Then there is a bijection between subgroups of $G$ and $F$-subfields of $K$ given by:
+\begin{align*}
+E &\longmapsto \brace{\text{$\sigma\in G$ such that $\sigma(\alpha)=\alpha$ for all $\alpha\in E$}} \\
+\brace*{\substack{\text{$\alpha\in E$ such that}\\\sigma(\alpha)=\alpha\\\text{for all $\sigma\in H$}}} &\longmapsfrom H
+\end{align*}
+Moreover, if $E_1$, $E_2\longleftrightarrow H_1$, $H_2$, then:
+\[ \begin{array}{ccc}
+\text{$F$-subfields of $K$} && \text{Subgroups of $G$} \\ \hline
+E_2\subset E_1 & \longleftrightarrow & H_1 \subset H_2 \\{}
+[K:F] & = & \# H \\{}
+[E:F] & = & \abs{G:H} \\
+\Gal(K/E)=\Aut_E K & \cong & H \\
+\Hom_F(E,K)\footnote{pointed set} & \cong & G/H\footnote{pointed set} \\
+\left\{\substack{\text{$E/F$ is Galois}\\\Gal(E/F)}\right. & \overset{\text{\emph{iff}}}{\longleftrightarrow} & \left.\substack{\text{$H$ is normal in $G$}\\G/H}\right\} \\
+E_1\cap E_2 & \longleftrightarrow & H_1H_2 \\
+E_1E_2 & \longleftrightarrow & H_1\cap H_2
+\end{array} \]
+\eg $\Q(\sqrt2,\sqrt3)/\Q$. \\
+The Fundamental Theorem says that $\Q(\sqrt2,\sqrt3)$ has five $\Q$-subfields.
+\begin{gather*}
+\xymatrix{ & \Q(\sqrt2,\sqrt3)\ar@{-}[dl]\ar@{-}[d]\ar@{-}[dr] & \\
+\Q(\sqrt2)\ar@{-}[dr] & \Q(\sqrt6)\ar@{-}[d] & \Q(\sqrt3)\ar@{-}[dl] \\
+& \Q & } \\
+\Gal(\Q(\sqrt2,\sqrt3)/\Q) = \brace{(0,0),(0,1),(1,0),(1,1)} \\
+\xymatrix{ & \brace{(0,0)}\ar@{-}[dl]\ar@{-}[d]\ar@{-}[dr] & \\
+\brace{(0,0),(0,1)}\ar@{-}[dr] & \brace{(0,0),(1,1)}\ar@{-}[d] & \brace{(0,0),(1,0)}\ar@{-}[dl] \\
+& \Gal(\Q(\sqrt2,\sqrt3)/\Q) &
+}
+\end{gather*}

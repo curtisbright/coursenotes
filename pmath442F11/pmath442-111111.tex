@@ -1,0 +1,42 @@
+\defn A valuation on a field $K$ is a function $\phi\colon K\to\R_{\geq0}$ satisfying:
+\begin{enumerate}%[label=(\arabic*)]
+\item[$\forall a,b\in K$ (1)] $\phi(ab)=\phi(a)\phi(b)$
+\item[(2)] $\phi(a)=0$ \emph{iff} $a=0$
+\item[(3)] $\phi(a+b)\leq\phi(a)+\phi(b)$
+\end{enumerate}
+\eg Let $K=\Q$, $p\in\Z$ prime.  For $\frac ab\in\Q$ in lowest terms, define $\abs*{\frac ab}_p=0$ if $a=0$.  If $a\neq0$, write $\frac ab=p^r\frac{a'}{b'}$ for $a'$, $b'\in\Z$, $p\ndivides a'b'$, and let
+\[ \abs*{\frac ab}_p = \frac{1}{p^r} \]
+(1) and (2) are clear.  For (3), note that (if $r\leq t$ without loss of generality)
+\begin{align*}
+\pabs[\Big]{p^r\tfrac{a_1}{b_1}+p^t\tfrac{a_2}{b_2}} &= p^{-r}\pabs[\Big]{\tfrac{a_1}{b_1}+p^{t-r}\tfrac{a_2}{b_2}} \\
+&\leq p^{-r}
+\end{align*}
+so $\pabs{a+b}\leq\max\brace{\pabs{a},\pabs{b}}$.
+
+This is called the $p$-adic absolute value on $\Q$. \\
+\eg $\abs{\frac{8}{37}}_2=\frac18$, $\abs{\frac{12}{17}}_3=\frac13$ $\abs{\frac{12}{17}}_2=\frac14$ \\
+So $p^n\to0$ $p$-adically. \\
+\eg $1+p+p^2+\dotsb=\sum_{i=0}^\infty p^i=\frac{1}{1-p}$ if $\sum_{i=0}^\infty p^i$ converges.  If we interpret this sequence classically.  $\sum p^i$ does not converge.
+
+\thm Let $\sum_{i=0}^\infty a_i$ be an infinite series.  Then $\sum_{i=0}^\infty a_i$ is Cauchy $p$-adically \emph{iff} $\pabs{a_i}\to0$. ($a_i\in\Q$) \\
+\pf Forwards is clear.  Backwards is harder.  Say $\pabs{a_i}\to0$.  Then $\pabs*{\sum_{i=0}^n a_i}\leq\max_{i\in\brace{1,\dotsc,n}}\brace{\pabs{a_i}}$.  So
+\[ \pabs[\Big]{\sum_{i=0}^n a_i-\sum_{i=0}^m a_i} = \pabs[\Big]{\sum_{i=m+1}^n a_i} \leq \max_{i\in\brace{m+1,\dotsc,n}}\brace{\pabs{a_i}} \]
+which is going to $0$.  So $\sum_{i=0}^\infty a_i$ induces a Cauchy sequence. \qed
+
+So $\sum_{i=0}^\infty 2^i=-1$.
+
+Is $\Q$ \p-adically complete? \\
+\textbf{No: }$3^2\equiv2\bmod7$ so $3$ is $7$-adically close to $\sqrt2$.  Sort of, ``$\abs{3-\sqrt2}_7\leq\frac17$''.  \\
+Let's look for $a_2\in\Z/7^2\Z$ such that $a_2^2\equiv2\bmod7^2$.
+
+Say $a_2\equiv3\bmod7$.  Then $a_2\equiv3+7k\bmod7^2$
+\begin{align*}
+&\implies (3+7k)^2 \equiv 9 + 42k \bmod 49 \\
+&\implies 2\equiv 9+42k\bmod 49 \\
+&\implies -7\equiv 42k \bmod 49 \\
+&\implies -1\equiv 6k \bmod 7 \\
+&\implies k\equiv \bmod 7 \\
+&\implies a_2 = 3+7=10\text{ works!}
+\end{align*}
+%
+By iterating this procedure, we can find integers $a_r$ such that $a_r^2\equiv2\bmod7^r$ for all $r\in\Z_{>0}$.  So $\brace{a_r}$ is a Cauchy sequence, whose limit if it exists is $\sqrt2\notin\Q$.  Therefore $\Q$ is not $7$-adically complete.

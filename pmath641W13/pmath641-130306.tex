@@ -1,0 +1,43 @@
+\textbf{Lemma 42:} Let $I$ be a proper ideal in a Dedekind domain $R$ with field of fractions $K$.  There is an element $\gamma$ in $K\setminus R$ for which
+\[ \gamma I \subseteq R . \]
+\pf Let $a$ be a non-zero element in $I$.  Since $I$ is proper $a$ is not a unit and so $\frac{1}{a}\in K\setminus R$.
+$(a)$ contains a product of prime ideals $p_1\dotsm p_r$ by Lemma~41.  Let us suppose that $r$ is minimal.
+
+Let $S$ be the set of proper ideals in $R$ which contains $I$.  $S$ is non-empty and so by Theorem~40, $S$ contains a maximal element $M$.  Observe that $M$ is a maximal ideal.  Since $R$ is a Dedekind domain, $M$ is a prime ideal.  Next note that $(a)\subseteq I$ and also $p_1\dotsm p_r\subseteq(a)\subseteq I\subseteq M$.
+
+We claim that $M\supseteq p_i$ for some $i$ with $1\leq i\leq r$.  Suppose not.  Then there is an element $a_i$ in $p_i$ and not in $M$ for $i=1$, $\dotsc$, $r$.  But then $a_1\dotsm a_r\in M$ with $a_i\notin M$ for $i=1$, $\dotsc$, $r$ contradicting the fact that $M$ is a prime ideal.  Thus $M\supseteq p_i$ for some $i$.
+%
+Without loss of generality we may suppose $M\supseteq p_1$.  Since $M$ is a prime ideal $M=p_1$.
+
+Recall $(a)\supseteq p_1\dotsm p_r$ with $r$ minimal.  If $r=1$ then $p_1\subseteq(a)\subseteq I\subseteq M$ so $p_1=(a)$ and then with $\gamma=\frac{1}{a}$ we have
+\[ \gamma I = \frac{1}{a}(a) = R \]
+as required.
+
+If $r>1$ then we consider $p_2\dotsm p_r$.  Note that $p_2\dotsm p_r$ is non-empty and not contained in $(a)$.  Thus there exists an element $b$ in $p_2\dotsm p_r$ which is not in $(a)$.  We now take $\gamma=\frac{b}{a}$.  Observe that $\gamma\in K\setminus R$.
+
+Then
+\begin{align*}
+\gamma I &= \frac{b}{a} I \\
+&\subseteq \frac{b}{a} p_1 \\
+&\subseteq \frac{(b)p_1}{a} \\
+&\subseteq \frac{1}{a}p_1\dotsm p_r \\
+&\subseteq \frac{1}{a}(a) \\
+&= R ,
+\end{align*}
+as required.
+
+\textbf{Theorem 43:} Let $R$ be a Dedekind domain and let $I$ be an ideal of $R$.  Then there is an ideal $J$ of $R$ for which
+\[ \text{$IJ$ is a principal ideal of $R$} . \]
+\pf If $I=(0)$ the result is immediate so suppose that $I$ is not $(0)$.  Let $\alpha$ be a non-zero element of $I$.
+
+Define $J$ to be the following set in $R$:
+\[ J = \set{\beta\in R}{\beta I\subseteq(\alpha)} . \]
+Note that $J$ is an ideal of $R$ and
+\[ IJ \subseteq (\alpha) . \]
+We want to show that in fact $IJ=(\alpha)$.  Put $B=\frac{1}{\alpha}IJ$ and note $B$ is an ideal of $R$.  If $B=R$ we are done since then $IJ=(\alpha)$.
+
+Suppose then that $B$ is a proper ideal of $R$.  Then by Lemma~42 there exists a $\gamma\in K\setminus R$ for which $\gamma B\subseteq R$; here $K$ is the field of fractions of $R$.  Since $\alpha\in I$ we have that $J\subseteq\frac{1}{\alpha}IJ=B$.  Thus
+\[ \gamma J \subseteq \gamma B \subseteq R . \]
+Thus $\gamma JI\subseteq(\alpha)$ and so by the definition of $J$, $\gamma J\subseteq J$.  But $J$ is a finitely generated additive subgroup of the field of fractions of the Dedekind domain $R$.
+
+By Theorem~13 with $\C$ replaced by the field of fractions of a Dedekind domain we see that $\gamma$ is the root of a monic polynomial with coefficients in $R$.  Since $R$ is a Dedekind domain it is integrally closed in its field of fractions.  Thus $\gamma\in R$ which is a contradiction.

@@ -1,0 +1,87 @@
+$R$ ufd, $F=Q(R)$, everything today.
+
+\lem If $\alpha\in F[x]$ then $\alpha\frac{a}{b}f$ where $f\in R[x]$, $G(f)=1$, $a,b\in R$, $\gcd(a,b)=1$ \\
+\textbf{Gauss' Lemma: }$f,g\in R[x]$, $G(f)=1$.  $f\mid g$ in $F[x]$ $\implies$ $f\mid g$ in $R[x]$ \\
+\pf $g=f\alpha$ for some $a\in F[x]$.  Write $\alpha=\frac{a}{b}h$, $h\in R[x]$, $G(h)=1$, $\gcd(a,b)=1$ \\
+$\implies g=\frac{a}{b}fh \implies bg=afh$ in $R[x]$ \\
+$\implies G(bg) = G(afh) \implies ubG(g) = va\overbrace{G(fh)}^{=1}=va$ in $R$, $u,v$ units \\
+$\implies b\mid va\implies b\mid a\text{ in }R\implies\frac{a}{b}\in R\implies\alpha\in R[x]$. \\
+Note: $2x(\frac12x)=x^2$ in $\Q[x]$ \\
+$2x\mid x^2$ in $\Q[x]$ \emph{not} in $\Z[x]$
+
+\defin $g\in\R[x]$, $\deg g>0$, $g$ \emph{factors properly} if $g=h_1h_2$ where $h_i\in R[x]$, $\deg h_i>0$
+
+$2+2x=2(1+x)$ factors in $\Z[x]$ but not properly \\
+\prop $g\in R[x]$, $\deg g>0$ \\
+If $g$ does not factor properly in $R[x]$ then $g$ is irreducible in $F[x]$. \\
+\pf Contrapositive.  Suppose $g=\alpha_1\alpha_2$ in $F[x]$, such that \emph{neither} $\alpha_1$ nor $\alpha_2$ \emph{is a unit} in $F[x]$ \\
+$\implies\deg\alpha_i>0$. \\
+Write $\alpha_i=\frac{a_i}{b_i}f_i$, $\gcd(a_i,b_i)=1$, $f_i\in R[x]$, $G(f_i)=1$, $i=1,2$.
+\begin{align*}
+g &= \frac{a_1a_2}{b_1b_2}f_1f_2 \\
+\implies b_1b_2g &= a_1a_2f_1f_2 \tag{$*$}\label{star} \\
+\implies ub_1b_2 G(g) &= va_1a_2G(f_1f_2) \\
+&= va_1a_2\qquad\text{in $R$}
+\end{align*}
+$u,v$ units \\
+$\implies b_1b_2\mid a_1a_2$ \\
+%$b_1b_2 = wp_1p_2\dotm p_l$, $p_i$s primes in $R$, $w$ unit \emph{in $R$} \\
+%$\implies$ each $p_i\mid a_1a_2$ \\
+%$\implies$ each $p_i$ divides one of $a_1$ or $a_2$
+%\[ b_1' = \prod_{\substack{i\in\brace{1,\dotsc,l}\\p_i\mid a_1}}p_i \qquad b_2' = \prod_{\substack{j\in\brace{1,\dotsc,l}\\p_j\nmid a_1}}p_j \]
+%$\implies b_1b_2=wb_1'b_2'$ and $b_1'\mid a_1$, $b_2'\mid a_2$ \\
+%\begin{align*}
+%wb_1'b_2'g &= b_1b_2g \\
+%&= a_1a_2f_1f_2\qquad\text{by \eqref{star}}
+%\end{align*}
+$b_1b_2=wp_1^{e_1}p_2^{e_2}\dotsm p_l^{e_l}$ prime factorization, $p_1,\dotsc,p_l$ distinct primes in $P_R$
+$a_1 = w_1p_1^{f_1}\dotsm p_l^{f_l}$ \\
+$a_2 = w_2p_1^{g_1}\dotsm p_l^{g_l}$ \\
+Since $b_1b_2\mid a_1a_2$, $e_i\leq f_i+g_i$ for $i=1,\dotsc,l$. \ldots
+
+\textbf{Claim: }Since $b_1b_2\mid a_1a_2$ there exists $b_1',b_2'$ such that $b_1b_2=b_1'b_2'$, $b_1'\mid a_1$, $b_2'\mid a_2$ \emph{in $R$}. \\
+\pf next time.
+
+By the \emph{claim},
+\[ b_1'b_2'g = b_1b_2g \overset{(*)}{=} a_1a_2f_1f_2 \]
+\[ \implies g = \paren*{\frac{a_1}{b_1'}f_1}\paren*{\frac{a_2}{b_2'}f_2} \]
+Since $b_i'\mid a_i$ in $R$,
+\[ \frac{a_i}{b_i'} \in R \implies \paren*{\frac{a_i}{b_i'}f_i} \in R[x] \]
+\[ g = \paren*{\frac{a_1}{b_1'}f_1}\paren*{\frac{a_2}{b_2'}f_2}\text{ in $R[x]$} \]
+\[ \deg f_i>0 \qquad i=1,2 \]
+$\implies$ $g$ factors properly.
+
+\cor $f\in R[x]$, $\deg f>0$.  If $f$ does not factor properly in $R[x]$ and $G(f)=1$, then $f$ is prime in $R[x]$. \\
+\pf By previous proposition, $f$ is irreducible in $F[x]$, hence prime ($F[x]$ is a pid)
+
+$R$ ufd, $F=Q(R)$ \\
+Suppose $f\mid gh$ in $R[x]$, $g,h\in R[x]$ \\
+$\implies f\mid gh$ in $F[x]$
+\[ \implies \begin{gathered}f\mid g \text{ in $F[x]$} \\
+\text{or} \\
+f\mid h \text{ in $F[x]$}
+\end{gathered} \;\underset{\text{Gauss' Lemma}}{\implies}\; \begin{gathered}
+f\mid g \text{ in $R[x]$} \\
+\text{or} \\
+f\mid h \text{ in $R[x]$}
+\end{gathered} \]
+\thm $R$ ufd $\implies$ $R[x]$ ufd \\
+\pf $f\in R[x]$, $f\neq0$, non-unit \\
+want to write $f$ as a product of primes in $R[x]$. \\
+\textbf{Case 1: }$\deg f=0$, $f\in R$ \\
+$R$ ufd $\implies$ $f=p_1\dotsm p_l$ where $p_i$s are primes in $R$ \\
+\textbf{Exercise: }primes of $R$ are primes in $R[x]$ \\
+\textbf{Case 2: }$\deg f>0$ \\
+Suppose there exists a polynomial in $R[x]$ of positive degree that is \emph{not} a product of primes.  Let $f$ be of least positive degree.  Let $f$ be of least positive degree.  Seek a contradiction.  If $f$ factors properly then \\
+$f=gh$, $\deg g>0$, $\deg h>0$ \\
+$\implies$ $\deg g<\deg f$, $\deg h<\deg f$ \\
+$\implies$ each of $g,h$ must factor into primes, contradiction.
+
+We may assume that $f$ does \emph{not} factor properly. \\
+Write $f=G(f)\cdot\hat f$, $G(\hat f)=1$ \\
+Then $\hat f$ also does not factor properly. \\
+$\implies$ $\hat f$ is prime in $R[x]$ \\
+and $G(f)\in R$ so by case 1, \\
+$G(f)$ is a product of primes in $R[x]$ \\
+therefore $f$ is a product of primes in $R[x]$ \\
+Contradiction.

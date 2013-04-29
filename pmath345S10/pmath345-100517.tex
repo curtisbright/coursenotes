@@ -1,0 +1,61 @@
+\thm (UPQ) Let $R$, $S$ be rings, $I\subset R$ an ideal, $f\colon R\to S$ a homomorphism, $q\colon R/I$ the quotient homomorphism
+\[ \xymatrix{
+R \ar[rr]^f\ar[rd]_q &   & S \\
+  & R/I \ar@{.>}[ur]_{\tilde f}
+} \]
+Then there exists a homomorphism $\tilde f\colon R/I\to S$ with $f=\tilde f\circ q$ \emph{iff} $I\subset\ker f$.
+
+\eg Find an isomorphism from $\C[x]/(x)$ to $\C$.
+\[ \C[x]\footnote{$R$}/(x)\footnote{$I$} \quad\text{to}\quad \C\footnote{$S$} \]
+\[ \xymatrix{
+\C[x] \ar[rr]^f\ar[rd]_q &   & \C \\
+  & \C[x]/(x) \ar@{.>}[ur]_{\tilde f}
+} \]
+\[ f(p(x)) = p(0) \]
+This is a homomorphism, and $x\in\ker f$, so $(x)\subset\ker f$, so by the UPQ, $f$ ``makes sense'' as a homomorphism from $\C[x]/(x)\to\C$.  That is, $f$ induces a homomorphism $\tilde f\colon\C[x]/(x)\to\C$.
+\[ \tilde f(p(x)\bmod I) = p(0) . \]
+It's onto because $\tilde f(z)=z$ for any $z\in\C$, so we just need to check 1--1.  To do this, we show that $\ker\tilde f=(0)\iff\ker f=(x)$. \\
+We already know $(x)\subset\ker f$, so let $p(x)\in\ker f$.  Then $f(p(x))=p(0)=0$, so $x\mid p(x)$, and so $p(x)\in(x)$ and we're done.
+
+\textbf{Proof of UPQ:} Forwards: We have $\tilde f\circ q=f$, so if $r\in I$, we compute $f(r)=\tilde f(q(r))=\tilde f(0)=0$, so $r\in\ker f$.
+
+Backwards: Assume $I\subset\ker f$.  We want $\tilde f\colon R/I\to S$ such that $\tilde f\circ q=f$ \\
+Define
+\[ \tilde f(r\bmod I)=f(r) \]
+To check that this is well defined, we check that if $r_1\equiv r_2\bmod I$, then $\tilde f(r_1\bmod I)=\tilde f(r_2\bmod I)$.  That is, we check that $f(r_1)=f(r_2)$.
+
+Well, $f(r_1)-f(r_2)=f(r_1-r_2)=0$ since $r_1-r_2\in I\subset\ker f$.
+
+We check that $\tilde f$ is a homomorphism:
+\begin{gather*}
+\tilde f(1\bmod I) = f(1) = 1 \quad\checkmark \\
+\tilde f(a+b\bmod I) = f(a+b) = f(a) + f(b) = \tilde f(a \bmod I) + \tilde f(b\bmod I) \quad\checkmark \\
+\tilde f(ab \bmod I) = f(ab) = f(a)f(b) = \tilde f(a\bmod I)\tilde f(b\bmod I) \quad\checkmark \qed
+\end{gather*}
+\facts $\ker\tilde f=\ker f\bmod I$ \\
+$\im\tilde f=\im f$
+
+%\thm (First Isomorphism Theorem) Let $f\colon R\to S$ be a homomorphism.  Then $\im f\mathbin{\mathord{\cong}\todo{``is isomorphic to''}} R/\ker f$. \\
+\thm (First Isomorphism Theorem) Let $f\colon R\to S$ be a homomorphism.  \savenotes Then $\im f\mathbin{\mathord{\cong}\footnote{``is isomorphic to''}} R/\ker f$.\spewnotes \\
+\pf Straight from UPQ. \qed
+
+\thm Let $f\colon R\to S$ be a homomorphism, $I\subset R$ an ideal, $J\subset S$ an ideal.  Then:
+\begin{enumerate}[label=(\arabic*)]
+\item $f^{-1}(J)=\set{r\in R}{f(r)\in J}=\text{preimage of $J$}$ is an ideal of $R$
+\item If $f$ is onto, then
+\[ f(I) = \set{f(r)}{r\in I} \]
+is an ideal of $S$.
+\end{enumerate}
+\pf\begin{enumerate}[label=(\arabic*)]
+\item $0\in f^{-1}(J)$ because $f(0)=0\in J$.  If $a$, $b\in f^{-1}(J)$, then $f(a)$, $f(b)\in J$, so $f(a-b)=f(a)-f(b)\in J$, and hence $a-b\in f^{-1}(J)$.
+
+Finally, if $a\in f^{-1}(J)$, $r\in R$, then $f(ra)=f(r)f(a)\in J$, so $ra\in f^{-1}(J)$.
+\item $0\in f(I)$ because $f(0)=0$.  If $a$, $b\in f(I)$.  Then $a=f(r)$, $b=f(s)$ for $r$, $s\in I$, so $a-b=f(r)-f(s)=f(r-s)$, so $a-b\in f(I)$.
+
+Finally, let $a\in f(I)$, $r\in S$.  Since $f$ is onto, we write $r=f(t)$ and $a=f(u)$ for $t\in R$, $u\in I$.
+
+Then $tu\in I$ and $f(tu)=ra$, so $ra\in f(I)$. \qed
+\end{enumerate}
+\defn Let $R$ be a ring, $I\subset R$ an ideal.  Then $I$ is prime \emph{iff} $I\neq R$ and for all $a$, $b\in R$, if $ab\in I$ then either $a\in I$ or $b\in I$.
+\\%
+$I$ is maximal \emph{iff} the only ideal $J$ with $I\subsetneq J$ is $J=R$ and $I\neq R$.

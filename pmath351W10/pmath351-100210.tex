@@ -1,0 +1,21 @@
+The \emph{intermediate value theorem} in calculus states that a continuous function $f\colon[a,b]\to\R$ where $f(a)<0$, $f(b)>0$ must attain the value $0$ at some point between $a$ and $b$.\marginpar{figure: root of $f$ between $a$ and $b$}
+
+The notion of a connected space is a characterization of such a property (intermediate value).
+
+%Theorem:
+\thm
+A space $X$ is connected if and only if for every continuous function $f\colon X\to\R$ satisfying $f(a)<0$, $f(b)>0$ for some $a$, $b\in X$, there exists a $c\in X$ so that $f(c)=0$. \\
+\pf
+\begin{itemize}
+\item[\textbf{Lemma:}] The continuous image of a connected space is connected.  That is: if $f\colon X\to Y$ is continuous and $X$ is connected, then $f(X)$ is connected.
+\item[\textbf{Proof:}] Without loss of generality we may assume $f(X)=Y$.  Suppose, to the contrary that $Y$ is not connected, then we can partition $Y$ into two disjoint non-empty open sets $Y_1$ and $Y_2$.  Now $f^{-1}(Y_1)$ and $f^{-1}(Y_2)$ is a partition of $X$, where $f^{-1}(Y_1)$ and $f^{-1}(Y_2)$ are open due to the continuity of $f$, and both are non-empty ($f$ surjective).  This shows that $X$ is not connected, a contradiction.
+\end{itemize}
+\begin{enumerate}[label=(\roman*)]
+\item Suppose that $X$ is connected.  To show that the intermediate value property holds in $X$, let $f\colon X\to\R$ be a given continuous map, and suppose that there are points $a$ and $b$ such that $f(a)<0$ and $f(b)>0$.
+
+By the Lemma, $f(X)$ is a connected space, and a subspace of $\R$ so $f(X)$ must be an interval.  The interval has a negative value and a positive value.  So the interval must contain all real numbers between them,  In particular, $0$ is there.
+\item Suppose that $X$ is not connected.  Then there exists a partition of $X$ into disjoint and non-empty open $X_1$, $X_2$.  Let $f\colon X\to\R$ be defined by $f(x)=-1$ if $x\in X_1$ and $f(x)=+1$ if $x\in X_2$.  Then $f$ is continuous.  There are only four possible images namely, $X$, $X_1$, $X_2$ or $\emptyset$.  All are open.  So $f$ is continuous.  The value $0$ is not attained by $f$.
+%is a topological space and that the intermediate value property fails.  That is, there exists a continuous function $f\colon X\to\R$ such that
+\end{enumerate}
+\prop Let $X$ be a topological space.  Let $\set{X_i}{i\in I}$ be a family of connected subsets of $X$.  Suppose that $\bigcap_{i\in I}X_i\neq\emptyset$.  Then $\bigcup_{i\in I}X_i$ is connected. \\
+\marginpar{figures: path~$f\colon[a,b]\to X$\\lines $x_1$, $x_2$, $x_3$\\distinct lines in $\R^2$}\pf Exercise. \begin{small}[Sol: Lecture 34]\end{small}

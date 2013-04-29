@@ -1,0 +1,87 @@
+\textbf{Accumulation point:} $x\in X$ is an accumulation point of $U\subseteq X$ if $\forall r>0$, $B(x,r)\cap(U\setminus\brace x)\neq\emptyset$.
+
+\ex \begin{enumerate}
+\item $U=[0,1)\cup\brace2$ in $\R$ \\
+Accumulation points of $U=[0,1]$\marginpar{figure: $U$ on real line}
+\item $\Q$ in $\R$: All points of $\R$ are accumulation points.
+\item $U=B(x_0,1)$ in $\R^2$ with any of these metrics $d_1,d_2,d_\infty$.\marginpar{figures: $y$ on boundard of $B(x_0,1)$}%
+\\ Take $y\in\R^2$ with $d(x_0,y)=1$ \\
+These points are accumulation points in all 3 cases. \\
+Now let $U=B(x_0,1)$ in $X$. \\
+Take $y\in X$ with $d(x_0,y)=1$. \\
+Is $y$ an accumulation point of $U$? \\
+Not if $X$ is the discrete metric space. \\
+Take $B(y,1/2)=\brace y$: Does it intersect $U$?  No.
+\item Any set $U$ in discrete metric space
+\begin{itemize}
+\item No point is an accumulation point since balls of radius $r\leq1$ are singletons
+\end{itemize}
+Every point in discrete metric space is isolated.
+\item $\Z$: every point is isolated.
+\end{enumerate}
+\thm A set $U$ is closed if and only if $U$ contains all its accumulation points.
+
+\cor \begin{enumerate}
+\item Any finite set is closed
+\item In the discrete metric space every set is closed
+\item Any set with no accumulation points is closed.
+\end{enumerate}
+\pf ($\Longrightarrow$) Assume $U$ is closed.  Take $x\notin U$ and show $x$ is not an accumulation point of $U$. \\
+$x\in U^\Co$ and this set is open.  Hence $\exists r>0$ such that $B(x,r)\subseteq U^\Co$.  Thus $B(x,r)\cap U=\emptyset$. \\
+Therefore $x$ is not an accumulation point of $U$. \\
+($\Longleftarrow$) Assume $U$ contains all its accumulation points. \\
+Show $U^\Co$ is open.  Take $x\in U^\Co$.  By assumption $x$ is not an accumulation point of $U$.  Hence $\exists r>0$ such that $B(x,r)\cap U=\emptyset$, i.e., $B(x,r)\subseteq U^\Co$. $\implies$ $U^\Co$ is open $\implies$ $U$ is closed.
+
+\textbf{Notation:} $\overline{A}=\text{closure of $A$}=A\cup\brace{\text{accumulation points of $A$}}$
+
+\textbf{Notes:} If $A$ is closed then $\overline A=A$ \\
+If $\overline A=A$ then all accumulation points of $A$ are in $A$, therefore $A$ is closed. \\
+e.g., $\overline\Q$ in $\R$ is $\R$.
+
+\thm \begin{enumerate}
+\item $\overline A$ is a closed set
+\item $\overline A=\bigcap_{\substack{\text{$B$ closed}\\ B\supseteq A}} B$
+\end{enumerate}
+\pf \begin{enumerate}
+\item Show that $\overline{A}^\Co$ is open. \\
+Let $x\in\overline A^\Co$.  Then $x$ is not in $A$ and even $x$ is not an accumulation point of $A$. \\
+Then $\exists r>0$ such that $B(x,r)\cap A=\emptyset$. \\
+Claim: $B(x,r)\cap\overline A=\emptyset$.  Say $y\in B(x,r)\cap\overline A$. \\
+Then $y$ is an accumulation point of $A$.  Since $B(x,r)$ is an open set containing $y$, it would have to intersect $A$.  But we know it doesn't. \\
+This proves the claim.
+\[ \implies B(x,r)\subseteq\overline A^\Co \implies \overline A^\Co\text{ is open} \implies \overline A \text{ is closed} \]
+\item exercise
+\end{enumerate}
+\defin $A\subseteq X$ is \emph{dense} if $\overline A=X$ \\
+\defin $X$ is \emph{separable} if it has a countable dense set \\
+e.g., $\Q$ is dense in $\R$ and $\R$ is separable \\
+\textbf{Exercise:} Show $\R^n$ is separable for all $n$
+\begin{enumerate}
+\item $X$ discrete metric space: no proper subset is dense since every set is already closed.
+\item If $A$ is closed and dense in $X$, what is $A$? (any metric space)
+\[ \mathrel{\underbrace{A=}_\text{\clap{closed}}} {}\overline A{} \mathrel{\underbrace{=X}_\text{\clap{dense}}} \]
+\end{enumerate}
+\ex $c_0=\set{(x_n)^\infty_{n=1}}{x_n\to0}\subseteq l^\infty=\text{bounded sequences}$ \\
+$d(x,y)=\sup_n\abs{x_n-y_n}$ \\
+$l^1=\set{(x_n)}{\sum\abs{x_n}<\infty}\subseteq c_0$ \\
+Show $l^1$ is dense in $c_0$. \\
+Take $x=(x_n)\in c_0$ and consider $B(x,r)$ \\
+Pick $N$ such that $\abs{x_n}<r$ for all $n\geq N$ and put $y=(x_1,x_2,\dotsc,x_N,0,0,\dotsc)$ \\
+$y\in l^1$
+\begin{align*}
+d(x,y) &= \sup_n\abs{x_n-y_n} \\
+&= \sup_{n>N}\abs{x_n-y_n}\footnotemark \\
+&= \sup_{n>N}\abs{x_n} \\
+&< r
+\end{align*}\footnotetext{since $x_n=y_n$ for all $n\leq N$}%
+This proves $x\in\overline{l^1}$.  Therefore $l^1$ is dense in $c_0$.
+
+\defin $\Bdy A = \overline A \cap \overline{A^\Co}$
+
+\begin{enumerate}
+\item Ball in $\R^2$: our ``usual'' understanding of boundary
+\item $\Bdy \Q\footnotemark = \R$
+\item $\Bdy A$, where $A\subseteq X$ discrete metric space:
+$\overline A = A$, $\overline{A^\Co}=A^\Co$ \\
+therefore $\overline{A}\cap\overline{A^\Co}=A\cap A^\Co=\emptyset$
+\end{enumerate}\footnotetext{$\subseteq\R$}

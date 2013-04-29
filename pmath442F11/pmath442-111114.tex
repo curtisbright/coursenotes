@@ -1,0 +1,39 @@
+Let $R$ be the ring of \p-adic Cauchy sequences of rational numbers, with %$\brace{a_i}+\brace{b_i}=\brace{a_i+b_i}$
+\begin{align*}
+\brace{a_i}+\brace{b_i}&=\brace{a_i+b_i} \\
+\brace{a_i}\brace{b_i}&=\brace{a_ib_i}
+\end{align*}
+It is easy to see that the sum \& product of Cauchy sequences is again Cauchy.
+
+Let $M=R$ be the set of null sequences in $R$; namely, the set of sequences whose limit exists and is $0$.  It is easy to see that $M$ is an ideal of $R$, since it is closed under $+$ \& $-$, and multiplication by arbitrary Cauchy sequences.
+
+\thm $M$ is a maximal ideal of $R$. \\
+\pf We will show that every element of $R-M$ is a unit, so $M$ is maximal. %\\
+%\pf
+Say $\brace{a_i}$ is a $p$-adic Cauchy sequence which does not converge to $0$.  Then there are only finitely many $a_i$ such that $a_i=0$, since $\brace{a_i}$ is Cauchy \& not null.  After adding a null sequence, then, we may assume that $a_i\neq0$ for all $i$.  Consider $\brace{\frac1{a_i}}$.  It is clearly an inverse to $\brace{a_i}$.  Is it Cauchy?  Yes:  The sequence $\brace{\pabs{a_i}}$ is also Cauchy, and therefore convergent.  So if $\lim_{i\to\infty}\pabs{a_i}=L$, then $\brace{\pabs{\frac1{a_i}}}\to\frac1L\neq0$ and
+\[ \pabs*{\frac{1}{a_n}-\frac{1}{a_m}} = \pabs[\big]{\underset{\to\frac1L}{a_n}}^{-1}\pabs[\big]{\underset{\to\frac1L}{a_m}}^{-1}\pabs[\big]{\underset{\to\text{small as you like}}{a_m-a_n}} \]
+so $\brace{\frac1{a_n}}$ is Cauchy. \qed
+\begin{gather*}
+\pabs{a_n}-\pabs{a_m} \leq \pabs{a_n-a_m} \text{ by $\triangle$ inequality} \\
+\pabs{a_m}-\pabs{a_n} \leq \pabs{a_m-a_n} \text{ by $\triangle$ inequality} \\
+a^{-1} = (a^{-1}(a)a_1^{-1}) = a_1^{-1}
+\end{gather*}
+So $R/M$ is a field containing $\Q$.  We call it $\Q_p$, the field of \p-adic numbers.
+
+It is easy to see that $\Q_p$ is complete.  The absolute value of $\Q_p$ is
+\[ \pabs{\brace{a_n}} = \lim_{n\to\infty}\pabs{a_n} . \]
+$\Q\hookrightarrow\Q_p$ via $x\mapsto\brace{x}$.
+
+So what the heck \emph{is} $\Q_p$?  Some elements of $\Q_p$ include:
+\begin{align*}
+&1+p+p^2+\dotsb \\
+&2+3p^2-4p^3+p^4+\dotsb
+\end{align*}
+More generally, if $0\leq a_i\leq p-1$, $a_i\in\Z$, then $\sum_{i=0}^\infty a_i p^i\in\Q_p$.  In fact, for any $n\in\Z$, the series $\sum_{i=n}^\infty a_ip^i$ is in $\Q_p$.
+
+We will show that every elements of $\Q_p$ is of the form $\sum_{i=n}^\infty a_i p^i$ for $0\leq a_i\leq p-1$, $a_i$, $n\in\Z$.
+
+\thm Let $\alpha\in\Q_p^*$.  Then $\alpha$ can be written uniquely as $\alpha=p^ru$ for $\pabs{u}=1$. \\
+\pf $\pabs{\alpha}=p^{-r}$ for some $r$.  So $\pabs{p^{-r}\alpha}=1$, so $\alpha=p^r(p^{-r}\alpha)$.  If $\alpha=p^ku$, then $\pabs{\alpha}=p^{-r}\implies k=r$, and then $u=p^{-r}\alpha$. \qed
+
+\defn The ring of \p-adic integers is $\Z_p=\set{\alpha\in\Q_p}{\pabs{\alpha}\leq1}$.  This is a ring because of $\pabs{a+b}\leq\max\brace{\pabs{a},\pabs{b}}$.  It's not a field, since $p\in\Z_p$ but $\frac1p\notin\Z_p$.  Note $\Z_p^*=\set{\alpha\in\Q_p}{\pabs\alpha=1}$.  So $\Q_p^*=\set{p^ru}{u\in\Z_p^*}$.  In particular, $\Q_p$ is the fraction field of $\Z_p$.

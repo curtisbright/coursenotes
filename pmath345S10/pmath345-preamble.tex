@@ -1,0 +1,128 @@
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{url}
+%\usepackage[margin=4cm]{geometry}
+%\usepackage[hmargin=4cm,vmargin=3.25cm]{geometry}
+%\usepackage[left=2.25cm,right=3.75cm,top=2.25cm,bottom=2.25cm]{geometry}
+%\usepackage[left=2.5cm,right=4cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+%\usepackage{geometry}
+%\usepackage{fullpage}
+\usepackage{cancel}
+%\usepackage{todonotes}
+%\usepackage[rflt]{floatflt}
+%\usepackage{wrapfig}
+%\usepackage{marginnote}
+\usepackage{microtype}
+%\usepackage{mathtools}
+\usepackage{parskip}
+%\usepackage{graphicx}
+%\usepackage[matrix,arrow]{xy}
+\usepackage[matrix,arrow,cmtip,curve]{xy}
+%\usepackage[all]{xy}
+\usepackage{mathdots}
+\usepackage{footnote}
+\usepackage{fancybox}
+\usepackage{centernot}
+\makesavenoteenv{align*}
+\makesavenoteenv{flalign*}
+\makesavenoteenv{alignat*}
+\makesavenoteenv{gather*}
+\makesavenoteenv{enumerate}
+\makesavenoteenv{itemize}
+\usepackage{enumitem}
+\usepackage{xparse}
+\usepackage{mathtools}
+\usepackage{isomath}
+%\usepackage{polynom}
+%\overfullrule=5pt
+%\setlength\pdfpageheight\paperheight
+%\setlength\pdfpagewidth\paperwidth
+
+%\usepackage{eepic}
+%\linethickness{0.4pt}
+\setlength{\unitlength}{1cm}
+
+\setlength{\marginparwidth}{2.5cm}
+\let\oldmarginpar\marginpar
+%\renewcommand\marginpar[1]{\oldmarginpar{\raggedright\footnotesize #1}}
+%\renewcommand\marginpar[1]{\begin{floatingfigure}{3cm}{\raggedright\footnotesize #1}\end{floatingfigure}}
+%\renewcommand\marginpar[1]{\begin{wrapfigure}{r}{3cm}{\raggedright\footnotesize #1}\end{wrapfigure}}
+\renewcommand\marginpar[1]{\footnote{Aside: #1}}
+
+\input clear.tex
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\LT}{LT}
+\DeclareMathOperator{\LM}{LM}
+\DeclareMathOperator{\LCM}{LCM}
+\DeclareMathOperator{\LC}{LC}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\multideg}{multideg}
+\DeclareMathOperator{\GF}{GF}
+
+\let\brack\undef\let\brace\undef
+\DeclarePairedDelimiter\paren\lparen\rparen
+\DeclarePairedDelimiter\brack\lbrack\rbrack
+\DeclarePairedDelimiter\brace\lbrace\rbrace
+\DeclarePairedDelimiter\chev\langle\rangle
+\DeclarePairedDelimiter\abs\lvert\rvert
+\DeclarePairedDelimiter\norm\lVert\rVert
+\DeclarePairedDelimiter\floor\lfloor\rfloor
+\DeclarePairedDelimiter\ceil\lceil\rceil
+\DeclarePairedDelimiter\round\lfloor\rceil
+%\newcommand{\set}[2]{\brace*{\,#1{}:{}#2\,}}
+\NewDocumentCommand\set{somm}{\IfBooleanTF#1{\brace*{\,#3{}:{}#4\,}}{\brace[#2]{\,#3{}:{}#4\,}}}
+
+\newcommand{\eqvdots}{\mathrel{\makebox[\widthof{$=$}]{$\vdots$}}}
+%\newcommand{\eqUpdownarrow}{\mathrel{\makebox[\widthof{$=$}]{$\Updownarrow$}}}
+%\newcommand{\longmapsfrom}{\mathrel{\text{\reflectbox{$\longmapsto$}}}}
+
+\newcommand{\co}{\mathpunct{{,}~\!}}
+\newcommand{\tpm}{\overset{{\mbox{$\ldotp$}}}{\pm}}
+\newcommand{\pmt}{\overset{\mbox{$\pm$}}{\mathbin\ldotp}}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\P}{\mathcal{P}}
+\newcommand{\S}{S}
+\newcommand{\L}{\mathcal{L}}
+\newcommand{\m}{\mathcal{M}}
+\newcommand{\u}{\vectorsym{u}}
+\newcommand{\v}{\vectorsym{v}}
+\newcommand{\x}{\vectorsym{x}}
+
+\newcommand{\pf}{\textbf{Proof:} }
+\newcommand{\cor}{\textbf{Corollary:} }
+\newcommand{\defn}{\textbf{Definition:} }
+\newcommand{\eg}{\textbf{Example:} }
+\newcommand{\ex}{\textbf{Exercise:} }
+\newcommand{\exs}{\textbf{Exercises:} }
+\newcommand{\thm}{\textbf{Theorem:} }
+\newcommand{\prop}{\textbf{Proposition:} }
+\newcommand{\lem}{\textbf{Lemma:} }
+\newcommand{\note}{\textbf{Note:} }
+\newcommand{\remark}{\textbf{Remark:} }
+\newcommand{\remarks}{\textbf{Remarks:} }
+\newcommand{\claim}{\textbf{Claim:} }
+\newcommand{\soln}{\textbf{Solution:} }
+\newcommand{\fact}{\textbf{Fact:} }
+\newcommand{\facts}{\textbf{Facts:} }
+\newcommand{\ans}{\textbf{Answer:} }
+\newcommand{\aside}{\textbf{Aside:} }
+
+\let\oldbfseries\bfseries
+\renewcommand{\bfseries}{\oldbfseries\boldmath}
+
+\newcounter{lectureno}
+\makeatletter
+\renewcommand{\maketitle}{\addtocounter{lectureno}{1}\begin{center}{\LARGE\@title: \@date}\end{center}\par}
+\renewcommand{\@makefnmark}{\hbox{$^{\@thefnmark)}\m@th$}}
+\makeatother
+\title{PMATH 345 Lecture \arabic{lectureno}}

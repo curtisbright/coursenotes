@@ -1,0 +1,19 @@
+\eg Consider $\R$ under the usual metric (i.e., $d(x,y)=\abs{x-y}=\sqrt{(x-y)^2}$).  Let $A=(\Q\cap[0,1])\cup[2,3]$.  Then $\Int(A)=\open{2,3}$.\marginpar{figure: $A$ on real line} \\
+Consider the metric space $A$ under the usual metric space $d(x,y)=\abs{x-y}$.\marginpar{figure: $A$ not on real line} \\
+Then $\Int(A)=A$.
+
+\defn Let $A$ be a subset of a topological space $X$.  Then $A$ is \emph{closed} if $X\setminus A$ (notation $A^c$, the complement of $A$) is open. \\
+\eg $X$, $\emptyset$ are closed.
+
+Let $A\subset X$.  A point $b\in X$ is called a \emph{limit} point (or a \emph{contact} point) of $A$ if for every open set $G$, with $b\in G$, meets $A$ (i.e., $G\cap A\neq\emptyset$). \\
+If every open set $G$, with $b\in G$, \\
+meets $A$ at some point other than $b$ itself, we say that $b$ is an accumulation point of $A$.\marginpar{figure: $b$ on boundary of $A$} \\
+The set of all limit points of $A$ is called the \emph{closure} of $A$, denoted $\cl(A)$.
+
+\eg $X=\R$, usual metric.  $A=\Q\cap[0,1]\cup[2,3]$.  Then $\cl(A)=[0,1]\cup[2,3]$.
+
+\prop $\cl(A)$ is a closed set in $X$.  $\cl(A)\supseteq A$ and is the \emph{smallest} closed set which contains $A$.
+
+\prop \marginpar{figures: $A\subset X$}%
+In a topological space $X$, for any subset $A\subset X$, $\Int(A)$ and $\cl(A^c)$ are complementary sets, i.e., they form a partition, i.e.,
+\[ \Int(A)^c = \cl(A^c) . \]

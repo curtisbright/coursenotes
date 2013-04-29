@@ -1,0 +1,40 @@
+\defn A fractional ideal $I$ of a domain $D$ is invertible \emph{iff} there is a fractional ideal $J$ such that $IJ=D$.
+
+\defn A Dedekind domain is a domain is a domain in which every nonzero fractional ideal is invertible. \\
+\eg Every PID is Dedekind. \\
+\thm Let $D$ be a Dedekind domain, $P$ a nonzero prime ideal.  Then $P$ is maximal. \\
+\pf Assume that there is some ideal $I\subset D$ with $P\subset I$.  We want to show either $P=I$ or $I=D$.
+
+The fractional ideal $PI^{-1}$ is a subset of $II^{-1}=D$, so $PI^{-1}$ is an integral ideal of $D$.  Now:
+\[ (PI^{-1})I = P \]
+so since $P$ is prime, either $PI^{-1}\subset P$ or $I\subset P$.  If $PI^{-1}\subset P$, then $I^{-1}\subset D$ so $II^{-1}\subset I$ so $I=D$ because $D=II^{-1}$.
+
+If $I\subset P$, then $P\subset I\implies P=I$. \qed
+
+\thm Let $D$ be a Dedekind domain, $I\subset D$ any nonzero ideal.  Then $I$ can be factored as a product of prime ideals:
+\[ I = P_1 \dotsm P_n \]
+and this factorization is unique up to permutation of the $P_i$. \\
+\pf Existence: If $I$ is maximal, then it's prime and $I=I$ will do.
+
+If $I$ is not maximal, then there is an ideal $J$ with $I\subsetneq J\subsetneq D$.  Then $I=J(J^{-1}I)$, where $J^{-1}I\subset J^{-1}J=D$, so $J^{-1}I$ is an integral ideal.  If $J$ and $J^{-1}I$ are both prime, then we're done.  If not, then keep factoring the non-prime factors of $I$ until all the factors are prime.
+
+If this process never stops, then we have constructed an infinite ascending chain of ideals:
+\[ I \subsetneq I_1\footnote{``$J$''} \subsetneq I_2 \subsetneq I_3 \subsetneq \dotsb \]
+\lem Every invertible ideal is finitely generated. \\
+\textbf{Proof of lemma:} Let $I$ be an invertible ideal of a domain $D$.  Then $II^{-1}=D$, so $1=a_1a_1'+\dotsb+a_na_n'$ for $a_i\in I$, $a_i'\in I^{-1}$.  Clearly $(a_1,\dotsc,a_n)\subset I$, so let $x\in I$.  Then $x=(xa_1')a_1+\dotsb+(xa_n')a_n$.
+
+Since $x\in I$, $a_i'\in I^{-1}$, we get $xa_i'\in D$ so $x\in(a_1,\dotsc,a_n)$.  Therefore, $I=(a_1,\dotsc,a_n)$ is finitely generated. \qed~lemma \\
+\cor Every Dedekind domain is Noetherian. \\
+\pf Immediate. \qed \\
+By the Corollary, $D$ is Noetherian, so it obeys the ACC, and we obtain a contradiction. \\
+Uniqueness: Say $I=P_1\dotsm P_n=Q_1\dotsm Q_m$ for $P_i$, $Q_j$ prime.  We want to show that these two factorizations are the same up to permutation.
+
+Since $P_1\dotsm P_n\subset Q_1\dotsm Q_m\subset Q_1$, we get $P_i\subset Q_1$ for some $i$.  But $D$ is Dedekind, so $P_i$ is maximal and so $P_i=Q_1$.  Multiplying both sides by $Q_1^{-1}$, we obtain $P_1\dotsm\hat{P_i}\dotsm P_n=Q_2\dotsm Q_m$.  Continuing in this manner, we eventually obtain either a product of some $P_i$s equals $D$, or some $Q_j$s equals $D$.
+
+This is only possible if the product of $P_i$s or $Q_j$s is empty, so our repeated cancellation process constructed a bijection between the $Q_j$s and $P_i$s, as desired. \qed
+
+\defn Let $D$ be a domain, $I$, $J$ two nonzero ideals of $D$.  Then $I$ and $J$ are in the same ideal class \emph{iff} there is some $a\in K(D)$ such that $I=aJ$.  This is an equivalence relation, and the equivalence classes are called ideal classes.
+
+Note that $D$ is a PID \emph{iff} it has only one ideal class. %\\
+
+\defn The class number of $D$ is the number of ideal classes of $D$.

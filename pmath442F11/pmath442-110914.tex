@@ -1,0 +1,50 @@
+\defn Let $K$ be a field, $L$ an extension of $K$, $a\in L$ an element.  Then $\alpha$ is algebraic over $K$ \emph{iff} there is a polynomial $p(x)\in K[x]$, $p(x)\nequiv0$, such that $p(\alpha)=0$.  (Otherwise, $\alpha$ is transcendental over $K$.)  We say $L/K$ is algebraic \emph{iff} every element of $L$ is algebraic over $K$.
+
+$L/K$ is finite \emph{iff} $[L:K]\footnote{$=\dim_K{L}$}<\infty$.
+
+\thm Let $L/K$ be a finite extension.  Then $L/K$ is algebraic. \\
+\pf Let $\alpha\in L$ be any element.  Let $n=[L:K]$.  The $n+1$ vectors $1$, $\alpha$, $\alpha^2$, $\dotsc$, $\alpha^n$ are linearly dependent, so there exist $a_0$, $a_1$, $\dotsc$, $a_n\in K$ such that $a_0+a_1\alpha+\dotsb+a_n\alpha^n=0$, but not all of the $a_i$s are $0$.  So $\alpha$ is algebraic over $K$, since it's a root of $p(x)=a_0+a_1x+\dotsb+a_nx^n\in K[x]$. \qed
+%converse is not necessarily tre
+
+\eg $\Q(\sqrt2,\sqrt3,\sqrt5,\sqrt7,\sqrt{11},\dotsc)$ is algebraic over $\Q$, but not finite.
+
+\thm (KLM)
+\[ \vcenter{\hbox{$\xymatrix{M\ar@{-}[d]\\L\ar@{-}[d]\\K}$}} \qquad [M:K] = \underset{m}{[M:L]}\underset{l}{[L:K]} \]
+\pf Let $\brace{a_1,\dotsc,a_l}$ be a basis for $L/K$, $\brace{b_1,\dotsc,b_n}$ be a basis for $M/L$.  Consider $\brace{a_ib_j}_{\substack{i\in\brace{1,\dotsc,l}\\j\in\brace{1,\dotsc,m}}}$.
+
+Show that this set is a basis for $M/K$, from which the theorem immediately follows.
+
+Linear independence: Assume $\sum_{i,j}\gamma_{i,j}a_ib_j=0$ for some $\gamma_{ij}\in K$.  Then $\sum_j\paren[\Big]{\sum_i \gamma_{ij}\alpha_i}b_j=0$.
+
+Since $\brace{b_j}$ is linearly independent over $L$, we get $\sum_i \gamma_{ij}a_i=0$ for all $j$.  Since $\brace{a_i}$ is linearly independent over $K$, we conclude that $\gamma_{ij}=0$, for all $i$, $j$.
+
+Spanning: Choose $\alpha\in M$.  Then
+\[ \alpha = \sum_j c_j b_j , \]
+for some $c_j\in L$.  For each $j$, there are $\gamma_{ij}$ in $K$ such that $c_j=\sum_i\gamma_{ij}\alpha_i$.  Then:
+\[ \alpha = \sum_{i,j}\gamma_{ij}a_ib_j , \]
+and we're done. \qed
+
+Let $L/K$ be an extension of field.  Let $L^\text{alg}$ be the set of elements of $L$ algebraic over $K$.
+
+\thm $L^\text{alg}$ is a field. \\
+\pf Let $\alpha\in L^\text{alg}$ be any element.  Then $K(\alpha)/K$ is finite, because its degree is the degree of a minimal polynomial for $\alpha/K$, which exists because $\alpha/K$ is algebraic.  If $\beta\in L^\text{alg}$ is any other element, then $K(\beta)/K$ is finite too.
+\[ \left.\vcenter{\hbox{$\xymatrix{& K(\alpha,\beta) = K(\alpha)K(\beta)\ar@{-}[dl]_{\text{finite}}\ar@{-}[dr] \\
+K(\alpha) && K(\beta) \\
+& K\ar@{-}[ul]^{\text{finite}}\ar@{-}[ur]
+}$}}\right\} \text{finite, by KLM.} \]
+So $K(\alpha,\beta)$ is also finite.  It contains $\alpha+\beta$, $\alpha-\beta$, $\alpha\beta$, and $\alpha/\beta$ (if $\beta\neq0$), so all these must be in $L^\text{alg}$. \qed
+
+The field $L^\text{alg}$ is called the algebraic closure of $K$ in $L$.
+
+\defn Let $M/K$ be an extension.  Let $E$, $F\subset M$ be subfields of $M$ containing $K$.  The compositum  (composite) of $E$ and $F$ over $K$ is $EF$, defined to be the smallest subfield of $M$ that contains $E$ and $F$.
+
+If $E=K(\alpha_1,\dotsc,\alpha_n)$, $F=K(\beta_1,\dotsc,\beta_m)$, then $EF=K(\alpha_1,\dotsc,\alpha_n,\beta_1,\dotsc,\beta_m)$.
+
+\textbf{Splitting Fields} \\
+Let $L/K$ be an extension, $p(x)\in K[x]$ a non-constant polynomial.  Then $L$ is a splitting field for $p(x)$ over $K$ \emph{iff}:
+\begin{enumerate}[label=(\arabic*)]
+\item $p(x)=c(x-\alpha_1)\dotsm(x-\alpha_n)$ for some $c$, $\alpha_i\in L$, \emph{and}
+\item $L=K(\alpha_1,\dotsc,\alpha_n)$.
+\end{enumerate}
+\eg A splitting field for $x^4-2$ over $\Q$ is $\Q(\sqrt[4]{2},i\sqrt[4]{2},-\sqrt[4]{2},-i\sqrt[4]{2})=\Q(\sqrt[4]{2},i)$. \\
+\eg A splitting field for $x^3+x+1$ over $\F_2=\Z/2\Z$ is $\F_2(a_1,a_2,a_3)=\F_8$, the field with 8 elements.  (Note $a_1$, $a_2$, $a_3$ are the roots of $x^3+x+1$ in $\F_8$.)

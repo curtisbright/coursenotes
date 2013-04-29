@@ -1,0 +1,37 @@
+$?$ from last class: Note that
+\[ \frac{1}{1+\epsilon_r}x_{i,r} \in S . \]
+\defn Let $S$ be a subset of $\R^n$.  We say that $S$ is symmetric about the origin if whenever $x\in S$ then $-x\in S$.  We say that $S$ is convex if whenever $x$, $y$ are in $S$ then $\lambda x+(1-\lambda)y\in S$ for any $\lambda\in\R$ with $0\leq\lambda<1$.
+
+\textbf{Theorem 58:} (Minkowski's Theorem). \\
+Let $m$, $n\in\Z^+$.  Let $S$ be a subset of $\R^n$ which is symmetric about the origin and convex of Lebesgue measure $\mu(S)$.  Let $\Lambda$ be a lattice in $\R^n$.  If either
+\[ \mu(S) > m 2^n d(\Lambda) \]
+or
+\[ \mu(S) \geq m 2^n d(\Lambda) \]
+and $S$ is compact then there exist $m$ pairs of non-zero points $\pm\lambda_1$, $\pm\lambda_2$, $\dotsc$, $\pm\lambda_m$ from $\Lambda$ and in $S$. \\
+\pf We apply Theorem~57 to $\frac12S$.  Note that $\mu(\frac12S)=\frac{1}{2^n}\mu(S)$.  Therefore there exist distinct non-zero points $\frac12x_1$, $\dotsc$, $\frac12x_m$ in $\frac12S$ which have the property that
+\[ \frac12 x_i - \frac12 x_j \in \Lambda \qquad \text{for $1\leq i,j\leq m$} . \]
+Let us suppose without loss of generality that
+\[ x_1 \mathrel{\overset{\sim}{>}} x_2 \mathrel{\overset{\sim}{>}} \dotsb \mathrel{\overset{\sim}{>}} x_m \]
+where $\mathrel{\overset{\sim}{>}}$ indicates that the first non-zero coordinate in $x_i-x_{i+1}$ is positive for $i=1$, $\dotsc$, $m-1$.  We now take
+\[ \lambda_j = \frac12 x_j - \frac12 x_{m+1} \qquad \text{for $j=1$, $\dotsc$, $m$} . \]
+Note that since $S$ is symmetric about $\mathbf{0}$ we see that $-x_{m+1}$ is in $S$.  Since $S$ is convex
+\[ \frac12 x_j + \frac12(-x_{m+1}) = \frac12 x_i - \frac12 x_{m+1} = \lambda_j \]
+is in $S$.
+
+$\implies \lambda_1$, $\dotsc$, $\lambda_m$ are non-zero and distinct with first non-zero coordinate positive.  Also $-\lambda_1$, $\dotsc$, $-\lambda_m$ are in $S$, by symmetry, and in $\Lambda$.  The result follows.
+
+Observe that the lower bounds in the theorem can't be improved.  Take
+\[ S = \set{(x_1,\dotsc,x_n)\in\R^n}{\text{$\abs{x_1}<m$ and $\abs{x_2}<1$, $\dotsc$, $\abs{x_n}<1$}} . \]
+$\mu(S)=m2^n$.  $S$ is convex and symmetric about $\0$.  Take the lattice $\Lambda_0$ with $d(\Lambda_0)=1$.  The points of $\Lambda_0$ is in $S$ are $(\pm j,0,\dotsc,0)$ for $j=0$, $\dotsc$, $m-1$.
+
+Suppose $[K:\Q]=n$ and let $K=\Q(\theta)$.  Suppose $\theta=\theta_1$, $\dotsc$, $\theta_n$ are the conjugates of $\theta$ over $\Q$.  Suppose that $\sigma_1$, $\dotsc$, $\sigma_n$ are the embeddings of $K$ in $\C$ which fix $\Q$.  Let $r_1$ be the number of embeddings in $\R$, equivalently the number of $\theta_1$, $\dotsc$, $\theta_n$ which are in $\R$.  Let $\sigma_1$, $\dotsc$, $\sigma_{r_1}$ be the real embeddings and $\sigma_{r_1+1}$, $\dotsc$, $\sigma_{r_1+2r_2}$ be the other embeddings, with $\sigma_{r_1+j}=\overline{\sigma_{r_1+r_2+j}}$ for $j=1$, $\dotsc$, $r_2$.
+
+Let $\tilde\sigma\colon K\to\R^{r_1}\times\C^{r_2}$ be given by
+\[ \tilde\sigma(x) = (\sigma_1(x),\dotsc,\sigma_{r_1}(x),\sigma_{r_1+1}(x),\dotsc,\sigma_{r_1+r_2}(x)) . \]
+$\tilde\sigma$ is an injective ring homomorphism.  We may identify $\C$ with $\R^2$ by considering real and imaginary parts.  Let us define
+\[ \sigma\colon K\to\R^n \]
+by
+\[ \sigma(x) = (\sigma_1(x),\dotsc,\sigma_{r_1}(x),\Re(\sigma_{r_1+1}(x)),\Im(\sigma_{r_1+1}(x)),\dotsc,\Re(\sigma_{r_1+r_2}(x)),\Im(\sigma_{r_1+r_2}(x))) . \]
+\textbf{Lemma 59:} $[K:\Q]<\infty$.  $A$ a non-zero ideal in $\A\cap K$.  Then $\sigma(A)$ is a lattice in $\R^n$ with
+\[ d(\Lambda) = 2^{-r_2} \abs{D}^{1/2} NA \]
+where $D$ is the discriminant of $K$.

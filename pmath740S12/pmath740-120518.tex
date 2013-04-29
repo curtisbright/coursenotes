@@ -1,0 +1,108 @@
+No class Monday \\
+(next class Tuesday)
+
+Gauss' Structure Theorem
+\[ U_{\prod p_i^{k_i}} \cong \prod U_{p_i^{k_i}} \]
+$U_2=\brace1$, $U_4=\brace{1,3}$, $U_{2^k}=\chev{-1,5}\cong\chev{-1}\footnote{$\cong\Z_2$}\oplus\chev{5}\footnote{$\cong\Z_{2^{k-2}}$}$ \\
+$U_{p^k}\cong\Z_{p^{k-1}(p-1)}$ \\
+\cor $U_n$ is cyclic (equivalently $\exists$ primitive root mod $n$) \\
+$\iff n=1,2,4,p^k,2p^k$ \\
+\pf $\phi(p^k)$ is even except when $p=2$, $k=1$ and $\Z_a\oplus\Z_b$ is cyclic $\iff\gcd(a,b)=1$
+
+\defn For a finite abelian group $G$, the \emph{universal exponent} of $G$ is
+\[ \kappa(G) = \max_{a\in G}(\ord(a)) \]
+For $G\cong\Z_{n_1}\oplus\dotsb\oplus\Z_{n_l}$ with $n_1\div n_2$, $n_2\div n_3$, $\dotsc$, $n_{l-1}\div n_l$ we have
+\[ \kappa(G) = n_l \]
+and for all $a\in G$
+\[ \ord(a) \div n_l = \kappa(G) . \]
+For $G=U_n$ we write
+\[ \kappa(n) = \kappa(U_n) \]
+For $n=\prod_{i=1}^l p_i^{k_i}$ where the $p_i$ are distinct primes and each $k_i\geq1$ we have
+\[ \kappa(n) = \lcm(\kappa(p_1^{k_1}),\dotsc,\kappa(p_l^{k_l})) \]
+with $\kappa(2)=1$, $\kappa(4)=2$, $\kappa(2^k)=\frac12\phi(2^k)=2^{k-2}$, $\kappa(p^k)=\phi(p^k)=p^{k-1}(p-1)$.
+
+\eg Find the number of $x\in\Z_n$ such that $x^2=1$, where $n=\prod_{i=1}^l p_i^{k_i}$ \\
+\soln Note that when $x^2=1\bmod n$ we must have $\gcd(x,n)=1$ so $x\in U_n$.
+
+When $p_i$ is odd $U_{p_i^{k_i}}$ is cyclic and $\abs{U_{p_i^{k_i}}}$ is even so $U_{p_i^{k_i}}$ has one element of order $1$ and one of order $2$ so there are $2$ solutions to $x^2=1$ in $U_{p_i^{k_i}}$. \\
+In $U_2$ there is $1$ solution (no elements of order $2$). \\
+In $U_4$ there are $2$ solutions. \\
+In $U_{2^k}$ there are $2$ solutions. ($U_{2^k}\cong\Z_2\oplus\Z_{2^{k-2}}$ so there are $2$ solutions in each of $Z_2$, $Z_{2^{k-2}}$) \\
+The number of solutions to $x^2=1$ in $U_n$ for $n=\prod p_i^{k_i}$ with $p_1<p_2<\dotsb<p_l$ is
+\begin{alignat*}{2}
+&2^l &\qquad&\text{if $p_1\neq2$} \\
+&2^{l-1} &&\text{if $p_1=2$, $k_1=1$} \\
+&2^l &&\text{if $p_1=2$, $k_1=2$} \\
+&2^{l+1} &&\text{if $p_1=2$, $k\geq3$}
+\end{alignat*}
+\textbf{Primality Testing} \\
+\thm (Wilson's) Let $n\in\Z^+$.  Then $2\leq n\in\Z$ is prime
+\[ \iff (n-1)! = -1 \bmod n \]
+\pf Suppose $n=p$ is prime. \\
+Then for all $a\in U_p$
+\[ a^{p-1} = 1 \bmod p \]
+so each $a\in U_p$ is a root of $f(x)=x^{p-1}-1$ over $\Z_p$. \\
+$\therefore$ The roots of $f(x)$ are the elements $1$, $2$, $\dotsc$, $p-1\in U_n$.
+\[ x^{p-1}-1 = f(x) = (x-1)(x-2)\dotsm(x-(p-1)) \]
+Put in $x=0$ to get
+\begin{align*}
+-1 &= (-1)(-2)\dotsm(-(p-1)) \\
+&= (-1)^{p-1}(p-1)! \\
+&= (p-1)! \qquad\text{if $p$ is odd so $(-1)^{p-1}=1$}
+\end{align*}
+and when $p=2$,
+\[ (p-1)! = 1! = 1 = -1 \bmod 2 \]
+Conversely, suppose $n$ is composite, say $n=kl$ with $1<k,l<n$.
+\begin{align*}
+(n-1)! &= 1 \cdot 2 \dotsm k \dotsm (n-1) \\
+&= 0 \bmod k \\
+\text{and } 0 &= -1 \bmod k \\
+\text{so } (n-1)! &\neq -1 \bmod k \\
+\therefore (n-1)! &\neq -1 \bmod n
+\end{align*}
+\defn If $n$ is prime then
+\[ b^n = b \bmod n \text{ for all $b\in\Z$ (by F$\ell$T)} \]
+Given $2\leq n\in\Z$, for $b\in\Z^+$ if $b^n=b\bmod n$ then we say $n$ \emph{passes} the \emph{base\/ $b$ test} for primality (in this case, $n$ is probably prime) \\
+if $b^n\neq b\bmod n$ we say $n$ \emph{fails} the base $b$ test (in this case $n$ is composite) \\
+When $n$ passes the base $b$ test but is composite, we call $n$ a \emph{base\/ $b$ pseudo prime}. \\
+A base $2$ pseudo prime is just called a \emph{pseudo prime}. \\
+If $n$ is a base $b$ pseudo prime for \emph{every} base $b$ then $n$ is called a \emph{Carmichael} number. \\
+\eg Show that $341$ is a pseudo prime (it's the smallest one). \\
+\soln $n=341=11\cdot31$ \\
+We need to show that
+\begin{align*}
+2^n &= 2 \bmod n \\
+2^{341} &= 2 \bmod 341
+\end{align*}
+\textbf{mod $11$}, powers repeat every $\phi(11)=10$ terms so $2^{341}=2^1=2\bmod31$, powers repeat every $\phi(31)=30$ terms so $2^{341}=2^{11}$ and we have
+\[ \begin{array}{c|cccccc}
+k & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+2^k & 1 & 2 & 4 & 8 & 16 & 1
+\end{array} \]
+so powers of $2$ repeat every $5$ terms so
+\[ 2^{341} = 2^1 = 2 \bmod 31 \]
+$\therefore 2^{341}=2 \bmod 341$ by CRT
+
+\eg Show that if $n$ is a pseudo prime then so is $M_n=2^n-1$. \\
+\soln Suppose $n$ is a pseudo prime. \\
+Since $n$ is composite so $M_n$ is composite.
+\[ \brack{n=kl \implies M_n = 2^n - 1 = (2^k-1)((2^k)^{l-1}+\dotsb+1) } \]
+and we have $2^n=2\bmod n$. \\
+Say $2^n-2=nq$ (we need to show that
+\begin{align*}
+2^{M_n} &= 2 \bmod M_n \\
+2^{2^n-1} &= 2 \bmod 2^n-1 )
+\end{align*}
+\begin{align*}
+\text{Then } 2^{2^n-1}-2 &= 2^{nq+1} - 2 \\
+&= 2(2^{nq}-1) \\
+&= 2(2^n-1)((2^n)^{q-1}+\dotsb+1)
+\end{align*}
+$\therefore(2^n-1)\div2^{2^n-1}-2$, $2^{2^n-1}=2\bmod 2^n-1$ \\
+\cor There are infinitely many pseudo primes.
+
+For $2<n\in\Z$, $n$ is a Carmichael Number
+\[ \iff n = p_1 p_2 \dotsm p_l \]
+for some distinct primes $p_i$ with $l\geq2$ such that
+\[  (p_i-1) \div (n-1) \]
+for all $i$.

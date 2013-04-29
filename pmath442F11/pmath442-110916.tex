@@ -1,0 +1,60 @@
+\textbf{Splitting Fields} \\
+Let $K$ be a field, $p(x)\in K[x]$ a non-constant polynomial $A$ splitting field for $p(x)$ over $K$ is a field $L$ such that:
+\begin{enumerate}[label=(\arabic*)]
+\item $p(x)=c(x-a_1)\dotsm(x-a_n)$ for some $c$, $a_1$, $\dotsc$, $a_n\in L$ \emph{and}
+\item $L=K(a_1,\dotsc,a_n)$
+\end{enumerate}
+\fact Up to isomorphism, there is exactly one splitting field for a given $p(x)$ over $K$. \\
+\defn A finite field extension $L/K$ is normal \emph{iff} $L$ is the splitting field for some $p(x)\in K[x]$. \\
+\note
+%\[ 
+%\left.\vcenter{\hbox{$\xymatrix{
+%%\hbox{$\underset{\vdots}{K(a_1,\dotsc,a_n)}$} \\
+%K(a_1,\dotsc,a_n)\ar@{}[d]|{\mbox{$\vdots$}} \\
+%K(a_1,a_2)\ar@{-}[d]^{\leq n-1} \\
+%K(a_1)\ar@{-}[d]^{\leq n} \\
+%K}$}}\right\} \text{degree $\leq n!$} \]
+\[ \left.\begin{gathered}K(a_1,\dotsc,a_n) \\
+\xymatrix{{\vphantom{K(a_1,\dotsc,a_n)}\makebox[\widthof{$K(a_1,\dotsc,a_n)$}]{$\smash\vdots$}}\ar@{-}[d]^{\leq n-1} \\
+K(a_1)\ar@{-}[d]^{\leq n} \\
+K}\end{gathered}\right\} \text{degree $\leq n!$} \]
+\defn Let $K$ be a field.  An algebraic closure of $K$ is a field $K$ such that:
+\begin{enumerate}[label=(\arabic*)]
+\item $L/K$ is algebraic
+\item Every non-constant polynomial $p(x)\in K[x]$ splits into linear factors in $L[x]$.
+\end{enumerate}
+\fact Up to isomorphism, there is exactly one algebraic closure of $K$. \\
+\defn A field $K$ is algebraically closed \emph{iff} every non-constant $p(x)\in K[x]$ splits into linear factors in $K[x]$.
+
+\thm Any algebraic closure of a field $K$ is algebraically closed. \\
+\pf Let $L$ be an algebraic closure of $K$, and let $p(x)\in L[x]$ be any non-constant polynomial.  Proceed by induction on $\deg(p)$.  The base case $\deg(p)=1$ is trivial. \\
+Assume every polynomial of $\deg\leq n$ splits, and let $\deg(p)=n+1$.  If $p$ is reducible, we're done.  If not, let $M/L$ be a splitting field for $p(x)$ over $L$. \\
+Any root $\alpha\in M$ of $p(x)$ is algebraic over $L$.  But $L$ is algebraic over $K$, so $M$ is also algebraic over $K$.  Let $q(x)\in K[x]$ be a minimal polynomial for $\alpha$ over $K$.  Then since $q(x)=0$, we get $p(x)\divides q(x)$, and $q(x)$ splits into linear factors over $K$, so $p(x)$ does too. \qed
+
+\eg Union is $\overline{\F_p}$
+\[ \begin{gathered}\xymatrix{
+& \F_{p^8} \\
+\F_{p^{10}} & \F_{p^4}\ar@{-}[u] & \F_{p^6} & \F_{p^9} \\
+\F_{p^5}\ar@{-}[u] & \F_{p^2}\ar@{-}[ul]\ar@{-}[u]\ar@{-}[ur] & \F_{p^3}\ar@{-}[u]\ar@{-}[ur] & \F_{p^7} \\
+& \F_p = \Z/p\Z\ar@{-}[ul]\ar@{-}[u]\ar@{-}[ur]\ar@{-}[urr]}\end{gathered} \mathrlap{\qquad\qquad\qquad\qquad \begin{gathered}\xymatrix{\C\ar@{-}[d]\\\R}\end{gathered}} \]
+\defn Let $K$ be a field, $p(x)\in K[x]$ a non-constant polynomial.  We say that $p(x)$ is separable over $K$ \emph{iff} $\gcd(p,p')=1$. \\
+\defn The derivative of $a_0+a_1x+\dotsb+a_nx^n$ is $a_1+2a_2x+\dotsb+na_nx^{n-1}$. \\
+\thm
+\begin{align*}
+(pq)' &= p'q+pq' \\
+(p\pm q)' &= p'\pm q' \\
+(cp)' &= cp' \text{ if $c\in K$}
+\end{align*}
+\pf As if. \qed
+
+\thm Let $p(x)=c\prod_i(x-a_i)^{n_i}$ for distinct $a_i\in K$.  Then $x-a_i\divides p'(x)$ \emph{iff} $(x-a_i)^2\divides p(x)$. \\
+\pf Backwards: $p(x)=(x-a_i)^2q(x)$, so $p'(x)=2(x-a_i)q(x)+(x-a_i)^2q'(x)$ which has a factor of $x-a_i$.
+\begin{gather*}
+\text{Forwards: } p'(x) = (x-a_i)q(x) \\
+\implies p'(x) = q(x) + (x-a_i) q'(x) \\
+\implies 0 = p'(a_i) = q(a_i)
+\end{gather*}
+so $x-a_i\divides q(x)\implies(x-a_i)^2\divides p(x)$ \qed
+
+So $p(x)$ is separable \emph{iff} it has no multiple roots in any extension of $K$. \\
+\defn Let $L/K$ be an extension, $\alpha\in L$, $\alpha$ algebraic over $K$.  Then $\alpha$ is separable over $K$ \emph{iff} its minimal polynomial over $K$ is separable.

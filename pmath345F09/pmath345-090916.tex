@@ -1,0 +1,96 @@
+\defin A ring $R$ is \emph{commutative} if for all $x,y\in R$, $xy=yx$.
+
+\prop Let $R$ be a ring.
+%alpha list
+\begin{enumerate}
+\item[(a)] If $x+z=y+z$ then $x=y$.
+\item[(b)] For all $y$ there is a \emph{unique} $y$ such that $x+y=0$. \\
+(We call $y$ the \emph{additive inverse} of $x$, denote it by $-x$).
+\item[(c)] For all $x$, $-(-x)=x$.
+\item[(d)] If $x\in R$, $0x=0=x0$.
+\item[(e)] $(-1)x=-x=x(-1)$.
+\item[(f)] $(-x)y=-(xy)=x(-y)$
+\item[(g)] $(-x)(-y)=xy$
+\end{enumerate}
+\pf
+%alpha list
+\begin{enumerate}
+\item[(a)] $x+z=y+z$ \\
+Let $u$ be such that $z+u=0$.
+\begin{gather*}
+\implies x+z+u = y+z+u \\
+\implies x+0 = y+0 \\
+\implies x = y
+\end{gather*}
+\item[(b)] By existence of additive inverses there is a $y\in R$ such that $x+y=0$.  Suppose $x+y'=0$ also.
+\[ x+y=x+y' \]
+By part (a) and commutativity
+\[ y=y' . \]
+\item[(c)] $x+(-x)=0$ since $-x$ is the additive inverse of $x$. \\
+Therefore $x$ must be the additive inverse of $(-x)$. \\
+i.e., $x=-(-x)$.
+\item[(d)] $0+0x \mathrel{{=}\footnotemark}\footnotetext{neutrality of $0$} 0x \mathrel{{=}\footnotemark}\footnotetext{since $0=0+0$ by neutrality} (0+0)x \mathrel{{=}\footnotemark}\footnotetext{distributitivity} 0x + 0x$ \\
+Therefore by (a), $0=0x$. \\
+Similarly $x0=0$.
+\item[(e)] $x+(-1)x\mathrel{{=}\footnotemark}\footnotetext{neutrality of $1$} 1x+(-1)x\mathrel{{=}\footnotemark}\footnotetext{distributivity} (1+(-1))x= 0x \mathrel{{=}\footnotemark}\footnotetext{(d)} 0$ \\
+Therefore $(-1)x=-x$.
+\item[(f)] $(-x)y\mathrel{{=}\footnotemark}\footnotetext{(e)} ((-1)x)y \mathrel{{=}\footnotemark}\footnotetext{associativity} (-1)(xy) \mathrel{{=}\footnotemark}\footnotetext{(e)} -(xy)$ \\
+Similarly for $x(-y)$.
+\item[(g)] $(-x)(-y) \mathrel{{=}\footnotemark}\footnotetext{(f)} -(x(-y)) \mathrel{{=}\footnotemark}\footnotetext{(f)} -(-(xy)) \mathrel{{=}\footnotemark}\footnotetext{(c)} xy$.
+\end{enumerate}
+
+\textbf{Examples:}
+\begin{enumerate}
+\item[] $\Z,\Q,\R,\C$
+
+not a ring: positive integers; no additive inverse.
+\item[] $C[0,1]$ \\
+\defin Given any ring $R$ and nonempty set $X$ let $\Fun(X,R)$ be the set of all functions from $X$ to $R$.
+
+$(f+g)(x) \coloneqq f(x)+g(x)$, here $f\colon X\to R$, $g\colon X\to R$ \\
+$(fg)(x) \coloneqq f(x)g(x)$ \\
+$0(x) = 0$ for all $x\in X$ \\
+$1(x) = 1$ for all $x\in X$ \\
+Check: $\Fun(X,R)$ is a ring.  Its commutative iff $R$ is commutative.
+
+not a ring: set of monotonic $f\colon[0,1]\to\R$ with usual $+$, $\times$ on functions; not closed under $\times$
+\item[] $M_2(\R)$ \\
+\defin Given any ring $R$, $n\geq1$, $M_n(R)=\text{set of all $n\times n$ matrices with entries in $R$}$
+
+Usual matrix addition and multiplication formulas. \\
+$0$ matrix. \\
+$1$ matrix.
+
+check: $M_n(R)$ is a ring.  Even if $R$ is commutative, this need not be.
+
+not a ring: $\GL_n(\R)=\text{$n\times n$ matrices with $\det\neq0$}$; not preserved by matrix addition
+\end{enumerate}
+\defin %Given rings $(R,+_R, \times_R, 0_R, 1_R), (S, +_S, \times_S, 0_S, 1_S)$.
+Given rings $R,S$ with $+_R,\times_R,0_R,1_R$ the ring structure on $R$ and $+_S,\times_S,0_S,1_S$ the ring structure on $S$.
+
+The \emph{direct product} of $R$ and $S$ is:
+\begin{gather*}
+R\times S = \set{(a,b)}{a\in R, b\in S} \\
+(a,b)+(a',b') = (a+_Ra',b+_Sb')\footnotemark \\
+(a,b)(a',b') = (a\times_Ra',b\times_Sb')\footnotemark \\
+0 \qquad (0_R,0_S) \\
+1 \qquad (1_R,1_S)
+\end{gather*}\addtocounter{footnote}{-1}\footnotetext{``co-ordinate addition''}\addtocounter{footnote}{1}\footnotetext{``co-ordinate multiplication''}%
+check: that $R\times S$ is a ring, commutative iff both $R$ and $S$ are.
+
+\ex $\Z_n$. $n\geq2$, \emph{residues modulo $n$} \\
+$a,b\in\Z$ are \emph{congruent modulo $n$} if $n\mid(a-b)$, $a\equiv b\pmod n$. \\
+Congruence is an equivalence relation on $\Z$. \\
+$a\in\Z$, let $\overline a=\text{equivalence class of $a$}=\set{b\in\Z}{a\equiv b\pmod n}=:\text{\emph{residue} of $a\pmod n$}$ \\
+$\Z_n$ is $\set{\overline a}{a\in\Z}=\brace{\overline0,\overline1,\dotsc,\overline{n-1}}$ \\
+\note $\overline a=\overline b\iff a\equiv b\pmod n$
+\begin{align*}
+\overline a + \overline b \coloneqq \overline{a+b} \\
+\overline a \overline b \coloneqq \overline{ab}
+\end{align*}
+\textbf{Warning:} Check this is \emph{well-defined}! \\
+i.e., if $\overline a=\overline{a'}$ then need $\overline{ab}=\overline{a'b'}$ \\
+similarly for $+$. \\
+zero is $\overline0$ \\
+one is $\overline1$ \\
+\textbf{Check:} This is a commutative ring.

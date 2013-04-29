@@ -1,0 +1,98 @@
+\cor \textbf{Weierstrass $M$-test}
+
+Let $f_n\colon X\to\R$.  If there exists a sequence $M_k$ such that $\abs{f_k(x)}\leq M_k$ for all $x\in X$ and for all $k$ and if $\sum_1^\infty M_k$ converges, then $\sum_{k=1}^\infty f_k$ converges uniformly.
+
+\ex
+\[ f_k(x) = \frac{\sin kx}{k^2} \qquad \abs{f_k(x)}\leq\frac{1}{k^2} \qquad 0\leq\sum\frac{1}{k^2}<\infty \]
+\negthickspace$\implies\sum\frac{\sin kx}{k^2}$ is a continuous function. \\
+\pf Let $S_N(x)=\sum_1^N f_k(x)$.  Show $\brace{S_N}$ converges uniformly.  It's enough to prove $\brace{S_N}$ is uniformly Cauchy.
+\[ \abs{S_N-S_M(x)} = \abs[\bigg]{\sum_{N+1}^M f_k(x)} \leq \sum_{k=N+1}^M\abs[\big]{f_k(x)} \leq \sum_{k=N+1}^M M_k \to0\text{ as }M>N\to\infty \]
+\negthickspace$\implies\brace{S_N}$ is uniformly Cauchy.
+
+\textbf{Dini's Theorem:} Suppose $K$ is compact and $f_n\colon K\to\R$ converges pointwise to $f$.  If $f_n,f$ are continuous and $f_{n+1}(x)\leq f_n(x)$ for all $n$, for all $x\in K$, then $f_n\to f$ uniformly. \\
+\pf Let $g_n=f_n-f$ \\
+$g_n$ is continuous \\
+$g_n\to0$ pointwise \\
+$g_n(x)\geq g_{n+1}(x)$ \\
+$g_n\geq0$ since $f(x)\leq f_n(x)$ as $f_n(x)$ decreases
+
+Prove $g_n\to0$ uniformly to conclude $f_n\to f$ uniformly. \\
+Let $\epsilon>0$.  Find $N$ such that $\abs{g_n(x)}<\epsilon$ for all $n\geq N$ and for all $x\in K$, \\ $\iff$ $0\leq g_n(x)\leq\epsilon$ for all $n\geq N$ and for all $x\in K$. \\
+Since $g_n\to0$ pointwise, for all $t\in K$ there exists $N_t$ such that $0\leq g_n(t)<\frac{\epsilon}{2}$ for all $n\geq N_t$. \\
+In particular, $g_{N_t}(t)<\frac{\epsilon}{2}$.
+
+Because $g_{N_t}$ is continuous at $t$ so there exists $\delta_t>0$ such that if $d(t,x)<\delta_t$ then $\abs{g_{N_t}(t)-g_{N_t}(x)}<\frac{\epsilon}{2}$. \\
+The balls $B(t,\delta_t)$, $t\in K$ are an open cover of the compact set $K$.  Take a finite subcover say $B(t_1,\delta_{t_1}),\dotsc,B(t_L,\delta_{t_L})$.
+
+If $x\in K$ there exists $i$ such that $x\in B(t_i,\delta_{t_i})$
+%\[ \implies d(x,t_i)<\delta_{t_i} \implies \abs{g_{N_{t_i}}(t_i)-g_{N_{t_i}}(x)} < \frac{\epsilon}{2} \]
+%\begin{align*}
+%\implies \abs{g_{N_{t_i}}(x)} &\leq \abs{g_{N_{t_i}}(x)-g_{N_{t_i}}(t_i)} + \abs{g_{N_{t_i}}(t_i)} \\
+%&< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+%\end{align*}
+\begin{gather*}
+\implies d(x,t_i)<\delta_{t_i} \implies \abs{g_{N_{t_i}}(t_i)-g_{N_{t_i}}(x)} < \frac{\epsilon}{2} \\
+\begin{aligned}
+\implies \abs{g_{N_{t_i}}(x)} &\leq \abs{g_{N_{t_i}}(x)-g_{N_{t_i}}(t_i)} + \abs{g_{N_{t_i}}(t_i)} \\
+&< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+\end{aligned}
+\end{gather*}
+Take $N=\max(N_{t_1},\dotsc,N_{t_L})$.
+
+Let $n\geq N$ and $x\in K$.  Get $t_i$ as before.
+%\[ 0\leq g_n(x) \mathbin{\mathord{\leq}\footnotemark} g_N(x) \mathbin{\mathord\leq\footnotemark} g_{N_{t_i}}(x)<\epsilon \]
+\[ 0\leq g_n(x) \mathbin{\mathord{\leq}\footnotemark} g_N(x) \leq g_{N_{t_i}}(x)<\epsilon \]\footnotetext{by $g_n$ decreasing}%
+This is uniform convergence. \\
+\textbf{Examples:}
+\begin{enumerate}
+\item See need $K$ compact \\
+$f_n(x)=\frac{1}{nx+1}$ on $K=(0,1]$ \\
+$f_n(x)\to0$\footnotemark\ pointwise \\
+$f_{n+1}(x)\leq f_n(x)$ \\
+$f_n, f$ continuous
+
+$f_n(1/n)=1/2$ for all $n$ so there does not exist $N$ such that for all $n\geq N$ and for all $x\in(0,1]$, $\abs{f_n(x)}<1/2$.
+\item $f_n(x)=x^n$ on $[0,1]$ \\
+Everything satisfied except continuity of $f$.
+\item\marginpar{graph of $f_n(x)$: peak of height $n$ at $x=1/n$}
+$f_n\to0$ pointwise \\
+$f_n(1/n)=n$ so convergence is not uniform \\
+$f_n$ are not decreasing pointwise.
+\end{enumerate}\footnotetext{$=f$}
+
+\textbf{Function Spaces}
+$ C(X) = \text{continuous functions $f\colon X\to\R$} $ vector spaces \\
+$ C_b(X) = \text{continuous, bounded functions $f\colon X\to\R$} $ subspaces \\
+When $X$ is compact $C(X)=C_b(X)$ \\
+$C(\R)\setminus C_b(\R)$: $f(x)=x$
+
+Define $\norm f=\sup_{x\in X}\abs{f(x)}$ when $f\in C_b(X)$ \\
+``$\sup$ norm'' or ``uniform'' norm (exercise) \\
+$\abs{f(x)}\leq\norm f$ for all $x\in X$ \\
+Defines a metric on $C_b(x)$ by $d(f,g)=\norm{f-g}$ %\\
+
+Ball $B(f,r)$:\marginpar{figure: $g$ within a $\epsilon$-tube of $f$}
+\marginpar{figure: $d(f,g)=\norm{f-g}$}
+
+Take $f_n,f\in C_n(X)$ \\
+Recall $f_n\to f$ uniformly means for all $\epsilon>0$ there exists $N$ such that $\abs{f_n(x)-f(x)}\leq\epsilon$ for all $n\geq N$ and for all $x\in X$.
+\begin{align*}
+&\iff \sup_{x\in X}\abs{f_n(x)-f(x)}\leq\epsilon\quad\forall n\geq N \\
+&\iff \norm{f_n-f}\leq\epsilon\quad\forall n\geq N \\
+&\iff d(f_n,f)\leq\epsilon\quad\forall n\geq N \\
+&\iff f_n\to f \text{ in metric space $C_b(x)$}
+\end{align*}
+$\brace{f_n}$ in $C_b(x)$ is Cauchy if and only if $\brace{f_n}$ is uniformly Cauchy
+
+\thm $C_b(X)$ is a complete metric space \\
+\pf Suppose $\brace{f_n}$ in $C_b(X)$ is a Cauchy sequence.  Then $\brace{f_n}$ is uniformly Cauchy and so it converges uniformly to some $f\in C(X)$. \\
+Get $N$ such that $\abs{f(x)-F_N(x)}\leq1$ for all $x\in X$
+\begin{align*}
+&\implies \abs{f(x)}\leq 1 + \abs{f_N(x)} \leq 1 + \norm{f_N} \\
+&\implies \norm f = \sup_{x\in X}\abs{f(x)} \leq 1 + \norm{f_N} < \infty \\
+&\implies f \in C_b(X)
+\end{align*}
+Hence $f_n\to f$ in uniform norm. \\
+Therefore $C_b(X)$ is complete.
+
+$C_b(X)$ is a \emph{complete normed vector space}, i.e., a \emph{Banach space}.

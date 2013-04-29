@@ -1,0 +1,87 @@
+\textbf{Euler's Theorem:} $a\in\Z$, $a\neq0$, $\gcd(a,n)=1$, then $a^{\phi(n)}\equiv1\pmod n$ \\
+$\phi(n)=\text{\# of nonnegative integers $<n$ that are coprime with $n$}$
+
+Need
+\lem $R$ commutative ring, with a \emph{finite} set of units, say $m$ of them.  Then if $a\in R$ is a unit then $a^m\footnote{$\underbrace{a\cdot a\cdot a\dotsm a}_{\text{$m$ times}}$}=1$.
+
+\pf $a$ a unit.  Consider $f_a\colon R\to R$ by $b\mapsto ab$.  Since $a$ is not a zero divisor, $f_a$ is injective. \\
+Note that the product of units is a unit.  \\
+If $U=\text{set of units in $R$}=\brace{u_1,u_2,\dotsc,a_m}$, then $f_a(U)=U$. \\
+i.e., $f_a|_U\colon U\to U$ injective, hence bijective since $U$ is finite. \\
+$U=\brace{u_1,\dotsc,u_m}$ \\
+$U=f_a(U)=\brace{au_1,au_2,\dotsc,au_m}$ \\
+$\brace{u_1,\dotsc,u_m}=\brace{au_1,\dotsc,au_m}$, so
+\begin{align*}
+\prod_{i=1}^m u_i\footnotemark = \prod_{i=1}^m au_i &= (au_1)(au_2)\dotsm(au_m) \\
+&= a^m(u_1u_2\dotsm u_m) \\
+&= a^m\prod_{i=1}^m u_i
+\end{align*}\footnotetext{$u_1u_2\dotsm u_m$}%
+Therefore $1\prod_i=a^m\prod_i u_i$.  Since $\prod_i u_i$ is also a unit it is not a zero divisor and hence we can cancel $\implies 1=a^m$.
+
+\textbf{Proof of Euler's theorem:} \\
+$n\geq2$, $a\neq0$, $\gcd(a,n)=1$. \\
+$R=\Z_n$. \\
+$U=\text{set of units in $\Z_n$}$ has $\phi(n)$ many elements in it by the previous propositions. \\
+$\overline{b}$ is a unit in $\Z_n$ $\iff$ $\gcd(b,n)=1$ \\
+$\Z_n=\brace{\overline0,\overline1,\dotsc,\overline{n-1}}=\text{\# of units}=\phi(n)$ \\
+$\overline a\in\Z_n$ is a unit. \\
+\# of units in $\Z_n$ is $\phi(n)$ so by the lemma
+\begin{align*}
+\overline a^{\phi(n)} &= \overline1\footnotemark \\
+\implies \overline{a^{\phi(n)}} &= \overline1 \\
+\implies a^{\phi(n)} &\equiv 1 \pmod n
+\end{align*}\footnotetext{in $\Z_n$}%
+What are the units/zero divisors in $\Z[i]=\set{a+bi}{a,b\in\Z}$? \\
+zero divisors: \emph{none}. \\
+$\Z[i]$ is a subring of $\C$ and $\C$ have no zero divisors. \\
+($u,v\in\C$, $uv=0\implies u=0$ or $v=0$, i.e., $\C$ is an integral domain) \\
+\textbf{units:} units in $\C$ are $\C\setminus\brace0$ (i.e., $\C$ is a field.) \\
+$*$ This does \emph{not} mean that $\Z[i]$ is a field.  Example: $2$ is a unit in $\Q$ but not in $\Z$.
+
+\textbf{units:} $\pm1$, $\pm i$ \\
+\textbf{claim:} these are the only units \\
+\pf $z\in\Z[i]$, $z=a+bi$ \\
+$\abs{z}=\sqrt{a^2+b^2}$ \\
+$N(z)=\abs{z}^2=a^2+b^2\in\Z$ \\
+$z,w\in\Z$, $N(zw)=N(z)N(w)$ \\
+If $z$ is a unit in $\Z[i]$, let $w=z^{-1}\in\Z[i]$, \\
+$1=zw\implies N(1)\footnote{1}=N(zw)=N(z)N(w)$ \\
+$N(w)=N(z)^{-1}$, \\
+i.e., $N(z)$ is a \emph{unit} in $\Z$. \\
+$\implies$ $N(z)=\pm1$ \\
+$\implies$ $a^2+b^2=\pm1$ \\
+$\implies$ $a^2+b^2=1$ \\
+$\implies$ $a=\pm1$ and $b=0$ \\
+or \\
+$a=0$ and $b=\pm1$ \\
+$z=1,-1,i,-i$
+
+\textbf{Exercise:} $\Fun([0,1],\R)$.  What are the zero-divisors and the units?
+
+\textbf{Polynomials:} \\
+\defin $R$ commutative ring.  Let $x$ be an indeterminate (i.e., a variable), i.e., $x$ is just a symbol.  A \emph{polynomial in $x$ over $R$} is a formal expression\footnote{formal expression means it is just a string of symbols} of the form
+\[ a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \dotsb \]
+where $a_i$s are in $R$ \emph{and} all but finitely many of the $a_i$s are $0$.
+\[ a_0 + a_1 x + a_2 x^2 + \dotsb = b_0 + b_1 x + b_2 x^2 + \dotsb \]
+if and only if each $a_i=b_i$ in $R$.
+
+\textbf{Notational conventions:}
+\begin{enumerate}
+\item We use series notation:
+\[ a_0 + a_1 x + a_2 x^2 + \dotsb =: \sum_{i=0}^\infty a_i x^i \]
+\item We often \emph{drop} the $a_ix^i$ if $a_i=0$. \\
+So for example when $R=\Z$, we write:
+\[ x^2 - 2x^4 + x^6 \]
+rather than
+\[ 0 + 0x + 1x^2 + 0x^3 + (-2)x^4 + 1x^6 + 0x^7 + 0x^8 + \dotsb \]
+\item we also write $x^2-2x^4$ instead of $x^2+(-2)x^4$
+\end{enumerate}
+Let $R[x]$ denote the \emph{set} of all polynomials in $x$ over $R$.
+
+\textbf{Check:} $R[x]$ is a ring with
+\begin{align*}
+0 &= \sum_{i=1}^\infty 0x^i \\
+1 &= 1 + 0x+ 0x^2 + \dotsb
+\end{align*}
+\[ \paren[\bigg]{\sum_i a_ix^i} + \paren[\bigg]{\sum_i b_ix^i} \coloneqq \sum_{i=0}^\infty (a_i+b_i)\footnote{in $R$}x^i \]
+\[ \paren[\bigg]{\sum_i a_ix^i}\paren[\bigg]{\sum_i b_ix^i} \coloneqq \sum_{i=0}^\infty\paren[\bigg]{\sum_{j=0}^\infty a_{i-j}\footnote{in $R$}b_j}x^i \]

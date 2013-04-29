@@ -1,0 +1,137 @@
+\textbf{Analytic Number Theory} \\
+home page at \url{www.math.uwaterloo.ca/~snew} \\
+outline, assignments, solutions
+
+(Introduction to) \\
+Analytic Number Theory by Apostol \\
+Chapter 1, Chapter 5.
+
+\textbf{Chapter 1:} Fundamental Theorem of Arithmetic \\
+\thm (Division Algorithm) \\
+Given $a$, $b\in\Z$ with $a\neq0$ there exist unique $q$, $r\in\Z$ with $b=qa+r$, $0\leq r<\abs{a}$.
+
+\defn For $a$, $b\in\Z$ we say \emph{$a$ divides\/ $b$} (or $a$ is a \emph{factor of\/ $b$} or $b$ is a multiple of $a$) when $b=qa$ for some $q\in\Z$.
+
+\textbf{basic facts}
+\begin{align*}
+& 0\div a\iff a=0 && a\div0\text{ for all $a\in\Z$} \\
+& 1\div a\text{ for all $a\in\Z$} && a\div1\text{ for $a=\pm1$}
+\end{align*}
+\defn For $a$, $b\in\Z$ we say that $d$ is the \emph{greatest common divisor} of $a$ and $b$ when
+\begin{itemize}
+\item[] $d\geq0$
+\item[] $d\div a$ and $a\div b$, and
+\item[] if $c\div a$ and $c\div b$ then $c\div d$
+\end{itemize}
+\textbf{basic facts}
+\begin{itemize}
+\item[] $\gcd(0,0)=0$
+\item[] $\gcd(0,a)=\abs{a}$
+\item[] if $a\div b$ then $\gcd(a,b)=\abs{a}$
+\item[] $\gcd(a,b)=\gcd(b,a)$
+\item[] $\gcd(a,b)=\gcd(\abs{a},\abs{b})$
+\item[] $\gcd(ac,bc)=\abs{c}\gcd(a,b)$
+\item[] If $b=qa+r$ then $\gcd(a,b)=\gcd(b,r)$
+\end{itemize}
+\thm (Euclidean Algorithm with Back-Substitution) \\
+Given $a$, $b\in\Z$
+\[ d=\gcd(a,b) \text{ exists} \]
+and there exist $x$, $y\in\Z$ such that $ax+by=d$ \\
+\pf If $b\div a$ then
+\[ d=\gcd(a,b)=\abs{b} \]
+and we can easily find $x$, $y$. \\
+Suppose $0<b<a$ and $b\nmid a$. \\
+We apply the division algorithm repeatedly to get
+\begin{alignat*}{2}
+a &= bq_1 + r_1 &\qquad 0<r_1&<b \\
+b &= r_1q_2 + r_2 & 0<r_2&<r_1 \\
+r_1 &= r_2q_3 + r_3 & 0<r_3&<r_2 \\
+&\eqvdots \\
+r_{n-2} &= r_{n-1}q_n + r_n & 0<r_n&<r_{n-1} \\
+r_{n-1} &= r_nq_{n+1} + r_{n+1} & r_{n+1} &= 0
+\end{alignat*}
+Then $\gcd(a,b)=\gcd(b,r_1)=\gcd(r_1,r_2)=\dotsb=\gcd(r_{n-1},r_n)=\gcd(r_n,0)=r_n$
+
+This method of finding $\gcd(a,b)$ is called the Euclidean Algorithm
+\begin{align*}
+\text{We have } \gcd(a,b) &= r_n = r_{n-2} - r_{n-1}q_n \\
+&= r_{n-2}u_1 + r_{n-1}u_2 \qquad\text{where $u_1=1$, $u_2=-q_n$} \\
+&= r_{n-2}u_1 + (r_{n-3}-r_{n-2}q_{n-1})u_2 \\
+&= r_{n-3}u_2 + r_{n-2}u_3, \qquad u_3=u_1-q_{n-1}u_2 \\
+&= r_1u_{n-2} + r_2u_{n-1} \\
+&= r_1u_{n-2} + (b-r_1q_2)u_{n-1} \\
+&= bu_{n-1} + r_1u_n, \qquad u_n=u_{n-2}-q_2u_{n-1} \\
+&= bu_{n-1} + (a-bq_1)u_n \\
+&= au_n + bu_{n+1}, \qquad u_{n+1}=u_{n-1}-q_1u_n
+\end{align*}
+Thus we can define $u_1=1$, $u_2=-q_n$, $u_n=u_{k-2}-q_{n-k+2}u_{k-1}$ and then we can take $x=u_n$, $y=u_{n+1}$ to get $ax+by=d$.
+\[
+\begin{array}{@{}r@{}r@{}r@{}}
+&& 2 \\ \cline{2-3}
+429 & \big) & 1196 \\
+& & 858 \\ \cline{3-3}
+&& 338
+\end{array}\qquad
+\begin{array}{@{}r@{}r@{}r@{}}
+&& 1 \\ \cline{2-3}
+338 & \big) & 429 \\
+& & 338 \\ \cline{3-3}
+&& 91
+\end{array}\qquad
+\begin{array}{@{}r@{}r@{}r@{}}
+&& 3 \\ \cline{2-3}
+91 & \big) & 338 \\
+& & 273 \\ \cline{3-3}
+&& 65
+\end{array}\qquad
+\begin{array}{@{}r@{}r@{}r@{}}
+&& 1 \\ \cline{2-3}
+65 & \big) & 91 \\
+& & 65 \\ \cline{3-3}
+&& 26
+\end{array}\qquad
+\begin{array}{@{}r@{}r@{}r@{}}
+&& 2 \\ \cline{2-3}
+26 & \big) & 65 \\
+& & 52 \\ \cline{3-3}
+&& 13
+\end{array}\qquad
+\begin{array}{@{}r@{}r@{}r@{}}
+&& 2 \\ \cline{2-3}
+13 & \big) & 26 \\
+& & 26 \\ \cline{3-3}
+&& 0
+\end{array}
+\]
+$\therefore d=\gcd(a,b)=13$ \\
+We have
+\[ \begin{array}{c|cccccc}
+k & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+u_k & 1 & -2 & 3 & -11 & 14 & -39
+\end{array} \]
+$\therefore (1196)(14)+(429)(-39)=13$
+
+\defn For $a$, $b\in\Z$ we say that $a$ and $b$ are \emph{coprime} when $\gcd(a,b)=1$.
+
+\textbf{basic facts}
+\begin{itemize}
+\item[] $\gcd(a,b)=1\iff\exists x,y\in\Z\quad ax+by=1$
+\item[] If $d=\gcd(a,b)$ then $\gcd(a/d,b/d)=1$.
+\item[] If $a\div c$ and $b\div c$ and $\gcd(a,b)=1$ then $ab\div c$.
+\item[] If $a\div bc$ and $\gcd(a,b)=1$ then $a\div c$.
+\end{itemize}
+
+\thm (The linear diophantine equation theorem) \\
+Let $a$, $b$, $c\in\Z$ with $a$, $b$ not both zero.  Consider the equation $ax+by=c$.  This equation has an integer solution $(x,y)\iff\gcd(a,b)\div c$ and in this case if $(x_0,y_0)$ is one solution then the general solution is $(x,y)=(x_0,y_0)+t(-b/d,a/d)$ for $t\in\Z$ where $d=\gcd(a,b)$.
+
+\defn Let $n\in\Z$.  $n$ is called \emph{prime} when $n>1$ and $n$ has exactly $2$ positive divisors, namely $1$ and $n$. \\
+$n$ is called \emph{composite} when $n>1$ and $\exists k,l$ with $1<k,l<n$, $n=kl$.
+
+\textbf{basic facts}
+\begin{itemize}
+\item[] for $a\in\Z$ either $p\div a$ or $\gcd(p,a)=1$
+\item[] for $a$, $b\in\Z$ if $p\div ab$ then either $p\div a$ or $p\div b$
+\item[] for $a_i\in\Z$ if $p\div a_1a_2\dotsm a_l$ then $p\div a_i$ for some $i$
+\item[] for $a\in\Z$ if $p\div a^n$ then $p\div a$ where $n\in\Z^+$
+\item[] If $n$ is composite then $n$ has a prime factor $p$ with $p\leq\sqrt{n}$.
+\end{itemize}

@@ -1,0 +1,68 @@
+$\Z_5[x]$: polynomials in $x$ whose coefficients lie in $\Z_5$. \\
+\fact If $a\in\Z_5$, then $a^5=a$. \\
+\fact In $\Z_5[x]$, $x^5$ and $x$ are \emph{different} polynomials that define the same function $\Z_5\to\Z_5$.
+\begin{gather*}
+x^5 = (\sqrt2)^5 = \sqrt{32} = 4\sqrt2 = -\sqrt2 \\
+x = \sqrt2 \neq 4\sqrt2
+\end{gather*}
+\defn Let $R$ be a ring, $I\subset R$ an ideal.  Then $I$ is prime \emph{iff} every $a$, $b\in R$ with $ab\in I$ satisfies $a\in I$ or $b\in I$, and $I\neq R$.
+
+Furthermore, $I$ is maximal \emph{iff} $I\neq R$ and the only ideal $J\subset R$ with $I\subsetneq J$ is $J=R$.
+
+\eg What are the prime and maximal ideals of $\Z$?
+
+Well, any ideal of $\Z$ is of the form $(n)$ for $n\in\Z$.
+
+If $n$ is composite, then $n=ab$ for $a$, $b\in\Z$, $a$, $b\neq\pm1$.  In that case:
+\[ (n) \subsetneq (a) \neq (1) \]
+so $(n)$ is not a maximal ideal.  Also, $a\notin(n)$ and $b\notin(n)$, but $ab\in(n)$, so $(n)$ isn't prime.
+
+$(0)$ is prime but not maximal.  If $n$ is prime, then we can call it $p$.  The ideal $(p)$ is maximal and prime.  The ideal $(p)$ is prime because $p\mid ab\implies p\mid a$ or $p\mid b$, and $(p)$ is maximal because if $(p)\subsetneq(n)$, then $n\mid p$, so $n=\pm p$ (not possible since $(p)\neq(n)$) or $n=\pm1$, in which case $(n)=(1)$.  Hence $(p)$ is maximal.
+
+\thm Let $R$ be a ring.  $I$ an ideal of $R$.  Then:
+\begin{enumerate}[label=(\arabic*)]
+\item $I$ is prime \emph{iff} $R/I$ is a domain
+\item $I$ is maximal \emph{iff} $R/I$ is a field
+\end{enumerate}
+\pf \begin{enumerate}[label=(\arabic*)]
+\item Forwards: $I$ is prime.  Let $a$, $b\in R$ be any elements with $ab\equiv0\bmod I$.  We want to show either $a\equiv0$ or $b\equiv0$.  Since $ab\equiv0$, we get $ab\in I$, so either $a\in I$ or $b\in I$ $\implies$ $a\equiv0$ or $b\equiv0$.
+
+Backwards: Similar.
+\item Forwards:  $I$ is maximal.  This means only two ideals of $R$ contain $I$, namely, $I$ and $R$.
+
+Now let $J$ be any ideal of $R/I$, $q\colon R\to R/I$ the quotient homomorphism.  Then
+\[ q^{-1}(J) = \set{r\in R}{q(r)\in J} \]
+is an ideal of $R$ that contains $I$.
+
+So $q^{-1}J=I$ or $R$, so $J=(0)$ or $(1)$.  Thus, $R/I$ has exactly 2 ideals, and so must be a field.
+
+Backwards: Similar. \qed
+\end{enumerate}
+\cor Every maximal ideal is prime. \\
+\pf Every field is a domain. \qed
+
+\eg Is $(x-1)$ a prime ideal of $\Q[x]$?  How about $\Z[x]$?
+\[ \xymatrix{
+\Q[x] \ar[rr]^f \ar[rd]_q & & \Q \\
+ & \Q[x]/(x-1) \ar@{.>}[ur]_{\tilde f} &
+} \]
+$f(p(x))=p(1)$.  By UPQ, this induces $\tilde f\colon\Q[x]/(x-1)\to\Q$ because $f(x-1)=1-1=0$. \\
+We see that $\tilde f$ is onto, since $f(c)=c$ for all $c\in\Q$.  Moreover, $\tilde f$ is 1--1 because $f(p(x))=0\iff p(1)=0\iff x-1\mid p(x)\iff p(x)\in(x-1)$.  That is, $\ker f=(x-1)\iff\ker\tilde f=(0)$.
+
+Since $\Q[x]/(x-1)\cong\Q$ (via $\tilde f$), we see that $(x-1)$ is prime and maximal.
+
+$\Z[x]$:
+\[ \xymatrix{
+\Z[x] \ar[rr]^f\ar[rd]_q & & \Z \\
+ & \Z[x]/(x-1) \ar@{.>}[ru]_{\tilde f} &
+} \qquad f(p(x)) = p(1) \]
+Not too hard to show $\tilde f$ is 1--1 and onto.  Since $\Z$ is a domain but not a field, $(x-1)$ is prime but not maximal in $\Z[x]$.
+
+Let $R$ be any ring.  There is exactly one homomorphism $\phi\colon\Z\to R$, given by $\phi(n)=n$, called the characteristic homomorphism.  Since $\ker\phi$ is an ideal of $\Z$, we have $\ker\phi=(n)$ for some $n\geq0$.  This $n$ is called the characteristic of $R$, and is written $\Char R$.
+
+$\Z/n\Z$ has characteristic $n$. \\
+$\Char R=\text{first positive integer $n$ such that $n=0$ in $R$}$ \\
+If none, then $\Char R=0$.
+
+\eg $\Char\Q=\Char\Z=0$. \\
+\fact $R$ is a domain $\implies$ $\Char R$ is $0$ or prime.

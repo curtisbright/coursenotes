@@ -1,0 +1,77 @@
+\cor Let $1\c \alpha_1\c \dotsc\c \alpha_n$ be real \emph{algebraic} numbers which are $\Q$-linearly independent.  Let $\delta>0$.  There are only finitely many $n+1$-tuples of integers $q_1\c \dotsc\c q_n$ and $p$ with $q=\max_i\abs{q_i}>0$ for which
+\[ \abs{\alpha_1q_1+\dotsb+\alpha_nq_n-p}<\frac{1}{q^{n+\delta}} . \]
+The special case when $n=1$ is due to Roth.  In particular, let $\delta>0$, if $\alpha$ is an algebraic number then there are only finitely many rationals $p/q$ with $q>0$ for which
+\[ \abs*{\alpha-\frac{p}{q}} < \frac{1}{q^{2+\delta}} . \]
+$\Longrightarrow$ Thue equations such as $x^3-2y^3=6$, have only finitely many solutions in integers $x$ and $y$.  Roth obtained the Fields Medal in 1958.  Schmidt also proved: \\
+\textbf{Theorem 21:} Suppose that $\alpha_1\c \dotsc\c \alpha_n$ are real algebraic numbers with $1\c \alpha_1\c \dotsc\c \alpha_n$ $\Q$-linearly independent.  Let $\delta>0$.  There are only finitely many positive integers $q$ with
+\[ q^{1+\delta}\norm{\alpha_1q}\dotsm\norm{\alpha_nq} < 1 . \]
+\cor Let $1\c \alpha_1\c \dotsc\c \alpha_n$ be real \emph{algebraic} numbers which are $\Q$-linearly independent.  Let $\delta>0$.  Then there are only finitely many $n$-tuples of rationals $\paren{\frac{p_1}{q},\dotsc,\frac{p_n}{q}}$ with $q>0$ for which
+\[ \abs*{\alpha_i-\frac{p_i}{q}} < \frac{1}{q^{1+1/n+\delta}} . \]
+Theorems 20 and 21 are consequences of the following result.
+
+\textbf{Theorem 22:} (Schmidt's Subspace Theorem).  Suppose $L_1(\x)\c \dotsc\c L_n(\x)$ are \emph{linearly independent} linear forms in $\x=(x_1,\dotsc,x_n)$ with algebraic coefficients.  Let $\delta>0$.  There are \emph{finitely} many \emph{proper} subspaces $T_1\c \dotsc\c T_w$ of $\R^n$ such that every integer point $\x=(x_1,\dotsc,x_n)$ with $\x\neq\0$ for which%\marginpar{\begin{align*}
+%\house{\x} &= \house{(x_1,\dotsc,x_n)} \\
+%&= \max_i\abs{x_i}
+%\end{align*}}%
+\[ \abs{L_1(\x)\dotsm L_n(\x)} < \frac{1}{\house{\x}^\delta} \]
+lies in (at least) one of the subspaces.
+
+\pagebreak
+\textbf{Remarks:}\begin{enumerate}
+\item The result is not effective in the sense that the proof does not yield a procedure for determining the subspaces $T_1\c \dotsc\c T_w$.
+\item The integer points in a proper subspace of $\R^n$ lie in a rational subspace of $\R^n$, in other words in a subspace determined by a linear form with rational coefficients.
+\item The proof generalizes Roth's Theorem, uses ideas from the geometry of numbers and is difficult.
+\end{enumerate}
+
+Let us now deduce Theorem 21 from the Subspace Theorem.  Let $q$ be a positive integer satisfying
+\[ q^{1+\delta} \norm{\alpha_1q} \dotsm \norm{\alpha_nq} < 1 . \]
+Choose integers $p_1\c \dotsc\c p_n$ such that $\norm{\alpha_iq}=\abs{\alpha_iq-p_i}$, for $i=1\c \dotsc\c n$.  Then put $\x=(p_1,\dotsc,p_n,q)$.  Let $K_1$, $K_2$ denote positive numbers which depend on $\alpha_1\c \dotsc\c \alpha_n$ and $n$ only.  Note that
+\[ \house{\x} \leq K_1 q . \]
+We consider the linear forms
+\begin{align*}
+L_i(\X) &= \alpha_i X_{n+1} - X_i \qquad \text{for $i=1\c \dotsc\c n$} \\
+L_{n+1}(\X) &= X_{n+1}
+\end{align*}
+$L_1\c \dotsc\c L_{n+1}$ are $n+1$-linearly independent linear forms with algebraic coefficients. \\
+We have
+\[ \abs{L_1(\x)\dotsm L_{n+1}(\x)} = \norm{\alpha_1q}\dotsm\norm{\alpha_nq}\cdot q \]
+so
+\[ \abs{L_1(\x)\dotsm L_{n+1}(\x)} < \frac{1}{q^\delta} < \frac{1}{\house{\x}^{\delta/2}} , \]
+for $q$ sufficiently large, as we may assume.
+
+%By the Subspace Theorem $\x$ lies in one of finitely many proper subspaces $T_1,\dotsc,T_w$ of $\R^{n+1}$.  Since $\x$ has integer coordinates it lies in a rational subspace.  Thus we can find $c_1,\dotsc,c_{n+1}$ in $\Q$ with
+%\[ c_1x_1+\dotsb+c_{n+1}x_{n+1} = 0 . \tag{$*$}\label{star} \]
+%Here $c_1X_1+\dotsb+c_{n+1}X_{n+1}$ determines a proper subspace $T$ of $\R^{n+1}$. 
+By the Subspace Theorem $\x$ lies in one of finitely many proper subspaces $T_1\c \dotsc\c T_w$ of $\R^{n+1}$.  Since $\x$ has integer coordinates it lies in a proper rational subspace $T$.  We can find $c_1\c \dotsc\c c_{n+1}$ in $\Q$ such that $T$ is
+determined by $c_1X_1+\dotsb+c_{n+1}X_{n+1}$.  Then
+\begin{equation} c_1x_1+\dotsb+c_{n+1}x_{n+1} = 0 . \label{star091022} \end{equation}
+Since $\x\in T$,
+\begin{align*}
+\abs{c_1(\alpha_1q-p_1)+\dotsb+c_n(\alpha_nq-p_n)}
+&= \abs{c_1\alpha_1q+\dotsb+c_n\alpha_nq-c_1p_1-\dotsb-c_np_n} \\
+&= \abs{c_1\alpha_1q+\dotsb+c_n\alpha_nq+c_{n+1}q} \\
+&= \abs{c_1\alpha_1+\dotsb+c_n\alpha_n+c_{n+1}}q > K_2q
+\end{align*}
+since $1\c \alpha_1\c \dotsc\c \alpha_n$ are linearly independent over $\Q$.  Thus
+\begin{align*}
+K_2q &< \abs{c_1(\alpha_1q-p)+\dotsb+c_n(\alpha_nq-p_n)} \\
+&\leq \abs{c_1} + \dotsb + \abs{c_n}
+\end{align*}
+which implies $q$ is bounded as required.
+
+We shall now deduce Theorem 20 from the Subspace Theorem. \\
+\pf By induction on $n$.  For $n=1$ the result holds by Theorem 21, say.  Suppose $n>1$.  Assume that $q_1\c \dotsc\c q_n$ are non-zero integers with
+\[ \abs{q_1\dotsm q_n}^{1+\delta} \norm{\alpha_1q_1+\dotsb+\alpha_nq_n} < 1 . \]
+We now choose $p$, an integer, so that
+\[ \norm{\alpha_1q_1+\dotsb+\alpha_nq_n} = \abs{\alpha_1q_1+\dotsb+\alpha_nq_n-p} . \]
+Write $\x=(x_1,\dotsc,x_{n+1})=(q_1,\dotsc,q_n,p)$. \\
+Let $K_3$, $K_4$ be positive numbers which depend on $\alpha_1\c \dotsc\c \alpha_n$.  Then
+\[ \house{\x} = \max(\abs{q_1},\dotsc,\abs{q_n},\abs{p}) \leq K_3 q \]
+where $q=\max_i\abs{q_i}$.  Put
+\[ L_i(\X) = X_i \qquad\text{for $i=1\c \dotsc\c n$} \]
+and
+\[ L_{n+1}(\X) = \alpha_1X_1 + \dotsb + \alpha_nX_n - X_{n+1} . \]
+Then
+\[ \abs{L_1(\x)\dotsm L_{n+1}(\x)} = \abs{q_1\dotsm q_n}\norm{\alpha_1q_1+\dotsb+\alpha_nq_n} < \frac{1}{\abs{q_1\dotsm q_n}^\delta} < \frac{1}{\house{\x}^{\delta/2}} , \]
+for $q$ sufficiently large.  Then by the Subspace Theorem $\x$ lies in one of finitely many proper rational subspaces of $\R^{n+1}$.
+%Email: veronika-kl@ya.ru

@@ -1,0 +1,41 @@
+\thm (Weierstrass Approximation Theorem) \\
+$f$ is a continuous function from $[a,b]$ to $\R$. \\
+Then there exists a (finite) polynomial $p$ such that after $\epsilon>0$ is specified, $\inorm{f-p}<\epsilon$. \\
+\pf Without loss of generality, $[a,b]=[0,1]$, and may assume $f(0)=f(1)=0$.  Extend $f$ to $\R$ by $f(t)=0$ for $t\notin[0,1]$.  Then $f$ is uniformly continuous on $\R$.
+
+Let $Q_n(x)=C_n(1-x^2)^n$ on $[-1,1]$\marginpar{figure of $Q_n(x)$} where $C_n=1/\int_{-1}^1(1-x^2)^n\d x$.  With that normalization constant, $\int_{-1}^1 Q_n(x)\d x=1$.
+
+\textbf{Observation 1:}~$F(x)=(1-x^2)^n-(1-nx^2)\geq0$ on $[0,1]$ \\
+\pf $F(0)=0$, $F'(x)=-2nx(1-x^2)^{n-1}+2nx$ \\
+$=2nx(1-(1-x^2)^{n-1})\geq0$ on $[0,1]$
+
+\textbf{Observation 2:}~$\int_{-1}^1(1-x^2)^n\d x=2\int_0^1(1-x^2)^n\d x\geq2\int_0^{1/\sqrt n}(1-x^2)^n\d x$ \\
+$\geq2\int_0^{1/\sqrt n}(1-nx^2)\d x=\frac{4}{3\sqrt n}\geq\frac{1}{\sqrt n}$ \\
+i.e., $C_n\leq\sqrt n$.
+
+Let $1>\delta>0$ be fixed. \\
+Then $Q_n(x)\leq\sqrt n(1-\delta^2)^n$ for $x\in[-1,-\delta]\cup[\delta,1]$
+
+Let $P_n(x)=\int_{-1}^1f(x+t)Q_n(t)\d t$ \\
+$=\int_{-x}^{1-x}f(x+t)Q_n(t)\d t$ (if $t<-x$, then $x+t<0$, then $f(x+t)=0$) \\
+$=\int_0^1 f(t) Q_n(t-x)\d t$ $\brack*{\begin{smallmatrix}x+t=s\\t=s-x\\\!\d t=\!\d s\end{smallmatrix}}$
+
+\textbf{Observation 3:}~$P_n(x)$ is a polynomial in $x$. %\\
+\begin{flalign*}%\\[-2\baselineskip]
+\mathrlap\pf&&\frac{\d^{2n+1}}{\d x}P_n(x) &= \frac{\d^{2n+1}}{\d x}\int_0^1 f(t)Q_n(t-x)\d t&& \\
+&&&= \int_0^1 f(t) \frac{\d^{2n+1}}{\d x} Q_n(t-x) \d t&& \\
+&&&= \int_0^1 f(t) 0 \d t = 0 .&&
+\end{flalign*}
+Let $\epsilon>0$ be given.  Then there exists $\delta>0$ so that if $\abs{x-y}<2\delta$, then $\abs{f(x)-f(y)}<\epsilon/2$.
+
+Since $Q_n(t)\geq0$, we get \\
+\thm (Weierstrass Approximation Theorem)
+\begin{gather*}
+\abs*{P_n(x)-f(x)} = \abs*{\int_{-1}^1\brack{f(x+t)-f(x)} Q_n(t) \d t} \qquad\text{(note: $\int_{-1}^1 Q_n=1$)} \\
+= \abs*{\int_{-1}^{-\delta} \text{\small$\brack{f(x+t)-f(x)} Q_n(t) \d t$} + \int_{-\delta}^\delta \text{\small$\brack{f(x+t)-f(x)} Q_n(t) \d t$} + \int_\delta^1 \text{\small$\brack{f(x+t)-f(x)} Q_n(t) \d t$}} \\ \leq \abs*{\int_{-1}^{-\delta} \text{\small$\brack{f(x+t)-f(x)} Q_n(t) \d t$}} + \abs*{\int_{-\delta}^\delta \text{\small$\brack{f(x+t)-f(x)} Q_n(t) \d t$}} + \abs*{\int_\delta^1 \text{\small$\brack{f(x+t)-f(x)} Q_n(t) \d t$}} \\
+\leq 2M \int_{-1}^\delta Q_n(t) \d t + \frac{\epsilon}{2} \int_{-\delta}^\delta Q_n(t) \d t + 2 M \int_\delta^1 Q_n(t) \d t \\
+\shortintertext{where $M=\inorm{f}$}
+\leq 4 M \sqrt n (1-\delta^2\footnote{arrow to below})^n + \frac{\epsilon}{2} .
+\end{gather*}
+The first term tends to $0$ as $n\to\infty$. \\
+Large $N$, we get \footnote{arrow from above}$\leq\frac{\epsilon}{2}+\frac{\epsilon}{2}\leq\epsilon$ and such $\inorm{P_N-f}\leq\epsilon$.

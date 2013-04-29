@@ -1,0 +1,51 @@
+\textbf{Proposition 15:} Let $n\c m\c k_1\c \dotsc\c k_m$ be positive integers and let $a_{ij}$ ($1\leq i\leq m$, $1\leq j\leq n$) be integers.  The set $\Lambda$ of points $\u=(u_1,\dotsc,u_n)$ with integer coordinates satisfying
+\[ \sum_{j=1}^n a_{ij} u_j \equiv 0 \pmod{k_i}\quad \text{for $i=1\c \dotsc\c m$} \]
+is a lattice with determinant $d(\Lambda)\leq k_1\dotsm k_m$.
+
+\pf First we remark that $\Lambda$ is a subset of $\Lambda_0$ and so is discrete.  Next we observe that \[(k_1\dotsm k_m,0,\dotsc,0)\c (0,k_1\dotsm k_m,0,\dotsc,0)\c \dotsc\c (0,\dotsc,0,k_1\dotsm k_m)\] are $n$ linearly independent points in $\Lambda$.  Finally we have that if $\u=(u_1,\dotsc,u_n)$ and $\v=(v_1,\dotsc,v_n)$ are in $\Lambda$ then $\u+\v$ are in $\Lambda$ since
+\[ \sum_{j=1}^n a_{ij}(u_j\pm v_j) \equiv \paren[\bigg]{\sum_{j=1}^n a_{ij}u_j} \pm \paren[\bigg]{\sum_{j=1}^n a_{ij}v_j} \equiv 0 \pm 0 \equiv 0 \pmod{k_i}\quad\text{for $i=1\c \dotsc\c m$} . \]
+Thus by Theorem 14, $\Lambda$ is a lattice in $\R^n$ and so is a sublattice of $\Lambda_0$.
+
+Let $I$ denote the index of $\Lambda$ in $\Lambda_0$.  Then $I=\frac{d(\Lambda)}{d(\Lambda_0)}$.  But $d(\Lambda_0)=1$ and so $I=d(\Lambda)$.  It remains to estimate the index of $\Lambda$ in $\Lambda_0$.  By Proposition 13 this is the number of equivalence classes of $\Lambda_0$ under $\sim_\Lambda$.  Notice that $\u\c \v\in\Lambda_0$ are equivalent if $\u-\v\in\Lambda$ hence, with $\u=(u_1,\dotsc,u_n)$ and $\v=(v_1,\dotsc,v_n)$, if
+\[ \sum_{j=1}^n a_{ij}(u_j-v_j) \equiv 0 \pmod{k_i}\quad\text{for $i=1\c \dotsc\c m$}. \]
+Thus $I=d(\Lambda)\leq k_1\dotsm k_m$.
+
+\textbf{Theorem 16:} (Lagrange's Theorem).  Every positive integer can be expressed as the sum of four squares of integers.
+
+\pf We may restrict our attention, without loss of generality, to integers $m$ with $m>1$ which are squarefree.  Let $m=p_1\dotsm p_r$ with $p_1\c \dotsc\c p_r$ distinct primes.
+
+We now remark that for every prime $p$ there exist integers $a_p$ and $b_p$ for which
+\[ a_p^2 + b_p^2 + 1 \equiv 0 \pmod p . \]
+If $p=2$ we take $a_p=1$, $b_p=0$.  If $p$ is odd then the integers $a^2$ with $0\leq a<\frac12p$ are distinct $\bmod$ $p$.  (Consider $a_1^2-a_2^2=(a_1-a_2)(a_1+a_2)\pmod p$.)  Similarly the integers $-1-b^2$ with $0\leq b<\frac12p$ are distinct $\bmod$ $p$.  Therefore, since $\frac12(p+1)+\frac12(p+1)>p$ there must exist integers $a_p$ and $b_p$ with $a_p^2\equiv -1-b_p^2\pmod p$ as required.
+
+We define the lattice $\Lambda$ in $\R^4$ as the set of points $(u_1, u_2, u_3, u_4)$ %($u_1$, $u_2$, $u_3$, $u_4$)
+with integer coordinates satisfying
+%\begin{gather*}
+%u_1 \equiv a_{p_i} u_3 + b_{p_i} u_4 \pmod{p_i} \\
+%\shortintertext{and \hfill for $i=1\c \dotsc\c r$}
+%u_2 \equiv b_{p_i} u_3 - a_{p_i} u_4 \pmod{p_i} . \end{gather*}
+\[\text{and}\qquad\qquad
+\begin{aligned}
+u_1 &\equiv a_{p_i} u_3 + b_{p_i} u_4 \pmod{p_i} \\[1em]
+u_2 &\equiv b_{p_i} u_3 - a_{p_i} u_4 \pmod{p_i} . \end{aligned}
+\qquad\qquad\text{for $i=1\c \dotsc\c r$}\]
+Further $d(\Lambda) \leq (p_1\dotsm p_r)^2 = m^2$.
+
+Let $A=\set{(x_1,x_2,x_3,x_4)\in\R^4}{x_1^2+x_2^2+x_3^2+x_4^2<2m}$.  $A$ is the sphere of radius $\sqrt{2m}$ in $\R^4$.  Thus it is a convex set which is symmetric about the origin and it has volume $\frac{\pi^2}{2}(\sqrt{2m})^4=2\pi^2m^2$.  Since $2\pi^2m^2>2^4m^2\geq 2^4 d(\Lambda)$ there is a non-zero point $(u_1,u_2,u_3,u_4)$ of $\Lambda$ in $A$ by Theorem 8.  In particular
+\begin{equation} 0 < u_1^2 + u_2^2 + u_3^2 + u_4^2 < 2m . \label{star091008} \end{equation}
+But
+\begin{align*}
+u_1^2 + u_2^2 + u_3^2 + u_4^2 &\equiv (a_{p_i}u_3+b_{p_i}u_4)^2 + (b_{p_i}u_3-a_{p_i}u_4)^2 + u_3^2 + u_4^2 \pmod{p_i} \\
+&\equiv (a_{p_i}^2+b_{p_i}^2+1)u_3^2+(a_{p_i}^2+b_{p_i}^2+1)u_4^2 \pmod{p_i} \\
+&\equiv (a_{p_i}^2+b_{p_i}^2+1)(u_3^2+u_4^2) \pmod{p_i} \\
+&\equiv 0 \pmod{p_i}\quad \text{for $i=1\c \dotsc\c r$}
+\end{align*}
+By the Chinese Remainder Theorem
+\[ u_1^2 + u_2^2 + u_3^2 + u_4^2 \equiv 0 \pmod m . \]
+By~\eqref{star091008}, $u_1^2+u_2^2+u_3^2+u_4^2=m$ as required.
+
+In many combinatorial settings it is important to find short vectors in a lattice in an efficient way.  Finding the shortest vector in a given lattice, with respect to the usual Euclidean distance, is a difficult problem, it is \NP-hard as shown by Ajtai.  However, if we look for only a ``short'' vector in the lattice we can do so efficiently.  The algorithm we use is the \LLL-algorithm.  Here \LLL\ stands for Lenstra, Lenstra, and Lov\'asz.
+
+Let $\b_1\c \dotsc\c \b_n$ be a basis for a lattice $\Lambda$ in $\R^n$.  Let $\inn{\cdot,\cdot}$ denote the usual inner product in $\R^n$.  The Gram--Schmidt orthogonalization produces orthogonal vectors $\tilde\b_1\c \dotsc\c \tilde\b_n$ and real numbers $\mu_{ij}$ with ($1\leq j<i\leq n$) inductively by
+\[ \tilde\b_i = \b_i - \sum_{j=1}^{i-1}\mu_{ij}\tilde\b_j \qquad\text{and}\qquad \mu_{ij} = \frac{\inn{\b_i,\tilde\b_j}}{\inn{\tilde\b_j,\tilde\b_j}} . \]
+Note that $\tilde\b_i$ is the projection of $\b_i$ on the orthogonal complement of $\Sp\brace{\tilde\b_1,\dotsc,\tilde\b_{i-1}}$.  Further $\Sp\brace{\b_1,\dotsc,\b_i}=\Sp\brace{\tilde\b_1,\dotsc,\tilde\b_i}$ for $i=1\c \dotsc\c n$.

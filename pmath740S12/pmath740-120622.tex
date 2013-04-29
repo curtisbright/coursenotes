@@ -1,0 +1,130 @@
+For $G=\Z_{n_1}\oplus\dotsb\oplus\Z_{n_l}$, $H$ abelian
+\[ \Hom(G,H) = \set{f_{a_1,\dotsc,a_l}}{\text{each $a_i\in H$, $a_i^{n_i}=1$}} \]
+$f_{a_1,\dotsc,a_l}(k_1,\dotsc,k_l)=\prod a_i^{k_i}$
+\[ \hat G = \Hom(G,\C^*) = \set{f_{a_1,\dotsc,a_l}}{\text{each $a_i\in C_{n_i}$}} \]
+\begin{align*}
+\hat G &= \Hom(G,\C^*) \\
+&= \Hom(G,\mathbb{S}) \qquad \mathbb{S}=\set{z\in\C^*}{\abs{z}=1} \\
+&= \Hom\paren[\Big]{G,\bigcup_{n=1}^\infty} \qquad e^{i2\pi q} \qquad q\in\Q/\Z \\
+&\cong \Hom(G,\Q/\Z)
+\end{align*}
+$G\cong\hat G$ under $\Phi\colon G\to\hat G$ defined by
+\begin{align*}
+\Phi(e_j) &= f_{1,\dotsc,1,e^{i2\pi/n_j},1,\dotsc,1} \\
+\Phi(k_1,\dotsc,k_l) &= f_{(e^{i2\pi k_1/n_1},\dotsc,e^{i2\pi k_l/n_l})}
+\end{align*}
+For $\chi\in\hat U_l$ we associate the Dirichlet character
+\[ \chi \colon \Z \to \C^* \]
+given by
+\[ \chi(k\footnote{$\in U_l$}) = \begin{cases}
+\chi(k) & \text{if $\gcd(k,l)=1$ so $k\in U_l$} \\
+0 & \text{otherwise}
+\end{cases} \]
+\notes $\chi\colon\Z\to\C^*$ is periodic with period $l$. \\
+$\chi(k)$ is a $\phi(l)^k$ root of $1$ for all $k\in\Z$. \\
+$\chi$ is completely multiplicative. \\
+$\chi$ satisfies the following orthogonality relations\footnote{Aside: for $a\in U_l$,
+\[ \sum_{\chi\in\hat U_l}\chi(a) = \begin{cases}
+\phi(l) & \text{if $a=1$} \\
+0 & a\neq1
+\end{cases} \]
+for $\chi\in\hat U_l$,
+\[ \sum_{a\in U_l}\chi(a) = \begin{cases}
+\phi(l) & \text{if $\chi=\1$} \\
+0 & \text{}
+\end{cases} \]
+for $a$, $b\in U_l$,
+\[ \sum_{\chi\in\hat U_l}\chi(a)\overline{\chi}(b) = \begin{cases}
+\phi(l) & \text{if $a=b$} \\
+0 & \text{}
+\end{cases} \]
+}
+for $n\in\Z$,
+\[ \sum_{\chi\in\hat U_l}\chi(n) = \begin{cases}
+\phi(l) & \text{if $n=1\bmod l$} \\
+0 & \text{otherwise}
+\end{cases} \]
+for $n$, $k\in\Z$,
+\[ \sum_{\chi\in\hat U_l}\chi(n)\overline{\chi}(k) = \begin{cases}
+\phi(l) & \text{if $n=k\bmod l$} \\
+0 & \text{otherwise}
+\end{cases} \]
+for $\chi\in\hat U_l$,
+\[ \sum_{k=0}^{l-1} \chi(k) = \begin{cases}
+\phi(l) & \text{if $\chi=\1$} \\
+0 & \text{otherwise}
+\end{cases} \]
+for $\chi$, $\psi\in\hat U_l$
+
+\question Does $\sum_{n=1}^\infty\frac{\alpha^n}{n}$ converge where $\alpha=e^{i2\pi/l}$? \\
+Does $\sum_{n=1}^\infty\frac{\chi(n)}{n}$ converge?
+
+\thm Let $f\colon[1,\infty)\to\R^+$ by $\mathcal{C}^1$ and eventually decreasing with $\lim_{x\to\infty}f(x)=0$.  Let $\chi\in\hat U_l$ with $\chi\neq\1$.  Then $\sum_{n=1}^\infty\chi(n)f(n)$ converges and
+\[ \sum_{n\leq x}\chi(n)f(n) = \sum_{n=1}^\infty \chi(n)f(n) + g(x) \]
+where $\abs{g(x)}\leq\phi(l)\abs{f(x)}$ so $g(x)=O(f(x))$. \\
+\pf Let $A(x)=\sum_{n\leq x}\chi(n)$. \\
+Since $\chi(n)$ is periodic and
+\[ A(l) = \sum_{n=1}^\infty \chi(n) = 0 \] 
+$\therefore A(n)$ is periodic. \\
+We have
+\[ \abs{A(x)} = \max_{1\leq k\leq l}\abs{A(k)} = \max_{1\leq k\leq l}\abs{\chi(1)+\chi(2)+\dotsb+\chi(k)} \]
+We have $\chi(1)+\chi(2)+\dotsb+\chi(k)+\chi(k+1)+\dotsb+\chi(l)=0$
+\[ \abs{\chi(1)+\dotsb+\chi(k)} = \abs{\chi(k+1)+\dotsb+\chi(l)} \]
+\begin{align*}
+\text{LS} &\leq a = \text{\# of $i$ with $1\leq i\leq k$ such that $\gcd(i,l)=1$} \\
+\text{RS} &\leq b = \text{\# of $i$ with $k+1\leq i\leq l$ with $\gcd(i,l)=1$} \\
+a+b &= \phi(l) \\
+\text{LS} &\leq \min(a,b) \leq \frac{\phi(l)}{2} \\
+\therefore \abs{A(x)} &\leq \frac{\phi(l)}{2} \text{ for all $x$.}
+\end{align*}
+Consider the sum $\sum_{n=1}^\infty\chi(n)f(n)$. \\
+For $x<y$.  By Abel's Summation Formula,
+\begin{align*}
+\sum_{n\leq y}\chi(n)f(n) - \sum_{n\leq x}\chi(n)f(n) &=
+A(y)f(y) - \int_1^y A(t)f'(t)\d t - A(x)f(x) + \int_1^x A(t)f'(t)\d t \\
+&= A(y)f(y) - A(x)f(x) - \int_x^y A(t) f'(t) \d t
+\end{align*}
+Each term can be made (arbitrarily) small by choosing $x$ large and $y>x$ since
+\[ \abs{A(y)f(y)} \leq \frac{\phi(l)}{2} \abs{f(y)} \leq \frac{\phi(l)}{2} f(x) \to 0 \]
+(since $f$ is eventually decreasing)
+\[ \abs{A(x)f(x)} \leq \frac{\phi(l)}{2}f(x) \to 0 \]
+and
+\begin{align*}
+\abs[\Big]{\int_x^y A(t) f'(t)\d t} &\leq \int_x^y\abs{A(t)}\abs{f'(t)}\d t \\
+&\leq \int_x^\infty \abs{A(t)}\abs{f'(t)} \d t \\
+&\leq \frac{\phi(l)}{2} \int_x^\infty \abs{f'(t)} \d t \\
+&= \frac{\phi(l)}{2}\int_x^\infty-f'(t)\d t \\
+&= \frac{\phi(l)}{2}\brack[\Big]{-f(t)}_x^{\infty} \\
+&= \frac{\phi(l)}{2}f(x) \qquad\text{(since $f(t)\to0$ as $f\to\infty$)} \\
+&\to 0
+\end{align*}
+By Cauchy's Criterion,
+\[ \sum_{n=1}^\infty \chi(n)f(n) \text{ converges} \]
+Also, taking the limit as $y\to\infty$ gives
+\[ \sum_{n=1}^\infty \chi(n)f(n) -\sum_{n\leq x}\chi(n)f(n) = -A(x)f(x)-\int_x^\infty A(t)f'(t)\d t \]
+\emph{so}
+\[ \sum_{n\leq x}\chi(n)f(n) = \sum_{n=1}^\infty \chi(n)f(n) + g(x) \]
+where
+\[ g(x) = A(x)f(x) + \int_x^\infty A(t)f'(t)\d t \]
+and
+\begin{align*}
+\abs{A(x)f(x)} &\leq \frac{\phi(l)}{2} f(x) \\
+\abs[\Big]{\int_x^\infty A(t)f'(t)\d t} &\leq \int_x^\infty \abs{A(t)}\abs{f'(t)}\d t \\
+&\leq \frac{\phi(l)}{2}\int_x^\infty -f'(t)\d t \\
+&= \frac{\phi(l)}{2}f(x)
+\end{align*}
+so
+\[ g(x) \leq \phi(l)f(x) \]
+for large $x$.
+
+\eg $\sum_{n=1}^\infty\frac{\chi(n)}{n}$ converges and $\sum_{n\leq x}\frac{\chi(n)}{n}+g(x)$ with $\abs{g(x)}\leq\phi(l)\frac1x$ \\
+$\sum_{n=1}^\infty\frac{\chi(n)\log n}{n}$ converges
+\[ \sum_{n\leq x}\frac{\chi(n)\log n}{n} = \sum_{n=1}^\infty \frac{\chi(n)\log n}{n} + g(x) \]
+with $\abs{g(x)}\leq\phi(l)\frac{\log x}{x}$ for large $x$.
+\begin{align*}
+\sum_{\substack{p\leq x\\p=k\bmod l}}\frac{\log p}{p} &= \frac{1}{\phi(l)}\log\log x + O(1) \\
+\sum\frac{\log p}{p} &\approx \sum\frac{\Lambda}{n} \\
+\sum\frac1p &\approx \sum\frac{p(n)}{n} \\
+\sum_{d\div n}\Lambda(d) &= \log n \\
+\sum_{d\div n}p(d) &= \text{\# of distinct prime factors of $n$}
+\end{align*}

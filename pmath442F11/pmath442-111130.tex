@@ -1,0 +1,71 @@
+\thm If $K/\Q_p$ is a finite unramified extension, then it is also Galois. \\
+\pf By assumption, $[K:\Q_p]=[k:\F_p]$, where $k$ is the residue field $O/M$ of $K$.
+Write $k=\F_p(\o\alpha)$ for some $\o\alpha\in k$.
+Choose $\alpha\in O\subset K$ such that $\alpha\equiv\o\alpha\bmod M$.
+Then $\Q_p(\alpha)$ is an extension of $\Q_p$ of degree $n=[K:\Q_p]=[k:\F_p]$, because a minimal polynomial $\o m(x)\in\F_p[x]$ for $\o\alpha/\F_p$ is irreducible, and also it's the reduction of a minimal polynomial $m(x)$ for $\alpha/\Q_p$.
+Therefore $\Q_p(\alpha)=K$.
+
+$\Q_p(\alpha)$ is clearly separable over $\Q_p$.  But $\o m(x)$ is separable, and splits completely (into linear factors) in $k(x)$.
+By Hensel's Lemma, since the factors are pairwise coprime, this means $m(x)$ factors completely in $K[x]$.
+So $K$ is a splitting field for $m(x)$ over $\Q_p$, since $\Q_p(\alpha)=K$.
+So $K/\Q_p$ is Galois. \qed
+
+This means that if $K/\Q_p$ is unramified, then its Galois group is cyclic.
+Better yet, any two unramified extensions of $\Q_p$ of degree $n$ are isomorphic, by Hensel's Lemma and previous theorem.
+
+So extensions of $\F_p$ an unramified extensions of $\Q_p$ are in a natural 1--1 correspondence.
+
+\textbf{Consequences: }The composition of 2 unramified extensions of $\Q_p$ is unramified.
+
+Note that:
+\[ \left.\begin{gathered}\xymatrix{
+	& K_1K_2\ar@{-}[dl]\ar@{-}[dr] & \\
+	K_1\ar@{-}[dr] & & K_2\ar@{-}[dl] \\
+	& \Q_p & }
+\qquad
+\xymatrix{
+& k_1k_2\ar@{-}[dl]\ar@{-}[dr] & \\
+k_1\ar@{-}[dr]_{d_1} & & k_2\ar@{-}[dl]^{d_2} \\
+& \F_p & }\end{gathered}\right\}\lcm(d_1,d_2) \]
+Let's find all quadratic extensions of $\Q_p$ for $p\neq2$. \\
+They are classified by $(\Q_p^*)/(\Q_p^*)^2$
+
+Any $\alpha\in\Q_p^*$ is, up to squares, an element of either $\Z_p$ or $p\Z_p$.
+\[ \Z_p \cong \set{(a_1,a_2,a_3,\dotsc)}{a_i\in\Z/p\Z\co a_1\equiv a_{1+j}\bmod p^i~\forall j\geq0} \]
+If $(a_1,\dotsc)\in(\Q_p)^2$, then $a_1\in(\F_p)^2$. \\
+So modulo squares, there are 2 choices for $a_1$.
+For all $i\geq2$, there are again only 2 choices for $a_i$, up to squares, so there are exactly 2 units in $\Z_p$, up to squares. \\
+Similarly, there are 2 elements of $p\Z_p$ up to squares.
+So $(\Q_p^*)/(\Q_p^*)^2$ has order 4.
+There are therefore 3 nontrivial quadratic extensions of $\Q_p$: \\
+\begin{tabular}{lll}
+	unramified: & $\Q_p(\sqrt a)$ & $\leftarrow$ a non-residue mod $p$ \\
+	ramified: & $\Q_p(\sqrt{p})$ \\
+	ramified: & $\Q_p(\sqrt{ap})$
+\end{tabular}
+
+\textbf{Newton Polygons} \\
+For $a_i\in\Q_p^*$, define $v(a)=-\log\pabs{a}={}$biggest power of $p$ dividing $a$. \\
+Let $a_nx^n+a_{n-1}x^{n-1}+\dotsb+a_0\in\Q_p[x]$ be a polynomial, $a_n\neq0$.
+Plot all the points $(i,v(a_i))$ for $a_i\neq0$.
+The Newton polygon of $f(x)$ is the lower convex hull of these points. \\
+\eg $p=3$, $f(x)=x^3+\frac34x^2+\frac79$ \\
+Plot: $(3,0)$, $(2,1)$, $(0,-2)$
+\[ \begin{tikzpicture}[dot/.style={draw,fill,circle,inner sep=1pt}]
+	\draw[->] (-1,0) -- (4,0) node[right] {index};
+	\draw[->] (0,-2.5) -- (0,2) node[left] {$v$};
+	\node[dot] at (2,1) {};
+	\node[dot] at (0,-2) {};
+	\node[dot] at (3,0) {};
+	%\draw (-0.1,1) -- (0.1,1) node[left=5pt] {$1$};
+	%\draw (2,-0.1) -- (2,0.1) node[above] {$2$};
+	\node[draw,shape=hdash] at (0,1) {};
+	\node[left] at (0,1) {$1$};
+	\node[draw,shape=vdash] at (2,0) {};
+	\node[above] at (2,0) {$2$};
+	\node[above] at (3,0) {$3$};
+	\draw[-] (0,-2) -- (3,0);
+	\node at (3,-1.5) {Newton polygon};
+	\node[left] at (0,-2) {$-2$};
+\end{tikzpicture}
+\]

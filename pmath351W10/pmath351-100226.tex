@@ -1,0 +1,28 @@
+Theorem 3.1.3 (Bolzano--Weierstrass Theorem): \\
+A subset $A$ of a metric space $M$ is compact if and only if it is sequentially compact. \\
+Proof (page 165).
+
+\lem A compact $A\subset M$ is closed in $M$. \\
+\pf Let $A$ be compact.  Let $x_0\in M$, $x_0\notin A$ be given.\marginpar{figure: $A\subset M$}
+
+To each $a\in A$, because $a\neq x_0$, $r=d(a,x_0)>0$ and $D(x_0,r/2)$ is disjoint from $D(a,r/2)$.  Label them as $U_a$ and $V_a$, and they are neighbourhoods (\emph{open}) of $a$ and $x_0$ respectively.  Now $\set{U_a}{a\in A}$ is an \emph{open cover} of $A$ in the sense that $\bigcup_{a\in A}u_a\supset A$.  Because $A$ is compact, there exists finitely many $U_{a_1}$, $U_{a_2}$, $\dotsc$, $U_{a_n}$ so that their union already contains $A$.\marginpar{figure: cover of $A$, $x_0\notin A$}  Notice that $V_{a_1}\cap V_{a_2}\cap\dotsb\cap V_{a_n}\eqqcolon V_{x_0}$ is an open neighbourhood of $x_0$, and is disjoint from each $U_{a_i}$ ($i=1,\dotsc,n$).  $V_{x_0}$ does not meet $U_{a_1}$, $U_{a_2}$, $\dotsc$, $U_{a_n}$ implies that $V_{x_0}$ does not meet $A$.
+
+Hence $x_0$ is not a limit of $A$.
+
+As $x_0\notin A$ is arbitrary, this proves that $A$ is closed.
+
+%In any Hausdorff space, a compact set is to be closed.
+\comment The Lemma holds when $M$ is any Hausdorff topological space.
+
+\textbf{Lemma 2:}~In a compact space, say $X$, a closed subset $A$ is compact. \\
+\pf Let $A$ be a closed set in $X$.  Knowing $X$ is compact, we wish to argue that $A$ is compact.\marginpar{figure: cover of $A\subset X$}
+
+Let $\sC$ be a collection of open sets in $X$ which covers $A$, i.e., $\bigcup\sC\supset A$.
+
+Now $\sC\cup\brace{\underbrace{A^c}_\text{open}}$ is an open cover of $X$.  By compactness of $X$, a finite number of members of $\sC\cup\brace{A^c}$ covers $X$, say $\brace{u_1,u_2,\dotsc,u_n,A^c}$ covers $X$. \\
+Then $\brace{u_1,u_2,\dotsc,u_n}$ covers $A$. \\
+So $A$ is compact.
+
+\comment In $\R^n$, a subset is compact if and only if it is closed and bounded (Heine--Borel Theorem).
+
+With the Lemma above, if we can show that a \emph{closed disk} (with finite radius) $\set{x\in\R^2}{d(x_0,0)\leq r}$ is compact, then it follows from the Lemma that every bounded closed set in $\R^n$ is compact.

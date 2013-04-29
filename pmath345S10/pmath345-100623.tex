@@ -1,0 +1,57 @@
+\thm (Chinese Remainder) Let $F$ be a field, $p(x)$, $q(x)\in F[x]$ coprime polynomials.  Then the function:
+\[ \phi\colon F[x] / (pq) \to F[x] /(p) \oplus F[x] / (q) \]
+given by
+\[ (a(x)\bmod pq) \mapsto (a(x)\bmod p,a(x)\bmod q) \]
+is an isomorphism. \\
+\pf (Continued) To show that $\phi$ is onto, we first note that since $F[x]$ is a PID, and since $p$, $q$ are coprime, we get $(p(x),q(x))=(1)$.  In other words, there are $a(x)$, $b(x)\in F[x]$ such that
+\[ a(x) p(x) + b(x) q(x) = 1 . \]
+Now let $f(x)$, $g(x)\in F[x]$ be any polynomials.  We want to find $h(x)\in F[x]$ such that
+\begin{align*}
+h(x) &\equiv f(x) \bmod p \\
+h(x) &\equiv g(x) \bmod q
+\end{align*}
+Let $h(x)=f(x)b(x)q(x)+g(x)a(x)p(x)$.  Then
+\begin{align*}
+h(x) &\equiv f(x) \bmod p \\
+\mathllap{\text{and}\qquad} h(x) &\equiv g(x) \bmod q
+\end{align*}
+So $\phi(h(x)\bmod pq)=(f(x)\bmod p,g(x)\bmod q)$, as desired. \qed
+
+In light of the CRT, to understand $F[x]/(f(x))$, it suffices to understand
+\[ F[x] / (p(x)^a) \]
+for irreducible polynomials $p(x)$.  We will study $F[x]/(p(x))$ for irreducible $p(x)$.  Note that $F[x]/(p(x))$ is a field \emph{iff} $p(x)$ is irreducible in $F[x]$.
+
+Linear Algebra over general fields. \\
+\textbf{Non-definition:} A vector space over a field $F$ is a set $V$ of ``vectors'' that you can add, subtract, and multiply by scalars in a sensible way.
+
+Spanning, linear independence, basis, dimension, linear transformation, kernel, range, eigenstuff\ldots they all have the same definitions and properties over a general field as they do over, say, $\R$.
+
+Note that if $F$ is a field and $R$ is any ring with $F\subset R$, then $R$ is an $F$-vector space.
+
+In particular, $F[x]/(p(x))$ is an $F$-vector space.
+\begin{align*}
+F &\hookrightarrow F[x]/(p) \\
+\alpha &\mapsto (\alpha\bmod p)
+\end{align*}
+\thm Let $F$ be a field, $p(x)\in F[x]$ any polynomial. If $p(x)=0$, then $\dim_F F[x]/(p(x))=\infty$.  Otherwise, $\dim_F F[x]/(p(x))=\deg(p(x))$. \\
+\pf If $p(x)=0$, then $F[x]/(0)=F[x]$, which contains the infinite linearly independent set $\brace{1,x,x^2,x^3,\dotsc}$.  Now assume $p(x)\neq0$.  Then by the Division Theorem, for any $f(x)\in F[x]$, we can write:
+\[ f(x) = q(x)p(x) + r(x) \]
+where $q(x)$, $r(x)\in F[x]$, and $\deg(r(x))<\deg(p(x))$.  Better yet, $r(x)$ is unique!
+
+So $F[x]/(p(x))$ is in 1--1 correspondence with $\set{r(x)}{\deg(r)<\deg(p)}$.  Furthermore, this correspondence respects addition and scalar multiplication, but not multiplication (unless you reduce the result mod $p(x)$ again).
+
+In particular, $F[x]/(p(x))$ is isomorphic as an $F$-vector space to:
+\[ V = \set{r(x)}{\deg(r(x))<\deg(p(x))} \]
+A basis for $V$ is
+\[ \brace{1,x,x^2,\dotsc,x^{\deg p-1}} \]
+so $\dim_F F[x]/(p(x))=\deg(p(x))$ as desired. \qed
+
+\eg $\dim_\Q \Q[x]/(x^2-1)=2$%\footnote{
+\[ (a+bx)(c+dx) = (ac+bd)+(ad+bc)x \]
+%} \\
+Basis: $\brace{1,x}$ \\
+\eg $\dim_\Q \Q[x]/(x^2-2)=2$%\footnote{
+\[ (a+bx)(c+dx) = (ac+2bd)+(ad+bc)x \]
+%} \\
+Basis: $\brace{1,x}$. \\
+These two rings are \emph{not} isomorphic, but the two $\Q$-vector spaces are.

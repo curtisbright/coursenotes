@@ -1,0 +1,29 @@
+Textbook on reserve in DC, call no 1359 \\
+Correction to question 2 on assignment 1: Let $X$ and $Y$ be sets, $X\neq\emptyset$ (insert)
+
+Let $X$ be a set, $\leq$ be a partial ordering on $X$.  An element $a\in X$ in \emph{maximal} if the only element $b\in X$ such that $a\leq b$ is $b=a$.  Notation: $a<b$ means $a\leq b$ and $a\neq b$.  So, $a\in X$ is maximal if there exists no $b\in X$, $a<b$.  Notation: $a\geq b$ means $b\leq a$, and $a>b$ means $b<a$.
+
+A subset $C$ of $X$ is \emph{nested} if for any two elements $a$, $b\in C$, either $a\leq b$ or $b\leq a$.  A nested subset is also known as a \emph{chain}, or a \emph{tower}.
+
+An element $b\in X$ is an \emph{upper bound} of $A\subset X$ if for each $a\in A$, $a\leq b$.
+
+\textbf{Zorn's Lemma:}~Let $(X,\leq)$ be a partially ordered set.  Suppose that every chain $C$ in $X$ has an upper bound in $X$.  Then there exists a maximal element in $X$.
+
+\eg Let $V$ be a vector space over a field $F$.  Let $X=\set{A\subset V}{\text{$A$ is linearly independent}}$.  Let $\leq$ on $X$ be set inclusion, i.e., $A_1\leq A_2$ means $A_1\subset A_2$.
+
+If $C$ is a chain in $X$, then $\bigcup C\text{(notation: $\bigcup_{A\in C}A$)}\in X$. [your assignment].  Clearly, for each $A\in C$, $A\subset\bigcup C$ (i.e., $A\leq\bigcup C$).  Thus $\bigcup C$ is an upper bound of $C$.
+
+Hence, the supposition of Zorn's Lemma is satisfied.  Thus, by Zorn's Lemma, there exists, in $X$, a maximal $B$.  That is:
+\begin{enumerate}[label=(\arabic*)]
+\item $B\in X$, i.e., $B$ is linearly independent
+\item $B$ is maximal in $X$, i.e., no linearly independent subset $A$ (of $V$) is (strictly) larger than $B$.
+\end{enumerate}
+Consider $\Span(B)$, which is a subspace of $V$.  If $\Span(B)\subsetneq V$, then we can take a $v_0\in V$, $v_0\notin\Span(B)$, and obtain a strictly larger linearly independent set $B\cup\brace{v_0}$.  That will contradict the maximality of $B$.  This shows that, when $B$ is maximal, $\Span(B)=V$.
+
+$B$ is thus a \emph{basis} for $V$.
+
+This example shows that, when we assume that axiom of choice \emph{or} equivalently the Zorn's Lemma, it leads to the theorem: every vector space, over a field $F$, has a basis.
+
+\eg Let us consider $X=\set{\open{a,b}\footnote{open interval}}{a,b\in\R\c a<b}$.  Let $X$ be partially ordered by set inclusion.  There is no \emph{maximal} element, because for any $\open{a,b}\in X$, we see that $\open{a,b+1}$ is strictly larger.
+
+The chain $C=\set{\open{-n,n}}{n\in\N=\brace{1,2,\dotsc}}$ has \emph{no} upper bound in $X$.

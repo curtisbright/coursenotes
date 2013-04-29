@@ -1,0 +1,84 @@
+\thm Every Euclidean domain is a pid. \\
+\pf $I\subseteq R$, $R$ Euclidean domain $I\neq(0)$. \\
+Let $N\colon R\to\N$ be a Euclidean norm on $R$. \\
+Let $a\in I\setminus\brace0$ be of least norm. \\
+\textbf{Show:} $I=(a)$.  Clearly $(a)\subseteq I$. \\
+If not, let $b\in I\setminus(a)$. \\
+Divide $b$ by $a$ to get
+\begin{gather*}
+b = aq + r \qquad q,r\in R \\
+N(r) < N(a) \\
+r = b - aq \in I
+\end{gather*}
+By minimality of $N(a)$ \\
+$\implies r=0$ \\
+$\implies b=aq$ \\
+$\implies b\in(a)$ Contradiction. \\
+Therefore $I=(a)$. \\
+Therefore $R$ is a pid. \\
+\cor $F[x]$ is a pid if $F$ is a field.
+
+\defin $R$ integral domain. \\
+$a,b\in R$, $a\mid b$ mean \emph{$a$ divides $b$} which means there is $r\in R$ such that $b=ar$. \\
+(\note $a\mid b \iff b\in(a)\iff(b)\subseteq(a)$.) \\
+(\note units divide everything: take $r=\frac ba$.  $0$ divides only $0$.) \\
+A nonzero and nonunit $a\in R$ is called \emph{prime} if whenever $a\mid bc$, either $a\mid b$ or $a\mid c$. \\
+A nonzero nonunit $a\in R$ is called \emph{irreducible} if whenever $a=bc$, either $a\mid b$ or $a\mid c$. \\
+\ex In $\Z$, $\text{prime}=\text{irreducible}$ ($=\text{prime \#s}$)
+
+\note $\text{prime}\implies\text{irreducible}$ \\
+\ex ($\text{prime}\neq\text{irreducible}$) \\
+$F$ field. $F[x]$. \\
+$R\subseteq F[x]$ be the subring of polynomials with no linear term. \\
+i.e., coefficient of $x$ is $0$.
+
+\ex $R$ \emph{is} a subring of $F[x]$. \\
+Consider $x^2$. \\
+\textbf{Claim: } $x^2$ is irreducible in $R$. \\
+\pf $x^2=fg$, $f,g\in R$ \\
+$2=\deg f+\deg g$. \\
+Since $f,g\in R$, $\deg f\neq1$, $\deg g\neq1$ \\
+Without loss of generality, $f=a\in F\setminus\brace0$ \\
+$g=\frac1ax^2$ \\
+$\implies x^2\mid g$.
+
+\textbf{Claim: } $x^2$ is not prime in $R$. \\
+\pf $x^2\mid x^4\cdot x^2=x^6=x^3\cdot x^3$ \\
+but if $x^2\mid x^3$ then $x^3=x^2f$ for some $f\in R$ \\
+$\implies \deg f = 1$, contradiction.  So $x^2\nmid x^3$.
+
+\prop If $R$ is a pid then $\text{prime}=\text{irreducible}$. \\
+\pf Need $\text{irreducible}\implies\text{prime}$. \\
+$a\in R$ be \emph{irreducible}.  Suppose $a\mid bc$.  Assume $a\nmid b$. \\
+$I=(a)+(b)=\set{ar+bs}{r,s\in R}=(a,b)$ \\
+$R$ pid $\implies$ $I=(d)$, for some $d\in R$. \\
+$d\mid a$ and $d\mid b$ \\
+$\Downarrow$ \\
+$a=du$ for some $u\in R$ \\
+$a \nmid d$ (else $a\mid b$) \\
+$\implies$ $a\mid u$ as $a$ is irreducible \\
+$\implies$ $u=ar$ for some $v\in R$ \\
+$\implies$ $a=ard$ $\implies$ $1=vd$ $\implies$ $d$ is a unit \\
+therefore $I=R$ \\
+there exists $r,s\in R$
+\begin{gather*}
+ar + bs = 1 \\
+acr + cbs = c
+\end{gather*}
+$a\mid cbs$ as $a\mid bc$ \\
+$a\mid acr$ $\checkmark$ \\
+$\implies a\mid c$\marginpar{[end of midterm material]}
+
+\cor In $F[x]$, $\text{prime}=\text{irreducible}$, $F$ a field.
+
+\defin $R$ integral domain is a \emph{Unique Factorization Domain} (UFD) if every nonzero nonunit is a product of primes.
+
+\defin A ring $R$ is \emph{Noetherian} if there does not exist any infinite \emph{increasing} sequence of ideals.  i.e., \emph{cannot} have $I_1\subsetneq I_2\subsetneq I_3\subsetneq\dotsb$
+
+\thm If $R$ is a Noetherian integral domain then every nonzero nonunit is a product of irreducibles.
+
+\cor A noetherian pid is a ufd.
+
+\lem pids are always noetherian.
+
+\cor $\text{pid}\implies\text{ufd}$

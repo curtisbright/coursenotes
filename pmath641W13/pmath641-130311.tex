@@ -1,0 +1,30 @@
+\textbf{Theorem 47:} Let $[K:\Q]<\infty$.  The factorization of elements of $\A\cap K$ into irreducibles is unique up to reordering and units if and only if every ideal in $\A\cap K$ is principal. \\
+\pf $\Leftarrow$ It is enough to show that every non-zero prime ideal $P$ in $\A\cap K$ is principal.  By Proposition~37 there is an integer $a$ with $a>1$ in $P$.  Let $a=\pi_1\dotsm\pi_t$ be the decomposition of $a$ into irreducibles in $\A\cap K$.
+
+Then $a\in P$ so $P\supseteq(a)=(\pi_1)\dotsm(\pi_t)$.  Thus $P\mid(\pi_1)\dotsm(\pi_t)$ so $P\mid(\pi_i)$ for some $i$ with $1\leq i\leq t$.  Without loss of generality we may suppose that $P\mid(\pi_1)$ so $P\supseteq(\pi_1)$.
+
+Notice that $P=(\pi_1)$ since $(\pi_1)$ is a prime ideal.  This follows since otherwise $(\pi_1)\delta=\beta\gamma$ with $\beta$ and $\gamma$ not in $(\pi_1)$.  But $\pi_1$ is irreducible so $\pi_1\mid\beta$ or $\pi_1\mid\gamma$ by unique factorization which is a contradiction.
+
+$\Rightarrow$ Suppose that
+\[ \pi_1\dotsm\pi_r = \lambda_1\dotsm\lambda_s \]
+where the $\pi_i$ and $\lambda_j$ are irreducibles in $\A\cap K$.  Notice that then
+\[ (\pi_1)\dotsm(\pi_r) = (\lambda_1)\dotsm(\lambda_s) . \]
+Therefore it suffices to show that if $\pi$ is an irreducible of $\A\cap K$ then $(\pi)$ is a prime ideal.  We have unique factorization into prime ideals of $\A\cap K$ so if $(\pi)$ is not a prime ideal then $(\pi)=AB$ with $A$ and $B$ proper non-zero ideals of $\A\cap K$.
+
+Since every ideal in $\A\cap K$ is principal there exists $\alpha$, $\beta\in\A\cap K$ with $A=(\alpha)$ and $B=(\beta)$.  Then $(\pi)=(\alpha)(\beta)$.  Thus there exists $\delta$, $\gamma\in\A\cap K$ such that $\pi=\brace{\alpha\delta}\cdot\brace{\beta\gamma}$.  But $\pi$ is irreducible so either $\alpha\delta$ is a unit in which case $\alpha$ is a unit or $\beta\gamma$ is a unit in which case $\beta$ is a unit.  This contradicts the fact that $A$ and $B$ are proper ideals.
+
+The only rings $\A\cap\Q(\sqrt{-D})$ which have unique factorization into irreducibles with $D>0$ are those with
+\[ D = 1,2,3,7,11,19,43,67,163 . \]
+Given a prime ideal $P$ in $\A\cap K$ with $[K:\Q]<\infty$ we can find an integer $a>1$ with $a\in P$.  Let $a=p_1\dotsm p_t$ be a factorization of $a$ into primes in $\Z$.  Then $P\supseteq(a)$ so $P\mid(p_1)\dotsm(p_t)$ hence $P\mid(p_i)$ for some prime $p_i$ in $\Z$.
+
+Suppose $P\mid(p)$ are $P\mid(q)$ for two distinct primes $p$, $q$ in $\Z$.  Then since there exist integers $r$ and $s$ with
+\[ rp + sq = 1 \]
+we see that
+\[ (r)(p) + (s)(q) = (1) \]
+and so
+\[ P \mid (1) \]
+which is a contradiction.  Thus to each prime ideal $P$ in $\A\cap K$ there is a unique prime $p$ in $\Z$ associated to it with $P\mid(p)$.
+
+\defn Let $[K:\Q]<\infty$ and let $p$ be a prime in $\Z$.  We say that $p$ ramifies in $\A\cap K$ if there exists a prime ideal $P$ in $\A\cap K$ such that $P^2\mid(p)$.
+
+Dedekind proved that the primes $p$ that ramify are exactly the primes that divide the discriminant $D$.
