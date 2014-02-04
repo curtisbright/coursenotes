@@ -39,7 +39,7 @@ But $Q>1$ so $p_1=\dotsb=p_n=0$ and this contradicts the fact that $\x$ is a non
 \pf If suffices to prove that $\omega_n$ is the volume of the unit sphere given by
 \[ \set{(x_1,\dotsc,x_n)\in\R^n}{x_1^2+\dotsb+x_n^2\leq1} . \]
 We have $\omega_1=2$ and $\omega_2=\pi$.  We now proceed inductively.  Suppose $n\geq3$.  Then
-\[ \omega_n = \int\limits_{x_1^2+\dotsb+x_n^2\leq1}\d x_1\dotsm\d x_n = \int_{-1}^1\int_{-1}^1\paren*{\int_{\R^{n-2}} g(x_1,\dotsc,x_{n})}\d x_{n-1}\d x_n , \]
+\[ \omega_n = \int\limits_{x_1^2+\dotsb+x_n^2\leq1}\d x_1\dotsm\d x_n = \int_{-1}^1\int_{-1}^1\paren*{\int_{\R^{n-2}} g(x_1,\dotsc,x_{n})\d x_1\dotsm\d x_{n-2}}\d x_{n-1}\d x_n , \]
 where $g$ is the characteristic function of the unit sphere.\footnote{This not necessary; can ignore.}  Thus
 \begin{align*}
 \omega_n
