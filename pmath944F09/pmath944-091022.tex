@@ -29,8 +29,8 @@ Choose integers $p_1\c \dotsc\c p_n$ such that $\norm{\alpha_iq}=\abs{\alpha_iq-
 \[ \house{\x} \leq K_1 q . \]
 We consider the linear forms
 \begin{align*}
-L_i(\X) &= \alpha_i X_{n+1} - X_i \qquad \text{for $i=1\c \dotsc\c n$} \\
-L_{n+1}(\X) &= X_{n+1}
+L_i(\x) &= \alpha_i X_{n+1} - X_i \qquad \text{for $i=1\c \dotsc\c n$} \\
+L_{n+1}(\x) &= X_{n+1}
 \end{align*}
 $L_1\c \dotsc\c L_{n+1}$ are $n+1$-linearly independent linear forms with algebraic coefficients. \\
 We have
@@ -68,9 +68,9 @@ Write $\x=(x_1,\dotsc,x_{n+1})=(q_1,\dotsc,q_n,p)$. \\
 Let $K_3$, $K_4$ be positive numbers which depend on $\alpha_1\c \dotsc\c \alpha_n$.  Then
 \[ \house{\x} = \max(\abs{q_1},\dotsc,\abs{q_n},\abs{p}) \leq K_3 q \]
 where $q=\max_i\abs{q_i}$.  Put
-\[ L_i(\X) = X_i \qquad\text{for $i=1\c \dotsc\c n$} \]
+\[ L_i(\x) = X_i \qquad\text{for $i=1\c \dotsc\c n$} \]
 and
-\[ L_{n+1}(\X) = \alpha_1X_1 + \dotsb + \alpha_nX_n - X_{n+1} . \]
+\[ L_{n+1}(\x) = \alpha_1X_1 + \dotsb + \alpha_nX_n - X_{n+1} . \]
 Then
 \[ \abs{L_1(\x)\dotsm L_{n+1}(\x)} = \abs{q_1\dotsm q_n}\norm{\alpha_1q_1+\dotsb+\alpha_nq_n} < \frac{1}{\abs{q_1\dotsm q_n}^\delta} < \frac{1}{\house{\x}^{\delta/2}} , \]
 for $q$ sufficiently large.  Then by the Subspace Theorem $\x$ lies in one of finitely many proper rational subspaces of $\R^{n+1}$.
