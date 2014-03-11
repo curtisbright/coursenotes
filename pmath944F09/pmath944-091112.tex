@@ -54,11 +54,11 @@ Let $\Lambda$ be a lattice in $\R^n$ with $\x\cdot\y\in\Z$ for any $\x$, $\y$ in
 \[ \x = k_1\b_1 + \dotsb + k_n\b_n . \]
 Then
 \begin{align*}
-\x\cdot\x &= k_1^2\inn{\b_1,\b_1} + \dotsb + k_n^2 \inn{\b_n,\b_n} \\
-&= 2 \sum_{\substack{i,j\\i<j}} k_ik_j \inn{\b_i,\b_j}
+\x\cdot\x &= k_1^2\inn{\b_1,\b_1} + \dotsb + k_n^2 \inn{\b_n,\b_n} %\\
++ 2 \sum_{\substack{i,j\\i<j}} k_ik_j \inn{\b_i,\b_j}
 \end{align*}
 and so this is a quadratic form in $(k_1,\dotsc,k_n)$.  We have
-\[ \paren*{k_1,\dotsc,k_n} B \begin{pmatrix}k_1\\\vdots\\k_n\end{pmatrix} . \]
+\[ \x\cdot\x = \paren*{k_1,\dotsc,k_n} B \begin{pmatrix}k_1\\\vdots\\k_n\end{pmatrix} . \]
 
 Let $q=e^{2\pi i z}$ for $z\in\C$.  We now define the theta function of the lattice $\Lambda$, denoted $\theta_\Lambda(z)$ by
 \[ \theta_\Lambda(z) = \sum_{\x\in\Lambda} q^{(\x\cdot\x)/2} = \sum_{\x\in\Lambda} e^{(\x\cdot\x)\pi iz} . \]
